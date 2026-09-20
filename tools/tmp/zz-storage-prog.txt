@@ -1,0 +1,10 @@
+corrupt psec
+psec is an array
+psec index far out of range
+psec names a page that is gone
+corrupt shell state
+shell state with unknown mode + mscreen
+shell state is null
+corrupt app state
+app state with unknown page
+corrupt accordion state

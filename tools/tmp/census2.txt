@@ -1,0 +1,19 @@
+text sources scanned: 138
+binary assets: 950 91.3MB
+referenced by: { stem: 210, literal: 623, concat: 12 }
+ORPHANS: 105 1.96MB
+
+--- all orphans, largest first ---
+   137K assets/figma/boxer-photo.jpg
+   118K assets/mscreens/rc-sara-strike.jpg
+   117K assets/mscreens/record-print.jpg
+   101K assets/mscreens/replay-sara-wide.jpg
+    88K assets/mscreens/record-player.jpg
+    87K assets/mscreens/record-bleed.jpg
+    81K assets/case/screen-failed.webp
+    79K assets/case/screen-ranks.webp
+    74K assets/mscreens/record-contact.jpg
+    56K assets/photos/clips-b-strike.jpg
+    56K assets/case/screen-connected.webp
+    54K assets/photos/clips-b-face.jpg
+    54K assets/photos/clips-e-face.jpg

@@ -1,0 +1,13 @@
+import { open, sleep } from './cdp.mjs'
+const c = await open({ W: 400, H: 1400 })
+await c.send('Page.navigate', { url: 'http://localhost:5770/?embed=machine' }); await sleep(9000)
+const count = await c.js("performance.getEntriesByType('resource').length")
+const kb = await c.js("Math.round(performance.getEntriesByType('resource').reduce(function(n,r){return n+(r.transferSize||0)},0)/1024)")
+const big = await c.jsj("performance.getEntriesByType('resource').slice().sort(function(a,b){return (b.transferSize||0)-(a.transferSize||0)}).slice(0,8).map(function(r){return [r.name.split('5770/')[1]||r.name, Math.round((r.transferSize||0)/1024)]})")
+console.log('EMBED page resources:', count, 'requests,', kb, 'KB transferred')
+if (Array.isArray(big)) for (const [n, s] of big) console.log('   ', String(s).padStart(5), 'KB ', n)
+console.log('ds.js full init (window.dsBackdrops):', await c.js("typeof window.dsBackdrops"), 'len', await c.js("(window.dsBackdrops||[]).length"))
+console.log('ds photo strip children:', await c.js("document.querySelector('[data-ds-photos]') ? document.querySelector('[data-ds-photos]').children.length : 'no strip'"))
+console.log('ds video strip children:', await c.js("document.querySelector('[data-ds-videos]') ? document.querySelector('[data-ds-videos]').children.length : 'no strip'"))
+console.log('errors:', c.errs.slice(0,8).join(' | ')||'(none)')
+c.close()

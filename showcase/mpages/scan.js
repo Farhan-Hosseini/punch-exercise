@@ -28,7 +28,7 @@
   // each venue has a photograph of its own here; the home page's Near you list shows the same venues in others
   const LIB = (f) => `assets/photos/lib/${f}`
   const PLAYED = [
-    { id: 'dxb', name: 'Dubai Mall', spot: 'Ground Level, by the Ice Rink', when: 'Tonight', photo: LIB('dubai-night-20.jpg'), pos: '50% 40%', live: true },
+    { id: 'dxb', name: 'Dubai Mall', spot: 'Ground Level, Grand Atrium', when: 'Tonight', photo: LIB('dubai-night-20.jpg'), pos: '50% 40%', live: true },
     { id: 'walk', name: 'City Walk', spot: 'Hub Zero, Building 8', when: 'Last Friday', last: 688102, photo: LIB('dubai-night-5.jpg'), pos: '50% 55%' },
     { id: 'moe', name: 'Mall of the Emirates', spot: 'Magic Planet, Level 1', when: 'Two weeks ago', last: 655930, photo: LIB('arcade-neon-2.jpg'), pos: '50% 50%' },
     { id: 'marina', name: 'Marina Mall', spot: 'Level 1, by the cinema', when: 'In August', last: 512340, photo: LIB('dubai-night-6.jpg'), pos: '50% 55%' },

@@ -24,6 +24,8 @@
   --mld-soft: color-mix(in oklab, var(--strike) 16%, transparent);
   --mld-letter: .5;
 }
+/* the wider display faces: --mld-k is the screen's own width factor, so their words stay inside the panel */
+:root[data-typeface="orbitron"] .mscreen-loading { --mld-k: .6; }
 :root[data-appearance="light"] .mscreen-loading { --mld-well: rgba(21, 20, 19, .05); --mld-track: rgba(21, 20, 19, .09); --mld-bar: linear-gradient(90deg, #B30D10, var(--strike) 70%, #F04544); --mld-soft: color-mix(in oklab, var(--strike) 11%, transparent); }
 
 .mscreen-loading [data-sv][hidden] { display: none !important; }

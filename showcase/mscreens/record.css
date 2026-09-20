@@ -154,7 +154,7 @@
   display: flex; flex-direction: column; gap: 36px;
 }
 .mscreen-record .rm-line-h {
-  font: var(--w-display) 128px/.9 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  font: var(--w-display) calc(128px * var(--disp-k, 1))/.9 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
   text-wrap: balance;
 }
 .mscreen-record .rm-line-t { font: var(--w-text) 44px/1.3 var(--f-text); color: var(--ink-2); }
@@ -189,7 +189,7 @@
 .mscreen-record .rm-name span {
   position: absolute; left: 50%; bottom: 48px; transform-origin: 0 50%; transform: rotate(-90deg) translateY(50%);
   white-space: nowrap; color: var(--cta-ink);
-  font: var(--w-display) 150px/1 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  font: var(--w-display) calc(150px * var(--disp-k, 1))/1 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
 }
 /* the old best: a striped red tape across the whole glass at its height on the tower (gold until round nine); broken,
    each half hangs from its edge */
@@ -223,7 +223,7 @@
 .mscreen-record .rm-roll { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); isolation: isolate; }
 .mscreen-record .rm-roll > * { position: relative; z-index: 1; }
 .mscreen-record .rm-roll-h {
-  font: var(--w-display) 124px/.92 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  font: var(--w-display) calc(124px * var(--disp-k, 1))/.92 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
   text-wrap: balance;
 }
 .mscreen-record .rm-flaps { --fw: 80px; display: flex; gap: 10px; height: calc(var(--fw) * 1.42); perspective: 900px; }
@@ -243,7 +243,7 @@
 .mscreen-record .rm-face {
   display: block; width: 176px; height: 176px; border-radius: 50%; overflow: hidden; flex: none;
   background: var(--rec-tile); box-shadow: 0 0 0 4px var(--rec-tile-edge);
-  display: grid; place-items: center; font: var(--w-display) 72px/1 var(--f-display); color: var(--ink-2);
+  display: grid; place-items: center; font: var(--w-display) calc(72px * var(--disp-k, 1))/1 var(--f-display); color: var(--ink-2);
 }
 .mscreen-record .rm-face img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .mscreen-record .rm-who figcaption { display: flex; flex-direction: column; gap: 10px; }
@@ -279,7 +279,7 @@
 }
 .mscreen-record .rm-ink-top, .mscreen-record .rm-ink-foot { font: var(--w-label) 40px/1 var(--f-label); letter-spacing: .12em; text-transform: uppercase; }
 .mscreen-record .rm-ink-big {
-  max-width: 560px; font: var(--w-display) 150px/.88 var(--f-display); letter-spacing: var(--display-track); text-transform: uppercase;
+  max-width: 560px; font: var(--w-display) calc(150px * var(--disp-k, 1))/.88 var(--f-display); letter-spacing: var(--display-track); text-transform: uppercase;
 }
 .mscreen-record .rm-shock {
   position: absolute; z-index: 1; left: 50%; top: 716px; width: 820px; height: 560px; translate: -50% -50%; rotate: -7deg;
@@ -365,7 +365,7 @@
 .mscreen-record .rs-reelbox { position: relative; }
 .mscreen-record .rs-reelrow {
   display: flex; align-items: flex-end; gap: .05em; width: max-content;
-  font: var(--w-display) 100px/1 var(--f-display); font-variant-numeric: tabular-nums; letter-spacing: 0;
+  font: var(--w-display) calc(100px * var(--disp-k, 1))/1 var(--f-display); font-variant-numeric: tabular-nums; letter-spacing: 0;
 }
 .mscreen-record .rs-decs-row { display: flex; align-items: flex-end; gap: .05em; font-size: .5em; }
 .mscreen-record .rs-tile {
@@ -430,7 +430,7 @@
 .mscreen-record .rs-full { container-type: inline-size; gap: 28px; }
 .mscreen-record .rs-whole {
   width: max-content; max-width: none;
-  font: var(--w-display) 300px/.86 var(--f-display);
+  font: var(--w-display) calc(300px * var(--disp-k, 1))/.86 var(--f-display);
   letter-spacing: var(--display-track); text-shadow: var(--display-glow);
 }
 .mscreen-record .rs-tail { display: flex; flex-direction: column; align-items: flex-end; gap: 36px; }
@@ -472,7 +472,7 @@
 .mscreen-record .rp-grade-cap { position: absolute; z-index: 3; left: var(--ms-gut); right: var(--ms-gut); bottom: 40px; display: flex; flex-direction: column; gap: 24px; }
 .mscreen-record .rp-grade-cap b {
   display: block; width: max-content;
-  font: var(--w-display) 300px/.8 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); color: var(--ink-1);
+  font: var(--w-display) calc(300px * var(--disp-k, 1))/.8 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); color: var(--ink-1);
 }
 .mscreen-record .rp-grade-cap > span { font: var(--w-text) 44px/1.2 var(--f-text); color: var(--ink-2); }
 .mscreen-record .rp-grade-cap > span span { color: var(--ink-1); font-weight: var(--w-strong); }
@@ -520,7 +520,7 @@
   position: absolute; z-index: 1; left: 44px; right: 44px; bottom: 34px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
   color: #FFFFFF; text-shadow: 0 2px 16px rgba(0, 0, 0, .6); white-space: nowrap;
 }
-.mscreen-record .rp-band figcaption b { font: var(--w-display) 76px/.9 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); }
+.mscreen-record .rp-band figcaption b { font: var(--w-display) calc(76px * var(--disp-k, 1))/.9 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); }
 .mscreen-record .rp-band figcaption span { font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; }
 /* the big band's name in a red that reads on the dark foot of the reel in every look */
 .mscreen-record .rp-band.is-key figcaption b { color: #FF5A4E; }

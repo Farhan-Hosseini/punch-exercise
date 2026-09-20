@@ -1,0 +1,316 @@
+{
+ "viewport": {
+  "W": 1440,
+  "H": 900
+ },
+ "screens": [
+  {
+   "screen": "default",
+   "newErrors": 0,
+   "attr": "default",
+   "node": "mscreen mscreen-default",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 644,
+   "shownScreens": [
+    "default"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  },
+  {
+   "screen": "attract",
+   "newErrors": 0,
+   "attr": "attract",
+   "node": "mscreen mscreen-attract is-liv",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 780,
+   "shownScreens": [
+    "attract"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  },
+  {
+   "screen": "scan",
+   "newErrors": 0,
+   "attr": "scan",
+   "node": "mscreen mscreen-scan is-live",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 367,
+   "shownScreens": [
+    "scan"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  },
+  {
+   "screen": "countdown",
+   "newErrors": 0,
+   "attr": "countdown",
+   "node": "mscreen mscreen-countdown",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 306,
+   "shownScreens": [
+    "countdown"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  },
+  {
+   "screen": "loading",
+   "newErrors": 0,
+   "attr": "loading",
+   "node": "mscreen mscreen-loading is-liv",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 306,
+   "shownScreens": [
+    "loading"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  },
+  {
+   "screen": "result",
+   "newErrors": 0,
+   "attr": "result",
+   "node": "screen",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 355,
+   "shownScreens": [
+    "result"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  },
+  {
+   "screen": "score",
+   "newErrors": 0,
+   "attr": "score",
+   "node": "mscreen mscreen-score",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 372,
+   "shownScreens": [
+    "score"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  },
+  {
+   "screen": "record",
+   "newErrors": 0,
+   "attr": "record",
+   "node": "mscreen mscreen-record",
+   "h": 2150,
+   "w": 605,
+   "vis": true,
+   "textLen": 905,
+   "shownScreens": [
+    "record"
+   ],
+   "brokenImgs": [],
+   "brokenN": 0,
+   "pageOverflow": 0
+  }
+ ],
+ "mvar": [],
+ "slider": [
+  {
+   "pos": 0,
+   "newErrors": 0,
+   "out": "0.000",
+   "glass": "ULTIMATE RESULT  0.000  WARM UP",
+   "over": 0
+  },
+  {
+   "pos": 1,
+   "newErrors": 0,
+   "out": "1,000.000",
+   "glass": "ULTIMATE RESULT  1,000.000  WARM UP",
+   "over": 0
+  },
+  {
+   "pos": 2,
+   "newErrors": 0,
+   "out": "2,000.000",
+   "glass": "ULTIMATE RESULT  2,000.000  WARM UP",
+   "over": 0
+  },
+  {
+   "pos": 100,
+   "newErrors": 0,
+   "out": "100,000.000",
+   "glass": "ULTIMATE RESULT  100,000.000  WARM UP",
+   "over": 0
+  },
+  {
+   "pos": 500,
+   "newErrors": 0,
+   "out": "500,000.000",
+   "glass": "ULTIMATE RESULT  500,000.000  SOLID STRI",
+   "over": 0
+  },
+  {
+   "pos": 999,
+   "newErrors": 0,
+   "out": "999,000.000",
+   "glass": "ULTIMATE RESULT  999,000.000  PERFECT PU",
+   "over": 0
+  },
+  {
+   "pos": 1000,
+   "newErrors": 0,
+   "out": "999,999.000",
+   "glass": "ULTIMATE RESULT  999,999.000  PERFECT PU",
+   "over": 0
+  }
+ ],
+ "decimalsOff": "999,999",
+ "decimalsOn": "999,999.000",
+ "anim": {
+  "iframeSrc": "./?embed=machine",
+  "ready": true,
+  "inner": {
+   "mode": "machine",
+   "mscreen": "default",
+   "screenH": 902,
+   "imgsBroken": 0
+  },
+  "clips": [
+   {
+    "src": "run-live-928x1960.mp4",
+    "preload": "none",
+    "rs": 0,
+    "err": 0
+   },
+   {
+    "src": "run-live-1920x1080.mp4",
+    "preload": "none",
+    "rs": 0,
+    "err": 0
+   },
+   {
+    "src": "reveal-live-1080x3840.mp4",
+    "preload": "none",
+    "rs": 0,
+    "err": 0
+   }
+  ],
+  "buttons": [
+   {
+    "id": "animPlay",
+    "t": "Start"
+   },
+   {
+    "id": "animReset",
+    "t": "Reset"
+   }
+  ]
+ },
+ "play": [],
+ "playResult": [
+  {
+   "src": "run-live-928x1960.mp4",
+   "rs": 4,
+   "ct": 5.93,
+   "dur": 17.42,
+   "err": 0,
+   "w": 928,
+   "h": 1960
+  },
+  {
+   "src": "run-live-1920x1080.mp4",
+   "rs": 4,
+   "ct": 5.93,
+   "dur": 17.42,
+   "err": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "reveal-live-1080x3840.mp4",
+   "rs": 4,
+   "ct": 5.91,
+   "dur": 9.95,
+   "err": 0,
+   "w": 1080,
+   "h": 3840
+  }
+ ],
+ "animButtons": [
+  "animPlay",
+  "animReset",
+  "Balance: 0 credits",
+  "Buy credits",
+  "Balance: 0 credits",
+  "Top of the board",
+  "Balance: 0 credits",
+  "Balance: 0 credits",
+  "Scan the machine c",
+  "Buy credits first",
+  "Scan to play",
+  "Buy credits",
+  "Buy credits to pla",
+  "Scan"
+ ],
+ "anim_animPlay": {
+  "newErrors": 0,
+  "page": "scan"
+ },
+ "anim_animReset": {
+  "newErrors": 0,
+  "page": "default"
+ },
+ "anim_Scan to play": {
+  "newErrors": 0,
+  "page": "scan"
+ },
+ "escape": [
+  {
+   "overlay": "brief",
+   "opened": true,
+   "closedByEscape": true,
+   "focusBack": "openBrief"
+  },
+  {
+   "overlay": "help",
+   "opened": true,
+   "closedByEscape": true,
+   "focusBack": "openHelp"
+  },
+  {
+   "overlay": "case",
+   "opened": true,
+   "closedByEscape": true,
+   "focusBack": "openCase"
+  }
+ ],
+ "errors": [],
+ "warnings": [],
+ "netFail": [],
+ "counts": {
+  "errors": 0,
+  "warnings": 0,
+  "netFail": 0
+ }
+}

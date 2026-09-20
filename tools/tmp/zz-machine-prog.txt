@@ -1,0 +1,11 @@
+machine screen default
+machine screen attract
+machine screen scan
+machine screen countdown
+machine screen loading
+machine screen result
+machine screen score
+machine screen record
+slider
+animation
+done

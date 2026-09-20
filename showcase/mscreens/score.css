@@ -317,10 +317,10 @@
 .mscreen-score .bs-mk.is-you .bs-mk-n { color: var(--strike); }
 .mscreen-score .bs-br { position: absolute; left: 16%; right: 16%; top: 40px; height: 250px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 24px; }
 .mscreen-score .bs-br-w { display: flex; flex-direction: column; align-items: center; gap: 10px; font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
-.mscreen-score .bs-br-w.is-taken { gap: 8px; font: var(--w-display) 72px/1 var(--f-display); letter-spacing: var(--display-track); text-transform: uppercase; color: var(--bs-crown); }
+.mscreen-score .bs-br-w.is-taken { gap: 8px; font: var(--w-display) calc(72px * var(--disp-k, 1))/1 var(--f-display); letter-spacing: var(--display-track); text-transform: uppercase; color: var(--bs-crown); }
 .mscreen-score .bs-br-w.is-taken .bs-ico { font-size: 84px; }
 .mscreen-score .bs-br-w.is-taken .bs-ico svg { fill: var(--bs-crown); }
-.mscreen-score .bs-br-fig { font: var(--w-display) 112px/.9 var(--f-display); letter-spacing: var(--display-track); color: var(--strike); font-variant-numeric: tabular-nums; }
+.mscreen-score .bs-br-fig { font: var(--w-display) calc(112px * var(--disp-k, 1))/.9 var(--f-display); letter-spacing: var(--display-track); color: var(--strike); font-variant-numeric: tabular-nums; }
 /* the bracket: a rule with its ends turned down to the two marks */
 .mscreen-score .bs-br-line { position: relative; align-self: stretch; height: 42px; border: 10px solid var(--strike); border-bottom: 0; border-radius: 14px 14px 0 0; transform-origin: 50% 100%; }
 .mscreen-score .bs-ruler[data-k="crown"] .bs-br-line { border-color: var(--bs-crown); }
@@ -352,7 +352,7 @@
 .mscreen-score .bs-words-ico { font-size: 72px; color: var(--strike); }
 .mscreen-score .bs-words[data-k="crown"] .bs-words-ico { color: var(--bs-crown); }
 .mscreen-score .bs-words-fig { display: flex; align-items: baseline; gap: 24px; }
-.mscreen-score .bs-words-fig .bs-fig { font: var(--w-display) 96px/1 var(--f-display); letter-spacing: var(--display-track); }
+.mscreen-score .bs-words-fig .bs-fig { font: var(--w-display) calc(96px * var(--disp-k, 1))/1 var(--f-display); letter-spacing: var(--display-track); }
 
 /* ================================================================ Video (round nine: the reel, in the Photo's designs) */
 .mscreen-score .bs-fig-box { position: absolute; inset: 0; overflow: hidden; border-radius: var(--ms-photo-r); background: #0B0B0C; }

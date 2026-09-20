@@ -1,0 +1,682 @@
+[
+ {
+  "b": 481160,
+  "u": "http://localhost:5770/assets/photos/lib/mall-night-1.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 471912,
+  "u": "http://localhost:5770/assets/photos/lib/arcade-neon-4.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 322793,
+  "u": "http://localhost:5770/assets/photos/lib/arcade-neon-3.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 315327,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-12.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 310082,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-5.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 272254,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-10.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 243304,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-22.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 214942,
+  "u": "http://localhost:5770/assets/photos/lib/bag-strike-23.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 214778,
+  "u": "http://localhost:5770/assets/photos/lib/friends-5.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 210492,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-25.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 206169,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-1.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 197636,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-20.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 196648,
+  "u": "http://localhost:5770/assets/motion/reveal-live-1080x3840-poster.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 5616,
+   "columnNumber": 298
+  }
+ },
+ {
+  "b": 194964,
+  "u": "http://localhost:5770/assets/photos/lib/boxer-62.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 179275,
+  "u": "http://localhost:5770/assets/photos/lib/dubai-night-11.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 155064,
+  "u": "http://localhost:5770/assets/photos/lib/boxer-68.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 145684,
+  "u": "http://localhost:5770/assets/photos/lib/fist-strike-4.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 5566,
+   "columnNumber": 122
+  }
+ },
+ {
+  "b": 130543,
+  "u": "http://localhost:5770/assets/motion/run-live-1920x1080-poster.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 5586,
+   "columnNumber": 298
+  }
+ },
+ {
+  "b": 129717,
+  "u": "http://localhost:5770/assets/motion/run-live-928x1960-poster.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 5583,
+   "columnNumber": 275
+  }
+ },
+ {
+  "b": 104522,
+  "u": "http://localhost:5770/assets/photos/hit-player.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 98786,
+  "u": "http://localhost:5770/assets/case/screen-hit.webp",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 7475,
+   "columnNumber": 103
+  }
+ },
+ {
+  "b": 84074,
+  "u": "http://localhost:5770/assets/app/feed/7777431.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 61479,
+  "u": "http://localhost:5770/assets/app/feed/8478699.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 58491,
+  "u": "http://localhost:5770/assets/video/lib/shadow-bars-sq.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 3175,
+   "columnNumber": 286
+  }
+ },
+ {
+  "b": 54553,
+  "u": "http://localhost:5770/assets/app/feed/7777435.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 42928,
+  "u": "http://localhost:5770/assets/app/feed/7777434.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 34741,
+  "u": "http://localhost:5770/assets/video/lib/bag-backlit-sq.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 594,
+   "columnNumber": 311
+  }
+ },
+ {
+  "b": 31803,
+  "u": "http://localhost:5770/assets/photos/last-card.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ },
+ {
+  "b": 31090,
+  "u": "http://localhost:5770/assets/brand/robotenc-light.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 107,
+   "columnNumber": 113
+  }
+ },
+ {
+  "b": 31068,
+  "u": "http://localhost:5770/assets/brand/robotenc.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 108,
+   "columnNumber": 108
+  }
+ },
+ {
+  "b": 19612,
+  "u": "http://localhost:5770/assets/app/avatars/sara.jpg",
+  "init": {
+   "type": "script",
+   "stack": {
+    "callFrames": [
+     {
+      "functionName": "draw",
+      "scriptId": "22",
+      "url": "http://localhost:5770/mpages/profile.js",
+      "lineNumber": 225,
+      "columnNumber": 75
+     },
+     {
+      "functionName": "",
+      "scriptId": "22",
+      "url": "http://localhost:5770/mpages/profile.js",
+      "lineNumber": 270,
+      "columnNumber": 2
+     },
+     {
+      "functionName": "",
+      "scriptId": "22",
+      "url": "http://localhost:5770/mpages/profile.js",
+      "lineNumber": 272,
+      "columnNumber": 2
+     }
+    ]
+   }
+  }
+ },
+ {
+  "b": 17114,
+  "u": "http://localhost:5770/assets/photos/header-d-sara.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 5566,
+   "columnNumber": 122
+  }
+ },
+ {
+  "b": 14096,
+  "u": "http://localhost:5770/assets/app/avatars/leila.jpg",
+  "init": {
+   "type": "script",
+   "stack": {
+    "callFrames": [
+     {
+      "functionName": "drawFriends",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 376,
+      "columnNumber": 19
+     },
+     {
+      "functionName": "draw",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 399,
+      "columnNumber": 78
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 469,
+      "columnNumber": 2
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 471,
+      "columnNumber": 2
+     }
+    ]
+   }
+  }
+ },
+ {
+  "b": 13613,
+  "u": "http://localhost:5770/assets/app/avatars/hana.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8056,
+   "columnNumber": 38
+  }
+ },
+ {
+  "b": 12775,
+  "u": "http://localhost:5770/assets/app/avatars/lina.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8056,
+   "columnNumber": 38
+  }
+ },
+ {
+  "b": 11966,
+  "u": "http://localhost:5770/assets/app/avatars/noor.jpg",
+  "init": {
+   "type": "script",
+   "stack": {
+    "callFrames": [
+     {
+      "functionName": "drawFriends",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 376,
+      "columnNumber": 19
+     },
+     {
+      "functionName": "draw",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 399,
+      "columnNumber": 78
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 469,
+      "columnNumber": 2
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 471,
+      "columnNumber": 2
+     }
+    ]
+   }
+  }
+ },
+ {
+  "b": 11888,
+  "u": "http://localhost:5770/assets/app/avatars/karim.jpg",
+  "init": {
+   "type": "script",
+   "stack": {
+    "callFrames": [
+     {
+      "functionName": "drawPosts",
+      "scriptId": "21",
+      "url": "http://localhost:5770/mpages/feed.js",
+      "lineNumber": 214,
+      "columnNumber": 20
+     },
+     {
+      "functionName": "",
+      "scriptId": "21",
+      "url": "http://localhost:5770/mpages/feed.js",
+      "lineNumber": 286,
+      "columnNumber": 2
+     },
+     {
+      "functionName": "",
+      "scriptId": "21",
+      "url": "http://localhost:5770/mpages/feed.js",
+      "lineNumber": 288,
+      "columnNumber": 2
+     }
+    ]
+   }
+  }
+ },
+ {
+  "b": 11413,
+  "u": "http://localhost:5770/assets/app/avatars/yusuf.jpg",
+  "init": {
+   "type": "script",
+   "stack": {
+    "callFrames": [
+     {
+      "functionName": "drawFriends",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 376,
+      "columnNumber": 19
+     },
+     {
+      "functionName": "draw",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 399,
+      "columnNumber": 78
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 469,
+      "columnNumber": 2
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 471,
+      "columnNumber": 2
+     }
+    ]
+   }
+  }
+ },
+ {
+  "b": 10951,
+  "u": "http://localhost:5770/assets/app/avatars/adam.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8056,
+   "columnNumber": 38
+  }
+ },
+ {
+  "b": 10549,
+  "u": "http://localhost:5770/assets/app/avatars/zayd.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8056,
+   "columnNumber": 38
+  }
+ },
+ {
+  "b": 8343,
+  "u": "http://localhost:5770/assets/app/avatars/rami.jpg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8049,
+   "columnNumber": 41
+  }
+ },
+ {
+  "b": 6316,
+  "u": "http://localhost:5770/assets/logos/punchapp-wordmark.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 60,
+   "columnNumber": 110
+  }
+ },
+ {
+  "b": 6316,
+  "u": "http://localhost:5770/assets/logos/punchapp-wordmark-dark.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 61,
+   "columnNumber": 116
+  }
+ },
+ {
+  "b": 6216,
+  "u": "http://localhost:5770/assets/app/avatars/omar.jpg",
+  "init": {
+   "type": "script",
+   "stack": {
+    "callFrames": [
+     {
+      "functionName": "drawFriends",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 376,
+      "columnNumber": 19
+     },
+     {
+      "functionName": "draw",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 399,
+      "columnNumber": 78
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 469,
+      "columnNumber": 2
+     },
+     {
+      "functionName": "",
+      "scriptId": "14",
+      "url": "http://localhost:5770/mpages/default.js",
+      "lineNumber": 471,
+      "columnNumber": 2
+     }
+    ]
+   }
+  }
+ },
+ {
+  "b": 4777,
+  "u": "http://localhost:5770/assets/logos/gloves-pair.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 7096,
+   "columnNumber": 172
+  }
+ },
+ {
+  "b": 2756,
+  "u": "http://localhost:5770/assets/logos/glove-upright.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 7095,
+   "columnNumber": 177
+  }
+ },
+ {
+  "b": 2680,
+  "u": "http://localhost:5770/assets/logos/glove-tilt.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 7094,
+   "columnNumber": 172
+  }
+ },
+ {
+  "b": 2456,
+  "u": "http://localhost:5770/assets/logos/fist-circle.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 43,
+   "columnNumber": 96
+  }
+ },
+ {
+  "b": 2331,
+  "u": "http://localhost:5770/assets/logos/boxer-circle.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 7093,
+   "columnNumber": 174
+  }
+ },
+ {
+  "b": 2000,
+  "u": "http://localhost:5770/assets/logos/speedbag.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 7097,
+   "columnNumber": 168
+  }
+ },
+ {
+  "b": 1361,
+  "u": "http://localhost:5770/assets/app/qr-glow.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8064,
+   "columnNumber": 40
+  }
+ },
+ {
+  "b": 1328,
+  "u": "http://localhost:5770/assets/app/load-glow.svg",
+  "init": {
+   "type": "parser",
+   "url": "http://localhost:5770/",
+   "lineNumber": 8078,
+   "columnNumber": 1
+  }
+ }
+]

@@ -529,7 +529,7 @@
     const kg = kgOf(s)
     let hits = []
     try { hits = hitsFor(P.me) } catch { hits = [] }
-    const here = hits[0] || { venue: 'Dubai Mall, Ground Level', machine: 'Machine by the ice rink' }
+    const here = hits[0] || { venue: 'Dubai Mall, Ground Level', machine: 'Machine at the Grand Atrium' }
     const past = hits.slice(1).map((h) => ({ kg: kgOf(h.s), day: dayOf(h.when), venue: h.venue, here: h.venue === here.venue && h.machine === here.machine }))
     const last = past[0] || null
     const prev = past.reduce((b, h) => (!b || h.kg > b.kg ? h : b), null)
@@ -890,17 +890,17 @@
   /* a player's attempts, newest first: the still from each replay, the score, when and where (the venue and which
      machine in it). Real venues in each player's city; dates count back from today, so "Today" is always today */
   const SPOTS = {
-    me:    [['Dubai Mall, Ground Level', 'Machine by the ice rink'], ['Mall of the Emirates', 'Machine at Magic Planet'], ['City Walk, Dubai', 'Machine at Hub Zero']],
+    me:    [['Dubai Mall, Ground Level', 'Machine at the Grand Atrium'], ['Mall of the Emirates', 'Machine at Magic Planet'], ['City Walk, Dubai', 'Machine at Hub Zero']],
     zayd:  [['Boxpark Shoreditch, London', 'Machine by the east stairs'], ['Westfield Stratford City', 'Machine on the upper level'], ['Westfield London', 'Machine by the cinema']],
     lina:  [['Xanadú, Madrid', 'Machine by the snow dome'], ['Plenilunio, Madrid', 'Machine in the leisure zone'], ['La Vaguada, Madrid', 'Machine on the lower floor']],
-    omar:  [['Dubai Mall, Ground Level', 'Machine by the ice rink'], ['Ibn Battuta Mall, Dubai', 'Machine in China Court'], ['Mall of the Emirates', 'Machine at Magic Planet']],
-    noor:  [['Dubai Mall, Ground Level', 'Machine by the ice rink'], ['Dubai Festival City Mall', 'Machine on the waterfront'], ['City Walk, Dubai', 'Machine at Hub Zero']],
+    omar:  [['Dubai Mall, Ground Level', 'Machine at the Grand Atrium'], ['Ibn Battuta Mall, Dubai', 'Machine in China Court'], ['Mall of the Emirates', 'Machine at Magic Planet']],
+    noor:  [['Dubai Mall, Ground Level', 'Machine at the Grand Atrium'], ['Dubai Festival City Mall', 'Machine on the waterfront'], ['City Walk, Dubai', 'Machine at Hub Zero']],
     rami:  [['ABC Verdun, Beirut', 'Machine on the top floor'], ['City Centre Beirut', 'Machine at Magic Planet'], ['Beirut Souks', 'Machine by the cinema']],
-    yusuf: [['Sahara Centre, Sharjah', 'Machine at Adventureland'], ['City Centre Sharjah', 'Machine by the food court'], ['Dubai Mall, Ground Level', 'Machine by the ice rink']],
+    yusuf: [['Sahara Centre, Sharjah', 'Machine at Adventureland'], ['City Centre Sharjah', 'Machine by the food court'], ['Dubai Mall, Ground Level', 'Machine at the Grand Atrium']],
     hana:  [['Round1 Ikebukuro, Tokyo', 'Machine on the third floor'], ['Shibuya Parco, Tokyo', 'Machine on the rooftop'], ['Odaiba Decks, Tokyo', 'Machine at the arcade']],
     adam:  [['International Plaza, Tampa', 'Machine by the food court'], ['Westshore Plaza, Tampa', 'Machine at the arcade'], ['Ybor City, Tampa', 'Machine at the games bar']],
-    leila: [['Dubai Mall, Ground Level', 'Machine by the ice rink'], ['Dubai Marina Mall', 'Machine by the cinema'], ['Mall of the Emirates', 'Machine at Magic Planet']],
-    karim: [['Yas Mall, Abu Dhabi', 'Machine at the family zone'], ['The Galleria, Al Maryah Island', 'Machine on the ground floor'], ['Dubai Mall, Ground Level', 'Machine by the ice rink']],
+    leila: [['Dubai Mall, Ground Level', 'Machine at the Grand Atrium'], ['Dubai Marina Mall', 'Machine by the cinema'], ['Mall of the Emirates', 'Machine at Magic Planet']],
+    karim: [['Yas Mall, Abu Dhabi', 'Machine at the family zone'], ['The Galleria, Al Maryah Island', 'Machine on the ground floor'], ['Dubai Mall, Ground Level', 'Machine at the Grand Atrium']],
   }
   const SPOT_OF = [0, 0, 1, 0, 2, 1, 0, 2, 1]
   // minutes back from the attempt before: a second go the same evening, then days and weeks apart
@@ -1976,7 +1976,8 @@
   setDevice(st.device)
   setCredits(st.credits | 0)
   // a reload mid countdown starts again from the scan: the machine has long since moved on
-  if (!EMBED) go(pages[st.page] && st.page !== 'punch' ? st.page : 'default')
+  // pages is a plain object, so "constructor" or "toString" would pass a bare lookup and take the app nowhere
+  if (!EMBED) go(Object.hasOwn(pages, String(st.page)) && st.page !== 'punch' ? st.page : 'default')
 
   window.punchApp = {
     announce,

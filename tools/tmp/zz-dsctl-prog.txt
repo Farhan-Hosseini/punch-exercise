@@ -1,0 +1,20 @@
+controls: 695
+at 0/695 bad=0
+at 40/695 bad=0
+at 80/695 bad=0
+at 120/695 bad=0
+at 160/695 bad=0
+at 200/695 bad=0
+at 240/695 bad=0
+at 280/695 bad=0
+at 320/695 bad=0
+at 360/695 bad=0
+at 400/695 bad=0
+at 440/695 bad=0
+at 480/695 bad=0
+at 520/695 bad=0
+at 560/695 bad=0
+at 600/695 bad=0
+at 640/695 bad=0
+at 680/695 bad=0
+done

@@ -1,0 +1,100 @@
+{
+ "total": 8696171,
+ "requests": 119,
+ "byType": {
+  "Document": {
+   "n": 1,
+   "bytes": 638478
+  },
+  "Font": {
+   "n": 12,
+   "bytes": 235492
+  },
+  "Stylesheet": {
+   "n": 13,
+   "bytes": 1292558
+  },
+  "Image": {
+   "n": 52,
+   "bytes": 5407136
+  },
+  "Script": {
+   "n": 37,
+   "bytes": 882717
+  },
+  "Fetch": {
+   "n": 4,
+   "bytes": 239790
+  }
+ },
+ "css": 1292558,
+ "js": 882717,
+ "images": 5407136,
+ "fonts": 235492,
+ "json": 239790,
+ "video": 0,
+ "imageCount": 40,
+ "biggest": [
+  [
+   638478,
+   "/"
+  ],
+  [
+   481160,
+   "/assets/photos/lib/mall-night-1.jpg"
+  ],
+  [
+   471912,
+   "/assets/photos/lib/arcade-neon-4.jpg"
+  ],
+  [
+   400543,
+   "/mscreens.css"
+  ],
+  [
+   354318,
+   "/mpages.css"
+  ],
+  [
+   322793,
+   "/assets/photos/lib/arcade-neon-3.jpg"
+  ],
+  [
+   315327,
+   "/assets/photos/lib/dubai-night-12.jpg"
+  ],
+  [
+   310082,
+   "/assets/photos/lib/dubai-night-5.jpg"
+  ],
+  [
+   272254,
+   "/assets/photos/lib/dubai-night-10.jpg"
+  ],
+  [
+   243304,
+   "/assets/photos/lib/dubai-night-22.jpg"
+  ],
+  [
+   214942,
+   "/assets/photos/lib/bag-strike-23.jpg"
+  ],
+  [
+   214778,
+   "/assets/photos/lib/friends-5.jpg"
+  ]
+ ],
+ "dom": {
+  "imgTotal": 699,
+  "eager": 98,
+  "lazy": 601,
+  "loadedNow": 289,
+  "nodes": 19875,
+  "stylesheets": 13,
+  "scripts": 41
+ },
+ "warmSecondVisit": {
+  "total": 8696171,
+  "requests": 119
+ }
+}

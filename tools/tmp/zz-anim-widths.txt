@@ -1,0 +1,70 @@
+[
+ {
+  "W": 768,
+  "mode": "animation",
+  "page": 25,
+  "vw": 768,
+  "badN": 58,
+  "bad": [
+   "button.mh-venue.mh-vc L563 R795",
+   "span.mh-vc-media L564 R794",
+   "img.mh-v-img L564 R794",
+   "span.mh-vc-body L564 R794",
+   "span.mh-v-name L579 R779"
+  ],
+  "layout": "mid"
+ }
+]
+--- all rows ---
+768 mobile over=0 layout=- badN=74
+768 machine over=0 layout=- badN=2
+768 system over=0 layout=- badN=1102
+768 animation over=25 layout=mid badN=58
+800 mobile over=0 layout=- badN=68
+800 machine over=0 layout=- badN=2
+800 system over=0 layout=- badN=1095
+800 animation over=0 layout=mid badN=30
+850 mobile over=0 layout=- badN=59
+850 machine over=0 layout=- badN=2
+850 system over=0 layout=- badN=1080
+850 animation over=0 layout=mid badN=22
+900 mobile over=0 layout=- badN=56
+900 machine over=0 layout=- badN=2
+900 system over=0 layout=- badN=1076
+900 animation over=0 layout=mid badN=19
+960 mobile over=0 layout=- badN=54
+960 machine over=0 layout=- badN=2
+960 system over=0 layout=- badN=1074
+960 animation over=0 layout=mid badN=13
+1000 mobile over=0 layout=- badN=50
+1000 machine over=0 layout=- badN=2
+1000 system over=0 layout=- badN=1070
+1000 animation over=0 layout=mid badN=9
+1024 mobile over=0 layout=- badN=46
+1024 machine over=0 layout=- badN=2
+1024 system over=0 layout=- badN=1070
+1024 animation over=0 layout=mid badN=7
+1100 mobile over=0 layout=- badN=42
+1100 machine over=0 layout=- badN=2
+1100 system over=0 layout=- badN=1060
+1100 animation over=0 layout=mid badN=7
+1180 mobile over=0 layout=- badN=27
+1180 machine over=0 layout=- badN=2
+1180 system over=0 layout=- badN=1057
+1180 animation over=0 layout=mid badN=7
+1200 mobile over=0 layout=- badN=27
+1200 machine over=0 layout=- badN=7
+1200 system over=0 layout=- badN=1080
+1200 animation over=0 layout=mid badN=12
+1280 mobile over=0 layout=- badN=19
+1280 machine over=0 layout=- badN=1
+1280 system over=0 layout=- badN=1071
+1280 animation over=0 layout=mid badN=0
+1366 mobile over=0 layout=- badN=13
+1366 machine over=0 layout=- badN=1
+1366 system over=0 layout=- badN=1066
+1366 animation over=0 layout=mid badN=0
+1440 mobile over=0 layout=- badN=7
+1440 machine over=0 layout=- badN=1
+1440 system over=0 layout=- badN=1065
+1440 animation over=0 layout=mid badN=0

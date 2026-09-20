@@ -1,0 +1,247 @@
+{
+ "slots": [
+  {
+   "key": "header",
+   "n": 5,
+   "designs": [
+    "Centred mark",
+    "Fight bill",
+    "Title belt",
+    "Player plate",
+    "Masthead"
+   ]
+  },
+  {
+   "key": "hero",
+   "n": 4,
+   "designs": [
+    "Centred score",
+    "Power gauge",
+    "Glass",
+    "Slot reels"
+   ]
+  },
+  {
+   "key": "ranks",
+   "n": 4,
+   "designs": [
+    "Card grid",
+    "Podium",
+    "Scoreboard",
+    "Split slabs"
+   ]
+  },
+  {
+   "key": "stats",
+   "n": 4,
+   "designs": [
+    "Force first",
+    "Card grid",
+    "Rings",
+    "Power bars"
+   ]
+  },
+  {
+   "key": "video",
+   "n": 3,
+   "designs": [
+    "Cinema player",
+    "Cinema",
+    "Reel and contact"
+   ]
+  },
+  {
+   "key": "clips",
+   "n": 3,
+   "designs": [
+    "List",
+    "Photo cards",
+    "Latest first"
+   ]
+  },
+  {
+   "key": "photo",
+   "n": 4,
+   "designs": [
+    "Slant cut",
+    "Full bleed",
+    "Promo banner",
+    "Poster print"
+   ]
+  },
+  {
+   "key": "cta",
+   "n": 5,
+   "designs": [
+    "Full button",
+    "Button pair",
+    "Countdown",
+    "Code handoff",
+    "Big pad"
+   ]
+  },
+  {
+   "key": "sponsor",
+   "n": 5,
+   "designs": [
+    "Centred credit",
+    "Sponsor card",
+    "Two sides",
+    "Ticket",
+    "Seal"
+   ]
+  }
+ ],
+ "problems": [
+  {
+   "step": "slot stats[0] Force first",
+   "got": "Force first",
+   "newErrors": [],
+   "net": [],
+   "over": 0,
+   "h": 0,
+   "broken": 0
+  },
+  {
+   "step": "slot stats[1] Card grid",
+   "got": "Card grid",
+   "newErrors": [],
+   "net": [],
+   "over": 0,
+   "h": 0,
+   "broken": 0
+  },
+  {
+   "step": "slot stats[2] Rings",
+   "got": "Rings",
+   "newErrors": [],
+   "net": [],
+   "over": 0,
+   "h": 0,
+   "broken": 0
+  },
+  {
+   "step": "slot stats[3] Power bars",
+   "got": "Power bars",
+   "newErrors": [],
+   "net": [],
+   "over": 0,
+   "h": 0,
+   "broken": 0
+  }
+ ],
+ "slotDesignsExercised": 37,
+ "api": [
+  {
+   "what": "theme arena",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "what": "backdrop glow",
+   "got": "glow",
+   "newErrors": 0
+  },
+  {
+   "what": "backdrop lights",
+   "got": "lights",
+   "newErrors": 0
+  },
+  {
+   "what": "backdrop spot",
+   "got": "spot",
+   "newErrors": 0
+  },
+  {
+   "what": "backdrop beams",
+   "got": "beams",
+   "newErrors": 0
+  },
+  {
+   "what": "backdrop smoke",
+   "got": "smoke",
+   "newErrors": 0
+  },
+  {
+   "what": "backdrop pulse",
+   "got": "pulse",
+   "newErrors": 0
+  },
+  {
+   "what": "backdrop embers",
+   "got": "embers",
+   "newErrors": 0
+  },
+  {
+   "what": "backdrop grid",
+   "got": "grid",
+   "newErrors": 0
+  },
+  {
+   "what": "space 0",
+   "newErrors": 0
+  },
+  {
+   "what": "space 1",
+   "newErrors": 0
+  },
+  {
+   "what": "space 2",
+   "newErrors": 0
+  },
+  {
+   "what": "space 3",
+   "newErrors": 0
+  },
+  {
+   "what": "space 4",
+   "newErrors": 0
+  },
+  {
+   "what": "zoom 0.5",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "what": "zoom 1",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "what": "zoom 1.5",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "what": "zoom 2",
+   "newErrors": 0,
+   "over": 0
+  }
+ ],
+ "themes": [
+  "arena"
+ ],
+ "fit": {
+  "fit": 1,
+  "note": "Everything fits the glass."
+ },
+ "sectionHeights": {
+  "header": 95,
+  "hero": 309,
+  "ranks": 656,
+  "stats": 0,
+  "video": 685,
+  "clips": 663,
+  "photo": 428,
+  "cta": 167,
+  "sponsor": 147
+ },
+ "errors": [],
+ "warnings": [],
+ "netFail": [],
+ "counts": {
+  "errors": 0,
+  "warnings": 0,
+  "netFail": 0
+ }
+}

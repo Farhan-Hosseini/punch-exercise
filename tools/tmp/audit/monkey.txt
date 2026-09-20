@@ -1,0 +1,5 @@
+buttons clicked: 61
+--- problems ---
+(none)
+--- total errors --- 0
+(none)

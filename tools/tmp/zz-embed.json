@@ -1,0 +1,802 @@
+{
+ "viewport": {
+  "W": 1440,
+  "H": 900
+ },
+ "embedBoot": {
+  "mode": "machine",
+  "embedAttr": "machine",
+  "loaderDone": true,
+  "screenH": 0,
+  "chromeHidden": false
+ },
+ "embedScreens": [
+  {
+   "screen": "default",
+   "newErrors": 0,
+   "h": 0,
+   "textLen": 10640
+  },
+  {
+   "screen": "attract",
+   "newErrors": 0,
+   "h": 0,
+   "textLen": 10640
+  },
+  {
+   "screen": "scan",
+   "newErrors": 0,
+   "h": 0,
+   "textLen": 10640
+  },
+  {
+   "screen": "countdown",
+   "newErrors": 0,
+   "h": 0,
+   "textLen": 10640
+  },
+  {
+   "screen": "loading",
+   "newErrors": 0,
+   "h": 0,
+   "textLen": 10640
+  },
+  {
+   "screen": "result",
+   "newErrors": 0,
+   "h": 900,
+   "textLen": 355
+  },
+  {
+   "screen": "score",
+   "newErrors": 0,
+   "h": 0,
+   "textLen": 10640
+  },
+  {
+   "screen": "record",
+   "newErrors": 0,
+   "h": 0,
+   "textLen": 10640
+  }
+ ],
+ "embedErrors": [],
+ "embedNet": [],
+ "designsMeasured": 376,
+ "designIndex": {
+  "machine/default": [
+   "topad(5)",
+   "welcome(4)",
+   "best(5)",
+   "how(5)"
+  ],
+  "machine/attract": [
+   "title(5)",
+   "top(5)",
+   "ranks(4)",
+   "cta(5)"
+  ],
+  "machine/scan": [
+   "status(5)",
+   "code(3)",
+   "howto(5)"
+  ],
+  "machine/countdown": [
+   "player(5)",
+   "count(5)",
+   "call(5)",
+   "stage(5)"
+  ],
+  "machine/loading": [
+   "caption(5)",
+   "reading(5)"
+  ],
+  "machine/result": [],
+  "machine/score": [
+   "score(5)",
+   "why(5)",
+   "photo(5)",
+   "again(5)"
+  ],
+  "machine/record": [
+   "moment(4)",
+   "score(5)",
+   "photo(5)",
+   "again(5)"
+  ],
+  "phone/default": [
+   "greeting(5)",
+   "play(5)",
+   "last(4)",
+   "near(5)",
+   "friends(5)",
+   "promo(5)"
+  ],
+  "phone/scan": [
+   "code(5)",
+   "hint(5)",
+   "recent(5)",
+   "howto(5)"
+  ],
+  "phone/connect": [
+   "connect(5)",
+   "machine(5)",
+   "credit(5)"
+  ],
+  "phone/connected": [
+   "linked(5)",
+   "machine(5)",
+   "next(5)"
+  ],
+  "phone/punch": [
+   "look(5)",
+   "machine(5)"
+  ],
+  "phone/topup": [
+   "packs(5)",
+   "offer(5)"
+  ],
+  "phone/checkout": [
+   "summary(5)",
+   "method(5)",
+   "secure(5)"
+  ],
+  "phone/paid": [
+   "confirm(4)",
+   "cans(5)",
+   "receipt(5)"
+  ],
+  "phone/failed": [
+   "notice(5)",
+   "why(5)",
+   "ways(5)"
+  ],
+  "phone/hit": [
+   "head(4)",
+   "score(5)",
+   "next(5)",
+   "replay(4)",
+   "ranks(5)",
+   "stats(5)"
+  ],
+  "phone/reel": [
+   "overlay(5)",
+   "actions(5)",
+   "progress(5)"
+  ],
+  "phone/ranks": [
+   "header(5)",
+   "board(5)",
+   "you(5)"
+  ],
+  "phone/feed": [
+   "stories(5)",
+   "filter(5)",
+   "posts(5)",
+   "sponsored(5)"
+  ],
+  "phone/profile": [
+   "header(5)",
+   "stats(5)",
+   "hits(5)",
+   "badges(5)"
+  ],
+  "global/all": [
+   "mheader(5)",
+   "sponsor(5)",
+   "tabbar(5)"
+  ]
+ },
+ "blanks": [
+  {
+   "where": "machine/countdown/stage[0]",
+   "name": "Surge",
+   "h": 2150,
+   "w": 605,
+   "text": 0,
+   "media": 0,
+   "vis": true,
+   "drawn": false
+  },
+  {
+   "where": "machine/countdown/stage[1]",
+   "name": "Tunnel",
+   "h": 2150,
+   "w": 605,
+   "text": 0,
+   "media": 0,
+   "vis": true,
+   "drawn": false
+  },
+  {
+   "where": "machine/countdown/stage[2]",
+   "name": "Streaks",
+   "h": 2150,
+   "w": 605,
+   "text": 0,
+   "media": 0,
+   "vis": true,
+   "drawn": false
+  },
+  {
+   "where": "machine/countdown/stage[3]",
+   "name": "Spotlights",
+   "h": 2150,
+   "w": 605,
+   "text": 0,
+   "media": 0,
+   "vis": true,
+   "drawn": false
+  },
+  {
+   "where": "machine/countdown/stage[4]",
+   "name": "Shockwave",
+   "h": 2150,
+   "w": 605,
+   "text": 0,
+   "media": 0,
+   "vis": true,
+   "drawn": false
+  },
+  {
+   "where": "phone/scan/howto[0]",
+   "name": "Wide art",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/scan/howto[1]",
+   "name": "Step list",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/scan/howto[2]",
+   "name": "Walkthrough",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/scan/howto[3]",
+   "name": "Step cards",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/scan/howto[4]",
+   "name": "In the venue",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/overlay[0]",
+   "name": "Veil",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/overlay[1]",
+   "name": "Glass card",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/overlay[2]",
+   "name": "Headline",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/overlay[3]",
+   "name": "Ticket",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/overlay[4]",
+   "name": "Corner",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/actions[0]",
+   "name": "Rail",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/actions[1]",
+   "name": "Bubbles",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/actions[2]",
+   "name": "Capsule",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/actions[3]",
+   "name": "Bar",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/actions[4]",
+   "name": "Split",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/progress[0]",
+   "name": "Scrubber",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/progress[1]",
+   "name": "Speed ramp",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/progress[2]",
+   "name": "Phases",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/progress[3]",
+   "name": "Ring",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "phone/reel/progress[4]",
+   "name": "Edge line",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 0,
+   "vis": false,
+   "drawn": true
+  },
+  {
+   "where": "global/all/mheader[0]",
+   "name": "Lockup",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 3,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/mheader[1]",
+   "name": "Venue and clock",
+   "h": 0,
+   "w": 0,
+   "text": 37,
+   "media": 4,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/mheader[2]",
+   "name": "Slim bar",
+   "h": 0,
+   "w": 0,
+   "text": 25,
+   "media": 4,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/mheader[3]",
+   "name": "Crest",
+   "h": 0,
+   "w": 0,
+   "text": 38,
+   "media": 3,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/mheader[4]",
+   "name": "Stacked",
+   "h": 0,
+   "w": 0,
+   "text": 0,
+   "media": 3,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/sponsor[0]",
+   "name": "Lightning",
+   "h": 0,
+   "w": 0,
+   "text": 218,
+   "media": 4,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/sponsor[1]",
+   "name": "Score deal",
+   "h": 0,
+   "w": 0,
+   "text": 242,
+   "media": 1,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/sponsor[2]",
+   "name": "Claw rip",
+   "h": 0,
+   "w": 0,
+   "text": 142,
+   "media": 1,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/sponsor[3]",
+   "name": "Flavours",
+   "h": 0,
+   "w": 0,
+   "text": 259,
+   "media": 3,
+   "vis": false,
+   "drawn": false
+  },
+  {
+   "where": "global/all/sponsor[4]",
+   "name": "Split",
+   "h": 0,
+   "w": 0,
+   "text": 153,
+   "media": 0,
+   "vis": false,
+   "drawn": false
+  }
+ ],
+ "reload": {
+  "before": {
+   "mode": "machine",
+   "psec": {
+    "machine/default": {
+     "topad": 0,
+     "welcome": 0,
+     "best": 0,
+     "how": 0
+    },
+    "machine/attract": {
+     "title": 0,
+     "top": 0,
+     "ranks": 0,
+     "cta": 0
+    },
+    "machine/scan": {
+     "status": 0,
+     "code": 0,
+     "howto": 0
+    },
+    "machine/countdown": {
+     "player": 0,
+     "count": 0,
+     "call": 0,
+     "stage": 0
+    },
+    "machine/loading": {
+     "caption": 0,
+     "reading": 0
+    },
+    "machine/score": {
+     "score": 2,
+     "why": 0,
+     "photo": 0,
+     "again": 0
+    },
+    "machine/record": {
+     "moment": 0,
+     "score": 0,
+     "photo": 0,
+     "again": 0
+    },
+    "phone/default": {
+     "greeting": 0,
+     "play": 0,
+     "last": 0,
+     "near": 0,
+     "friends": 0,
+     "promo": 0
+    },
+    "phone/scan": {
+     "code": 0,
+     "hint": 0,
+     "recent": 0,
+     "howto": 0
+    },
+    "phone/connect": {
+     "connect": 0,
+     "machine": 0,
+     "credit": 0
+    },
+    "phone/connected": {
+     "linked": 0,
+     "machine": 0,
+     "next": 0
+    },
+    "phone/punch": {
+     "look": 0,
+     "machine": 0
+    },
+    "phone/topup": {
+     "packs": 0,
+     "offer": 0
+    },
+    "phone/checkout": {
+     "summary": 0,
+     "method": 0,
+     "secure": 0
+    },
+    "phone/paid": {
+     "confirm": 0,
+     "cans": 0,
+     "receipt": 0
+    },
+    "phone/failed": {
+     "notice": 0,
+     "why": 0,
+     "ways": 0
+    },
+    "phone/hit": {
+     "head": 0,
+     "score": 0,
+     "next": 0,
+     "replay": 0,
+     "ranks": 0,
+     "stats": 0
+    },
+    "phone/reel": {
+     "overlay": 0,
+     "actions": 0,
+     "progress": 0
+    },
+    "phone/ranks": {
+     "header": 0,
+     "board": 0,
+     "you": 0
+    },
+    "phone/feed": {
+     "stories": 0,
+     "filter": 0,
+     "posts": 0,
+     "sponsored": 0
+    },
+    "phone/profile": {
+     "header": 0,
+     "stats": 0,
+     "hits": 0,
+     "badges": 0
+    },
+    "global": {
+     "mheader": 0,
+     "sponsor": 0,
+     "tabbar": 0
+    }
+   }
+  },
+  "after": {
+   "mode": "machine",
+   "psec": {
+    "machine/default": {
+     "topad": 0,
+     "welcome": 0,
+     "best": 0,
+     "how": 0
+    },
+    "machine/attract": {
+     "title": 0,
+     "top": 0,
+     "ranks": 0,
+     "cta": 0
+    },
+    "machine/scan": {
+     "status": 0,
+     "code": 0,
+     "howto": 0
+    },
+    "machine/countdown": {
+     "player": 0,
+     "count": 0,
+     "call": 0,
+     "stage": 0
+    },
+    "machine/loading": {
+     "caption": 0,
+     "reading": 0
+    },
+    "machine/score": {
+     "score": 2,
+     "why": 0,
+     "photo": 0,
+     "again": 0
+    },
+    "machine/record": {
+     "moment": 0,
+     "score": 0,
+     "photo": 0,
+     "again": 0
+    },
+    "phone/default": {
+     "greeting": 0,
+     "play": 0,
+     "last": 0,
+     "near": 0,
+     "friends": 0,
+     "promo": 0
+    },
+    "phone/scan": {
+     "code": 0,
+     "hint": 0,
+     "recent": 0,
+     "howto": 0
+    },
+    "phone/connect": {
+     "connect": 0,
+     "machine": 0,
+     "credit": 0
+    },
+    "phone/connected": {
+     "linked": 0,
+     "machine": 0,
+     "next": 0
+    },
+    "phone/punch": {
+     "look": 0,
+     "machine": 0
+    },
+    "phone/topup": {
+     "packs": 0,
+     "offer": 0
+    },
+    "phone/checkout": {
+     "summary": 0,
+     "method": 0,
+     "secure": 0
+    },
+    "phone/paid": {
+     "confirm": 0,
+     "cans": 0,
+     "receipt": 0
+    },
+    "phone/failed": {
+     "notice": 0,
+     "why": 0,
+     "ways": 0
+    },
+    "phone/hit": {
+     "head": 0,
+     "score": 0,
+     "next": 0,
+     "replay": 0,
+     "ranks": 0,
+     "stats": 0
+    },
+    "phone/reel": {
+     "overlay": 0,
+     "actions": 0,
+     "progress": 0
+    },
+    "phone/ranks": {
+     "header": 0,
+     "board": 0,
+     "you": 0
+    },
+    "phone/feed": {
+     "stories": 0,
+     "filter": 0,
+     "posts": 0,
+     "sponsored": 0
+    },
+    "phone/profile": {
+     "header": 0,
+     "stats": 0,
+     "hits": 0,
+     "badges": 0
+    },
+    "global": {
+     "mheader": 0,
+     "sponsor": 0,
+     "tabbar": 0
+    }
+   },
+   "loaderDone": true
+  },
+  "errorsOnReload": [],
+  "netOnReload": []
+ },
+ "errors": [],
+ "warnings": [],
+ "netFail": []
+}

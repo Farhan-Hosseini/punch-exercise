@@ -53,7 +53,7 @@
 .s-header .v-c .header-c-edge { fill: none; stroke: var(--line); stroke-width: 2; stroke-linejoin: round; }
 .s-header .v-c .header-c-rim { fill: none; stroke: var(--line); stroke-width: 2; }
 .s-header .v-c .header-c-name {
-  font-family: var(--f-display); font-weight: var(--w-display); font-size: 30px; letter-spacing: .02em;
+  font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(30px * var(--disp-k, 1)); letter-spacing: .02em;
   fill: var(--ink-1);
 }
 .s-header .v-c .header-c-place {

@@ -97,12 +97,13 @@
   let state = { variant: 'arena', appearance: 'dark', typeface: 'arena', zoom: null, viewV: 3, sets: {}, layout: layoutA(), mode: 'mobile', logo: 'fist', mscreen: 'default', mvar: {}, backdrop: BACKDROPS[0].key, decimals: 'on' }
   try {
     const saved = JSON.parse(localStorage.getItem(KEY) || 'null')
-    if (saved && DEFAULTS[saved.variant]) {
+    // a key like "constructor" is truthy on any plain object, so the guard has to ask for an own property
+    if (saved && Object.hasOwn(DEFAULTS, String(saved.variant))) {
       state = {
         // the glass opens whole ('whole' follows the window); a setting saved before that became the default moves once
-        variant: saved.variant, typeface: ['arena', 'orbitron', 'chakra'].includes(saved.typeface) ? saved.typeface : 'arena',
+        variant: saved.variant, typeface: ['arena', 'orbitron'].includes(saved.typeface) ? saved.typeface : 'arena',
         zoom: saved.viewV === 3 ? (saved.zoom ?? null) : null, viewV: 3, sets: saved.sets || {}, layout: { ...layoutA(), ...(saved.layout || {}) },
-        mode: MODES.includes(saved.mode) ? saved.mode : 'mobile', logo: LOGOS[saved.logo] ? saved.logo : 'fist',
+        mode: MODES.includes(saved.mode) ? saved.mode : 'mobile', logo: Object.hasOwn(LOGOS, String(saved.logo)) ? saved.logo : 'fist',
         appearance: saved.appearance === 'light' ? 'light' : 'dark',
         mscreen: MSCREENS.includes(saved.mscreen) ? saved.mscreen : 'default',
         mvar: saved.mvar && typeof saved.mvar === 'object' ? saved.mvar : {},
@@ -289,7 +290,12 @@
     root.dataset.variant = v
     root.dataset.appearance = state.appearance
     root.dataset.typeface = state.typeface
-    document.querySelectorAll('[data-typeface]').forEach((b) => { if (b.tagName === 'BUTTON') b.setAttribute('aria-checked', String(b.dataset.typeface === state.typeface)) })
+    document.querySelectorAll('[data-typeface]').forEach((b) => {
+      if (b.tagName !== 'BUTTON') return
+      const on = b.dataset.typeface === state.typeface
+      b.setAttribute('aria-checked', String(on))
+      b.tabIndex = on ? 0 : -1
+    })
     root.dataset.mbackdrop = state.backdrop
     root.dataset.decimals = state.decimals
     const themeNote = $('themeNote')
@@ -443,12 +449,24 @@
       apply(); save()
     })
   }
-  document.querySelectorAll('button[data-typeface]').forEach((b) => b.addEventListener('click', () => {
-    state.typeface = b.dataset.typeface
-    apply(); save(); fitScreen()
-    if (window.designSystem) requestAnimationFrame(() => window.designSystem.refresh())
-    live.textContent = 'Typeface: ' + (b.querySelector('.face-tile-n') || {}).textContent
-  }))
+  const faceBtns = [...document.querySelectorAll('button[data-typeface]')]
+  faceBtns.forEach((b, i) => {
+    const pick = (btn, focus) => {
+      state.typeface = btn.dataset.typeface
+      apply(); save(); fitScreen()
+      if (window.designSystem) requestAnimationFrame(() => window.designSystem.refresh())
+      live.textContent = 'Typeface: ' + (btn.querySelector('.face-tile-n') || {}).textContent
+      if (focus) btn.focus()
+    }
+    b.addEventListener('click', () => pick(b, false))
+    // the same roving tab stop and arrow keys as the logo and device radiogroups under it
+    b.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0
+      if (!step) return
+      e.preventDefault()
+      pick(faceBtns[(i + step + faceBtns.length) % faceBtns.length], true)
+    })
+  })
   document.querySelectorAll('[data-appearance-btn]').forEach((b) => b.addEventListener('click', () => {
     state.appearance = b.dataset.appearanceBtn === 'light' ? 'light' : 'dark'
     apply(); save()
@@ -653,6 +671,9 @@
     custom.hidden = false
     void custom.offsetWidth
     custom.classList.add('is-open')
+    // General settings folds away on every open: the page's own controls come first
+    const shared = custom.querySelector('details[data-acc="shared"]')
+    if (shared) shared.open = false
     openBtn.setAttribute('aria-expanded', 'true')
     body.classList.add('custom-open')
     syncSheet()

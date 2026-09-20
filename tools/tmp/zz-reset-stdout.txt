@@ -1,0 +1,76 @@
+{
+ "freshPsec": {},
+ "moved": 82,
+ "before": {
+  "psecKeys": [
+   "machine/default",
+   "machine/attract",
+   "machine/scan",
+   "machine/countdown",
+   "machine/loading",
+   "machine/stats",
+   "machine/score",
+   "machine/record",
+   "phone/default",
+   "phone/scan",
+   "phone/connect",
+   "phone/connected",
+   "phone/punch",
+   "phone/topup",
+   "phone/checkout",
+   "phone/paid",
+   "phone/failed",
+   "phone/hit",
+   "phone/ranks",
+   "phone/feed",
+   "phone/profile",
+   "phone/reel",
+   "global"
+  ],
+  "nonZero": 82,
+  "appearance": "light",
+  "decimals": "off"
+ },
+ "after": {
+  "psecKeys": [
+   "phone/ranks",
+   "phone/connect",
+   "global"
+  ],
+  "psecState": {
+   "phone/ranks": {
+    "board": 0
+   },
+   "phone/connect": {
+    "connect": 0
+   },
+   "global": {
+    "tabbar": 0
+   }
+  },
+  "nonZero": [],
+  "shownNonZero": [],
+  "domNonZero": [],
+  "domNonZeroN": 0,
+  "appearance": "dark",
+  "decimals": "on",
+  "typeface": "arena",
+  "logo": "fist"
+ },
+ "afterReload": {
+  "psecState": {
+   "phone/ranks": {
+    "board": 0
+   },
+   "phone/connect": {
+    "connect": 0
+   },
+   "global": {
+    "tabbar": 0
+   }
+  },
+  "nonZero": [],
+  "domNonZeroN": 0
+ },
+ "errors": []
+}

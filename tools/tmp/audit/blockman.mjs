@@ -1,0 +1,20 @@
+import { open, sleep } from './cdp.mjs'
+const URL = 'http://localhost:5770/'
+const c = await open({ W: 1440, H: 1000 })
+await c.send('Network.enable')
+await c.send('Network.setBlockedURLs', { urls: ['*photos/lib/manifest.json', '*video/lib/manifest.json'] })
+await c.send('Page.navigate', { url: URL }); await sleep(3000)
+await c.js('localStorage.clear(); 1')
+await c.send('Page.navigate', { url: URL }); await sleep(6000)
+await c.js(`window.showcase.mode('system');1`); await sleep(2500)
+// scroll the DS tab so the photo and video strips build
+await c.js(`window.scrollTo(0, document.body.scrollHeight); 1`); await sleep(2500)
+await c.js(`window.scrollTo(0, 0); 1`); await sleep(1500)
+console.log('photo strip children :', await c.js(`document.querySelector('[data-ds-photos]')?.children.length`))
+console.log('photo strip text     :', JSON.stringify((await c.js(`document.querySelector('[data-ds-photos]')?.textContent||''`)).slice(0,120)))
+console.log('video strip children :', await c.js(`document.querySelector('[data-ds-videos]')?.children.length`))
+console.log('video strip text     :', JSON.stringify((await c.js(`document.querySelector('[data-ds-videos]')?.textContent||''`)).slice(0,120)))
+console.log('photo caption text   :', JSON.stringify((await c.js(`document.querySelector('[data-ds-photofoot]')?.textContent||document.querySelector('[data-ds-vidfoot]')?.textContent||''`)).slice(0,120)))
+console.log('--- console/exception log ---')
+console.log(c.errs.slice(0,20).join('\n')||'(none)')
+c.close()

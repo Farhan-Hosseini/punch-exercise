@@ -1,0 +1,17 @@
+{
+ "cardOptionBox": "{\"x\":742,\"y\":993.578125,\"label\":\"U e another card\\nDebit or credit card\"}",
+ "cardHiddenAfterRealClick": false,
+ "focusedAfterClick": "payCardNo",
+ "fieldGeom": "[{\"id\":\"payCardNo\",\"x\":559,\"y\":877,\"w\":366,\"h\":48,\"ac\":\"cc-number\",\"form\":false},{\"id\":\"payCardExp\",\"x\":559,\"y\":957,\"w\":177,\"h\":48,\"ac\":\"cc-exp\",\"form\":false},{\"id\":\"payCardCvc\",\"x\":748,\"y\":957,\"w\":177,\"h\":48,\"ac\":\"cc-csc\",\"form\":false}]",
+ "textFromCardBlock": "CARD NUMBER\nEXPIRY\nSECURITY CODE ||| Payment  are encrypted. PunchApp never  ee  your full card number. ||| DEMO\nSimulate a failed payment\n\nDeclined\nCancelled\nOffline",
+ "visibleDemoWords": "[\"B. :: De ign ta k for Robotenc\"]",
+ "panTyped": "4111 1111 1111 1111",
+ "panInPageHTML": false,
+ "panInStorage": "[]",
+ "cookie": "",
+ "afterPayPage": "paid",
+ "panAfterPayInStorage": "[]",
+ "panStillInInput": "4111 1111 1111 1111",
+ "offOriginReqs": [],
+ "paidText": "3 credit  added\n\n3 credit  added\n\nThey are in your wallet. Scan any PunchApp machine to u e them.\n\nWALLET BALANCE\n\n3\nCREDITS\n\nThree Mon ter Energy can \nShow thi   creen at the kio k by the rink\nReceipt\nAED 25.00\nPunch now\nBack to the feed"
+}

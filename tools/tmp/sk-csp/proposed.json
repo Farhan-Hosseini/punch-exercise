@@ -1,0 +1,93 @@
+{
+ "csp": "default-src 'self'; script-src 'self' 'sha256-1D6zsW/62B4NrN4VHMSNrpfgJ4x6hwUZxLA4MHZWddg=' 'sha256-qYOyteyOedLC/o0spJFc2nVF9Zo2LknAn+9xMxwUJ7Q=' 'sha256-z5VLCyMzNAK17GtlGh6WEymPx0rM3u/p/jNo78l+4wY=' 'sha256-1trH6bFAFCoJa3ytb1twUCnV2LmaAbDiNkrJzeaC6AY='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'none'; form-action 'none'; object-src 'none'",
+ "afterLoad": 0,
+ "mobilePages": [],
+ "commentHtml": "",
+ "mscreens": [
+  "default",
+  "attract",
+  "scan",
+  "countdown",
+  "loading",
+  "result",
+  "score",
+  "record",
+  "stats"
+ ],
+ "iframeLoaded": true,
+ "sections": [],
+ "slots": [
+  {
+   "k": "header",
+   "n": 5
+  },
+  {
+   "k": "hero",
+   "n": 4
+  },
+  {
+   "k": "ranks",
+   "n": 4
+  },
+  {
+   "k": "stats",
+   "n": 4
+  },
+  {
+   "k": "video",
+   "n": 3
+  },
+  {
+   "k": "clips",
+   "n": 3
+  },
+  {
+   "k": "photo",
+   "n": 4
+  },
+  {
+   "k": "cta",
+   "n": 5
+  },
+  {
+   "k": "sponsor",
+   "n": 5
+  }
+ ],
+ "total": 0,
+ "byDirective": {},
+ "violations": [],
+ "pageOk": true,
+ "loaderGone": true,
+ "bodyBg": "rgb(12, 12, 11)",
+ "rootAppearance": "dark",
+ "jsErrors": [],
+ "cspLogLines": [],
+ "trailTail": [
+  {
+   "label": "light",
+   "count": 0
+  },
+  {
+   "label": "dark",
+   "count": 0
+  },
+  {
+   "label": "decimals off",
+   "count": 0
+  },
+  {
+   "label": "logo",
+   "count": 0
+  },
+  {
+   "label": "backdrop",
+   "count": 0
+  },
+  {
+   "label": "mobile again",
+   "count": 0
+  }
+ ],
+ "stepsWithNewViolations": []
+}

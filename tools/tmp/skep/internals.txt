@@ -1,0 +1,1224 @@
+Autofill Internals
+ Context Parsing AbortParsing Filling Submission AutofillServer Metrics AddressProfileFormImport WebsiteModifiedFieldValue TouchToFill AutofillAi AutofillActor OneTimeTokens
+Add Marker Reset Cache Dump Addresses Download Log Download submitted forms JSON data Check AutofillAI permissions Check AtMemory permissions
+ Scroll down Record new events Stop recording in 4:42 Display PII
+Tabs: Autofill logsAutofillAI cacheAutofillAI entities
+Captured autofill logs are listed below. Logs are cleared and no longer captured when all autofill-internals pages are closed.
+Version:	153.0.8010.50 (official)
+Revision:	583c5b4655acea7450a3b5224ea5121ae8caca9b-refs/branch-heads/8010@{#1338}
+User Agent:	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36
+App Locale:	en-US
+Variations:	
+5e3a236d-603bc464
+b6f29041-9af5ba90
+b357b792-dcf2ae30
+f4f00e05-ca7d8d80
+a35976f5-f23d1dea
+9481ce98-3d47f4f4
+2a426c03-3d47f4f4
+70678518-dee66fa8
+be338734-dee66fa8
+5f9907a9-dee66fa8
+8eeccb9a-dee66fa8
+2b465683-dee66fa8
+52fc7926-dee66fa8
+bc9b361d-dee66fa8
+a41a7188-dee66fa8
+ff71bfdc-dee66fa8
+2159dd0c-dee66fa8
+e7cc79d5-dee66fa8
+4b935545-3d47f4f4
+9a38bae3-6046c8a7
+41ad04e1-e4065f40
+2d1e43a3-3d47f4f4
+370ace14-3f4a17df
+386dc267-3d47f4f4
+d69d967d-4866ef6e
+3c8f75a1-6df3c12c
+a4406b35-1657e2d6
+408da146-1657e2d6
+
+Sending Autofill Query Request:
+Signatures:
+client_version:	Chrome/153.0.8010.50
+Form 6263822888923065496	Signature: 1797627403
+Form 6853144026424709157	Signature: 2096205953Signature: 4154958887Signature: 1686133986Signature: 2530809757Signature: 4103652557Signature: 260277693Signature: 260277693Signature: 260277693Signature: 260277693Signature: 260277693Signature: 260277693
+Sending Autofill Query Request:
+Signatures:
+client_version:	Chrome/153.0.8010.50
+Form 6263822888923065496	Signature: 1797627403
+Form 6853144026424709157	Signature: 2096205953Signature: 4154958887Signature: 1686133986Signature: 2530809757Signature: 4103652557Signature: 260277693Signature: 260277693Signature: 260277693Signature: 260277693Signature: 260277693Signature: 260277693
+Parsed forms:
+Form signature:	6263822888923065496 - 967
+Form alternative signature:	15412069196495876970 - 513
+Form structural signature:	15412069196495876970 - 513
+Form name:	mReelComForm
+Identifiers:	renderer id: 77, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	http://localhost:5770/
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 78, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 77
+Signature:	1797627403 - 690, host form signature: 6263822888923065496 - 967
+Name:	mReelComInput
+Placeholder:	Add a comment
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: pending)
+Section:	-default
+Label:	Add a comment
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+Parsed forms:
+Form signature:	6853144026424709157 - 213
+Form alternative signature:	8545462990118503174 - 879
+Form structural signature:	8545462990118503174 - 879
+Form name:	
+Identifiers:	renderer id: 0, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	Invalid URL
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 97, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2096205953 - 42, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: pending)
+Section:	-default
+Label:	Punches in your custom pack, 1 to 50
+Is empty:	No
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+
+Field 1:	
+Identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4154958887 - 408, host form signature: 6853144026424709157 - 213
+Name:	payCardNo
+Placeholder:	
+Type:	CREDIT_CARD_NUMBER (regex heuristic: CREDIT_CARD_NUMBER, server: pending, html: HTML_TYPE_CREDIT_CARD_NUMBER)
+Section:	payCardNo_0_79
+Label:	Card number
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 1, rank in signature group: 0, field rank in host form: 1, rank in host form signature group: 0
+
+Field 2:	
+Identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	1686133986 - 473, host form signature: 6853144026424709157 - 213
+Name:	payCardExp
+Placeholder:	MM / YY
+Type:	CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR (regex heuristic: CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR, server: pending, html: HTML_TYPE_CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR)
+Section:	payCardNo_0_79
+Label:	Expiry
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 2, rank in signature group: 0, field rank in host form: 2, rank in host form signature group: 0
+
+Field 3:	
+Identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2530809757 - 902, host form signature: 6853144026424709157 - 213
+Name:	payCardCvc
+Placeholder:	CVC
+Type:	CREDIT_CARD_VERIFICATION_CODE (regex heuristic: CREDIT_CARD_VERIFICATION_CODE, server: pending, html: HTML_TYPE_CREDIT_CARD_VERIFICATION_CODE)
+Section:	payCardNo_0_79
+Label:	Security code
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 3, rank in signature group: 0, field rank in host form: 3, rank in host form signature group: 0
+
+Field 4:	
+Identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4103652557 - 349, host form signature: 6853144026424709157 - 213
+Name:	mSearch
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 4, rank in signature group: 0, field rank in host form: 4, rank in host form signature group: 0
+
+Field 5:	
+Identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 5, rank in signature group: 0, field rank in host form: 5, rank in host form signature group: 0
+
+Field 6:	
+Identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 6, rank in signature group: 1, field rank in host form: 6, rank in host form signature group: 1
+
+Field 7:	
+Identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 7, rank in signature group: 2, field rank in host form: 7, rank in host form signature group: 2
+
+Field 8:	
+Identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers by name or city
+Type:	ADDRESS_HOME_CITY (regex heuristic: ADDRESS_HOME_CITY, server: pending)
+Section:	-default
+Label:	Search punchers by name or city
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 8, rank in signature group: 3, field rank in host form: 8, rank in host form signature group: 3
+
+Field 9:	
+Identifiers:	renderer id: 93, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Find an icon by its key
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: pending)
+Section:	-default
+Label:	Find an icon by its key
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 9, rank in signature group: 4, field rank in host form: 9, rank in host form signature group: 4
+
+Field 10:	
+Identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 10, rank in signature group: 5, field rank in host form: 10, rank in host form signature group: 5
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	Card number
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardNo
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardNo
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardExp
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardExp
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardCvc
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardCvc
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CITY	(Negative Pattern)
+Value:	Security code
+Matched substring:	code
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CITY	
+Value:	Search punchers by name or city
+Matched substring:	city
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_NUMBER	
+Value:	Card number
+Matched substring:	Card number
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_EXP_MONTH	
+Value:	Expiry
+Matched substring:	Expir
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_EXP_DATE	
+Value:	Expiry
+Matched substring:	Expir
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_VERIFICATION_CODE	
+Value:	Security code
+Matched substring:	Security code
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers by name or city
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+Parsed forms:
+Form signature:	6263822888923065496 - 967
+Form alternative signature:	15412069196495876970 - 513
+Form structural signature:	15412069196495876970 - 513
+Form name:	mReelComForm
+Identifiers:	renderer id: 77, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	http://localhost:5770/
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 78, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 77
+Signature:	1797627403 - 690, host form signature: 6263822888923065496 - 967
+Name:	mReelComInput
+Placeholder:	Add a comment
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: pending)
+Section:	-default
+Label:	Add a comment
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+Parsed forms:
+Form signature:	6853144026424709157 - 213
+Form alternative signature:	8545462990118503174 - 879
+Form structural signature:	8545462990118503174 - 879
+Form name:	
+Identifiers:	renderer id: 0, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	Invalid URL
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 97, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2096205953 - 42, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: pending)
+Section:	-default
+Label:	Punches in your custom pack, 1 to 50
+Is empty:	No
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+
+Field 1:	
+Identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4154958887 - 408, host form signature: 6853144026424709157 - 213
+Name:	payCardNo
+Placeholder:	
+Type:	CREDIT_CARD_NUMBER (regex heuristic: CREDIT_CARD_NUMBER, server: pending, html: HTML_TYPE_CREDIT_CARD_NUMBER)
+Section:	payCardNo_0_79
+Label:	Card number
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 1, rank in signature group: 0, field rank in host form: 1, rank in host form signature group: 0
+
+Field 2:	
+Identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	1686133986 - 473, host form signature: 6853144026424709157 - 213
+Name:	payCardExp
+Placeholder:	MM / YY
+Type:	CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR (regex heuristic: CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR, server: pending, html: HTML_TYPE_CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR)
+Section:	payCardNo_0_79
+Label:	Expiry
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 2, rank in signature group: 0, field rank in host form: 2, rank in host form signature group: 0
+
+Field 3:	
+Identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2530809757 - 902, host form signature: 6853144026424709157 - 213
+Name:	payCardCvc
+Placeholder:	CVC
+Type:	CREDIT_CARD_VERIFICATION_CODE (regex heuristic: CREDIT_CARD_VERIFICATION_CODE, server: pending, html: HTML_TYPE_CREDIT_CARD_VERIFICATION_CODE)
+Section:	payCardNo_0_79
+Label:	Security code
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 3, rank in signature group: 0, field rank in host form: 3, rank in host form signature group: 0
+
+Field 4:	
+Identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4103652557 - 349, host form signature: 6853144026424709157 - 213
+Name:	mSearch
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 4, rank in signature group: 0, field rank in host form: 4, rank in host form signature group: 0
+
+Field 5:	
+Identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 5, rank in signature group: 0, field rank in host form: 5, rank in host form signature group: 0
+
+Field 6:	
+Identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 6, rank in signature group: 1, field rank in host form: 6, rank in host form signature group: 1
+
+Field 7:	
+Identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 7, rank in signature group: 2, field rank in host form: 7, rank in host form signature group: 2
+
+Field 8:	
+Identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers by name or city
+Type:	ADDRESS_HOME_CITY (regex heuristic: ADDRESS_HOME_CITY, server: pending)
+Section:	-default
+Label:	Search punchers by name or city
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 8, rank in signature group: 3, field rank in host form: 8, rank in host form signature group: 3
+
+Field 9:	
+Identifiers:	renderer id: 93, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Find an icon by its key
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: pending)
+Section:	-default
+Label:	Find an icon by its key
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 9, rank in signature group: 4, field rank in host form: 9, rank in host form signature group: 4
+
+Field 10:	
+Identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: pending)
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 10, rank in signature group: 5, field rank in host form: 10, rank in host form signature group: 5
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	Card number
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardNo
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardNo
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardExp
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardExp
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardCvc
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardCvc
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CITY	(Negative Pattern)
+Value:	Security code
+Matched substring:	code
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CITY	
+Value:	Search punchers by name or city
+Matched substring:	city
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_NUMBER	
+Value:	Card number
+Matched substring:	Card number
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_EXP_MONTH	
+Value:	Expiry
+Matched substring:	Expir
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_EXP_DATE	
+Value:	Expiry
+Matched substring:	Expir
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_VERIFICATION_CODE	
+Value:	Security code
+Matched substring:	Security code
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers by name or city
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+Processing server data.
+Parsed forms:
+Form signature:	6263822888923065496 - 967
+Form alternative signature:	15412069196495876970 - 513
+Form structural signature:	15412069196495876970 - 513
+Form name:	mReelComForm
+Identifiers:	renderer id: 77, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	http://localhost:5770/
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 78, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 77
+Signature:	1797627403 - 690, host form signature: 6263822888923065496 - 967
+Name:	mReelComInput
+Placeholder:	Add a comment
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Add a comment
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+Parsed forms:
+Form signature:	6853144026424709157 - 213
+Form alternative signature:	8545462990118503174 - 879
+Form structural signature:	8545462990118503174 - 879
+Form name:	
+Identifiers:	renderer id: 0, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	Invalid URL
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 97, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2096205953 - 42, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Punches in your custom pack, 1 to 50
+Is empty:	No
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+
+Field 1:	
+Identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4154958887 - 408, host form signature: 6853144026424709157 - 213
+Name:	payCardNo
+Placeholder:	
+Type:	CREDIT_CARD_NUMBER (regex heuristic: CREDIT_CARD_NUMBER, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_NUMBER)
+Section:	payCardNo_0_79
+Label:	Card number
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 1, rank in signature group: 0, field rank in host form: 1, rank in host form signature group: 0
+
+Field 2:	
+Identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	1686133986 - 473, host form signature: 6853144026424709157 - 213
+Name:	payCardExp
+Placeholder:	MM / YY
+Type:	CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR (regex heuristic: CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR)
+Section:	payCardNo_0_79
+Label:	Expiry
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 2, rank in signature group: 0, field rank in host form: 2, rank in host form signature group: 0
+
+Field 3:	
+Identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2530809757 - 902, host form signature: 6853144026424709157 - 213
+Name:	payCardCvc
+Placeholder:	CVC
+Type:	CREDIT_CARD_VERIFICATION_CODE (regex heuristic: CREDIT_CARD_VERIFICATION_CODE, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_VERIFICATION_CODE)
+Section:	payCardNo_0_79
+Label:	Security code
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 3, rank in signature group: 0, field rank in host form: 3, rank in host form signature group: 0
+
+Field 4:	
+Identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4103652557 - 349, host form signature: 6853144026424709157 - 213
+Name:	mSearch
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 4, rank in signature group: 0, field rank in host form: 4, rank in host form signature group: 0
+
+Field 5:	
+Identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 5, rank in signature group: 0, field rank in host form: 5, rank in host form signature group: 0
+
+Field 6:	
+Identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 6, rank in signature group: 1, field rank in host form: 6, rank in host form signature group: 1
+
+Field 7:	
+Identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 7, rank in signature group: 2, field rank in host form: 7, rank in host form signature group: 2
+
+Field 8:	
+Identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers by name or city
+Type:	ADDRESS_HOME_CITY (regex heuristic: ADDRESS_HOME_CITY, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers by name or city
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 8, rank in signature group: 3, field rank in host form: 8, rank in host form signature group: 3
+
+Field 9:	
+Identifiers:	renderer id: 93, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Find an icon by its key
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Find an icon by its key
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 9, rank in signature group: 4, field rank in host form: 9, rank in host form signature group: 4
+
+Field 10:	
+Identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 10, rank in signature group: 5, field rank in host form: 10, rank in host form signature group: 5
+Processing server data.
+Parsed forms:
+Form signature:	6263822888923065496 - 967
+Form alternative signature:	15412069196495876970 - 513
+Form structural signature:	15412069196495876970 - 513
+Form name:	mReelComForm
+Identifiers:	renderer id: 77, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	http://localhost:5770/
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 78, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 77
+Signature:	1797627403 - 690, host form signature: 6263822888923065496 - 967
+Name:	mReelComInput
+Placeholder:	Add a comment
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Add a comment
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+Parsed forms:
+Form signature:	6853144026424709157 - 213
+Form alternative signature:	8545462990118503174 - 879
+Form structural signature:	8545462990118503174 - 879
+Form name:	
+Identifiers:	renderer id: 0, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	Invalid URL
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 97, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2096205953 - 42, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Punches in your custom pack, 1 to 50
+Is empty:	No
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+
+Field 1:	
+Identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4154958887 - 408, host form signature: 6853144026424709157 - 213
+Name:	payCardNo
+Placeholder:	
+Type:	CREDIT_CARD_NUMBER (regex heuristic: CREDIT_CARD_NUMBER, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_NUMBER)
+Section:	payCardNo_0_79
+Label:	Card number
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 1, rank in signature group: 0, field rank in host form: 1, rank in host form signature group: 0
+
+Field 2:	
+Identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	1686133986 - 473, host form signature: 6853144026424709157 - 213
+Name:	payCardExp
+Placeholder:	MM / YY
+Type:	CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR (regex heuristic: CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR)
+Section:	payCardNo_0_79
+Label:	Expiry
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 2, rank in signature group: 0, field rank in host form: 2, rank in host form signature group: 0
+
+Field 3:	
+Identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2530809757 - 902, host form signature: 6853144026424709157 - 213
+Name:	payCardCvc
+Placeholder:	CVC
+Type:	CREDIT_CARD_VERIFICATION_CODE (regex heuristic: CREDIT_CARD_VERIFICATION_CODE, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_VERIFICATION_CODE)
+Section:	payCardNo_0_79
+Label:	Security code
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 3, rank in signature group: 0, field rank in host form: 3, rank in host form signature group: 0
+
+Field 4:	
+Identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4103652557 - 349, host form signature: 6853144026424709157 - 213
+Name:	mSearch
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 4, rank in signature group: 0, field rank in host form: 4, rank in host form signature group: 0
+
+Field 5:	
+Identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 5, rank in signature group: 0, field rank in host form: 5, rank in host form signature group: 0
+
+Field 6:	
+Identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 6, rank in signature group: 1, field rank in host form: 6, rank in host form signature group: 1
+
+Field 7:	
+Identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 7, rank in signature group: 2, field rank in host form: 7, rank in host form signature group: 2
+
+Field 8:	
+Identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers by name or city
+Type:	ADDRESS_HOME_CITY (regex heuristic: ADDRESS_HOME_CITY, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers by name or city
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 8, rank in signature group: 3, field rank in host form: 8, rank in host form signature group: 3
+
+Field 9:	
+Identifiers:	renderer id: 93, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Find an icon by its key
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Find an icon by its key
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 9, rank in signature group: 4, field rank in host form: 9, rank in host form signature group: 4
+
+Field 10:	
+Identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 10, rank in signature group: 5, field rank in host form: 10, rank in host form signature group: 5
+Parsed forms:
+Form signature:	6853144026424709157 - 213
+Form alternative signature:	8545462990118503174 - 879
+Form structural signature:	8545462990118503174 - 879
+Form name:	
+Identifiers:	renderer id: 0, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770)
+Target URL:	Invalid URL
+May run AutofillAI model:	No
+Field 0:	
+Identifiers:	renderer id: 97, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2096205953 - 42, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Punches in your custom pack, 1 to 50
+Is empty:	No
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 0, rank in signature group: 0, field rank in host form: 0, rank in host form signature group: 0
+
+Field 1:	
+Identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4154958887 - 408, host form signature: 6853144026424709157 - 213
+Name:	payCardNo
+Placeholder:	
+Type:	CREDIT_CARD_NUMBER (regex heuristic: CREDIT_CARD_NUMBER, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_NUMBER)
+Section:	payCardNo_0_79
+Label:	Card number
+Is empty:	Yes
+Is focusable:	Yes (focusable)
+Is visible:	Yes (visible)
+Ranks:	Field rank: 1, rank in signature group: 0, field rank in host form: 1, rank in host form signature group: 0
+
+Field 2:	
+Identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	1686133986 - 473, host form signature: 6853144026424709157 - 213
+Name:	payCardExp
+Placeholder:	MM / YY
+Type:	CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR (regex heuristic: CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_EXP_DATE_4_DIGIT_YEAR)
+Section:	payCardNo_0_79
+Label:	Expiry
+Is empty:	Yes
+Is focusable:	Yes (focusable)
+Is visible:	Yes (visible)
+Ranks:	Field rank: 2, rank in signature group: 0, field rank in host form: 2, rank in host form signature group: 0
+
+Field 3:	
+Identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	2530809757 - 902, host form signature: 6853144026424709157 - 213
+Name:	payCardCvc
+Placeholder:	CVC
+Type:	CREDIT_CARD_VERIFICATION_CODE (regex heuristic: CREDIT_CARD_VERIFICATION_CODE, server: [NO_SERVER_DATA], html: HTML_TYPE_CREDIT_CARD_VERIFICATION_CODE)
+Section:	payCardNo_0_79
+Label:	Security code
+Is empty:	Yes
+Is focusable:	Yes (focusable)
+Is visible:	Yes (visible)
+Ranks:	Field rank: 3, rank in signature group: 0, field rank in host form: 3, rank in host form signature group: 0
+
+Field 4:	
+Identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	4103652557 - 349, host form signature: 6853144026424709157 - 213
+Name:	mSearch
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 4, rank in signature group: 0, field rank in host form: 4, rank in host form signature group: 0
+
+Field 5:	
+Identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 5, rank in signature group: 0, field rank in host form: 5, rank in host form signature group: 0
+
+Field 6:	
+Identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 6, rank in signature group: 1, field rank in host form: 6, rank in host form signature group: 1
+
+Field 7:	
+Identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 7, rank in signature group: 2, field rank in host form: 7, rank in host form signature group: 2
+
+Field 8:	
+Identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers by name or city
+Type:	ADDRESS_HOME_CITY (regex heuristic: ADDRESS_HOME_CITY, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers by name or city
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 8, rank in signature group: 3, field rank in host form: 8, rank in host form signature group: 3
+
+Field 9:	
+Identifiers:	renderer id: 93, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Find an icon by its key
+Type:	UNKNOWN_TYPE (regex heuristic: UNKNOWN_TYPE, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Find an icon by its key
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 9, rank in signature group: 4, field rank in host form: 9, rank in host form signature group: 4
+
+Field 10:	
+Identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB (http://localhost:5770), host form renderer id: 0
+Signature:	260277693 - 289, host form signature: 6853144026424709157 - 213
+Name:	
+Placeholder:	Search punchers
+Type:	SEARCH_TERM (regex heuristic: SEARCH_TERM, server: [NO_SERVER_DATA])
+Section:	-default
+Label:	Search punchers
+Is empty:	Yes
+Is focusable:	No (unfocusable)
+Is visible:	No (invisible)
+Ranks:	Field rank: 10, rank in signature group: 5, field rank in host form: 10, rank in host form signature group: 5
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	Card number
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardNo
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardNo
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardExp
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardExp
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardCvc
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	name
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	ADDRESS_HOME_HOUSE_NUMBER	(Negative Pattern)
+Value:	payCardCvc
+Matched substring:	Card
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CITY	(Negative Pattern)
+Value:	Security code
+Matched substring:	code
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CITY	
+Value:	Search punchers by name or city
+Matched substring:	city
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 79, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_NUMBER	
+Value:	Card number
+Matched substring:	Card number
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_EXP_MONTH	
+Value:	Expiry
+Matched substring:	Expir
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 80, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_EXP_DATE	
+Value:	Expiry
+Matched substring:	Expir
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 81, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	CREDIT_CARD_VERIFICATION_CODE	
+Value:	Security code
+Matched substring:	Security code
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 82, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 83, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 84, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 85, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 86, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers by name or city
+Matched substring:	Search
+RegEx of local heuristic matched:
+Match in:	label
+Field identifiers:	renderer id: 95, host frame: B80522521EE7CE5B9A3A9818554D97BB
+RegEx:	SEARCH_TERM	
+Value:	Search punchers
+Matched substring:	Search

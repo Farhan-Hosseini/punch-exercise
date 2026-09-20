@@ -1,0 +1,136 @@
+{
+ "mode": "cached",
+ "initial": {
+  "n": 119,
+  "mb": 0.84
+ },
+ "afterAnimation": {
+  "n": 243,
+  "mb": 1.64
+ },
+ "afterCase": {
+  "n": 495,
+  "mb": 3.22
+ },
+ "byPhase": {
+  "initial": {
+   "n": 119,
+   "mb": 0.84,
+   "cachedHits": 113,
+   "cachedMb": 0
+  },
+  "animation": {
+   "n": 124,
+   "mb": 0.8,
+   "cachedHits": 120,
+   "cachedMb": 0
+  },
+  "case": {
+   "n": 252,
+   "mb": 1.58,
+   "cachedHits": 244,
+   "cachedMb": 0
+  }
+ },
+ "uniqueUrls": 134,
+ "uniqueMb": 2.5,
+ "dupRequests": 361,
+ "dupMb": 0.72,
+ "embedDocs": [
+  {
+   "url": "http://localhost:5770/?embed=machine",
+   "phase": "animation",
+   "bytes": 638478,
+   "cached": false
+  },
+  {
+   "url": "http://localhost:5770/?embed=machine&follow=0",
+   "phase": "case",
+   "bytes": 638478,
+   "cached": false
+  },
+  {
+   "url": "http://localhost:5770/?embed=machine&follow=0",
+   "phase": "case",
+   "bytes": 638478,
+   "cached": false
+  }
+ ],
+ "topDupes": [
+  {
+   "url": "?embed=machine&follow=0",
+   "times": 2,
+   "eachKb": 624,
+   "cached": "net,net"
+  },
+  {
+   "url": "assets/case/hero-bag.jpg",
+   "times": 3,
+   "eachKb": 163,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "assets/app/feed/8478706.jpg",
+   "times": 3,
+   "eachKb": 72,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "assets/app/feed/8469889.jpg",
+   "times": 3,
+   "eachKb": 66,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "assets/app/feed/4804087.jpg",
+   "times": 3,
+   "eachKb": 55,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "assets/photos/lib/manifest.json",
+   "times": 2,
+   "eachKb": 104,
+   "cached": "net,net"
+  },
+  {
+   "url": "fonts/inter-latin-600-normal.woff2",
+   "times": 3,
+   "eachKb": 24,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "fonts/inter-latin-700-normal.woff2",
+   "times": 3,
+   "eachKb": 24,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "fonts/inter-latin-500-normal.woff2",
+   "times": 3,
+   "eachKb": 24,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "fonts/inter-latin-400-normal.woff2",
+   "times": 3,
+   "eachKb": 23,
+   "cached": "net,memory,memory"
+  },
+  {
+   "url": "assets/video/lib/manifest.json",
+   "times": 2,
+   "eachKb": 13,
+   "cached": "net,net"
+  },
+  {
+   "url": "assets/logos/fist-circle.svg",
+   "times": 4,
+   "eachKb": 2,
+   "cached": "net,memory,memory,memory"
+  }
+ ],
+ "errors": [],
+ "fetchErrors": [],
+ "fetchErrCount": 0
+}

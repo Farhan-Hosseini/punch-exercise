@@ -1,0 +1,866 @@
+{
+ "mode": "machine",
+ "viewport": 1600,
+ "initial": {
+  "count": 119,
+  "bytes": 8696171,
+  "byType": {
+   "Document": 638478,
+   "Font": 235492,
+   "Stylesheet": 1292558,
+   "Image": 5407136,
+   "Script": 882717,
+   "Fetch": 239790
+  }
+ },
+ "total": {
+  "count": 122,
+  "bytes": 8893452,
+  "byType": {
+   "Document": 638478,
+   "Font": 235492,
+   "Stylesheet": 1292558,
+   "Image": 5604417,
+   "Script": 882717,
+   "Fetch": 239790
+  }
+ },
+ "top": [
+  {
+   "b": 638478,
+   "u": "",
+   "t": "Document"
+  },
+  {
+   "b": 481160,
+   "u": "assets/photos/lib/mall-night-1.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 471912,
+   "u": "assets/photos/lib/arcade-neon-4.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 400543,
+   "u": "mscreens.css",
+   "t": "Stylesheet"
+  },
+  {
+   "b": 354318,
+   "u": "mpages.css",
+   "t": "Stylesheet"
+  },
+  {
+   "b": 322793,
+   "u": "assets/photos/lib/arcade-neon-3.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 315327,
+   "u": "assets/photos/lib/dubai-night-12.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 310082,
+   "u": "assets/photos/lib/dubai-night-5.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 272254,
+   "u": "assets/photos/lib/dubai-night-10.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 243304,
+   "u": "assets/photos/lib/dubai-night-22.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 214942,
+   "u": "assets/photos/lib/bag-strike-23.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 214778,
+   "u": "assets/photos/lib/friends-5.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 210492,
+   "u": "assets/photos/lib/dubai-night-25.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 206169,
+   "u": "assets/photos/lib/dubai-night-1.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 197636,
+   "u": "assets/photos/lib/dubai-night-20.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 196648,
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 194964,
+   "u": "assets/photos/lib/boxer-62.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 179275,
+   "u": "assets/photos/lib/dubai-night-11.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 155064,
+   "u": "assets/photos/lib/boxer-68.jpg",
+   "t": "Image"
+  },
+  {
+   "b": 145684,
+   "u": "assets/photos/lib/fist-strike-4.jpg",
+   "t": "Image"
+  }
+ ],
+ "notOk": [],
+ "errors": [],
+ "allUrls": [
+  {
+   "u": "",
+   "b": 638478,
+   "t": "Document",
+   "s": 200
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-900-normal.woff2",
+   "b": 14211,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-600-normal.woff2",
+   "b": 22503,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "styles.css",
+   "b": 67349,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "sections.css",
+   "b": 83756,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "mscreens.css",
+   "b": 400543,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "qr.css",
+   "b": 5495,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "mobile.css",
+   "b": 80345,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "mpages.css",
+   "b": 354318,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "nav.css",
+   "b": 23117,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "pay.css",
+   "b": 84756,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "ds.css",
+   "b": 77048,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "brief.css",
+   "b": 14786,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "case.css",
+   "b": 43194,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "anim.css",
+   "b": 8792,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/fist-circle.svg",
+   "b": 2456,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark.svg",
+   "b": 6316,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark-dark.svg",
+   "b": 6316,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/brand/robotenc-light.svg",
+   "b": 31090,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/brand/robotenc.svg",
+   "b": 31068,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/video/lib/bag-backlit-sq.jpg",
+   "b": 34741,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/video/lib/shadow-bars-sq.jpg",
+   "b": 58491,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/motion/run-live-928x1960-poster.jpg",
+   "b": 129717,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/motion/run-live-1920x1080-poster.jpg",
+   "b": 130543,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg",
+   "b": 196648,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/boxer-circle.svg",
+   "b": 2331,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/glove-tilt.svg",
+   "b": 2680,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/glove-upright.svg",
+   "b": 2756,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/gloves-pair.svg",
+   "b": 4777,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/logos/speedbag.svg",
+   "b": 2000,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/case/screen-hit.webp",
+   "b": 98786,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "case-diagrams.css",
+   "b": 49059,
+   "t": "Stylesheet",
+   "s": 200
+  },
+  {
+   "u": "case-diagrams.js",
+   "b": 17268,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "case.js",
+   "b": 20113,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "format.js",
+   "b": 3506,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "psec.js",
+   "b": 7311,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "icons.js",
+   "b": 4411,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "qr.js",
+   "b": 3336,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "app-icons.js",
+   "b": 26522,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "lucide.js",
+   "b": 42159,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mobile.js",
+   "b": 128699,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "pay.js",
+   "b": 61998,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/default.js",
+   "b": 28243,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/connected.js",
+   "b": 3983,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/failed.js",
+   "b": 13029,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/saved.js",
+   "b": 3011,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/punch.js",
+   "b": 1830,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/scan.js",
+   "b": 13642,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/connect.js",
+   "b": 3624,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/feed.js",
+   "b": 19913,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/profile.js",
+   "b": 21388,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/hit.js",
+   "b": 27391,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/ranks.js",
+   "b": 4776,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mpages/reel.js",
+   "b": 19908,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "ds.js",
+   "b": 104822,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/default.js",
+   "b": 11096,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/attract.js",
+   "b": 22639,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/scan.js",
+   "b": 5656,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/_ads.js",
+   "b": 461,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/_backdrops.js",
+   "b": 434,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/_brand.js",
+   "b": 878,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/countdown.js",
+   "b": 25846,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/loading.js",
+   "b": 11014,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/stats.js",
+   "b": 59301,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/score.js",
+   "b": 48504,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "mscreens/record.js",
+   "b": 39853,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "anim.js",
+   "b": 8816,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "app.js",
+   "b": 65382,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "pagenav.js",
+   "b": 1954,
+   "t": "Script",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-latin-500-normal.woff2",
+   "b": 22203,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-latin-700-normal.woff2",
+   "b": 22983,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/anton-latin-400-normal.woff2",
+   "b": 18807,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-700-normal.woff2",
+   "b": 22639,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/header-d-sara.jpg",
+   "b": 17114,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/fist-strike-4.jpg",
+   "b": 145684,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/noor.jpg",
+   "b": 11966,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/leila.jpg",
+   "b": 14096,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/omar.jpg",
+   "b": 6216,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/yusuf.jpg",
+   "b": 11413,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/rami.jpg",
+   "b": 8343,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/karim.jpg",
+   "b": 11888,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/zayd.jpg",
+   "b": 10549,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/lina.jpg",
+   "b": 12775,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/adam.jpg",
+   "b": 10951,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/hana.jpg",
+   "b": 13613,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/avatars/sara.jpg",
+   "b": 19612,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/manifest.json",
+   "b": 106947,
+   "t": "Fetch",
+   "s": 200
+  },
+  {
+   "u": "assets/video/lib/manifest.json",
+   "b": 12948,
+   "t": "Fetch",
+   "s": 200
+  },
+  {
+   "u": "fonts/orbitron-latin-900-normal.woff2",
+   "b": 6595,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "assets/app/qr-glow.svg",
+   "b": 1361,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-latin-300-normal.woff2",
+   "b": 22271,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-latin-800-normal.woff2",
+   "b": 23171,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-latin-400-normal.woff2",
+   "b": 22391,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/barlow-latin-600-normal.woff2",
+   "b": 22967,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-800-normal.woff2",
+   "b": 14751,
+   "t": "Font",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/last-card.jpg",
+   "b": 31803,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/arcade-neon-4.jpg",
+   "b": 471912,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/load-glow.svg",
+   "b": 1328,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-22.jpg",
+   "b": 243304,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-10.jpg",
+   "b": 272254,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/arcade-neon-3.jpg",
+   "b": 322793,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/bag-strike-23.jpg",
+   "b": 214942,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/boxer-68.jpg",
+   "b": 155064,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-12.jpg",
+   "b": 315327,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/friends-5.jpg",
+   "b": 214778,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/mall-night-1.jpg",
+   "b": 481160,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/boxer-62.jpg",
+   "b": 194964,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-11.jpg",
+   "b": 179275,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-1.jpg",
+   "b": 206169,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/feed/8478699.jpg",
+   "b": 61479,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/feed/7777435.jpg",
+   "b": 54553,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/feed/7777434.jpg",
+   "b": 42928,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/feed/7777431.jpg",
+   "b": 84074,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-25.jpg",
+   "b": 210492,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/hit-player.jpg",
+   "b": 104522,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-20.jpg",
+   "b": 197636,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-5.jpg",
+   "b": 310082,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/photos/lib/manifest.json",
+   "b": 106947,
+   "t": "Fetch",
+   "s": 200
+  },
+  {
+   "u": "assets/video/lib/manifest.json",
+   "b": 12948,
+   "t": "Fetch",
+   "s": 200
+  },
+  {
+   "u": "assets/app/feed/8469889.jpg",
+   "b": 67391,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/feed/4804087.jpg",
+   "b": 55811,
+   "t": "Image",
+   "s": 200
+  },
+  {
+   "u": "assets/app/feed/8478706.jpg",
+   "b": 74079,
+   "t": "Image",
+   "s": 200
+  }
+ ]
+}

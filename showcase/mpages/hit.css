@@ -13,7 +13,7 @@
    The page's padding puts the header --m-head-top under the status bar; a line that goes with the title sits
    --m-title-gap from its line box at line height 1.4; a button row over the title sits --m-group-gap over it; the two
    buttons centre on the title's own line (they hang (44 - 31.5) / 2 px over and under it without moving the rhythm);
-   Score starts --m-sec-gap under the header. Every design names the machine: Machine 07, by the ice rink. */
+   Score starts --m-sec-gap under the header. Every design names the machine: Machine 07, Grand Atrium. */
 .yh-head { display: block; margin: 0 0 var(--m-sec-gap); min-width: 0; }
 .yhh { min-width: 0; }
 .yhh .m-title { margin: 0; min-width: 0; }

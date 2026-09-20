@@ -1,0 +1,17 @@
+{
+ "csp": "default-src 'self'; script-src 'self' 'sha256-1D6zsW/62B4NrN4VHMSNrpfgJ4x6hwUZxLA4MHZWddg=' 'sha256-qYOyteyOedLC/o0spJFc2nVF9Zo2LknAn+9xMxwUJ7Q=' 'sha256-z5VLCyMzNAK17GtlGh6WEymPx0rM3u/p/jNo78l+4wY=' 'sha256-1trH6bFAFCoJa3ytb1twUCnV2LmaAbDiNkrJzeaC6AY='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'none'; form-action 'none'; object-src 'none'",
+ "modes": {
+  "mobile": 0,
+  "machine": 0,
+  "animation": 0,
+  "ds": 0
+ },
+ "afterCase": 0,
+ "total": 0,
+ "violations": [],
+ "byDirective": {},
+ "scriptViolations": [],
+ "pageOk": true,
+ "loaderGone": true,
+ "errors": []
+}

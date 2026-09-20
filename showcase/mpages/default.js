@@ -23,7 +23,7 @@
   /* ------------------------------------------------------------ the venues (real photographs, assets/photos/lib) */
   const LIB = (f) => `assets/photos/lib/${f}`
   const VENUES = [
-    { id: 'dxb', name: 'Dubai Mall', spot: 'Ground Level, by the Ice Rink', dist: '350 m', photo: LIB('dubai-night-1.jpg'), pos: '50% 62%', x: 66, y: 47 },
+    { id: 'dxb', name: 'Dubai Mall', spot: 'Ground Level, Grand Atrium', dist: '350 m', photo: LIB('dubai-night-1.jpg'), pos: '50% 62%', x: 66, y: 47 },
     { id: 'walk', name: 'City Walk', spot: 'The arcade, Building 8', dist: '3.1 km', photo: LIB('mall-night-1.jpg'), pos: '50% 45%', x: 57, y: 33 },
     { id: 'moe', name: 'Mall of the Emirates', spot: 'Level 1, the games hall', dist: '14 km', photo: LIB('arcade-neon-1.jpg'), pos: '50% 60%', x: 33, y: 64 },
     { id: 'marina', name: 'Dubai Marina Mall', spot: 'Level 1, by the cinema', dist: '22 km', photo: LIB('dubai-night-2.jpg'), pos: '55% 45%', x: 17, y: 78 },

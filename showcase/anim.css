@@ -8,7 +8,9 @@
 .phone-stage.is-anim .pagebar { display: none; }
 .phone-stage.is-anim {
   display: grid; align-items: start;
-  column-gap: clamp(32px, 4vw, 64px); row-gap: 16px;
+  /* no column gap: the free columns beside the pair would each take one, and at 768 that pushed the pair off the
+     window. The space between the phone and the machine is the machine's own margin instead. */
+  column-gap: 0; row-gap: 16px;
   /* the pair keeps its own width and stays centred between the two free columns; the clip row spans the stage, so the
      motion deliverable runs the full width of the container rather than the width of the two screens */
   grid-template-columns: minmax(0, 1fr) auto auto minmax(0, 1fr);
@@ -24,13 +26,14 @@
    window's bottom edge */
 .phone-stage.is-anim .device-wrap { grid-area: phone; zoom: calc(var(--pz, 1) * .92); }
 /* the machine's column: the glass, as tall as the phone and no wider than itself */
-.phone-stage.is-anim .linked { grid-area: machine; margin: 0; display: grid; justify-items: start; align-self: start; width: max(var(--linked-w, 270px), 240px); }
+.phone-stage.is-anim .linked { grid-area: machine; margin: 0 0 0 clamp(32px, 4vw, 64px); display: grid; justify-items: start; align-self: start; width: max(var(--linked-w, 270px), 240px); }
 .phone-stage.is-anim .linked-glass { justify-self: start; }
-.phone-stage[data-anim-layout="stack"] .linked { justify-self: center; margin-top: 28px; }
+.phone-stage[data-anim-layout="stack"] .linked { justify-self: center; margin: 28px 0 0; }
 
 /* ---------------------------------------------------------------- the clip under the pair */
-/* it spans every column of the stage, so it is as wide as the container and never as narrow as the pair */
-.phone-stage.is-anim .anim-extra { grid-area: clip; }
+/* it spans every column of the stage, then sits in the same container as the rest of the site: no wider than the
+   case study's measure, centred */
+.phone-stage.is-anim .anim-extra { grid-area: clip; width: min(100%, 1180px); margin-inline: auto; }
 .anim-extra {
   scroll-margin-top: 88px; margin-top: clamp(72px, 9vw, 128px); padding-top: 40px;
   display: grid; gap: 28px; min-width: 0; container-type: inline-size;
@@ -56,11 +59,12 @@
 .anim-piece:has(.anim-phone) .anim-fig-master { width: calc((100cqw - 40px) * .2103); }
 .anim-glass, .anim-phone { justify-self: start; overflow: hidden; background: #060606; }
 .anim-glass { height: calc((100cqw - 40px) * .4857); aspect-ratio: 1080 / 3840; border-radius: 8px; box-shadow: 0 0 0 5px var(--bezel, #1B1A19), 0 0 0 6px color-mix(in oklab, var(--shell-ink) 12%, transparent); }
-/* the machine piece: the panel is the only thing in its clip, so it is shown large enough for its own components to
-   read, with its words beside it rather than baked into the frame */
-.anim-piece-tall { grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: start; }
-.anim-tall-text { position: sticky; top: 88px; display: grid; gap: 24px; align-content: start; min-width: 0; }
+/* the machine piece follows the phone piece above it: words on top, then a clips row with the panel on the left
+   at a third of its size and the beats on the right, where the phone piece has its presentation cut */
+.anim-piece-tall .anim-clips { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
 .anim-fig-tall { width: clamp(300px, calc(100cqw * .3), 360px); }
+.anim-fig-tall .anim-glass { width: 100%; height: auto; }
+.anim-beats-col { display: grid; gap: 24px; align-content: start; min-width: 0; padding-top: 4px; }
 /* what happens, in order, beside the clip rather than burnt into it */
 .anim-beats { margin: 0; display: grid; gap: 20px; max-width: 64ch; }
 .anim-beats > div { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 4px 24px; align-items: baseline; }
@@ -70,12 +74,17 @@
 
 /* the phone clip carries the handset itself, so it needs no bezel drawn around it: only the corners cut back to the
    device's own radius, 74 of its 464 px */
-.anim-phone { height: calc((100cqw - 40px) * .4442); aspect-ratio: 928 / 1960; border-radius: calc((100cqw - 40px) * .0335); }
+.anim-phone { height: calc((100cqw - 40px) * .4442); aspect-ratio: 928 / 1902; border-radius: calc((100cqw - 40px) * .0335); }
+/* the capture kept 58 rows of page above the handset; the frame is that much shorter and the clip sits at its foot,
+   so the handset's top edge is the frame's top edge */
+.anim-phone .anim-clip { height: calc(100% * 1960 / 1902); object-position: 50% 100%; }
 .anim-glass .anim-clip, .anim-phone .anim-clip { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
 .anim-clip { display: block; width: 100%; height: auto; border-radius: 12px; background: #060606; }
 .anim-fig-pres .anim-clip, .anim-fig-old .anim-clip { aspect-ratio: 16 / 9; }
 .anim-fig-pres .anim-clip { box-shadow: 0 40px 80px -48px rgba(0, 0, 0, .8); }
 .anim-clip:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+/* inside the glass and the phone the clip fills a frame that clips its overflow, so the ring goes on the inside edge */
+.anim-glass .anim-clip:focus-visible, .anim-phone .anim-clip:focus-visible { outline-offset: -3px; }
 
 /* the downloads, and Read the idea leading the first concept's row: the one filled button, the downloads after it */
 .anim-files { margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -99,9 +108,8 @@
 @container (max-width: 760px) {
   .anim-clips { grid-template-columns: minmax(0, 1fr); }
   .anim-fig-master { display: none; }
-  .anim-piece-tall { grid-template-columns: minmax(0, 1fr); }
+  .anim-piece-tall .anim-clips { grid-template-columns: minmax(0, 1fr); }
   .anim-beats > div { grid-template-columns: minmax(0, 1fr); }
-  .anim-tall-text { position: static; }
   .anim-fig-tall { width: min(100%, 320px); justify-self: center; }
   .anim-old { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }

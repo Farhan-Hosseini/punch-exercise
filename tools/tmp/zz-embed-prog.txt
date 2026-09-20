@@ -1,0 +1,27 @@
+embed load
+main load
+blank machine/default
+blank machine/attract
+blank machine/scan
+blank machine/countdown
+blank machine/loading
+blank machine/result
+blank machine/score
+blank machine/record
+blank phone/default
+blank phone/scan
+blank phone/connect
+blank phone/connected
+blank phone/punch
+blank phone/topup
+blank phone/checkout
+blank phone/paid
+blank phone/failed
+blank phone/hit
+blank phone/reel
+blank phone/ranks
+blank phone/feed
+blank phone/profile
+blank global
+reload test
+done

@@ -5,3 +5,34 @@
 [context.production]
   command = "npm install && node tools/build.mjs --in-place"
   publish = "showcase"
+
+# The site is one page of same-origin files: no third-party script, no analytics, no fonts from a CDN. These headers
+# say so.
+#
+# The Content-Security-Policy carries frame-ancestors only, on purpose. The Animation tab and the case study embed
+# this same page (./?embed=machine), so X-Frame-Options: DENY would empty them; 'self' keeps the embed and still
+# stops anyone else framing the site. A full script-src / style-src policy is possible but not free: the page has
+# four inline <script> blocks and 253 inline style attributes, so it would need per-script hashes and
+# style-src 'unsafe-inline', which is most of what the policy would have been protecting against.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors 'self'"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # nothing here asks for a device: the scan screen draws a code, it never opens a camera
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# The assets are not content-hashed, so nothing here can be immutable: a day is long enough to spare a returning
+# visitor the round trips and short enough that a replaced photograph shows up the next day.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# The faces never change under their own names.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

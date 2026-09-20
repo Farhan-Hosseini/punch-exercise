@@ -79,7 +79,7 @@
 .mscreen-stats .yr-tag {
   position: relative; flex: none; width: 72px; height: 72px; border-radius: 50%;
   display: inline-grid; place-items: center; background: var(--tag); color: var(--yr-tag-ink);
-  font: var(--w-display) 42px/1 var(--f-display); text-transform: uppercase;
+  font: var(--w-display) calc(42px * var(--disp-k, 1))/1 var(--f-display); text-transform: uppercase;
 }
 .mscreen-stats .yr-tag.is-you { box-shadow: 0 0 0 5px var(--ground), 0 0 0 11px var(--strike); }
 .mscreen-stats .yr-crown { display: none; color: var(--yr-crown); font-size: 56px; line-height: 0; }
@@ -93,7 +93,7 @@
 /* next up, at the foot of the crew */
 .mscreen-stats .yr-nextup-row { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .mscreen-stats .yr-nextup { display: flex; align-items: center; gap: 24px; }
-.mscreen-stats .yr-nextup-n { font: var(--w-display) 64px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-nextup-n { font: var(--w-display) calc(64px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 /* a band name on a column's edge, centred in its span (--b0 from the foot, --bh tall) */
 .mscreen-stats .yr-bandname {
   position: absolute; right: 0; bottom: calc((var(--b0) + var(--bh) / 2) * 100%); transform: translateY(50%);
@@ -232,7 +232,7 @@
 .mscreen-stats .yr-col-mark.is-you .yr-col-tick { left: 192px; width: 100px; top: calc(var(--y) - 9px); height: 18px; border-radius: 9px; background: var(--strike); }
 .mscreen-stats .yr-col-mark.is-you .yr-col-lead { background: var(--strike); }
 .mscreen-stats .yr-col-lab { position: absolute; left: 330px; top: var(--ly); transform: translateY(-50%); display: flex; align-items: center; gap: 24px; white-space: nowrap; }
-.mscreen-stats .yr-col-n { font: var(--w-display) 64px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-col-n { font: var(--w-display) calc(64px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-col-mark.is-you .yr-col-n { color: var(--strike); }
 
 /* Stacked plates: one plate per player, leader on top, the plate's length its height on the column */
@@ -240,7 +240,7 @@
 .mscreen-stats .yr-st-guides > i { position: absolute; top: 44px; height: calc(var(--n) * var(--pitch) - 40px); left: calc(var(--b0) * 100%); width: 3px; margin-left: -1px; background: var(--track); }
 .mscreen-stats .yr-st-row { position: absolute; left: 0; right: 0; top: calc(44px + var(--i) * var(--pitch)); }
 .mscreen-stats .yr-st-who { display: flex; align-items: center; gap: 24px; height: 84px; padding-top: 6px; }
-.mscreen-stats .yr-st-n { font: var(--w-display) 60px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-st-n { font: var(--w-display) calc(60px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-st-row.is-you .yr-st-n { color: var(--strike); }
 .mscreen-stats .yr-st-plate { position: relative; margin-top: 16px; height: 120px; width: calc(var(--f) * 100%); min-width: 150px; transform-origin: 0 50%; }
 .mscreen-stats .yr-st-bar { position: absolute; left: 0; top: 0; bottom: 0; right: 54px; border-radius: 18px 0 0 18px; background: var(--tag); }
@@ -273,7 +273,7 @@
 .mscreen-stats .yr-fc-crown svg { fill: var(--yr-crown); }
 .mscreen-stats .yr-fc-lab { position: absolute; left: 572px; right: 0; top: var(--ly); transform: translateY(-50%); display: flex; flex-direction: column; gap: 20px; }
 .mscreen-stats .yr-fc-who { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
-.mscreen-stats .yr-fc-n { font: var(--w-display) 64px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-fc-n { font: var(--w-display) calc(64px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-fc-mark.is-you .yr-fc-n { color: var(--strike); }
 .mscreen-stats .yr-fc-tag { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .mscreen-stats .yr-fc-note { font: 500 32px/1 var(--f-text); color: var(--ink-3); white-space: nowrap; }
@@ -309,7 +309,7 @@
 .mscreen-stats .yr-ov-lead { position: absolute; left: calc(var(--lane) - 20px); top: calc(var(--y) - 2px); width: var(--len); height: 4px; background: var(--tag); transform-origin: 0 50%; transform: rotate(var(--ang)); }
 .mscreen-stats .yr-ov-lab { position: absolute; right: calc(100% - var(--lane) + 64px); top: var(--ly); transform: translateY(-50%); display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
 .mscreen-stats .yr-ov-who { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
-.mscreen-stats .yr-ov-n { font: var(--w-display) 64px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-ov-n { font: var(--w-display) calc(64px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-ov-rung.is-passed :is(.yr-ov-tick, .yr-ov-lead, .yr-ov-lab) { opacity: var(--yr-dim); }
 .mscreen-stats .yr-ov-you { position: absolute; left: 0; right: 0; top: var(--y); height: 0; z-index: 2; }
 .mscreen-stats .yr-ov-chev {
@@ -408,7 +408,7 @@
 .mscreen-stats .yr-cl-line { position: absolute; left: 0; right: 0; top: -4px; height: 8px; border-radius: 4px; background: var(--yr-crown); transform-origin: 100% 50%; }
 .mscreen-stats .yr-cl-who { position: absolute; right: 0; bottom: 26px; display: flex; align-items: center; gap: 20px; white-space: nowrap; }
 .mscreen-stats .yr-cl-who .yr-ava { width: 92px; height: 92px; box-shadow: 0 0 0 5px var(--yr-crown); }
-.mscreen-stats .yr-cl-n { font: var(--w-display) 80px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-cl-n { font: var(--w-display) calc(80px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-cl-since { font: 500 44px/1 var(--f-text); color: var(--ink-2); }
 .mscreen-stats .yr-cl-you { position: absolute; left: 0; right: 0; top: calc(var(--rule) + var(--y) * var(--fall)); height: 0; }
 .mscreen-stats .yr-cl-tick { position: absolute; left: 0; width: 180px; top: -8px; height: 16px; border-radius: 8px; background: var(--strike); }
@@ -433,7 +433,7 @@
 .mscreen-stats .yr-cw-head .yr-crown svg, .mscreen-stats .yr-cw-crown svg { fill: var(--yr-crown); }
 .mscreen-stats .yr-cw-head .yr-k { color: var(--yr-crown); }
 .mscreen-stats .yr-cw-head .yr-ava { width: 84px; height: 84px; margin-left: 8px; box-shadow: 0 0 0 5px var(--yr-crown); }
-.mscreen-stats .yr-cw-n { font: var(--w-display) 72px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-cw-n { font: var(--w-display) calc(72px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-cw-since { font: 500 42px/1 var(--f-text); color: var(--ink-2); }
 .mscreen-stats .yr-cw-band { position: absolute; left: 0; right: 0; top: 150px; height: 190px; }
 .mscreen-stats .yr-cw-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transform-origin: 50% 50%; }
@@ -493,7 +493,7 @@
 .mscreen-stats .yr-rb-head .yr-crown { font-size: 60px; }
 .mscreen-stats .yr-rb-head .yr-crown svg { fill: var(--yr-crown); }
 .mscreen-stats .yr-rb-head .yr-ava { width: 88px; height: 88px; box-shadow: 0 0 0 5px var(--yr-crown); }
-.mscreen-stats .yr-rb-n { font: var(--w-display) 76px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-stats .yr-rb-n { font: var(--w-display) calc(76px * var(--disp-k, 1))/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-rb-since { font: 500 44px/1 var(--f-text); color: var(--ink-2); }
 .mscreen-stats .yr-rb-track { position: relative; height: 250px; }
 .mscreen-stats .yr-rb-track::before {

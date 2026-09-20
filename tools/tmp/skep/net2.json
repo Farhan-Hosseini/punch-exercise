@@ -1,0 +1,297 @@
+{
+ "W": 390,
+ "H": 844,
+ "WAIT": 9000,
+ "elapsed": 9044,
+ "count": 89,
+ "bytes": 4037912,
+ "byType": {
+  "Document": {
+   "n": 1,
+   "b": 638478
+  },
+  "Font": {
+   "n": 6,
+   "b": 110870
+  },
+  "Stylesheet": {
+   "n": 13,
+   "b": 1292558
+  },
+  "Image": {
+   "n": 28,
+   "b": 873499
+  },
+  "Script": {
+   "n": 37,
+   "b": 882717
+  },
+  "Fetch": {
+   "n": 4,
+   "b": 239790
+  }
+ },
+ "top": [
+  {
+   "b": 638478,
+   "t": "Document",
+   "u": ""
+  },
+  {
+   "b": 400543,
+   "t": "Stylesheet",
+   "u": "mscreens.css"
+  },
+  {
+   "b": 354318,
+   "t": "Stylesheet",
+   "u": "mpages.css"
+  },
+  {
+   "b": 196648,
+   "t": "Image",
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg"
+  },
+  {
+   "b": 130543,
+   "t": "Image",
+   "u": "assets/motion/run-live-1920x1080-poster.jpg"
+  },
+  {
+   "b": 129717,
+   "t": "Image",
+   "u": "assets/motion/run-live-928x1960-poster.jpg"
+  },
+  {
+   "b": 128699,
+   "t": "Script",
+   "u": "mobile.js"
+  },
+  {
+   "b": 106947,
+   "t": "Fetch",
+   "u": "assets/photos/lib/manifest.json"
+  },
+  {
+   "b": 106947,
+   "t": "Fetch",
+   "u": "assets/photos/lib/manifest.json"
+  },
+  {
+   "b": 104822,
+   "t": "Script",
+   "u": "ds.js"
+  },
+  {
+   "b": 98786,
+   "t": "Image",
+   "u": "assets/case/screen-hit.webp"
+  },
+  {
+   "b": 84756,
+   "t": "Stylesheet",
+   "u": "pay.css"
+  },
+  {
+   "b": 83756,
+   "t": "Stylesheet",
+   "u": "sections.css"
+  },
+  {
+   "b": 80345,
+   "t": "Stylesheet",
+   "u": "mobile.css"
+  },
+  {
+   "b": 77048,
+   "t": "Stylesheet",
+   "u": "ds.css"
+  },
+  {
+   "b": 67349,
+   "t": "Stylesheet",
+   "u": "styles.css"
+  },
+  {
+   "b": 65382,
+   "t": "Script",
+   "u": "app.js"
+  },
+  {
+   "b": 61998,
+   "t": "Script",
+   "u": "pay.js"
+  },
+  {
+   "b": 59301,
+   "t": "Script",
+   "u": "mscreens/stats.js"
+  },
+  {
+   "b": 58491,
+   "t": "Image",
+   "u": "assets/video/lib/shadow-bars-sq.jpg"
+  },
+  {
+   "b": 49059,
+   "t": "Stylesheet",
+   "u": "case-diagrams.css"
+  },
+  {
+   "b": 48504,
+   "t": "Script",
+   "u": "mscreens/score.js"
+  },
+  {
+   "b": 43194,
+   "t": "Stylesheet",
+   "u": "case.css"
+  },
+  {
+   "b": 42159,
+   "t": "Script",
+   "u": "lucide.js"
+  },
+  {
+   "b": 39853,
+   "t": "Script",
+   "u": "mscreens/record.js"
+  }
+ ],
+ "images": [
+  {
+   "b": 196648,
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg"
+  },
+  {
+   "b": 130543,
+   "u": "assets/motion/run-live-1920x1080-poster.jpg"
+  },
+  {
+   "b": 129717,
+   "u": "assets/motion/run-live-928x1960-poster.jpg"
+  },
+  {
+   "b": 98786,
+   "u": "assets/case/screen-hit.webp"
+  },
+  {
+   "b": 58491,
+   "u": "assets/video/lib/shadow-bars-sq.jpg"
+  },
+  {
+   "b": 34741,
+   "u": "assets/video/lib/bag-backlit-sq.jpg"
+  },
+  {
+   "b": 31090,
+   "u": "assets/brand/robotenc-light.svg"
+  },
+  {
+   "b": 31068,
+   "u": "assets/brand/robotenc.svg"
+  },
+  {
+   "b": 19612,
+   "u": "assets/app/avatars/sara.jpg"
+  },
+  {
+   "b": 14096,
+   "u": "assets/app/avatars/leila.jpg"
+  },
+  {
+   "b": 13613,
+   "u": "assets/app/avatars/hana.jpg"
+  },
+  {
+   "b": 12775,
+   "u": "assets/app/avatars/lina.jpg"
+  },
+  {
+   "b": 11966,
+   "u": "assets/app/avatars/noor.jpg"
+  },
+  {
+   "b": 11888,
+   "u": "assets/app/avatars/karim.jpg"
+  },
+  {
+   "b": 11413,
+   "u": "assets/app/avatars/yusuf.jpg"
+  },
+  {
+   "b": 10951,
+   "u": "assets/app/avatars/adam.jpg"
+  },
+  {
+   "b": 10549,
+   "u": "assets/app/avatars/zayd.jpg"
+  },
+  {
+   "b": 8343,
+   "u": "assets/app/avatars/rami.jpg"
+  },
+  {
+   "b": 6316,
+   "u": "assets/logos/punchapp-wordmark.svg"
+  },
+  {
+   "b": 6316,
+   "u": "assets/logos/punchapp-wordmark-dark.svg"
+  },
+  {
+   "b": 6216,
+   "u": "assets/app/avatars/omar.jpg"
+  },
+  {
+   "b": 4777,
+   "u": "assets/logos/gloves-pair.svg"
+  },
+  {
+   "b": 2756,
+   "u": "assets/logos/glove-upright.svg"
+  },
+  {
+   "b": 2680,
+   "u": "assets/logos/glove-tilt.svg"
+  },
+  {
+   "b": 2456,
+   "u": "assets/logos/fist-circle.svg"
+  },
+  {
+   "b": 2331,
+   "u": "assets/logos/boxer-circle.svg"
+  },
+  {
+   "b": 2000,
+   "u": "assets/logos/speedbag.svg"
+  },
+  {
+   "b": 1361,
+   "u": "assets/app/qr-glow.svg"
+  }
+ ],
+ "notOk": [],
+ "encHdr": {
+  "Connection": "keep-alive",
+  "Date": "Sun, 20 Sep 2026 17:23:31 GMT",
+  "Keep-Alive": "timeout=5",
+  "Transfer-Encoding": "chunked",
+  "cache-control": "no-store",
+  "content-type": "text/html; charset=utf-8"
+ },
+ "errs": [],
+ "dom": {
+  "nodes": 19875,
+  "imgs": 699,
+  "eager": 98,
+  "lazy": 601,
+  "complete": 251,
+  "inViewport": 1,
+  "scrollY": 0,
+  "docH": 844,
+  "mode": "mobile",
+  "loaderDone": true
+ }
+}

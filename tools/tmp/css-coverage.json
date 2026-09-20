@@ -1,0 +1,525 @@
+{
+ "rows": [
+  {
+   "url": "brief.css",
+   "total": 14578,
+   "ruleBytes": 8345,
+   "usedBytes": 8345,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 72,
+   "samples": []
+  },
+  {
+   "url": "case.css",
+   "total": 42986,
+   "ruleBytes": 28253,
+   "usedBytes": 28253,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 231,
+   "samples": []
+  },
+  {
+   "url": "mpages.css",
+   "total": 354109,
+   "ruleBytes": 231428,
+   "usedBytes": 231428,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 1870,
+   "samples": []
+  },
+  {
+   "url": "sections.css",
+   "total": 83546,
+   "ruleBytes": 5578,
+   "usedBytes": 5578,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 40,
+   "samples": []
+  },
+  {
+   "url": "mobile.css",
+   "total": 80136,
+   "ruleBytes": 39914,
+   "usedBytes": 39914,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 234,
+   "samples": []
+  },
+  {
+   "url": "nav.css",
+   "total": 22909,
+   "ruleBytes": 5365,
+   "usedBytes": 5365,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 29,
+   "samples": []
+  },
+  {
+   "url": "qr.css",
+   "total": 5287,
+   "ruleBytes": 3310,
+   "usedBytes": 3310,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 14,
+   "samples": []
+  },
+  {
+   "url": "styles.css",
+   "total": 67138,
+   "ruleBytes": 37666,
+   "usedBytes": 37666,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 279,
+   "samples": []
+  },
+  {
+   "url": "anim.css",
+   "total": 8584,
+   "ruleBytes": 4313,
+   "usedBytes": 4313,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 36,
+   "samples": []
+  },
+  {
+   "url": "mscreens.css",
+   "total": 400334,
+   "ruleBytes": 243878,
+   "usedBytes": 243878,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 1675,
+   "samples": []
+  },
+  {
+   "url": "pay.css",
+   "total": 84547,
+   "ruleBytes": 50305,
+   "usedBytes": 50305,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 399,
+   "samples": []
+  },
+  {
+   "url": "ds.css",
+   "total": 76839,
+   "ruleBytes": 1285,
+   "usedBytes": 1285,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 5,
+   "samples": []
+  },
+  {
+   "url": "case-diagrams.css",
+   "total": 48851,
+   "ruleBytes": 12178,
+   "usedBytes": 12178,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 84,
+   "samples": []
+  },
+  {
+   "url": "case.css",
+   "total": 42986,
+   "ruleBytes": 1176,
+   "usedBytes": 1176,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 8,
+   "samples": []
+  },
+  {
+   "url": "mpages.css",
+   "total": 354109,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "mscreens.css",
+   "total": 400334,
+   "ruleBytes": 56978,
+   "usedBytes": 56978,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 377,
+   "samples": []
+  },
+  {
+   "url": "ds.css",
+   "total": 76839,
+   "ruleBytes": 1355,
+   "usedBytes": 1355,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 7,
+   "samples": []
+  },
+  {
+   "url": "anim.css",
+   "total": 8584,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "brief.css",
+   "total": 14578,
+   "ruleBytes": 702,
+   "usedBytes": 702,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 4,
+   "samples": []
+  },
+  {
+   "url": "qr.css",
+   "total": 5287,
+   "ruleBytes": 3084,
+   "usedBytes": 3084,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 13,
+   "samples": []
+  },
+  {
+   "url": "styles.css",
+   "total": 67138,
+   "ruleBytes": 20065,
+   "usedBytes": 20065,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 123,
+   "samples": []
+  },
+  {
+   "url": "mobile.css",
+   "total": 80136,
+   "ruleBytes": 329,
+   "usedBytes": 329,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 5,
+   "samples": []
+  },
+  {
+   "url": "sections.css",
+   "total": 83546,
+   "ruleBytes": 49122,
+   "usedBytes": 49122,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 380,
+   "samples": []
+  },
+  {
+   "url": "nav.css",
+   "total": 22909,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "pay.css",
+   "total": 84547,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "case-diagrams.css",
+   "total": 48851,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "pay.css",
+   "total": 84547,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "case.css",
+   "total": 42986,
+   "ruleBytes": 1176,
+   "usedBytes": 1176,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 8,
+   "samples": []
+  },
+  {
+   "url": "mobile.css",
+   "total": 80136,
+   "ruleBytes": 329,
+   "usedBytes": 329,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 5,
+   "samples": []
+  },
+  {
+   "url": "anim.css",
+   "total": 8584,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "nav.css",
+   "total": 22909,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "sections.css",
+   "total": 83546,
+   "ruleBytes": 49122,
+   "usedBytes": 49122,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 380,
+   "samples": []
+  },
+  {
+   "url": "ds.css",
+   "total": 76839,
+   "ruleBytes": 1355,
+   "usedBytes": 1355,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 7,
+   "samples": []
+  },
+  {
+   "url": "styles.css",
+   "total": 67138,
+   "ruleBytes": 20065,
+   "usedBytes": 20065,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 123,
+   "samples": []
+  },
+  {
+   "url": "brief.css",
+   "total": 14578,
+   "ruleBytes": 702,
+   "usedBytes": 702,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 4,
+   "samples": []
+  },
+  {
+   "url": "mscreens.css",
+   "total": 400334,
+   "ruleBytes": 44459,
+   "usedBytes": 44459,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 282,
+   "samples": []
+  },
+  {
+   "url": "mpages.css",
+   "total": 354109,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "qr.css",
+   "total": 5287,
+   "ruleBytes": 3084,
+   "usedBytes": 3084,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 13,
+   "samples": []
+  },
+  {
+   "url": "case-diagrams.css",
+   "total": 48851,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "nav.css",
+   "total": 22909,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "ds.css",
+   "total": 76839,
+   "ruleBytes": 1355,
+   "usedBytes": 1355,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 7,
+   "samples": []
+  },
+  {
+   "url": "brief.css",
+   "total": 14578,
+   "ruleBytes": 702,
+   "usedBytes": 702,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 4,
+   "samples": []
+  },
+  {
+   "url": "mpages.css",
+   "total": 354109,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "mscreens.css",
+   "total": 400334,
+   "ruleBytes": 44459,
+   "usedBytes": 44459,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 282,
+   "samples": []
+  },
+  {
+   "url": "sections.css",
+   "total": 83546,
+   "ruleBytes": 49122,
+   "usedBytes": 49122,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 380,
+   "samples": []
+  },
+  {
+   "url": "mobile.css",
+   "total": 80136,
+   "ruleBytes": 329,
+   "usedBytes": 329,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 5,
+   "samples": []
+  },
+  {
+   "url": "qr.css",
+   "total": 5287,
+   "ruleBytes": 3084,
+   "usedBytes": 3084,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 13,
+   "samples": []
+  },
+  {
+   "url": "anim.css",
+   "total": 8584,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "pay.css",
+   "total": 84547,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  },
+  {
+   "url": "styles.css",
+   "total": 67138,
+   "ruleBytes": 20065,
+   "usedBytes": 20065,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 123,
+   "samples": []
+  },
+  {
+   "url": "case.css",
+   "total": 42986,
+   "ruleBytes": 1176,
+   "usedBytes": 1176,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 8,
+   "samples": []
+  },
+  {
+   "url": "case-diagrams.css",
+   "total": 48851,
+   "ruleBytes": 0,
+   "usedBytes": 0,
+   "unusedBytes": 0,
+   "unusedCount": 0,
+   "ruleCount": 0,
+   "samples": []
+  }
+ ],
+ "errors": []
+}

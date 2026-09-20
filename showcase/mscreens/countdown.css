@@ -7,7 +7,8 @@
    The shared parts (backdrop host, header, sponsor strip) are drawn elsewhere; every rule here is under .mscreen-countdown. */
 
 .mscreen-countdown {
-  --cdn-k: 1;                  /* the display face's width: Reference's Archivo Black runs wider than Big Shoulders */
+  --cdn-k: 1;                  /* the display face's width: the wider faces set their own below */
+  --cdn-hit-k: 1;              /* the Hit! word sits a little under the count it replaces */
   --cdn-top: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px);
   --cdn-player-room: 480px;
   --cdn-call-room: 760px;
@@ -23,6 +24,10 @@
   --cst-a: 1;
   --cst-shade: rgba(0, 0, 0, .62);
 }
+/* the wider display faces: the same words at four fifths, so Punch now and the player's name
+   stay inside the panel (a root value cannot reach in past the block's own --cdn-k) */
+:root[data-typeface="orbitron"] .mscreen-countdown { --cdn-k: .8; }
+:root[data-typeface="orbitron"] .mscreen-countdown .cpl-name { font-size: calc(88px * var(--cdn-k)); }
 :root[data-appearance="light"] .mscreen-countdown {
   --cdn-soft: color-mix(in oklab, var(--strike) 11%, transparent);
   --cst-warm: rgb(255, 128, 72);
@@ -213,12 +218,14 @@
 .mscreen-countdown .ccr-face { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2cqi; }
 .mscreen-countdown .ccr-num {
   font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
-  font-size: calc(48cqi * var(--cdn-k)); line-height: .82; color: var(--cdn-heat); font-variant-numeric: tabular-nums; white-space: nowrap;
+  font-size: calc(48cqi * var(--cdn-k) * var(--cdn-hit-k)); line-height: .82; color: var(--cdn-heat); font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 .mscreen-countdown .ccr-unit, .mscreen-countdown .ccc-unit, .mscreen-countdown .ccl-unit, .mscreen-countdown .ccg-unit {
   font: var(--w-label) 48px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2);
 }
 .mscreen-countdown .cdn[data-state="hit"] .ccr-num { color: var(--strike); }
+/* about four screen pixels under the count at reading size, six or seven on the glass */
+.mscreen-countdown .cdn[data-state="hit"] { --cdn-hit-k: .985; }
 
 /* Column: twenty cells stacked as the machine's own strength column, draining from the top */
 .mscreen-countdown .ccn-col { flex-direction: row; align-items: stretch; justify-content: flex-start; gap: 64px; padding: 24px 0; }
@@ -261,7 +268,7 @@
 .mscreen-countdown .ccl-face.is-lit .ccl-unit { color: inherit; opacity: .8; }
 .mscreen-countdown .ccl-num {
   font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
-  font-size: calc(66cqi * var(--cdn-k)); line-height: .8; font-variant-numeric: tabular-nums; white-space: nowrap;
+  font-size: calc(66cqi * var(--cdn-k) * var(--cdn-hit-k)); line-height: .8; font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 
 /* Flip board: two split flap cards; each second turns a flap; twenty segments under them walk into the red */
@@ -307,7 +314,7 @@
 .mscreen-countdown .ccg-read { display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .mscreen-countdown .ccg-num {
   font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
-  font-size: calc(380px * var(--cdn-k)); line-height: .82; color: var(--cdn-heat); font-variant-numeric: tabular-nums; white-space: nowrap;
+  font-size: calc(380px * var(--cdn-k) * var(--cdn-hit-k)); line-height: .82; color: var(--cdn-heat); font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 
 /* ================================================================ CALL: the instruction (904 x 760) */

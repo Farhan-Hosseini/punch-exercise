@@ -1,0 +1,104 @@
+{
+ "viewport": {
+  "W": 1440,
+  "H": 900
+ },
+ "dsHeight": 47498,
+ "dsOverflowAt": [],
+ "dsFrames": [
+  {
+   "attr": "mon",
+   "src": "./?embed=machine&follow=0",
+   "w": 210,
+   "h": 747,
+   "inner": {
+    "ready": "complete",
+    "mode": "machine",
+    "mscreen": "default",
+    "kids": 47,
+    "broken": 0
+   }
+  },
+  {
+   "attr": "stats",
+   "src": null,
+   "w": 0,
+   "h": 0,
+   "inner": {
+    "ready": "complete",
+    "kids": 0,
+    "broken": 0
+   }
+  },
+  {
+   "attr": "score",
+   "src": "about:blank",
+   "w": 240,
+   "h": 853,
+   "inner": {
+    "ready": "complete",
+    "kids": 0,
+    "broken": 0
+   }
+  },
+  {
+   "attr": "flow",
+   "src": "./?embed=machine&follow=0",
+   "w": 210,
+   "h": 747,
+   "inner": {
+    "ready": "complete",
+    "mode": "machine",
+    "mscreen": "default",
+    "kids": 47,
+    "broken": 0
+   }
+  }
+ ],
+ "dsBroken": {
+  "n": 0,
+  "sample": [],
+  "sections": 21,
+  "empty": [
+   "ds-yourrun"
+  ]
+ },
+ "dsErrors": [],
+ "dsNet": [],
+ "dsControlCount": 7,
+ "dsControlErrors": 0,
+ "caseFrames": [
+  {
+   "embed": "hero",
+   "src": "./?embed=machine&follow=0",
+   "w": 192,
+   "h": 684,
+   "inner": {
+    "ready": "complete",
+    "mode": "machine",
+    "mscreen": "default",
+    "kids": 47
+   }
+  },
+  {
+   "embed": "seq",
+   "src": "./?embed=machine&follow=0",
+   "w": 210,
+   "h": 746,
+   "inner": {
+    "ready": "complete",
+    "mode": "machine",
+    "mscreen": "result",
+    "kids": 47
+   }
+  }
+ ],
+ "errors": [],
+ "warnings": [],
+ "netFail": [],
+ "counts": {
+  "errors": 0,
+  "warnings": 0,
+  "netFail": 0
+ }
+}

@@ -1,0 +1,35 @@
+default {"page":"default","dListeners":0,"dNodes":0,"dHeapMB":0}
+scan {"page":"scan","dListeners":108,"dNodes":636,"dHeapMB":0.1}
+connect {"page":"connect","dListeners":0,"dNodes":0,"dHeapMB":0}
+connected {"page":"connected","dListeners":0,"dNodes":0,"dHeapMB":0}
+punch {"page":"punch","dListeners":0,"dNodes":0,"dHeapMB":0}
+topup {"page":"topup","dListeners":0,"dNodes":0,"dHeapMB":0}
+checkout {"page":"checkout","dListeners":0,"dNodes":0,"dHeapMB":0.1}
+paid {"page":"paid","dListeners":0,"dNodes":0,"dHeapMB":0}
+failed {"page":"failed","dListeners":0,"dNodes":0,"dHeapMB":0}
+hit {"page":"hit","dListeners":0,"dNodes":0,"dHeapMB":0.1}
+ranks {"page":"ranks","dListeners":0,"dNodes":0,"dHeapMB":0}
+feed {"page":"feed","dListeners":0,"dNodes":0,"dHeapMB":0}
+profile {"page":"profile","dListeners":0,"dNodes":0,"dHeapMB":0}
+reel {"page":"reel","dListeners":0,"dNodes":0,"dHeapMB":0.1}
+
+--- per-page over 8 round trips ---
+┌─────────┬─────────────┬────────────┬────────┬─────────┐
+│ (index) │ page        │ dListeners │ dNodes │ dHeapMB │
+├─────────┼─────────────┼────────────┼────────┼─────────┤
+│ 0       │ 'default'   │ 0          │ 0      │ 0       │
+│ 1       │ 'scan'      │ 108        │ 636    │ 0.1     │
+│ 2       │ 'connect'   │ 0          │ 0      │ 0       │
+│ 3       │ 'connected' │ 0          │ 0      │ 0       │
+│ 4       │ 'punch'     │ 0          │ 0      │ 0       │
+│ 5       │ 'topup'     │ 0          │ 0      │ 0       │
+│ 6       │ 'checkout'  │ 0          │ 0      │ 0.1     │
+│ 7       │ 'paid'      │ 0          │ 0      │ 0       │
+│ 8       │ 'failed'    │ 0          │ 0      │ 0       │
+│ 9       │ 'hit'       │ 0          │ 0      │ 0.1     │
+│ 10      │ 'ranks'     │ 0          │ 0      │ 0       │
+│ 11      │ 'feed'      │ 0          │ 0      │ 0       │
+│ 12      │ 'profile'   │ 0          │ 0      │ 0       │
+│ 13      │ 'reel'      │ 0          │ 0      │ 0.1     │
+└─────────┴─────────────┴────────────┴────────┴─────────┘
+errors: (none)

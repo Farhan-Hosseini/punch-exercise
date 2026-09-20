@@ -1,0 +1,147 @@
+{
+ "boot": {
+  "hasApp": true,
+  "liveScore": 863412.576,
+  "dubaiBoard": [
+   "omar:931440.671",
+   "noor:918220.236",
+   "me:863412.576",
+   "leila:832405.509"
+  ],
+  "ranksLive": {
+   "machine": 3,
+   "city": 3,
+   "country": 14,
+   "global": 97
+  },
+  "ranks0": {
+   "machine": 3,
+   "city": 722,
+   "country": 5358,
+   "global": 37874
+  },
+  "ranks1000": {
+   "machine": 3,
+   "city": 720,
+   "country": 5342,
+   "global": 37760
+  },
+  "ranks500k": {
+   "machine": 3,
+   "city": 90,
+   "country": 670,
+   "global": 4734
+  },
+  "ranks999999": {
+   "machine": 3,
+   "city": 3,
+   "country": 3,
+   "global": 3
+  },
+  "painted": [
+   "machine=#3",
+   "city=#3",
+   "country=#14",
+   "global=#97",
+   "global=#97",
+   "city=#3",
+   "country=#14",
+   "machine=#3",
+   "global=#97",
+   "country=#14",
+   "city=#3",
+   "machine=#3"
+  ]
+ },
+ "controls": "[{\"id\":\"c-score\",\"k\":\"\",\"min\":\"0\",\"max\":\"1000\",\"val\":\"863\"}]",
+ "slider999999": {
+  "set": "c-score=1000",
+  "live": 999999,
+  "painted": [
+   "machine=#1",
+   "city=#1",
+   "country=#1",
+   "global=#1",
+   "global=#1",
+   "city=#1",
+   "country=#1",
+   "machine=#1",
+   "global=#1",
+   "country=#1",
+   "city=#1",
+   "machine=#1"
+  ]
+ },
+ "slider0": {
+  "set": "c-score=0",
+  "live": 0,
+  "painted": [
+   "machine=#4",
+   "city=#722",
+   "country=#5,358",
+   "global=#37,874",
+   "global=#37,874",
+   "city=#722",
+   "country=#5,358",
+   "machine=#4",
+   "global=#37,874",
+   "country=#5,358",
+   "city=#722",
+   "machine=#4"
+  ]
+ },
+ "afterSlider0_ranks999999": {
+  "machine": 4,
+  "city": 4,
+  "country": 4,
+  "global": 4
+ },
+ "afterSlider0_ranksLive": {
+  "machine": 4,
+  "city": 722,
+  "country": 5358,
+  "global": 37874
+ },
+ "hitPage": [
+  "Where you rank\n      \n        \n            This machine\n          #4\n          of 38 tonight\n        \n        \n              Dubai\n          #722\n          of 1,204 this month\n        \n        \n          UAE\n          #5358\n          of 8,930 this month\n        \n        \n            Worldwide\n          #37874\n          of 412,660 all time",
+  "#4",
+  "#722",
+  "#5358",
+  "#37874"
+ ],
+ "hitAria": [
+  "Rank 1, Sara Malik, Dubai, UAE, 999,999.480 points, up 8",
+  "Rank 2, Zayd Rahman, London, UK, 987,654.570 points, up 3",
+  "Rank 3, Lina Castillo, Madrid, ES, 942,108.840 points, up 1",
+  "Rank 4, Omar Nasser, Dubai, UAE, 931,440.671 points, down 2",
+  "Rank 5, Noor Aziz, Dubai, UAE, 918,220.236 points, up 10",
+  "Rank 6, Rami Haddad, Beirut, LB, 902,775.875 points, up 52",
+  "Rank 7, Yusuf Idris, Sharjah, UAE, 876,543.832 points, up 4",
+  "Rank 8, Hana Sato, Tokyo, JP, 861,200.988 points, no change"
+ ],
+ "embed": {
+  "hasApp": true,
+  "score": 863412.576,
+  "ranksLive": {
+   "machine": 3,
+   "city": 3,
+   "country": 14,
+   "global": 97
+  },
+  "painted": [
+   "machine=#3",
+   "city=#3",
+   "country=#14",
+   "global=#97",
+   "global=#97",
+   "city=#3",
+   "country=#14",
+   "machine=#3",
+   "global=#97",
+   "country=#14",
+   "city=#3",
+   "machine=#3"
+  ]
+ },
+ "errors": []
+}

@@ -33,7 +33,7 @@
 .mscreen .msh-venue .msh-word { width: 318px; height: 69.2px; }
 .mscreen .msh-venue .msh-where { display: grid; justify-items: end; row-gap: 16px; }
 .mscreen .msh-clock {
-  font: 800 76px/1 var(--f-display); letter-spacing: .01em; color: var(--ink-1);
+  font: 800 calc(76px * var(--disp-k, 1))/1 var(--f-display); letter-spacing: .01em; color: var(--ink-1);
   font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic;
 }
 .mscreen .msh-place {

@@ -1,0 +1,1054 @@
+{
+ "viewport": {
+  "W": 390,
+  "H": 844
+ },
+ "deep": false,
+ "boot": {
+  "loaderDone": true,
+  "mode": "mobile",
+  "apis": {
+   "showcase": true,
+   "punchApp": true,
+   "PSec": true,
+   "PunchFormat": true,
+   "designSystem": true
+  },
+  "title": "PunchApp for Robotenc"
+ },
+ "modes": {
+  "mobile": {
+   "bodyMode": "mobile",
+   "stage": false,
+   "phoneStage": false,
+   "dsStage": false,
+   "iframeSrc": null,
+   "iframeReady": false,
+   "iframeDoc": {
+    "kids": 0,
+    "err": ""
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  },
+  "machine": {
+   "bodyMode": "machine",
+   "stage": false,
+   "phoneStage": false,
+   "dsStage": false,
+   "iframeSrc": null,
+   "iframeReady": false,
+   "iframeDoc": {
+    "kids": 0,
+    "err": ""
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  },
+  "animation": {
+   "bodyMode": "animation",
+   "stage": false,
+   "phoneStage": false,
+   "dsStage": false,
+   "iframeSrc": null,
+   "iframeReady": false,
+   "iframeDoc": {
+    "kids": 0,
+    "err": ""
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  },
+  "system": {
+   "bodyMode": "system",
+   "stage": false,
+   "phoneStage": false,
+   "dsStage": false,
+   "iframeSrc": null,
+   "iframeReady": false,
+   "iframeDoc": {
+    "kids": 0,
+    "err": ""
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  }
+ },
+ "dsLiteral": "mobile",
+ "phonePages": [
+  "default",
+  "scan",
+  "connect",
+  "connected",
+  "punch",
+  "topup",
+  "checkout",
+  "paid",
+  "failed",
+  "hit",
+  "ranks",
+  "feed",
+  "profile",
+  "reel"
+ ],
+ "navPages": [
+  "default",
+  "scan",
+  "connect",
+  "connected",
+  "punch",
+  "topup",
+  "checkout",
+  "paid",
+  "failed",
+  "hit",
+  "reel",
+  "ranks",
+  "feed",
+  "profile"
+ ],
+ "pages": [
+  {
+   "page": "default",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "default",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 5014,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "scan",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "scan",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 2355,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "connect",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "connect",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 2333,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "connected",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "connected",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 3021,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "punch",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "punch",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 1429,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "topup",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "topup",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 2039,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "checkout",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "checkout",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 5759,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "paid",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "paid",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 2927,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "failed",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "failed",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 4271,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "hit",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "hit",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 4863,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "reel",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "reel",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 4136,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "ranks",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "ranks",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 2102,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "feed",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "feed",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 5809,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "profile",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "profile",
+   "h": 0,
+   "w": 0,
+   "visible": false,
+   "textLen": 951,
+   "brokenImgs": [],
+   "brokenN": 0
+  }
+ ],
+ "machinePages": [
+  "default",
+  "attract",
+  "scan",
+  "countdown",
+  "loading",
+  "stats",
+  "score",
+  "record"
+ ],
+ "navScreens": [
+  "default",
+  "attract",
+  "scan",
+  "countdown",
+  "loading",
+  "result",
+  "score",
+  "record"
+ ],
+ "screens": [
+  {
+   "screen": "default",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "attract",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "scan",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "countdown",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "loading",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "result",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "score",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "record",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  }
+ ],
+ "caseStudy": {
+  "scrollH": 0,
+  "newErrors": 0,
+  "hOver": 0,
+  "brokenImgs": [],
+  "brokenN": 0,
+  "vids": [
+   {
+    "src": "reveal-live-1080x3840.mp4",
+    "err": 0,
+    "rs": 0
+   },
+   {
+    "src": "run-live-928x1960.mp4",
+    "err": 0,
+    "rs": 0
+   }
+  ],
+  "spill": [],
+  "emptySections": [
+   "cs-sec cs-dark cs-hero",
+   "cs-sec cs-env",
+   "case-problem",
+   "case-machine",
+   "case-phone",
+   "case-motion",
+   "case-ds",
+   "case-system",
+   "case-notes",
+   "case-ai",
+   "cs-sec cs-dark cs-close-sec"
+  ],
+  "deadAnchors": []
+ },
+ "caseClosed": {
+  "hidden": true,
+  "open": false,
+  "bodyLock": false
+ },
+ "brief": {
+  "newErrors": 0,
+  "hidden": false,
+  "open": true,
+  "h": 0,
+  "scrollH": 0,
+  "textLen": 6573,
+  "brokenImgs": []
+ },
+ "briefClosed": true,
+ "help": {
+  "newErrors": 0,
+  "hidden": false,
+  "open": true,
+  "h": 0,
+  "textLen": 771
+ },
+ "helpClosed": true,
+ "panel": {
+  "hidden": false,
+  "open": true,
+  "buttons": 62,
+  "ranges": [
+   "c-score"
+  ],
+  "rows": 20,
+  "accs": [
+   "page",
+   "page2",
+   "shared"
+  ]
+ },
+ "controls": [
+  {
+   "control": "typeface orbitron",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "typeface chakra",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "typeface arena",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "appearance light",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "appearance dark",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo boxer",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo glove",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo upright",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo pair",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo bag",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo fist",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "device android",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "device iphone",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "wallet three credits",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "wallet no credits",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "phone fit to window",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "phone actual size",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "replay the flow",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "glass actual size",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "glass reading size",
+   "newErrors": 0,
+   "over": 0
+  }
+ ],
+ "scoreSlider": [
+  {
+   "v": 0,
+   "newErrors": 0,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 1,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 250,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 750,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 1000,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  }
+ ],
+ "api": [
+  {
+   "expr": "window.showcase.decimals(false)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.decimals(true)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.appearance('light')",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.appearance('dark')",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.zoom(1.4)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.zoom(1)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.theme('arena')",
+   "newErrors": 0,
+   "ok": true
+  }
+ ],
+ "backdrops": [],
+ "afterReset": {
+  "mode": "machine",
+  "psec": 3
+ },
+ "final": {
+  "brokenImgs": [],
+  "brokenN": 0,
+  "fonts": "loaded",
+  "mode": "machine"
+ },
+ "overflows": [],
+ "errors": [
+  {
+   "step": "customise: score slider 1",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  },
+  {
+   "step": "customise: score slider 250",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  },
+  {
+   "step": "customise: score slider 750",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  },
+  {
+   "step": "customise: score slider 1000",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  }
+ ],
+ "warnings": [],
+ "netFail": [],
+ "counts": {
+  "errors": 4,
+  "warnings": 0,
+  "netFail": 0
+ },
+ "http4xx": []
+}

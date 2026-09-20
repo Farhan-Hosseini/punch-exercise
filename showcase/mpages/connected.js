@@ -27,7 +27,7 @@
   function say() {
     if (!live) return
     const held = page.dataset.held !== 'no'
-    live.textContent = `Connected to Machine 07 at Dubai Mall, by the Ice Rink. ${held ? 'One credit held for this turn.' : 'A practice go, nothing is taken.'} Step up to the pad: the glass starts the count.`
+    live.textContent = `Connected to Machine 07 at Dubai Mall, Grand Atrium. ${held ? 'One credit held for this turn.' : 'A practice go, nothing is taken.'} Step up to the pad: the glass starts the count.`
   }
 
   /* ------------------------------------------------------------ the page's name follows the Linked design on show */

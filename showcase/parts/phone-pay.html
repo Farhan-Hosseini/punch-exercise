@@ -74,7 +74,7 @@
 
           <div class="pyo pyo-strip" data-sv="Strip">
             <span class="pyo-strip-tile" data-claw aria-hidden="true"></span>
-            <span class="pyo-strip-copy"><b>Three free Monster cans</b><span>With the Group run, at the Ice Rink kiosk</span></span>
+            <span class="pyo-strip-copy"><b>Three free Monster cans</b><span>With the Group run, at the kiosk</span></span>
             <button class="pyo-btn pyo-btn-sm" type="button" data-pay-offer><span class="pyo-off">Add</span><span class="pyo-on"><span data-lucide="check"></span>Added</span></button>
           </div>
         </div>
@@ -119,7 +119,7 @@
             <div class="pys-receipt-head"><span class="m-cap"><span data-lucide="receipt"></span>Your order</span><button class="pay-link" type="button" data-pay-change aria-label="Change the credit pack">Change</button></div>
             <dl class="pys-lines">
               <div><dt><span data-pay-f="name">Group run</span><small><span data-pay-f="credits">3 credits</span>, <span data-pay-f="whereShort">any machine</span></small></dt><dd data-pay-f="price">AED 25.00</dd></div>
-              <div data-pay-cans><dt>Monster Energy<small>Three cans at the Ice Rink kiosk</small></dt><dd class="pys-free">Free</dd></div>
+              <div data-pay-cans><dt>Monster Energy<small>Three cans at the kiosk</small></dt><dd class="pys-free">Free</dd></div>
               <div><dt>VAT<small>Included in the price</small></dt><dd data-pay-f="vat">AED 1.19</dd></div>
             </dl>
             <div class="pys-receipt-total"><span class="pay-name">Total</span><span class="pay-price" data-pay-f="total"><small>AED</small>25.00</span></div>
@@ -160,10 +160,13 @@
         <div class="pay-sec pay-sec-method" data-sec="method" data-sec-label="Pay with" data-sv-names="List|Wallet first|Tiles|Card|Tabs">
           <div class="pay-methods" id="payMethods" role="radiogroup" aria-labelledby="payWithLabel"></div>
         </div>
+        <!-- the card fields are a drawing of a checkout, not one: nothing is sent anywhere. The autocomplete and
+             password-manager opt-outs are there so no browser offers a real card to a form with nothing behind it, and
+             pay.js clears them on the way out. -->
         <div class="pay-newcard m-glass" id="payNewCard" hidden>
-          <label class="pay-field pay-field-wide"><span>Card number</span><input id="payCardNo" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="23" spellcheck="false"></label>
-          <label class="pay-field"><span>Expiry</span><input id="payCardExp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" maxlength="7" spellcheck="false"></label>
-          <label class="pay-field"><span>Security code</span><input id="payCardCvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="CVC" maxlength="4" spellcheck="false"></label>
+          <label class="pay-field pay-field-wide"><span>Card number</span><input id="payCardNo" type="text" inputmode="numeric" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" maxlength="23" spellcheck="false"></label>
+          <label class="pay-field"><span>Expiry</span><input id="payCardExp" type="text" inputmode="numeric" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" placeholder="MM / YY" maxlength="7" spellcheck="false"></label>
+          <label class="pay-field"><span>Security code</span><input id="payCardCvc" type="text" inputmode="numeric" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" placeholder="CVC" maxlength="4" spellcheck="false"></label>
           <p class="pay-error" id="payCardError" role="alert" hidden></p>
         </div>
         <p class="pay-note"><span data-lucide="shield-check"></span><span>Payments are encrypted. PunchApp never sees your full card number.</span></p>

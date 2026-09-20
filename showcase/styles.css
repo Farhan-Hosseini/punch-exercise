@@ -24,9 +24,6 @@
 @font-face { font-family: "Anton"; src: url("fonts/anton-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Orbitron"; src: url("fonts/orbitron-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 @font-face { font-family: "Orbitron"; src: url("fonts/orbitron-latin-900-normal.woff2") format("woff2"); font-weight: 900; font-display: swap; }
-@font-face { font-family: "Chakra Petch"; src: url("fonts/chakra-petch-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Chakra Petch"; src: url("fonts/chakra-petch-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Chakra Petch"; src: url("fonts/chakra-petch-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 @font-face { font-family: "Sora"; src: url("fonts/sora-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Sora"; src: url("fonts/sora-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Sora"; src: url("fonts/sora-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
@@ -1054,15 +1051,18 @@ body:not([data-mode="mobile"]) .topbar > [data-pagenav="page"] { display: none; 
 /* ------------------------------------------------------------ the typeface, chosen in Customise under General settings.
    Each face brings its own two metrics as well as its name: --num-w is how wide a digit sits on its own width and
    --cap is its cap height, and every big number on both surfaces is sized from those, so a face swapped without them
-   would overflow its column. Body text stays in Barlow throughout: Orbitron and Chakra Petch are display faces and
-   neither is readable at fourteen pixels on a phone. */
+   would overflow its column. Body text stays in Barlow throughout: Orbitron is a display face and
+   not readable at fourteen pixels on a phone. */
 :root[data-typeface="orbitron"] {
   --f-display: "Orbitron", "Arial Black", Arial, sans-serif;
   --w-display: 900;
   --display-track: .005em;
   --num-w: .72; --cap: .7;
+  /* the machine's display headings are sized in glass pixels for Big Shoulders; the wider faces take them at a
+     fraction so Scan to play, Today's best and Leaderboard stay inside the panel */
+  --disp-k: .8;
   --f-label: "Orbitron", "Arial Black", sans-serif;
-  --w-label: 700; --label-track: .1em;
+  --w-label: 700; --label-track: .05em;   /* Orbitron is wide enough on its own: the labels take half the tracking */
 }
 :root[data-typeface="orbitron"] .m-app {
   --m-f-title: "Orbitron", system-ui, sans-serif;
@@ -1071,32 +1071,18 @@ body:not([data-mode="mobile"]) .topbar > [data-pagenav="page"] { display: none; 
   --m-w-label: 700; --m-track-label: .1em;
   --m-num-w: .78;
 }
-:root[data-typeface="chakra"] {
-  --f-display: "Chakra Petch", "Arial Narrow", sans-serif;
-  --w-display: 700;
-  --display-track: .01em;
-  --num-w: .55; --cap: .72;
-  --f-label: "Chakra Petch", sans-serif;
-  --w-label: 600; --label-track: .14em;
-}
-:root[data-typeface="chakra"] .m-app {
-  --m-f-title: "Chakra Petch", system-ui, sans-serif;
-  --m-w-title: 700; --m-w-heavy: 700;
-  --m-f-label: "Chakra Petch", sans-serif;
-  --m-w-label: 600;
-  --m-num-w: .58;
-}
 /* the picker's own samples, each set in the face it offers */
-.faces { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.faces { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .face-tile {
-  appearance: none; border: 0; cursor: pointer; display: grid; gap: 6px; justify-items: center;
+  appearance: none; cursor: pointer; display: grid; gap: 6px; justify-items: center;
   padding: 16px 8px 12px; border-radius: 12px;
-  background: var(--shell-pill, rgba(0, 0, 0, .05)); color: inherit;
-  box-shadow: inset 0 0 0 1px transparent;
+  background: #FFFFFF; border: 2px solid var(--panel-line); color: var(--panel-ink);
+  transition: border-color .15s ease, box-shadow .15s ease;
 }
-.face-tile[aria-checked="true"] { box-shadow: inset 0 0 0 2px var(--panel-ink); }
-.face-tile-s { font-size: 22px; line-height: 1; font-variant-numeric: tabular-nums; }
-.face-tile-n { font: 500 12px/1 "Barlow", sans-serif; opacity: .7; }
+.face-tile:hover { border-color: color-mix(in oklab, var(--panel-ink) 30%, transparent); }
+.face-tile[aria-checked="true"] { border-color: var(--panel-ink); box-shadow: 0 8px 18px -12px rgba(0, 0, 0, .5); }
+.face-tile:focus-visible { outline: 2px solid var(--panel-ink); outline-offset: 3px; }
+.face-tile-s { font-size: 22px; line-height: 1; font-variant-numeric: tabular-nums; color: var(--panel-ink); }
+.face-tile-n { font: 500 12px/1 "Barlow", sans-serif; color: var(--panel-mute); }
 .face-tile[data-typeface="arena"] .face-tile-s { font: 900 22px/1 "Big Shoulders Display", sans-serif; }
 .face-tile[data-typeface="orbitron"] .face-tile-s { font: 900 18px/1 "Orbitron", sans-serif; }
-.face-tile[data-typeface="chakra"] .face-tile-s { font: 700 20px/1 "Chakra Petch", sans-serif; }

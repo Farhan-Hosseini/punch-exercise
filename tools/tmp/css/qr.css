@@ -1,0 +1,74 @@
+/* The one QR style (qr.js, PunchQR): the phone app's scan code on its glass tile, for the phone and the machine alike.
+   Size it with --pqr-size on the element or on any ancestor (217px when nothing says); everything inside scales from that
+   one length, so a 96 px tile on a phone card and a 900 px tile on the glass are the same drawing. Measured from the
+   phone's scan page (mobile.css .m-qr-frame): a 217 x 213 tile, 16 px corners, a 1 px rim, a 161 px code, a 7.45 px frost,
+   the look's lift below it, a red scan line 14 px in from each side travelling from 24 to 186 px, and the red glow art
+   behind at 235 %. States: .is-scanning (a faster scan line), .is-found (the tick). Tokens follow the four looks; inside
+   the phone they take the phone's own --m-qr-* so the two can never drift apart. */
+:root {
+  --pqr-ink: #FAF9F9; --pqr-bg: rgba(38, 38, 38, .2); --pqr-rim: #FFFFFF; --pqr-red: #FA5453; --pqr-veil: rgba(11, 11, 12, .78);
+  --pqr-hi: rgba(255, 255, 255, .07);
+  /* the lift under the tile, as fractions of its size (the phone's --m-lift at 217 px): y, blur, spread, colour, and a
+     hairline shadow's colour for daylight */
+  --pqr-ly: 0; --pqr-lb: 0; --pqr-ls: 0; --pqr-lc: transparent; --pqr-lh: transparent;
+}
+:root[data-appearance="light"] {
+  --pqr-ink: #151413; --pqr-bg: rgba(255, 255, 255, .8); --pqr-rim: rgba(21, 20, 19, .82); --pqr-red: #D11A19; --pqr-veil: rgba(245, 243, 239, .8);
+  --pqr-hi: rgba(21, 20, 19, .05);
+  --pqr-ly: .0645; --pqr-lb: .129; --pqr-ls: -.092; --pqr-lc: rgba(70, 45, 30, .4); --pqr-lh: rgba(70, 45, 30, .06);
+}
+.m-app .pqr {
+  --pqr-ink: var(--m-qr-ink); --pqr-bg: var(--m-qr-bg); --pqr-rim: var(--m-qr-rim); --pqr-red: var(--m-red-soft);
+  --pqr-veil: color-mix(in srgb, var(--m-ground) 78%, transparent); --pqr-hi: var(--m-glass-hi);
+}
+
+.pqr {
+  --pqr-s: var(--pqr-size, 217px);
+  --pqr-lift: 0 calc(var(--pqr-s) * .0046) calc(var(--pqr-s) * .0092) var(--pqr-lh),
+    0 calc(var(--pqr-s) * var(--pqr-ly)) calc(var(--pqr-s) * var(--pqr-lb)) calc(var(--pqr-s) * var(--pqr-ls)) var(--pqr-lc);
+  position: relative; isolation: isolate; flex: none;
+  width: var(--pqr-s); height: calc(var(--pqr-s) * .9816);
+  display: grid; place-items: center;
+}
+.pqr[hidden] { display: none; }
+.pqr-glow {
+  position: absolute; left: 50%; top: 50%; z-index: -1;
+  width: 235.2%; height: 238.7%; max-width: none; transform: translate(-50%, -50%); pointer-events: none;
+}
+.pqr-frame {
+  position: relative; overflow: hidden; width: 100%; height: 100%;
+  display: grid; place-items: center;
+  border-radius: calc(var(--pqr-s) * .0737);
+  background: var(--pqr-bg); border: max(1px, calc(var(--pqr-s) * .0046)) solid var(--pqr-rim);
+  box-shadow: var(--pqr-lift);
+  -webkit-backdrop-filter: blur(calc(var(--pqr-s) * .0343)); backdrop-filter: blur(calc(var(--pqr-s) * .0343));
+  transition: box-shadow .3s ease, border-color .3s ease;
+}
+/* the code is 161 of 217 across, square, centred in the slightly shorter tile */
+.pqr-code { display: block; width: calc(var(--pqr-s) * .742); height: calc(var(--pqr-s) * .742); color: var(--pqr-ink); }
+.pqr-code svg { display: block; width: 100%; height: 100%; }
+/* the scan line: a full-height box whose bottom edge is the line; it travels from 24 to 186 of the tile's 213 */
+.pqr-scan { position: absolute; left: 6.45%; right: 6.45%; top: 0; height: 100%; pointer-events: none; animation: pqr-scan 2.6s ease-in-out infinite; }
+.pqr-scan::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: max(2px, calc(var(--pqr-s) * .0092)); border-radius: 99px;
+  background: linear-gradient(90deg, transparent, var(--pqr-red), transparent);
+  box-shadow: 0 0 calc(var(--pqr-s) * .0645) calc(var(--pqr-s) * .0092) color-mix(in srgb, var(--pqr-red) 70%, transparent);
+}
+@keyframes pqr-scan { 0%, 100% { transform: translateY(-87.8%); opacity: 0; } 12%, 88% { opacity: 1; } 50% { transform: translateY(-11.8%); } }
+.pqr.is-scanning .pqr-scan { animation-duration: .9s; }
+/* a code that is also a control (the Result screen's run code) answers the pointer the way the phone's tile does */
+:is(button, a):hover > .pqr .pqr-frame, .pqr:is(button, a):hover .pqr-frame { box-shadow: var(--pqr-lift), 0 0 0 calc(var(--pqr-s) * .0184) var(--pqr-hi); }
+.pqr-done { position: absolute; inset: 0; display: grid; place-items: center; background: var(--pqr-veil); opacity: 0; transition: opacity .25s ease; }
+.pqr-done::after {
+  content: ""; width: 12%; height: 21.6%;
+  border-right: calc(var(--pqr-s) * .0276) solid var(--pqr-ink); border-bottom: calc(var(--pqr-s) * .0276) solid var(--pqr-ink);
+  transform: translateY(-12%) rotate(45deg) scale(.6); opacity: 0; transition: transform .35s cubic-bezier(.2, 1.4, .4, 1), opacity .2s ease;
+}
+.pqr.is-found .pqr-frame { border-color: var(--pqr-red); box-shadow: 0 0 0 calc(var(--pqr-s) * .0184) color-mix(in srgb, var(--pqr-red) 25%, transparent), 0 0 calc(var(--pqr-s) * .184) color-mix(in srgb, var(--pqr-red) 45%, transparent); }
+.pqr.is-found .pqr-done { opacity: 1; }
+.pqr.is-found .pqr-done::after { opacity: 1; transform: translateY(-12%) rotate(45deg) scale(1); }
+.pqr.is-found .pqr-scan { opacity: 0; animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .pqr-scan { animation: none; transform: translateY(-50%); opacity: .8; }
+}

@@ -1,0 +1,233 @@
+{
+ "reducedMatches": true,
+ "boot": {
+  "loaderDone": true,
+  "mode": "mobile",
+  "apis": true
+ },
+ "coldBytes": {
+  "total": 8696171,
+  "requests": 119,
+  "top": [
+   [
+    "/",
+    638478
+   ],
+   [
+    "/assets/photos/lib/mall-night-1.jpg",
+    481160
+   ],
+   [
+    "/assets/photos/lib/arcade-neon-4.jpg",
+    471912
+   ],
+   [
+    "/mscreens.css",
+    400543
+   ],
+   [
+    "/mpages.css",
+    354318
+   ],
+   [
+    "/assets/photos/lib/arcade-neon-3.jpg",
+    322793
+   ],
+   [
+    "/assets/photos/lib/dubai-night-12.jpg",
+    315327
+   ],
+   [
+    "/assets/photos/lib/dubai-night-5.jpg",
+    310082
+   ],
+   [
+    "/assets/photos/lib/dubai-night-10.jpg",
+    272254
+   ],
+   [
+    "/assets/photos/lib/dubai-night-22.jpg",
+    243304
+   ],
+   [
+    "/assets/photos/lib/bag-strike-23.jpg",
+    214942
+   ],
+   [
+    "/assets/photos/lib/friends-5.jpg",
+    214778
+   ],
+   [
+    "/assets/photos/lib/manifest.json",
+    213894
+   ],
+   [
+    "/assets/photos/lib/dubai-night-25.jpg",
+    210492
+   ]
+  ]
+ },
+ "statsCost": {
+  "js": 59301,
+  "cssFileOnDisk": "see mscreens.css (concatenated)",
+  "mscreensCss": 400543
+ },
+ "reducedPages": [
+  {
+   "pg": "default",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "scan",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "connect",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "connected",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "punch",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "topup",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "checkout",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "paid",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "failed",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "hit",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "reel",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "ranks",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "feed",
+   "newErrors": 0,
+   "h": 956
+  },
+  {
+   "pg": "profile",
+   "newErrors": 0,
+   "h": 956
+  }
+ ],
+ "reducedScreens": [
+  {
+   "k": "default",
+   "newErrors": 0,
+   "attr": "default"
+  },
+  {
+   "k": "attract",
+   "newErrors": 0,
+   "attr": "attract"
+  },
+  {
+   "k": "scan",
+   "newErrors": 0,
+   "attr": "scan"
+  },
+  {
+   "k": "countdown",
+   "newErrors": 0,
+   "attr": "countdown"
+  },
+  {
+   "k": "loading",
+   "newErrors": 0,
+   "attr": "loading"
+  },
+  {
+   "k": "result",
+   "newErrors": 0,
+   "attr": "result"
+  },
+  {
+   "k": "score",
+   "newErrors": 0,
+   "attr": "score"
+  },
+  {
+   "k": "record",
+   "newErrors": 0,
+   "attr": "record"
+  }
+ ],
+ "reducedCase": {
+  "h": 26261,
+  "hOver": 0
+ },
+ "embedChrome": {
+  "topbar": {
+   "disp": "none",
+   "vis": "visible",
+   "h": 0,
+   "rects": 0
+  },
+  "pagenav": {
+   "disp": "none",
+   "vis": "visible",
+   "h": 0,
+   "rects": 0
+  },
+  "custom": {
+   "disp": "none",
+   "vis": "visible",
+   "h": 0,
+   "rects": 0
+  },
+  "loader": {
+   "disp": "none",
+   "vis": "hidden",
+   "h": 0,
+   "rects": 0
+  },
+  "machineH": 900,
+  "docH": 901,
+  "vpH": 900,
+  "liveRegions": [
+   "off"
+  ]
+ },
+ "errors": [],
+ "warnings": [],
+ "netFail": [],
+ "counts": {
+  "errors": 0,
+  "warnings": 0,
+  "netFail": 0
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "csp": "default-src 'self'; script-src 'self' 'sha256-1D6zsW/62B4NrN...",
+ "pagebarFound": 14,
+ "pages": [
+  "default",
+  "scan",
+  "connect",
+  "connected",
+  "punch",
+  "topup",
+  "checkout",
+  "paid",
+  "failed",
+  "hit",
+  "reel",
+  "ranks",
+  "feed",
+  "profile"
+ ],
+ "perPage": [
+  {
+   "page": "default",
+   "shown": "default",
+   "csp": 0
+  },
+  {
+   "page": "scan",
+   "shown": "scan",
+   "csp": 0
+  },
+  {
+   "page": "connect",
+   "shown": "connect",
+   "csp": 0
+  },
+  {
+   "page": "connected",
+   "shown": "connected",
+   "csp": 0
+  },
+  {
+   "page": "punch",
+   "shown": "punch",
+   "csp": 0
+  },
+  {
+   "page": "topup",
+   "shown": "topup",
+   "csp": 0
+  },
+  {
+   "page": "checkout",
+   "shown": "checkout",
+   "csp": 0
+  },
+  {
+   "page": "paid",
+   "shown": "paid",
+   "csp": 0
+  },
+  {
+   "page": "failed",
+   "shown": "failed",
+   "csp": 0
+  },
+  {
+   "page": "hit",
+   "shown": "hit",
+   "csp": 0
+  },
+  {
+   "page": "reel",
+   "shown": "reel",
+   "csp": 0
+  },
+  {
+   "page": "ranks",
+   "shown": "ranks",
+   "csp": 0
+  },
+  {
+   "page": "feed",
+   "shown": "feed",
+   "csp": 0
+  },
+  {
+   "page": "profile",
+   "shown": "profile",
+   "csp": 0
+  }
+ ],
+ "commentBtn": 8,
+ "sheetOpen": true,
+ "submitted": "ok",
+ "listHtml": "<li><span class=\"m-rcom-ava\" data-mono=\"\"><img src=\"assets/app/avatars/sara.jpg\" alt=\"\" style=\"\"></span><div><b>Sara Malik</b><time>Now</time><p>&lt;img src=x onerror=alert(1)&gt;&lt;svg onload=alert(1)&gt;</p></div></li><li><span class=\"m-rcom-ava\" data-mono=\"\"><img src=\"assets/video/lib/shadow-low-v.jpg\" alt=\"\" style",
+ "xssFired": 0,
+ "imgTagsInList": 5,
+ "cspAfterComment": 0,
+ "psecRows": 68,
+ "psecDesigns": 332,
+ "total": 0,
+ "byDirective": {},
+ "sample": [],
+ "pageOk": true,
+ "loaderGone": true,
+ "jsErrors": [],
+ "cspLines": 0
+}

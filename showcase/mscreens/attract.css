@@ -45,6 +45,9 @@
   --msa-scrim: linear-gradient(180deg, rgba(8, 8, 9, .05) 30%, rgba(8, 8, 9, .86) 100%);
   --msa-letter: .5;
 }
+/* the wider display faces: --msa-k is the screen's own width factor, so their words stay inside the panel */
+/* --msa-letter is the display face's average capital width, which the title fits eleven letters of into its row */
+:root[data-typeface="orbitron"] .mscreen-attract { --msa-k: .6; --msa-letter: .86; }
 :root[data-appearance="light"] .mscreen-attract {
   --msa-lead: linear-gradient(135deg, color-mix(in oklab, var(--strike) 12%, #FFFFFF), #FFFFFF 60%);
   --msa-lead-line: 3px solid color-mix(in oklab, var(--strike) 55%, transparent);

@@ -1,0 +1,20 @@
+import { open, sleep } from './cdp.mjs'
+const URL = 'http://localhost:5770/'
+const c = await open({ W: 1440, H: 1400 })
+await c.send('Page.navigate', { url: URL }); await sleep(3000)
+await c.js('localStorage.clear(); 1')
+await c.send('Page.navigate', { url: URL }); await sleep(6500)
+await c.js(`window.showcase.mode('system');1`); await sleep(3000)
+console.log('ds stage hidden        :', await c.js(`document.getElementById('dsStage')?.hidden`))
+console.log('[data-ds-live] count   :', await c.js(`document.querySelectorAll('[data-ds-live]').length`))
+console.log('closest .ds-sec        :', await c.jsj(`[...document.querySelectorAll('[data-ds-live]')].map(f=>({k:f.dataset.dsLive, hasSec: !!f.closest('.ds-sec'), inDoc: f.isConnected}))`))
+console.log('[data-ds-monframe] src :', await c.js(`document.querySelector('[data-ds-monframe]')?.getAttribute('src')`))
+console.log('[data-ds-flowframe] src:', await c.js(`document.querySelector('[data-ds-flowframe]')?.getAttribute('src')`))
+// scroll to the section and watch the rect
+await c.js(`document.querySelector('[data-ds-live="stats"]').closest('.ds-sec')?.scrollIntoView({block:'center'});1`); await sleep(1200)
+console.log('sec rect after scroll  :', await c.jsj(`(()=>{const s=document.querySelector('[data-ds-live="stats"]').closest('.ds-sec'); const r=s.getBoundingClientRect(); return {top:Math.round(r.top), h:Math.round(r.height), vis: s.checkVisibility()}})()`))
+await sleep(6000)
+console.log('live flag after wait   :', await c.js(`document.querySelector('[data-ds-live="stats"]')?.dataset.live`))
+console.log('monframe after wait    :', await c.js(`document.querySelector('[data-ds-monframe]')?.getAttribute('src')`))
+console.log('errors:', c.errs.slice(0,10).join('\n')||'(none)')
+c.close()

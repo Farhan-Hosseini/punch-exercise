@@ -7,7 +7,7 @@
    has chosen, both as radio groups: Packs on Buy credits (List, Tiles, Photo cards, Dial, Per punch) and Pay with on the
    checkout (List, Wallet first, Tiles, Card, Tabs). The rest are markup, and this file fills every copy of their
    fields: [data-pay-f] on the checkout, [data-paid-f] on the paid screen, [data-claw] wherever the sponsor signs.
-   The Group run carries the Monster Energy bundle (a cold can for each of its three punches, at the Ice Rink kiosk):
+   The Group run carries the Monster Energy bundle (a cold can for each of its three punches, at the kiosk):
    every Offer design picks it, and the order and the confirmation show the cans while it is the pack.
    Round eight: every Packs design ends with a Custom pack (a stepper from 1 to 50 punches, each punch at the rate of
    the biggest pack the number reaches), which flows through checkout and paid exactly like a fixed pack; and the
@@ -642,8 +642,14 @@
   }
   ssPanel.addEventListener('pointerup', ssDragEnd)
   ssPanel.addEventListener('pointercancel', ssDragEnd)
-  // leaving the checkout takes the sheet with it
-  document.addEventListener('mpage', (e) => { if (e.detail && e.detail.from === 'checkout' && e.detail.page !== 'checkout') ssClose(true) })
+  // leaving the checkout takes the sheet with it, and the card fields with that: whatever was typed there is gone
+  // the moment the page changes, rather than sitting in the DOM for the rest of the visit
+  document.addEventListener('mpage', (e) => {
+    if (!(e.detail && e.detail.from === 'checkout' && e.detail.page !== 'checkout')) return
+    ssClose(true)
+    for (const id of ['payCardNo', 'payCardExp', 'payCardCvc']) { const f = $(id); if (f) { f.value = ''; f.removeAttribute('aria-invalid') } }
+    const err = $('payCardError'); if (err) { err.textContent = ''; err.hidden = true }
+  })
 
   // another card: light formatting and the checks a real form would make before charging
   const cardNo = $('payCardNo'), cardExp = $('payCardExp'), cardCvc = $('payCardCvc')

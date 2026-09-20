@@ -1,0 +1,42 @@
+{
+ "controlCount": 695,
+ "progress": 680,
+ "badControls": [],
+ "errorsSoFar": 0,
+ "netSoFar": 0,
+ "after": {
+  "pageOverflow": 0,
+  "brokenImgs": [],
+  "brokenN": 0,
+  "emptySections": [
+   "ds-principles",
+   "ds-brand",
+   "ds-colour",
+   "ds-type",
+   "ds-score",
+   "ds-space",
+   "ds-icons",
+   "ds-pages",
+   "ds-bg",
+   "ds-qr",
+   "ds-photo",
+   "ds-sponsor",
+   "ds-bigscore",
+   "ds-strike",
+   "ds-states",
+   "ds-reel",
+   "ds-loader",
+   "ds-components",
+   "ds-flow",
+   "ds-logo"
+  ]
+ },
+ "errors": [],
+ "warnings": [],
+ "netFail": [],
+ "counts": {
+  "errors": 0,
+  "warnings": 0,
+  "netFail": 0
+ }
+}

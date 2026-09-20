@@ -1,0 +1,124 @@
+{
+ "dupProps": [
+  {
+   "file": "mscreens.css",
+   "line": 3057,
+   "sel": ".mscreen-record .rm-face",
+   "prop": "display",
+   "first": "block",
+   "second": "grid"
+  }
+ ],
+ "backdropNoPrefix": [],
+ "sameSelConflicts": [
+  {
+   "file": "ds.css",
+   "sel": ".ds-rule",
+   "ctx": "",
+   "prop": "grid-template-columns",
+   "lineA": 123,
+   "valA": "132px minmax(0, 1fr) minmax(0, 1.25fr)",
+   "lineB": 488,
+   "valB": "132px minmax(0, 1fr)"
+  },
+  {
+   "file": "ds.css",
+   "sel": ".ds-faces",
+   "ctx": "",
+   "prop": "grid-template-columns",
+   "lineA": 239,
+   "valA": "repeat(4, minmax(0, 1fr))",
+   "lineB": 486,
+   "valB": "repeat(2, minmax(0, 1fr))"
+  },
+  {
+   "file": "ds.css",
+   "sel": ".ds-logos",
+   "ctx": "",
+   "prop": "grid-template-columns",
+   "lineA": 443,
+   "valA": "repeat(6, minmax(0, 1fr))",
+   "lineB": 487,
+   "valB": "repeat(3, minmax(0, 1fr))"
+  },
+  {
+   "file": "styles.css",
+   "sel": ".topbar",
+   "ctx": "",
+   "prop": "align-items",
+   "lineA": 287,
+   "valA": "center",
+   "lineB": 852,
+   "valB": "start"
+  },
+  {
+   "file": "styles.css",
+   "sel": "input[type=\"range\"]",
+   "ctx": "",
+   "prop": "height",
+   "lineA": 610,
+   "valA": "24px",
+   "lineB": 965,
+   "valB": "44px"
+  },
+  {
+   "file": "styles.css",
+   "sel": ".sec-btn",
+   "ctx": "",
+   "prop": "width",
+   "lineA": 679,
+   "valA": "40px",
+   "lineB": 964,
+   "valB": "44px"
+  },
+  {
+   "file": "styles.css",
+   "sel": ".sec-btn",
+   "ctx": "",
+   "prop": "height",
+   "lineA": 679,
+   "valA": "40px",
+   "lineB": 964,
+   "valB": "44px"
+  },
+  {
+   "file": "styles.css",
+   "sel": ".pagenav .pagesub button",
+   "ctx": "",
+   "prop": "height",
+   "lineA": 945,
+   "valA": "32px",
+   "lineB": 960,
+   "valB": "36px"
+  },
+  {
+   "file": "styles.css",
+   "sel": ".pagenav .pagesub button",
+   "ctx": "",
+   "prop": "height",
+   "lineA": 960,
+   "valA": "36px",
+   "lineB": 977,
+   "valB": "28px"
+  },
+  {
+   "file": "styles.css",
+   "sel": ".pagenav .pagesub button",
+   "ctx": "",
+   "prop": "padding",
+   "lineA": 945,
+   "valA": "0 16px",
+   "lineB": 977,
+   "valB": "0 12px"
+  }
+ ],
+ "feat": {
+  "container": 1,
+  "has": 18,
+  "colorMix": 707,
+  "supports": 1,
+  "property": 2,
+  "textBox": 41
+ },
+ "ruleCount": 9011
+}

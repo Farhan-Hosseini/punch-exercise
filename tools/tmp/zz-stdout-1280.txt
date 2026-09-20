@@ -1,0 +1,1181 @@
+{
+ "viewport": {
+  "W": 1280,
+  "H": 800
+ },
+ "deep": true,
+ "boot": {
+  "loaderDone": true,
+  "mode": "mobile",
+  "apis": {
+   "showcase": true,
+   "punchApp": true,
+   "PSec": true,
+   "PunchFormat": true,
+   "designSystem": true
+  },
+  "title": "PunchApp for Robotenc"
+ },
+ "modes": {
+  "mobile": {
+   "bodyMode": "mobile",
+   "stage": false,
+   "phoneStage": true,
+   "dsStage": false,
+   "iframeSrc": null,
+   "iframeReady": false,
+   "iframeDoc": {
+    "kids": 0,
+    "err": ""
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  },
+  "machine": {
+   "bodyMode": "machine",
+   "stage": true,
+   "phoneStage": false,
+   "dsStage": false,
+   "iframeSrc": null,
+   "iframeReady": false,
+   "iframeDoc": {
+    "kids": 0,
+    "err": ""
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  },
+  "animation": {
+   "bodyMode": "animation",
+   "stage": false,
+   "phoneStage": true,
+   "dsStage": false,
+   "iframeSrc": "./?embed=machine",
+   "iframeReady": true,
+   "iframeDoc": {
+    "mode": "machine",
+    "kids": 47,
+    "err": "PunchApp for Robotenc"
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  },
+  "system": {
+   "bodyMode": "system",
+   "stage": false,
+   "phoneStage": false,
+   "dsStage": true,
+   "iframeSrc": "./?embed=machine",
+   "iframeReady": true,
+   "iframeDoc": {
+    "mode": "machine",
+    "kids": 47,
+    "err": "PunchApp for Robotenc"
+   },
+   "videos": [
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "shadow-bars-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "bag-backlit-sq.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-1920x1080.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "reveal-live-1080x3840.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    },
+    {
+     "src": "run-live-928x1960.mp4",
+     "err": 0,
+     "rs": 0,
+     "paused": true
+    }
+   ]
+  }
+ },
+ "dsLiteral": "mobile",
+ "phonePages": [
+  "default",
+  "scan",
+  "connect",
+  "connected",
+  "punch",
+  "topup",
+  "checkout",
+  "paid",
+  "failed",
+  "hit",
+  "ranks",
+  "feed",
+  "profile",
+  "reel"
+ ],
+ "navPages": [
+  "default",
+  "scan",
+  "connect",
+  "connected",
+  "punch",
+  "topup",
+  "checkout",
+  "paid",
+  "failed",
+  "hit",
+  "reel",
+  "ranks",
+  "feed",
+  "profile"
+ ],
+ "pages": [
+  {
+   "page": "default",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "default",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 720,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "scan",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "scan",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 313,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "connect",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "connect",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 135,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "connected",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "connected",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 371,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "punch",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "punch",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 214,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "topup",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "topup",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 631,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "checkout",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "checkout",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 518,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "paid",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "paid",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 238,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "failed",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "failed",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 632,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "hit",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "hit",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 713,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "reel",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "reel",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 1219,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "ranks",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "ranks",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 500,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "feed",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "feed",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 2041,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "page": "profile",
+   "newErrors": 0,
+   "over": 0,
+   "landed": "profile",
+   "h": 956,
+   "w": 440,
+   "visible": true,
+   "textLen": 677,
+   "brokenImgs": [],
+   "brokenN": 0
+  }
+ ],
+ "machinePages": [
+  "default",
+  "attract",
+  "scan",
+  "countdown",
+  "loading",
+  "stats",
+  "score",
+  "record"
+ ],
+ "navScreens": [
+  "default",
+  "attract",
+  "scan",
+  "countdown",
+  "loading",
+  "result",
+  "score",
+  "record"
+ ],
+ "screens": [
+  {
+   "screen": "default",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "attract",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "scan",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "countdown",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "loading",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "result",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 4,
+   "shownIds": [
+    "screen-scene",
+    "spot spot-top",
+    "screenContent"
+   ],
+   "h": 2150,
+   "textLen": 355,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "score",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  },
+  {
+   "screen": "record",
+   "newErrors": 0,
+   "over": 0,
+   "shownN": 0,
+   "shownIds": [],
+   "h": 0,
+   "textLen": 10640,
+   "brokenImgs": [],
+   "brokenN": 0
+  }
+ ],
+ "caseStudy": {
+  "scrollH": 23847,
+  "newErrors": 0,
+  "hOver": 0,
+  "brokenImgs": [],
+  "brokenN": 0,
+  "vids": [
+   {
+    "src": "reveal-live-1080x3840.mp4",
+    "err": 0,
+    "rs": 0
+   },
+   {
+    "src": "run-live-928x1960.mp4",
+    "err": 0,
+    "rs": 0
+   }
+  ],
+  "spill": [
+   "cs-localnav-in +8",
+   "[object SVGAnimatedString] +48",
+   "[object SVGAnimatedString] +76",
+   "[object SVGAnimatedString] +48",
+   "[object SVGAnimatedString] +62",
+   "[object SVGAnimatedString] +71"
+  ],
+  "emptySections": [],
+  "deadAnchors": []
+ },
+ "caseClosed": {
+  "hidden": true,
+  "open": false,
+  "bodyLock": false
+ },
+ "brief": {
+  "newErrors": 0,
+  "hidden": false,
+  "open": true,
+  "h": 800,
+  "scrollH": 800,
+  "textLen": 4678,
+  "brokenImgs": []
+ },
+ "briefClosed": true,
+ "help": {
+  "newErrors": 0,
+  "hidden": false,
+  "open": true,
+  "h": 800,
+  "textLen": 636
+ },
+ "helpClosed": true,
+ "panel": {
+  "hidden": false,
+  "open": true,
+  "buttons": 62,
+  "ranges": [
+   "c-score"
+  ],
+  "rows": 20,
+  "accs": [
+   "page",
+   "page2",
+   "shared"
+  ]
+ },
+ "controls": [
+  {
+   "control": "typeface orbitron",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "typeface chakra",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "typeface arena",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "appearance light",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "appearance dark",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo boxer",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo glove",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo upright",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo pair",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo bag",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "logo fist",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "device android",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "device iphone",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "wallet three credits",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "wallet no credits",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "phone fit to window",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "phone actual size",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "replay the flow",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "glass actual size",
+   "newErrors": 0,
+   "over": 0
+  },
+  {
+   "control": "glass reading size",
+   "newErrors": 0,
+   "over": 0
+  }
+ ],
+ "scoreSlider": [
+  {
+   "v": 0,
+   "newErrors": 0,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 1,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 250,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 750,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  },
+  {
+   "v": 1000,
+   "newErrors": 1,
+   "shown": "0.000",
+   "onGlass": ""
+  }
+ ],
+ "api": [
+  {
+   "expr": "window.showcase.decimals(false)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.decimals(true)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.appearance('light')",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.appearance('dark')",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.zoom(1.4)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.zoom(1)",
+   "newErrors": 0,
+   "ok": true
+  },
+  {
+   "expr": "window.showcase.theme('arena')",
+   "newErrors": 0,
+   "ok": true
+  }
+ ],
+ "backdrops": [],
+ "afterReset": {
+  "mode": "machine",
+  "psec": 3
+ },
+ "designIndex": {
+  "machine/default": [
+   "topad(5)",
+   "welcome(4)",
+   "best(5)",
+   "how(5)"
+  ],
+  "machine/attract": [
+   "title(5)",
+   "top(5)",
+   "ranks(4)",
+   "cta(5)"
+  ],
+  "machine/scan": [
+   "status(5)",
+   "code(3)",
+   "howto(5)"
+  ],
+  "machine/countdown": [
+   "player(5)",
+   "count(5)",
+   "call(5)",
+   "stage(5)"
+  ],
+  "machine/loading": [
+   "caption(5)",
+   "reading(5)"
+  ],
+  "machine/result": [],
+  "machine/score": [
+   "score(5)",
+   "why(5)",
+   "photo(5)",
+   "again(5)"
+  ],
+  "machine/record": [
+   "moment(4)",
+   "score(5)",
+   "photo(5)",
+   "again(5)"
+  ],
+  "phone/default": [
+   "greeting(5)",
+   "play(5)",
+   "last(4)",
+   "near(5)",
+   "friends(5)",
+   "promo(5)"
+  ],
+  "phone/scan": [
+   "code(5)",
+   "hint(5)",
+   "recent(5)",
+   "howto(5)"
+  ],
+  "phone/connect": [
+   "connect(5)",
+   "machine(5)",
+   "credit(5)"
+  ],
+  "phone/connected": [
+   "linked(5)",
+   "machine(5)",
+   "next(5)"
+  ],
+  "phone/punch": [
+   "look(5)",
+   "machine(5)"
+  ],
+  "phone/topup": [
+   "packs(5)",
+   "offer(5)"
+  ],
+  "phone/checkout": [
+   "summary(5)",
+   "method(5)",
+   "secure(5)"
+  ],
+  "phone/paid": [
+   "confirm(4)",
+   "cans(5)",
+   "receipt(5)"
+  ],
+  "phone/failed": [
+   "notice(5)",
+   "why(5)",
+   "ways(5)"
+  ],
+  "phone/hit": [
+   "head(4)",
+   "score(5)",
+   "next(5)",
+   "replay(4)",
+   "ranks(5)",
+   "stats(5)"
+  ],
+  "phone/reel": [
+   "overlay(5)",
+   "actions(5)",
+   "progress(5)"
+  ],
+  "phone/ranks": [
+   "header(5)",
+   "board(5)",
+   "you(5)"
+  ],
+  "phone/feed": [
+   "stories(5)",
+   "filter(5)",
+   "posts(5)",
+   "sponsored(5)"
+  ],
+  "phone/profile": [
+   "header(5)",
+   "stats(5)",
+   "hits(5)",
+   "badges(5)"
+  ],
+  "global/all": [
+   "mheader(5)",
+   "sponsor(5)",
+   "tabbar(5)"
+  ]
+ },
+ "designProblems": [],
+ "designsExercised": 376,
+ "final": {
+  "brokenImgs": [],
+  "brokenN": 0,
+  "fonts": "loaded",
+  "mode": "mobile"
+ },
+ "overflows": [],
+ "errors": [
+  {
+   "step": "customise: score slider 1",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  },
+  {
+   "step": "customise: score slider 250",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  },
+  {
+   "step": "customise: score slider 750",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  },
+  {
+   "step": "customise: score slider 1000",
+   "msg": "EVAL-THREW SyntaxError: Identifier 'r' has already been declared"
+  }
+ ],
+ "warnings": [],
+ "netFail": [],
+ "counts": {
+  "errors": 4,
+  "warnings": 0,
+  "netFail": 0
+ },
+ "http4xx": []
+}

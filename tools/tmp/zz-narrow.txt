@@ -1,0 +1,1898 @@
+===== 390x844 =====
+{
+ "mobile": {
+  "mode": "mobile",
+  "vw": 390,
+  "docH": 844,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:844"
+  ]
+ },
+ "machine": {
+  "mode": "machine",
+  "vw": 390,
+  "docH": 844,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:844"
+  ]
+ },
+ "animation": {
+  "mode": "animation",
+  "vw": 390,
+  "docH": 844,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:844"
+  ]
+ },
+ "system": {
+  "mode": "system",
+  "vw": 390,
+  "docH": 844,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:844"
+  ]
+ },
+ "brief": {
+  "w": 0,
+  "h": 0,
+  "disp": "none",
+  "hidden": false,
+  "open": true,
+  "txt": 6573
+ },
+ "help": {
+  "w": 0,
+  "h": 0,
+  "disp": "none",
+  "hidden": false,
+  "open": true,
+  "txt": 771
+ }
+}
+===== 600x900 =====
+{
+ "mobile": {
+  "mode": "mobile",
+  "vw": 600,
+  "docH": 900,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:900"
+  ]
+ },
+ "machine": {
+  "mode": "machine",
+  "vw": 600,
+  "docH": 900,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:900"
+  ]
+ },
+ "animation": {
+  "mode": "animation",
+  "vw": 600,
+  "docH": 900,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:900"
+  ]
+ },
+ "system": {
+  "mode": "system",
+  "vw": 600,
+  "docH": 900,
+  "overflow": 0,
+  "topbar": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "bodyText": "BEST SEEN ON A DESKTOP / This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for c",
+  "visibleTop": [
+   "DIV:900"
+  ]
+ },
+ "brief": {
+  "w": 0,
+  "h": 0,
+  "disp": "none",
+  "hidden": false,
+  "open": true,
+  "txt": 6573
+ },
+ "help": {
+  "w": 0,
+  "h": 0,
+  "disp": "none",
+  "hidden": false,
+  "open": true,
+  "txt": 771
+ }
+}
+===== 768x1024 =====
+{
+ "mobile": {
+  "mode": "mobile",
+  "vw": 768,
+  "docH": 1231,
+  "overflow": 0,
+  "topbar": {
+   "w": 768,
+   "h": 195,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 768,
+   "h": 1231,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 464,
+   "h": 980,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Home / Play / Pay / Your hits / Social / Read case study / Customise / Mobile app / 9:41 / Ho",
+  "visibleTop": [
+   "loader:1024",
+   "HEADER:195",
+   "phoneStage:1231"
+  ]
+ },
+ "machine": {
+  "mode": "machine",
+  "vw": 768,
+  "docH": 2499,
+  "overflow": 0,
+  "topbar": {
+   "w": 768,
+   "h": 237,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 768,
+   "h": 2499,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Home / Play / Results / Home / Leaderboard / Read case study / Customise / Machine screen",
+  "visibleTop": [
+   "loader:1024",
+   "HEADER:237",
+   "stage:2499"
+  ]
+ },
+ "animation": {
+  "mode": "animation",
+  "vw": 768,
+  "docH": 3258,
+  "overflow": 25,
+  "topbar": {
+   "w": 768,
+   "h": 203,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 768,
+   "h": 3258,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 427,
+   "h": 902,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 254,
+   "h": 902,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Start / Reset / Read case study / Customise / Animation / 9:41 / Home / Good evening / S",
+  "visibleTop": [
+   "loader:1024",
+   "HEADER:203",
+   "phoneStage:3258"
+  ]
+ },
+ "system": {
+  "mode": "system",
+  "vw": 768,
+  "docH": 51495,
+  "overflow": 0,
+  "topbar": {
+   "w": 768,
+   "h": 143,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 768,
+   "h": 51495,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Read case study / Customise / Principles / Brand / Colour roles / Type / Score format / S",
+  "visibleTop": [
+   "loader:1024",
+   "HEADER:143",
+   "dsStage:51495"
+  ]
+ },
+ "brief": {
+  "w": 768,
+  "h": 1024,
+  "disp": "block",
+  "hidden": false,
+  "open": true,
+  "txt": 4678
+ },
+ "help": {
+  "w": 768,
+  "h": 1024,
+  "disp": "grid",
+  "hidden": false,
+  "open": true,
+  "txt": 636
+ }
+}
+===== 900x900 =====
+{
+ "mobile": {
+  "mode": "mobile",
+  "vw": 900,
+  "docH": 1251,
+  "overflow": 0,
+  "topbar": {
+   "w": 900,
+   "h": 215,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 900,
+   "h": 1251,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 464,
+   "h": 980,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Home / Play / Pay / Your hits / Social / Read case study / Customise / Mobile app / 9:41 / Ho",
+  "visibleTop": [
+   "loader:900",
+   "HEADER:215",
+   "phoneStage:1251"
+  ]
+ },
+ "machine": {
+  "mode": "machine",
+  "vw": 900,
+  "docH": 2519,
+  "overflow": 0,
+  "topbar": {
+   "w": 900,
+   "h": 257,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 900,
+   "h": 2519,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Home / Play / Results / Home / Leaderboard / Read case study / Customise / Machine screen",
+  "visibleTop": [
+   "loader:900",
+   "HEADER:257",
+   "stage:2519"
+  ]
+ },
+ "animation": {
+  "mode": "animation",
+  "vw": 900,
+  "docH": 3328,
+  "overflow": 0,
+  "topbar": {
+   "w": 900,
+   "h": 223,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 900,
+   "h": 3328,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 427,
+   "h": 902,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 254,
+   "h": 902,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Start / Reset / Read case study / Customise / Animation / 9:41 / Home / Good evening / S",
+  "visibleTop": [
+   "loader:900",
+   "HEADER:223",
+   "phoneStage:3328"
+  ]
+ },
+ "system": {
+  "mode": "system",
+  "vw": 900,
+  "docH": 45431,
+  "overflow": 0,
+  "topbar": {
+   "w": 900,
+   "h": 163,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 900,
+   "h": 45431,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Mobile app / Machine screen / Animation / Design system / Read case study / Customise / Principles / Brand / Colour roles / Type / Score format / S",
+  "visibleTop": [
+   "loader:900",
+   "HEADER:163",
+   "dsStage:45431"
+  ]
+ },
+ "brief": {
+  "w": 900,
+  "h": 900,
+  "disp": "block",
+  "hidden": false,
+  "open": true,
+  "txt": 4678
+ },
+ "help": {
+  "w": 900,
+  "h": 900,
+  "disp": "grid",
+  "hidden": false,
+  "open": true,
+  "txt": 636
+ }
+}
+===== 1024x768 =====
+{
+ "mobile": {
+  "mode": "mobile",
+  "vw": 1024,
+  "docH": 1174,
+  "overflow": 0,
+  "topbar": {
+   "w": 1024,
+   "h": 138,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 1024,
+   "h": 1174,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 464,
+   "h": 980,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Phone / Machine / Motion / System / Home / Play / Pay / Your hits / Social / Case study / Customise / Mobile app / 9:41 / Home / Good evening / Sara / Bal",
+  "visibleTop": [
+   "loader:768",
+   "HEADER:138",
+   "phoneStage:1174"
+  ]
+ },
+ "machine": {
+  "mode": "machine",
+  "vw": 1024,
+  "docH": 2442,
+  "overflow": 0,
+  "topbar": {
+   "w": 1024,
+   "h": 180,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 1024,
+   "h": 2442,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Phone / Machine / Motion / System / Home / Play / Results / Home / Leaderboard / Case study / Customise / Machine screen / Monster Energy. Fuel your",
+  "visibleTop": [
+   "loader:768",
+   "HEADER:180",
+   "stage:2442"
+  ]
+ },
+ "animation": {
+  "mode": "animation",
+  "vw": 1024,
+  "docH": 3317,
+  "overflow": 0,
+  "topbar": {
+   "w": 1024,
+   "h": 146,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 1024,
+   "h": 3317,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 427,
+   "h": 902,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 254,
+   "h": 902,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "bodyText": "Design task for Robotenc / The brief / Phone / Machine / Motion / System / Start / Reset / Case study / Customise / Animation / 9:41 / Home / Good evening / Sara / Balance: / 0 credits / Du",
+  "visibleTop": [
+   "loader:768",
+   "HEADER:146",
+   "phoneStage:3317"
+  ]
+ },
+ "system": {
+  "mode": "system",
+  "vw": 1024,
+  "docH": 45314,
+  "overflow": 0,
+  "topbar": {
+   "w": 1024,
+   "h": 107,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 1024,
+   "h": 45314,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / Phone / Machine / Motion / System / Case study / Customise / Principles / Brand / Colour roles / Type / Score format / Space and surfaces / Icons / Pag",
+  "visibleTop": [
+   "loader:768",
+   "HEADER:107",
+   "dsStage:45314"
+  ]
+ },
+ "brief": {
+  "w": 1024,
+  "h": 768,
+  "disp": "block",
+  "hidden": false,
+  "open": true,
+  "txt": 4678
+ },
+ "help": {
+  "w": 1024,
+  "h": 768,
+  "disp": "grid",
+  "hidden": false,
+  "open": true,
+  "txt": 636
+ }
+}
+===== 1180x820 =====
+{
+ "mobile": {
+  "mode": "mobile",
+  "vw": 1180,
+  "docH": 1183,
+  "overflow": 0,
+  "topbar": {
+   "w": 1180,
+   "h": 147,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 1180,
+   "h": 1183,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 464,
+   "h": 980,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / PunchApp, from the score on the arcade screen to the replay on the player's phone. / Phone / Machine / Motion / System / Home / Play / Pay / ",
+  "visibleTop": [
+   "loader:820",
+   "HEADER:147",
+   "phoneStage:1183"
+  ]
+ },
+ "machine": {
+  "mode": "machine",
+  "vw": 1180,
+  "docH": 2442,
+  "overflow": 0,
+  "topbar": {
+   "w": 1180,
+   "h": 180,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 1180,
+   "h": 2442,
+   "disp": "flex",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / PunchApp, from the score on the arcade screen to the replay on the player's phone. / Phone / Machine / Motion / System / Home / Play / Resu",
+  "visibleTop": [
+   "loader:820",
+   "HEADER:180",
+   "stage:2442"
+  ]
+ },
+ "animation": {
+  "mode": "animation",
+  "vw": 1180,
+  "docH": 3566,
+  "overflow": 0,
+  "topbar": {
+   "w": 1180,
+   "h": 147,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 1180,
+   "h": 3566,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "dsStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "deviceWrap": {
+   "w": 427,
+   "h": 902,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 254,
+   "h": 902,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "bodyText": "Design task for Robotenc / The brief / PunchApp, from the score on the arcade screen to the replay on the player's phone. / Phone / Machine / Motion / System / Start / Reset / C",
+  "visibleTop": [
+   "loader:820",
+   "HEADER:147",
+   "phoneStage:3566"
+  ]
+ },
+ "system": {
+  "mode": "system",
+  "vw": 1180,
+  "docH": 45479,
+  "overflow": 0,
+  "topbar": {
+   "w": 1180,
+   "h": 147,
+   "disp": "grid",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "stage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "phoneStage": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "dsStage": {
+   "w": 1180,
+   "h": 45479,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 1
+  },
+  "deviceWrap": {
+   "w": 0,
+   "h": 0,
+   "disp": "block",
+   "vis": "visible",
+   "op": "1",
+   "hidden": false,
+   "rects": 0
+  },
+  "screen": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "linked": {
+   "w": 0,
+   "h": 0,
+   "disp": "none",
+   "vis": "visible",
+   "op": "1",
+   "hidden": true,
+   "rects": 0
+  },
+  "bodyText": "Design task for Robotenc / The brief / PunchApp, from the score on the arcade screen to the replay on the player's phone. / Phone / Machine / Motion / System / Case study / Cus",
+  "visibleTop": [
+   "loader:820",
+   "HEADER:147",
+   "dsStage:45479"
+  ]
+ },
+ "brief": {
+  "w": 1180,
+  "h": 820,
+  "disp": "block",
+  "hidden": false,
+  "open": true,
+  "txt": 4678
+ },
+ "help": {
+  "w": 1180,
+  "h": 820,
+  "disp": "grid",
+  "hidden": false,
+  "open": true,
+  "txt": 636
+ }
+}

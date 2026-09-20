@@ -1,0 +1,94 @@
+{
+ "cases": [
+  {
+   "case": "corrupt psec",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "psec is an array",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "psec index far out of range",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "psec names a page that is gone",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "corrupt shell state",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "shell state with unknown mode + mscreen",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "shell state is null",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "corrupt app state",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "app state with unknown page",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  },
+  {
+   "case": "corrupt accordion state",
+   "loaderDone": true,
+   "mode": "mobile",
+   "page": "default",
+   "apis": true,
+   "bodyText": 991,
+   "errors": []
+  }
+ ]
+}

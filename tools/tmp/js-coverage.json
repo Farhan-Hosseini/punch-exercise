@@ -1,0 +1,1813 @@
+[
+ {
+  "file": "mobile.js",
+  "total": 128482,
+  "deadBytes": 53118,
+  "uncalled": 152,
+  "top": [
+   {
+    "name": "reelProgress",
+    "len": 2787,
+    "at": 82587,
+    "head": "function reelProgress(it) { const k = reelKey('progress'), ph = phasesOf(it), total = "
+   },
+   {
+    "name": "reelShow",
+    "len": 1724,
+    "at": 97280,
+    "head": "function reelShow(i, first) { if (!reel) return const n = feed.children.length "
+   },
+   {
+    "name": "reelPlay",
+    "len": 1678,
+    "at": 99108,
+    "head": "function reelPlay(play) { stopReel() const el = feed.children[reel.i] if (!el)"
+   },
+   {
+    "name": "reelOverlay",
+    "len": 1641,
+    "at": 78566,
+    "head": "function reelOverlay(it) { const k = reelKey('overlay') if (k === 'card') { "
+   },
+   {
+    "name": "hide",
+    "len": 1296,
+    "at": 111657,
+    "head": "hide(id) { if (!reel) return reelHidden.add(id) const i = reel.i /"
+   },
+   {
+    "name": "reelTile",
+    "len": 1284,
+    "at": 88378,
+    "head": "function reelTile(it, i) { const p = it.p const media = it.video ? `<video c"
+   },
+   {
+    "name": "attemptOf",
+    "len": 1238,
+    "at": 75238,
+    "head": "function attemptOf(card, c, round) { // the key names the attempt by its player, its s"
+   },
+   {
+    "name": "reelSetView",
+    "len": 1173,
+    "at": 91689,
+    "head": "function reelSetView(v, o = {}) { if (!reel) return const grid = v === 'grid' "
+   },
+   {
+    "name": "setPunchState",
+    "len": 1026,
+    "at": 28508,
+    "head": "function setPunchState(state) { punch.dataset.state = state const c = PUNCH_COPY[s"
+   },
+   {
+    "name": "countHit",
+    "len": 1019,
+    "at": 36657,
+    "head": "function countHit() { cancelAnimationFrame(countRaf) // the size is set for the fi"
+   },
+   {
+    "name": "reelTick",
+    "len": 999,
+    "at": 100789,
+    "head": "function reelTick() { if (!reel || (!reel.anims[0] && !reel.vid)) return const el "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 931,
+    "at": 54141,
+    "head": "(e) => { const act = e.target.closest('[data-act]'), holder = act && act.closest('[dat"
+   },
+   {
+    "name": "renderReel",
+    "len": 923,
+    "at": 95608,
+    "head": "function renderReel(o = {}) { stopReel() const title = '' const p = P[o.player"
+   },
+   {
+    "name": "toggleLike",
+    "len": 850,
+    "at": 53250,
+    "head": "function toggleLike(id, force) { const on = force ?? !liked.has(id) on ? liked.add"
+   },
+   {
+    "name": "reelActions",
+    "len": 842,
+    "at": 81285,
+    "head": "function reelActions(it) { const n = reelCount(it) return `<div class=\"rl-acts rl-"
+   }
+  ]
+ },
+ {
+  "file": "mscreens/stats.js",
+  "total": 59072,
+  "deadBytes": 43827,
+  "uncalled": 78,
+  "top": [
+   {
+    "name": "model",
+    "len": 5370,
+    "at": 7955,
+    "head": "function model(runKey, hitOverride, claimed) { const run = RUNS[runKey] const play"
+   },
+   {
+    "name": "yr-tape",
+    "len": 2155,
+    "at": 21203,
+    "head": "'yr-tape'(el, m) { const t = m.t const lowMark = t.kind === 'bell' ? 0 : t.kin"
+   },
+   {
+    "name": "fitWord",
+    "len": 2026,
+    "at": 49074,
+    "head": "function fitWord(el) { const words = (el.dataset.words || el.textContent).split(' ').f"
+   },
+   {
+    "name": "yr-plates",
+    "len": 1566,
+    "at": 17777,
+    "head": "'yr-plates'(el, m) { const t = m.t const mine = `<div class=\"yr-pl is-you\"><sp"
+   },
+   {
+    "name": "yr-over",
+    "len": 1519,
+    "at": 29532,
+    "head": "'yr-over'(el, m) { const g = GEO.over const others = m.others.slice().sort((a,"
+   },
+   {
+    "name": "yr-stack",
+    "len": 1436,
+    "at": 25489,
+    "head": "'yr-stack'(el, m) { const n = m.ranked.length, you = m.ranked.indexOf(m.you) e"
+   },
+   {
+    "name": "yr-reign",
+    "len": 1408,
+    "at": 46535,
+    "head": "'yr-reign'(el, m) { const c = m.crown, now = TODAY.marks[TODAY.marks.length - 1].at "
+   },
+   {
+    "name": "yr-faces",
+    "len": 1315,
+    "at": 27019,
+    "head": "'yr-faces'(el, m) { const g = GEO.faces const ps = drawOrder(m) const ly"
+   },
+   {
+    "name": "stanceSVG",
+    "len": 1305,
+    "at": 32690,
+    "head": "function stanceSVG(fx) { const id = 'yrA' + fx.kind const pad = '<rect class=\"yr-s"
+   },
+   {
+    "name": "slotPanel",
+    "len": 1252,
+    "at": 37044,
+    "head": "function slotPanel(slot) { if (slot.kind === 'trace') { return `<p class=\"yr-sl-"
+   },
+   {
+    "name": "yr-col",
+    "len": 1213,
+    "at": 24169,
+    "head": "'yr-col'(el, m) { const g = GEO.col const ps = drawOrder(m) const ly = s"
+   },
+   {
+    "name": "yr-cline",
+    "len": 1194,
+    "at": 41804,
+    "head": "'yr-cline'(el, m) { const c = m.crown // the room's scale: the rule at the top"
+   },
+   {
+    "name": "yr-crowd",
+    "len": 1157,
+    "at": 43106,
+    "head": "'yr-crowd'(el, m) { const c = m.crown, W = 904, H = 200 const x = (s) => Math."
+   },
+   {
+    "name": "silhouetteSVG",
+    "len": 1098,
+    "at": 35293,
+    "head": "function silhouetteSVG(fx) { const id = 'yrS' + fx.kind const note = fx.kind === '"
+   },
+   {
+    "name": "yr-claim",
+    "len": 1067,
+    "at": 45356,
+    "head": "'yr-claim'(el, m) { const c = m.crown el.classList.toggle('is-claimed', c.clai"
+   }
+  ]
+ },
+ {
+  "file": "ds.js",
+  "total": 104574,
+  "deadBytes": 33335,
+  "uncalled": 56,
+  "top": [
+   {
+    "name": "photos",
+    "len": 5019,
+    "at": 61829,
+    "head": "function photos() { if (photosDone) return photosDone = true const strip = q('"
+   },
+   {
+    "name": "sponsor",
+    "len": 3874,
+    "at": 67354,
+    "head": "function sponsor() { const claw = q('[data-ds-monclaw]'), src = document.querySelector"
+   },
+   {
+    "name": "videos",
+    "len": 3222,
+    "at": 99626,
+    "head": "function videos() { if (vidsDone) return vidsDone = true const strip = q('[dat"
+   },
+   {
+    "name": "census",
+    "len": 2381,
+    "at": 51366,
+    "head": "function census() { if (!PS()) return let pages = 0, secs = 0, designs = 0, fewest"
+   },
+   {
+    "name": "wireBars",
+    "len": 1802,
+    "at": 82446,
+    "head": "function wireBars() { const host = q('[data-ds-pn]'), cust = q('[data-ds-cust]'), open"
+   },
+   {
+    "name": "loader",
+    "len": 1695,
+    "at": 91369,
+    "head": "function loader() { const host = q('[data-ds-ld]'), range = q('[data-ds-ldrange]'), ou"
+   },
+   {
+    "name": "lives",
+    "len": 1306,
+    "at": 89826,
+    "head": "function lives() { for (const frame of qa('[data-ds-live]')) { const key = frame"
+   },
+   {
+    "name": "liveGlass",
+    "len": 1114,
+    "at": 84483,
+    "head": "function liveGlass(frame, sec, onReady) { let win = null frame.addEventListener('l"
+   },
+   {
+    "name": "secBlocks",
+    "len": 1051,
+    "at": 88277,
+    "head": "function secBlocks() { if (!PS()) return for (const host of qa('[data-ds-secblocks"
+   },
+   {
+    "name": "backgrounds",
+    "len": 1001,
+    "at": 57069,
+    "head": "function backgrounds() { const host = q('[data-ds-bgpicks]') const list = window.d"
+   },
+   {
+    "name": "readBars",
+    "len": 798,
+    "at": 75630,
+    "head": "function readBars() { for (const s of SURF) { const nav = document.querySelector"
+   },
+   {
+    "name": "wires",
+    "len": 633,
+    "at": 55969,
+    "head": "function wires() { const host = q('[data-ds-wires]') if (!host || !PS()) return "
+   },
+   {
+    "name": "setOf",
+    "len": 601,
+    "at": 61200,
+    "head": "(e) => { const f = e.file.replace(/^.*\\//, '') if (e.subject === 'avatar') return "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 591,
+    "at": 3663,
+    "head": "() => { const v = find.value.trim().toLowerCase().replace(/[\\s-]+/g, '') let s"
+   },
+   {
+    "name": "paintList",
+    "len": 572,
+    "at": 44039,
+    "head": "function paintList() { list.innerHTML = SCREENS.map((s) => { const secs = s.key "
+   }
+  ]
+ },
+ {
+  "file": "pay.js",
+  "total": 61783,
+  "deadBytes": 20170,
+  "uncalled": 66,
+  "top": [
+   {
+    "name": "renderPaid",
+    "len": 2015,
+    "at": 55495,
+    "head": "function renderPaid(r, o) { receiptNow = r toTop('paid', o) const p = r.pack, "
+   },
+   {
+    "name": "enterCheckout",
+    "len": 1529,
+    "at": 32282,
+    "head": "function enterCheckout(o) { // straight from the page bar: a fresh checkout for the pr"
+   },
+   {
+    "name": "steps",
+    "len": 1141,
+    "at": 46302,
+    "head": "function steps(method, d) { const bio = d === 'android' ? { glyph: 'finger', ask: 'Tou"
+   },
+   {
+    "name": "openSheet",
+    "len": 1135,
+    "at": 48430,
+    "head": "function openSheet() { const d = device(), method = flow.method const head = metho"
+   },
+   {
+    "name": "syncOrder",
+    "len": 922,
+    "at": 31357,
+    "head": "function syncOrder() { const p = packNow(), page = pageEl('checkout'), on = linked() "
+   },
+   {
+    "name": "sheetRows",
+    "len": 700,
+    "at": 47446,
+    "head": "function sheetRows(method, d) { const p = packNow() const card = method === 'card'"
+   },
+   {
+    "name": "failure",
+    "len": 684,
+    "at": 52859,
+    "head": "failure() { const f = flow.fail || { reason: 'declined', pack: packNow(), method: fl"
+   },
+   {
+    "name": "enterPaid",
+    "len": 591,
+    "at": 54901,
+    "head": "function enterPaid(o) { let r if (o.flow && flow.receipt) r = flow.receipt els"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 548,
+    "at": 41248,
+    "head": "(e) => { const next = e.target.closest('[data-ss-next]'), back = e.target.closest('["
+   },
+   {
+    "name": "cardOk",
+    "len": 523,
+    "at": 44648,
+    "head": "function cardOk() { const n = cardNo.value.replace(/\\D/g, ''), x = cardExp.value.repla"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 511,
+    "at": 21697,
+    "head": "(e) => { const s = e.target.closest('[data-cu-step]') if (s) { if (s.getAttribute("
+   },
+   {
+    "name": "ssClose",
+    "len": 429,
+    "at": 40659,
+    "head": "function ssClose(quiet) { if (!ssOpen) { if (quiet === true) ss.hidden = true; return "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 423,
+    "at": 42058,
+    "head": "(e) => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); ssClose();"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 387,
+    "at": 6978,
+    "head": "(e) => { const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e."
+   },
+   {
+    "name": "tokens",
+    "len": 382,
+    "at": 6275,
+    "head": "function tokens(total, fresh, max = 10) { const shown = Math.min(total, max), f = Math"
+   }
+  ]
+ },
+ {
+  "file": "case-diagrams.js",
+  "total": 17053,
+  "deadBytes": 15450,
+  "uncalled": 9,
+  "top": [
+   {
+    "name": "initState",
+    "len": 6396,
+    "at": 2675,
+    "head": "function initState(root) { const svg = root.querySelector('.cd-state-svg') const n"
+   },
+   {
+    "name": "initRun",
+    "len": 3885,
+    "at": 9174,
+    "head": "function initRun(root) { const evs = [...root.querySelectorAll('.cd-ev')] const bt"
+   },
+   {
+    "name": "initGeometry",
+    "len": 3264,
+    "at": 13158,
+    "head": "function initGeometry(root) { const ORDER = ['pad', 'back', 'decal', 'behind', 'far', "
+   },
+   {
+    "name": "scroller",
+    "len": 772,
+    "at": 1799,
+    "head": "function scroller(root, sc, { fadeLeft = true, onUser } = {}) { const update = () => {"
+   },
+   {
+    "name": "watch",
+    "len": 421,
+    "at": 1276,
+    "head": "function watch(el, threshold, fn) { let last = null const io = new IntersectionObs"
+   },
+   {
+    "name": "init",
+    "len": 281,
+    "at": 16500,
+    "head": "function init() { for (const root of document.querySelectorAll('.cd[data-cd]')) { "
+   },
+   {
+    "name": "wait",
+    "len": 263,
+    "at": 941,
+    "head": "(ms, signal) => new Promise((resolve, reject) => { if (signal && signal.aborted) retur"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 121,
+    "at": 16818,
+    "head": "() => { for (const root of document.querySelectorAll('.cd[data-cd]')) root.classList.t"
+   },
+   {
+    "name": "stopped",
+    "len": 47,
+    "at": 878,
+    "head": "() => new DOMException('stopped', 'AbortError') const wait = (ms, signal) => new Promise"
+   }
+  ]
+ },
+ {
+  "file": "mscreens/record.js",
+  "total": 39638,
+  "deadBytes": 12432,
+  "uncalled": 36,
+  "top": [
+   {
+    "name": "burst",
+    "len": 2536,
+    "at": 12767,
+    "head": "function burst(el, r, c) { const win = el.querySelector('.rm-win') const glow = el"
+   },
+   {
+    "name": "snap",
+    "len": 1663,
+    "at": 17502,
+    "head": "function snap() { el.style.setProperty('--cut', CUT + 'px') hang(1) cons"
+   },
+   {
+    "name": "confetti",
+    "len": 1611,
+    "at": 10655,
+    "head": "function confetti(r, { n = 44, top = -40, fall = 1600, x0 = 30, x1 = 1050, delay = 0, spre"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 944,
+    "at": 16428,
+    "head": "(t) => { let v if (t < RISE) { const k = t / RISE; v = oldV * (k * k * (1.6 - "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 679,
+    "at": 27629,
+    "head": "(t, i) => { const d = START + i * GAP r.later(() => { at(t, t.b) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 551,
+    "at": 20791,
+    "head": "(f, i) => { const land = START + i * STEP + FLIPS * TICK for (let k = 0; k < F"
+   },
+   {
+    "name": "count",
+    "len": 544,
+    "at": 9996,
+    "head": "function count(r, nodes, a, b, { delay = 0, dur = 1700, ease = expo, done } = {}) { co"
+   },
+   {
+    "name": "done",
+    "len": 342,
+    "at": 24609,
+    "head": "() => { r.play(slab, [{ transform: 'scale(1)' }, { transform: 'scale(1.025)', offs"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 291,
+    "at": 29992,
+    "head": "() => r.loop((t) => { if (landed) return false const a = Math.min(1, t / 0.9),"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 230,
+    "at": 35250,
+    "head": "(b, i) => { r.play(b, [{ opacity: 0, transform: `translateX(${i % 2 ? 80 : -80}px)` "
+   },
+   {
+    "name": "r.loop",
+    "len": 217,
+    "at": 9629,
+    "head": "(fn) => { const t0 = performance.now() const step = (now) => { if (r.dead) ret"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 214,
+    "at": 28829,
+    "head": "() => { old.style.setProperty('--k', '1') r.play(strike, [{ transform: 'rotate"
+   },
+   {
+    "name": "rise",
+    "len": 211,
+    "at": 12282,
+    "head": "(r, node, delay = 0, y = 40) => r.play(node, [{ opacity: 0, transform: `translateY(${y}px)"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 201,
+    "at": 21999,
+    "head": "(li, i) => r.play(li, [{ opacity: 0, transform: 'translateX(-30px)' }, { opacity: 1, trans"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 194,
+    "at": 34936,
+    "head": "(li, i) => r.play(li, [{ opacity: 0, transform: 'scale(.9)' }, { opacity: 1, transform: 'n"
+   }
+  ]
+ },
+ {
+  "file": "app.js",
+  "total": 65165,
+  "deadBytes": 11003,
+  "uncalled": 55,
+  "top": [
+   {
+    "name": "go",
+    "len": 1916,
+    "at": 31922,
+    "head": "function go(key, dir) { if (locked() || switching.has(key)) return if (state.mscre"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 1058,
+    "at": 27433,
+    "head": "() => { state.variant = 'arena' state.appearance = 'dark' state.typeface = 'ar"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 409,
+    "at": 38371,
+    "head": "(b, i) => { b.addEventListener('click', () => choose(b.dataset.variant, false)) b."
+   },
+   {
+    "name": "step",
+    "len": 407,
+    "at": 61628,
+    "head": "(now) => { if (!counting) return const t = now - start if (!tail) paintS"
+   },
+   {
+    "name": "step",
+    "len": 351,
+    "at": 52641,
+    "head": "(dir) => { const i = BACKDROPS.findIndex((b) => b.key === state.backdrop) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 345,
+    "at": 64571,
+    "head": "() => { $('loaderNote').textContent = 'Ready' setTimeout(() => { "
+   },
+   {
+    "name": "reveal",
+    "len": 331,
+    "at": 62281,
+    "head": "function reveal() { const secs = [...content.querySelectorAll(':scope > .sec')] se"
+   },
+   {
+    "name": "closeCustom",
+    "len": 326,
+    "at": 37104,
+    "head": "function closeCustom() { custom.classList.remove('is-open') openBtn.setAttribute('"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 319,
+    "at": 42428,
+    "head": "(e) => { if (e.key !== 'Escape') return if (caseEl.classList.contains('is-open')) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 307,
+    "at": 54838,
+    "head": "() => { state.decimals = b.dataset.decimalsBtn === 'off' ? 'off' : 'on' apply(); s"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 290,
+    "at": 27013,
+    "head": "() => { state.appearance = b.dataset.appearanceBtn === 'light' ? 'light' : 'dark' "
+   },
+   {
+    "name": "choose",
+    "len": 277,
+    "at": 38073,
+    "head": "function choose(v, focus) { if (!DEFAULTS[v]) return state.variant = v stopCou"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 265,
+    "at": 22631,
+    "head": "(e) => { const step = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key =="
+   },
+   {
+    "name": "(anonymous)",
+    "len": 262,
+    "at": 26652,
+    "head": "() => { state.typeface = b.dataset.typeface apply(); save(); fitScreen() if (w"
+   },
+   {
+    "name": "step",
+    "len": 236,
+    "at": 50238,
+    "head": "(dir) => { state.mvar[page] = ((state.mvar[page] | 0) + dir + names.length) % "
+   }
+  ]
+ },
+ {
+  "file": "mpages/reel.js",
+  "total": 19693,
+  "deadBytes": 10533,
+  "uncalled": 31,
+  "top": [
+   {
+    "name": "libPlayers",
+    "len": 1964,
+    "at": 13507,
+    "head": "function libPlayers(man) { const list = Array.isArray(man) ? man : (man && (man.photos"
+   },
+   {
+    "name": "videoPlayers",
+    "len": 1340,
+    "at": 17969,
+    "head": "function videoPlayers(man) { const by = new Map((Array.isArray(man) ? man : []).map((m"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 1129,
+    "at": 7704,
+    "head": "(e) => { const b = e.target.closest('[data-rmenu]') if (!b || !menuItem) return "
+   },
+   {
+    "name": "openMenu",
+    "len": 749,
+    "at": 6907,
+    "head": "function openMenu(it, from) { menuItem = it const mine = it.p.id === 'me' $('m"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 660,
+    "at": 3335,
+    "head": "() => { const k = input.dataset.rpref if (k === 'decimals') { // the showcas"
+   },
+   {
+    "name": "mirror",
+    "len": 484,
+    "at": 10873,
+    "head": "() => { const cur = feed.querySelector('.m-reel-slide.is-on') if (!cur) return "
+   },
+   {
+    "name": "paintComments",
+    "len": 454,
+    "at": 9268,
+    "head": "function paintComments() { const list = R().comments(comItem) $('mReelComList').in"
+   },
+   {
+    "name": "openSheet",
+    "len": 400,
+    "at": 5035,
+    "head": "function openSheet(el, from) { if (open && open !== el) closeSheet(true) clearTime"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 376,
+    "at": 5970,
+    "head": "(e) => { if (!open) return if (e.key === 'Escape') { e.preventDefault(); e.stopPro"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 300,
+    "at": 9921,
+    "head": "(e) => { e.preventDefault() const input = $('mReelComInput'), text = input.value.t"
+   },
+   {
+    "name": "faceStyle",
+    "len": 257,
+    "at": 17709,
+    "head": "function faceStyle([, fx, fy, k]) { const cx = Math.min(100 - 50 / k, Math.max(50 / k,"
+   },
+   {
+    "name": "focalOf",
+    "len": 246,
+    "at": 13164,
+    "head": "(f) => { if (typeof f === 'string') { const m = f.match(/(-?[\\d.]+)%?\\s+(-?[\\d.]+)%?/)"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 244,
+    "at": 10336,
+    "head": "(e) => { const b = e.target.closest('[data-ract=\"more\"], [data-ract=\"comment\"]') i"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 237,
+    "at": 4342,
+    "head": "(e) => { const to = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp"
+   },
+   {
+    "name": "focusables",
+    "len": 218,
+    "at": 4814,
+    "head": "(el) => [...el.querySelectorAll('.m-sheet-panel button, .m-sheet-panel input, .m-sheet-pan"
+   }
+  ]
+ },
+ {
+  "file": "mpages/failed.js",
+  "total": 12814,
+  "deadBytes": 8322,
+  "uncalled": 19,
+  "top": [
+   {
+    "name": "render",
+    "len": 2242,
+    "at": 3717,
+    "head": "function render() { if (!pay()) return F = pay().failure() R = reasons(F) "
+   },
+   {
+    "name": "reasons",
+    "len": 1443,
+    "at": 1416,
+    "head": "function reasons(f) { // what was closed, for the way the player tried to pay cons"
+   },
+   {
+    "name": "WAYS",
+    "len": 695,
+    "at": 10186,
+    "head": "(f) => `<div class=\"mfa-pack\"> <span class=\"mfa-pack-pic\"><img src=\"assets/photos/"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 648,
+    "at": 9430,
+    "head": "(f) => { const hero = f.method === 'wallet' ? f.others.find((m) => m.key === 'visa')"
+   },
+   {
+    "name": "setTab",
+    "len": 612,
+    "at": 6196,
+    "head": "function setTab(key, focus) { tabNow = key const now = page.dataset.reason tab"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 376,
+    "at": 8476,
+    "head": "(f) => `<div class=\"mfa-chips\">${f.others.map((m) => `<button class=\"mfa-chip\" type=\"butto"
+   },
+   {
+    "name": "hero",
+    "len": 362,
+    "at": 8944,
+    "head": "(f) => `<p class=\"mfa-kept\">${L('circle-check')}<span>Your pack is kept: <b>${f.pack.custo"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 309,
+    "at": 6961,
+    "head": "(e) => { const step = { ArrowRight: 1, ArrowLeft: -1, Home: -9, End: 9 }[e.key] if"
+   },
+   {
+    "name": "fillWhy",
+    "len": 308,
+    "at": 3259,
+    "head": "function fillWhy(root, key, R) { const r = R[key] root.querySelectorAll('[data-why"
+   },
+   {
+    "name": "setIcon",
+    "len": 301,
+    "at": 2955,
+    "head": "function setIcon(el, name) { if (el.dataset.lucide === name && el.firstElementChild) r"
+   },
+   {
+    "name": "rowBtn",
+    "len": 275,
+    "at": 7769,
+    "head": "(m) => `<button class=\"mfa-row\" type=\"button\" data-fail-pay=\"${m.key}\" aria-label=\"${payLa"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 274,
+    "at": 11233,
+    "head": "(e) => { const go = e.target.closest('[data-fail-go]'), way = e.target.closest('[data-"
+   },
+   {
+    "name": "backBtn",
+    "len": 139,
+    "at": 8063,
+    "head": "(cls = 'mfa-back') => `<button class=\"${cls}\" type=\"button\" data-fail-go=\"topup\">${L('arro"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 81,
+    "at": 8315,
+    "head": "(f) => `<div class=\"mfa-rows\">${f.others.map(rowBtn).join('')}</div>${backBtn()}`, // "
+   },
+   {
+    "name": "pick",
+    "len": 68,
+    "at": 969,
+    "head": "(sec) => (window.PSec ? window.PSec.get('phone', 'failed', sec) : 0) const L = (name) =>"
+   }
+  ]
+ },
+ {
+  "file": "case.js",
+  "total": 19898,
+  "deadBytes": 5575,
+  "uncalled": 21,
+  "top": [
+   {
+    "name": "setBeat",
+    "len": 958,
+    "at": 10312,
+    "head": "function setBeat(s, i) { s.active = i s.el.dataset.beat = String(i) s.beats"
+   },
+   {
+    "name": "liveCount",
+    "len": 781,
+    "at": 2244,
+    "head": "function liveCount(kind) { if (kind !== 'designs') return 0 const secs = [...doc"
+   },
+   {
+    "name": "jump",
+    "len": 590,
+    "at": 18939,
+    "head": "function jump(id) { const t = id && document.getElementById(id) if (!t) return f"
+   },
+   {
+    "name": "runCount",
+    "len": 552,
+    "at": 7053,
+    "head": "function runCount(c) { cancelAnimationFrame(c.raf) if (!motion) { land(c); c.sta"
+   },
+   {
+    "name": "resetCount",
+    "len": 405,
+    "at": 7609,
+    "head": "function resetCount(c) { cancelAnimationFrame(c.raf) c.state = 'idle' // a "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 393,
+    "at": 3072,
+    "head": "(el) => { const to = (el.dataset.countLive && liveCount(el.dataset.countLive)) || Num"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 329,
+    "at": 1574,
+    "head": "(el) => ({ el, kind: el.dataset.seq, stage: el.querySelector('.cs-seq-stage'), p"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 319,
+    "at": 13780,
+    "head": "() => { if (heroCopy) { heroCopy.style.transform = `translate3d(0, ${("
+   },
+   {
+    "name": "paintCharge",
+    "len": 256,
+    "at": 11473,
+    "head": "function paintCharge(s, f) { if (s.fill) s.fill.style.transform = `scaleY(${f.toFixed"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 214,
+    "at": 15595,
+    "head": "(b, i) => { const br = b.getBoundingClientRect() const d = Math.abs(br.t"
+   },
+   {
+    "name": "stepIdea",
+    "len": 110,
+    "at": 11359,
+    "head": "function stepIdea(s) { const i = Math.max(0, s.active) paintCharge(s, [0.3, 0.9,"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 100,
+    "at": 14499,
+    "head": "() => { if (img) img.style.transform = `scale(${(1.22 - 0.22 * Math.min(1, p * 1.6)).toFix"
+   },
+   {
+    "name": "showOnEmbed",
+    "len": 92,
+    "at": 6876,
+    "head": "function showOnEmbed(e, key) { if (!e) return e.want = key applyEmbed(e) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 79,
+    "at": 15018,
+    "head": "() => { if (img) img.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)` }) } "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 70,
+    "at": 13502,
+    "head": "() => lights.forEach((el, i) => el.classList.toggle('is-lit', lit[i]))) } // h"
+   }
+  ]
+ },
+ {
+  "file": "mpages/default.js",
+  "total": 28028,
+  "deadBytes": 4943,
+  "uncalled": 33,
+  "top": [
+   {
+    "name": "(anonymous)",
+    "len": 600,
+    "at": 13687,
+    "head": "(e) => { if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; re"
+   },
+   {
+    "name": "endDrag",
+    "len": 582,
+    "at": 12843,
+    "head": "(e) => { if (!drag || (e && e.pointerId !== drag.id)) return const d = drag "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 581,
+    "at": 14487,
+    "head": "(e) => { const k = e.key if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].inclu"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 446,
+    "at": 12242,
+    "head": "(e) => { if (!drag || e.pointerId !== drag.id) return const dx = (e.clientX - "
+   },
+   {
+    "name": "nearestIndex",
+    "len": 266,
+    "at": 9950,
+    "head": "() => { const x = track.scrollLeft, list = slides() if (x >= max() - 2) return"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 216,
+    "at": 27167,
+    "head": "(e) => { const card = e.target.closest('.mh-rail > *, .mh-stories > *, .mh-track > *')"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 211,
+    "at": 15518,
+    "head": "() => { paused = !paused pauseBtn.setAttribute('aria-pressed', String(paus"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 197,
+    "at": 12001,
+    "head": "(e) => { if (e.pointerType !== 'mouse' || e.button !== 0) return drag = { x: e"
+   },
+   {
+    "name": "glide",
+    "len": 189,
+    "at": 11144,
+    "head": "function glide(i) { track.scrollTo({ left: target(i), behavior: smooth() }) cl"
+   },
+   {
+    "name": "go",
+    "len": 160,
+    "at": 11338,
+    "head": "function go(i, announce = true) { const n = slides().length if (!n) return "
+   },
+   {
+    "name": "onScroll",
+    "len": 140,
+    "at": 11520,
+    "head": "() => { if (raf) return raf = requestAnimationFrame(() => { raf = 0; if (!drag"
+   },
+   {
+    "name": "replay",
+    "len": 102,
+    "at": 24764,
+    "head": "(el, cls) => { if (!el) return; el.classList.remove(cls); void el.offsetWidth; el.classLis"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 87,
+    "at": 11767,
+    "head": "() => { if (!drag) { clearTimeout(settle); settle = 0; paint(nearestIndex(), false) } }) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 74,
+    "at": 16922,
+    "head": "(e) => { if (!root.contains(e.relatedTarget)) { focus = false; state() } }) track.addE"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 73,
+    "at": 16280,
+    "head": "() => { if (running() && Date.now() >= hold) go(at + 1, false); state() }, STEP) els"
+   }
+  ]
+ },
+ {
+  "file": "anim.js",
+  "total": 8601,
+  "deadBytes": 3055,
+  "uncalled": 7,
+  "top": [
+   {
+    "name": "(anonymous)",
+    "len": 740,
+    "at": 7845,
+    "head": "() => { if (t.dataset.goMscreen && window.showcase) window.showcase.mscreen(t.datase"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 707,
+    "at": 5093,
+    "head": "() => { const app = window.punchApp if (!app) return // an empty wallet plays "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 545,
+    "at": 5839,
+    "head": "() => { const app = window.punchApp if (!app) return playing = false app.a"
+   },
+   {
+    "name": "stepOf",
+    "len": 533,
+    "at": 2018,
+    "head": "function stepOf(p, m) { if (p === 'hit') return 'hit' if (m && (m.key === 'record'"
+   },
+   {
+    "name": "stopPlaying",
+    "len": 231,
+    "at": 3967,
+    "head": "function stopPlaying() { playing = false if (window.punchApp) window.punchApp.auto"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 229,
+    "at": 3371,
+    "head": "(li, i) => { li.classList.toggle('is-now', i === at) li.classList.toggle('"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 70,
+    "at": 3779,
+    "head": "(li) => { li.classList.add('is-done'); li.classList.remove('is-now') }) if (steps."
+   }
+  ]
+ },
+ {
+  "file": "mscreens/countdown.js",
+  "total": 25631,
+  "deadBytes": 2497,
+  "uncalled": 13,
+  "top": [
+   {
+    "name": "hit",
+    "len": 523,
+    "at": 7868,
+    "head": "hit() { setWord(list, 'Hit!') if (reduced.matches) { fillTo(total); return"
+   },
+   {
+    "name": "hit",
+    "len": 483,
+    "at": 5503,
+    "head": "hit() { setWord(list, 'Hit!') anim(dial, [{ transform: 'scale(1)' }, { tra"
+   },
+   {
+    "name": "hit",
+    "len": 399,
+    "at": 19095,
+    "head": "function hit() { if (!run || run.phase !== 'count') return run.phase = 'hit' r"
+   },
+   {
+    "name": "hit",
+    "len": 264,
+    "at": 10406,
+    "head": "hit() { cards.forEach((c, i) => anim(c, [{ transform: 'scale(1)', filter: 'brightn"
+   },
+   {
+    "name": "hit",
+    "len": 191,
+    "at": 8818,
+    "head": "hit() { setWord(list, 'Hit!') anim(el.querySelector('.ccl-light'), [{ filt"
+   },
+   {
+    "name": "hit",
+    "len": 181,
+    "at": 12530,
+    "head": "hit() { setWord(list, 'Hit!') anim(el.querySelector('.ccg-needle'), [{ fil"
+   },
+   {
+    "name": "timeUp",
+    "len": 149,
+    "at": 19498,
+    "head": "function timeUp() { run.phase = 'up' run.upAt = elapsed() setState('up') w"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 64,
+    "at": 25543,
+    "head": "() => { if (run && !run.linked && run.phase === 'count') hit() }) paintPlayer() })() "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 58,
+    "at": 18357,
+    "head": "(a) => { try { a.cancel() } catch { /* already gone */ } }) delete root.dataset.demo "
+   },
+   {
+    "name": "up",
+    "len": 49,
+    "at": 6045,
+    "head": "up() { setWord(list, '0'); arcTo(0); ticksTo(0) }, } } function column(el) { "
+   },
+   {
+    "name": "up",
+    "len": 48,
+    "at": 8419,
+    "head": "up() { fillTo(0); setWord(list, '0'); place(0) }, } } function lightDrain(el) { "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 45,
+    "at": 2930,
+    "head": "(c) => c.hasAttribute('data-sv') && !c.hidden) || s.firstElementChild : null } /* ---"
+   },
+   {
+    "name": "filling",
+    "len": 43,
+    "at": 5994,
+    "head": "filling(f) { arcTo(f); ticksTo(f * total) }, up() { setWord(list, '0'); arcTo(0); ti"
+   }
+  ]
+ },
+ {
+  "file": "mscreens/score.js",
+  "total": 48283,
+  "deadBytes": 1993,
+  "uncalled": 11,
+  "top": [
+   {
+    "name": "count",
+    "len": 943,
+    "at": 43351,
+    "head": "function count(sec, el, delay) { const c = ctl(el), target = open.m.hit const wait"
+   },
+   {
+    "name": "beats",
+    "len": 287,
+    "at": 40588,
+    "head": "function beats() { const el = shown(frame.querySelector(':scope > [data-sec=\"score\"]')"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 172,
+    "at": 45533,
+    "head": "() => { if (!loader.classList.contains('is-done')) return waiting.disconne"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 121,
+    "at": 46608,
+    "head": "(sec) => { (timers.get(sec) || []).forEach(clearTimeout); timers.set(sec, []); cancelAnima"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 91,
+    "at": 46835,
+    "head": "(el) => { el.classList.remove('is-counting'); el.classList.add('is-landed', 'is-settled') "
+   },
+   {
+    "name": "tick",
+    "len": 88,
+    "at": 34018,
+    "head": "() => { if (!v.isConnected) return; if (!v.paused) draw(); requestAnimationFrame(tick) }; "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 76,
+    "at": 17492,
+    "head": "() => `<span class=\"bs-tile is-blank${cls ? ' ' + cls : ''}\"><b></b></span>`).join('') "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 69,
+    "at": 3546,
+    "head": "(c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[c])) const svgIcon = ("
+   },
+   {
+    "name": "onReduce",
+    "len": 52,
+    "at": 47111,
+    "head": "() => { if (open && !root.hidden) start(open.opts) } if (reduced.addEventListener) reduc"
+   },
+   {
+    "name": "fig",
+    "len": 50,
+    "at": 24915,
+    "head": "(t) => `<span class=\"bs-fig\">${int(t.gap)}</span>` const headHTML = (t) => (t.kind === '"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 44,
+    "at": 45848,
+    "head": "(sec) => play(sec, at[sec.dataset.sec] ?? 0)) } document.addEventListener('mscreen', "
+   }
+  ]
+ },
+ {
+  "file": "mpages/feed.js",
+  "total": 19698,
+  "deadBytes": 1932,
+  "uncalled": 11,
+  "top": [
+   {
+    "name": "tile",
+    "len": 850,
+    "at": 13981,
+    "head": "(x) => `<article class=\"mf-gt${fresh(x)}\" data-post=\"${x.id}\"> <button class=\"mf-gt"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 295,
+    "at": 19144,
+    "head": "(e) => { const b = e.target.closest('[data-fview]') if (!b || b.dataset.fview =="
+   },
+   {
+    "name": "(anonymous)",
+    "len": 175,
+    "at": 18913,
+    "head": "(e) => { const rail = e.target.closest('.mf-rail, .mf-ad-cards') if (rail && e.t"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 167,
+    "at": 18640,
+    "head": "(e) => { const b = e.target.closest('[data-story-reel]') if (b && window.punchAp"
+   },
+   {
+    "name": "replay",
+    "len": 102,
+    "at": 16613,
+    "head": "(el, cls) => { if (!el) return; el.classList.remove(cls); void el.offsetWidth; el.classLis"
+   },
+   {
+    "name": "view",
+    "len": 73,
+    "at": 19517,
+    "head": "(v) => { if (v) { setView(v, { save: true }); drawPosts() } return view } } setView(vie"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 71,
+    "at": 15386,
+    "head": "(b) => b.setAttribute('aria-pressed', String(b.dataset.fview === view))) if (o.save) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 69,
+    "at": 1472,
+    "head": "(c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[c])) const L = (n) =>"
+   },
+   {
+    "name": "score",
+    "len": 44,
+    "at": 1317,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US'), scoreHTML: (n) => Math.floor(n).toLocaleStri"
+   },
+   {
+    "name": "scoreHTML",
+    "len": 44,
+    "at": 1374,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US') } const esc = (s) => String(s).replace(/[&"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 42,
+    "at": 16994,
+    "head": "() => root.classList.remove('is-entering'), 1300) } function stop() { root.classList"
+   }
+  ]
+ },
+ {
+  "file": "mpages/scan.js",
+  "total": 13427,
+  "deadBytes": 1783,
+  "uncalled": 9,
+  "top": [
+   {
+    "name": "(anonymous)",
+    "len": 644,
+    "at": 11058,
+    "head": "(e) => { const next = e.target.closest('[data-hs-next]'), back = e.target.closest('["
+   },
+   {
+    "name": "(anonymous)",
+    "len": 497,
+    "at": 7701,
+    "head": "(e) => { const t = e.target.closest('[data-torch]') if (!t) return const on = "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 233,
+    "at": 7353,
+    "head": "(e) => { const b = e.target.closest('[data-played]') if (!b) return const v = "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 160,
+    "at": 8349,
+    "head": "(b) => { b.setAttribute('aria-pressed', 'false') const ico = b.querySelector('"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 69,
+    "at": 1502,
+    "head": "(c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[c])) const sel = (key)"
+   },
+   {
+    "name": "toast",
+    "len": 50,
+    "at": 1737,
+    "head": "(t) => window.punchApp && window.punchApp.toast(t) const isOn = () => window.punchApp &&"
+   },
+   {
+    "name": "scoreHTML",
+    "len": 44,
+    "at": 1268,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US'), score: (n) => Math.floor(n).toLocaleString('"
+   },
+   {
+    "name": "score",
+    "len": 44,
+    "at": 1321,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US'), withDecimals: (n) => n } const L = (name) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 42,
+    "at": 12276,
+    "head": "() => root.classList.remove('is-entering'), 900) } function swapped(el) { if (!el "
+   }
+  ]
+ },
+ {
+  "file": "mscreens/attract.js",
+  "total": 22424,
+  "deadBytes": 1254,
+  "uncalled": 9,
+  "top": [
+   {
+    "name": "hold",
+    "len": 317,
+    "at": 20839,
+    "head": "hold(i) { held = true clearTimeout(cycleTimer); clearTimeout(swapTimer) "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 242,
+    "at": 22175,
+    "head": "() => { if (!live) return if (document.hidden) { clearTimeout(cycleTimer); clearTi"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 193,
+    "at": 19718,
+    "head": "() => { if (!live) return paint() for (const b of [topBody, ranksBody]) "
+   },
+   {
+    "name": "openWho",
+    "len": 185,
+    "at": 7928,
+    "head": "(line = 'Punch today to take it') => `<span class=\"msa-who\"><span class=\"msa-name msa-open"
+   },
+   {
+    "name": "ghost",
+    "len": 78,
+    "at": 7226,
+    "head": "() => `<span class=\"msa-ghost\" aria-hidden=\"true\">${ico('user-round')}</span>` function "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 69,
+    "at": 5228,
+    "head": "(c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[c])) const ico = (name"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 67,
+    "at": 15690,
+    "head": "(el) => { el.textContent = SCOPES[(idx + 1) % SCOPES.length].name }) frame.querySelect"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 56,
+    "at": 20580,
+    "head": "(el) => el.classList.remove('is-entering', 'is-leaving')) } // for checking a board b"
+   },
+   {
+    "name": "resume",
+    "len": 47,
+    "at": 21162,
+    "head": "resume() { held = false; if (live) schedule() }, } paint() document.addEventListene"
+   }
+  ]
+ },
+ {
+  "file": "mpages/ranks.js",
+  "total": 4561,
+  "deadBytes": 1076,
+  "uncalled": 4,
+  "top": [
+   {
+    "name": "findMe",
+    "len": 890,
+    "at": 2150,
+    "head": "function findMe() { let row = board.querySelector('.m-is-me') if (!row) { //"
+   },
+   {
+    "name": "replay",
+    "len": 85,
+    "at": 3229,
+    "head": "(el, cls) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls) } le"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 59,
+    "at": 3074,
+    "head": "(e) => { if (e.target.closest('[data-lb-find]')) findMe() }) /* -----------------------"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 42,
+    "at": 3615,
+    "head": "() => page.classList.remove('is-entering'), 1200) } function stop() { clearTimeout"
+   }
+  ]
+ },
+ {
+  "file": "mpages/saved.js",
+  "total": 2797,
+  "deadBytes": 949,
+  "uncalled": 7,
+  "top": [
+   {
+    "name": "tap",
+    "len": 297,
+    "at": 2061,
+    "head": "function tap(b) { const key = b.dataset.saveKey if (!key) return if (has(key))"
+   },
+   {
+    "name": "pop",
+    "len": 259,
+    "at": 1736,
+    "head": "(b) => { if (reduced.matches) return const i = b.querySelector('svg') if (i &&"
+   },
+   {
+    "name": "changed",
+    "len": 118,
+    "at": 1603,
+    "head": "(key) => { save() paintButtons() document.dispatchEvent(new CustomEvent('saved"
+   },
+   {
+    "name": "save",
+    "len": 107,
+    "at": 961,
+    "head": "() => { try { localStorage.setItem(KEY, JSON.stringify({ keys })) } catch { /* nothing to "
+   },
+   {
+    "name": "remove",
+    "len": 63,
+    "at": 2665,
+    "head": "(key) => { keys = keys.filter((k) => k !== key); changed(key) }, paint: paintButtons, keys"
+   },
+   {
+    "name": "save",
+    "len": 60,
+    "at": 2595,
+    "head": "(key) => { if (!has(key)) { keys.push(key); changed(key) } }, remove: (key) => { keys = ke"
+   },
+   {
+    "name": "toast",
+    "len": 45,
+    "at": 2012,
+    "head": "(t) => { if (A() && A().toast) A().toast(t) } function tap(b) { const key = b.datas"
+   }
+  ]
+ },
+ {
+  "file": "mpages/hit.js",
+  "total": 27176,
+  "deadBytes": 626,
+  "uncalled": 4,
+  "top": [
+   {
+    "name": "(anonymous)",
+    "len": 415,
+    "at": 24076,
+    "head": "(e) => { const k = e.target.closest('[data-yh-scope]') if (k) { window.punchApp &&"
+   },
+   {
+    "name": "replay",
+    "len": 85,
+    "at": 24949,
+    "head": "(el, cls) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls) } le"
+   },
+   {
+    "name": "bandT",
+    "len": 84,
+    "at": 8698,
+    "head": "(d) => `${d.band}: most hits here ${bandWhen(d)} land ${d.bandLo} to ${d.bandHi} kg` con"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 42,
+    "at": 25775,
+    "head": "() => root.classList.remove('is-entering'), 1300) } function stop() { clearTimeout"
+   }
+  ]
+ },
+ {
+  "file": "mscreens/loading.js",
+  "total": 10799,
+  "deadBytes": 607,
+  "uncalled": 2,
+  "top": [
+   {
+    "name": "frame",
+    "len": 410,
+    "at": 7577,
+    "head": "function frame(now) { if (!run) return const p = Math.min(1, (now - run.t0) / ru"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 197,
+    "at": 8970,
+    "head": "() => { if (!run) return set(1) if (window.showcase && typeof w"
+   }
+  ]
+ },
+ {
+  "file": "mscreens/default.js",
+  "total": 10881,
+  "deadBytes": 562,
+  "uncalled": 4,
+  "top": [
+   {
+    "name": "(anonymous)",
+    "len": 352,
+    "at": 9997,
+    "head": "() => { i = (i + 1) % TODAY.length step(spot, '.mdf-slide', i); step(spot,"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 122,
+    "at": 9797,
+    "head": "() => { i = (i + 1) % TODAY.length; step(strip, '.mdf-strip-row > li', i); step(strip, '.m"
+   },
+   {
+    "name": "scoreHTML",
+    "len": 44,
+    "at": 874,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US'), score: (n) => Math.floor(n).toLocaleString('"
+   },
+   {
+    "name": "score",
+    "len": 44,
+    "at": 927,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US'), withDecimals: (n) => n } const reduce = wi"
+   }
+  ]
+ },
+ {
+  "file": "mpages/connected.js",
+  "total": 3769,
+  "deadBytes": 561,
+  "uncalled": 2,
+  "top": [
+   {
+    "name": "say",
+    "len": 295,
+    "at": 1758,
+    "head": "function say() { if (!live) return const held = page.dataset.held !== 'no' liv"
+   },
+   {
+    "name": "enter",
+    "len": 266,
+    "at": 2616,
+    "head": "function enter() { clearTimeout(enterTimer) root.classList.remove('is-entering') "
+   }
+  ]
+ },
+ {
+  "file": "mpages/profile.js",
+  "total": 21173,
+  "deadBytes": 531,
+  "uncalled": 7,
+  "top": [
+   {
+    "name": "(anonymous)",
+    "len": 158,
+    "at": 20913,
+    "head": "(e) => { const rail = e.target.closest('.mf-rail') if (rail && e.target !== rail) "
+   },
+   {
+    "name": "replay",
+    "len": 112,
+    "at": 19165,
+    "head": "(node, cls) => { if (!node) return; node.classList.remove(cls); void node.offsetWidth; nod"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 69,
+    "at": 1544,
+    "head": "(c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[c])) const L = (n) => "
+   },
+   {
+    "name": "(anonymous)",
+    "len": 62,
+    "at": 20814,
+    "head": "() => { if (page.classList.contains('is-on')) draw('header') }) page.addEventListener('f"
+   },
+   {
+    "name": "score",
+    "len": 44,
+    "at": 1390,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US'), scoreHTML: (n) => Math.floor(n).toLocaleStri"
+   },
+   {
+    "name": "scoreHTML",
+    "len": 44,
+    "at": 1447,
+    "head": "(n) => Math.floor(n).toLocaleString('en-US') } const esc = (s) => String(s).replace(/[&<"
+   },
+   {
+    "name": "(anonymous)",
+    "len": 42,
+    "at": 19548,
+    "head": "() => root.classList.remove('is-entering'), 1400) } function stop() { root.classList.r"
+   }
+  ]
+ },
+ {
+  "file": "mpages/punch.js",
+  "total": 1616,
+  "deadBytes": 280,
+  "uncalled": 1,
+  "top": [
+   {
+    "name": "open",
+    "len": 280,
+    "at": 734,
+    "head": "function open() { clearTimeout(t) root.classList.add('is-live') if (reduced.ma"
+   }
+  ]
+ },
+ {
+  "file": "mpages/connect.js",
+  "total": 3410,
+  "deadBytes": 265,
+  "uncalled": 1,
+  "top": [
+   {
+    "name": "enter",
+    "len": 265,
+    "at": 2530,
+    "head": "function enter() { clearTimeout(enterTimer) root.classList.remove('is-entering') "
+   }
+  ]
+ },
+ {
+  "file": "pagenav.js",
+  "total": 1740,
+  "deadBytes": 197,
+  "uncalled": 1,
+  "top": [
+   {
+    "name": "(anonymous)",
+    "len": 197,
+    "at": 1405,
+    "head": "(b) => b.addEventListener('click', () => { const g = b.dataset.group const tar"
+   }
+  ]
+ },
+ {
+  "file": "psec.js",
+  "total": 7096,
+  "deadBytes": 150,
+  "uncalled": 2,
+  "top": [
+   {
+    "name": "step",
+    "len": 83,
+    "at": 5235,
+    "head": "(surface, page, sec, dir) => set(surface, page, sec, get(surface, page, sec) + dir) // t"
+   },
+   {
+    "name": "reset",
+    "len": 67,
+    "at": 6054,
+    "head": "function reset() { state = {} save() applyAll(true) } // the embedded mac"
+   }
+  ]
+ },
+ {
+  "file": "format.js",
+  "total": 3292,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "icons.js",
+  "total": 4196,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "qr.js",
+  "total": 3122,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "app-icons.js",
+  "total": 26307,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "lucide.js",
+  "total": 41944,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "mscreens/scan.js",
+  "total": 5441,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "mscreens/_ads.js",
+  "total": 248,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "mscreens/_backdrops.js",
+  "total": 221,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ },
+ {
+  "file": "mscreens/_brand.js",
+  "total": 664,
+  "deadBytes": 0,
+  "uncalled": 0,
+  "top": []
+ }
+]

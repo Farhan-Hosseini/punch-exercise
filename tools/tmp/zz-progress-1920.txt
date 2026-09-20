@@ -1,0 +1,56 @@
+loading...
+boot {"loaderDone":true,"mode":"mobile","apis":{"showcase":true,"punchApp":true,"PSec":true,"PunchFormat":true,"designSystem":true},"title":"PunchApp for Robotenc"}
+tab mobile
+tab machine
+tab animation
+tab system
+phone page default
+phone page scan
+phone page connect
+phone page connected
+phone page punch
+phone page topup
+phone page checkout
+phone page paid
+phone page failed
+phone page hit
+phone page reel
+phone page ranks
+phone page feed
+phone page profile
+machine screen default
+machine screen attract
+machine screen scan
+machine screen countdown
+machine screen loading
+machine screen result
+machine screen score
+machine screen record
+open case
+open brief
+open help
+open customise
+designs machine/default
+designs machine/attract
+designs machine/scan
+designs machine/countdown
+designs machine/loading
+designs machine/result
+designs machine/score
+designs machine/record
+designs phone/default
+designs phone/scan
+designs phone/connect
+designs phone/connected
+designs phone/punch
+designs phone/topup
+designs phone/checkout
+designs phone/paid
+designs phone/failed
+designs phone/hit
+designs phone/reel
+designs phone/ranks
+designs phone/feed
+designs phone/profile
+designs global
+done

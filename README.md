@@ -1,7 +1,7 @@
 # Ring the Bell
 
 A product design exercise for **PunchApp**: a boxing strength machine standing in Dubai Mall, and the app in the
-player's pocket. The cabinet is a 1080 by 3840 portrait glass by the ice rink; the phone is the part you take home.
+player's pocket. The cabinet is a 1080 by 3840 portrait glass in the Grand Atrium; the phone is the part you take home.
 Presented as a task for Robotenc.
 
 Everything here is real and running. There are no static mockups: the machine screens and the phone app are built as

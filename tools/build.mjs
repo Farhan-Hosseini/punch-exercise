@@ -15,15 +15,10 @@ async function processIncludes(html) {
     const parts = html.split(/<!-- include:([\w/.-]+) -->/)
     for (let i = 1; i < parts.length; i += 2) {
       const inc = normalize(join(ROOT, parts[i]))
-      if (inc.startsWith(ROOT)) {
-        try {
-          parts[i] = await readFile(inc, 'utf8')
-        } catch {
-          parts[i] = `<!-- missing ${parts[i]} -->`
-        }
-      } else {
-        parts[i] = ''
-      }
+      if (!inc.startsWith(ROOT)) throw new Error(`include escapes the showcase folder: ${parts[i]}`)
+      // a part that cannot be read used to become an HTML comment and the build still exited 0, so a deploy could
+      // go out with a hole in the page and Netlify would call it green
+      parts[i] = await readFile(inc, 'utf8')
     }
     html = parts.join('')
   }

@@ -1,0 +1,35 @@
+import { launch, conn, newTarget, sleep } from './cdp.mjs'
+const { port, chrome } = await launch({ w: 1440, h: 1000 })
+const list = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()
+const c = await conn(list.find((x) => x.type === 'page').webSocketDebuggerUrl)
+await c.send('Runtime.enable'); await c.send('Page.enable')
+await c.send('Page.navigate', { url: 'http://localhost:5770/' }); await sleep(3500)
+await c.js('localStorage.clear(); 1')
+await c.send('Page.navigate', { url: 'http://localhost:5770/' }); await sleep(6500)
+await c.js(`window.showcase.mode('animation'); 1`); await sleep(5000)
+console.log('frame up:', await c.js(`(function(){try{return document.getElementById('linkedFrame').contentDocument.getElementById('machine').dataset.mscreen}catch(e){return 'ERR'}})()`))
+const before = c.errs.length
+// a second same-origin tab rewrites the shared key: this is the ONLY way the embed's storage handler fires
+const t2 = await newTarget(port, 'http://localhost:5770/qr.css'); await sleep(1000)
+const c2 = await conn(t2.webSocketDebuggerUrl); await c2.send('Runtime.enable')
+const poke = async (label, value) => {
+  const n0 = c.errs.length
+  await c2.js(`localStorage.setItem('punch-showcase.v5', ${JSON.stringify(value)}); 1`)
+  await sleep(1500)
+  const st = await c.js(`(function(){try{var d=document.getElementById('linkedFrame').contentDocument;var r=d.documentElement;return JSON.stringify({mscreen:d.getElementById('machine').dataset.mscreen,variant:r.dataset.variant,appearance:r.dataset.appearance,backdrop:r.dataset.backdrop||d.body.dataset.backdrop||null,logo:r.dataset.logo||null})}catch(e){return 'ERR '+e.message}})()`)
+  console.log(JSON.stringify({ label, state: st, newErrors: c.errs.slice(n0) }))
+}
+await poke('valid dark', JSON.stringify({ variant: 'arena', appearance: 'dark', logo: 'fist', backdrop: 'smoke', decimals: 'on', sets: {}, mvar: {} }))
+await poke('hostile backdrop', JSON.stringify({ variant: 'arena', appearance: 'light', backdrop: 'not-a-backdrop"><script>window.__x=1</script>', sets: {}, mvar: {} }))
+await poke('sets is a string', JSON.stringify({ variant: 'arena', sets: 'abcdef', mvar: 'xyz', layout: 'q' }))
+await poke('sets.arena is a string', JSON.stringify({ variant: 'arena', sets: { arena: 'zzz' } }))
+await poke('score NaN', JSON.stringify({ variant: 'arena', sets: { arena: { score: 'not a number' } } }))
+await poke('mvar hostile', JSON.stringify({ variant: 'arena', mvar: { result: 1e9, scan: '99' }, sets: {} }))
+await poke('layout hostile', JSON.stringify({ variant: 'arena', layout: { foo: 1e9 }, sets: {} }))
+await poke('not json', 'this is not json at all')
+await poke('null', 'null')
+console.log('backdrop attr now:', await c.js(`(function(){try{var d=document.getElementById('linkedFrame').contentDocument;return d.documentElement.outerHTML.slice(0,260)}catch(e){return 'ERR'}})()`))
+console.log('injected?:', await c.js(`(function(){try{return String(document.getElementById('linkedFrame').contentWindow.__x)}catch(e){return 'ERR'}})()`))
+console.log('TOTAL new errors:', c.errs.length - before)
+console.log(JSON.stringify(c.errs.slice(before), null, 1))
+c.ws.close(); c2.ws.close(); chrome.kill(); process.exit(0)

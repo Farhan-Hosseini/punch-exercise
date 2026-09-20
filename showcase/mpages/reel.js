@@ -237,7 +237,7 @@
     man: [['Jonah Reyes', 'Manila, PH'], ['Kenji Mori', 'Osaka, JP'], ['Luca Romano', 'Milan, IT'], ['Samir Khoury', 'Beirut, LB'], ['Idris Cole', 'Manchester, UK'], ['Mateo Silva', 'Lisbon, PT'], ['Oscar Lind', 'Stockholm, SE'], ['Bilal Anwar', 'Dubai, UAE']],
   }
   const VENUES = [
-    ['Dubai Mall, Ground Level', 'Machine by the ice rink'], ['Mall of the Emirates', 'Machine at Magic Planet'], ['City Walk, Dubai', 'Machine at Hub Zero'],
+    ['Dubai Mall, Ground Level', 'Machine at the Grand Atrium'], ['Mall of the Emirates', 'Machine at Magic Planet'], ['City Walk, Dubai', 'Machine at Hub Zero'],
     ['Yas Mall, Abu Dhabi', 'Machine at the family zone'], ['Dubai Festival City Mall', 'Machine on the waterfront'], ['Ibn Battuta Mall, Dubai', 'Machine in China Court'],
   ]
   const hash = (t) => { let h = 0; for (const c of String(t)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h }

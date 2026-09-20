@@ -1,0 +1,2992 @@
+{
+ "mode": "nostore",
+ "initial": {
+  "n": 119,
+  "mb": 8.29
+ },
+ "afterAnimation": {
+  "n": 219,
+  "mb": 12.34
+ },
+ "afterCase": {
+  "n": 408,
+  "mb": 20.44
+ },
+ "byPhase": {
+  "initial": {
+   "n": 119,
+   "mb": 8.29,
+   "cachedHits": 0,
+   "cachedMb": 0
+  },
+  "animation": {
+   "n": 100,
+   "mb": 4.04,
+   "cachedHits": 6,
+   "cachedMb": 0
+  },
+  "case": {
+   "n": 189,
+   "mb": 8.1,
+   "cachedHits": 0,
+   "cachedMb": 0
+  }
+ },
+ "uniqueUrls": 134,
+ "uniqueMb": 9.95,
+ "dupRequests": 274,
+ "dupMb": 10.49,
+ "embedDocs": [
+  {
+   "url": "http://localhost:5770/?embed=machine",
+   "phase": "animation",
+   "bytes": 638478,
+   "cached": false
+  },
+  {
+   "url": "http://localhost:5770/?embed=machine&follow=0",
+   "phase": "case",
+   "bytes": 638478,
+   "cached": false
+  },
+  {
+   "url": "http://localhost:5770/?embed=machine&follow=0",
+   "phase": "case",
+   "bytes": 638478,
+   "cached": false
+  }
+ ],
+ "topDupes": [
+  {
+   "url": "mscreens.css",
+   "times": 4,
+   "eachKb": 391,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "mpages.css",
+   "times": 4,
+   "eachKb": 346,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "?embed=machine&follow=0",
+   "times": 2,
+   "eachKb": 624,
+   "cached": "net,net"
+  },
+  {
+   "url": "assets/motion/reveal-live-1080x3840-poster.jpg",
+   "times": 4,
+   "eachKb": 192,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "assets/motion/run-live-1920x1080-poster.jpg",
+   "times": 4,
+   "eachKb": 127,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "assets/motion/run-live-928x1960-poster.jpg",
+   "times": 4,
+   "eachKb": 127,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "mobile.js",
+   "times": 4,
+   "eachKb": 126,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "ds.js",
+   "times": 4,
+   "eachKb": 102,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "assets/case/screen-hit.webp",
+   "times": 4,
+   "eachKb": 96,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "assets/photos/lib/fist-strike-4.jpg",
+   "times": 3,
+   "eachKb": 142,
+   "cached": "net,net,net"
+  },
+  {
+   "url": "pay.css",
+   "times": 4,
+   "eachKb": 83,
+   "cached": "net,net,net,net"
+  },
+  {
+   "url": "sections.css",
+   "times": 4,
+   "eachKb": 82,
+   "cached": "net,net,net,net"
+  }
+ ],
+ "errors": [],
+ "all": [
+  {
+   "u": "",
+   "p": "initial",
+   "b": 638478,
+   "c": false,
+   "t": "Document"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-900-normal.woff2",
+   "p": "initial",
+   "b": 14211,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-600-normal.woff2",
+   "p": "initial",
+   "b": 22503,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "styles.css",
+   "p": "initial",
+   "b": 67349,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "sections.css",
+   "p": "initial",
+   "b": 83756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mscreens.css",
+   "p": "initial",
+   "b": 400543,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "qr.css",
+   "p": "initial",
+   "b": 5495,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mobile.css",
+   "p": "initial",
+   "b": 80345,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mpages.css",
+   "p": "initial",
+   "b": 354318,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "nav.css",
+   "p": "initial",
+   "b": 23117,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "pay.css",
+   "p": "initial",
+   "b": 84756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "ds.css",
+   "p": "initial",
+   "b": 77048,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "brief.css",
+   "p": "initial",
+   "b": 14786,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case.css",
+   "p": "initial",
+   "b": 43194,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "anim.css",
+   "p": "initial",
+   "b": 8792,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "assets/logos/fist-circle.svg",
+   "p": "initial",
+   "b": 2456,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark.svg",
+   "p": "initial",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark-dark.svg",
+   "p": "initial",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc-light.svg",
+   "p": "initial",
+   "b": 31090,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc.svg",
+   "p": "initial",
+   "b": 31068,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/bag-backlit-sq.jpg",
+   "p": "initial",
+   "b": 34741,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/shadow-bars-sq.jpg",
+   "p": "initial",
+   "b": 58491,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-928x1960-poster.jpg",
+   "p": "initial",
+   "b": 129717,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-1920x1080-poster.jpg",
+   "p": "initial",
+   "b": 130543,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg",
+   "p": "initial",
+   "b": 196648,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/boxer-circle.svg",
+   "p": "initial",
+   "b": 2331,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-tilt.svg",
+   "p": "initial",
+   "b": 2680,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-upright.svg",
+   "p": "initial",
+   "b": 2756,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/gloves-pair.svg",
+   "p": "initial",
+   "b": 4777,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/speedbag.svg",
+   "p": "initial",
+   "b": 2000,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/case/screen-hit.webp",
+   "p": "initial",
+   "b": 98786,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "case-diagrams.css",
+   "p": "initial",
+   "b": 49059,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case-diagrams.js",
+   "p": "initial",
+   "b": 17268,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "case.js",
+   "p": "initial",
+   "b": 20113,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "format.js",
+   "p": "initial",
+   "b": 3506,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "psec.js",
+   "p": "initial",
+   "b": 7311,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "icons.js",
+   "p": "initial",
+   "b": 4411,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "qr.js",
+   "p": "initial",
+   "b": 3336,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app-icons.js",
+   "p": "initial",
+   "b": 26522,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "lucide.js",
+   "p": "initial",
+   "b": 42159,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mobile.js",
+   "p": "initial",
+   "b": 128699,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pay.js",
+   "p": "initial",
+   "b": 61998,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/default.js",
+   "p": "initial",
+   "b": 28243,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connected.js",
+   "p": "initial",
+   "b": 3983,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/failed.js",
+   "p": "initial",
+   "b": 13029,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/saved.js",
+   "p": "initial",
+   "b": 3011,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/punch.js",
+   "p": "initial",
+   "b": 1830,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/scan.js",
+   "p": "initial",
+   "b": 13642,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connect.js",
+   "p": "initial",
+   "b": 3624,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/feed.js",
+   "p": "initial",
+   "b": 19913,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/profile.js",
+   "p": "initial",
+   "b": 21388,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/hit.js",
+   "p": "initial",
+   "b": 27391,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/ranks.js",
+   "p": "initial",
+   "b": 4776,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/reel.js",
+   "p": "initial",
+   "b": 19908,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "ds.js",
+   "p": "initial",
+   "b": 104822,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/default.js",
+   "p": "initial",
+   "b": 11096,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/attract.js",
+   "p": "initial",
+   "b": 22639,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/scan.js",
+   "p": "initial",
+   "b": 5656,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_ads.js",
+   "p": "initial",
+   "b": 461,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_backdrops.js",
+   "p": "initial",
+   "b": 434,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_brand.js",
+   "p": "initial",
+   "b": 878,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/countdown.js",
+   "p": "initial",
+   "b": 25846,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/loading.js",
+   "p": "initial",
+   "b": 11014,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/stats.js",
+   "p": "initial",
+   "b": 59301,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/score.js",
+   "p": "initial",
+   "b": 48504,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/record.js",
+   "p": "initial",
+   "b": 39853,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "anim.js",
+   "p": "initial",
+   "b": 8816,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app.js",
+   "p": "initial",
+   "b": 65382,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pagenav.js",
+   "p": "initial",
+   "b": 1954,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "fonts/barlow-latin-500-normal.woff2",
+   "p": "initial",
+   "b": 22203,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-700-normal.woff2",
+   "p": "initial",
+   "b": 22983,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/anton-latin-400-normal.woff2",
+   "p": "initial",
+   "b": 18807,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-700-normal.woff2",
+   "p": "initial",
+   "b": 22639,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/photos/header-d-sara.jpg",
+   "p": "initial",
+   "b": 17114,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/fist-strike-4.jpg",
+   "p": "initial",
+   "b": 145684,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/noor.jpg",
+   "p": "initial",
+   "b": 11966,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/leila.jpg",
+   "p": "initial",
+   "b": 14096,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/rami.jpg",
+   "p": "initial",
+   "b": 8343,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/omar.jpg",
+   "p": "initial",
+   "b": 6216,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/yusuf.jpg",
+   "p": "initial",
+   "b": 11413,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/karim.jpg",
+   "p": "initial",
+   "b": 11888,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/zayd.jpg",
+   "p": "initial",
+   "b": 10549,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/lina.jpg",
+   "p": "initial",
+   "b": 12775,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/adam.jpg",
+   "p": "initial",
+   "b": 10951,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/hana.jpg",
+   "p": "initial",
+   "b": 13613,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/sara.jpg",
+   "p": "initial",
+   "b": 19612,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/manifest.json",
+   "p": "initial",
+   "b": 106947,
+   "c": false,
+   "t": "Fetch"
+  },
+  {
+   "u": "assets/video/lib/manifest.json",
+   "p": "initial",
+   "b": 12948,
+   "c": false,
+   "t": "Fetch"
+  },
+  {
+   "u": "fonts/orbitron-latin-900-normal.woff2",
+   "p": "initial",
+   "b": 6595,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/app/qr-glow.svg",
+   "p": "initial",
+   "b": 1361,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/barlow-latin-300-normal.woff2",
+   "p": "initial",
+   "b": 22271,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-800-normal.woff2",
+   "p": "initial",
+   "b": 23171,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-400-normal.woff2",
+   "p": "initial",
+   "b": 22391,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-600-normal.woff2",
+   "p": "initial",
+   "b": 22967,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-800-normal.woff2",
+   "p": "initial",
+   "b": 14751,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/photos/last-card.jpg",
+   "p": "initial",
+   "b": 31803,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/arcade-neon-4.jpg",
+   "p": "initial",
+   "b": 471912,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/load-glow.svg",
+   "p": "initial",
+   "b": 1328,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-22.jpg",
+   "p": "initial",
+   "b": 243304,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-10.jpg",
+   "p": "initial",
+   "b": 272254,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/arcade-neon-3.jpg",
+   "p": "initial",
+   "b": 322793,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/bag-strike-23.jpg",
+   "p": "initial",
+   "b": 214942,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/boxer-68.jpg",
+   "p": "initial",
+   "b": 155064,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-12.jpg",
+   "p": "initial",
+   "b": 315327,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/friends-5.jpg",
+   "p": "initial",
+   "b": 214778,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/mall-night-1.jpg",
+   "p": "initial",
+   "b": 481160,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/boxer-62.jpg",
+   "p": "initial",
+   "b": 194964,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-11.jpg",
+   "p": "initial",
+   "b": 179275,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-1.jpg",
+   "p": "initial",
+   "b": 206169,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/8478699.jpg",
+   "p": "initial",
+   "b": 61479,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/7777435.jpg",
+   "p": "initial",
+   "b": 54553,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/7777434.jpg",
+   "p": "initial",
+   "b": 42928,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/7777431.jpg",
+   "p": "initial",
+   "b": 84074,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-25.jpg",
+   "p": "initial",
+   "b": 210492,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/hit-player.jpg",
+   "p": "initial",
+   "b": 104522,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-20.jpg",
+   "p": "initial",
+   "b": 197636,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/dubai-night-5.jpg",
+   "p": "initial",
+   "b": 310082,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/manifest.json",
+   "p": "initial",
+   "b": 106947,
+   "c": false,
+   "t": "Fetch"
+  },
+  {
+   "u": "assets/video/lib/manifest.json",
+   "p": "initial",
+   "b": 12948,
+   "c": false,
+   "t": "Fetch"
+  },
+  {
+   "u": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI1NSAyNTU7IiB4bWw6c3BhY2U9InByZXNlcnZlIiBmaWxsPSJXaW5kb3ciPgo8Zz4KCTxjaXJjbGUgY3g9IjEyIiBjeT0iNiIgcj0iMiIvPgoJPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMiIvPgoJPGNpcmNsZSBjeD0iMTIiIGN5PSIxOCIgcj0iMiIvPgo8L2c+Cjwvc3ZnPgo=",
+   "p": "animation",
+   "b": 0,
+   "c": "memory",
+   "t": "Image"
+  },
+  {
+   "u": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxOTYgMTk2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxOTYgMTk2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05OCw0OXY0Yy0yNC45LDAtNDUsMjAuMS00NSw0NQoJYzAsMTgsMTAuNiwzMy42LDI1LjksNDAuOGwtMS43LDMuNmMwLjEsMCwwLjIsMC4xLDAuMywwLjFjLTAuMSwwLTAuMi0wLjEtMC4zLTAuMWwwLDBDNjAuNSwxMzQuNSw0OSwxMTcuNiw0OSw5OAoJQzQ5LDcwLjksNzAuOSw0OSw5OCw0OXoiLz4KPC9zdmc+Cg==",
+   "p": "animation",
+   "b": 0,
+   "c": "memory",
+   "t": "Image"
+  },
+  {
+   "u": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxOTYgMTk2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxOTYgMTk2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xNDcsOThjMCwxOS42LTExLjUsMzYuNS0yOC4yLDQ0LjRsMCwwYy0wLjEsMC0wLjIsMC4xLTAuMywwLjEKCWMwLjEsMCwwLjItMC4xLDAuMy0wLjFsLTEuNy0zLjZDMTMyLjQsMTMxLjYsMTQzLDExNiwxNDMsOThjMC0yNC45LTIwLjEtNDUtNDUtNDV2LTRDMTI1LjEsNDksMTQ3LDcwLjksMTQ3LDk4eiIvPgo8L3N2Zz4K",
+   "p": "animation",
+   "b": 0,
+   "c": "memory",
+   "t": "Image"
+  },
+  {
+   "u": "?embed=machine",
+   "p": "animation",
+   "b": 638478,
+   "c": false,
+   "t": "Document"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-900-normal.woff2",
+   "p": "animation",
+   "b": 14211,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-600-normal.woff2",
+   "p": "animation",
+   "b": 22503,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "styles.css",
+   "p": "animation",
+   "b": 67349,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "sections.css",
+   "p": "animation",
+   "b": 83756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mscreens.css",
+   "p": "animation",
+   "b": 400543,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "qr.css",
+   "p": "animation",
+   "b": 5495,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mobile.css",
+   "p": "animation",
+   "b": 80345,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mpages.css",
+   "p": "animation",
+   "b": 354318,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "nav.css",
+   "p": "animation",
+   "b": 23117,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "pay.css",
+   "p": "animation",
+   "b": 84756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "ds.css",
+   "p": "animation",
+   "b": 77048,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "brief.css",
+   "p": "animation",
+   "b": 14786,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case.css",
+   "p": "animation",
+   "b": 43194,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "anim.css",
+   "p": "animation",
+   "b": 8792,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "assets/logos/fist-circle.svg",
+   "p": "animation",
+   "b": 2456,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark.svg",
+   "p": "animation",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark-dark.svg",
+   "p": "animation",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc-light.svg",
+   "p": "animation",
+   "b": 31090,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc.svg",
+   "p": "animation",
+   "b": 31068,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/bag-backlit-sq.jpg",
+   "p": "animation",
+   "b": 34741,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/shadow-bars-sq.jpg",
+   "p": "animation",
+   "b": 58491,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-928x1960-poster.jpg",
+   "p": "animation",
+   "b": 129717,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-1920x1080-poster.jpg",
+   "p": "animation",
+   "b": 130543,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg",
+   "p": "animation",
+   "b": 196648,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/boxer-circle.svg",
+   "p": "animation",
+   "b": 2331,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-tilt.svg",
+   "p": "animation",
+   "b": 2680,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-upright.svg",
+   "p": "animation",
+   "b": 2756,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/gloves-pair.svg",
+   "p": "animation",
+   "b": 4777,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/speedbag.svg",
+   "p": "animation",
+   "b": 2000,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/case/screen-hit.webp",
+   "p": "animation",
+   "b": 98786,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "case-diagrams.css",
+   "p": "animation",
+   "b": 49059,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case-diagrams.js",
+   "p": "animation",
+   "b": 17268,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "case.js",
+   "p": "animation",
+   "b": 20113,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "format.js",
+   "p": "animation",
+   "b": 3506,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "psec.js",
+   "p": "animation",
+   "b": 7311,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "icons.js",
+   "p": "animation",
+   "b": 4411,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "qr.js",
+   "p": "animation",
+   "b": 3336,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app-icons.js",
+   "p": "animation",
+   "b": 26522,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "lucide.js",
+   "p": "animation",
+   "b": 42159,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mobile.js",
+   "p": "animation",
+   "b": 128699,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pay.js",
+   "p": "animation",
+   "b": 61998,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/default.js",
+   "p": "animation",
+   "b": 28243,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connected.js",
+   "p": "animation",
+   "b": 3983,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/failed.js",
+   "p": "animation",
+   "b": 13029,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/saved.js",
+   "p": "animation",
+   "b": 3011,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/punch.js",
+   "p": "animation",
+   "b": 1830,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/scan.js",
+   "p": "animation",
+   "b": 13642,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connect.js",
+   "p": "animation",
+   "b": 3624,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/feed.js",
+   "p": "animation",
+   "b": 19913,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/profile.js",
+   "p": "animation",
+   "b": 21388,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/hit.js",
+   "p": "animation",
+   "b": 27391,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/ranks.js",
+   "p": "animation",
+   "b": 4776,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/reel.js",
+   "p": "animation",
+   "b": 19908,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "ds.js",
+   "p": "animation",
+   "b": 104822,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/default.js",
+   "p": "animation",
+   "b": 11096,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/attract.js",
+   "p": "animation",
+   "b": 22639,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/scan.js",
+   "p": "animation",
+   "b": 5656,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_ads.js",
+   "p": "animation",
+   "b": 461,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_backdrops.js",
+   "p": "animation",
+   "b": 434,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_brand.js",
+   "p": "animation",
+   "b": 878,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/countdown.js",
+   "p": "animation",
+   "b": 25846,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/loading.js",
+   "p": "animation",
+   "b": 11014,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/stats.js",
+   "p": "animation",
+   "b": 59301,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/score.js",
+   "p": "animation",
+   "b": 48504,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/record.js",
+   "p": "animation",
+   "b": 39853,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "anim.js",
+   "p": "animation",
+   "b": 8816,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app.js",
+   "p": "animation",
+   "b": 65382,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pagenav.js",
+   "p": "animation",
+   "b": 1954,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "data:image/svg+xml;base64,PHN2ZyBmaWxsPSJXaW5kb3ciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGggZD0iTTggNXYxNGwxMS03eiIvPgogICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K",
+   "p": "animation",
+   "b": 0,
+   "c": "memory",
+   "t": "Image"
+  },
+  {
+   "u": "data:image/svg+xml;base64,PHN2ZyBmaWxsPSJXaW5kb3ciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGggZD0iTTE2LjUgMTJjMC0xLjc3LTEuMDItMy4yOS0yLjUtNC4wM3YyLjIxbDIuNDUgMi40NWMuMDMtLjIuMDUtLjQxLjA1LS42M3ptMi41IDBjMCAuOTQtLjIgMS44Mi0uNTQgMi42NGwxLjUxIDEuNTFDMjAuNjMgMTQuOTEgMjEgMTMuNSAyMSAxMmMwLTQuMjgtMi45OS03Ljg2LTctOC43N3YyLjA2YzIuODkuODYgNSAzLjU0IDUgNi43MXpNNC4yNyAzTDMgNC4yNyA3LjczIDlIM3Y2aDRsNSA1di02LjczbDQuMjUgNC4yNWMtLjY3LjUyLTEuNDIuOTMtMi4yNSAxLjE4djIuMDZjMS4zOC0uMzEgMi42My0uOTUgMy42OS0xLjgxTDE5LjczIDIxIDIxIDE5LjczbC05LTlMNC4yNyAzek0xMiA0TDkuOTEgNi4wOSAxMiA4LjE4VjR6Ii8+CiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=",
+   "p": "animation",
+   "b": 0,
+   "c": "memory",
+   "t": "Image"
+  },
+  {
+   "u": "data:image/svg+xml;base64,PHN2ZyBmaWxsPSJXaW5kb3ciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPgogICAgPHBhdGggZD0iTTcgMTRINXY1aDV2LTJIN3YtM3ptLTItNGgyVjdoM1Y1SDV2NXptMTIgN2gtM3YyaDV2LTVoLTJ2M3pNMTQgNXYyaDN2M2gyVjVoLTV6Ii8+Cjwvc3ZnPgo=",
+   "p": "animation",
+   "b": 0,
+   "c": "memory",
+   "t": "Image"
+  },
+  {
+   "u": "fonts/barlow-latin-700-normal.woff2",
+   "p": "animation",
+   "b": 22983,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-500-normal.woff2",
+   "p": "animation",
+   "b": 22203,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/anton-latin-400-normal.woff2",
+   "p": "animation",
+   "b": 18807,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-700-normal.woff2",
+   "p": "animation",
+   "b": 22639,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/photos/header-d-sara.jpg",
+   "p": "animation",
+   "b": 17114,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/fist-strike-4.jpg",
+   "p": "animation",
+   "b": 145684,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/noor.jpg",
+   "p": "animation",
+   "b": 11966,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/leila.jpg",
+   "p": "animation",
+   "b": 14096,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/rami.jpg",
+   "p": "animation",
+   "b": 8343,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/omar.jpg",
+   "p": "animation",
+   "b": 6216,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/yusuf.jpg",
+   "p": "animation",
+   "b": 11413,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/karim.jpg",
+   "p": "animation",
+   "b": 11888,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/zayd.jpg",
+   "p": "animation",
+   "b": 10549,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/lina.jpg",
+   "p": "animation",
+   "b": 12775,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/adam.jpg",
+   "p": "animation",
+   "b": 10951,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/hana.jpg",
+   "p": "animation",
+   "b": 13613,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/sara.jpg",
+   "p": "animation",
+   "b": 19612,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/orbitron-latin-900-normal.woff2",
+   "p": "animation",
+   "b": 6595,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/app/qr-glow.svg",
+   "p": "animation",
+   "b": 1361,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-800-normal.woff2",
+   "p": "animation",
+   "b": 14751,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-800-normal.woff2",
+   "p": "animation",
+   "b": 23171,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-600-normal.woff2",
+   "p": "animation",
+   "b": 22967,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/app/feed/8469889.jpg",
+   "p": "animation",
+   "b": 67391,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/4804087.jpg",
+   "p": "animation",
+   "b": 55811,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/8478706.jpg",
+   "p": "animation",
+   "b": 74079,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/inter-latin-700-normal.woff2",
+   "p": "case",
+   "b": 24551,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/inter-latin-400-normal.woff2",
+   "p": "case",
+   "b": 23859,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/inter-latin-500-normal.woff2",
+   "p": "case",
+   "b": 24467,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/inter-latin-600-normal.woff2",
+   "p": "case",
+   "b": 24647,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "?embed=machine&follow=0",
+   "p": "case",
+   "b": 638478,
+   "c": false,
+   "t": "Document"
+  },
+  {
+   "u": "assets/case/hero-bag.jpg",
+   "p": "case",
+   "b": 166837,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-900-normal.woff2",
+   "p": "case",
+   "b": 14211,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-600-normal.woff2",
+   "p": "case",
+   "b": 22503,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "styles.css",
+   "p": "case",
+   "b": 67349,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "sections.css",
+   "p": "case",
+   "b": 83756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mscreens.css",
+   "p": "case",
+   "b": 400543,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "qr.css",
+   "p": "case",
+   "b": 5495,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mobile.css",
+   "p": "case",
+   "b": 80345,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mpages.css",
+   "p": "case",
+   "b": 354318,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "nav.css",
+   "p": "case",
+   "b": 23117,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "pay.css",
+   "p": "case",
+   "b": 84756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "ds.css",
+   "p": "case",
+   "b": 77048,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "brief.css",
+   "p": "case",
+   "b": 14786,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case.css",
+   "p": "case",
+   "b": 43194,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "anim.css",
+   "p": "case",
+   "b": 8792,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "assets/logos/fist-circle.svg",
+   "p": "case",
+   "b": 2456,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark.svg",
+   "p": "case",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark-dark.svg",
+   "p": "case",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc-light.svg",
+   "p": "case",
+   "b": 31090,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc.svg",
+   "p": "case",
+   "b": 31068,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/bag-backlit-sq.jpg",
+   "p": "case",
+   "b": 34741,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/shadow-bars-sq.jpg",
+   "p": "case",
+   "b": 58491,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-928x1960-poster.jpg",
+   "p": "case",
+   "b": 129717,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-1920x1080-poster.jpg",
+   "p": "case",
+   "b": 130543,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg",
+   "p": "case",
+   "b": 196648,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/boxer-circle.svg",
+   "p": "case",
+   "b": 2331,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-tilt.svg",
+   "p": "case",
+   "b": 2680,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-upright.svg",
+   "p": "case",
+   "b": 2756,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/gloves-pair.svg",
+   "p": "case",
+   "b": 4777,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/speedbag.svg",
+   "p": "case",
+   "b": 2000,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/case/screen-hit.webp",
+   "p": "case",
+   "b": 98786,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "case-diagrams.css",
+   "p": "case",
+   "b": 49059,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case-diagrams.js",
+   "p": "case",
+   "b": 17268,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "case.js",
+   "p": "case",
+   "b": 20113,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "format.js",
+   "p": "case",
+   "b": 3506,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "psec.js",
+   "p": "case",
+   "b": 7311,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "icons.js",
+   "p": "case",
+   "b": 4411,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "qr.js",
+   "p": "case",
+   "b": 3336,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app-icons.js",
+   "p": "case",
+   "b": 26522,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "lucide.js",
+   "p": "case",
+   "b": 42159,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mobile.js",
+   "p": "case",
+   "b": 128699,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pay.js",
+   "p": "case",
+   "b": 61998,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/default.js",
+   "p": "case",
+   "b": 28243,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connected.js",
+   "p": "case",
+   "b": 3983,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/failed.js",
+   "p": "case",
+   "b": 13029,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/saved.js",
+   "p": "case",
+   "b": 3011,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/punch.js",
+   "p": "case",
+   "b": 1830,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/scan.js",
+   "p": "case",
+   "b": 13642,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connect.js",
+   "p": "case",
+   "b": 3624,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/feed.js",
+   "p": "case",
+   "b": 19913,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/profile.js",
+   "p": "case",
+   "b": 21388,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/hit.js",
+   "p": "case",
+   "b": 27391,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/ranks.js",
+   "p": "case",
+   "b": 4776,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/reel.js",
+   "p": "case",
+   "b": 19908,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "ds.js",
+   "p": "case",
+   "b": 104822,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/default.js",
+   "p": "case",
+   "b": 11096,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/attract.js",
+   "p": "case",
+   "b": 22639,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/scan.js",
+   "p": "case",
+   "b": 5656,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_ads.js",
+   "p": "case",
+   "b": 461,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_backdrops.js",
+   "p": "case",
+   "b": 434,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_brand.js",
+   "p": "case",
+   "b": 878,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/countdown.js",
+   "p": "case",
+   "b": 25846,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/loading.js",
+   "p": "case",
+   "b": 11014,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/stats.js",
+   "p": "case",
+   "b": 59301,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/score.js",
+   "p": "case",
+   "b": 48504,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/record.js",
+   "p": "case",
+   "b": 39853,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "anim.js",
+   "p": "case",
+   "b": 8816,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app.js",
+   "p": "case",
+   "b": 65382,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pagenav.js",
+   "p": "case",
+   "b": 1954,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "fonts/barlow-latin-700-normal.woff2",
+   "p": "case",
+   "b": 22983,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-500-normal.woff2",
+   "p": "case",
+   "b": 22203,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/anton-latin-400-normal.woff2",
+   "p": "case",
+   "b": 18807,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-700-normal.woff2",
+   "p": "case",
+   "b": 22639,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/photos/header-d-sara.jpg",
+   "p": "case",
+   "b": 17114,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/photos/lib/fist-strike-4.jpg",
+   "p": "case",
+   "b": 145684,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/noor.jpg",
+   "p": "case",
+   "b": 11966,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/leila.jpg",
+   "p": "case",
+   "b": 14096,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/rami.jpg",
+   "p": "case",
+   "b": 8343,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/omar.jpg",
+   "p": "case",
+   "b": 6216,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/yusuf.jpg",
+   "p": "case",
+   "b": 11413,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/karim.jpg",
+   "p": "case",
+   "b": 11888,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/zayd.jpg",
+   "p": "case",
+   "b": 10549,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/lina.jpg",
+   "p": "case",
+   "b": 12775,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/adam.jpg",
+   "p": "case",
+   "b": 10951,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/hana.jpg",
+   "p": "case",
+   "b": 13613,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/sara.jpg",
+   "p": "case",
+   "b": 19612,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/orbitron-latin-900-normal.woff2",
+   "p": "case",
+   "b": 6595,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/app/qr-glow.svg",
+   "p": "case",
+   "b": 1361,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-800-normal.woff2",
+   "p": "case",
+   "b": 14751,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-800-normal.woff2",
+   "p": "case",
+   "b": 23171,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-600-normal.woff2",
+   "p": "case",
+   "b": 22967,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/app/feed/8469889.jpg",
+   "p": "case",
+   "b": 67391,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/4804087.jpg",
+   "p": "case",
+   "b": 55811,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/feed/8478706.jpg",
+   "p": "case",
+   "b": 74079,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "?embed=machine&follow=0",
+   "p": "case",
+   "b": 638478,
+   "c": false,
+   "t": "Document"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-900-normal.woff2",
+   "p": "case",
+   "b": 14211,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-600-normal.woff2",
+   "p": "case",
+   "b": 22503,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "styles.css",
+   "p": "case",
+   "b": 67349,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "sections.css",
+   "p": "case",
+   "b": 83756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mscreens.css",
+   "p": "case",
+   "b": 400543,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "qr.css",
+   "p": "case",
+   "b": 5495,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mobile.css",
+   "p": "case",
+   "b": 80345,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "mpages.css",
+   "p": "case",
+   "b": 354318,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "nav.css",
+   "p": "case",
+   "b": 23117,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "pay.css",
+   "p": "case",
+   "b": 84756,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "ds.css",
+   "p": "case",
+   "b": 77048,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "brief.css",
+   "p": "case",
+   "b": 14786,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case.css",
+   "p": "case",
+   "b": 43194,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "anim.css",
+   "p": "case",
+   "b": 8792,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "assets/logos/fist-circle.svg",
+   "p": "case",
+   "b": 2456,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark.svg",
+   "p": "case",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/punchapp-wordmark-dark.svg",
+   "p": "case",
+   "b": 6316,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc-light.svg",
+   "p": "case",
+   "b": 31090,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/brand/robotenc.svg",
+   "p": "case",
+   "b": 31068,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/bag-backlit-sq.jpg",
+   "p": "case",
+   "b": 34741,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/video/lib/shadow-bars-sq.jpg",
+   "p": "case",
+   "b": 58491,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-928x1960-poster.jpg",
+   "p": "case",
+   "b": 129717,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/run-live-1920x1080-poster.jpg",
+   "p": "case",
+   "b": 130543,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/motion/reveal-live-1080x3840-poster.jpg",
+   "p": "case",
+   "b": 196648,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/boxer-circle.svg",
+   "p": "case",
+   "b": 2331,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-tilt.svg",
+   "p": "case",
+   "b": 2680,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/glove-upright.svg",
+   "p": "case",
+   "b": 2756,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/gloves-pair.svg",
+   "p": "case",
+   "b": 4777,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/logos/speedbag.svg",
+   "p": "case",
+   "b": 2000,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/case/screen-hit.webp",
+   "p": "case",
+   "b": 98786,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "case-diagrams.css",
+   "p": "case",
+   "b": 49059,
+   "c": false,
+   "t": "Stylesheet"
+  },
+  {
+   "u": "case-diagrams.js",
+   "p": "case",
+   "b": 17268,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "case.js",
+   "p": "case",
+   "b": 20113,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "format.js",
+   "p": "case",
+   "b": 3506,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "psec.js",
+   "p": "case",
+   "b": 7311,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "icons.js",
+   "p": "case",
+   "b": 4411,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "qr.js",
+   "p": "case",
+   "b": 3336,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app-icons.js",
+   "p": "case",
+   "b": 26522,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "lucide.js",
+   "p": "case",
+   "b": 42159,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mobile.js",
+   "p": "case",
+   "b": 128699,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pay.js",
+   "p": "case",
+   "b": 61998,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/default.js",
+   "p": "case",
+   "b": 28243,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connected.js",
+   "p": "case",
+   "b": 3983,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/failed.js",
+   "p": "case",
+   "b": 13029,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/saved.js",
+   "p": "case",
+   "b": 3011,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/punch.js",
+   "p": "case",
+   "b": 1830,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/scan.js",
+   "p": "case",
+   "b": 13642,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/connect.js",
+   "p": "case",
+   "b": 3624,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/feed.js",
+   "p": "case",
+   "b": 19913,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/profile.js",
+   "p": "case",
+   "b": 21388,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/hit.js",
+   "p": "case",
+   "b": 27391,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/ranks.js",
+   "p": "case",
+   "b": 4776,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mpages/reel.js",
+   "p": "case",
+   "b": 19908,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "ds.js",
+   "p": "case",
+   "b": 104822,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/default.js",
+   "p": "case",
+   "b": 11096,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/attract.js",
+   "p": "case",
+   "b": 22639,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/scan.js",
+   "p": "case",
+   "b": 5656,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_ads.js",
+   "p": "case",
+   "b": 461,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_backdrops.js",
+   "p": "case",
+   "b": 434,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/_brand.js",
+   "p": "case",
+   "b": 878,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/countdown.js",
+   "p": "case",
+   "b": 25846,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/loading.js",
+   "p": "case",
+   "b": 11014,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/stats.js",
+   "p": "case",
+   "b": 59301,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/score.js",
+   "p": "case",
+   "b": 48504,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "mscreens/record.js",
+   "p": "case",
+   "b": 39853,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "anim.js",
+   "p": "case",
+   "b": 8816,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "app.js",
+   "p": "case",
+   "b": 65382,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "pagenav.js",
+   "p": "case",
+   "b": 1954,
+   "c": false,
+   "t": "Script"
+  },
+  {
+   "u": "fonts/barlow-latin-700-normal.woff2",
+   "p": "case",
+   "b": 22983,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-500-normal.woff2",
+   "p": "case",
+   "b": 22203,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/anton-latin-400-normal.woff2",
+   "p": "case",
+   "b": 18807,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-condensed-latin-700-normal.woff2",
+   "p": "case",
+   "b": 22639,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/app/avatars/noor.jpg",
+   "p": "case",
+   "b": 11966,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/leila.jpg",
+   "p": "case",
+   "b": 14096,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/rami.jpg",
+   "p": "case",
+   "b": 8343,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/omar.jpg",
+   "p": "case",
+   "b": 6216,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/yusuf.jpg",
+   "p": "case",
+   "b": 11413,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/karim.jpg",
+   "p": "case",
+   "b": 11888,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/zayd.jpg",
+   "p": "case",
+   "b": 10549,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/lina.jpg",
+   "p": "case",
+   "b": 12775,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/adam.jpg",
+   "p": "case",
+   "b": 10951,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/hana.jpg",
+   "p": "case",
+   "b": 13613,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "assets/app/avatars/sara.jpg",
+   "p": "case",
+   "b": 19612,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/orbitron-latin-900-normal.woff2",
+   "p": "case",
+   "b": 6595,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/app/qr-glow.svg",
+   "p": "case",
+   "b": 1361,
+   "c": false,
+   "t": "Image"
+  },
+  {
+   "u": "fonts/big-shoulders-display-latin-800-normal.woff2",
+   "p": "case",
+   "b": 14751,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-800-normal.woff2",
+   "p": "case",
+   "b": 23171,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "fonts/barlow-latin-600-normal.woff2",
+   "p": "case",
+   "b": 22967,
+   "c": false,
+   "t": "Font"
+  },
+  {
+   "u": "assets/case/close-punch.jpg",
+   "p": "case",
+   "b": 117524,
+   "c": false,
+   "t": "Image"
+  }
+ ]
+}

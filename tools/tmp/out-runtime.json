@@ -1,0 +1,666 @@
+{
+ "modes": {
+  "mobile": {
+   "dupes": [],
+   "dangling": [],
+   "mains": [
+    {
+     "sig": "main#stage.stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#phoneStage.phone-stage",
+     "visible": true,
+     "atHidden": false,
+     "display": "flex",
+     "hidden": false,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#dsStage.ds-stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Best seen on a desktop",
+     "visible": false,
+     "atHidden": false,
+     "path": "div.deskgate > div.deskgate-card > h1#deskgateTitle.deskgate-t"
+    },
+    {
+     "text": "Machine screen",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#stage.stage > h1.sr-only"
+    },
+    {
+     "text": "Mobile app",
+     "visible": true,
+     "atHidden": false,
+     "path": "main#phoneStage.phone-stage > h1.sr-only"
+    },
+    {
+     "text": "One system. Two surfaces.",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#dsStage.ds-stage > div#ds.ds > div.ds-main > header.ds-hero > h1.ds-h1"
+    },
+    {
+     "text": "PunchApp",
+     "visible": false,
+     "atHidden": true,
+     "path": "div#case.case > div#caseScroll.cs-scroll > div#case-top.cs-page > section.cs-sec.cs-dark > div.cs-hero-grid > div.cs-hero-copy > h1#caseTitle.cs-hero-h1.cs-rise"
+    }
+   ],
+   "headings": [
+    {
+     "tag": "H1",
+     "text": "Best seen on a desktop"
+    },
+    {
+     "tag": "H1",
+     "text": "Mobile app"
+    },
+    {
+     "tag": "H2",
+     "text": "Home"
+    },
+    {
+     "tag": "H3",
+     "text": "Your last hit"
+    },
+    {
+     "tag": "H3",
+     "text": "Machines near you"
+    },
+    {
+     "tag": "H3",
+     "text": "From your friends"
+    },
+    {
+     "tag": "H2",
+     "text": "Two clips, one for each surface"
+    },
+    {
+     "tag": "H3",
+     "text": "The run"
+    },
+    {
+     "tag": "H3",
+     "text": "The score reveal"
+    }
+   ],
+   "ghostFocusCount": 1,
+   "ghostFocus": [
+    {
+     "sig": "button#mYou.m-you",
+     "path": "main#phoneStage.phone-stage > div#deviceWrap.device-wrap > div#device.device > div.device-screen > div#mApp.m-app > button#mYou.m-you"
+    }
+   ]
+  },
+  "machine": {
+   "dupes": [],
+   "dangling": [],
+   "mains": [
+    {
+     "sig": "main#stage.stage",
+     "visible": true,
+     "atHidden": false,
+     "display": "flex",
+     "hidden": false,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#phoneStage.phone-stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#dsStage.ds-stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Best seen on a desktop",
+     "visible": false,
+     "atHidden": false,
+     "path": "div.deskgate > div.deskgate-card > h1#deskgateTitle.deskgate-t"
+    },
+    {
+     "text": "Machine screen",
+     "visible": true,
+     "atHidden": false,
+     "path": "main#stage.stage > h1.sr-only"
+    },
+    {
+     "text": "Mobile app",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#phoneStage.phone-stage > h1.sr-only"
+    },
+    {
+     "text": "One system. Two surfaces.",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#dsStage.ds-stage > div#ds.ds > div.ds-main > header.ds-hero > h1.ds-h1"
+    },
+    {
+     "text": "PunchApp",
+     "visible": false,
+     "atHidden": true,
+     "path": "div#case.case > div#caseScroll.cs-scroll > div#case-top.cs-page > section.cs-sec.cs-dark > div.cs-hero-grid > div.cs-hero-copy > h1#caseTitle.cs-hero-h1.cs-rise"
+    }
+   ],
+   "headings": [
+    {
+     "tag": "H1",
+     "text": "Best seen on a desktop"
+    },
+    {
+     "tag": "H1",
+     "text": "Machine screen"
+    },
+    {
+     "tag": "H2",
+     "text": "Scan to play"
+    },
+    {
+     "tag": "H2",
+     "text": "Today's best"
+    },
+    {
+     "tag": "H2",
+     "text": "How it works"
+    }
+   ],
+   "ghostFocusCount": 0,
+   "ghostFocus": []
+  },
+  "animation": {
+   "dupes": [],
+   "dangling": [],
+   "mains": [
+    {
+     "sig": "main#stage.stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#phoneStage.phone-stage.is-anim",
+     "visible": true,
+     "atHidden": false,
+     "display": "grid",
+     "hidden": false,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#dsStage.ds-stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Best seen on a desktop",
+     "visible": false,
+     "atHidden": false,
+     "path": "div.deskgate > div.deskgate-card > h1#deskgateTitle.deskgate-t"
+    },
+    {
+     "text": "Machine screen",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#stage.stage > h1.sr-only"
+    },
+    {
+     "text": "Animation",
+     "visible": true,
+     "atHidden": false,
+     "path": "main#phoneStage.phone-stage.is-anim > h1.sr-only"
+    },
+    {
+     "text": "One system. Two surfaces.",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#dsStage.ds-stage > div#ds.ds > div.ds-main > header.ds-hero > h1.ds-h1"
+    },
+    {
+     "text": "PunchApp",
+     "visible": false,
+     "atHidden": true,
+     "path": "div#case.case > div#caseScroll.cs-scroll > div#case-top.cs-page > section.cs-sec.cs-dark > div.cs-hero-grid > div.cs-hero-copy > h1#caseTitle.cs-hero-h1.cs-rise"
+    }
+   ],
+   "headings": [
+    {
+     "tag": "H1",
+     "text": "Best seen on a desktop"
+    },
+    {
+     "tag": "H1",
+     "text": "Animation"
+    },
+    {
+     "tag": "H2",
+     "text": "Home"
+    },
+    {
+     "tag": "H3",
+     "text": "Your last hit"
+    },
+    {
+     "tag": "H3",
+     "text": "Machines near you"
+    },
+    {
+     "tag": "H3",
+     "text": "From your friends"
+    },
+    {
+     "tag": "H2",
+     "text": "Two clips, one for each surface"
+    },
+    {
+     "tag": "H3",
+     "text": "The run"
+    },
+    {
+     "tag": "H3",
+     "text": "The score reveal"
+    }
+   ],
+   "ghostFocusCount": 1,
+   "ghostFocus": [
+    {
+     "sig": "button#mYou.m-you",
+     "path": "main#phoneStage.phone-stage.is-anim > div#deviceWrap.device-wrap > div#device.device > div.device-screen > div#mApp.m-app > button#mYou.m-you"
+    }
+   ]
+  },
+  "ds": {
+   "dupes": [],
+   "dangling": [],
+   "mains": [
+    {
+     "sig": "main#stage.stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#phoneStage.phone-stage",
+     "visible": true,
+     "atHidden": false,
+     "display": "flex",
+     "hidden": false,
+     "inert": false,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#dsStage.ds-stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": false,
+     "ariaHidden": null
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Best seen on a desktop",
+     "visible": false,
+     "atHidden": false,
+     "path": "div.deskgate > div.deskgate-card > h1#deskgateTitle.deskgate-t"
+    },
+    {
+     "text": "Machine screen",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#stage.stage > h1.sr-only"
+    },
+    {
+     "text": "Mobile app",
+     "visible": true,
+     "atHidden": false,
+     "path": "main#phoneStage.phone-stage > h1.sr-only"
+    },
+    {
+     "text": "One system. Two surfaces.",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#dsStage.ds-stage > div#ds.ds > div.ds-main > header.ds-hero > h1.ds-h1"
+    },
+    {
+     "text": "PunchApp",
+     "visible": false,
+     "atHidden": true,
+     "path": "div#case.case > div#caseScroll.cs-scroll > div#case-top.cs-page > section.cs-sec.cs-dark > div.cs-hero-grid > div.cs-hero-copy > h1#caseTitle.cs-hero-h1.cs-rise"
+    }
+   ],
+   "headings": [
+    {
+     "tag": "H1",
+     "text": "Best seen on a desktop"
+    },
+    {
+     "tag": "H1",
+     "text": "Mobile app"
+    },
+    {
+     "tag": "H2",
+     "text": "Home"
+    },
+    {
+     "tag": "H3",
+     "text": "Your last hit"
+    },
+    {
+     "tag": "H3",
+     "text": "Machines near you"
+    },
+    {
+     "tag": "H3",
+     "text": "From your friends"
+    },
+    {
+     "tag": "H2",
+     "text": "Two clips, one for each surface"
+    },
+    {
+     "tag": "H3",
+     "text": "The run"
+    },
+    {
+     "tag": "H3",
+     "text": "The score reveal"
+    }
+   ],
+   "ghostFocusCount": 1,
+   "ghostFocus": [
+    {
+     "sig": "button#mYou.m-you",
+     "path": "main#phoneStage.phone-stage > div#deviceWrap.device-wrap > div#device.device > div.device-screen > div#mApp.m-app > button#mYou.m-you"
+    }
+   ]
+  },
+  "case-open": {
+   "dupes": [],
+   "dangling": [],
+   "mains": [
+    {
+     "sig": "main#stage.stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": true,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#phoneStage.phone-stage",
+     "visible": true,
+     "atHidden": true,
+     "display": "flex",
+     "hidden": false,
+     "inert": true,
+     "ariaHidden": null
+    },
+    {
+     "sig": "main#dsStage.ds-stage",
+     "visible": false,
+     "atHidden": true,
+     "display": "none",
+     "hidden": true,
+     "inert": true,
+     "ariaHidden": null
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Best seen on a desktop",
+     "visible": false,
+     "atHidden": false,
+     "path": "div.deskgate > div.deskgate-card > h1#deskgateTitle.deskgate-t"
+    },
+    {
+     "text": "Machine screen",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#stage.stage > h1.sr-only"
+    },
+    {
+     "text": "Mobile app",
+     "visible": true,
+     "atHidden": true,
+     "path": "main#phoneStage.phone-stage > h1.sr-only"
+    },
+    {
+     "text": "One system. Two surfaces.",
+     "visible": false,
+     "atHidden": true,
+     "path": "main#dsStage.ds-stage > div#ds.ds > div.ds-main > header.ds-hero > h1.ds-h1"
+    },
+    {
+     "text": "PunchApp",
+     "visible": true,
+     "atHidden": false,
+     "path": "div#case.case.is-open > div#caseScroll.cs-scroll > div#case-top.cs-page > section.cs-sec.cs-dark > div.cs-hero-grid > div.cs-hero-copy > h1#caseTitle.cs-hero-h1.cs-rise"
+    }
+   ],
+   "headings": [
+    {
+     "tag": "H1",
+     "text": "Best seen on a desktop"
+    },
+    {
+     "tag": "H1",
+     "text": "PunchApp"
+    },
+    {
+     "tag": "H2",
+     "text": "Nobody left the house planning to do this."
+    },
+    {
+     "tag": "H2",
+     "text": "A column of glass on the ground floor."
+    },
+    {
+     "tag": "H3",
+     "text": "Where everyone stands."
+    },
+    {
+     "tag": "H3",
+     "text": "And how much of it they can read."
+    },
+    {
+     "tag": "H4",
+     "text": "Side elevation"
+    },
+    {
+     "tag": "H4",
+     "text": "Plan view"
+    },
+    {
+     "tag": "H4",
+     "text": "Viewing positions"
+    },
+    {
+     "tag": "H4",
+     "text": "Mounting and scale"
+    },
+    {
+     "tag": "H2",
+     "text": "One column. One moment at a time."
+    },
+    {
+     "tag": "H3",
+     "text": "Between players, the leaderboard."
+    },
+    {
+     "tag": "H3",
+     "text": "Scan to connect."
+    },
+    {
+     "tag": "H3",
+     "text": "Punch now."
+    },
+    {
+     "tag": "H3",
+     "text": "Reading the strike."
+    },
+    {
+     "tag": "H3",
+     "text": "The big score."
+    },
+    {
+     "tag": "H3",
+     "text": "The result."
+    },
+    {
+     "tag": "H2",
+     "text": "From the machine to your pocket."
+    },
+    {
+     "tag": "H3",
+     "text": "Scan."
+    },
+    {
+     "tag": "H3",
+     "text": "Connect, or buy credits."
+    },
+    {
+     "tag": "H3",
+     "text": "Punch."
+    },
+    {
+     "tag": "H3",
+     "text": "Your hit."
+    },
+    {
+     "tag": "H3",
+     "text": "The feed, and a reel of your own."
+    },
+    {
+     "tag": "H3",
+     "text": "The two together."
+    },
+    {
+     "tag": "H2",
+     "text": "Neither clip is a screen recording."
+    },
+    {
+     "tag": "H2",
+     "text": "One system, two surfaces."
+    },
+    {
+     "tag": "H2",
+     "text": "What ships is one Figma file."
+    },
+    {
+     "tag": "H3",
+     "text": "Arena, the default."
+    },
+    {
+     "tag": "H3",
+     "text": "Colour is a variable."
+    },
+    {
+     "tag": "H3",
+     "text": "One icon family."
+    },
+    {
+     "tag": "H3",
+     "text": "Seven pages."
+    },
+    {
+     "tag": "H2",
+     "text": "Four things in the brief I would change."
+    },
+    {
+     "tag": "H2",
+     "text": "How AI was used."
+    },
+    {
+     "tag": "H3",
+     "text": "An audit, then five directions."
+    },
+    {
+     "tag": "H3",
+     "text": "Builders on a shared contract."
+    },
+    {
+     "tag": "H3",
+     "text": "A panel, then critics."
+    },
+    {
+     "tag": "H3",
+     "text": "What I changed afterwards."
+    },
+    {
+     "tag": "H4",
+     "text": "One clock, and a beat before the number."
+    },
+    {
+     "tag": "H4",
+     "text": "Sections, not screens."
+    },
+    {
+     "tag": "H4",
+     "text": "The strike in numbers."
+    },
+    {
+     "tag": "H4",
+     "text": "Red, not gold, and a real sponsor."
+    },
+    {
+     "tag": "H4",
+     "text": "Then a pass that only cut."
+    },
+    {
+     "tag": "H2",
+     "text": "Step up and punch."
+    }
+   ],
+   "ghostFocusCount": 0,
+   "ghostFocus": []
+  }
+ },
+ "sweep": [],
+ "errors": []
+}

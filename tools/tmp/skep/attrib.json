@@ -1,0 +1,451 @@
+{
+ "uniqSrc": 381,
+ "totalImgs": 699,
+ "res": {
+  "assets/logos/fist-circle.svg": {
+   "n": 78,
+   "eager": 12,
+   "owners": [
+    "(body)",
+    "#loader",
+    "#screenContent",
+    "#machine",
+    "#mApp",
+    "#mConnect",
+    "#mPunch",
+    "#payPunchNow",
+    "#mFeedTitle",
+    "#ds-loader",
+    "#ds-components",
+    "#ds-logo",
+    "#custom",
+    "#caseScroll",
+    "#case-top"
+   ]
+  },
+  "assets/logos/punchapp-wordmark.svg": {
+   "n": 34,
+   "eager": 2,
+   "owners": [
+    "#loader",
+    "#machine",
+    "#ds-loader"
+   ]
+  },
+  "assets/logos/punchapp-wordmark-dark.svg": {
+   "n": 34,
+   "eager": 2,
+   "owners": [
+    "#loader",
+    "#machine",
+    "#ds-loader"
+   ]
+  },
+  "assets/brand/robotenc-light.svg": {
+   "n": 3,
+   "eager": 2,
+   "owners": [
+    "(body)",
+    "#case-top"
+   ]
+  },
+  "assets/brand/robotenc.svg": {
+   "n": 1,
+   "eager": 1,
+   "owners": [
+    "(body)"
+   ]
+  },
+  "assets/photos/header-d-sara.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#screenContent"
+   ]
+  },
+  "assets/photos/lib/fist-strike-4.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#screenContent"
+   ]
+  },
+  "assets/video/lib/bag-backlit-sq.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#screenContent"
+   ]
+  },
+  "assets/app/avatars/omar.jpg": {
+   "n": 14,
+   "eager": 4,
+   "owners": [
+    "#screenContent",
+    "#machine",
+    "#mApp",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo",
+    "#ds-components"
+   ]
+  },
+  "assets/app/avatars/leila.jpg": {
+   "n": 18,
+   "eager": 10,
+   "owners": [
+    "#screenContent",
+    "#machine",
+    "#mApp",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/avatars/karim.jpg": {
+   "n": 15,
+   "eager": 9,
+   "owners": [
+    "#screenContent",
+    "#machine",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/avatars/noor.jpg": {
+   "n": 11,
+   "eager": 5,
+   "owners": [
+    "#screenContent",
+    "#machine",
+    "#mApp",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/qr-glow.svg": {
+   "n": 12,
+   "eager": 12,
+   "owners": [
+    "#machine",
+    "#mScanBtn",
+    "#mApp",
+    "#ds-qr"
+   ]
+  },
+  "assets/app/avatars/lina.jpg": {
+   "n": 7,
+   "eager": 3,
+   "owners": [
+    "#machine",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/avatars/sara.jpg": {
+   "n": 19,
+   "eager": 2,
+   "owners": [
+    "#machine",
+    "#mApp",
+    "#mStories",
+    "#mProfileHeader",
+    "#mReelMenuAva",
+    "#mReelComForm",
+    "#ds-photo",
+    "#ds-components"
+   ]
+  },
+  "assets/app/avatars/zayd.jpg": {
+   "n": 5,
+   "eager": 3,
+   "owners": [
+    "#machine",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/avatars/rami.jpg": {
+   "n": 5,
+   "eager": 3,
+   "owners": [
+    "#machine",
+    "#mApp",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/avatars/yusuf.jpg": {
+   "n": 14,
+   "eager": 11,
+   "owners": [
+    "#machine",
+    "#mApp",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/avatars/hana.jpg": {
+   "n": 4,
+   "eager": 2,
+   "owners": [
+    "#machine",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/app/avatars/adam.jpg": {
+   "n": 6,
+   "eager": 4,
+   "owners": [
+    "#machine",
+    "#mStories",
+    "#mPosts",
+    "#ds-photo"
+   ]
+  },
+  "assets/photos/last-card.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/dubai-night-1.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/mall-night-1.jpg": {
+   "n": 3,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/arcade-neon-4.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/dubai-night-20.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/dubai-night-5.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/app/load-glow.svg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mConnect"
+   ]
+  },
+  "assets/photos/lib/dubai-night-22.jpg": {
+   "n": 3,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/dubai-night-10.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/arcade-neon-3.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/bag-strike-23.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/dubai-night-25.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/boxer-68.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mPunch"
+   ]
+  },
+  "assets/photos/lib/dubai-night-12.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mPunch"
+   ]
+  },
+  "assets/photos/lib/friends-5.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/hit-player.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/photos/lib/boxer-62.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#lbScroll"
+   ]
+  },
+  "assets/photos/lib/dubai-night-11.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mApp"
+   ]
+  },
+  "assets/app/feed/8478699.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mPosts"
+   ]
+  },
+  "assets/app/feed/7777435.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mHits"
+   ]
+  },
+  "assets/app/feed/7777434.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mHits"
+   ]
+  },
+  "assets/app/feed/7777431.jpg": {
+   "n": 1,
+   "eager": 0,
+   "owners": [
+    "#mHits"
+   ]
+  },
+  "assets/logos/boxer-circle.svg": {
+   "n": 2,
+   "eager": 2,
+   "owners": [
+    "#ds-logo",
+    "#custom"
+   ]
+  },
+  "assets/logos/glove-tilt.svg": {
+   "n": 2,
+   "eager": 2,
+   "owners": [
+    "#ds-logo",
+    "#custom"
+   ]
+  },
+  "assets/logos/glove-upright.svg": {
+   "n": 2,
+   "eager": 2,
+   "owners": [
+    "#ds-logo",
+    "#custom"
+   ]
+  },
+  "assets/logos/gloves-pair.svg": {
+   "n": 2,
+   "eager": 2,
+   "owners": [
+    "#ds-logo",
+    "#custom"
+   ]
+  },
+  "assets/logos/speedbag.svg": {
+   "n": 2,
+   "eager": 2,
+   "owners": [
+    "#ds-logo",
+    "#custom"
+   ]
+  },
+  "assets/case/screen-hit.webp": {
+   "n": 2,
+   "eager": 1,
+   "owners": [
+    "#case-top",
+    "#case-phone"
+   ]
+  }
+ },
+ "hiddenRoots": {
+  "#animBar": "display:none",
+  "#stage": "display:none",
+  "#screen": "display:none",
+  "#payLinked": "display:none",
+  "#payNewCard": "display:none",
+  "#payCardError": "display:none",
+  "#paySheet": "display:none",
+  "#paySecure": "display:none",
+  "#payCans": "display:none",
+  "#payReceipt": "display:none",
+  "#mSearchClear": "display:none",
+  "#mEmpty": "display:none",
+  "#mFeedEmpty": "display:none",
+  "#mReelGrid": "display:none",
+  "#mReelSettings": "display:none",
+  "#mReelMenu": "display:none",
+  "#mReelReport": "display:none",
+  "#mReelComments": "display:none",
+  "#mYou": "display:none",
+  "#mSheet": "display:none",
+  "#linked": "display:none",
+  "#animExtra": "display:none",
+  "#dsStage": "display:none",
+  "#ds-yourrun": "display:none",
+  "#customScrim": "display:none",
+  "#custom": "display:none",
+  "#accPageNote": "display:none",
+  "#resultRows": "display:none",
+  "#pageEmpty": "display:none",
+  "#pageEmpty2": "display:none",
+  "#brief": "display:none",
+  "#help": "display:none",
+  "#case": "display:none"
+ }
+}

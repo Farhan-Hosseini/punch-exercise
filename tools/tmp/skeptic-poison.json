@@ -1,0 +1,264 @@
+{
+ "poisoned": true,
+ "players": [
+  "me",
+  "me",
+  "me",
+  "me",
+  "me",
+  "me",
+  "me",
+  "vid-marcus"
+ ],
+ "menu": [
+  {
+   "i": 0,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 1,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 2,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 3,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 4,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 5,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 6,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 7,
+   "title": "Marcus Hale",
+   "src": "assets/video/lib/bag-duo-v.jpg",
+   "style": ""
+  }
+ ],
+ "menu2": [
+  {
+   "i": 0,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 1,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 2,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 3,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 4,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 5,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 6,
+   "title": "Your attempt",
+   "src": "assets/app/avatars/sara.jpg",
+   "style": ""
+  },
+  {
+   "i": 7,
+   "title": "Marcus Hale",
+   "src": "assets/video/lib/bag-duo-v.jpg",
+   "style": ""
+  },
+  {
+   "i": 8,
+   "title": "Adam Brooks",
+   "src": "assets/app/avatars/adam.jpg",
+   "style": ""
+  },
+  {
+   "i": 9,
+   "title": "Yara Mansoor",
+   "src": "assets/video/lib/bag-backlit-v.jpg",
+   "style": ""
+  },
+  {
+   "i": 10,
+   "title": "Omar Nasser",
+   "src": "assets/app/avatars/omar.jpg",
+   "style": ""
+  },
+  {
+   "i": 11,
+   "title": "Daniel Price",
+   "src": "assets/video/lib/cross-cam-v.jpg",
+   "style": ""
+  },
+  {
+   "i": 12,
+   "title": "Elena Petrova",
+   "src": "assets/photos/lib/fist-strike-44.jpg",
+   "style": "object-position:NaN% 30%;transform:scale(2.2);transform-origin:NaN% 30%"
+  },
+  {
+   "i": 13,
+   "title": "Nikola Horvat",
+   "src": "assets/video/lib/shadow-low-v.jpg",
+   "style": "object-position:79.16666666666666% 60%;transform-origin:79.16666666666666% 60%;transform:translate(-29.2%, -10.0%) scale(2.4)"
+  },
+  {
+   "i": 14,
+   "title": "Karim Mansour",
+   "src": "assets/app/avatars/karim.jpg",
+   "style": ""
+  },
+  {
+   "i": 15,
+   "title": "Andre Mensah",
+   "src": "assets/video/lib/gloves-pov-v.jpg",
+   "style": "object-position:79.16666666666666% 39%;transform-origin:79.16666666666666% 39%;transform:translate(-29.2%, 11.0%) scale(2.4)"
+  },
+  {
+   "i": 16,
+   "title": "Leila Haddad",
+   "src": "assets/app/avatars/leila.jpg",
+   "style": ""
+  },
+  {
+   "i": 17,
+   "title": "Yara Mansoor",
+   "src": "assets/video/lib/bag-backlit-v.jpg",
+   "style": ""
+  },
+  {
+   "i": 18,
+   "title": "Adam Brooks",
+   "src": "assets/app/avatars/adam.jpg",
+   "style": ""
+  },
+  {
+   "i": 19,
+   "title": "Tessa Grant",
+   "src": "assets/video/lib/jab-pass-v.jpg",
+   "style": ""
+  },
+  {
+   "i": 20,
+   "title": "Aisha Bello",
+   "src": "assets/photos/lib/fist-strike-46.jpg",
+   "style": "object-position:50% NaN%;transform:scale(2.2);transform-origin:50% NaN%"
+  },
+  {
+   "i": 21,
+   "title": "Tessa Grant",
+   "src": "assets/video/lib/jab-pass-v.jpg",
+   "style": ""
+  },
+  {
+   "i": 22,
+   "title": "Adam Brooks",
+   "src": "assets/app/avatars/adam.jpg",
+   "style": ""
+  },
+  {
+   "i": 23,
+   "title": "Tariq Hamdan",
+   "src": "assets/video/lib/bag-dark-v.jpg",
+   "style": ""
+  },
+  {
+   "i": 24,
+   "title": "Maya Kareem",
+   "src": "assets/photos/lib/boxer-23.jpg",
+   "style": "object-position:55% 35%;transform:scale(2.2);transform-origin:55% 35%"
+  }
+ ],
+ "inlineStyles": [
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:NaN% 30%;transform-origin:NaN% 30%;transform:scale(1.05, 1.05)",
+  "object-position:NaN% 30%;transform:scale(2.2);transform-origin:NaN% 30%",
+  "object-position:79.16666666666666% 60%;transform-origin:79.16666666666666% 60%;transform:translate(-29.2%, -10.0%) scale(2.4)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:79.16666666666666% 39%;transform-origin:79.16666666666666% 39%;transform:translate(-29.2%, 11.0%) scale(2.4)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:55% 35%;transform-origin:55% 35%;transform:scale(1.05, 1.05)",
+  "object-position:50% NaN%;transform:scale(2.2);transform-origin:50% NaN%",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% NaN%;transform-origin:50% NaN%;transform:scale(1.05, 1.05)",
+  "object-position:55% 35%;transform:scale(2.2);transform-origin:55% 35%",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:20.833333333333336% 30%;transform-origin:20.833333333333336% 30%;transform:translate(29.2%, 20.0%) scale(2.4)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:57% 30%;transform-origin:57% 30%;transform:translate(-7.0%, 20.0%) scale(2.2)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:55% 35%;transform-origin:55% 35%;transform:scale(1.05, 1.05)",
+  "object-position:NaN% 30%;transform:scale(2.2);transform-origin:NaN% 30%",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% NaN%;transform-origin:50% NaN%;transform:scale(1.05, 1.05)",
+  "object-position:NaN% 30%;transform:scale(2.2);transform-origin:NaN% 30%",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:NaN% 30%;transform-origin:NaN% 30%;transform:scale(1.05, 1.05)",
+  "object-position:55% 35%;transform:scale(2.2);transform-origin:55% 35%",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:55% 35%;transform-origin:55% 35%;transform:scale(1.05, 1.05)",
+  "object-position:55% 35%;transform:scale(2.2);transform-origin:55% 35%",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)",
+  "object-position:50% 34%;transform-origin:50% 34%;transform:scale(1, 1)"
+ ],
+ "evilRequests": [],
+ "errors": []
+}
