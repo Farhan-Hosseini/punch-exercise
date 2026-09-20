@@ -1,7 +1,7 @@
 [build]
-  command = "npm install"
+  command = "npm install && node tools/build.mjs"
   publish = "showcase"
 
 [context.production]
-  command = "npm install"
+  command = "npm install && node tools/build.mjs"
   publish = "showcase"
