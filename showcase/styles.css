@@ -953,6 +953,11 @@ input[type="range"]:focus-visible { outline: 2px solid var(--panel-ink); outline
 :root[data-embed="machine"] .panel-veil,
 :root[data-embed="machine"] .brief,
 :root[data-embed="machine"] .case { display: none !important; }
+/* the host injects its own badge into every HTML response, which lands inside this iframe as a second copy
+   sitting over the glass; the page that embeds it already shows one */
+:root[data-embed="machine"] netlify-hud,
+:root[data-embed="machine"] [id^="netlify-"],
+:root[data-embed="machine"] [class*="netlify-badge"] { display: none !important; }
 :root[data-embed="machine"] .stage { padding: 0 !important; min-height: 0; display: block; }
 :root[data-embed="machine"] .machine { margin: 0; }
 :root[data-embed="machine"] .screen,

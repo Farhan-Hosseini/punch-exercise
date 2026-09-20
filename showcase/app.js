@@ -97,13 +97,13 @@
   // an embedded machine is an illustration beside the phone or inside the case study, and the page around it speaks for
   // it: its live regions stay quiet, or the glass's "Great punch" would be read out on top of the phone's own
   if (EMBED) document.querySelectorAll('[aria-live], [role="status"]').forEach((el) => el.setAttribute('aria-live', 'off'))
-  let state = { variant: 'arena', appearance: 'dark', zoom: 'actual', viewV: 3, sets: {}, layout: layoutA(), mode: 'mobile', logo: 'fist', mscreen: 'default', mvar: {}, backdrop: BACKDROPS[0].key, decimals: 'on' }
+  let state = { variant: 'arena', appearance: 'dark', zoom: null, viewV: 3, sets: {}, layout: layoutA(), mode: 'mobile', logo: 'fist', mscreen: 'default', mvar: {}, backdrop: BACKDROPS[0].key, decimals: 'on' }
   try {
     const saved = JSON.parse(localStorage.getItem(KEY) || 'null')
     if (saved && DEFAULTS[saved.variant]) {
       state = {
         // the glass opens whole ('whole' follows the window); a setting saved before that became the default moves once
-        variant: saved.variant, zoom: saved.viewV === 3 ? (saved.zoom ?? null) : 'actual', viewV: 3, sets: saved.sets || {}, layout: { ...layoutA(), ...(saved.layout || {}) },
+        variant: saved.variant, zoom: saved.viewV === 3 ? (saved.zoom ?? null) : null, viewV: 3, sets: saved.sets || {}, layout: { ...layoutA(), ...(saved.layout || {}) },
         mode: MODES.includes(saved.mode) ? saved.mode : 'mobile', logo: LOGOS[saved.logo] ? saved.logo : 'fist',
         appearance: saved.appearance === 'light' ? 'light' : 'dark',
         mscreen: MSCREENS.includes(saved.mscreen) ? saved.mscreen : 'default',
@@ -450,7 +450,7 @@
     state.variant = 'arena'
     state.appearance = 'dark'
     for (const v of Object.keys(DEFAULTS)) state.sets[v] = fresh(v)
-    state.zoom = 'actual'
+    state.zoom = null
     state.logo = 'fist'
     state.backdrop = BACKDROPS[0].key
     state.decimals = 'on'
@@ -1012,6 +1012,14 @@
   }
   // the embedded machine boots on its leaderboard and the phone tells it where the flow is once it has loaded
   // (mobile.js); the glass stays dark until that message has landed, so the wrong screen never flashes up first
+  // The embedded glass is a second copy of this page, so it is not fetched on arrival: that would undo the
+  // weight the lazy images saved. It is warmed on intent instead — hovering or focusing the Animation tab
+  // starts the load, so by the time the click lands the glass is usually already up.
+  if (linkedFrame && !EMBED) {
+    const warmGlass = () => { if (!linkedFrame.getAttribute('src')) linkedFrame.setAttribute('src', './?embed=machine') }
+    const animBtn = document.querySelector('.mode[data-mode="animation"]')
+    if (animBtn) for (const ev of ['pointerenter', 'focus', 'touchstart']) animBtn.addEventListener(ev, warmGlass, { once: true, passive: true })
+  }
   if (linkedFrame) linkedFrame.addEventListener('load', () => setTimeout(() => linkedFrame.classList.add('is-ready'), 160))
   if (window.ResizeObserver && $('deviceWrap')) new ResizeObserver(() => requestAnimationFrame(syncLinked)).observe($('deviceWrap'))
 
