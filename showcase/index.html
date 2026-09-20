@@ -110,6 +110,10 @@
           <svg class="ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/> <path d="M14 2v5a1 1 0 0 0 1 1h5"/> <path d="M10 9H8"/> <path d="M16 13H8"/> <path d="M16 17H8"/></svg>
           <span>The brief</span>
         </button>
+        <button class="briefbtn" id="openHelp" type="button" aria-label="How this works" aria-haspopup="dialog" aria-controls="help" aria-expanded="false">
+          <svg class="ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          <span>How it works</span>
+        </button>
       </div>
       <span>PunchApp, from the score on the arcade screen to the replay on the player's phone.</span>
     </div>
@@ -464,6 +468,11 @@
 <!-- ============ shell: the brief ============ -->
 <aside class="brief" id="brief" role="dialog" aria-modal="true" aria-labelledby="briefTitle" hidden>
 <!-- include:parts/brief.html -->
+</aside>
+
+<!-- ============ shell: how it works. Same shell and same bf- styles as the brief, so there is one overlay to maintain ============ -->
+<aside class="brief" id="help" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
+<!-- include:parts/help.html -->
 </aside>
 
 <!-- ============ shell: case study ============ -->

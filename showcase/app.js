@@ -618,7 +618,8 @@
      everything else; the panel over the page quiets the stages but leaves the top bar in reach */
   const quiet = { loader: true }
   let caseEl = null, briefEl = null
-  const dialogOpen = () => !!(caseEl && caseEl.classList.contains('is-open')) || !!(briefEl && briefEl.classList.contains('is-open'))
+  // queried rather than captured: the help panel is declared further down, and a const would still be in its dead zone here
+  const dialogOpen = () => !!document.querySelector('.case.is-open, .brief.is-open')
   function syncInert() {
     const dialog = quiet.loader || dialogOpen()
     const sheet = custom.classList.contains('is-open') && overPage.matches
@@ -753,9 +754,41 @@
     })
   }
 
+  /* ------------------------------------------------------------ how it works: the same shell as the brief */
+  const helpEl = $('help'), helpBtn = $('openHelp')
+  let helpTimer = 0
+  function openHelp() {
+    if (!helpEl) return
+    clearTimeout(helpTimer)
+    const sc = helpEl.querySelector('.bf-scroll')
+    if (sc) sc.scrollTop = 0
+    body.style.overflow = 'hidden'
+    helpEl.hidden = false
+    void helpEl.offsetWidth
+    helpEl.classList.add('is-open')
+    helpBtn.setAttribute('aria-expanded', 'true')
+    syncInert()
+    const close = $('closeHelp')
+    if (close) close.focus({ preventScroll: true })
+  }
+  function closeHelp() {
+    if (!helpEl) return
+    helpEl.classList.remove('is-open')
+    helpBtn.setAttribute('aria-expanded', 'false')
+    body.style.overflow = ''
+    syncInert()
+    helpTimer = setTimeout(() => { if (!helpEl.classList.contains('is-open')) helpEl.hidden = true }, 460)
+    helpBtn.focus({ preventScroll: true })
+  }
+  if (helpEl && helpBtn) {
+    helpBtn.addEventListener('click', () => (helpEl.classList.contains('is-open') ? closeHelp() : openHelp()))
+    helpEl.addEventListener('click', (e) => { if (e.target.closest('[data-close-help]')) closeHelp() })
+  }
+
   window.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return
     if (caseEl.classList.contains('is-open')) closeCase()
+    else if (helpEl && helpEl.classList.contains('is-open')) closeHelp()
     else if (briefEl && briefEl.classList.contains('is-open')) closeBrief()
     else if (custom.classList.contains('is-open')) closeCustom()
   })
