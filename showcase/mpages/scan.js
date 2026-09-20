@@ -45,7 +45,7 @@
 
   const RECENT = [
     // Score rail: a card per machine, the last punch set on its photograph
-    () => head(TITLE, 'At each machine') + `<div class="psr-rail">${PLAYED.map((v, i) => btn(v, 'psr-rc', `
+    () => head(TITLE) + `<div class="psr-rail">${PLAYED.map((v, i) => btn(v, 'psr-rc', `
       <span class="psr-rc-media">${img(v)}${i === 0 ? `<span class="psr-tag">${L('history')}${v.when}</span>` : ''}
         <span class="psr-rc-score"><small>${gradeOf(lastOf(v))}</small>${num(v)}</span></span>
       <span class="psr-name">${v.name}</span>
@@ -66,7 +66,7 @@
       <span class="psr-row-txt"><span class="psr-name">${w.name}</span><span class="psr-meta"><span>${w.when}</span></span></span>
       ${num(w)}`)).join('')}</div>` },
     // Grid: two by two, each tile its machine and its last punch
-    () => head(TITLE, 'At each machine') + `<div class="psr-grid">${PLAYED.map((v, i) => btn(v, 'psr-tile', `
+    () => head(TITLE) + `<div class="psr-grid">${PLAYED.map((v, i) => btn(v, 'psr-tile', `
       ${img(v)}<span class="psr-tile-when${i === 0 ? ' is-now' : ''}">${v.when}</span>
       <span class="psr-tile-txt"><span class="psr-name">${v.name}</span>${num(v)}</span>`)).join('')}</div>`,
     // Timeline: when, then where and the punch, down one line from tonight
