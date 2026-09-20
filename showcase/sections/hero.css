@@ -1,0 +1,166 @@
+/* hero: designs B to E. Scope every rule under .s-hero .v-<letter>.
+   Big figures are trimmed to cap height and baseline (text-box), so edges and baselines line up exactly. */
+
+/* the score is the brief's full length, 999,999.000 (app.js paints it through PunchFormat), and every design sizes
+   it by the big-number rule with CHARS = --score-chars: the width of the whole score in average display characters.
+   Measured with the three decimals at their .46em: 9.77 in Big Shoulders (Arena), 9.15 in Archivo Black (Reference);
+   whole points only: 7.81 and 7.31. The larger of each pair, so either face fits. */
+.s-hero { --score-chars: 9.8; }
+:root[data-decimals="off"] .s-hero { --score-chars: 7.9; }
+/* the decimals ride on the whole number's baseline, .46em and a step quieter (the base .dec in styles.css), with the
+   face's own point before them, so 999,999.000 reads as one number whose whole points are the event */
+
+/* B  Power gauge: a segmented arc across the glass, the needle crosses the band, the score sits on the diameter */
+/* the dial ends on the arc's feet (viewBox 1080 x 504), and the gap under it leaves room for the comma's tail, which
+   hangs below the diameter the score stands on */
+.s-hero .v-b { display: grid; row-gap: calc(18px * var(--space) + 24px); text-align: center; }
+.s-hero .v-b .hero-b-dial { position: relative; margin-inline: calc(-1 * var(--pad)); }
+.s-hero .v-b .hero-b-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.s-hero .v-b .hero-b-mask { mask-type: alpha; }
+.s-hero .v-b .hero-b-cellpath { fill: none; stroke: currentColor; stroke-width: 80; stroke-dasharray: 3.9 1.1; stroke-dashoffset: -.55; }
+.s-hero .v-b .hero-b-track,
+.s-hero .v-b .hero-b-fill { fill: none; stroke-width: 38; }
+.s-hero .v-b .hero-b-track { stroke: var(--track); }
+.s-hero .v-b .hero-b-fill { stroke: var(--strike); stroke-dasharray: 100 200; stroke-dashoffset: calc(100 - var(--charge, 1) * 100); }
+.s-hero .v-b .hero-b-minor { fill: none; stroke: var(--ink-3); stroke-width: 4; stroke-linecap: round; }
+.s-hero .v-b .hero-b-major { fill: none; stroke: var(--ink-1); stroke-width: 8; stroke-linecap: round; }
+.s-hero .v-b .hero-b-needle {
+  fill: var(--ink-1);
+  transform-box: view-box; transform-origin: 540px 504px;
+  transform: rotate(calc(var(--charge, 1) * 180deg - 90deg));
+}
+.s-hero .v-b .hero-b-read {
+  position: absolute; left: 0; right: 0; top: 0; height: 100%;
+  display: grid; align-content: end; justify-items: center; row-gap: calc(36px * var(--space));
+}
+.s-hero .v-b .hero-b-label { text-box: trim-both cap alphabetic; }
+.s-hero .v-b .hero-b-num { container-type: inline-size; width: 68%; display: grid; justify-items: center; }
+.s-hero .v-b .hero-b-score {
+  font-size: min(calc(150px / var(--cap)), calc(100cqi / (var(--score-chars) * var(--num-w))));
+  font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic;
+}
+.s-hero .v-b .hero-b-grade { justify-self: center; font-size: calc(40px / var(--cap)); text-box: trim-both cap alphabetic; }
+
+/* C  Strength tower: the fairground tester stands on the right, the reading stands on the same floor */
+.s-hero .v-c {
+  display: grid; grid-template-columns: minmax(0, 1fr) 160px; grid-template-rows: auto 6px;
+  column-gap: calc(40px * var(--space));
+}
+.s-hero .v-c .hero-c-copy {
+  grid-area: 1 / 1; align-self: end; container-type: inline-size;
+  display: grid; justify-items: start; row-gap: calc(32px * var(--space));
+  padding-bottom: 44px;
+}
+.s-hero .v-c .hero-c-label { text-box: trim-both cap alphabetic; }
+.s-hero .v-c .hero-c-score {
+  font-size: min(calc(150px / var(--cap)), calc(100cqi / (var(--score-chars) * var(--num-w))));
+  font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic;
+}
+.s-hero .v-c .hero-c-grade {
+  font-size: min(calc(56px / var(--cap)), calc(100cqi / (13 * var(--num-w))));
+  margin-top: calc(14px * var(--space)); color: var(--ink-2); text-box: trim-both cap alphabetic;
+}
+.s-hero .v-c .hero-c-tower { grid-area: 1 / 2; height: 580px; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; justify-items: center; }
+.s-hero .v-c .hero-c-bell { display: block; width: 160px; height: auto; fill: var(--ink-1); }
+.s-hero .v-c .hero-c-rays path {
+  fill: none; stroke: var(--ink-1); stroke-width: 7; stroke-linecap: round;
+  opacity: calc((var(--charge, 1) - .95) * 20);
+}
+.s-hero .v-c .hero-c-board { position: relative; width: 120px; margin-top: 6px; border-bottom-width: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.s-hero .v-c .hero-c-scale {
+  position: absolute; top: 18px; bottom: 18px; left: 14px; right: 14px;
+  background:
+    repeating-linear-gradient(to top, var(--ink-2) 0 6px, transparent 6px calc((100% - 6px) / 4)) center / 100% 100% no-repeat,
+    repeating-linear-gradient(to top, var(--ink-3) 0 3px, transparent 3px calc((100% - 3px) / 20)) center / 64% 100% no-repeat;
+}
+.s-hero .v-c .hero-c-rail {
+  position: absolute; top: 18px; bottom: 18px; left: 50%; width: 40px; margin-left: -20px;
+  border-radius: min(var(--r), 20px); background: var(--track); overflow: hidden;
+}
+.s-hero .v-c .hero-c-fill { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--charge, 1) * 100%); }
+.s-hero .v-c .hero-c-puck {
+  position: absolute; left: 50%; bottom: calc(18px + var(--charge, 1) * (100% - 36px));
+  width: 88px; height: 24px; transform: translate(-50%, 50%);
+  border-radius: min(var(--r), 8px); background: var(--ink-1);
+}
+.s-hero .v-c .hero-c-base { display: block; width: 160px; height: 44px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.s-hero .v-c .hero-c-floor { grid-area: 2 / 1 / 3 / 3; background: var(--ink-3); }
+/* C in daylight: a white board on a pale ground needs a drawn edge, and the base is cast in ink like the bell and
+   the puck, so the tester reads as one solid object standing on the floor line */
+:root[data-appearance="light"] .s-hero .v-c .hero-c-board { border-color: color-mix(in oklab, var(--ink-1) 16%, transparent); }
+:root[data-appearance="light"] .s-hero .v-c .hero-c-base { background: var(--ink-1); border-color: var(--ink-1); box-shadow: none; }
+
+/* D  Impact: the score lands in a tilted starburst, speed lines fly off it, the grade is stamped across its edge */
+.s-hero .v-d { display: grid; row-gap: calc(24px * var(--space)); }
+.s-hero .v-d .hero-d-hit { position: relative; margin-inline: calc(-1 * var(--pad)); aspect-ratio: 1080 / 540; }
+.s-hero .v-d .hero-d-hit > * { position: absolute; }
+.s-hero .v-d .hero-d-rays {
+  inset: 0; width: 100%; height: 100%; fill: var(--ink-1); opacity: .08;
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 24%, rgba(0, 0, 0, 1) 76%, rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 24%, rgba(0, 0, 0, 1) 76%, rgba(0, 0, 0, 0));
+}
+.s-hero .v-d .hero-d-blast { inset: 0; transform: rotate(-3deg) scale(.95); }
+.s-hero .v-d .hero-d-burst,
+.s-hero .v-d .hero-d-edge { position: absolute; inset: 0; width: 100%; height: 100%; }
+.s-hero .v-d .hero-d-edge { overflow: visible; }
+.s-hero .v-d .hero-d-edge polygon { fill: none; stroke: var(--ink-3); stroke-width: 3; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.s-hero .v-d .hero-d-burst {
+  border-radius: 0;
+  clip-path: polygon(50% 0.7%, 56.3% 10.2%, 65.6% 7%, 68.4% 14.1%, 77.5% 10.6%, 78.7% 21.5%, 88.7% 23.6%, 86.1% 31.7%, 96.9% 33.9%, 90.1% 43.7%, 95.5% 51%, 90.1% 56.3%, 96.3% 65%, 86.1% 68.3%, 89.2% 76.5%, 78.7% 78.5%, 78% 90.2%, 68.4% 85.9%, 63.8% 93.6%, 56.3% 89.8%, 50.7% 99.3%, 43.7% 89.8%, 34.3% 93.9%, 31.6% 85.9%, 22% 89.1%, 21.3% 78.5%, 12% 75.7%, 13.9% 68.3%, 3.6% 66.1%, 9.9% 56.3%, 2.9% 49.4%, 9.9% 43.7%, 3.1% 33.9%, 13.9% 31.7%, 12.2% 24.2%, 21.3% 21.5%, 22.3% 10.4%, 31.6% 14.1%, 35% 5.4%, 43.7% 10.2%);
+}
+/* the number's box stops short of the burst's inner valleys (about 12% in, after the tilt and the .95 scale), so the
+   full length, 999,999.000, never reaches the edge line */
+.s-hero .v-d .hero-d-num {
+  inset: 0 15%; container-type: inline-size;
+  display: grid; place-items: center;
+}
+.s-hero .v-d .hero-d-score {
+  font-size: min(calc(160px / var(--cap)), calc(100cqi / (var(--score-chars) * var(--num-w))));
+  font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic;
+}
+.s-hero .v-d .hero-d-stamp {
+  right: var(--pad); bottom: 6px;
+  display: grid; justify-items: start; row-gap: 14px;
+  padding: 26px 34px; transform: rotate(-6deg); transform-origin: 0 100%;
+  outline: 3px solid var(--line); outline-offset: -12px;
+}
+.s-hero .v-d .hero-d-stamp-label { font-size: 32px; text-box: trim-both cap alphabetic; }
+.s-hero .v-d .hero-d-grade { font-size: calc(46px / var(--cap)); text-box: trim-both cap alphabetic; }
+.s-hero .v-d .hero-d-bar { height: 14px; border-radius: min(var(--r), 7px); background: var(--track); overflow: hidden; }
+.s-hero .v-d .hero-d-fill { display: block; height: 100%; transform-origin: 0 50%; transform: scaleX(var(--charge, 1)); }
+/* D in daylight: the burst is a real white card, lifted off the paper by a warm shadow and cut with a soft ink edge
+   (the ground-coloured fill and grey hairline read as a wireframe), and the rays turn to light: white beams, where
+   ink rays read as smudges on paper */
+:root[data-appearance="light"] .s-hero .v-d .hero-d-burst { background: #FFFFFF; }
+:root[data-appearance="light"] .s-hero .v-d .hero-d-blast { filter: drop-shadow(0 22px 26px rgba(70, 45, 30, .2)); }
+:root[data-appearance="light"] .s-hero .v-d .hero-d-edge polygon { stroke: color-mix(in oklab, var(--ink-1) 22%, transparent); }
+:root[data-appearance="light"] .s-hero .v-d .hero-d-rays { fill: #FFFFFF; opacity: 1; }
+
+/* E  Glass: the fight photo runs edge to edge, a frosted panel floats over it with the reading, the charge on its lower edge */
+.s-hero .v-e .hero-e-stage { position: relative; margin-inline: calc(-1 * var(--pad)); height: calc(450px + 150px * var(--space)); }
+.s-hero .v-e .hero-e-photo { position: absolute; inset: 0; clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%); }
+.s-hero .v-e .hero-e-photo > img { position: absolute; inset: 0; object-position: 55% 24%; }
+.s-hero .v-e .hero-e-scrim {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, .38) 64%, rgba(0, 0, 0, .64));
+}
+/* E in daylight: the photo no longer melts into a dark ground, it ends on a pale one, so the scrim only has to
+   carry the panel, not bury the lower edge in black */
+:root[data-appearance="light"] .s-hero .v-e .hero-e-scrim {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, .22) 70%, rgba(0, 0, 0, .36));
+}
+.s-hero .v-e .hero-e-panel {
+  position: absolute; left: var(--pad); right: var(--pad); bottom: calc(40px * var(--space));
+  display: grid; row-gap: calc(36px * var(--space)); overflow: hidden;
+  padding: calc(38px * var(--space)) calc(48px * var(--space)) calc(66px * var(--space));
+}
+.s-hero .v-e .hero-e-top { display: flex; justify-content: space-between; align-items: end; gap: 32px; }
+.s-hero .v-e .hero-e-label { color: inherit; text-box: trim-both cap alphabetic; }
+.s-hero .v-e .hero-e-grade { font-size: calc(40px / var(--cap)); text-box: trim-both cap alphabetic; }
+.s-hero .v-e .hero-e-num { container-type: inline-size; }
+.s-hero .v-e .hero-e-score {
+  font-size: min(calc(180px / var(--cap)), calc(100cqi / (var(--score-chars) * var(--num-w))));
+  font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic;
+}
+.s-hero .v-e .hero-e-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 16px; background: var(--track); }
+.s-hero .v-e .hero-e-fill { display: block; height: 100%; transform-origin: 0 50%; transform: scaleX(var(--charge, 1)); }

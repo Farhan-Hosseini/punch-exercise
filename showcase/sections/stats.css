@@ -1,0 +1,146 @@
+/* stats: designs B to E. Scope every rule under .s-stats .v-<letter>. */
+
+/* A  Card grid lives in styles.css. The Lucide gauge is open at the bottom, so its ink sits high in the badge: one grid unit down centres it */
+.s-stats .v-a .badge[data-glyph="speed"] svg g { transform: translateY(1px); }
+
+/* B  Rings: four round dials, a tachometer scale around each, the arc reads against this machine's best */
+.s-stats .v-b .stats-b-energy { --share: .72; }
+.s-stats .v-b .stats-b-force { --share: .86; }
+.s-stats .v-b .stats-b-speed { --share: .64; }
+.s-stats .v-b .stats-b-acc { --share: .78; }
+.s-stats .v-b .stats-b-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-grid); }
+.s-stats .v-b .stats-b-gauge { min-width: 0; display: grid; justify-items: center; gap: calc(22px * var(--space)); }
+.s-stats .v-b .stats-b-dial {
+  position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%;
+  display: grid; place-items: center;
+}
+.s-stats .v-b .stats-b-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.s-stats .v-b .stats-b-major, .s-stats .v-b .stats-b-minor { fill: none; stroke: var(--ink-3); stroke-linecap: butt; }
+.s-stats .v-b .stats-b-major { stroke-width: 3; }
+.s-stats .v-b .stats-b-minor { stroke-width: 2; opacity: .7; }
+.s-stats .v-b .stats-b-track, .s-stats .v-b .stats-b-arc { fill: none; stroke-width: 18; stroke-linecap: butt; }
+.s-stats .v-b .stats-b-track { stroke: var(--track); }
+.s-stats .v-b .stats-b-arc { stroke: var(--ink-1); stroke-dasharray: 100 200; stroke-dashoffset: calc(100 - var(--share) * 100); }
+.s-stats .v-b .stats-b-needle {
+  fill: none; stroke: var(--ink-1); stroke-width: 5;
+  transform-box: view-box; transform-origin: 100px 100px; transform: rotate(calc(var(--share) * 270deg));
+}
+.s-stats .v-b .stats-b-read { container-type: inline-size; width: 48%; display: grid; justify-items: center; }
+.s-stats .v-b .stats-b-value {
+  font-size: min(calc(40px / var(--cap)), calc(100cqi / (4 * var(--num-w))));
+  font-variant-numeric: tabular-nums;
+}
+.s-stats .v-b .stats-b-unit { position: absolute; left: 0; right: 0; bottom: 13%; text-align: center; font-size: 32px; color: var(--ink-3); }
+.s-stats .v-b .stats-b-label { font-size: 32px; color: var(--ink-1); }
+.s-stats .v-b .stats-b-note { margin-top: calc(32px * var(--space)); text-align: center; font-size: 32px; color: var(--ink-3); }
+
+/* C  Power bars: four slanted tubes, each filled in ink to its share, the reading rides the tip of the fill */
+.s-stats .v-c .stats-c-energy { --share: .72; }
+.s-stats .v-c .stats-c-force { --share: .86; }
+.s-stats .v-c .stats-c-speed { --share: .64; }
+.s-stats .v-c .stats-c-acc { --share: .78; }
+.s-stats .v-c { --slant: 12deg; --bar-h: 100px; --inset: 12px; }
+.s-stats .v-c .stats-c-head { margin: 0 calc(var(--bar-h) * .22) calc(18px * var(--space)) 0; text-align: right; font-size: 32px; color: var(--ink-3); }
+.s-stats .v-c .stats-c-list { display: grid; gap: var(--gap-grid); padding-inline: calc(var(--bar-h) * .11 + 2px); }
+.s-stats .v-c .stats-c-bar {
+  position: relative; height: var(--bar-h); padding: var(--inset);
+  transform: skewX(calc(-1 * var(--slant)));
+}
+.s-stats .v-c .stats-c-bar::before {
+  content: ""; position: absolute; inset: var(--inset); pointer-events: none;
+  border-radius: max(0px, calc(var(--r) - var(--inset)));
+  background: repeating-linear-gradient(90deg, var(--track) 0 16px, transparent 16px 26px);
+}
+.s-stats .v-c .stats-c-fill {
+  position: relative; width: calc(var(--share) * 100%); height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding-inline: 28px 24px;
+  border-radius: max(0px, calc(var(--r) - var(--inset)));
+  background: var(--ink-1); color: var(--ground);
+  box-shadow: var(--display-glow);
+}
+.s-stats .v-c .stats-c-fill > * { transform: skewX(var(--slant)); }
+.s-stats .v-c .stats-c-label { font-size: 32px; color: var(--ground); }
+.s-stats .v-c .stats-c-read { display: flex; align-items: baseline; gap: 12px; }
+.s-stats .v-c .stats-c-num { container-type: inline-size; width: 190px; display: grid; justify-items: end; }
+.s-stats .v-c .stats-c-value {
+  font-size: min(calc(46px / var(--cap)), calc(100cqi / (4 * var(--num-w))));
+  font-variant-numeric: tabular-nums; text-shadow: none;
+}
+.s-stats .v-c .stats-c-unit { min-width: 64px; font-size: 32px; letter-spacing: .08em; color: var(--ground); opacity: .72; }
+
+/* D  Radar: the four readings plotted as a kite that juts toward force, the numbers on one card beneath.
+      No sunburst behind the chart and no rules between the readings: the grid spaces them, a line between two words reads as a dash. */
+.s-stats .v-d { display: grid; gap: calc(24px * var(--space)); }
+.s-stats .v-d .stats-d-field { position: relative; display: grid; justify-items: center; }
+.s-stats .v-d .stats-d-note { position: absolute; top: 0; right: 0; width: 280px; text-align: right; font-size: 32px; line-height: 1.25; color: var(--ink-3); }
+.s-stats .v-d .stats-d-radar { position: relative; width: min(480px, 100% - 300px); display: grid; justify-items: center; row-gap: 14px; }
+.s-stats .v-d .stats-d-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.s-stats .v-d .stats-d-ring, .s-stats .v-d .stats-d-axis { fill: none; stroke: var(--line); stroke-width: 2; }
+.s-stats .v-d .stats-d-best { fill: none; stroke: var(--ink-3); stroke-width: 3; }
+.s-stats .v-d .stats-d-shape { fill: var(--ink-1); fill-opacity: .22; stroke: var(--ink-1); stroke-width: 6; stroke-linejoin: round; }
+.s-stats .v-d .stats-d-dot { fill: var(--ink-1); }
+.s-stats .v-d .stats-d-axis-label { font-size: 32px; color: var(--ink-1); }
+.s-stats .v-d .stats-d-left, .s-stats .v-d .stats-d-right { position: absolute; top: 50%; transform: translateY(-50%); }
+.s-stats .v-d .stats-d-left { right: calc(100% + 22px); }
+.s-stats .v-d .stats-d-right { left: calc(100% + 22px); }
+.s-stats .v-d .stats-d-values { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gap-grid); padding: var(--card-pad); }
+.s-stats .v-d .stats-d-cell { min-width: 0; display: grid; justify-items: center; gap: 14px; }
+.s-stats .v-d .stats-d-key { font-size: 32px; }
+.s-stats .v-d .stats-d-read { container-type: inline-size; width: 100%; display: flex; justify-content: center; align-items: baseline; gap: 10px; }
+.s-stats .v-d .stats-d-value {
+  font-size: min(calc(44px / var(--cap)), calc(56cqi / (4 * var(--num-w))));
+  font-variant-numeric: tabular-nums;
+}
+.s-stats .v-d .stats-d-unit { font-size: 32px; letter-spacing: .04em; color: var(--ink-3); }
+
+/* E  Force first: force on its own raised card across the column, speed lines driving into the number, the other three
+      readings on three equal cards beneath. Level and on the margins: no tilt, no bleed. */
+.s-stats .v-e .stats-e-stage { display: grid; gap: var(--gap-grid); }
+.s-stats .v-e .stats-e-slab { position: relative; overflow: hidden; }
+.s-stats .v-e .stats-e-slab-in {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: calc(32px * var(--space));
+  padding: var(--card-pad);
+}
+.s-stats .v-e .stats-e-id { display: grid; justify-items: start; gap: 18px; }
+.s-stats .v-e .stats-e-badge { width: 88px; height: 88px; }
+.s-stats .v-e .stats-e-badge svg g { stroke-width: 1.36; }
+.s-stats .v-e .stats-e-kicker { font-size: 32px; color: var(--ink-1); }
+.s-stats .v-e .stats-e-lines {
+  display: block; width: 100%; height: 132px; color: var(--ink-1);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 75%);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 75%);
+}
+.s-stats .v-e .stats-e-lines path { fill: currentColor; }
+.s-stats .v-e .stats-e-s0 { opacity: .55; }
+.s-stats .v-e .stats-e-s1 { opacity: .32; }
+.s-stats .v-e .stats-e-s2 { opacity: .22; }
+.s-stats .v-e .stats-e-s3 { opacity: .4; }
+.s-stats .v-e .stats-e-hit { display: flex; align-items: baseline; gap: 16px; }
+.s-stats .v-e .stats-e-num { container-type: inline-size; width: 180px; display: grid; justify-items: end; }
+.s-stats .v-e .stats-e-value {
+  font-size: min(calc(72px / var(--cap)), calc(100cqi / (4 * var(--num-w))));
+  font-variant-numeric: tabular-nums;
+}
+.s-stats .v-e .stats-e-unit { font-size: calc(40px / var(--cap)); color: var(--ink-2); }
+.s-stats .v-e .stats-e-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-grid); }
+.s-stats .v-e .stats-e-tile { min-width: 0; padding: var(--card-pad); }
+.s-stats .v-e .stats-e-tile-in { display: grid; gap: calc(20px * var(--space)); }
+.s-stats .v-e .stats-e-label { font-size: 32px; }
+.s-stats .v-e .stats-e-tile-read { container-type: inline-size; display: flex; align-items: baseline; gap: 12px; }
+.s-stats .v-e .stats-e-tile-value {
+  font-size: min(calc(44px / var(--cap)), calc(64cqi / (4 * var(--num-w))));
+  font-variant-numeric: tabular-nums;
+}
+.s-stats .v-e .stats-e-tile-unit { font-size: 32px; color: var(--ink-3); }
+
+/* Unit symbols are case sensitive (kJ, since a capital K is kelvin; acceleration is m/s², M/S would read as a speed),
+   so every unit keeps the case it is written in, inside labels that are otherwise set in capitals */
+.s-stats .v-b .stats-b-unit, .s-stats .v-c .stats-c-unit, .s-stats .v-d .stats-d-unit,
+.s-stats .v-e .stats-e-unit, .s-stats .v-e .stats-e-tile-unit { text-transform: none; }
+
+/* Light: the same readings on a daylight ground.
+   D: the kite keeps its line and loses its murk. */
+:root[data-appearance="light"] .s-stats .v-d .stats-d-shape { fill-opacity: .08; }
+/* C: a white tube needs a firmer rim than a dark one to hold its edge against the paper */
+:root[data-appearance="light"] .s-stats .v-c .stats-c-bar { border-color: var(--line); }

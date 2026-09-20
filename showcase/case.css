@@ -1,0 +1,680 @@
+/* Case study: a product-page long read that opens over the showcase.
+   Every rule is scoped to .case or to cs- class names used only inside it.
+   Type: Inter for the document (self-hosted in styles.css), the product's own faces for product moments.
+   Grounds: white, soft grey and black sections, whatever the showcase appearance is.
+   Motion lives in case.js and only ever writes transform and opacity. Without it (reduced motion, or before the
+   script runs) every block rests in its final, readable state. */
+
+/* ------------------------------------------------------------ the dialog */
+.case {
+  --nav-h: 52px;
+  --vh: 100vh;
+  --gut: clamp(20px, 5vw, 64px);
+  --maxw: 1180px;
+  --sec-pad: clamp(96px, 12vw, 176px);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+  --red: #EB1110;
+  --f-doc: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-num: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --f-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-prod: "Barlow", system-ui, sans-serif;
+
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; flex-direction: column;
+  background: #000; color: #F5F5F7;
+  font-family: var(--f-doc);
+  font-weight: 400; font-size: 17px; line-height: 1.5; letter-spacing: -.005em;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateY(24px); opacity: 0;
+  transition: transform .5s var(--ease), opacity .3s ease;
+}
+@supports (height: 100svh) { .case { --vh: 100svh; } }
+.case[hidden] { display: none; }
+.case.is-open { transform: none; opacity: 1; }
+
+/* resets carry zero specificity, so every rule below wins over them */
+:where(.case) :where(h1, h2, h3, h4, p, ul, ol, figure, figcaption, blockquote) { margin: 0; padding: 0; }
+:where(.case) :where(ul, ol) { list-style: none; }
+:where(.case) img { display: block; max-width: 100%; }
+:where(.case) a { color: inherit; text-decoration: none; }
+.case :focus-visible { outline: 2px solid var(--ring, #F5F5F7); outline-offset: 3px; border-radius: 6px; }
+.case [tabindex="-1"]:focus:not(:focus-visible) { outline: none; }
+
+.cs-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.case .cs-ico {
+  display: block; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* the one element that scrolls. No smooth scrolling here: app.js resets scrollTop on open, and a smooth scroller
+   would visibly glide back from wherever the reader left it. Jump links scroll smoothly on their own. */
+.cs-scroll {
+  flex: 1; min-height: 0;
+  overflow-y: auto; overflow-x: hidden;
+  overscroll-behavior: contain;
+  background: #000;
+  scrollbar-width: thin; scrollbar-color: rgba(134, 134, 139, .6) transparent;
+}
+.cs-page { display: block; outline: none; }
+
+/* ------------------------------------------------------------ grounds: each section says what it stands on */
+.cs-dark  { --bg: #000000; --fg: #F5F5F7; --muted: #A1A1A6; --soft: #161617; --ring: #F5F5F7; background: var(--bg); color: var(--fg); }
+.cs-light { --bg: #FFFFFF; --fg: #1D1D1F; --muted: #6E6E73; --soft: #F5F5F7; --ring: #1D1D1F; background: var(--bg); color: var(--fg); }
+.cs-soft  { --bg: #F5F5F7; --fg: #1D1D1F; --muted: #6E6E73; --soft: #FFFFFF; --ring: #1D1D1F; background: var(--bg); color: var(--fg); }
+
+.cs-sec { position: relative; padding-block: var(--sec-pad); }
+.cs-wrap { width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto; }
+
+/* ------------------------------------------------------------ type */
+.case h1 {
+  font: 700 clamp(64px, 11.4vw, 184px)/.92 var(--f-doc);
+  letter-spacing: -.05em;
+}
+.cs-h2 {
+  font: 700 clamp(40px, 6.2vw, 96px)/1.03 var(--f-doc);
+  letter-spacing: -.038em;
+  text-wrap: balance;
+  max-width: 15ch;
+}
+.cs-h3 {
+  font: 700 clamp(28px, 3.1vw, 48px)/1.08 var(--f-doc);
+  letter-spacing: -.03em;
+  text-wrap: balance;
+}
+.cs-h4 {
+  font: 600 clamp(21px, 1.9vw, 28px)/1.2 var(--f-doc);
+  letter-spacing: -.022em;
+  text-wrap: balance;
+}
+.cs-lead {
+  font: 500 clamp(18px, 1.6vw, 23px)/1.5 var(--f-doc);
+  letter-spacing: -.014em;
+  color: var(--muted);
+  max-width: 40ch;
+  text-wrap: pretty;
+}
+.case p { text-wrap: pretty; }
+
+/* ------------------------------------------------------------ the chapter head: a rule, the title, and the lead beside it */
+.cs-head {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: clamp(32px, 5vw, 88px); row-gap: clamp(20px, 2.4vw, 32px);
+  align-items: start;
+  padding-top: clamp(20px, 2.4vw, 30px);
+  border-top: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  margin-bottom: clamp(48px, 7vw, 104px);
+}
+.cs-head .cs-lead { margin-top: .5em; }
+.cs-head-solo { grid-template-columns: minmax(0, 1fr); }
+
+/* ------------------------------------------------------------ buttons */
+.cs-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.cs-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 24px 0 20px;
+  border: 0; border-radius: 999px; cursor: pointer;
+  font: 500 17px/1 var(--f-doc); letter-spacing: -.01em;
+  background: var(--fg); color: var(--bg);
+  transition: background-color .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.cs-btn:hover { background: color-mix(in srgb, var(--fg) 84%, var(--bg)); }
+.cs-btn-ghost {
+  background: transparent; color: var(--fg);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 42%, transparent);
+}
+.cs-btn-ghost:hover { background: color-mix(in srgb, var(--fg) 9%, transparent); box-shadow: inset 0 0 0 1.5px var(--fg); }
+.cs-btn-sm { min-height: 44px; padding: 0 20px 0 16px; font-size: 15px; }
+
+/* ------------------------------------------------------------ the local navigation */
+.cs-localnav {
+  position: sticky; top: 0; z-index: 40;
+  height: var(--nav-h);
+  --fg: #F5F5F7; --ring: #F5F5F7;
+  color: var(--fg);
+}
+.cs-localnav::before, .cs-localnav::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  -webkit-backdrop-filter: saturate(1.8) blur(20px); backdrop-filter: saturate(1.8) blur(20px);
+  transition: opacity .35s ease;
+}
+.cs-localnav::before { background: rgba(22, 22, 23, .78); box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .1); }
+.cs-localnav::after { background: rgba(251, 251, 253, .8); box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1); opacity: 0; }
+.cs-localnav[data-ground="light"] { --fg: #1D1D1F; --ring: #1D1D1F; }
+.cs-localnav[data-ground="light"]::after { opacity: 1; }
+.cs-localnav[data-ground="light"]::before { opacity: 0; }
+.cs-localnav-in {
+  height: 100%;
+  width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto;
+  display: flex; align-items: center; gap: 24px;
+}
+.cs-localnav-title {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 600 19px/1 var(--f-doc); letter-spacing: -.02em;
+  min-height: 44px;
+}
+.cs-localnav-title img { width: 24px; height: 24px; }
+.cs-localnav-links { margin-left: auto; }
+.cs-localnav-links ul { display: flex; gap: 4px; }
+.cs-localnav-links a {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 10px;
+  font: 400 13.5px/1 var(--f-doc); letter-spacing: -.005em;
+  opacity: .78;
+  transition: opacity .2s ease;
+}
+.cs-localnav-links a:hover, .cs-localnav-links a[aria-current] { opacity: 1; }
+.cs-localnav-links a[aria-current] { font-weight: 600; }
+.cs-close {
+  width: 44px; height: 44px; margin-right: -8px; flex: none;
+  display: grid; place-items: center;
+  appearance: none; border: 0; padding: 0; cursor: pointer;
+  background: transparent; color: var(--fg); border-radius: 50%;
+}
+.cs-close::before {
+  content: ""; position: absolute; width: 34px; height: 34px; border-radius: 50%;
+  background: color-mix(in srgb, var(--fg) 12%, transparent);
+  transition: background-color .2s ease;
+}
+.cs-close { position: relative; }
+.cs-close .cs-ico { position: relative; }
+.cs-close:hover::before { background: color-mix(in srgb, var(--fg) 22%, transparent); }
+.cs-close:focus-visible { outline-offset: -2px; border-radius: 50%; }
+
+/* ------------------------------------------------------------ rise: a visible resting state, and a class that settles it.
+   Only while case.js runs with motion allowed (.cs-motion); anything already on screen gets .is-in before it paints */
+.cs-motion .cs-rise {
+  transition: opacity 1s var(--ease) calc(var(--d, 0) * 90ms), transform 1.2s var(--ease) calc(var(--d, 0) * 90ms);
+}
+.cs-motion .cs-rise:not(.is-in) { opacity: .2; transform: translate3d(0, 40px, 0); }
+.cs-motion .cs-chapter:not(.is-in) { transform: translate3d(0, 64px, 0) scale(.96); transform-origin: 0 100%; }
+
+/* ------------------------------------------------------------ hero */
+.cs-hero { padding-top: clamp(56px, 8vw, 112px); padding-bottom: clamp(64px, 8vw, 120px); text-align: center; overflow: clip; }
+.cs-hero-copy { display: grid; justify-items: center; gap: clamp(16px, 2vw, 24px); width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto; will-change: transform; }
+.cs-hero-by { display: inline-flex; align-items: center; gap: 10px; font: 500 17px/1 var(--f-doc); color: var(--muted); }
+.cs-hero-by img { height: 22px; width: auto; }
+.cs-hero-tag {
+  font: 600 clamp(21px, 2.3vw, 32px)/1.25 var(--f-doc); letter-spacing: -.022em;
+  max-width: 24ch; text-wrap: balance;
+}
+.cs-hero .cs-actions { justify-content: center; margin-top: 8px; }
+
+.cs-family { --gh: min(calc(var(--vh) * .78), 820px); margin-top: clamp(64px, 8vw, 104px); display: grid; justify-items: center; gap: 32px; transform-origin: 50% 0; will-change: transform; }
+.cs-family-row { position: relative; display: flex; align-items: flex-end; gap: clamp(28px, 5vw, 80px); }
+.cs-family-row::before { /* a faint warm light behind the pair */
+  content: ""; position: absolute; left: 50%; top: 12%; width: 150%; height: 80%; transform: translateX(-50%); z-index: 0;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(235, 17, 16, .16), rgba(235, 17, 16, 0) 70%);
+  pointer-events: none;
+}
+.cs-family-row::after { /* the floor they stand on */
+  content: ""; position: absolute; left: -10%; right: -10%; bottom: -28px; height: 56px; z-index: 0;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, .9), transparent 70%);
+  pointer-events: none;
+}
+.cs-family-row > * { position: relative; z-index: 1; }
+.cs-family-cap { font: 400 15px/1.45 var(--f-doc); color: var(--muted); max-width: 34em; padding-inline: var(--gut); }
+
+/* ------------------------------------------------------------ the glass: bezel, a resting screen, the live embed */
+.cs-glass { position: relative; flex: none; }
+.cs-glass-screen {
+  position: relative; overflow: hidden; isolation: isolate;
+  aspect-ratio: 1080 / 3840;
+  border-radius: 8px;
+  background: #0B0B0C;
+  box-shadow: 0 0 0 5px #1D1D1F, 0 0 0 6px #3A3A3C, 0 50px 90px -40px rgba(0, 0, 0, .55);
+}
+.cs-glass-hero .cs-glass-screen { height: var(--gh); }
+.cs-glass-idle {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(90% 26% at 50% 0%, rgba(255, 236, 214, .14), transparent 70%),
+    radial-gradient(70% 18% at 50% 100%, rgba(235, 17, 16, .16), transparent 70%),
+    linear-gradient(#101012, #09090A);
+}
+.cs-glass-zoom { position: absolute; inset: 0; transition: transform 1.1s var(--ease); }
+.cs-embed { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: transparent; opacity: 0; transition: opacity .7s ease; }
+.cs-embed.is-ready { opacity: 1; }
+
+/* ------------------------------------------------------------ the phone body, drawn around the screen renders */
+.cs-phone {
+  --ph: 560px;
+  position: relative; flex: none;
+  padding: calc(var(--ph) * .013);
+  border-radius: calc(var(--ph) * .085);
+  background: #1D1D1F;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16), 0 0 0 1px #3A3A3C, 0 60px 100px -50px rgba(0, 0, 0, .8);
+}
+.cs-phone-screen {
+  position: relative; overflow: hidden; isolation: isolate;
+  height: calc(var(--ph) * .974);
+  aspect-ratio: 880 / 1912;
+  border-radius: calc(var(--ph) * .072);
+  background: #0B0B0C;
+  container-type: inline-size;
+}
+.cs-phone-screen img { width: 100%; height: 100%; object-fit: cover; }
+.cs-phone-hero { --ph: calc(var(--gh) * .62); }
+
+/* ------------------------------------------------------------ environment band */
+.cs-env { padding: 0; min-height: max(560px, calc(var(--vh) - var(--nav-h))); display: grid; align-items: end; overflow: clip; background: #000; }
+.cs-env-media { position: absolute; inset: 0; overflow: hidden; }
+.cs-env-media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; transform-origin: 50% 50%; will-change: transform; }
+.cs-env-media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, .86) 0%, rgba(0, 0, 0, .5) 38%, rgba(0, 0, 0, .06) 70%);
+}
+.cs-env-copy { position: relative; z-index: 1; width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto; padding-block: 120px clamp(48px, 8vw, 112px); }
+.cs-env-copy h2 {
+  font: 700 clamp(40px, 6vw, 88px)/1.03 var(--f-doc); letter-spacing: -.038em;
+  max-width: 13ch; text-wrap: balance; color: #FFFFFF;
+}
+.cs-env-copy p { margin-top: 20px; max-width: 30em; font: 500 clamp(17px, 1.5vw, 21px)/1.5 var(--f-doc); color: rgba(245, 245, 247, .88); }
+
+/* ------------------------------------------------------------ the problem */
+.cs-highlight {
+  margin-top: clamp(96px, 12vw, 176px);
+  font: 700 clamp(34px, 4.9vw, 72px)/1.12 var(--f-doc);
+  letter-spacing: -.034em;
+  max-width: 19ch;
+}
+.cs-highlight span { transition: opacity .6s ease; }
+/* at rest the words dim to half, which still reads at these sizes (3.2:1 at worst) */
+.cs-motion .cs-highlight span:not(.is-lit) { opacity: .5; }
+
+/* ------------------------------------------------------------ the reach: the copy, and the bands of the column beside it,
+   top of the glass first, each height measured from the floor. The rule down the left of the labels is the column itself. */
+.cs-reach {
+  margin-top: clamp(80px, 11vw, 160px);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  column-gap: clamp(32px, 5vw, 88px); row-gap: clamp(32px, 4vw, 56px);
+  align-items: start;
+}
+.cs-reach-copy p { margin-top: 1em; color: var(--muted); max-width: 34em; font-size: clamp(17px, 1.3vw, 19px); }
+.cs-bands { --band-col: 8.4em; display: grid; }
+.cs-bands li {
+  position: relative;
+  display: grid; grid-template-columns: var(--band-col) minmax(0, 1fr);
+  column-gap: clamp(18px, 2.2vw, 30px);
+  padding-block: clamp(16px, 1.9vw, 24px);
+  border-top: 1px solid color-mix(in srgb, var(--fg) 16%, transparent);
+}
+.cs-bands li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); }
+/* the rule runs the whole height of the list, so the four bands read as one column */
+.cs-bands li::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: var(--band-col); width: 2px;
+  background: color-mix(in srgb, var(--fg) 24%, transparent);
+}
+.cs-band-h {
+  grid-row: span 2;
+  text-align: right; padding-right: clamp(18px, 2.2vw, 30px);
+  font: 600 clamp(15px, 1.2vw, 17px)/1.35 var(--f-cond); letter-spacing: .06em;
+  font-variant-numeric: tabular-nums; color: var(--fg);
+}
+.cs-band-t { font: 600 clamp(18px, 1.5vw, 21px)/1.25 var(--f-doc); letter-spacing: -.018em; }
+.cs-band-d { margin-top: 8px; color: var(--muted); font-size: clamp(16px, 1.25vw, 18px); }
+
+/* ------------------------------------------------------------ diagrams from the Figma file, built by case-diagrams.* */
+.cs-diagram { margin-top: clamp(96px, 12vw, 176px); }
+.cs-diagram-cap { display: grid; gap: 10px; margin-bottom: clamp(24px, 3vw, 36px); }
+.cs-diagram-cap p { color: var(--muted); max-width: 40em; }
+.cs-diagram-frame {
+  width: min(100% - 2 * var(--gut), 1440px); margin-inline: auto;
+  padding: clamp(16px, 2.6vw, 40px);
+  border-radius: clamp(20px, 2.4vw, 32px);
+  background: var(--cd-bg);
+  color: var(--cd-ink);
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+.cs-diagram-light { --cd-ink: #1D1D1F; --cd-muted: #6E6E73; --cd-line: rgba(29, 29, 31, .32); --cd-bg: var(--soft); --cd-accent: #EB1110; }
+.cs-diagram-dark  { --cd-ink: #F5F5F7; --cd-muted: #A1A1A6; --cd-line: rgba(245, 245, 247, .32); --cd-bg: #161617; --cd-accent: #FF453A; }
+
+/* ------------------------------------------------------------ pinned sequences: one visual stays, the copy advances */
+.cs-seq {
+  --pin-h: calc(var(--vh) - var(--nav-h));
+  position: relative;
+  width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-areas: "beats stage";
+  column-gap: clamp(32px, 5vw, 96px);
+}
+.cs-seq-idea, .cs-seq-phone { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); grid-template-areas: "stage beats"; }
+.cs-seq-stage { grid-area: stage; position: relative; }
+.cs-seq-pin { position: sticky; top: var(--nav-h); height: var(--pin-h); display: grid; place-items: center; }
+.cs-seq-beats { grid-area: beats; padding-bottom: calc(var(--vh) * .14); }
+.cs-beat {
+  min-height: calc(var(--vh) * .78);
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 18px;
+  padding-block: 48px;
+}
+.cs-beat p { color: var(--muted); max-width: 26em; font-size: clamp(17px, 1.35vw, 21px); line-height: 1.5; }
+.cs-beat .cs-btn { margin-top: 10px; }
+
+/* the strength tester */
+.cs-tester { height: calc(var(--pin-h) * .86); display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 2vh, 24px); }
+.cs-tester-score {
+  font: 900 clamp(64px, 9vw, 148px)/.86 var(--f-num);
+  letter-spacing: .01em; font-variant-numeric: tabular-nums;
+  color: #F5F5F7;
+  transition: opacity .5s ease;
+}
+.cs-tester-score .is-ghost { opacity: .26; }
+.cs-tester-body { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.cs-tester-bell {
+  width: 56px; height: 56px; flex: none; border-radius: 50%;
+  display: grid; place-items: center;
+  color: #F5F5F7; background: #1D1D1F; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16);
+  transition: opacity .5s ease;
+}
+.cs-tester-bell.is-rung { background: #F5F5F7; color: #000; }
+.cs-motion .cs-tester-bell.is-rung .cs-ico { animation: cs-ring .9s var(--ease) 1; transform-origin: 50% 10%; }
+@keyframes cs-ring {
+  0% { transform: rotate(0); } 15% { transform: rotate(18deg); } 30% { transform: rotate(-14deg); }
+  45% { transform: rotate(9deg); } 60% { transform: rotate(-5deg); } 100% { transform: rotate(0); }
+}
+.cs-tester-track { --tw: clamp(48px, 4.8vw, 72px); position: relative; flex: 1; min-height: 0; width: var(--tw); }
+.cs-tester-clip {
+  position: absolute; inset: 0; overflow: hidden; border-radius: 999px;
+  background: rgba(245, 245, 247, .08); box-shadow: inset 0 0 0 1px rgba(245, 245, 247, .16);
+}
+.cs-tester-fill {
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(to top, #A70C0B, #EB1110 55%, #FF4A3D);
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+.cs-mark {
+  position: absolute; left: calc(100% + 16px); bottom: calc(var(--at) * 100%);
+  transform: translateY(50%);
+  font: 600 16px/1 var(--f-cond); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
+  color: #F5F5F7; opacity: .42;
+  transition: opacity .4s ease;
+}
+.cs-mark::before { /* the mark crosses the column at its height */
+  content: ""; position: absolute; top: 50%; right: calc(100% + 16px); width: var(--tw, 56px); height: 2px; margin-top: -1px;
+  background: currentColor; opacity: .7;
+}
+.cs-mark.is-passed { opacity: 1; }
+
+/* the machine: the live glass */
+.cs-glass-seq .cs-glass-screen { height: min(calc(var(--pin-h) * .88), 900px); }
+.cs-soft .cs-glass-screen { box-shadow: 0 0 0 5px #1D1D1F, 0 0 0 6px #48484A, 0 60px 100px -40px rgba(0, 0, 0, .45); }
+.cs-glass-seq { transform-origin: 50% 0; transition: transform 1.1s var(--ease); }
+.cs-seq-machine[data-zoom="lift"] .cs-glass-seq { transform: scale(1.13); }
+.cs-seq-machine[data-zoom="bottom"] .cs-glass-zoom { transform: translateY(-45%) scale(1.9); }
+
+/* the phone flow */
+.cs-duo { position: relative; transition: transform 1s var(--ease); }
+.cs-phone-seq { --ph: min(calc(var(--pin-h) * .86), 760px); }
+.cs-layer { position: absolute; inset: 0; opacity: 0; transform: scale(1.03); transition: opacity .6s ease, transform .9s var(--ease); }
+.cs-seq-phone[data-layer="scan"]  .cs-layer[data-layer="scan"],
+.cs-seq-phone[data-layer="hit"]   .cs-layer[data-layer="hit"],
+.cs-seq-phone[data-layer="feed"]  .cs-layer[data-layer="feed"],
+.cs-seq-phone[data-layer="punch"] .cs-layer[data-layer="punch"] { opacity: 1; transform: none; }
+.cs-phone-screen::after { /* a scrim under the sheet */
+  content: ""; position: absolute; inset: 0; z-index: 2; background: rgba(0, 0, 0, .55); opacity: 0; transition: opacity .5s ease; pointer-events: none;
+}
+.cs-seq-phone[data-over="sheet"] .cs-phone-screen::after { opacity: 1; }
+.cs-sheet {
+  position: absolute; left: 3.5%; right: 3.5%; bottom: 2.4%; z-index: 3;
+  padding: 7cqi 6cqi 6cqi; border-radius: 8cqi;
+  background: #1C1C1E; color: #F5F5F7;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, .5);
+  font-family: var(--f-prod);
+  transform: translateY(118%);
+  transition: transform .8s var(--ease);
+}
+.cs-seq-phone[data-over="sheet"] .cs-sheet { transform: none; }
+.cs-sheet-title { font: 700 7cqi/1.1 var(--f-prod); }
+.cs-sheet-sub { margin-top: 1.5cqi; font: 500 4.4cqi/1.3 var(--f-prod); color: #A1A1A6; }
+.cs-sheet ul { margin-top: 5cqi; display: grid; gap: 2.4cqi; }
+.cs-sheet li {
+  display: flex; align-items: center; gap: 3cqi;
+  min-height: 12cqi; padding: 0 4.5cqi; border-radius: 4cqi;
+  background: rgba(255, 255, 255, .07);
+  font: 600 4.6cqi/1 var(--f-prod);
+}
+.cs-sheet li:first-child { background: #F5F5F7; color: #000; }
+.cs-sheet li .cs-ico { width: 5cqi; height: 5cqi; }
+
+.cs-mini {
+  position: absolute; left: 100%; bottom: 0; margin-left: 28px;
+  opacity: 0; transform: translate3d(24px, 0, 0) scale(.94); transform-origin: 0 100%;
+  transition: opacity .6s ease, transform 1s var(--ease);
+}
+.cs-mini-glass {
+  position: relative; overflow: hidden;
+  height: calc(var(--ph-mini, 560px)); aspect-ratio: 1080 / 3840;
+  border-radius: 6px; background: #0B0B0C;
+  box-shadow: 0 0 0 4px #1D1D1F, 0 0 0 5px #48484A, 0 50px 90px -40px rgba(0, 0, 0, .6);
+}
+/* a still of the glass counting in, drawn small: the same screen the phone's countdown is synced to */
+.cs-mini-glass img { width: 100%; height: 100%; object-fit: cover; }
+.cs-seq-phone { --ph-mini: min(calc(var(--pin-h) * .86), 760px); }
+.cs-seq-phone[data-over="machine"] .cs-mini { opacity: 1; transform: none; }
+/* the pair centres in its column, and case.js sets --duo-k below 1 only where the column is too narrow for both */
+.cs-seq-phone[data-over="machine"] .cs-duo { transform: scale(var(--duo-k, 1)) translate3d(calc((var(--ph-mini) * .28125 + 28px) / -2), 0, 0); }
+
+/* the system: four looks of one specimen */
+.cs-specs { display: grid; justify-items: center; gap: 28px; }
+.cs-spec-stack { position: relative; width: min(400px, calc(var(--pin-h) * .54)); aspect-ratio: 20 / 27; container-type: inline-size; }
+.cs-spec {
+  --s-red: #EB1110;
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; gap: 4cqi;
+  padding: 9cqi 8cqi;
+  border-radius: 7cqi;
+  background: var(--s-bg); color: var(--s-ink);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .45), 0 0 0 1px rgba(0, 0, 0, .06);
+  opacity: 0; transform: scale(.965);
+  transition: opacity .7s ease, transform 1s var(--ease);
+}
+.cs-seq-system[data-look="arena-dark"]  .cs-spec[data-look="arena-dark"],
+.cs-seq-system[data-look="arena-light"] .cs-spec[data-look="arena-light"],
+.cs-seq-system[data-look="ref-dark"]    .cs-spec[data-look="ref-dark"],
+.cs-seq-system[data-look="ref-light"]   .cs-spec[data-look="ref-light"] { opacity: 1; transform: none; }
+.cs-spec[data-look="arena-dark"] {
+  --s-bg: radial-gradient(90% 40% at 50% 0%, rgba(255, 236, 214, .12), transparent 70%), linear-gradient(#101012, #09090A);
+  --s-ink: #F5F3EF; --s-ink2: rgba(245, 243, 239, .72); --s-card: #19191B; --s-line: rgba(255, 255, 255, .09); --s-track: rgba(255, 255, 255, .12);
+}
+.cs-spec[data-look="arena-light"] {
+  --s-bg: linear-gradient(#F8F5F1, #EEEAE4); --s-red: #E3100F;
+  --s-ink: #151413; --s-ink2: rgba(21, 20, 19, .74); --s-card: #FFFFFF; --s-line: rgba(21, 20, 19, .08); --s-track: rgba(21, 20, 19, .12);
+}
+.cs-spec[data-look="ref-dark"] {
+  --s-bg: radial-gradient(80% 40% at 50% 0%, rgba(235, 17, 16, .3), transparent 70%), #080406;
+  --s-ink: #FFFFFF; --s-ink2: rgba(255, 255, 255, .6); --s-card: #16090B; --s-line: rgba(235, 17, 16, .3); --s-track: rgba(255, 255, 255, .2);
+}
+.cs-spec[data-look="ref-light"] {
+  --s-bg: #FFF7F6;
+  --s-ink: #16090B; --s-ink2: rgba(22, 9, 11, .62); --s-card: #FFFFFF; --s-line: rgba(235, 17, 16, .3); --s-track: rgba(22, 9, 11, .14);
+}
+.sp-label { font: 600 4cqi/1 var(--f-cond); letter-spacing: .16em; text-transform: uppercase; color: var(--s-ink2); }
+/* sized to its character count, so 999,999.000 fits the card as well as 999,999 (--sp-chars from PunchFormat.width) */
+.sp-score { font: 900 calc(24cqi * 7 / var(--sp-chars, 7))/.86 var(--f-num); letter-spacing: .01em; font-variant-numeric: tabular-nums; }
+.sp-charge { height: 2.2cqi; border-radius: 99px; background: var(--s-track); overflow: hidden; }
+.sp-charge span { display: block; height: 100%; width: 100%; background: var(--s-red); border-radius: inherit; }
+.sp-grade { font: 700 4.6cqi/1 var(--f-cond); letter-spacing: .14em; text-transform: uppercase; }
+.sp-ranks { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3cqi; }
+.sp-ranks + .sp-ranks { margin-top: 0; }
+.sp-rank b small { display: inline; margin-left: .25em; font: 600 3.4cqi/1 var(--f-prod); color: var(--s-ink2); }
+.sp-rank {
+  display: flex; align-items: center; gap: 3cqi;
+  padding: 4cqi; border-radius: 4cqi;
+  background: var(--s-card); box-shadow: inset 0 0 0 .5cqi var(--s-line);
+}
+.sp-glyph { width: 10cqi; height: 10cqi; flex: none; color: var(--s-ink); }
+.sp-glyph svg { width: 100%; height: 100%; display: block; }
+.sp-rank small { display: block; font: 500 3.6cqi/1.1 var(--f-prod); color: var(--s-ink2); }
+.sp-rank b { display: block; margin-top: 1cqi; font: 900 8.4cqi/.9 var(--f-num); }
+.cs-spec[data-look^="ref"] .sp-label { font: 700 4.2cqi/1.1 "Sora", sans-serif; letter-spacing: 0; text-transform: none; color: var(--s-red); }
+.cs-spec[data-look^="ref"] .sp-score { font: 400 calc(17cqi * 7 / var(--sp-chars, 7))/1.05 "Archivo Black", sans-serif; letter-spacing: 0; }
+.cs-spec[data-look^="ref"] .sp-grade { font: 600 4.4cqi/1.1 "Sora", sans-serif; letter-spacing: 0; text-transform: none; color: var(--s-ink2); }
+.cs-spec[data-look^="ref"] .sp-rank { border-radius: 5cqi; }
+.cs-spec[data-look^="ref"] .sp-rank small { font-family: "Sora", sans-serif; }
+.cs-spec[data-look^="ref"] .sp-rank b { font: 800 7cqi/1 "Sora", sans-serif; }
+.cs-glyphs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 420px; color: var(--fg); opacity: .4; transition: opacity .6s ease; }
+.cs-glyphs span { width: 40px; height: 40px; display: block; }
+.cs-glyphs svg { width: 100%; height: 100%; display: block; }
+.cs-seq-system[data-glyphs="on"] .cs-glyphs { opacity: 1; }
+
+/* ------------------------------------------------------------ the big number */
+.cs-bignum {
+  margin-top: clamp(96px, 12vw, 176px);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: clamp(28px, 5vw, 80px); row-gap: 20px;
+}
+.cs-bignum-n { font: 900 clamp(150px, 23vw, 320px)/.78 var(--f-num); letter-spacing: -.005em; font-variant-numeric: tabular-nums; min-width: 1.1ch; }
+.cs-bignum-copy { display: grid; justify-items: start; gap: 24px; }
+.cs-bignum-copy p { font: 600 clamp(21px, 2.2vw, 30px)/1.3 var(--f-doc); letter-spacing: -.022em; color: var(--muted); max-width: 22em; }
+
+/* ------------------------------------------------------------ the portraits over the phone chapter */
+.cs-trio {
+  width: min(100% - 2 * var(--gut), var(--maxw)); margin: 0 auto clamp(48px, 6vw, 96px);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 2vw, 28px); align-items: start;
+}
+.cs-trio-item { position: relative; overflow: hidden; aspect-ratio: 2 / 3; border-radius: clamp(16px, 2vw, 28px); background: #161617; }
+.cs-trio-item:nth-child(2) { margin-top: 14%; }
+.cs-trio-item:nth-child(3) { margin-top: 5%; }
+[data-parallax] > img { position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; will-change: transform; }
+
+/* ------------------------------------------------------------ notes */
+.cs-decisions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 4vw, 64px); }
+.cs-decision { display: grid; align-content: start; gap: 14px; }
+.cs-decision p { color: var(--muted); }
+.cs-validate { margin-top: clamp(80px, 11vw, 160px); }
+.cs-highlight-q { margin-top: clamp(28px, 3.5vw, 48px); max-width: 22ch; }
+.cs-highlight-q span { display: block; }
+.cs-highlight-q span + span { margin-top: .5em; }
+
+/* ------------------------------------------------------------ where I pushed back: four statements, each under a short strike of red */
+.cs-push { margin-top: clamp(80px, 11vw, 160px); }
+.cs-push-list {
+  margin-top: clamp(32px, 4vw, 56px);
+  columns: 2; column-gap: clamp(40px, 6vw, 96px);
+}
+.cs-push-list li {
+  break-inside: avoid; margin-bottom: clamp(28px, 3.5vw, 48px);
+  color: var(--muted); font-size: clamp(17px, 1.4vw, 21px); line-height: 1.45; max-width: 28em;
+}
+.cs-push-list li::before { content: ""; display: block; width: 32px; height: 2px; margin-bottom: 16px; background: var(--red); }
+
+/* ------------------------------------------------------------ what is in the Figma file */
+.cs-file { margin-top: clamp(80px, 11vw, 160px); display: grid; gap: clamp(24px, 3vw, 40px); }
+.cs-file-list > div {
+  display: grid; grid-template-columns: minmax(0, 12em) minmax(0, 1fr);
+  column-gap: clamp(20px, 3vw, 48px); row-gap: 6px;
+  padding-block: clamp(14px, 1.7vw, 20px);
+  border-top: 1px solid color-mix(in srgb, var(--fg) 16%, transparent);
+}
+.cs-file-list > div:last-child { border-bottom: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); }
+.cs-file-list dt { font: 600 clamp(18px, 1.5vw, 21px)/1.3 var(--f-doc); letter-spacing: -.018em; }
+.cs-file-list dd { margin: 0; color: var(--muted); font-size: clamp(16px, 1.25vw, 18px); max-width: 44em; }
+.cs-file-list dd b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+.cs-file-note { color: var(--muted); max-width: 46em; font-size: clamp(16px, 1.25vw, 18px); }
+.cs-link { color: var(--ink); text-decoration: none; border-bottom: 1px solid color-mix(in oklab, var(--ink) 40%, transparent); padding-bottom: 2px; }
+.cs-link:hover { border-bottom-color: var(--ink); }
+.cs-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* ------------------------------------------------------------ how AI was used */
+.cs-ai-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 6vw, 112px); align-items: start; }
+.cs-ai-head { position: sticky; top: calc(var(--nav-h) + 48px); }
+.cs-ai-head .cs-lead { margin-top: clamp(20px, 2.4vw, 32px); }
+.cs-ai-list { display: grid; gap: clamp(40px, 5vw, 72px); padding-top: 8px; }
+.cs-ai-list li { display: grid; gap: 10px; }
+.cs-ai-list p { color: var(--muted); max-width: 28em; }
+
+/* ------------------------------------------------------------ closing */
+.cs-close-sec { padding-bottom: 0; overflow: clip; }
+.cs-close-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(40px, 6vw, 112px); align-items: center; }
+.cs-close-copy { display: grid; justify-items: start; gap: 24px; }
+.cs-close-copy .cs-h2 { max-width: none; font-size: clamp(56px, 8.4vw, 136px); letter-spacing: -.048em; line-height: .96; }
+.cs-close-copy p { font: 600 clamp(19px, 1.8vw, 24px)/1.4 var(--f-doc); letter-spacing: -.016em; color: var(--muted); max-width: 24em; }
+.cs-close-copy .cs-actions { margin-top: 8px; }
+.cs-close-media { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: clamp(20px, 2.4vw, 32px); background: #161617; }
+.cs-foot {
+  width: min(100% - 2 * var(--gut), var(--maxw)); margin: clamp(80px, 10vw, 144px) auto 0;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px;
+  padding-block: 28px 36px;
+  box-shadow: 0 -1px 0 rgba(245, 245, 247, .14);
+}
+.cs-foot img { height: 26px; width: auto; }
+.cs-foot p { font-size: 14px; color: #A1A1A6; margin-right: auto; }
+
+/* ------------------------------------------------------------ medium widths */
+@media (max-width: 1100px) {
+  .cs-localnav-links a { padding: 0 7px; }
+  .cs-decisions { grid-template-columns: 1fr 1fr; }
+  .cs-reach { grid-template-columns: 1fr; }
+  .cs-head { grid-template-columns: 1fr; }
+  .cs-head .cs-lead { margin-top: 0; }
+}
+
+/* ------------------------------------------------------------ one column: the visual pins at the top, the copy passes under it */
+@media (max-width: 859px) {
+  .case { --nav-h: 48px; }
+  .cs-localnav-links { display: none; }
+  .cs-localnav-title { margin-right: auto; font-size: 17px; }
+
+  .cs-seq, .cs-seq-idea, .cs-seq-phone { --pin-h: calc((var(--vh) - var(--nav-h)) * .58); display: block; width: 100%; }
+  .cs-seq-stage { position: sticky; top: var(--nav-h); z-index: 3; height: var(--pin-h); background: var(--bg); overflow: clip; }
+  .cs-seq-stage::after { /* the copy passes under a soft lower edge */
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 20px; z-index: 2;
+    background: linear-gradient(color-mix(in srgb, var(--bg) 0%, transparent), var(--bg));
+    pointer-events: none;
+  }
+  .cs-seq-machine[data-zoom="lift"] .cs-glass-seq { transform: scale(1.06); }
+  .cs-seq-pin { position: relative; top: 0; height: 100%; }
+  .cs-seq-beats { position: relative; z-index: 1; width: min(100% - 2 * var(--gut), 620px); margin-inline: auto; padding-bottom: 0; }
+  .cs-beat { min-height: calc(var(--vh) - var(--nav-h) - var(--pin-h)); justify-content: flex-start; padding-block: 36px 40px; gap: 12px; }
+  .cs-beat:last-child { min-height: calc((var(--vh) - var(--nav-h) - var(--pin-h)) * 1.1); }
+
+  .cs-tester { height: calc(var(--pin-h) * .92); gap: 10px; }
+  .cs-tester-score { font-size: clamp(48px, 14vw, 80px); }
+  .cs-tester-track { --tw: 40px; }
+  .cs-mark { font-size: 13px; left: calc(100% + 10px); }
+  .cs-mark::before { right: calc(100% + 10px); }
+  .cs-tester-bell { width: 44px; height: 44px; }
+
+  .cs-glass-seq .cs-glass-screen { height: calc(var(--pin-h) * .92); }
+  .cs-phone-seq { --ph: calc(var(--pin-h) * .9); }
+  .cs-seq-phone { --ph-mini: calc(var(--pin-h) * .9); }
+  .cs-mini { margin-left: 18px; }
+  .cs-seq-phone[data-over="machine"] .cs-duo { transform: scale(var(--duo-k, 1)) translate3d(calc((var(--ph-mini) * .28125 + 18px) / -2), 0, 0); }
+  .cs-spec-stack { width: min(290px, calc(var(--pin-h) * .56)); }
+  .cs-specs { gap: 14px; }
+  .cs-glyphs span { width: 30px; height: 30px; }
+
+  .cs-bignum { grid-template-columns: 1fr; }
+  .cs-decisions { grid-template-columns: 1fr; }
+  .cs-push-list { columns: 1; }
+  .cs-bands { --band-col: 7em; }
+  .cs-file-list > div { grid-template-columns: 1fr; }
+  .cs-ai-grid { grid-template-columns: 1fr; }
+  .cs-ai-head { position: static; }
+  .cs-close-grid { grid-template-columns: 1fr; }
+  .cs-close-media { aspect-ratio: 5 / 4; }
+  .cs-seq-machine { --pin-h: calc((var(--vh) - var(--nav-h)) * .64); }
+  .cs-family { --gh: min(calc(var(--vh) * .6), 560px); }
+}
+@media (max-width: 480px) {
+  .cs-actions { width: 100%; }
+  .cs-hero .cs-actions .cs-btn, .cs-close-copy .cs-actions .cs-btn { flex: 1 1 100%; }
+  .cs-foot .cs-btn { width: 100%; }
+}
+
+/* ------------------------------------------------------------ reduced motion: states still change, nothing travels */
+@media (prefers-reduced-motion: reduce) {
+  .case { transform: none; transition: opacity .2s linear; }
+  .case *, .case *::before, .case *::after { transition-duration: 0s !important; transition-delay: 0s !important; animation: none !important; }
+}
+
+/* the changes after review read as a list under the AI note */
+.cs-ai-after { margin-top: clamp(64px, 8vw, 112px); }
+.cs-ai-after > .cs-h3 { margin-bottom: clamp(28px, 3vw, 40px); }
+.cs-ai-changes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.5vw, 48px) clamp(24px, 3vw, 44px); }
+.cs-ai-changes li { display: grid; gap: 8px; align-content: start; padding-top: 18px; border-top: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); }
+.cs-ai-changes p { color: var(--muted); margin: 0; }
+@media (max-width: 960px) { .cs-ai-changes { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .cs-ai-changes { grid-template-columns: 1fr; } }

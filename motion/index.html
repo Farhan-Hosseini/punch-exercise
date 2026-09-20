@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Score reveal - render surface</title>
+<style>
+  @font-face { font-family: 'Orbitron'; font-weight: 400; src: url(/node_modules/@fontsource/orbitron/files/orbitron-latin-400-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Orbitron'; font-weight: 500; src: url(/node_modules/@fontsource/orbitron/files/orbitron-latin-500-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Orbitron'; font-weight: 600; src: url(/node_modules/@fontsource/orbitron/files/orbitron-latin-600-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Orbitron'; font-weight: 700; src: url(/node_modules/@fontsource/orbitron/files/orbitron-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Orbitron'; font-weight: 800; src: url(/node_modules/@fontsource/orbitron/files/orbitron-latin-800-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Orbitron'; font-weight: 900; src: url(/node_modules/@fontsource/orbitron/files/orbitron-latin-900-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 500; src: url(/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-500-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 600; src: url(/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 700; src: url(/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 800; src: url(/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-800-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 900; src: url(/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-900-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow'; font-weight: 400; src: url(/node_modules/@fontsource/barlow/files/barlow-latin-400-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow'; font-weight: 500; src: url(/node_modules/@fontsource/barlow/files/barlow-latin-500-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow'; font-weight: 600; src: url(/node_modules/@fontsource/barlow/files/barlow-latin-600-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow'; font-weight: 700; src: url(/node_modules/@fontsource/barlow/files/barlow-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 400; src: url(/node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 500; src: url(/node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 600; src: url(/node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 700; src: url(/node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Anton'; font-weight: 400; src: url(/node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Saira ExtraCondensed'; font-weight: 500; src: url(/node_modules/@fontsource/saira-extra-condensed/files/saira-extra-condensed-latin-500-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Saira ExtraCondensed'; font-weight: 600; src: url(/node_modules/@fontsource/saira-extra-condensed/files/saira-extra-condensed-latin-600-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Saira ExtraCondensed'; font-weight: 700; src: url(/node_modules/@fontsource/saira-extra-condensed/files/saira-extra-condensed-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Saira ExtraCondensed'; font-weight: 800; src: url(/node_modules/@fontsource/saira-extra-condensed/files/saira-extra-condensed-latin-800-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Saira ExtraCondensed'; font-weight: 900; src: url(/node_modules/@fontsource/saira-extra-condensed/files/saira-extra-condensed-latin-900-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Big Shoulders Display'; font-weight: 700; src: url(/node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Big Shoulders Display'; font-weight: 800; src: url(/node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-800-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Big Shoulders Display'; font-weight: 900; src: url(/node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-900-normal.woff2) format('woff2'); }
+  html, body { margin: 0; background: #111; }
+  canvas { display: block; width: 270px; height: 960px; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="/motion/qr.js"></script>
+<script src="/motion/scene.js"></script>
+<script>
+  const params = new URLSearchParams(location.search)
+  const ss = Number(params.get('ss') || 1)
+  const PRESENT = params.get('mode') === 'present'
+  const W = PRESENT ? 1920 : 1080, H = PRESENT ? 1080 : 3840
+  const canvas = document.getElementById('c')
+  canvas.width = Math.round(W * ss)
+  canvas.height = Math.round(H * ss)
+  window.CANVAS_W = canvas.width
+  window.CANVAS_H = canvas.height
+  const ctx = canvas.getContext('2d', { alpha: false })
+  window.CLIP_DURATION = Scene.DURATION
+
+  const faces = [
+    ...[400, 500, 600, 700, 800, 900].map((w) => `${w} 100px Orbitron`),
+    ...[500, 600, 700, 800, 900].map((w) => `${w} 100px "Barlow Condensed"`),
+    ...[400, 500, 600, 700].map((w) => `${w} 100px Barlow`),
+    ...[400, 500, 600, 700].map((w) => `${w} 100px Inter`),
+    '400 100px Anton',
+    ...[500, 600, 700, 800, 900].map((w) => `${w} 100px "Saira ExtraCondensed"`),
+    ...[700, 800, 900].map((w) => `${w} 100px "Big Shoulders Display"`),
+  ]
+  window.sceneReady = Promise.all(faces.map((f) => document.fonts.load(f)))
+    .then(async () => {
+      const missing = faces.filter((f) => !document.fonts.check(f))
+      if (missing.length) return 'missing fonts: ' + missing.join(', ')
+      if (Scene.init) await Scene.init()
+      return 'ok'
+    })
+    .catch((e) => 'font error: ' + e.message)
+
+  // Render the frame at time t (seconds) and return it as a PNG data URL.
+  window.captureFrame = async (t) => {
+    ctx.setTransform(ss, 0, 0, ss, 0, 0)
+    if (PRESENT) Scene.renderPresent(ctx, t); else Scene.render(ctx, t)
+    ctx.setTransform(1, 0, 0, 1, 0, 0)
+    return canvas.toDataURL('image/png')
+  }
+
+  // Preview when opened in a normal browser: scrub with the mouse.
+  if (!navigator.webdriver) {
+    let t = 0
+    const tick = () => { captureFrame(t); t = (t + 1 / 60) % Scene.DURATION; requestAnimationFrame(tick) }
+    window.sceneReady.then(tick)
+  }
+</script>
+</body>
+</html>

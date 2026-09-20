@@ -1,0 +1,141 @@
+<div class="m-app" id="mApp" data-page="default">
+  <!-- the ground: the global background (mscreens/_backdrops.css, Customise "Background"), the same host every machine
+       screen carries, under the phone's glass sheen -->
+  <div class="m-bg" aria-hidden="true">
+    <div class="ms-lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+    <span class="m-sheen"></span>
+  </div>
+
+  <div class="m-status" aria-hidden="true">
+    <span class="m-time" data-clock>9:41</span>
+    <span class="m-sicons">
+      <svg class="m-cell" viewBox="0 0 18 16" width="18" height="16" preserveAspectRatio="none"><path d="M15 1.5a1.5 1.5 0 0 1 3 0V16h-3zM10 5.5a1.5 1.5 0 0 1 3 0V16h-3zM5 9.5a1.5 1.5 0 0 1 3 0V16H5zM0 13.5a1.5 1.5 0 0 1 3 0V16H0z" fill="currentColor"/></svg>
+      <svg class="m-wifi" viewBox="0 0 17 15" width="17" height="15"><path d="M8.46 14.24c-.31 0-.62-.14-.82-.43l-.38-.55c-.46-.66.01-1.57.82-1.57h.77c.8 0 1.28.91.82 1.57l-.38.55c-.2.29-.51.43-.83.43z" fill="currentColor"/><path d="M10.95 9.71a3 3 0 0 0-4.98 0M13.45 6.96a7.2 7.2 0 0 0-10.03 0M16 4.2A11.4 11.4 0 0 0 1 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="m-batt" viewBox="0 0 26 12" width="26" height="12"><rect x=".5" y=".5" width="22" height="11" rx="3.5" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2" y="2" width="15" height="8" rx="2" fill="currentColor"/><path d="M24 4v4c.8-.3 1.3-1.1 1.3-2S24.8 4.3 24 4z" fill="currentColor" fill-opacity=".45"/></svg>
+    </span>
+  </div>
+
+  <div class="m-pages">
+
+<!-- include:parts/mpage-default.html -->
+<!-- include:parts/mpage-scan.html -->
+
+<!-- include:parts/mpage-connect.html -->
+<!-- include:parts/mpage-connected.html -->
+
+<!-- include:parts/mpage-punch.html -->
+
+    <!-- ========== out of credits, buy credits, pay (parts/phone-pay.html) ========== -->
+<!-- include:parts/phone-pay.html -->
+<!-- include:parts/mpage-failed.html -->
+
+<!-- include:parts/mpage-hit.html -->
+
+<!-- include:parts/mpage-ranks.html -->
+
+<!-- include:parts/mpage-feed.html -->
+
+<!-- include:parts/mpage-profile.html -->
+
+<!-- include:parts/mpage-reel.html -->
+  </div>
+
+  <button class="m-you" id="mYou" type="button" data-go="profile" data-player="me"></button>
+
+  <!-- the tab bar is one global section (psec.js): its five styles live in nav.css and follow data-nav on .m-app -->
+  <nav class="m-nav" aria-label="App" data-sec="tabbar" data-sec-scope="global" data-sec-for="phone" data-sec-label="Tab bar (phone)" data-sv-names="Red glow|Tab bar|Dock|Notch|Minimal">
+    <span class="m-nav-bar" aria-hidden="true"></span>
+    <span class="m-nav-ind" aria-hidden="true"></span>
+    <button class="m-nav-item" type="button" data-go="default" aria-label="Home"><span data-icon="home"></span><i>Home</i></button>
+    <button class="m-nav-item" type="button" data-go="ranks" aria-label="Ranks"><span data-icon="board"></span><i>Ranks</i></button>
+    <button class="m-nav-item m-nav-fist" type="button" data-go="scan" aria-label="Punch"><img class="m-nav-logo" data-logo-img src="assets/logos/fist-circle.svg" alt=""><i>Punch</i></button>
+    <button class="m-nav-item" type="button" data-go="feed" aria-label="Feed"><span data-icon="users"></span><i>Feed</i></button>
+    <button class="m-nav-item" type="button" data-go="profile" data-player="me" aria-label="Profile"><span data-icon="user"></span><i>Profile</i></button>
+  </nav>
+
+  <!-- how to use the code (Figma 176:1531). Its five designs are a section of the scan page (the marker
+       [data-sec="howto"] in parts/mpage-scan.html); scan.js shows the chosen .hs and points aria-labelledby at its title.
+       Art: assets/howto (the wide scene and three steps, dark and light). Any [data-sheet-ok] closes the sheet (mobile.js). -->
+  <div class="m-sheet" id="mSheet" role="dialog" aria-modal="true" aria-labelledby="mSheetTitle" hidden>
+    <button class="m-sheet-scrim" type="button" id="mSheetScrim" aria-label="Close" tabindex="-1"></button>
+    <div class="m-sheet-panel">
+      <span class="m-grab" aria-hidden="true"></span>
+
+      <!-- Wide art: the whole move in one scene -->
+      <div class="hs hs-wide" data-hs="Wide art">
+        <div class="m-sheet-stage">
+          <img class="m-sheet-art hs-dk" src="assets/howto/howto-wide-dark.png" width="1568" height="760" alt="A phone held up to the punch machine's screen, reading the code on its glass">
+          <img class="m-sheet-art hs-lt" src="assets/howto/howto-wide-light.png" width="1568" height="760" alt="A phone held up to the punch machine's screen, reading the code on its glass">
+        </div>
+        <h3 class="m-sheet-title" id="mSheetTitle">How to use QR code</h3>
+        <span class="m-rule m-rule-wide" aria-hidden="true"></span>
+        <p class="m-sheet-text">Open PunchApp, or your phone's camera, and point it at the code on the machine's screen. Your phone links to the machine and holds a credit for your turn. Then step up to the pad and give it one full strike.</p>
+        <button class="m-btn m-btn-red" type="button" data-sheet-ok>Got it</button>
+      </div>
+
+      <!-- Step list: the three moves, each with its picture -->
+      <div class="hs hs-list" data-hs="Step list" hidden>
+        <h3 class="hs-title" id="mSheetTitle1">How to use QR code</h3>
+        <p class="hs-lede">Three moves, about ten seconds.</p>
+        <ol class="hs-rows">
+          <li><span class="hs-thumb"><img class="hs-dk" src="assets/howto/step-1-dark.png" alt=""><img class="hs-lt" src="assets/howto/step-1-light.png" alt=""></span><span><b>Open the scan</b>Tap Punch in the tab bar, or open your camera.</span></li>
+          <li><span class="hs-thumb"><img class="hs-dk" src="assets/howto/step-2-dark.png" alt=""><img class="hs-lt" src="assets/howto/step-2-light.png" alt=""></span><span><b>Point at the glass</b>Frame the code on the machine's screen.</span></li>
+          <li><span class="hs-thumb"><img class="hs-dk" src="assets/howto/step-3-dark.png" alt=""><img class="hs-lt" src="assets/howto/step-3-light.png" alt=""></span><span><b>Step up and punch</b>One credit is held. Give the pad one full strike.</span></li>
+        </ol>
+        <button class="m-btn m-btn-red" type="button" data-sheet-ok>Got it</button>
+      </div>
+
+      <!-- Walkthrough: one move at a time, large -->
+      <div class="hs hs-walk" data-hs="Walkthrough" hidden>
+        <div class="hs-walk-stage" aria-live="polite">
+          <figure class="hs-slide is-on" data-step="0">
+            <span class="hs-walk-art"><img class="hs-dk" src="assets/howto/step-1-dark.png" alt="A thumb on the Punch button in the app's tab bar"><img class="hs-lt" src="assets/howto/step-1-light.png" alt="A thumb on the Punch button in the app's tab bar"></span>
+            <figcaption><h3 class="hs-title" id="mSheetTitle2">Open the scan</h3><p>Tap Punch in the tab bar, or open your phone's camera.</p></figcaption>
+          </figure>
+          <figure class="hs-slide" data-step="1" hidden>
+            <span class="hs-walk-art"><img class="hs-dk" src="assets/howto/step-2-dark.png" alt="The phone reading the code on the machine's screen"><img class="hs-lt" src="assets/howto/step-2-light.png" alt="The phone reading the code on the machine's screen"></span>
+            <figcaption><h3 class="hs-title">Point at the glass</h3><p>Hold the code on the machine's screen in the frame. It reads in a second.</p></figcaption>
+          </figure>
+          <figure class="hs-slide" data-step="2" hidden>
+            <span class="hs-walk-art"><img class="hs-dk" src="assets/howto/step-3-dark.png" alt="The machine welcomes Sara as a glove flies in"><img class="hs-lt" src="assets/howto/step-3-light.png" alt="The machine welcomes Sara as a glove flies in"></span>
+            <figcaption><h3 class="hs-title">Step up and punch</h3><p>Your phone holds a credit for this turn. Give the pad one full strike.</p></figcaption>
+          </figure>
+        </div>
+        <div class="hs-dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
+        <div class="hs-walk-btns">
+          <button class="m-btn m-btn-glass" type="button" data-hs-back disabled>Back</button>
+          <button class="m-btn m-btn-red" type="button" data-hs-next>Next</button>
+        </div>
+      </div>
+
+      <!-- Step cards: the three moves side by side, swiped -->
+      <div class="hs hs-cards" data-hs="Step cards" hidden>
+        <div class="hs-cards-head"><h3 class="hs-title" id="mSheetTitle3">How to use QR code</h3><span class="hs-swipe"><span data-lucide="arrow-right"></span>Swipe</span></div>
+        <ol class="hs-rail" tabindex="0" aria-label="The three moves">
+          <li class="hs-card"><span class="hs-card-art"><img class="hs-dk" src="assets/howto/step-1-dark.png" alt=""><img class="hs-lt" src="assets/howto/step-1-light.png" alt=""></span><b>Open the scan</b><span>Tap Punch in the tab bar, or open your camera.</span></li>
+          <li class="hs-card"><span class="hs-card-art"><img class="hs-dk" src="assets/howto/step-2-dark.png" alt=""><img class="hs-lt" src="assets/howto/step-2-light.png" alt=""></span><b>Point at the glass</b><span>Frame the code on the machine's screen.</span></li>
+          <li class="hs-card"><span class="hs-card-art"><img class="hs-dk" src="assets/howto/step-3-dark.png" alt=""><img class="hs-lt" src="assets/howto/step-3-light.png" alt=""></span><b>Step up and punch</b><span>One credit is held. Give the pad one full strike.</span></li>
+        </ol>
+        <button class="m-btn m-btn-red" type="button" data-sheet-ok>Got it</button>
+      </div>
+
+      <!-- In the venue: a real photograph, then the moves as icons -->
+      <div class="hs hs-venue" data-hs="In the venue" hidden>
+        <div class="hs-photo">
+          <img src="assets/photos/lib/phone-hand-5.jpg" alt="A hand holding a phone up against the city lights" style="object-position: 55% 35%">
+          <span class="hs-photo-chip"><span data-lucide="scan-qr-code"></span>The code is on the glass</span>
+        </div>
+        <h3 class="hs-title" id="mSheetTitle4">How to use QR code</h3>
+        <ul class="hs-icons">
+          <li><span class="hs-ico"><span data-lucide="scan-line"></span></span><span><b>Point your camera at the code</b>PunchApp or your phone's own camera</span></li>
+          <li><span class="hs-ico"><span data-lucide="link"></span></span><span><b>Your phone links to the machine</b>A credit is held for your turn</span></li>
+          <li><span class="hs-ico"><span data-lucide="hand-fist"></span></span><span><b>Step up and give it one full strike</b>Walk away first and the credit comes back</span></li>
+        </ul>
+        <button class="m-btn m-btn-red" type="button" data-sheet-ok>Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="m-toast" id="mToast" role="status" aria-live="polite"></p>
+  <span class="m-homebar" aria-hidden="true"></span>
+</div>

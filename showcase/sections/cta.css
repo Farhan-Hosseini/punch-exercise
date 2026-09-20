@@ -1,0 +1,106 @@
+/* cta: designs B to E. Scope every rule under .s-cta .v-<letter>.
+   Punch again is the one red thing in every design. Display words are trimmed to cap height and baseline (text-box),
+   so they sit optically centred in their slabs. */
+
+/* B  Button pair: two equal halves of the column. Punch again is the red one; the other half says where the hit went,
+      a status, not a second button, since the glass takes no touch. */
+.s-cta .v-b .cta-b-pair {
+  container-type: inline-size;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-grid); height: 168px;
+}
+.s-cta .v-b .cta-b-play { display: grid; place-items: center; border-radius: var(--r); }
+.s-cta .v-b .cta-b-word {
+  display: block; font-size: min(calc(60px / var(--cap)), calc((50cqi - var(--gap-grid) / 2 - 2 * var(--card-pad)) / 5.4));
+  letter-spacing: .04em; margin-right: -.04em; text-box: trim-both cap alphabetic;
+}
+.s-cta .v-b .cta-b-save {
+  min-width: 0; display: flex; align-items: center; gap: 24px; padding-inline: var(--card-pad);
+}
+/* Lucide smartphone at 48 px: 1.5 on the 24 grid draws the 3 px line every glass icon uses */
+.s-cta .v-b .cta-b-icon { flex: none; font-size: 48px; line-height: 0; color: var(--up, #2BC46B); }
+.s-cta .v-b .cta-b-txt { min-width: 0; display: grid; gap: 8px; }
+.s-cta .v-b .cta-b-cap { font-size: 22px; color: var(--ink-3); }
+.s-cta .v-b .cta-b-say { min-width: 0; font-size: 30px; line-height: 1.15; color: var(--ink-1); text-wrap: balance; }
+
+/* C  Countdown: the red slab and a shot clock side by side on one row, the clock's caption over the end of the slab */
+.s-cta .v-c .cta-c-dock {
+  --ring: 200px;
+  container-type: inline-size;
+  display: grid; grid-template-columns: minmax(0, 1fr) var(--ring); grid-template-rows: minmax(0, 1fr) 144px;
+  column-gap: var(--gap-grid); height: var(--ring);
+}
+.s-cta .v-c .cta-c-next { grid-area: 1 / 1; align-self: start; justify-self: end; white-space: nowrap; text-box: trim-both cap alphabetic; }
+.s-cta .v-c .cta-c-play { grid-area: 2 / 1; display: grid; align-items: center; padding-inline: var(--card-pad); border-radius: var(--r); }
+.s-cta .v-c .cta-c-word {
+  display: block; font-size: min(calc(64px / var(--cap)), calc((100cqi - var(--ring) - 120px) / 5.2));
+  letter-spacing: .04em; text-box: trim-both cap alphabetic;
+}
+.s-cta .v-c .cta-c-clock { grid-area: 1 / 2 / 3 / 3; width: var(--ring); height: var(--ring); display: grid; }
+.s-cta .v-c .cta-c-clock > * { grid-area: 1 / 1; }
+.s-cta .v-c .cta-c-ring { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+.s-cta .v-c .cta-c-track,
+.s-cta .v-c .cta-c-left { fill: none; stroke-width: 22; stroke-dashoffset: -.55; }
+.s-cta .v-c .cta-c-track { stroke: var(--track); stroke-dasharray: 3.9 1.1; }
+.s-cta .v-c .cta-c-left { stroke: var(--ink-1); stroke-dasharray: 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 0 40; }
+.s-cta .v-c .cta-c-read { place-self: center; display: grid; justify-items: center; row-gap: 12px; }
+.s-cta .v-c .cta-c-num { font-size: calc(60px / var(--cap)); font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic; }
+.s-cta .v-c .cta-c-unit { font-size: 32px; color: var(--ink-3); text-box: trim-both cap alphabetic; }
+
+/* D  Code handoff: two equal halves, Punch again on the left, the run's code on the right with what it is for.
+      The code is the shared PunchQR tile, 200 px (about 150 px of code), for a phone held at arm's length. */
+.s-cta .v-d .cta-d-row {
+  container-type: inline-size;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-grid); height: 200px;
+}
+.s-cta .v-d .cta-d-play { display: grid; place-items: center; border-radius: var(--r); }
+.s-cta .v-d .cta-d-word {
+  display: block; font-size: min(calc(60px / var(--cap)), calc((50cqi - var(--gap-grid) / 2 - 2 * var(--card-pad)) / 5.4));
+  letter-spacing: .04em; margin-right: -.04em; text-box: trim-both cap alphabetic;
+}
+.s-cta .v-d .cta-d-hand { min-width: 0; display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: center; column-gap: 28px; }
+.s-cta .v-d .cta-d-qr {
+  --pqr-size: 200px;
+  display: block; padding: 0; border: 0; border-radius: 10px;
+  background: none; cursor: pointer;
+}
+/* the code is the way into the phone flow, so it is a button with the shared focus ring. The glass is drawn at a
+   fraction of its size, so the ring is set in screen pixels */
+.s-cta .v-d .cta-d-qr:focus-visible {
+  outline: min(calc(2.5px / (var(--zoom) * var(--fit))), 9px) solid var(--focus);
+  outline-offset: min(calc(1.5px / (var(--zoom) * var(--fit))), 5px);
+}
+.s-cta .v-d .cta-d-copy { min-width: 0; display: grid; gap: 20px; }
+.s-cta .v-d .cta-d-keep { font-size: 32px; line-height: 1.2; color: var(--ink-1); text-wrap: balance; }
+.s-cta .v-d .cta-d-code { font-size: calc(32px / var(--cap)); letter-spacing: .14em; color: var(--ink-2); text-box: trim-both cap alphabetic; }
+
+/* E  Big pad: the machine's strike pad, the hit sends rings out across the glass and they fade as they travel */
+.s-cta .v-e .cta-e-band {
+  --d: 200px; --cx: calc(var(--pad) + var(--d) / 2);
+  position: relative; margin-inline: calc(-1 * var(--pad)); height: var(--d); overflow: hidden;
+  display: flex; align-items: center; gap: calc(56px * var(--space)); padding-left: var(--pad);
+}
+.s-cta .v-e .cta-e-waves {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at var(--cx) 50%,
+    transparent 115px, var(--line) 116px 119px, transparent 120px 137px, var(--line) 138px 141px, transparent 142px 165px,
+    var(--line) 166px 169px, transparent 170px 201px, var(--line) 202px 205px, transparent 206px 245px,
+    var(--line) 246px 249px, transparent 250px 297px, var(--line) 298px 301px, transparent 302px 357px,
+    var(--line) 358px 361px, transparent 362px 427px, var(--line) 428px 431px, transparent 432px 507px,
+    var(--line) 508px 511px, transparent 512px 597px, var(--line) 598px 601px, transparent 602px 697px,
+    var(--line) 698px 701px, transparent 702px 807px, var(--line) 808px 811px, transparent 812px);
+  -webkit-mask-image: radial-gradient(circle at var(--cx) 50%, black 180px, transparent 860px), linear-gradient(to bottom, transparent, black 24%, black 76%, transparent);
+  mask-image: radial-gradient(circle at var(--cx) 50%, black 180px, transparent 860px), linear-gradient(to bottom, transparent, black 24%, black 76%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.s-cta .v-e .cta-e-pad { position: relative; flex: none; width: var(--d); height: var(--d); display: grid; place-items: center; }
+.s-cta .v-e .cta-e-rings { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--line); stroke-width: 2; }
+.s-cta .v-e .cta-e-core { position: relative; width: 156px; height: 156px; border-radius: 50%; display: grid; place-items: center; }
+.s-cta .v-e .cta-e-core > svg { grid-area: 1 / 1; }
+.s-cta .v-e .cta-e-stitch { width: 100%; height: 100%; fill: none; stroke: var(--cta-ink); stroke-opacity: .4; stroke-width: 2; stroke-dasharray: 5 6; }
+/* Lucide rotate-ccw at 76 px: .95 on the 24 grid draws the 3 px line every glass icon uses */
+.s-cta .v-e .cta-e-again { width: 76px; height: 76px; color: var(--cta-ink); stroke-width: .95; }
+.s-cta .v-e .cta-e-hit { position: relative; font-size: 48px; color: var(--ink-1); white-space: nowrap; text-box: trim-both cap alphabetic; }
+
+/* ---------------------------------------------------------------- Light: the same designs on a daylight ground */
+

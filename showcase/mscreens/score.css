@@ -1,0 +1,486 @@
+/* Machine screen: the Big score (parts/mscreen-score.html, drawn by mscreens/score.js). Round seven rebuilt it for the
+   back of the queue at 3 m: the number as the event. ONE frame (.bs) of four sections:
+     Score          room 1480  (the glass's 296 to 1776)   Poster, Red field, Flap board, Scoreboard, Pole
+     Why it counts  room 560   (1896 to 2456)              Statement, Versus, Measure, Band, Headline
+     Video          what is left, 716 (2576 to 3292)       Bleed, Framed, Circle, Loupe, Slices
+     Punch again    room 200   (3412 to 3612)              mscreens/_again.css
+   Round nine: the Photo became the Video (the strike as a looping reel) and Punch again joined the foot (mscreens/_again.css),
+   so the video's room is what is left, 716 (2576 to 3292), and the red sits where the crown's gold was: "yellow must
+   change to red". The crown is the brand red now, as everything that marks this hit on the glass.
+   Colour and type come from the theme tokens, so Arena and Reference, dark and light all apply; the colours of our own
+   (the flap board, the marquee's panel and bulbs, the print's paper) are restated for daylight below.
+   Big type is fitted by score.js: a box ([data-fitbox]) sets --F on the block inside it, and every size in the block is
+   a share of --F. Motion only under .is-play (score.js); without it every design stands complete. */
+
+/* ---------------------------------------------------------------- tokens */
+.mscreen-score {
+  --bs-top: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px);
+  /* a stacked number's line: the face's cap height and a little air, so commas clear the line below */
+  --bs-lh: calc(var(--cap) + .12);
+  --bs-dim: .2;
+  /* the crown this hit took: the one red, as everything that marks this hit (round nine: it was gold) */
+  --bs-crown: var(--strike);
+  --bs-crown-ink: var(--cta-ink);
+  /* the flap board: a physical board, dark in daylight too */
+  --bs-board: #0E0E10;
+  --bs-tile: #1E1E21;
+  --bs-tile-top: rgba(255, 255, 255, .045);
+  --bs-tile-ink: #F5F3EF;
+  --bs-tile-split: rgba(0, 0, 0, .7);
+  /* the marquee: a black panel, red segments, red bulbs (round nine: no yellow on the glass) */
+  --bs-led-bg: #070707;
+  --bs-led-rim: #1C1C1F;
+  --bs-led-on: #FF2B22;
+  --bs-led-off: rgba(255, 70, 60, .075);
+  --bs-led-glow: drop-shadow(0 0 14px rgba(255, 43, 34, .55));
+  --bs-bulb-on: #FF6B61;
+  --bs-bulb-off: #2A1312;
+  /* the print's paper */
+  --bs-paper: #F4F1EC;
+  --bs-paper-ink: #151413;
+  --bs-paper-mute: rgba(21, 20, 19, .66);
+  --bs-paper-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9);
+  /* the red field's number: the ground's own colour, as if cut out of the field */
+  --bs-knock: var(--ground);
+}
+:root[data-appearance="light"] .mscreen-score {
+  --bs-board: #1A1917;
+  --bs-tile: #2A2825;
+  --bs-led-glow: drop-shadow(0 0 8px rgba(255, 43, 34, .45));
+  --bs-paper: #FFFFFF;
+  --bs-paper-shadow: 0 40px 80px -44px rgba(70, 45, 30, .5), 0 0 0 2px rgba(21, 20, 19, .06);
+}
+:root[data-variant="reference"] .mscreen-score {
+  --bs-tile: #1D0C0F;
+  --bs-board: #0B0507;
+  --bs-led-rim: #2A1015;
+}
+
+/* ---------------------------------------------------------------- the frame */
+.mscreen-score [data-sv][hidden] { display: none !important; }
+.mscreen-score .bs :is(p, figure) { margin: 0; }
+.mscreen-score .bs {
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; gap: var(--ms-sec-gap);
+  padding: var(--bs-top) 0 calc(var(--ms-ad-h) + 88px);
+  color: var(--ink-1); font-family: var(--f-text);
+}
+.mscreen-score .bs-sec { position: relative; z-index: 1; flex: none; margin: 0 var(--ms-gut); height: var(--room); }
+.mscreen-score .bs-score { --room: 1480px; }
+.mscreen-score .bs-why { --room: 560px; }
+.mscreen-score .bs-photo { flex: 1 1 0; height: auto; min-height: 0; }
+.mscreen-score .bs-sec > [data-sv] { position: relative; height: 100%; min-width: 0; }
+
+/* ---------------------------------------------------------------- shared pieces */
+.mscreen-score .bs-ico { display: inline-flex; flex: none; line-height: 0; }
+.mscreen-score .bs-ico svg { display: block; width: 1em; height: 1em; }
+.mscreen-score .bs-ava { display: block; flex: none; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; background: var(--badge); }
+/* a fitted box: the block in it is sized from --F (score.js); a line is as wide as its text so it can be measured */
+.mscreen-score [data-fitbox] { min-width: 0; }
+.mscreen-score [data-fitbox] > * { --F: 100px; }
+.mscreen-score .bs-num { font-size: var(--F); }
+.mscreen-score .bs-line, .mscreen-score .bs-name, .mscreen-score .bs-head, .mscreen-score .bs-band-h, .mscreen-score .bs-words-in > p, .mscreen-score .bs-vs-fig, .mscreen-score .bs-vs-n, .mscreen-score .bs-mk-n {
+  width: max-content; white-space: nowrap;
+  font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track);
+  font-variant-numeric: tabular-nums;
+}
+.mscreen-score .bs-line { font-size: 1em; line-height: var(--bs-lh); }
+.mscreen-score .bs-decl { font-size: .46em; line-height: 1; margin-top: .34em; color: var(--ink-2); letter-spacing: .01em; }
+.mscreen-score .bs-decl:empty { display: none; }
+/* the digits still to come while the number counts, as an odometer shows them */
+.mscreen-score .bs-z { opacity: var(--bs-dim); }
+/* a group's comma, lifted a little so its tail stays on its own line and never reads as a mark on the next one */
+.mscreen-score .bs-c { display: inline-block; transform: translateY(-.07em); }
+.mscreen-score .bs-c.is-ghost { visibility: hidden; line-height: 0; }
+.mscreen-score .bs-decl .bs-c.is-ghost { font-size: calc(1em / .46); }
+.mscreen-score .bs-name { font-size: var(--F); line-height: .9; text-transform: uppercase; }
+/* a plain line under display type: 44 px, read at 3 m */
+.mscreen-score .bs-line-s { font: var(--w-text) 44px/1.2 var(--f-text); color: var(--ink-2); text-wrap: pretty; }
+/* the tag on a photo: always white on a dark chip, so it reads over any still in any look */
+.mscreen-score .bs-tag {
+  position: absolute; z-index: 4; left: 32px; top: 32px;
+  height: 76px; padding: 0 32px 0 26px;
+  display: flex; align-items: center; gap: 16px;
+  border-radius: 38px; background: rgba(0, 0, 0, .7); color: #FFFFFF;
+  font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; white-space: nowrap;
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+.mscreen-score .bs-tag .bs-ico { font-size: 40px; color: #FF5A4E; }
+.mscreen-score .bs-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; display: block;
+  object-fit: cover; object-position: var(--pos, 50% 40%); filter: var(--photo-filter);
+}
+/* the reel itself (a video) and the canvases painted from it (score.js mirror): the same filter, so they match */
+.mscreen-score .bs-vid { background: #0B0B0C; }
+.mscreen-score .bs-cv { position: absolute; inset: 0; display: block; width: 100%; height: 100%; filter: var(--photo-filter); }
+
+/* ================================================================ Score */
+/* Poster: type alone, set left. The face and name, then the number a group a line, as large as the glass is wide */
+.mscreen-score .bs-poster { display: flex; flex-direction: column; gap: 44px; }
+/* the group sits in the middle of its room (score.js measures the slack): Arena's narrow digits fill the room,
+   Reference's wide ones leave air, shared above and below */
+.mscreen-score .bs-poster :is(.bs-who, .bs-num) { translate: 0 var(--slack, 0px); }
+.mscreen-score .bs-who { flex: none; display: flex; align-items: center; gap: 36px; }
+.mscreen-score .bs-who .bs-ava { width: 150px; height: 150px; box-shadow: 0 0 0 8px var(--strike); }
+.mscreen-score .bs-who-n { flex: 1 1 auto; }
+.mscreen-score .bs-poster .bs-name { color: var(--strike); }
+.mscreen-score .bs-numbox { flex: 1 1 0; min-height: 0; }
+.mscreen-score .bs-poster .bs-num { text-shadow: var(--display-glow); }
+
+/* Red field: the room a field of the strike colour to the glass's edges, the number cut out of it, set right; the
+   name signed at the foot */
+.mscreen-score .bs-field { margin: 0 calc(-1 * var(--ms-gut)); background: var(--strike); color: var(--bs-knock); overflow: hidden; }
+.mscreen-score .bs-field-in { position: absolute; inset: 72px var(--ms-gut) 64px; display: flex; flex-direction: column; gap: 40px; }
+.mscreen-score .bs-field .bs-numbox { display: flex; justify-content: flex-end; align-items: flex-start; }
+.mscreen-score .bs-field .bs-num { display: flex; flex-direction: column; align-items: flex-end; }
+.mscreen-score .bs-field .bs-decl { color: var(--bs-knock); opacity: .8; }
+.mscreen-score .bs-field .bs-z { opacity: .28; }
+.mscreen-score .bs-sign { flex: none; display: flex; align-items: center; gap: 32px; color: var(--cta-ink); }
+.mscreen-score .bs-sign .bs-ava { width: 132px; height: 132px; box-shadow: 0 0 0 7px var(--cta-ink); }
+.mscreen-score .bs-sign-n { flex: 1 1 auto; }
+.mscreen-score .bs-sign-ico { font-size: 110px; opacity: .9; }
+/* the app's own mark signs the field, drawn at the height the name is set in */
+.mscreen-score .bs-sign-mark { width: 104px; height: 104px; flex: none; display: block; opacity: .92; }
+
+/* Flap board: a row of letter tiles for the name; the board under it, a group of digits a row, the decimals on
+   smaller tiles at its foot. Every tile is a size container, so its character fills it in either face */
+.mscreen-score .bs-flap { display: flex; flex-direction: column; gap: 36px; }
+.mscreen-score .bs-flap-name { flex: none; display: flex; gap: 14px; }
+.mscreen-score .bs-tile {
+  position: relative; flex: none; display: grid; place-items: center; overflow: hidden;
+  container-type: size; border-radius: 16px; background: var(--bs-tile); color: var(--bs-tile-ink);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, .06), 0 20px 34px -22px rgba(0, 0, 0, .9);
+}
+/* the upper flap a touch lighter, and the split between the flaps */
+.mscreen-score .bs-tile::before { content: ""; position: absolute; inset: 0 0 50% 0; background: var(--bs-tile-top); }
+.mscreen-score .bs-tile::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 5px; margin-top: -2.5px; background: var(--bs-tile-split); }
+.mscreen-score .bs-tile b {
+  position: relative; display: block;
+  font-family: var(--f-display); font-weight: var(--w-display); line-height: 1; letter-spacing: 0; text-transform: uppercase;
+  font-size: min(calc(64cqh / var(--cap)), calc(78cqw / var(--num-w)));
+}
+.mscreen-score .bs-tile.is-letter { width: min(150px, calc((904px - (var(--n, 4) - 1) * 14px) / var(--n, 4))); height: 210px; }
+.mscreen-score .bs-tile.is-letter b { font-size: min(calc(60cqh / var(--cap)), calc(78cqw / (var(--num-w) * 1.3))); }
+.mscreen-score .bs-tile.is-letter { background: var(--strike); color: var(--cta-ink); }
+.mscreen-score .bs-tile.is-z b { opacity: .22; }
+.mscreen-score .bs-board { flex: none; display: grid; row-gap: 20px; padding: 36px; border-radius: 30px; background: var(--bs-board); }
+.mscreen-score .bs-flap-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) 64px; column-gap: 16px; }
+.mscreen-score .bs-flap-row .bs-tile { aspect-ratio: 5 / 8; }
+.mscreen-score .bs-flap-sep { position: relative; }
+/* the comma and the point, drawn as the board would print them */
+/* a drawn comma (a dot with a tail), so it reads the same on the board in either face */
+.mscreen-score :is(.bs-comma, .bs-led-comma) { position: absolute; left: 50%; bottom: 10%; width: 40px; height: 72px; margin-left: -20px; }
+.mscreen-score :is(.bs-comma, .bs-led-comma) svg { display: block; width: 100%; height: 100%; fill: var(--bs-tile-ink); overflow: visible; }
+.mscreen-score .bs-flap-dec { display: grid; grid-template-columns: 64px repeat(3, 132px); column-gap: 12px; justify-content: end; }
+.mscreen-score .bs-flap-dec .bs-tile { height: 200px; }
+.mscreen-score .bs-tile.is-dec { background: color-mix(in oklab, var(--bs-tile) 70%, var(--bs-board)); }
+.mscreen-score .bs-tile.is-dec b { opacity: .85; }
+.mscreen-score .bs-flap-pt { position: relative; }
+.mscreen-score .bs-flap-pt i { position: absolute; left: 50%; bottom: 16%; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%; background: var(--bs-tile-ink); }
+
+/* Scoreboard: an arcade marquee. The black panel ringed with bulbs, seven-segment digits (the unlit segments faint, as
+   on a real board), the name on the strip at its foot */
+.mscreen-score .bs-led-panel {
+  position: absolute; inset: 0; border-radius: 44px; background: var(--bs-led-bg);
+  box-shadow: inset 0 0 0 6px var(--bs-led-rim), 0 48px 90px -48px rgba(0, 0, 0, .95);
+}
+.mscreen-score .bs-bulbs { position: absolute; inset: 30px; }
+.mscreen-score .bs-bulbs i {
+  position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%;
+  background: var(--bs-bulb-off); transition: background-color .12s, box-shadow .12s;
+}
+.mscreen-score .bs-led:not(.is-counting) .bs-bulbs i, .mscreen-score .bs-bulbs i.on {
+  background: var(--bs-bulb-on); box-shadow: 0 0 16px 2px color-mix(in oklab, var(--bs-bulb-on) 55%, transparent);
+}
+.mscreen-score .bs-led-in { position: absolute; inset: 96px 84px 88px; display: flex; flex-direction: column; gap: 48px; }
+.mscreen-score .bs-led-rows { flex: 1 1 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) auto; row-gap: 28px; }
+.mscreen-score .bs-led-row { min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) 56px; column-gap: 18px; }
+.mscreen-score .bs-seg { display: block; width: 100%; height: 100%; min-height: 0; overflow: visible; filter: var(--bs-led-glow); }
+.mscreen-score .bs-seg polygon { fill: var(--bs-led-off); }
+.mscreen-score .bs-seg polygon.on { fill: var(--bs-led-on); }
+.mscreen-score .bs-seg.is-z polygon.on { fill: color-mix(in oklab, var(--bs-led-on) 26%, var(--bs-led-bg)); }
+.mscreen-score .bs-seg.is-blank polygon { fill: var(--bs-led-off); }
+.mscreen-score .bs-led-sep { position: relative; }
+.mscreen-score .bs-led-comma { filter: var(--bs-led-glow); }
+.mscreen-score .bs-led-comma svg { fill: var(--bs-led-on); }
+.mscreen-score .bs-led-dec { display: flex; justify-content: flex-end; align-items: stretch; gap: 16px; height: 190px; }
+.mscreen-score .bs-seg.is-dec { width: 110px; flex: none; }
+.mscreen-score .bs-led-pt { align-self: flex-end; width: 30px; height: 30px; margin: 0 6px 10px 0; border-radius: 50%; background: var(--bs-led-on); filter: var(--bs-led-glow); }
+.mscreen-score .bs-led-strip {
+  flex: none; height: 150px; display: flex; align-items: center; gap: 32px; padding: 0 44px;
+  border-radius: 24px; background: color-mix(in oklab, var(--bs-led-on) 9%, var(--bs-led-bg));
+  box-shadow: inset 0 0 0 3px color-mix(in oklab, var(--bs-led-on) 22%, transparent);
+}
+.mscreen-score .bs-led-lamp { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--bs-led-on); box-shadow: 0 0 20px 4px color-mix(in oklab, var(--bs-led-on) 60%, transparent); }
+.mscreen-score .bs-led-n { flex: 1 1 auto; }
+.mscreen-score .bs-led .bs-name { color: var(--bs-led-on); letter-spacing: .06em; }
+
+/* Pole: the strength tester. The column to the left rises with the count to this hit's height, the bell on top; the
+   pointer marks where it stopped; the name, the band it reached and the number to the right */
+.mscreen-score .bs-pole { display: grid; grid-template-columns: 180px minmax(0, 1fr); column-gap: 60px; }
+.mscreen-score .bs-pole-col { min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.mscreen-score .bs-bell {
+  flex: none; width: 180px; height: 180px; border-radius: 50%; display: grid; place-items: center;
+  /* unrung it is part of the pole (Reference's badge colour is the strike red, which read as rung) */
+  background: var(--track); color: var(--ink-2); font-size: 104px; line-height: 0;
+  transition: background-color .3s, color .3s, box-shadow .3s;
+}
+.mscreen-score .bs-bell svg { width: 1em; height: 1em; }
+.mscreen-score .bs-pole.is-full .bs-bell { background: var(--strike); color: var(--cta-ink); box-shadow: 0 0 0 16px color-mix(in oklab, var(--strike) 22%, transparent), 0 0 110px color-mix(in oklab, var(--strike) 55%, transparent); }
+.mscreen-score .bs-tube { position: relative; flex: 1 1 0; min-height: 0; width: 132px; border-radius: 66px; background: var(--track); overflow: hidden; }
+.mscreen-score .bs-tube-fill { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--charge, 1) * 100%); background: var(--strike); }
+.mscreen-score .bs-tube-tick { position: absolute; left: 0; width: 40px; bottom: calc(var(--at) * 100%); height: 6px; margin-bottom: -3px; background: var(--ground); opacity: .55; }
+.mscreen-score .bs-puck {
+  position: absolute; left: 12px; right: 12px; height: 44px; bottom: calc(var(--charge, 1) * (100% - 44px));
+  border-radius: 22px; background: var(--cta-ink); box-shadow: 0 0 0 7px var(--strike);
+}
+.mscreen-score .bs-pole-side { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+.mscreen-score .bs-pole-n { flex: none; }
+.mscreen-score .bs-pole .bs-name { color: var(--ink-1); }
+.mscreen-score .bs-pole-band { flex: none; display: flex; align-items: center; gap: 16px; font: var(--w-label) 40px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
+.mscreen-score .bs-pole-band .bs-ico { font-size: 46px; }
+.mscreen-score .bs-pole .bs-numbox { margin-top: 12px; }
+/* the pointer from the column to the number, at the height the column stopped */
+.mscreen-score .bs-pole-ptr {
+  position: absolute; left: 154px; bottom: calc(var(--charge, 1) * (100% - 208px - 44px) + 22px); width: 0; height: 0; margin-bottom: -22px;
+  border-style: solid; border-width: 22px 0 22px 34px; border-color: transparent transparent transparent var(--strike);
+}
+
+/* ================================================================ Why it counts */
+.mscreen-score .bs-head { font-size: var(--F); line-height: .9; text-transform: var(--display-case); }
+.mscreen-score .bs-head-sub { font-size: calc(var(--F) * .5); line-height: 1.05; margin-top: .12em; color: var(--ink-1); }
+.mscreen-score .bs-fig { color: var(--strike); font-variant-numeric: tabular-nums; }
+.mscreen-score .is-taken { color: var(--bs-crown); }
+.mscreen-score .bs-badge {
+  position: relative; flex: none; width: 240px; height: 240px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--strike); color: var(--cta-ink); font-size: 124px;
+}
+.mscreen-score .bs-badge.is-taken { background: var(--bs-crown); color: var(--bs-crown-ink); box-shadow: 0 0 0 16px color-mix(in oklab, var(--bs-crown) 20%, transparent); }
+.mscreen-score .bs-badge.is-face { background: none; }
+.mscreen-score .bs-badge.is-face .bs-ava { width: 100%; height: 100%; box-shadow: 0 0 0 10px var(--strike); }
+.mscreen-score .bs-badge-chip {
+  position: absolute; right: -8px; bottom: -8px; width: 100px; height: 100px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 56px;
+  background: var(--strike); color: var(--cta-ink); box-shadow: 0 0 0 8px var(--ground);
+}
+
+/* Statement: the badge, the reason in display type beside it, one plain line under it */
+.mscreen-score .bs-state { display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 56px; align-items: center; }
+.mscreen-score .bs-state-text { min-width: 0; display: flex; flex-direction: column; gap: 30px; }
+.mscreen-score .bs-state-h { width: 100%; }
+
+/* Versus: two faces and what passes between them, the arrow pointing up the scale */
+.mscreen-score .bs-vs { display: grid; grid-template-columns: 250px minmax(0, 1fr) 250px; column-gap: 24px; align-items: center; }
+.mscreen-score .bs-vs-p { position: relative; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+.mscreen-score .bs-vs-p .bs-ava, .mscreen-score .bs-vs-p .bs-badge { width: 250px; height: 250px; }
+.mscreen-score .bs-vs-p.is-you .bs-ava { box-shadow: 0 0 0 10px var(--strike); }
+.mscreen-score .bs-vs-p.is-was .bs-ava { filter: grayscale(1); opacity: .6; }
+.mscreen-score .bs-vs-p.is-crowned .bs-ava { box-shadow: 0 0 0 10px var(--bs-crown); }
+/* the name under a face, fitted to the face's width (a mark with no person, "Next mark", is longer than a name) */
+.mscreen-score .bs-vs-nb { align-self: stretch; display: flex; justify-content: center; }
+.mscreen-score .bs-vs-n { font-size: var(--F); line-height: 1; text-transform: uppercase; }
+.mscreen-score .bs-vs-k { max-width: 100%; font: var(--w-label) 32px/1.15 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); text-wrap: balance; }
+.mscreen-score .bs-vs-p.is-crowned .bs-vs-k { color: var(--bs-crown); }
+.mscreen-score .bs-vs-mid { position: relative; min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: 26px; margin-bottom: 100px; }
+.mscreen-score .bs-vs-over { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.mscreen-score .bs-vs-fig { font-size: 104px; line-height: .9; color: var(--strike); }
+:root[data-variant="reference"] .mscreen-score .bs-vs-fig { font-size: 64px; }
+.mscreen-score .bs-vs-crown { font-size: 120px; line-height: 0; color: var(--bs-crown); }
+.mscreen-score .bs-vs-w { font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+.mscreen-score .bs-vs-w.is-taken { color: var(--bs-crown); }
+.mscreen-score .bs-vs-arrow { position: relative; display: block; height: 12px; margin-right: 30px; border-radius: 6px; background: var(--strike); transform-origin: 0 50%; }
+.mscreen-score .bs-vs-arrow::after {
+  content: ""; position: absolute; right: -30px; top: 50%; width: 0; height: 0; margin-top: -26px;
+  border-style: solid; border-width: 26px 0 26px 40px; border-color: transparent transparent transparent var(--strike);
+}
+.mscreen-score .bs-vs[data-k="crown"] .bs-vs-arrow { background: var(--bs-crown); }
+.mscreen-score .bs-vs[data-k="crown"] .bs-vs-arrow::after { border-left-color: var(--bs-crown); }
+/* the crown on the new holder's face */
+.mscreen-score .bs-vs-p.is-crowned::before {
+  content: ""; position: absolute; left: 50%; top: -58px; width: 96px; height: 76px; margin-left: -48px;
+  background: var(--bs-crown);
+  -webkit-mask: var(--bs-crown-mask) center / contain no-repeat; mask: var(--bs-crown-mask) center / contain no-repeat;
+}
+.mscreen-score { --bs-crown-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 38'%3E%3Cpath d='M2 10l11 9L24 2l11 17 11-9-5 26H7z'/%3E%3C/svg%3E"); }
+
+/* Measure: a stretch of the machine's scale between the two marks, the gap bracketed over it */
+.mscreen-score .bs-rule { position: absolute; inset: 0; }
+.mscreen-score .bs-rule-ticks { position: absolute; left: 0; right: 0; top: 356px; height: 12px; border-radius: 6px; background: var(--track); }
+.mscreen-score .bs-rule-ticks i { position: absolute; left: calc(var(--at) * 100%); top: 12px; width: 4px; height: 22px; margin-left: -2px; background: var(--ink-3); }
+.mscreen-score .bs-rule-ticks i:nth-child(4n + 1) { height: 40px; }
+.mscreen-score .bs-mk { position: absolute; left: calc(var(--at) * 100%); top: 0; width: 0; height: 100%; }
+.mscreen-score .bs-mk > * { position: absolute; left: 0; transform: translateX(-50%); }
+.mscreen-score .bs-mk-face { top: 48px; width: 170px; height: 170px; border-radius: 50%; display: grid; place-items: center; background: var(--badge); color: var(--ink-1); font-size: 90px; }
+.mscreen-score .bs-mk-face .bs-ava { width: 100%; height: 100%; }
+.mscreen-score .bs-mk.is-you .bs-mk-face .bs-ava { box-shadow: 0 0 0 9px var(--strike); }
+.mscreen-score .bs-mk-crown { position: absolute; left: 50%; top: -44px; margin-left: -40px; font-size: 80px; color: var(--bs-crown); }
+.mscreen-score .bs-mk-crown svg { fill: var(--bs-crown); }
+.mscreen-score .bs-mk-tick { top: 234px; width: 14px; height: 132px; border-radius: 7px; background: var(--ink-2); }
+.mscreen-score .bs-mk.is-you .bs-mk-tick { background: var(--strike); }
+/* the mark's name, fitted to the room either side of its tick */
+.mscreen-score .bs-mk-nb { top: 424px; width: 280px; display: flex; justify-content: center; }
+.mscreen-score .bs-mk-n { font-size: var(--F); line-height: 1; text-transform: uppercase; }
+.mscreen-score .bs-mk.is-you .bs-mk-n { color: var(--strike); }
+.mscreen-score .bs-br { position: absolute; left: 16%; right: 16%; top: 40px; height: 250px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 22px; }
+.mscreen-score .bs-br-w { display: flex; flex-direction: column; align-items: center; gap: 10px; font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+.mscreen-score .bs-br-w.is-taken { gap: 8px; font: var(--w-display) 72px/1 var(--f-display); letter-spacing: var(--display-track); text-transform: uppercase; color: var(--bs-crown); }
+:root[data-variant="reference"] .mscreen-score .bs-br-w.is-taken { font-size: 56px; }
+.mscreen-score .bs-br-w.is-taken .bs-ico { font-size: 84px; }
+.mscreen-score .bs-br-w.is-taken .bs-ico svg { fill: var(--bs-crown); }
+.mscreen-score .bs-br-fig { font: var(--w-display) 112px/.9 var(--f-display); letter-spacing: var(--display-track); color: var(--strike); font-variant-numeric: tabular-nums; }
+:root[data-variant="reference"] .mscreen-score .bs-br-fig { font-size: 72px; }
+/* the bracket: a rule with its ends turned down to the two marks */
+.mscreen-score .bs-br-line { position: relative; align-self: stretch; height: 42px; border: 10px solid var(--strike); border-bottom: 0; border-radius: 14px 14px 0 0; transform-origin: 50% 100%; }
+.mscreen-score .bs-ruler[data-k="crown"] .bs-br-line { border-color: var(--bs-crown); }
+
+/* Band: a band of colour to the glass's edges, the reason in it; the plain line under it. The crown floods it the same red */
+.mscreen-score .bs-band { display: flex; flex-direction: column; gap: 48px; }
+.mscreen-score .bs-band-bar {
+  flex: none; height: 360px; margin: 0 calc(-1 * var(--ms-gut)); padding: 0 var(--ms-gut);
+  display: flex; align-items: center; gap: 44px;
+  background: var(--strike); color: var(--cta-ink);
+}
+.mscreen-score .bs-band-bar.is-taken { background: var(--bs-crown); color: var(--bs-crown-ink); }
+.mscreen-score .bs-band-ico { font-size: 150px; }
+.mscreen-score .bs-band-bar.is-taken .bs-band-ico svg { fill: currentColor; }
+.mscreen-score .bs-band-box { flex: 1 1 0; height: 250px; display: flex; align-items: center; }
+.mscreen-score .bs-band-h { font-size: var(--F); line-height: 1; text-transform: var(--display-case); }
+.mscreen-score .bs-band-w { font-size: .5em; }
+.mscreen-score .bs-band-h.is-stack .bs-band-w { display: block; font-size: .44em; line-height: 1; margin-top: .14em; }
+
+/* Headline: the reason in two words, one above the other, as large as the room allows; the figure at the foot */
+.mscreen-score .bs-words { display: flex; flex-direction: column; gap: 30px; }
+.mscreen-score .bs-words-box { flex: 1 1 0; min-height: 0; }
+.mscreen-score .bs-words-in > p { font-size: var(--F); line-height: var(--bs-lh); text-transform: uppercase; }
+.mscreen-score .bs-words-in > p + p { color: var(--strike); }
+.mscreen-score .bs-words-in.is-crown > p + p { color: var(--bs-crown); }
+.mscreen-score .bs-words-in { translate: 0 var(--slack, 0px); }
+.mscreen-score .bs-words-foot { translate: 0 calc(-1 * var(--slack, 0px)); }
+.mscreen-score .bs-words-foot { flex: none; display: flex; align-items: center; gap: 26px; min-height: 90px; }
+.mscreen-score .bs-words-ico { font-size: 72px; color: var(--strike); }
+.mscreen-score .bs-words[data-k="crown"] .bs-words-ico { color: var(--bs-crown); }
+.mscreen-score .bs-words-fig { display: flex; align-items: baseline; gap: 22px; }
+.mscreen-score .bs-words-fig .bs-fig { font: var(--w-display) 96px/1 var(--f-display); letter-spacing: var(--display-track); }
+
+/* ================================================================ Video (round nine: the reel, in the Photo's designs) */
+.mscreen-score .bs-fig-box { position: absolute; inset: 0; overflow: hidden; border-radius: var(--ms-photo-r); background: #0B0B0C; }
+
+/* Bleed: the reel to the glass's edges */
+.mscreen-score .bs-bleed { margin: 0 calc(-1 * var(--ms-gut)); }
+.mscreen-score .bs-bleed .bs-fig-box { border-radius: 0; }
+.mscreen-score .bs-bleed .bs-tag { left: var(--ms-gut); top: 40px; }
+
+/* Framed: a level print on the gutters, its caption on the paper */
+.mscreen-score .bs-print {
+  position: absolute; inset: 0; display: flex; flex-direction: column; padding: 30px 30px 0;
+  border-radius: 14px; background: var(--bs-paper); color: var(--bs-paper-ink); box-shadow: var(--bs-paper-shadow);
+}
+.mscreen-score .bs-print-img { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; border-radius: 6px; background: #0B0B0C; }
+.mscreen-score .bs-print-cap { flex: none; height: 160px; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 24px; row-gap: 12px; align-content: center; align-items: center; padding: 0 8px; }
+.mscreen-score .bs-print-cap > .bs-ico { grid-row: 1 / span 2; font-size: 64px; color: var(--strike); }
+.mscreen-score .bs-print-t { font: 600 46px/1 var(--f-text); white-space: nowrap; }
+.mscreen-score .bs-print-src { font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--bs-paper-mute); white-space: nowrap; }
+
+/* Circle: the reel in a round window running off the glass's left edge, ringed in the strike colour (round nine: the
+   room is 716 tall, so the window keeps more of itself on the glass) */
+.mscreen-score .bs-disc {
+  position: absolute; top: 20px; bottom: 20px; left: calc(-1 * var(--ms-gut) - 70px); aspect-ratio: 1; overflow: hidden;
+  border-radius: 50%; background: #0B0B0C;
+  box-shadow: 0 0 0 16px var(--strike);
+}
+.mscreen-score .bs-tag.is-right { left: auto; right: 0; top: auto; bottom: 44px; }
+
+/* Loupe: the reel on the gutters, a ring where the fist lands, and a round glass opposite magnifying it (score.js
+   places them and paints the glass from the reel) */
+.mscreen-score .bs-loupe-ring {
+  position: absolute; z-index: 2; left: var(--fx, 70%); top: var(--fy, 45%); width: 132px; height: 132px; margin: -66px 0 0 -66px;
+  border-radius: 50%; box-shadow: 0 0 0 9px var(--strike), inset 0 0 0 3px rgba(255, 255, 255, .7);
+}
+.mscreen-score .bs-loupe-lead {
+  position: absolute; z-index: 2; left: var(--fx, 70%); top: var(--fy, 45%); width: var(--ll, 0px); height: 9px; margin-top: -4.5px;
+  border-radius: 5px; background: var(--strike); transform-origin: 0 50%; transform: rotate(var(--la, 0rad)) translateX(66px);
+}
+.mscreen-score .bs-loupe-glass {
+  position: absolute; z-index: 3; left: var(--gx, 30%); top: var(--gy, 70%); width: var(--gd, 440px); height: var(--gd, 440px);
+  margin: calc(var(--gd, 440px) / -2) 0 0 calc(var(--gd, 440px) / -2);
+  overflow: hidden; border-radius: 50%; background: #0B0B0C;
+  box-shadow: 0 0 0 14px var(--strike), 0 36px 70px -24px rgba(0, 0, 0, .85);
+}
+.mscreen-score .bs-tag.is-loupe { left: calc(var(--gx, 30%) - var(--gd, 440px) / 2 + 20px); top: auto; bottom: calc(100% - var(--gy, 70%) + var(--gd, 440px) / 2 + 36px); }
+
+/* Slices: the reel cut into three, the middle slice knocked up by the hit and printed in the strike colour (the middle
+   is the video, the outer two canvases painted from it with the same crop) */
+.mscreen-score .bs-slice-set { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 20px; }
+.mscreen-score .bs-slice { position: relative; overflow: hidden; margin-top: 80px; border-radius: 16px; background: #0B0B0C; }
+.mscreen-score .bs-slice:nth-child(2) { margin: 0 0 80px; background: var(--strike); }
+.mscreen-score .bs-slice .bs-img { inset: auto; left: calc(var(--i) * (var(--sw, 904px) + 20px) / -3); top: 0; width: var(--sw, 904px); height: calc(var(--sh, 1036px) - 80px); }
+.mscreen-score .bs-slice:nth-child(2) .bs-img { filter: grayscale(1) contrast(1.3) brightness(1.08); mix-blend-mode: multiply; }
+.mscreen-score .bs-slices .bs-tag { top: auto; bottom: 32px; }
+
+/* ================================================================ motion. Nothing waits on it: without .is-play every
+   design stands at its final state, and reduced motion never adds the class. score.js adds .is-play to a section's
+   shown design on its beat (--sd), .is-counting while the number counts, .is-landed when it lands, .is-settled once
+   the entrance is over. */
+@keyframes bs-in { from { opacity: 0; } }
+@keyframes bs-rise { from { opacity: 0; transform: translateY(64px); } }
+@keyframes bs-slide-l { from { opacity: 0; transform: translateX(-64px); } }
+@keyframes bs-slide-r { from { opacity: 0; transform: translateX(64px); } }
+@keyframes bs-pop { from { opacity: 0; transform: scale(.55); } }
+@keyframes bs-thump { 0% { transform: scale(1); } 26% { transform: scale(1.035); } 100% { transform: scale(1); } }
+@keyframes bs-wipe-up { from { clip-path: inset(100% 0 0 0); } }
+@keyframes bs-wipe-r { from { clip-path: inset(0 100% 0 0); } }
+@keyframes bs-wipe-d { from { clip-path: inset(0 0 100% 0); } }
+@keyframes bs-grow-x { from { transform: scaleX(0); } }
+@keyframes bs-grow-y { from { transform: scaleY(0); } }
+@keyframes bs-flash { 0% { filter: brightness(1.5); } 100% { filter: none; } }
+@keyframes bs-flap { 0% { transform: rotateX(88deg); } 60% { transform: rotateX(-12deg); } 100% { transform: none; } }
+@keyframes bs-blink { 0%, 100% { opacity: 1; } 20%, 60% { opacity: .15; } 40%, 80% { opacity: 1; } }
+@keyframes bs-ring { 0%, 100% { transform: rotate(0); } 15% { transform: rotate(-16deg); } 35% { transform: rotate(12deg); } 55% { transform: rotate(-8deg); } 75% { transform: rotate(4deg); } }
+@keyframes bs-travel { from { transform: translateX(-260px); opacity: .2; } }
+
+/* every section's design fades in on its beat */
+.mscreen-score .bs-sec > .is-play:not(.is-settled) { animation: bs-in .5s ease-out both; animation-delay: var(--sd, 0ms); }
+/* the number lands */
+.mscreen-score .is-play.is-landed:not(.is-settled) .bs-num { animation: bs-thump .6s cubic-bezier(.3, .7, .3, 1); transform-origin: 0 70%; }
+.mscreen-score .bs-field.is-play.is-landed:not(.is-settled) .bs-num { transform-origin: 100% 70%; }
+.mscreen-score .bs-poster.is-play:not(.is-settled) .bs-who { animation: bs-slide-l .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 120ms); }
+.mscreen-score .bs-field.is-play:not(.is-settled) { animation: bs-wipe-up .7s cubic-bezier(.7, 0, .2, 1) both; animation-delay: var(--sd, 0ms); }
+.mscreen-score .bs-field.is-play.is-landed:not(.is-settled) { animation: bs-flash .8s ease-out; }
+.mscreen-score .bs-field.is-play:not(.is-settled) .bs-sign { animation: bs-rise .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 500ms); }
+.mscreen-score .bs-flap.is-play:not(.is-settled) .bs-flap-name .bs-tile b { animation: bs-flap .5s cubic-bezier(.3, .7, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 150ms + var(--i, 0) * 90ms); }
+.mscreen-score .bs-flap.is-play.is-landed:not(.is-settled) .bs-board .bs-tile b { animation: bs-flap .46s cubic-bezier(.3, .7, .3, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+.mscreen-score .bs-led.is-play.is-landed:not(.is-settled) .bs-led-rows { animation: bs-blink 1s steps(1, end); }
+.mscreen-score .bs-pole.is-play.is-full.is-landed:not(.is-settled) .bs-bell svg { animation: bs-ring .9s ease-in-out; transform-origin: 50% 12%; }
+.mscreen-score .bs-pole.is-play:not(.is-settled) .bs-pole-n { animation: bs-slide-r .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 150ms); }
+.mscreen-score .bs-pole.is-counting :is(.bs-pole-ptr, .bs-pole-band) { opacity: 0; }
+.mscreen-score .bs-pole.is-play.is-landed:not(.is-settled) .bs-pole-band { animation: bs-in .5s ease-out both; }
+.mscreen-score .bs-pole.is-play.is-landed:not(.is-settled) .bs-pole-ptr { animation: bs-slide-l .4s ease-out both; }
+
+/* why it counts */
+.mscreen-score .bs-state.is-play:not(.is-settled) .bs-badge { animation: bs-pop .7s cubic-bezier(.2, .9, .25, 1.2) both; animation-delay: calc(var(--sd, 0ms) + 80ms); }
+.mscreen-score .bs-state.is-play:not(.is-settled) .bs-state-text { animation: bs-slide-l .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 240ms); }
+.mscreen-score .bs-vs.is-play:not(.is-settled) .bs-vs-p:first-child { animation: bs-slide-l .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 60ms); }
+.mscreen-score .bs-vs.is-play:not(.is-settled) .bs-vs-p:last-of-type { animation: bs-slide-r .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 60ms); }
+.mscreen-score .bs-vs.is-play:not(.is-settled) .bs-vs-arrow { animation: bs-grow-x .7s cubic-bezier(.7, 0, .2, 1) both; animation-delay: calc(var(--sd, 0ms) + 500ms); }
+.mscreen-score .bs-vs.is-play:not(.is-settled) .bs-vs-over { animation: bs-rise .7s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 900ms); }
+.mscreen-score .bs-vs[data-k="crown"].is-play:not(.is-settled) .bs-vs-crown { animation: bs-travel 1s cubic-bezier(.5, 0, .2, 1) both; animation-delay: calc(var(--sd, 0ms) + 700ms); }
+.mscreen-score .bs-ruler.is-play:not(.is-settled) .bs-mk { animation: bs-in .5s ease-out both; animation-delay: calc(var(--sd, 0ms) + 80ms); }
+.mscreen-score .bs-ruler.is-play:not(.is-settled) .bs-mk-tick { animation: bs-grow-y .6s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 250ms); transform-origin: 50% 100%; }
+.mscreen-score .bs-ruler.is-play:not(.is-settled) .bs-br-line { animation: bs-grow-x .7s cubic-bezier(.7, 0, .2, 1) both; animation-delay: calc(var(--sd, 0ms) + 600ms); }
+.mscreen-score .bs-ruler.is-play:not(.is-settled) .bs-br-w { animation: bs-pop .6s cubic-bezier(.2, .9, .25, 1.2) both; animation-delay: calc(var(--sd, 0ms) + 1000ms); }
+.mscreen-score .bs-band.is-play:not(.is-settled) .bs-band-bar { animation: bs-wipe-r .7s cubic-bezier(.7, 0, .2, 1) both; animation-delay: var(--sd, 0ms); }
+.mscreen-score .bs-band.is-play:not(.is-settled) .bs-band-box { animation: bs-slide-l .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 420ms); }
+.mscreen-score .bs-band.is-play:not(.is-settled) .bs-band-line { animation: bs-in .6s ease-out both; animation-delay: calc(var(--sd, 0ms) + 800ms); }
+.mscreen-score .bs-words.is-play:not(.is-settled) .bs-words-in > p { animation: bs-rise .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 80ms); }
+.mscreen-score .bs-words.is-play:not(.is-settled) .bs-words-in > p + p { animation-delay: calc(var(--sd, 0ms) + 260ms); }
+.mscreen-score .bs-words.is-play:not(.is-settled) .bs-words-foot { animation: bs-in .6s ease-out both; animation-delay: calc(var(--sd, 0ms) + 700ms); }
+
+/* the reel (it moves on its own now, so the still's slow drift is gone) */
+.mscreen-score .bs-bleed.is-play:not(.is-settled) .bs-fig-box { animation: bs-wipe-d .8s cubic-bezier(.7, 0, .2, 1) both; animation-delay: var(--sd, 0ms); }
+.mscreen-score .bs-framed.is-play:not(.is-settled) .bs-print { animation: bs-rise .9s cubic-bezier(.16, 1, .3, 1) both; animation-delay: var(--sd, 0ms); }
+.mscreen-score .bs-circle.is-play:not(.is-settled) .bs-disc { animation: bs-pop .9s cubic-bezier(.16, 1, .3, 1) both; animation-delay: var(--sd, 0ms); transform-origin: 70% 50%; }
+.mscreen-score .bs-loupe.is-play:not(.is-settled) .bs-loupe-ring { animation: bs-pop .5s cubic-bezier(.2, .9, .25, 1.2) both; animation-delay: calc(var(--sd, 0ms) + 500ms); }
+.mscreen-score .bs-loupe.is-play:not(.is-settled) .bs-loupe-lead { animation: bs-in .3s ease-out both; animation-delay: calc(var(--sd, 0ms) + 800ms); }
+.mscreen-score .bs-loupe.is-play:not(.is-settled) .bs-loupe-glass { animation: bs-pop .7s cubic-bezier(.2, .9, .25, 1.15) both; animation-delay: calc(var(--sd, 0ms) + 1000ms); }
+.mscreen-score .bs-loupe.is-play:not(.is-settled) .bs-tag.is-loupe { animation: bs-in .5s ease-out both; animation-delay: calc(var(--sd, 0ms) + 1300ms); }
+.mscreen-score .bs-slices.is-play:not(.is-settled) .bs-slice { animation: bs-rise .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + var(--i, 0) * 140ms); }

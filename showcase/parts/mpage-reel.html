@@ -1,0 +1,109 @@
+    <!-- ========== the reel: attempts full screen, one per screen, without end. The player's own first, then everyone's.
+         Scroll, swipe, the wheel or the arrow keys move on; the sections below are drawn by mobile.js. The view switch in
+         the header shows the same list as a grid, two to a row (data-view="full|grid" on #mReel); a tile opens it full
+         screen. Punch videos (assets/video/lib) play muted for the attempt in view, their posters stand in elsewhere ========== -->
+    <section class="m-page m-reel" id="mReel" data-page="reel" aria-labelledby="mReelTitle" aria-roledescription="reel"
+      data-ov="veil" data-ra="rail" data-rp="scrubber" data-autoplay="on" data-slowmo="on" data-captions="off" data-saver="off" data-audience="everyone">
+      <div class="m-reel-feed" id="mReelTrack" tabindex="0" aria-label="Attempts. Scroll or use the arrow keys for the next one"></div>
+      <header class="m-reel-top">
+        <button class="m-iconbtn m-reel-close" type="button" id="mReelClose" aria-label="Close the reel"><span data-icon="back"></span></button>
+        <div class="m-reel-title">
+          <h2 class="m-reel-h" id="mReelTitle">Your reel</h2>
+          <span class="m-reel-sub" id="mReelSub">@sara.hits, newest first</span>
+        </div>
+        <div class="m-reel-view" role="group" aria-label="View">
+          <button type="button" data-rview="full" aria-pressed="true" aria-label="Full screen"><span data-lucide="rectangle-vertical"></span></button>
+          <button type="button" data-rview="grid" aria-pressed="false" aria-label="Grid, two to a row"><span data-lucide="grid-2x2"></span></button>
+        </div>
+        <button class="m-iconbtn m-reel-gear" type="button" id="mReelGear" aria-label="Reel settings" aria-haspopup="dialog" aria-controls="mReelSettings"><span data-lucide="settings"></span></button>
+      </header>
+      <!-- the grid view: after the header, so Tab reaches the view switch and then the tiles -->
+      <div class="m-reel-grid" id="mReelGrid" hidden><ul class="rg-list" id="mReelGridList" aria-label="Attempts in a grid" data-design="tiles"></ul></div>
+
+      <!-- the page's sections (psec.js): one design each, drawn on every attempt -->
+      <div class="m-reel-secs" hidden>
+        <i data-sec="overlay" data-sec-label="Overlay" data-sv-names="Veil|Glass card|Headline|Ticket|Corner"></i>
+        <i data-sec="actions" data-sec-label="Actions" data-sv-names="Rail|Bubbles|Capsule|Bar|Split"></i>
+        <i data-sec="progress" data-sec-label="Progress" data-sv-names="Scrubber|Speed ramp|Phases|Ring|Edge line"></i>
+      </div>
+
+      <!-- settings: how the reel plays, and who sees your hits -->
+      <div class="m-sheet m-rsheet" id="mReelSettings" role="dialog" aria-modal="true" aria-labelledby="mReelSetTitle" hidden>
+        <button class="m-sheet-scrim" type="button" data-rsheet-close aria-label="Close settings" tabindex="-1"></button>
+        <div class="m-sheet-panel m-rsheet-panel">
+          <span class="m-grab" aria-hidden="true"></span>
+          <div class="m-rsheet-head">
+            <h3 class="m-rsheet-title" id="mReelSetTitle">Reel settings</h3>
+            <button class="m-iconbtn m-rsheet-x" type="button" data-rsheet-close aria-label="Close settings"><span data-lucide="x"></span></button>
+          </div>
+          <div class="m-rset-group">
+            <p class="m-rset-cap">Playback</p>
+            <label class="m-rset"><span class="m-rset-ico" data-lucide="circle-play"></span><span class="m-rset-txt"><b>Autoplay</b><span>Each replay starts as it comes into view</span></span><input class="m-rswitch" type="checkbox" role="switch" data-rpref="autoplay"></label>
+            <label class="m-rset"><span class="m-rset-ico" data-lucide="timer"></span><span class="m-rset-txt"><b>Slow motion replays</b><span>The strike plays at a quarter speed</span></span><input class="m-rswitch" type="checkbox" role="switch" data-rpref="slowmo"></label>
+            <label class="m-rset"><span class="m-rset-ico" data-lucide="quote"></span><span class="m-rset-txt"><b>Captions</b><span>The count, the strike and the bell, in words</span></span><input class="m-rswitch" type="checkbox" role="switch" data-rpref="captions"></label>
+            <label class="m-rset"><span class="m-rset-ico" data-lucide="arrow-down-to-line"></span><span class="m-rset-txt"><b>Data saver</b><span>Replays load when you tap play</span></span><input class="m-rswitch" type="checkbox" role="switch" data-rpref="saver"></label>
+          </div>
+          <div class="m-rset-group">
+            <p class="m-rset-cap">Scores</p>
+            <label class="m-rset"><span class="m-rset-ico" data-lucide="gauge"></span><span class="m-rset-txt"><b>Show scores with decimals</b><span>Follows the score format, 999,999.000</span></span><input class="m-rswitch" type="checkbox" role="switch" data-rpref="decimals"></label>
+          </div>
+          <div class="m-rset-group" role="radiogroup" aria-labelledby="mReelWhoCap">
+            <p class="m-rset-cap" id="mReelWhoCap">Who can see my hits</p>
+            <div class="m-rseg">
+              <button type="button" role="radio" data-raud="everyone"><span data-lucide="globe"></span>Everyone</button>
+              <button type="button" role="radio" data-raud="followers"><span data-lucide="users-round"></span>Followers</button>
+              <button type="button" role="radio" data-raud="me"><span data-lucide="lock"></span>Only me</button>
+            </div>
+            <p class="m-rset-note" id="mReelWhoNote">Anyone on PunchApp can watch your replays.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- the three dots on an attempt -->
+      <div class="m-sheet m-rsheet" id="mReelMenu" role="dialog" aria-modal="true" aria-labelledby="mReelMenuTitle" hidden>
+        <button class="m-sheet-scrim" type="button" data-rsheet-close aria-label="Close the menu" tabindex="-1"></button>
+        <div class="m-sheet-panel m-rsheet-panel">
+          <span class="m-grab" aria-hidden="true"></span>
+          <div class="m-rmenu-who">
+            <span class="rl-ava m-rmenu-ava"><img id="mReelMenuAva" src="assets/app/avatars/sara.jpg" alt=""></span>
+            <div><h3 class="m-rsheet-title" id="mReelMenuTitle">Sara Malik</h3><p class="m-rmenu-sub" id="mReelMenuSub"></p></div>
+          </div>
+          <div class="m-rmenu" id="mReelMenuList" role="group" aria-labelledby="mReelMenuTitle">
+            <button type="button" class="m-rmenu-item" data-rmenu="save"><span data-lucide="download"></span>Download the clip</button>
+            <button type="button" class="m-rmenu-item" data-rmenu="share"><span data-lucide="share-2"></span>Share</button>
+            <button type="button" class="m-rmenu-item" data-rmenu="link"><span data-lucide="link"></span>Copy link</button>
+            <button type="button" class="m-rmenu-item" data-rmenu="audience"><span data-lucide="eye"></span>Who can see my hits</button>
+            <button type="button" class="m-rmenu-item" data-rmenu="hide"><span data-lucide="eye-off"></span>Hide this player</button>
+            <button type="button" class="m-rmenu-item is-danger" data-rmenu="report"><span data-lucide="flag"></span>Report</button>
+          </div>
+          <div class="m-rmenu" id="mReelReport" role="group" aria-labelledby="mReelReportTitle" hidden>
+            <p class="m-rset-cap" id="mReelReportTitle">What is wrong with this attempt?</p>
+            <button type="button" class="m-rmenu-item" data-rreason="Not a real attempt"><span data-lucide="hand"></span>Not a real attempt</button>
+            <button type="button" class="m-rmenu-item" data-rreason="Someone else's replay"><span data-lucide="scan-face"></span>Someone else's replay</button>
+            <button type="button" class="m-rmenu-item" data-rreason="Offensive"><span data-lucide="shield-check"></span>Offensive or unsafe</button>
+            <button type="button" class="m-rmenu-item" data-rreason="Spam"><span data-lucide="x"></span>Spam</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- comments on an attempt -->
+      <div class="m-sheet m-rsheet" id="mReelComments" role="dialog" aria-modal="true" aria-labelledby="mReelComTitle" hidden>
+        <button class="m-sheet-scrim" type="button" data-rsheet-close aria-label="Close comments" tabindex="-1"></button>
+        <div class="m-sheet-panel m-rsheet-panel">
+          <span class="m-grab" aria-hidden="true"></span>
+          <div class="m-rsheet-head">
+            <h3 class="m-rsheet-title" id="mReelComTitle">Comments</h3>
+            <button class="m-iconbtn m-rsheet-x" type="button" data-rsheet-close aria-label="Close comments"><span data-lucide="x"></span></button>
+          </div>
+          <ul class="m-rcoms" id="mReelComList"></ul>
+          <form class="m-rcom-form" id="mReelComForm">
+            <img class="m-ava" src="assets/app/avatars/sara.jpg" alt="">
+            <label class="sr-only" for="mReelComInput">Add a comment</label>
+            <input id="mReelComInput" type="text" autocomplete="off" maxlength="120" placeholder="Add a comment">
+            <button class="m-rcom-send" type="submit" aria-label="Post the comment"><span data-lucide="send"></span></button>
+          </form>
+        </div>
+      </div>
+
+      <p class="sr-only" id="mReelLive" role="status" aria-live="polite"></p>
+    </section>

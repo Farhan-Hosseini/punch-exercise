@@ -1,0 +1,382 @@
+/* The sponsor slot shared by every machine flow screen (parts/ms-ad.html), and the Monster Energy brand kit that the
+   slot and the Result screen's sponsor section (sections/sponsor.*) both draw from.
+
+   The kit: the brand's own colours, an original claw mark (three torn scratches swiped on a diagonal, drawn for this
+   project, not the brand's logo file) and a MONSTER ENERGY wordmark set in heavy condensed type. A sponsor's lockup
+   keeps its own type and colour whatever the host look is, so these ignore Arena and Reference; only the claw's green
+   darkens on a daylight ground, where the brand lime would fall to 1.7:1. */
+:root {
+  --mon-green: #95D600;
+  --mon-black: #080908;
+  --mon-steel: #C9CCC6;
+  --mon-mark: var(--mon-green);
+}
+:root[data-appearance="light"] { --mon-mark: #4F8C00; }
+
+.mon-claw { display: block; flex: none; overflow: visible; fill: var(--mon-mark); }
+
+/* stacked: MONSTER over a tracked-out ENERGY in the brand green, the two lines one width */
+.mon-word {
+  display: inline-grid; justify-items: center; align-content: center;
+  font: 400 1em/.86 "Anton", "Archivo Black", sans-serif; letter-spacing: .012em; text-transform: uppercase;
+  color: var(--mon-ink, var(--ink-1)); white-space: nowrap; font-synthesis: none;
+}
+.mon-word > span {
+  display: block; margin-top: .14em; padding-left: 1.02em;
+  font: 700 .38em/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: 1.02em; color: var(--mon-mark);
+}
+/* in one line: the same two words side by side, ENERGY in green at the same size */
+.mon-word.is-line { display: inline-flex; align-items: baseline; gap: .26em; line-height: 1; }
+.mon-word.is-line > span { margin: 0; padding: 0; font: inherit; letter-spacing: inherit; }
+
+/* ---------------------------------------------------------------- the slot: a 1080 x 140 media unit
+   Same size and place on every flow screen. Read from a metre: the CTA is 38 px, the frames' big words 72 px.
+   The loop is 7 s and moves in hard cuts, the way a banner GIF does, never a tween:
+     0 to 2 %    the claws rip in, three frames, and the can slams down
+     2 to 33 %   frame one, the wordmark
+     33 to 35 %  green flash, then a lone bolt
+     35 to 64 %  frame two, Refuel between rounds
+     64 to 66 %  green flash, then a lone bolt
+     66 to 95 %  frame three, Ice cold at the kiosk
+     95 to 100 % the end card: can and CTA alone, the CTA knocks twice
+   The CTA and the AD tag never leave. Two flashes in seven seconds stays far under three a second. */
+.mscreen .ms-ad {
+  --mon-ink: #FFFFFF;
+  --mon-mark: var(--mon-green);
+  --ad-loop: 7s;
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: var(--ms-ad-h); margin: 0; overflow: hidden;
+  background:
+    radial-gradient(120px 110px at 118px 70px, rgba(149, 214, 0, .24), transparent 70%),
+    repeating-linear-gradient(118deg, rgba(149, 214, 0, .055) 0 2px, transparent 2px 16px),
+    var(--mon-black);
+  box-shadow: inset 0 3px 0 var(--mon-green);
+  color: var(--mon-ink);
+}
+.mscreen .ms-ad-art { position: absolute; inset: 0; }
+.mscreen .ms-ad-art > * { animation-duration: var(--ad-loop); animation-iteration-count: infinite; animation-timing-function: steps(1, end); }
+
+/* the rip: a big claw mark torn through the ground behind the copy */
+.mscreen .ms-ad-rip {
+  position: absolute; left: 470px; top: -34px; width: 176px; height: 212px;
+  fill: var(--mon-green); opacity: .26;
+  animation-name: ms-ad-rip;
+}
+@keyframes ms-ad-rip {
+  0% { clip-path: inset(0 0 100% 0); }
+  1% { clip-path: inset(0 0 62% 0); }
+  2% { clip-path: inset(0 0 26% 0); }
+  3%, 100% { clip-path: inset(0); }
+}
+
+/* the can: black, a steel lid and foot, the claw on its face; it drops in and shakes on each flash */
+.mscreen .ms-ad-can {
+  position: absolute; left: 88px; top: 16px; width: 62px; height: 110px; z-index: 2;
+  display: grid; place-items: center;
+  border-radius: 10px / 8px;
+  background: linear-gradient(90deg, #030303 0%, #2E302C 20%, #111210 44%, #000 68%, #262824 90%, #070707 100%);
+  box-shadow: 0 0 22px rgba(149, 214, 0, .32);
+  transform: rotate(-8deg);
+  animation-name: ms-ad-can;
+}
+.mscreen .ms-ad-can::before,
+.mscreen .ms-ad-can::after {
+  content: ""; position: absolute; left: 4px; right: 4px; border-radius: 50%;
+  background: linear-gradient(90deg, #6E716B, #E2E4DF 34%, #8C8F89 60%, #D6D8D2 84%, #74776F);
+}
+.mscreen .ms-ad-can::before { top: -5px; height: 12px; }
+.mscreen .ms-ad-can::after { bottom: -3px; height: 8px; }
+.mscreen .ms-ad-can .mon-claw { width: 40px; height: 54px; }
+@keyframes ms-ad-can {
+  0% { transform: translateY(-150px) rotate(-8deg); }
+  1% { transform: translateY(-46px) rotate(-15deg); }
+  2% { transform: translateY(7px) rotate(-3deg); }
+  3% { transform: rotate(-8deg); }
+  33% { transform: rotate(-1deg); }
+  34% { transform: translateX(-4px) rotate(-15deg); }
+  35% { transform: rotate(-8deg); }
+  64% { transform: rotate(-1deg); }
+  65% { transform: translateX(-4px) rotate(-15deg); }
+  66% { transform: rotate(-8deg); }
+  100% { transform: rotate(-8deg); }
+}
+
+/* the three frames share one column beside the can; each punches in (too big, too small, set) over three steps */
+.mscreen .ms-ad-f {
+  position: absolute; left: 196px; top: 0; bottom: 0; z-index: 1;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  transform-origin: 0 50%; opacity: 0;
+  text-transform: uppercase; white-space: nowrap; font-synthesis: none;
+}
+.mscreen .ms-ad-f1 { font-size: 76px; animation-name: ms-ad-f1; }
+.mscreen .ms-ad-f1 .mon-word { transform: skewX(-7deg); }
+.mscreen .ms-ad-still { display: none; }
+.mscreen :is(.ms-ad-f2, .ms-ad-f3) { gap: 8px; animation-name: ms-ad-f2; }
+.mscreen .ms-ad-f3 { animation-name: ms-ad-f3; }
+.mscreen :is(.ms-ad-f2, .ms-ad-f3) b {
+  font: 400 72px/.86 "Anton", "Archivo Black", sans-serif; letter-spacing: .012em; color: var(--mon-green);
+  transform: skewX(-7deg);
+}
+.mscreen :is(.ms-ad-f2, .ms-ad-f3) span {
+  font: 700 36px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .08em; color: var(--mon-ink);
+}
+@keyframes ms-ad-f1 {
+  0% { opacity: 0; }
+  2% { opacity: 1; transform: scale(1.16); }
+  3% { transform: scale(.95); }
+  4% { transform: none; }
+  33%, 100% { opacity: 0; }
+}
+@keyframes ms-ad-f2 {
+  0% { opacity: 0; }
+  35% { opacity: 1; transform: scale(1.16); }
+  36% { transform: scale(.95); }
+  37% { transform: none; }
+  64%, 100% { opacity: 0; }
+}
+@keyframes ms-ad-f3 {
+  0% { opacity: 0; }
+  66% { opacity: 1; transform: scale(1.16); }
+  67% { transform: scale(.95); }
+  68% { transform: none; }
+  95%, 100% { opacity: 0; }
+}
+
+/* green lightning: a lone bolt after each flash, and a flicker in the middle of each frame, out past the copy */
+.mscreen .ms-ad-bolt {
+  position: absolute; left: 300px; top: -8px; width: 132px; height: 156px; z-index: 1;
+  fill: var(--mon-green); filter: drop-shadow(0 0 10px rgba(149, 214, 0, .7));
+  opacity: 0; animation-name: ms-ad-bolt;
+}
+@keyframes ms-ad-bolt {
+  0% { opacity: 0; }
+  17% { opacity: 1; transform: translate(292px, 34px) scale(.5); }
+  18% { opacity: 0; }
+  34% { opacity: 1; transform: none; }
+  35% { opacity: 0; }
+  49% { opacity: 1; transform: translate(292px, 34px) scale(.5) scaleX(-1); }
+  50% { opacity: 0; }
+  65% { opacity: 1; transform: scaleX(-1); }
+  66% { opacity: 0; }
+  81% { opacity: 1; transform: translate(292px, 34px) scale(.5); }
+  82%, 100% { opacity: 0; }
+}
+
+/* the flash: one frame of solid brand green with the bolt knocked out in black */
+.mscreen .ms-ad-flash {
+  position: absolute; inset: 0; z-index: 3; display: grid; place-items: center;
+  background: var(--mon-green); opacity: 0;
+  animation-name: ms-ad-flash;
+}
+.mscreen .ms-ad-flash svg { width: 150px; height: 176px; fill: var(--mon-black); }
+@keyframes ms-ad-flash {
+  0% { opacity: 0; }
+  33% { opacity: 1; }
+  34% { opacity: 0; }
+  64% { opacity: 1; }
+  65%, 100% { opacity: 0; }
+}
+
+/* the CTA: a slanted green plate; it turns black on the flashes and knocks twice on the end card */
+.mscreen .ms-ad-cta {
+  position: absolute; right: 40px; top: 27px; height: 86px; z-index: 4;
+  display: flex; align-items: center; gap: 18px; padding: 0 34px 0 40px;
+  background: var(--mon-green); color: var(--mon-black);
+  clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+  font: 400 38px/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap;
+  animation-name: ms-ad-cta;
+}
+@keyframes ms-ad-cta {
+  0% { background: var(--mon-green); color: var(--mon-black); transform: none; }
+  33% { background: var(--mon-black); color: var(--mon-green); }
+  34% { background: var(--mon-green); color: var(--mon-black); }
+  64% { background: var(--mon-black); color: var(--mon-green); }
+  65% { background: var(--mon-green); color: var(--mon-black); }
+  95% { transform: scale(1.08); }
+  96% { transform: none; }
+  97% { transform: scale(1.08); }
+  98%, 100% { transform: none; }
+}
+.mscreen .ms-ad-chev { display: flex; gap: 3px; }
+.mscreen .ms-ad-chev i {
+  width: 15px; height: 26px; background: currentColor; opacity: .28;
+  clip-path: polygon(0 0, 48% 0, 100% 50%, 48% 100%, 0 100%, 52% 50%);
+  animation: ms-ad-chev 1.05s steps(1, end) infinite;
+}
+.mscreen .ms-ad-chev i:nth-child(2) { animation-delay: .35s; }
+.mscreen .ms-ad-chev i:nth-child(3) { animation-delay: .7s; }
+@keyframes ms-ad-chev { 0% { opacity: 1; } 33.3%, 100% { opacity: .28; } }
+
+/* ---------------------------------------------------------------- the strip as a global section
+   parts/ms-ad.html is one section (data-sec="sponsor", scope global) with five creatives as its [data-sv] children;
+   psec.js hides all but the chosen one, and showing it again restarts its loop the way a banner GIF starts over.
+   Every creative fills the 1080 x 140 unit, keeps a green call to action on the right and moves in hard cuts. */
+.mscreen .ms-ad > [data-sv][hidden] { display: none !important; }
+.mscreen .ms-ad-d { position: absolute; inset: 0; }
+.mscreen .ms-ad .msa-art { position: absolute; inset: 0; --ad-loop: 6s; }
+.mscreen .ms-ad .msa-art > *,
+.mscreen .ms-ad .msa-art .msa-num i { animation-duration: var(--ad-loop); animation-iteration-count: infinite; animation-timing-function: steps(1, end); }
+
+/* the kit pieces the four share: a can, a one-frame flash, the frames' type, the slanted CTA plate */
+.mscreen .ms-ad .msa-can {
+  position: absolute; left: 88px; top: 16px; width: 62px; height: 110px; z-index: 2;
+  display: grid; place-items: center; border-radius: 10px / 8px;
+  background: var(--can-body, linear-gradient(90deg, #030303 0%, #2E302C 20%, #111210 44%, #000 68%, #262824 90%, #070707 100%));
+  box-shadow: 0 0 22px var(--can-glow, rgba(149, 214, 0, .32));
+  transform: rotate(-8deg);
+}
+.mscreen .ms-ad .msa-can::before,
+.mscreen .ms-ad .msa-can::after {
+  content: ""; position: absolute; left: 4px; right: 4px; border-radius: 50%;
+  background: linear-gradient(90deg, #6E716B, #E2E4DF 34%, #8C8F89 60%, #D6D8D2 84%, #74776F);
+}
+.mscreen .ms-ad .msa-can::before { top: -5px; height: 12px; }
+.mscreen .ms-ad .msa-can::after { bottom: -3px; height: 8px; }
+.mscreen .ms-ad .msa-can .mon-claw { width: 40px; height: 54px; fill: var(--can-mark, var(--mon-green)); }
+.mscreen .ms-ad .msa-flash { position: absolute; inset: 0; z-index: 3; background: var(--mon-green); opacity: 0; }
+.mscreen .ms-ad .msa-f {
+  position: absolute; left: 196px; top: 0; bottom: 0; z-index: 1;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px;
+  transform-origin: 0 50%; opacity: 0;
+  text-transform: uppercase; white-space: nowrap; font-synthesis: none;
+}
+.mscreen .ms-ad .msa-f b { font: 400 72px/.86 "Anton", "Archivo Black", sans-serif; letter-spacing: .012em; color: var(--mon-green); transform: skewX(-7deg); }
+.mscreen .ms-ad .msa-f > span:not(.mon-word) { font: 700 34px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .08em; color: var(--mon-ink); }
+.mscreen .ms-ad .msa-cta {
+  position: absolute; right: 40px; top: 27px; height: 86px; z-index: 4;
+  display: flex; align-items: center; padding: 0 36px 0 42px;
+  background: var(--mon-green); color: var(--mon-black);
+  clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+  font: 400 38px/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap;
+}
+
+/* Score deal, a 6 s loop: the score flicks up to the target in three cuts, a green flash, FREE CAN, the wordmark */
+.mscreen .ms-ad .msa-deal .msa-deal-a { opacity: 1; animation-name: msa-deal-a; }
+.mscreen .ms-ad .msa-deal .msa-deal-a b { color: var(--mon-ink); }
+.mscreen .ms-ad .msa-num { display: inline-grid; color: var(--mon-green); }
+.mscreen .ms-ad .msa-num i { grid-area: 1 / 1; font-style: normal; opacity: 0; }
+.mscreen .ms-ad .msa-num i:nth-child(1) { animation-name: msa-n1; }
+.mscreen .ms-ad .msa-num i:nth-child(2) { animation-name: msa-n2; }
+.mscreen .ms-ad .msa-num i:nth-child(3) { animation-name: msa-n3; }
+@keyframes msa-n1 { 0% { opacity: 1; } 3%, 100% { opacity: 0; } }
+@keyframes msa-n2 { 0% { opacity: 0; } 3% { opacity: 1; } 6%, 100% { opacity: 0; } }
+@keyframes msa-n3 { 0% { opacity: 0; } 6%, 100% { opacity: 1; } }
+@keyframes msa-deal-a { 0% { opacity: 1; transform: scale(1.14); } 1% { transform: scale(.96); } 2% { transform: none; } 6% { transform: scale(1.08); } 7% { transform: none; } 38%, 100% { opacity: 0; } }
+.mscreen .ms-ad .msa-deal .msa-flash { animation-name: msa-deal-flash; }
+@keyframes msa-deal-flash { 0% { opacity: 0; } 38% { opacity: 1; } 40%, 100% { opacity: 0; } }
+.mscreen .ms-ad .msa-deal .msa-deal-b { animation-name: msa-deal-b; }
+.mscreen .ms-ad .msa-deal .msa-deal-b b { font-size: 84px; }
+@keyframes msa-deal-b { 0% { opacity: 0; } 40% { opacity: 1; transform: scale(1.16); } 41% { transform: scale(.95); } 42% { transform: none; } 70%, 100% { opacity: 0; } }
+.mscreen .ms-ad .msa-deal .msa-deal-c { font-size: 70px; animation-name: msa-deal-c; }
+.mscreen .ms-ad .msa-deal .msa-deal-c .mon-word { transform: skewX(-7deg); }
+@keyframes msa-deal-c { 0% { opacity: 0; } 70% { opacity: 1; transform: scale(1.16); } 71% { transform: scale(.95); } 72% { transform: none; } 100% { opacity: 1; } }
+.mscreen .ms-ad .msa-deal .msa-can { animation-name: msa-can-shake; }
+@keyframes msa-can-shake {
+  0% { transform: translateY(-120px) rotate(-8deg); } 1% { transform: translateY(8px) rotate(-3deg); } 2% { transform: rotate(-8deg); }
+  40% { transform: translateX(-5px) rotate(-16deg); } 41% { transform: rotate(-8deg); }
+  70% { transform: translateX(-5px) rotate(-16deg); } 71%, 100% { transform: rotate(-8deg); }
+}
+.mscreen .ms-ad .msa-deal .msa-cta { animation-name: msa-knock; }
+@keyframes msa-knock {
+  0% { background: var(--mon-green); color: var(--mon-black); transform: none; }
+  38% { background: var(--mon-black); color: var(--mon-green); } 40% { background: var(--mon-green); color: var(--mon-black); }
+  94% { transform: scale(1.08); } 95% { transform: none; } 96% { transform: scale(1.08); } 97%, 100% { transform: none; }
+}
+
+/* Claw rip, a 5 s loop: a big claw tears down the strip in three cuts, the wordmark, a jolt, then the line */
+.mscreen .ms-ad .msa-claw .msa-art { --ad-loop: 5s; background: radial-gradient(170px 120px at 142px 70px, rgba(149, 214, 0, .3), transparent 70%); }
+.mscreen .ms-ad .msa-bigclaw {
+  position: absolute; left: 80px; top: 4px; width: 118px; height: 132px; z-index: 2;
+  fill: var(--mon-green); filter: drop-shadow(0 0 12px rgba(149, 214, 0, .6));
+  animation-name: msa-rip;
+}
+@keyframes msa-rip {
+  0% { clip-path: inset(0 0 100% 0); } 1% { clip-path: inset(0 0 64% 0); } 2% { clip-path: inset(0 0 28% 0); } 3% { clip-path: inset(0); }
+  50% { clip-path: inset(0); transform: translateX(-8px) rotate(-4deg); } 51%, 100% { clip-path: inset(0); transform: none; }
+}
+.mscreen .ms-ad .msa-claw .msa-f { left: 228px; }
+.mscreen .ms-ad .msa-claw .msa-claw-a { font-size: 66px; animation-name: msa-claw-a; }
+.mscreen .ms-ad .msa-claw .msa-claw-a .mon-word { transform: skewX(-7deg); }
+@keyframes msa-claw-a { 0% { opacity: 0; } 3% { opacity: 1; transform: scale(1.14); } 4% { transform: scale(.96); } 5% { transform: none; } 50%, 100% { opacity: 0; } }
+.mscreen .ms-ad .msa-claw .msa-claw-b { gap: 4px; animation-name: msa-claw-b; }
+.mscreen .ms-ad .msa-claw .msa-claw-b b { font-size: 58px; color: var(--mon-ink); }
+.mscreen .ms-ad .msa-claw .msa-claw-b b.is-green { color: var(--mon-green); }
+@keyframes msa-claw-b { 0% { opacity: 0; } 50% { opacity: 1; transform: translateX(-10px); } 51% { transform: translateX(4px); } 52%, 100% { opacity: 1; transform: none; } }
+.mscreen .ms-ad .msa-claw .msa-cta { animation-name: msa-knock-end; }
+@keyframes msa-knock-end { 0% { transform: none; } 93% { transform: scale(1.08); } 94% { transform: none; } 96% { transform: scale(1.08); } 97%, 100% { transform: none; } }
+
+/* Flavours, a 6 s loop: three cans in three colourways, each cut in with its name; the swatch behind takes its colour */
+.mscreen .ms-ad .msa-swatch {
+  position: absolute; left: 52px; top: 0; bottom: 0; width: 140px; z-index: 0;
+  clip-path: polygon(30px 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+  background: rgba(149, 214, 0, .24);
+  animation-name: msa-swatch;
+}
+@keyframes msa-swatch { 0% { background: rgba(149, 214, 0, .24); } 33.33% { background: rgba(120, 206, 245, .24); } 66.66%, 100% { background: rgba(255, 210, 31, .24); } }
+.mscreen .ms-ad .msa-can-2 { --can-body: linear-gradient(90deg, #B9BDB7 0%, #F4F5F2 22%, #D9DCD6 46%, #A9ADA6 70%, #EEF0EC 90%, #BFC3BC 100%); --can-mark: #1E8FD0; --can-glow: rgba(120, 206, 245, .35); }
+.mscreen .ms-ad .msa-can-3 { --can-mark: #FFD21F; --can-glow: rgba(255, 210, 31, .32); }
+.mscreen .ms-ad .msa-flav .msa-can { opacity: 0; }
+.mscreen .ms-ad .msa-flav .msa-can-1 { animation-name: msa-can-1; }
+.mscreen .ms-ad .msa-flav .msa-can-2 { animation-name: msa-can-2; }
+.mscreen .ms-ad .msa-flav .msa-can-3 { animation-name: msa-can-3; }
+@keyframes msa-can-1 { 0% { opacity: 1; transform: translateY(-90px) rotate(-8deg); } 1% { transform: translateY(8px) rotate(-3deg); } 2% { transform: rotate(-8deg); } 33.33%, 100% { opacity: 0; } }
+@keyframes msa-can-2 { 0% { opacity: 0; } 33.33% { opacity: 1; transform: translateY(-90px) rotate(-8deg); } 34.33% { transform: translateY(8px) rotate(-3deg); } 35.33% { transform: rotate(-8deg); } 66.66%, 100% { opacity: 0; } }
+@keyframes msa-can-3 { 0% { opacity: 0; } 66.66% { opacity: 1; transform: translateY(-90px) rotate(-8deg); } 67.66% { transform: translateY(8px) rotate(-3deg); } 68.66%, 100% { opacity: 1; transform: rotate(-8deg); } }
+.mscreen .ms-ad .msa-flav-1 { animation-name: msa-flav-1; }
+.mscreen .ms-ad .msa-flav-2 { animation-name: msa-flav-2; }
+.mscreen .ms-ad .msa-flav-3 { animation-name: msa-flav-3; }
+.mscreen .ms-ad .msa-flav-2 b { color: #8AD8F8; }
+.mscreen .ms-ad .msa-flav-3 b { color: #FFD21F; }
+@keyframes msa-flav-1 { 0% { opacity: 0; } 1% { opacity: 1; transform: scale(1.14); } 2% { transform: none; } 33.33%, 100% { opacity: 0; } }
+@keyframes msa-flav-2 { 0% { opacity: 0; } 34.33% { opacity: 1; transform: scale(1.14); } 35.33% { transform: none; } 66.66%, 100% { opacity: 0; } }
+@keyframes msa-flav-3 { 0% { opacity: 0; } 67.66% { opacity: 1; transform: scale(1.14); } 68.66%, 100% { opacity: 1; transform: none; } }
+.mscreen .ms-ad .msa-flav .msa-cta { animation-name: msa-flav-cta; }
+@keyframes msa-flav-cta { 0% { background: var(--mon-green); } 33.33% { background: #8AD8F8; } 66.66%, 100% { background: #FFD21F; } }
+
+/* Split, a 6 s loop: a green panel with the wordmark beside a black field, then one hard cut swaps the two */
+.mscreen .ms-ad .msa-split .msa-art { animation: msa-split-ground var(--ad-loop) steps(1, end) infinite; }
+@keyframes msa-split-ground { 0% { background: transparent; } 50%, 100% { background: var(--mon-green); } }
+.mscreen .ms-ad .msa-panel {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 470px; z-index: 1;
+  display: grid; align-items: center; padding-left: 74px; font-size: 64px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 56px) 100%, 0 100%);
+  background: var(--mon-green);
+  animation-name: msa-panel;
+}
+.mscreen .ms-ad .msa-panel .mon-word { color: var(--mon-black); transform: skewX(-7deg); animation: msa-panel-word var(--ad-loop) steps(1, end) infinite; }
+.mscreen .ms-ad .msa-panel .mon-word > span { color: var(--mon-black); animation: msa-panel-energy var(--ad-loop) steps(1, end) infinite; }
+@keyframes msa-panel { 0% { background: var(--mon-green); } 50%, 100% { background: var(--mon-black); } }
+@keyframes msa-panel-word { 0% { color: var(--mon-black); } 50%, 100% { color: #FFFFFF; } }
+@keyframes msa-panel-energy { 0% { color: var(--mon-black); } 50%, 100% { color: var(--mon-green); } }
+.mscreen .ms-ad .msa-split .msa-f { left: 468px; }
+.mscreen .ms-ad .msa-split-a { animation-name: msa-split-a; }
+.mscreen .ms-ad .msa-split-b { animation-name: msa-split-b; }
+.mscreen .ms-ad .msa-split-b b { color: var(--mon-black); }
+.mscreen .ms-ad .msa-split-b > span:not(.mon-word) { color: var(--mon-black); }
+@keyframes msa-split-a { 0% { opacity: 1; transform: scale(1.12); } 1% { transform: none; } 50%, 100% { opacity: 0; } }
+@keyframes msa-split-b { 0% { opacity: 0; } 50% { opacity: 1; transform: scale(1.12); } 51%, 100% { opacity: 1; transform: none; } }
+.mscreen .ms-ad .msa-split .msa-cta { animation-name: msa-split-cta; }
+@keyframes msa-split-cta { 0% { background: var(--mon-green); color: var(--mon-black); } 50%, 100% { background: var(--mon-black); color: var(--mon-green); } }
+
+/* the disclosure: a tab in the bottom corner, above everything, at the glass's 32 px floor so the queue can read it
+   too (it was a 17 px chip with a hairline border); the cans, claw and swatch stand 16 px further in to clear it */
+.mscreen .ms-ad-tag {
+  position: absolute; left: 0; bottom: 0; z-index: 5;
+  height: 44px; padding: 0 10px 0 calc(10px + .1em); display: grid; place-items: center;
+  border-radius: 0 12px 0 0; background: rgba(0, 0, 0, .78); color: #FFFFFF;
+  font: 600 32px/1 "Barlow", system-ui, sans-serif; letter-spacing: .1em;
+}
+:root[data-variant="reference"] .mscreen .ms-ad-tag { font-family: "Poppins", sans-serif; letter-spacing: .06em; padding-left: calc(10px + .06em); }
+
+/* reduced motion: one calm still that carries the whole message: can, wordmark, the line, the CTA */
+@media (prefers-reduced-motion: reduce) {
+  .mscreen .ms-ad-art > *,
+  .mscreen .ms-ad-chev i { animation: none !important; }
+  .mscreen .ms-ad-f1 { opacity: 1; font-size: 56px; gap: 10px; }
+  .mscreen .ms-ad-still { display: block; font: 700 32px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .08em; color: var(--mon-ink); }
+  .mscreen .ms-ad-bolt { opacity: 1; transform: translate(292px, 34px) scale(.5); }
+  .mscreen .ms-ad-chev i { opacity: 1; }
+  /* the four others: each held on the frame that says it all */
+  .mscreen .ms-ad .msa-art, .mscreen .ms-ad .msa-art * { animation: none !important; }
+  .mscreen .ms-ad :is(.msa-num i:nth-child(3), .msa-deal-a, .msa-claw-a, .msa-flav-1, .msa-split-a) { opacity: 1; }
+  .mscreen .ms-ad .msa-flav .msa-can-1 { opacity: 1; }
+}

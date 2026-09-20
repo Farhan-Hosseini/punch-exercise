@@ -1,0 +1,508 @@
+[
+ {
+  "name": "fist-cam",
+  "subject": "wrapped fist driven slowly at the lens",
+  "who": "a young woman",
+  "tags": [
+   "fist",
+   "toward camera",
+   "slow motion",
+   "hand wraps",
+   "shallow focus",
+   "teal",
+   "dark"
+  ],
+  "v": "fist-cam-v.mp4",
+  "v_poster": "fist-cam-v.jpg",
+  "sq": "fist-cam-sq.mp4",
+  "sq_poster": "fist-cam-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.667,
+  "fps": 24,
+  "frames": 88,
+  "strike": 2.75,
+  "focal_v": "55% 50%",
+  "focal_sq": "50% 50%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "9944390",
+  "url": "https://www.pexels.com/video/a-person-doing-a-punching-position-slowly-9944390/",
+  "photographer": "KoolShooters",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 1.917,
+  "muted": true
+ },
+ {
+  "name": "jab-pass",
+  "subject": "jab thrown past the lens and held at full reach",
+  "who": "a young woman",
+  "tags": [
+   "jab",
+   "toward camera",
+   "close up",
+   "hand wraps",
+   "teal",
+   "dark"
+  ],
+  "v": "jab-pass-v.mp4",
+  "v_poster": "jab-pass-v.jpg",
+  "sq": "jab-pass-sq.mp4",
+  "sq_poster": "jab-pass-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.167,
+  "fps": 24,
+  "frames": 76,
+  "strike": 0.88,
+  "focal_v": "50% 45%",
+  "focal_sq": "50% 45%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "9944392",
+  "url": "https://www.pexels.com/video/a-woman-in-punching-pose-9944392/",
+  "photographer": "KoolShooters",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 5.0,
+  "muted": true
+ },
+ {
+  "name": "bag-backlit",
+  "subject": "heavy bag work against a hard backlight",
+  "who": "a young woman",
+  "tags": [
+   "heavy bag",
+   "backlit",
+   "flare",
+   "silhouette",
+   "static",
+   "dark"
+  ],
+  "v": "bag-backlit-v.mp4",
+  "v_poster": "bag-backlit-v.jpg",
+  "sq": "bag-backlit-sq.mp4",
+  "sq_poster": "bag-backlit-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 4.08,
+  "fps": 25,
+  "frames": 102,
+  "strike": 1.2,
+  "focal_v": "50% 50%",
+  "focal_sq": "50% 50%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "8478081",
+  "url": "https://www.pexels.com/video/person-hitting-a-punching-bag-8478081/",
+  "photographer": "Yaroslav Shuraev",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 3.24,
+  "muted": true
+ },
+ {
+  "name": "bag-shadow",
+  "subject": "shadow of a boxer hitting a heavy bag, cast on a wall",
+  "who": "a young woman",
+  "tags": [
+   "heavy bag",
+   "shadow",
+   "silhouette",
+   "graphic",
+   "static",
+   "blue",
+   "dark"
+  ],
+  "v": "bag-shadow-v.mp4",
+  "v_poster": "bag-shadow-v.jpg",
+  "sq": "bag-shadow-sq.mp4",
+  "sq_poster": "bag-shadow-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.44,
+  "fps": 25,
+  "frames": 86,
+  "strike": 1.12,
+  "focal_v": "65% 55%",
+  "focal_sq": "50% 55%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "8473160",
+  "url": "https://www.pexels.com/video/boxer-punching-a-bag-8473160/",
+  "photographer": "Yaroslav Shuraev",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 7.52,
+  "muted": true
+ },
+ {
+  "name": "pads-guard",
+  "subject": "combination into focus pads held by a coach",
+  "who": "a young woman",
+  "tags": [
+   "pads",
+   "coach",
+   "combination",
+   "window light",
+   "cool",
+   "hijab"
+  ],
+  "v": "pads-guard-v.mp4",
+  "v_poster": "pads-guard-v.jpg",
+  "sq": "pads-guard-sq.mp4",
+  "sq_poster": "pads-guard-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.8,
+  "fps": 25,
+  "frames": 95,
+  "strike": 1.44,
+  "focal_v": "50% 50%",
+  "focal_sq": "55% 50%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "8745658",
+  "url": "https://www.pexels.com/video/a-woman-punching-while-wearing-her-sparring-gloves-8745658/",
+  "photographer": "Ron Lach",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 0.96,
+  "muted": true
+ },
+ {
+  "name": "pads-below",
+  "subject": "gloves snapping into focus pads, shot from below",
+  "who": "a young woman",
+  "tags": [
+   "pads",
+   "gloves",
+   "low angle",
+   "close up",
+   "graphic",
+   "grey"
+  ],
+  "v": "pads-below-v.mp4",
+  "v_poster": "pads-below-v.jpg",
+  "sq": "pads-below-sq.mp4",
+  "sq_poster": "pads-below-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.92,
+  "fps": 25,
+  "frames": 98,
+  "strike": 0.9,
+  "focal_v": "60% 45%",
+  "focal_sq": "50% 55%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "8469962",
+  "url": "https://www.pexels.com/video/women-doing-boxing-8469962/",
+  "photographer": "Yaroslav Shuraev",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 10.08,
+  "muted": true
+ },
+ {
+  "name": "cross-cam",
+  "subject": "cross thrown across the lens, handheld and close",
+  "who": "a young man",
+  "tags": [
+   "cross",
+   "toward camera",
+   "handheld",
+   "close up",
+   "teal",
+   "dark"
+  ],
+  "v": "cross-cam-v.mp4",
+  "v_poster": "cross-cam-v.jpg",
+  "sq": "cross-cam-sq.mp4",
+  "sq_poster": "cross-cam-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.708,
+  "fps": 24,
+  "frames": 89,
+  "strike": 1.62,
+  "focal_v": "55% 45%",
+  "focal_sq": "55% 45%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "9945106",
+  "url": "https://www.pexels.com/video/a-man-doing-boxing-training-9945106/",
+  "photographer": "KoolShooters",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 7.5,
+  "muted": true
+ },
+ {
+  "name": "shadow-low",
+  "subject": "shadowboxing shot from the floor up",
+  "who": "a young man",
+  "tags": [
+   "shadowboxing",
+   "low angle",
+   "hand wraps",
+   "teal",
+   "red"
+  ],
+  "v": "shadow-low-v.mp4",
+  "v_poster": "shadow-low-v.jpg",
+  "sq": "shadow-low-sq.mp4",
+  "sq_poster": "shadow-low-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 5.04,
+  "fps": 25,
+  "frames": 126,
+  "strike": 1.08,
+  "focal_v": "50% 55%",
+  "focal_sq": "50% 60%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "5752500",
+  "url": "https://www.pexels.com/video/man-throwing-punches-in-the-air-5752500/",
+  "photographer": "Tima Miroshnichenko",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 10.24,
+  "muted": true
+ },
+ {
+  "name": "bag-dark",
+  "subject": "heavy bag work in a dim gym",
+  "who": "a young man",
+  "tags": [
+   "heavy bag",
+   "low light",
+   "back view",
+   "red gloves",
+   "dark"
+  ],
+  "v": "bag-dark-v.mp4",
+  "v_poster": "bag-dark-v.jpg",
+  "sq": "bag-dark-sq.mp4",
+  "sq_poster": "bag-dark-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 4.417,
+  "fps": 24,
+  "frames": 106,
+  "strike": 0.62,
+  "focal_v": "50% 55%",
+  "focal_sq": "45% 50%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "9943228",
+  "url": "https://www.pexels.com/video/a-boxer-punching-a-heavy-bag-9943228/",
+  "photographer": "KoolShooters",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 5.792,
+  "muted": true
+ },
+ {
+  "name": "pads-window",
+  "subject": "pad work silhouetted against a bright window",
+  "who": "a young woman and her coach",
+  "tags": [
+   "pads",
+   "coach",
+   "silhouette",
+   "backlit",
+   "haze",
+   "wide",
+   "static"
+  ],
+  "v": "pads-window-v.mp4",
+  "v_poster": "pads-window-v.jpg",
+  "sq": "pads-window-sq.mp4",
+  "sq_poster": "pads-window-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.88,
+  "fps": 25,
+  "frames": 97,
+  "strike": 1.32,
+  "focal_v": "55% 50%",
+  "focal_sq": "55% 55%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "4753941",
+  "url": "https://www.pexels.com/video/two-people-are-boxing-in-a-gym-4753941/",
+  "photographer": "cottonbro studio",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 4.0,
+  "muted": true
+ },
+ {
+  "name": "bag-duo",
+  "subject": "two boxers hammering heavy bags in low light",
+  "who": "two young men",
+  "tags": [
+   "heavy bag",
+   "low light",
+   "contrasty",
+   "handheld",
+   "close up",
+   "dark"
+  ],
+  "v": "bag-duo-v.mp4",
+  "v_poster": "bag-duo-v.jpg",
+  "sq": "bag-duo-sq.mp4",
+  "sq_poster": "bag-duo-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.64,
+  "fps": 25,
+  "frames": 91,
+  "strike": 1.32,
+  "focal_v": "50% 60%",
+  "focal_sq": "45% 60%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "4761811",
+  "url": "https://www.pexels.com/video/two-men-are-boxing-in-a-boxing-ring-4761811/",
+  "photographer": "cottonbro studio",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 9.28,
+  "muted": true
+ },
+ {
+  "name": "gloves-pov",
+  "subject": "punches thrown straight at the lens from the bag's point of view",
+  "who": "a young man",
+  "tags": [
+   "toward camera",
+   "gloves",
+   "point of view",
+   "gym",
+   "silver"
+  ],
+  "v": "gloves-pov-v.mp4",
+  "v_poster": "gloves-pov-v.jpg",
+  "sq": "gloves-pov-sq.mp4",
+  "sq_poster": "gloves-pov-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 4.583,
+  "fps": 24,
+  "frames": 110,
+  "strike": 1.2,
+  "focal_v": "50% 65%",
+  "focal_sq": "55% 65%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "8810052",
+  "url": "https://www.pexels.com/video/a-boxer-hitting-a-punching-bag-8810052/",
+  "photographer": "Los Muertos Crew",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 6.75,
+  "muted": true
+ },
+ {
+  "name": "shadow-bars",
+  "subject": "shadowboxing at the lens in front of white wall bars",
+  "who": "a young man",
+  "tags": [
+   "shadowboxing",
+   "toward camera",
+   "hand wraps",
+   "high contrast",
+   "static"
+  ],
+  "v": "shadow-bars-v.mp4",
+  "v_poster": "shadow-bars-v.jpg",
+  "sq": "shadow-bars-sq.mp4",
+  "sq_poster": "shadow-bars-sq.jpg",
+  "v_size": [
+   720,
+   1280
+  ],
+  "sq_size": [
+   1080,
+   1080
+  ],
+  "duration": 3.2,
+  "fps": 25,
+  "frames": 80,
+  "strike": 2.28,
+  "focal_v": "45% 55%",
+  "focal_sq": "50% 60%",
+  "loop": "crossfade seam: the last 0.4 to 0.5 s dissolves into the frames just before the first frame, so the wrap is continuous",
+  "source": "Pexels",
+  "id": "4806552",
+  "url": "https://www.pexels.com/video/a-man-shadow-boxing-in-a-gym-4806552/",
+  "photographer": "Ketut Subiyanto",
+  "licence": "Pexels License (free for commercial use, no attribution required)",
+  "source_in": 0.6,
+  "muted": true
+ }
+]

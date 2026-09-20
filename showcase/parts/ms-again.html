@@ -1,0 +1,58 @@
+<!-- Machine: Punch again, the next move that closes every Results screen after the Result. Round nine gave the Big score
+     (parts/mscreen-score.html), New record (parts/mscreen-record.html) and Your run (parts/mscreen-stats.html) this
+     section of their own, at the foot of the
+     frame above the sponsor strip, 200 px of room, so the number above it keeps all of its own. The five designs follow
+     the Result's Punch again (sections/cta.html) one to one, so the next move reads the same on every Results screen:
+       Full button, Button pair, Countdown, Code handoff, Big pad
+     Styled in mscreens/_again.css (the Result's .cta slab itself for the Full button); each screen's own script plays
+     the shown design in on its beat (.is-play, --sd) and leaves it standing under reduced motion. The glass takes no
+     touch, so nothing here is a button: the red slab names the move the machine's pad makes. -->
+<section class="ag-sec" data-sec="again" data-sec-label="Punch again" aria-label="Punch again">
+  <div class="ag ag-full" data-sv="Full button">
+    <p class="cta">Punch again</p>
+  </div>
+  <div class="ag ag-pair" data-sv="Button pair" hidden>
+    <p class="display strike-fill ag-play"><span class="ag-word">Punch again</span></p>
+    <div class="surface ag-save">
+      <span class="ag-ico" data-lucide="circle-check" data-lucide-stroke="1.5" aria-hidden="true"></span>
+      <span class="ag-save-t"><span class="label ag-save-cap">On your phone</span><span class="text ag-say">Replay and score saved</span></span>
+    </div>
+  </div>
+  <div class="ag ag-clock" data-sv="Countdown" hidden>
+    <p class="label ag-next">Next player in</p>
+    <p class="display strike-fill ag-play"><span class="ag-word">Punch again</span></p>
+    <div class="ag-dial" role="img" aria-label="12 seconds left">
+      <svg class="ag-ring" viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="ag-ring-track" cx="100" cy="100" r="86" pathLength="100"/>
+        <circle class="ag-ring-left" cx="100" cy="100" r="86" pathLength="100"/>
+      </svg>
+      <p class="ag-read" aria-hidden="true"><span class="display ag-num">12</span><span class="label ag-unit">sec</span></p>
+    </div>
+  </div>
+  <div class="ag ag-code" data-sv="Code handoff" hidden>
+    <p class="display strike-fill ag-play"><span class="ag-word">Punch again</span></p>
+    <div class="ag-hand">
+      <div class="ag-qr" data-pqr data-pqr-glow="off" data-pqr-label="Scan to keep this hit"></div>
+      <div class="ag-copy">
+        <p class="text ag-keep">Scan to keep this hit</p>
+        <p class="display ag-codeword">KTR BXM</p>
+      </div>
+    </div>
+  </div>
+  <div class="ag ag-pad" data-sv="Big pad" hidden>
+    <div class="ag-band">
+      <span class="ag-waves" aria-hidden="true"></span>
+      <div class="ag-padbox">
+        <svg class="ag-rings" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="99"/>
+          <circle cx="100" cy="100" r="88.5"/>
+        </svg>
+        <p class="strike-fill ag-core" role="img" aria-label="Punch again">
+          <svg class="ag-stitch" viewBox="0 0 156 156" aria-hidden="true"><circle cx="78" cy="78" r="65"/></svg>
+          <svg class="ag-again" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        </p>
+      </div>
+      <p class="label ag-hit">Hit to punch again</p>
+    </div>
+  </div>
+</section>

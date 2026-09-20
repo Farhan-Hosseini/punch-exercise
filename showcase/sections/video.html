@@ -1,0 +1,118 @@
+<div class="var v-a" data-name="Cinema player">
+  <div class="player photo-frame">
+    <video class="photo rv" src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" data-strike="1.2" data-dur="4.08" aria-label="Replay of Sara's hit on the heavy bag"></video>
+    <div class="timeline">
+      <div class="time-row"><span class="in-arena" data-rv-time>0:01 / 0:04</span><span class="in-ref" data-rv-time="long">00:01 / 00:04</span><b>Replay</b></div>
+      <div class="track"><span class="progress"></span></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="var v-d" data-name="Cinema">
+  <div class="video-d-scope photo-frame" data-bleed>
+    <video class="photo rv" src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" data-strike="1.2" data-dur="4.08" aria-label="Replay of Sara's hit on the heavy bag, full width"></video>
+    <div class="video-d-scrim"></div>
+    <p class="video-d-bar video-d-top"><span class="label video-d-cap">Sara</span><span class="label video-d-cap">Dubai Mall, Ground Level</span></p>
+    <p class="display video-d-title">Watch it land</p>
+    <div class="video-d-bar video-d-bottom">
+      <div class="video-d-line"><span class="video-d-fill strike-fill"></span></div>
+      <p class="video-d-row"><span class="text video-d-time" data-rv-time>0:01 / 0:04</span><span class="label video-d-replay">Replay</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Reel and contact (was Wind up and contact, two stills): the reel runs on the left, the moment of contact is held on
+     the right (the reel's strike frame), cut apart on the slant; the line beneath follows the reel -->
+<div class="var v-e" data-name="Reel and contact">
+  <div class="video-e-wrap">
+    <div class="video-e-pair">
+      <figure class="video-e-shot video-e-windup photo-frame">
+        <video class="photo rv" src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" data-strike="1.2" data-dur="4.08" aria-label="Replay of Sara's hit on the heavy bag"></video>
+      </figure>
+      <figure class="video-e-shot video-e-hit photo-frame">
+        <img class="photo" src="assets/video/lib/bag-backlit-sq.jpg" alt="The moment Sara's glove lands on the bag" width="1080" height="1080" decoding="async">
+      </figure>
+      <p class="label video-e-stamp video-e-stamp-a">Replay</p>
+      <p class="display video-e-stamp video-e-stamp-b">Contact</p>
+    </div>
+    <div class="video-e-time">
+      <div class="video-e-line"><span class="video-e-fill strike-fill"></span></div>
+      <p class="video-e-ends"><span class="text" data-rv-now>0:01</span><span class="text" data-rv-dur>0:04</span></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Watch performance (round nine review): "the hit is not an image, it's a video reel of the punch, which also autoplays".
+   The playback of the attempt is Sara's own reel from the punch video library (assets/video/lib, bag-backlit, the clip
+   the Big score and New record play for her), muted, looping, inline, poster first (the poster is the strike frame).
+   A reel plays while the Result is the machine's screen, its design is the one on show and the glass is in view,
+   from the moment the score has landed; reduced motion never plays it, so the strike frame stands. The glass takes no
+   touch, so there is no play key: the reel simply runs, and the time, the progress and the Filmstrip's lit frame follow
+   it. Phone clip plays at half speed (data-rate). */
+(() => {
+  const sec = document.querySelector('.s-video')
+  if (!sec) return
+  const vids = [...sec.querySelectorAll('video.rv')]
+  const machine = document.getElementById('machine')
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const LAND = 1900 // the count lands (app.js countUp: 1300 ms, then the decimals' 520)
+  let startAt = 0
+  const fmt = (s, long) => {
+    const n = Math.max(0, Math.floor(s + 1e-3)), m = Math.floor(n / 60), r = String(n % 60).padStart(2, '0')
+    return (long ? String(m).padStart(2, '0') : String(m)) + ':' + r
+  }
+  const dur = (v) => (v.duration > 0 && isFinite(v.duration) ? v.duration : Number(v.dataset.dur) || 1)
+  // the design's time, progress and lit frame at time t of the reel
+  function paint(v) {
+    const d = dur(v), strike = Number(v.dataset.strike) || 0
+    const t = !reduced.matches && v.played && v.played.length ? v.currentTime : strike
+    const box = v.closest('.var')
+    box.style.setProperty('--rv', Math.max(0, Math.min(1, t / d)).toFixed(4))
+    box.querySelectorAll('[data-rv-time]').forEach((el) => {
+      const long = el.dataset.rvTime === 'long', s = fmt(t, long) + ' / ' + fmt(Math.round(d), long)
+      if (el.textContent !== s) el.textContent = s
+    })
+    box.querySelectorAll('[data-rv-now]').forEach((el) => { const s = fmt(t); if (el.textContent !== s) el.textContent = s })
+    box.querySelectorAll('[data-rv-dur]').forEach((el) => { const s = fmt(Math.round(d)); if (el.textContent !== s) el.textContent = s })
+    const film = [...box.querySelectorAll('[data-t]')]
+    if (film.length) {
+      let best = null, bd = Infinity
+      film.forEach((f) => { const d0 = Math.abs(Number(f.dataset.t) - t), dd = Math.min(d0, d - d0); if (dd < bd) { bd = dd; best = f } })
+      film.forEach((f) => f.classList.toggle('is-now', f === best))
+    }
+  }
+  function drive(v) {
+    const go = !reduced.matches && !document.hidden && machine && machine.dataset.mscreen === 'result' &&
+      performance.now() >= startAt && v._seen !== false && v.checkVisibility()
+    v.muted = true
+    const rate = Number(v.dataset.rate) || 1
+    if (v.playbackRate !== rate) { v.defaultPlaybackRate = rate; v.playbackRate = rate }
+    // (no seeking: the showcase server answers without byte ranges, so a reel cannot be seeked, only played through)
+    if (go && v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}) }
+    else if (!go && !v.paused) v.pause()
+  }
+  const seen = window.IntersectionObserver ? new IntersectionObserver((entries) => {
+    for (const en of entries) { en.target._seen = en.isIntersecting; drive(en.target) }
+  }) : null
+  vids.forEach((v) => { if (seen) seen.observe(v); paint(v) })
+  const all = () => vids.forEach((v) => { drive(v); paint(v) })
+  // the Result opens: the reel holds until the score has landed, then runs
+  document.addEventListener('mscreen', (e) => {
+    if (e.detail.key !== 'result') { all(); return }
+    startAt = performance.now() + (reduced.matches ? 0 : LAND)
+    vids.forEach((v) => v.pause())
+    all()
+    setTimeout(all, LAND + 20)
+  })
+  // a design switch, a look change or the glass scrolled: checked a few times a second; the progress on every frame the
+  // reel is playing
+  setInterval(all, 300)
+  const frame = () => { vids.forEach((v) => { if (!v.paused) paint(v) }); requestAnimationFrame(frame) }
+  requestAnimationFrame(frame)
+  if (reduced.addEventListener) reduced.addEventListener('change', all)
+  document.addEventListener('visibilitychange', all)
+})()
+</script>

@@ -1,0 +1,86 @@
+<div class="var v-b" data-name="List">
+  <ol class="rp-b">
+    <li class="surface rp-b-row">
+      <img class="rp-ava" src="assets/app/avatars/omar.jpg" alt="" width="192" height="192" decoding="async">
+      <div class="rp-who"><p class="text rp-name">Omar Nasser</p><p class="label rp-when">2 min ago</p></div>
+      <p class="display rp-score" data-rp-score="874215.306">874,215<span class="dec">.306</span></p>
+    </li>
+    <li class="surface rp-b-row">
+      <img class="rp-ava" src="assets/app/avatars/leila.jpg" alt="" width="256" height="256" decoding="async">
+      <div class="rp-who"><p class="text rp-name">Leila Haddad</p><p class="label rp-when">7 min ago</p></div>
+      <p class="display rp-score" data-rp-score="801662.470">801,662<span class="dec">.470</span></p>
+    </li>
+    <li class="surface rp-b-row">
+      <img class="rp-ava" src="assets/app/avatars/karim.jpg" alt="" width="256" height="256" decoding="async">
+      <div class="rp-who"><p class="text rp-name">Karim Mansour</p><p class="label rp-when">12 min ago</p></div>
+      <p class="display rp-score" data-rp-score="768904.118">768,904<span class="dec">.118</span></p>
+    </li>
+  </ol>
+</div>
+<!-- Result: Recent punches (round nine; was "Slo-mo replay clips", key kept as "clips" so saved choices hold). Other
+     players' punches at this machine, newest first: avatar or photo, name, score, when. Scores go through
+     window.PunchFormat (the script at the foot), so the Score format control applies. Reference shows the first design
+     only, in its own frame (styles in sections/clips.css). -->
+<div class="var v-a" data-name="Photo cards">
+  <ol class="rp-a">
+    <li class="surface rp-a-card">
+      <div class="rp-a-shot photo-frame"><img class="photo" src="assets/photos/lib/fist-strike-11.jpg" alt="" width="1800" height="1200" decoding="async" style="object-position: 58% 40%"><span class="label rp-chip">2 min ago</span><p class="text rp-name"><span class="in-arena">Omar Nasser</span><span class="in-ref">Omar</span></p></div>
+      <p class="display rp-score" data-rp-score="874215.306">874,215<span class="dec">.306</span></p>
+    </li>
+    <li class="surface rp-a-card">
+      <div class="rp-a-shot photo-frame"><img class="photo" src="assets/photos/lib/fist-strike-39.jpg" alt="" width="1800" height="1200" decoding="async" style="object-position: 62% 40%"><span class="label rp-chip">7 min ago</span><p class="text rp-name"><span class="in-arena">Leila Haddad</span><span class="in-ref">Leila</span></p></div>
+      <p class="display rp-score" data-rp-score="801662.470">801,662<span class="dec">.470</span></p>
+    </li>
+    <li class="surface rp-a-card">
+      <div class="rp-a-shot photo-frame"><img class="photo" src="assets/photos/lib/fist-strike-33.jpg" alt="" width="1800" height="1200" decoding="async" style="object-position: 45% 40%"><span class="label rp-chip">12 min ago</span><p class="text rp-name"><span class="in-arena">Karim Mansour</span><span class="in-ref">Karim</span></p></div>
+      <p class="display rp-score" data-rp-score="768904.118">768,904<span class="dec">.118</span></p>
+    </li>
+  </ol>
+</div>
+
+
+<div class="var v-c" data-name="Latest first">
+  <div class="rp-c">
+    <figure class="rp-c-lead photo-frame">
+      <img class="photo" src="assets/photos/lib/fist-strike-11.jpg" alt="" width="1800" height="1200" decoding="async" style="object-position: 58% 40%">
+      <span class="label rp-chip">2 min ago</span>
+      <figcaption class="rp-c-cap"><span class="text rp-name">Omar Nasser</span><span class="display rp-score" data-rp-score="874215.306">874,215<span class="dec">.306</span></span></figcaption>
+    </figure>
+    <ol class="rp-c-list">
+      <li class="surface rp-c-row">
+        <img class="rp-ava" src="assets/app/avatars/leila.jpg" alt="" width="256" height="256" decoding="async">
+        <div class="rp-who"><p class="text rp-name">Leila</p><p class="label rp-when">7 min ago</p></div>
+        <p class="display rp-score" data-rp-score="801662.470">801,662<span class="dec">.470</span></p>
+      </li>
+      <li class="surface rp-c-row">
+        <img class="rp-ava" src="assets/app/avatars/karim.jpg" alt="" width="256" height="256" decoding="async">
+        <div class="rp-who"><p class="text rp-name">Karim</p><p class="label rp-when">12 min ago</p></div>
+        <p class="display rp-score" data-rp-score="768904.118">768,904<span class="dec">.118</span></p>
+      </li>
+      <li class="surface rp-c-row">
+        <img class="rp-ava" src="assets/app/avatars/noor.jpg" alt="" width="256" height="256" decoding="async">
+        <div class="rp-who"><p class="text rp-name">Noor</p><p class="label rp-when">18 min ago</p></div>
+        <p class="display rp-score" data-rp-score="912387.054">912,387<span class="dec">.054</span></p>
+      </li>
+    </ol>
+  </div>
+</div>
+
+
+
+<script>
+/* Recent punches: every score on the section through PunchFormat once the page is up, and again when the score format
+   changes (the Customise control sends "decimals") */
+(() => {
+  const paint = () => {
+    if (!window.PunchFormat) return
+    document.querySelectorAll('.s-clips [data-rp-score]').forEach((el) => {
+      const html = window.PunchFormat.scoreHTML(Number(el.dataset.rpScore))
+      if (el.innerHTML !== html) el.innerHTML = html
+    })
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', paint)
+  else paint()
+  document.addEventListener('decimals', paint)
+})()
+</script>

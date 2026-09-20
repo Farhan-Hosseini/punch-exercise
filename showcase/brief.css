@@ -1,0 +1,302 @@
+/* The brief drawer: the task PunchApp gave, readable from the top left of the showcase.
+   Every rule is scoped to .brief. The panel is a paper sheet set in the brief's own neutrals,
+   so it reads the same over the dark and the light appearance; only the scrim changes. */
+
+.brief {
+  /* the brief's own palette: Neutrals 50 to 900 and Primary 600 */
+  --bf-paper: #faf9f9;
+  --bf-paper-2: #f3f0ee;
+  --bf-ink: #221e1d;
+  --bf-ink-2: #453c3a;
+  --bf-mute: #685e5b;
+  --bf-line: #dcd2d0;
+  --bf-line-soft: #ebe6e4;
+  --bf-dot: #ae9892;
+  --bf-red: #bc0d0c;
+  --bf-scrim: rgba(8, 7, 7, .62);
+  --bf-dark-chip: #221e1d;
+  --bf-light-chip: #dcd2d0;
+  --bf-pad: 32px;
+  --bf-ease: cubic-bezier(.2, .7, .2, 1);
+
+  position: fixed; inset: 0; z-index: 55;
+  color-scheme: light;
+  font-family: "Barlow", ui-sans-serif, system-ui, sans-serif;
+}
+:root[data-appearance="light"] .brief { --bf-scrim: rgba(34, 30, 29, .42); }
+
+/* ------------------------------------------------------------ scrim and sheet */
+.brief .brief-scrim {
+  position: absolute; inset: 0;
+  background: var(--bf-scrim);
+  opacity: 0;
+  transition: opacity .35s ease;
+  cursor: pointer;
+}
+.brief.is-open .brief-scrim { opacity: 1; }
+
+.brief .brief-panel {
+  position: absolute; top: 12px; left: 12px; bottom: 12px;
+  width: min(560px, calc(100vw - 24px));
+  display: flex; flex-direction: column;
+  background: var(--bf-paper); color: var(--bf-ink);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(34, 30, 29, .08), 30px 0 80px -30px rgba(0, 0, 0, .55);
+  transform: translateX(calc(-100% - 24px));
+  transition: transform .45s var(--bf-ease);
+}
+.brief.is-open .brief-panel { transform: none; }
+
+/* resets carry zero specificity so every rule below wins */
+:where(.brief) :where(h2, h3, h4, h5, p, ul, dl, dd) { margin: 0; padding: 0; }
+:where(.brief) :where(ul) { list-style: none; }
+:where(.brief) :where(code) { font: inherit; }
+.brief :focus-visible { outline: 2px solid var(--bf-ink); outline-offset: 3px; }
+
+/* ------------------------------------------------------------ header */
+.brief .bf-head {
+  flex: none;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+  padding: 26px 20px 20px var(--bf-pad);
+  border-bottom: 1px solid var(--bf-line);
+}
+.brief .bf-from {
+  font: 600 12.5px/1 "Barlow Condensed", sans-serif; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--bf-mute);
+}
+.brief #briefTitle {
+  margin-top: 10px;
+  font: 700 42px/.95 "Barlow Condensed", sans-serif; letter-spacing: .005em; text-transform: uppercase;
+  color: var(--bf-ink);
+}
+.brief .bf-role { margin-top: 8px; font: 500 15px/1.35 "Barlow", sans-serif; color: var(--bf-ink-2); }
+.brief .bf-close {
+  appearance: none; border: 0; cursor: pointer; flex: none;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--bf-paper-2); color: var(--bf-ink);
+  box-shadow: inset 0 0 0 1px var(--bf-line-soft);
+  transition: background-color .15s ease;
+}
+.brief .bf-close:hover { background: var(--bf-line-soft); }
+
+/* ------------------------------------------------------------ the one element that scrolls */
+.brief .bf-scroll {
+  flex: 1; min-height: 0;
+  overflow-y: auto; overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: rgba(34, 30, 29, .28) transparent;
+}
+.brief .bf-scroll:focus-visible { outline: 2px solid var(--bf-ink); outline-offset: -4px; border-radius: 0 0 24px 24px; }
+.brief .bf-doc { padding: 4px var(--bf-pad) var(--bf-pad); }
+
+/* ------------------------------------------------------------ type */
+.brief .bf-sec { padding: 28px 0 30px; }
+.brief .bf-sec + .bf-sec { border-top: 1px solid var(--bf-line-soft); }
+.brief h3 {
+  font: 700 24px/1 "Barlow Condensed", sans-serif; letter-spacing: .01em; text-transform: uppercase;
+  color: var(--bf-ink);
+  margin-bottom: 14px;
+}
+.brief h4 {
+  font: 700 15px/1.3 "Barlow", sans-serif; color: var(--bf-ink);
+  margin: 22px 0 10px;
+}
+.brief h3 + h4 { margin-top: 0; }
+.brief h5 {
+  font: 600 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--bf-mute);
+}
+.brief .bf-sec p { font: 400 16px/1.6 "Barlow", sans-serif; color: var(--bf-ink-2); max-width: 62ch; }
+.brief .bf-sec p + p { margin-top: 12px; }
+.brief strong { font-weight: 600; color: var(--bf-ink); }
+.brief .bf-sec p.bf-aside { margin-top: 10px; font: 500 13.5px/1.45 "Barlow", sans-serif; color: var(--bf-mute); }
+
+/* bulleted lists */
+.brief .bf-list { display: grid; gap: 8px; }
+.brief .bf-list li {
+  position: relative; padding-left: 20px;
+  font: 400 16px/1.5 "Barlow", sans-serif; color: var(--bf-ink-2);
+}
+.brief .bf-list li::before {
+  content: ""; position: absolute; left: 2px; top: .62em;
+  width: 6px; height: 6px; border-radius: 1px; background: var(--bf-dot);
+}
+
+/* ruled rows: the constraints and the deliverables */
+.brief .bf-rows { border-top: 1px solid var(--bf-line-soft); }
+.brief .bf-rows li {
+  padding: 11px 0 12px;
+  border-bottom: 1px solid var(--bf-line-soft);
+  font: 400 16px/1.5 "Barlow", sans-serif; color: var(--bf-ink-2);
+  font-variant-numeric: tabular-nums;
+}
+/* a list that ends its section hands the closing rule to the next section's own top rule */
+.brief .bf-sec > .bf-rows:last-child > li:last-child { border-bottom: 0; }
+.brief .bf-leads strong { font-weight: 700; }
+
+/* the brief left touch open; show it as sent, marked as a gap */
+.brief .bf-open {
+  padding: 1px 5px; border-radius: 4px;
+  background: #fffae7; color: #6e5a10;
+  box-shadow: inset 0 0 0 1px #e7d58f;
+  font-weight: 600; white-space: nowrap;
+}
+
+/* ------------------------------------------------------------ design tokens */
+.brief .bf-group + .bf-group { margin-top: 30px; }
+.brief .bf-group > h4 { margin: 0 0 14px; }
+.brief .bf-ramp-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin: 18px 0 10px;
+}
+.brief .bf-group > h4 + .bf-ramp-head { margin-top: 0; }
+.brief code, .brief .bf-num {
+  font: 500 12.5px/1.2 "Barlow", sans-serif; font-variant-numeric: tabular-nums; letter-spacing: .01em;
+  color: var(--bf-mute);
+}
+
+.brief .bf-sec p.bf-specimen {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 20px;
+  padding: 18px 20px; border-radius: 14px;
+  background: var(--bf-ink); color: var(--bf-paper);
+  max-width: none;
+}
+.brief .bf-specimen span { font-family: "Orbitron", "Arial Black", Arial, sans-serif; line-height: 1; letter-spacing: .02em; }
+.brief .bf-specimen .w9 { font-weight: 900; font-size: 30px; }
+.brief .bf-specimen .w7 { font-weight: 700; font-size: 20px; color: #ccbfbb; }
+.brief .bf-font { margin-top: 12px; border-top: 1px solid var(--bf-line-soft); }
+.brief .bf-font > div {
+  display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 12px; align-items: baseline;
+  padding: 9px 0; border-bottom: 1px solid var(--bf-line-soft);
+}
+.brief .bf-font dt { font: 600 13px/1.3 "Barlow Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--bf-mute); }
+.brief .bf-font dt code { text-transform: none; letter-spacing: .01em; font-size: 13px; color: var(--bf-ink); font-weight: 600; }
+.brief .bf-font dd { font: 400 14.5px/1.4 "Barlow", sans-serif; color: var(--bf-ink-2); overflow-wrap: anywhere; }
+.brief .bf-font dd.bf-num { font-size: 14.5px; color: var(--bf-ink-2); }
+
+/* swatch tiles, five to a row */
+.brief .bf-ramp { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px 8px; }
+.brief .bf-ramp li, .brief .bf-fam li { display: grid; gap: 3px; min-width: 0; }
+.brief .bf-chip {
+  display: block; height: 44px; border-radius: 10px; margin-bottom: 4px;
+  background: var(--c);
+  box-shadow: inset 0 0 0 1px rgba(34, 30, 29, .1);
+}
+.brief .bf-ramp b, .brief .bf-fam b {
+  font: 600 13px/1.1 "Barlow Condensed", sans-serif; letter-spacing: .04em; color: var(--bf-ink);
+  font-variant-numeric: tabular-nums;
+}
+.brief .is-repeat .bf-chip { box-shadow: inset 0 0 0 1px rgba(34, 30, 29, .1), inset 0 0 0 3px var(--bf-paper); }
+.brief .is-repeat b::after { content: " repeat"; font-weight: 500; color: var(--bf-mute); letter-spacing: .02em; }
+
+/* supportive colours, one family to a column */
+.brief .bf-fams { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.brief .bf-fam h5 { margin-bottom: 10px; }
+.brief .bf-fam ul { display: grid; gap: 12px; }
+.brief .bf-fam .bf-chip { height: 36px; }
+
+/* opacity scales over a dark chip and a light chip */
+.brief .bf-op {
+  display: grid; grid-template-columns: 64px repeat(8, minmax(0, 1fr));
+  gap: 4px; align-items: center;
+}
+.brief .bf-op-row { font: 600 12.5px/1.1 "Barlow Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--bf-mute); }
+.brief .bf-op i {
+  display: block; height: 34px; border-radius: 7px;
+  background: linear-gradient(rgb(var(--rgb) / var(--a)), rgb(var(--rgb) / var(--a))), var(--bf-dark-chip);
+}
+.brief .bf-op i.on-light { background: linear-gradient(rgb(var(--rgb) / var(--a)), rgb(var(--rgb) / var(--a))), var(--bf-light-chip); }
+.brief .bf-op b {
+  padding-top: 3px; text-align: center;
+  font: 600 12.5px/1 "Barlow Condensed", sans-serif; font-variant-numeric: tabular-nums; color: var(--bf-ink);
+}
+.brief .bf-op + .bf-ramp-head { margin-top: 22px; }
+
+/* ------------------------------------------------------------ how this showcase answers it */
+.brief .bf-answer {
+  margin-top: 8px;
+  padding: 28px 24px 12px;
+  border-radius: 18px;
+  background: var(--bf-ink); color: var(--bf-paper);
+}
+.brief .bf-answer h3 { color: var(--bf-paper); margin-bottom: 10px; }
+.brief .bf-answer-lede { font: 400 15.5px/1.5 "Barlow", sans-serif; color: #ccbfbb; max-width: 52ch; }
+.brief .bf-where { padding: 22px 0 20px; }
+.brief .bf-where + .bf-where { border-top: 1px solid rgba(250, 249, 249, .14); }
+.brief .bf-where h4 {
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 0 12px;
+  font: 600 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .14em; text-transform: uppercase;
+  color: #ccbfbb;
+}
+/* each answer carries the icon of the showcase mode it opens, the same Lucide marks as the top bar */
+.brief .bf-where h4 .bf-ico { flex: none; color: var(--bf-paper); }
+.brief .bf-ico { display: block; flex: none; }
+.brief .bf-where ul { display: grid; gap: 12px; }
+.brief .bf-where li { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 14px; align-items: baseline; }
+.brief .bf-where li b { font: 600 15px/1.35 "Barlow", sans-serif; color: var(--bf-paper); }
+.brief .bf-where li span { font: 400 15px/1.45 "Barlow", sans-serif; color: #dcd2d0; }
+.brief .bf-go {
+  appearance: none; border: 0; cursor: pointer;
+  margin-top: 18px; height: 44px; padding: 0 16px 0 18px; border-radius: 12px;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--bf-paper); color: var(--bf-ink);
+  font: 700 14.5px/1 "Barlow", sans-serif;
+  transition: background-color .15s ease, color .15s ease;
+}
+.brief .bf-go svg { transition: transform .2s var(--bf-ease); }
+.brief .bf-go:hover { background: var(--bf-red); color: #FFFFFF; }
+.brief .bf-go:hover svg { transform: translateX(2px); }
+.brief .bf-answer :focus-visible { outline-color: var(--bf-paper); }
+
+/* ------------------------------------------------------------ phones: the sheet takes the whole screen */
+@media (max-width: 640px) {
+  .brief { --bf-pad: 20px; }
+  .brief .brief-panel { top: 0; left: 0; bottom: 0; width: 100%; border-radius: 0; box-shadow: none; transform: translateX(-100%); }
+  .brief .bf-head { padding: 18px 12px 16px var(--bf-pad); }
+  .brief #briefTitle { font-size: 36px; }
+  .brief .bf-scroll:focus-visible { border-radius: 0; }
+  .brief .bf-ramp { gap: 12px 6px; }
+  .brief .bf-chip { height: 36px; border-radius: 8px; }
+  .brief .bf-ramp code { font-size: 11.5px; letter-spacing: 0; }
+  .brief .bf-fams { gap: 10px; }
+  .brief .bf-fam code { font-size: 11.5px; letter-spacing: 0; }
+  .brief .bf-op { grid-template-columns: 50px repeat(8, minmax(0, 1fr)); gap: 3px; }
+  .brief .bf-op-row { font-size: 11.5px; letter-spacing: .03em; }
+  .brief .bf-op i { height: 28px; border-radius: 5px; }
+  .brief .bf-font > div { grid-template-columns: 1fr; gap: 2px; }
+  .brief .bf-answer { padding: 24px 18px 8px; margin-inline: -4px; }
+  .brief .bf-where li { grid-template-columns: 1fr; gap: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brief .brief-panel { transform: none; opacity: 0; transition: opacity .2s linear !important; }
+  .brief.is-open .brief-panel { opacity: 1; }
+  .brief .brief-scrim { transition: opacity .2s linear !important; }
+}
+
+/* ------------------------------------------------------------ the answers: a jump from the top, and a row of ways in under each */
+.brief .bf-jumpline { margin: 0 0 8px; }
+.brief .bf-jump {
+  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 10px;
+  background: var(--bf-ink); color: var(--bf-paper); text-decoration: none;
+  font: 700 14px/1 "Barlow", sans-serif;
+}
+.brief .bf-jump::after { content: ""; width: 7px; height: 7px; margin-top: -4px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
+.brief .bf-jump:hover { background: var(--bf-red); color: #FFFFFF; }
+.brief .bf-jump:focus-visible { outline: 2px solid var(--bf-ink); outline-offset: 3px; }
+.brief #bf-ans:focus { outline: none; }
+.brief .bf-where li .bf-links { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.brief .bf-to {
+  appearance: none; cursor: pointer; display: inline-flex; align-items: center; height: 44px; padding: 0 14px; border-radius: 11px;
+  border: 1px solid rgba(250, 249, 249, .28); background: transparent; color: var(--bf-paper); text-decoration: none;
+  font: 600 13.5px/1 "Barlow", sans-serif; white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.brief .bf-to:hover { background: var(--bf-paper); color: var(--bf-ink); border-color: var(--bf-paper); }
+.brief .bf-answer .bf-to:focus-visible { outline: 2px solid var(--bf-paper); outline-offset: 2px; }
+@media (max-width: 640px) {
+  .brief .bf-where li .bf-links { grid-column: 1; margin-top: 8px; }
+}

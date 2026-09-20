@@ -1,0 +1,230 @@
+<!-- Machine screen: Default, the glass at rest and the first screen of the machine (mscreens/default.css, mscreens/default.js).
+     One frame built from sections (psec.js), each with five designs paged in Customise under "This screen":
+       Top ad        a Monster Energy banner across the top of the glass, 440 tall (a different ad from the strip at the foot)
+       Welcome       the call to play: the machine's code in the shared QR style, the group run price, where to stand
+       Today's best  the best hits today, real photos of the players, scores through PunchFormat (drawn by default.js)
+       How it works  scan, buy credits, punch
+     The shared parts: the backdrop host first, the global header next, the sponsor strip last. Cans, claws and the
+     Monster wordmark are drawn here (default.js fills [data-mdf-can] and [data-mdf-claw]); no logo files. -->
+<div class="mdf">
+  <div class="ms-lights" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+  <!-- include:parts/ms-brand.html -->
+
+  <!-- ============================================================ Top ad: a banner, 1080 x 440 (round seven: was 900 tall)
+       Five distinct Monster Energy creatives, each a wide band with the wordmark, one big line, its green call to
+       action (the kiosk next to the machine; nobody can touch the glass, so it points somewhere, never at a button)
+       and the Ad tag. Each loops slowly and settles into a still under reduced motion. -->
+  <section class="mdf-sec mdf-topad" data-sec="topad" data-sec-label="Top ad" aria-label="Advert">
+
+    <div class="mdf-ad mdf-ad-tear" data-sv="Claw tear">
+      <p class="sr-only">Monster Energy. Fuel your strike. Ice cold at the kiosk next to the machine.</p>
+      <div class="mdf-ad-art" aria-hidden="true">
+        <span class="mdf-tear-glow"></span>
+        <span class="mdf-tear-claw" data-mdf-claw></span>
+        <span class="mdf-tear-can mdf-can" data-mdf-can></span>
+        <span class="mdf-ad-copy mdf-tear-copy">
+          <span class="mon-word is-line">Monster<span>Energy</span></span>
+          <b class="mdf-ad-big">Fuel your<br>strike</b>
+          <span class="mdf-ad-cta"><span data-lucide="snowflake"></span>Ice cold at the kiosk</span>
+        </span>
+      </div>
+      <span class="mdf-ad-tag" aria-hidden="true">Ad</span>
+    </div>
+
+    <div class="mdf-ad mdf-ad-bolt" data-sv="Lightning" hidden>
+      <p class="sr-only">Monster Energy. Charged for the next hit. Grab one at the kiosk.</p>
+      <div class="mdf-ad-art" aria-hidden="true">
+        <img class="mdf-bolt-photo" src="assets/photos/lib/boxer-5.jpg" alt="" loading="lazy" decoding="async">
+        <span class="mdf-bolt-flash"></span>
+        <svg class="mdf-bolt" viewBox="0 0 1080 440" preserveAspectRatio="none" focusable="false">
+          <path class="mdf-bolt-glow" pathLength="1" d="M800 -20 690 150 770 160 660 300 760 312 700 470"/>
+          <path class="mdf-bolt-core" pathLength="1" d="M800 -20 690 150 770 160 660 300 760 312 700 470"/>
+          <path class="mdf-bolt-fork" pathLength="1" d="M770 160 880 230 850 240 960 330"/>
+        </svg>
+        <span class="mdf-ad-copy mdf-bolt-copy">
+          <span class="mdf-bolt-word mon-word">Monster<span>Energy</span></span>
+          <b class="mdf-ad-mid">Charged for the next hit</b>
+          <span class="mdf-ad-cta"><span data-lucide="zap"></span>Grab one at the kiosk</span>
+        </span>
+      </div>
+      <span class="mdf-ad-tag" aria-hidden="true">Ad</span>
+    </div>
+
+    <div class="mdf-ad mdf-ad-draw" data-sv="Claw drawn" hidden>
+      <p class="sr-only">Monster Energy. Leave your mark. At the kiosk next to the machine.</p>
+      <div class="mdf-ad-art" aria-hidden="true">
+        <span class="mdf-draw-claw" data-mdf-claw data-mdf-claw-draw></span>
+        <span class="mdf-ad-copy mdf-draw-copy">
+          <span class="mon-word is-line">Monster<span>Energy</span></span>
+          <b class="mdf-ad-big">Leave your<br>mark</b>
+          <span class="mdf-ad-cta"><span data-lucide="map-pin"></span>At the kiosk, next door</span>
+        </span>
+      </div>
+      <span class="mdf-ad-tag" aria-hidden="true">Ad</span>
+    </div>
+
+    <div class="mdf-ad mdf-ad-taste" data-sv="Flavours" hidden>
+      <p class="sr-only">Monster Energy. Pick your flavour: Original, Zero, Mango and Citrus. All four ice cold at the kiosk.</p>
+      <div class="mdf-ad-art" aria-hidden="true">
+        <span class="mdf-ad-copy mdf-taste-copy">
+          <span class="mon-word is-line">Monster<span>Energy</span></span>
+          <b class="mdf-ad-big">Pick your<br>flavour</b>
+          <span class="mdf-ad-cta"><span data-lucide="snowflake"></span>All four ice cold</span>
+        </span>
+        <span class="mdf-taste-row">
+          <span class="mdf-taste" style="--i: 0"><span class="mdf-can" data-mdf-can data-flavour="original"></span><span class="mdf-taste-name">Original</span></span>
+          <span class="mdf-taste" style="--i: 1"><span class="mdf-can" data-mdf-can data-flavour="zero"></span><span class="mdf-taste-name">Zero</span></span>
+          <span class="mdf-taste" style="--i: 2"><span class="mdf-can" data-mdf-can data-flavour="mango"></span><span class="mdf-taste-name">Mango</span></span>
+          <span class="mdf-taste" style="--i: 3"><span class="mdf-can" data-mdf-can data-flavour="citrus"></span><span class="mdf-taste-name">Citrus</span></span>
+        </span>
+      </div>
+      <span class="mdf-ad-tag" aria-hidden="true">Ad</span>
+    </div>
+
+    <div class="mdf-ad mdf-ad-offer" data-sv="Score a can" hidden>
+      <p class="sr-only">Monster Energy. Hit <span data-mdf-offer-text>800,000</span> points and the can is on us. Claim it at the kiosk: show your score.</p>
+      <div class="mdf-ad-art" aria-hidden="true">
+        <span class="mdf-offer-ring"></span>
+        <span class="mdf-offer-can mdf-can" data-mdf-can></span>
+        <span class="mdf-ad-copy mdf-offer-copy">
+          <span class="mon-word is-line">Monster<span>Energy</span></span>
+          <span class="mdf-offer-hit"><span class="mdf-offer-k">Hit</span><b class="mdf-offer-score" data-mdf-offer>800,000</b></span>
+          <b class="mdf-offer-k2">and the can is on us</b>
+          <span class="mdf-ad-cta"><span data-lucide="gift"></span>Claim it at the kiosk<span class="mdf-offer-chev"><i></i><i></i><i></i></span></span>
+        </span>
+      </div>
+      <span class="mdf-ad-tag" aria-hidden="true">Ad</span>
+    </div>
+  </section>
+
+  <!-- ============================================================ Welcome -->
+  <section class="mdf-sec mdf-welcome" data-sec="welcome" data-sec-label="Welcome">
+
+    <div class="mdf-wl mdf-wl-code" data-sv="Code first">
+      <div class="mdf-wl-titles">
+        <p class="mdf-kicker"><span data-lucide="smartphone"></span>Open your phone camera</p>
+        <h2 class="mdf-wl-title">Scan to play</h2>
+      </div>
+      <div class="pqr" data-pqr data-pqr-label="Scan to play on this machine" style="--pqr-size: 580px"></div>
+      <ul class="mdf-facts">
+        <li><span class="mdf-fact-ic" data-lucide="users-round"></span><span><b>Three credits</b>AED 25 for three</span></li>
+        <li><span class="mdf-fact-ic" data-lucide="footprints"></span><span><b>Red mark</b>Stand right on it</span></li>
+        <li><span class="mdf-fact-ic" data-lucide="hand-fist"></span><span><b>One strike</b>Score in seconds</span></li>
+      </ul>
+    </div>
+
+    <div class="mdf-wl mdf-wl-side" data-sv="Side by side" hidden>
+      <div class="mdf-wl-left">
+        <p class="mdf-kicker"><span data-lucide="scan-qr-code"></span>Next up</p>
+        <h2 class="mdf-wl-title">Scan<br>to<br>play</h2>
+        <ul class="mdf-list">
+          <li><span data-lucide="smartphone"></span>Point your camera at the code</li>
+          <li><span data-lucide="users-round"></span>Three credits for AED&nbsp;25</li>
+          <li><span data-lucide="footprints"></span>Stand on the red mark</li>
+        </ul>
+      </div>
+      <div class="mdf-wl-right">
+        <div class="pqr" data-pqr data-pqr-label="Scan to play on this machine" style="--pqr-size: 480px"></div>
+        <span class="mdf-wl-note"><span class="mdf-dot"></span>Waiting for a phone</span>
+      </div>
+    </div>
+
+    <div class="mdf-wl mdf-wl-type" data-sv="Big type" hidden>
+      <h2 class="mdf-wl-huge"><span>Scan</span><span>to play</span></h2>
+      <div class="mdf-wl-row">
+        <div class="pqr" data-pqr data-pqr-label="Scan to play on this machine" style="--pqr-size: 460px"></div>
+        <ul class="mdf-list">
+          <li><span data-lucide="smartphone"></span>Open your camera, aim at the code</li>
+          <li><span data-lucide="users-round"></span>Three credits for AED&nbsp;25</li>
+          <li><span data-lucide="footprints"></span>Stand on the red mark</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mdf-wl mdf-wl-photo" data-sv="Player photo" hidden>
+      <figure class="mdf-wl-shot">
+        <img src="assets/photos/lib/bag-strike-4.jpg" alt="" loading="lazy" decoding="async">
+      </figure>
+      <div class="mdf-wl-over">
+        <p class="mdf-kicker"><span data-lucide="flame"></span>Your turn</p>
+        <h2 class="mdf-wl-title">Scan<br>to play</h2>
+        <ul class="mdf-chips">
+          <li><span data-lucide="users-round"></span>Three credits, AED&nbsp;25</li>
+          <li><span data-lucide="footprints"></span>Stand on the red mark</li>
+        </ul>
+      </div>
+      <div class="pqr" data-pqr data-pqr-label="Scan to play on this machine" style="--pqr-size: 400px"></div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================ Today's best (default.js draws each design's list) -->
+  <section class="mdf-sec mdf-best" data-sec="best" data-sec-label="Today's best">
+    <header class="mdf-h">
+      <h2 class="mdf-h-title"><span data-lucide="trophy"></span>Today's best</h2>
+      <p class="mdf-h-meta"><span data-lucide="clock"></span>Resets at midnight</p>
+    </header>
+    <div class="mdf-bst mdf-bst-podium" data-sv="Podium"><ol class="mdf-bst-list" data-mdf-best="podium"></ol></div>
+    <div class="mdf-bst mdf-bst-lead" data-sv="Leader and list" hidden><div class="mdf-bst-list" data-mdf-best="lead"></div></div>
+    <div class="mdf-bst mdf-bst-strip" data-sv="Film strip" hidden><div class="mdf-bst-list" data-mdf-best="strip"></div></div>
+    <div class="mdf-bst mdf-bst-board" data-sv="Live board" hidden><ol class="mdf-bst-list" data-mdf-best="board"></ol></div>
+    <div class="mdf-bst mdf-bst-spot" data-sv="Spotlight" hidden><div class="mdf-bst-list" data-mdf-best="spot"></div></div>
+  </section>
+
+  <!-- ============================================================ How it works -->
+  <section class="mdf-sec mdf-how" data-sec="how" data-sec-label="How it works">
+    <header class="mdf-h">
+      <h2 class="mdf-h-title"><span data-lucide="info"></span>How it works</h2>
+      <p class="mdf-h-meta"><span data-lucide="timer"></span>Under a minute</p>
+    </header>
+
+    <div class="mdf-hw mdf-hw-cards" data-sv="Three cards">
+      <ol class="mdf-hw-list">
+        <li class="mdf-card"><span class="mdf-hw-ic" data-lucide="scan-qr-code"></span><b>Scan</b><span>With your phone</span></li>
+        <li class="mdf-card"><span class="mdf-hw-ic" data-lucide="wallet"></span><b>Buy credits</b><span>One credit, one punch</span></li>
+        <li class="mdf-card"><span class="mdf-hw-ic" data-lucide="hand-fist"></span><b>Punch</b><span>Score in seconds</span></li>
+      </ol>
+    </div>
+
+    <div class="mdf-hw mdf-hw-art" data-sv="Illustrated" hidden>
+      <span class="mdf-hw-wide">
+        <span class="mdf-hw-fallback" aria-hidden="true"><span data-lucide="smartphone"></span><span data-lucide="arrow-right"></span><span data-lucide="hand-fist"></span></span>
+        <img class="mdf-on-dark" src="assets/howto/howto-wide-dark.png" alt="A player scans the machine's code with a phone, then punches the pad" width="1568" height="760" decoding="async" data-mdf-img>
+        <img class="mdf-on-light" src="assets/howto/howto-wide-light.png" alt="A player scans the machine's code with a phone, then punches the pad" width="1568" height="760" decoding="async" data-mdf-img>
+      </span>
+      <ol class="mdf-hw-caps">
+        <li><span data-lucide="scan-qr-code"></span>Scan</li>
+        <li><span data-lucide="wallet"></span>Buy credits</li>
+        <li><span data-lucide="hand-fist"></span>Punch</li>
+      </ol>
+    </div>
+
+    <div class="mdf-hw mdf-hw-tiles" data-sv="Step tiles" hidden>
+      <ol class="mdf-hw-list">
+        <li><span class="mdf-hw-tile"><span data-lucide="smartphone"></span><img class="mdf-on-dark" src="assets/howto/step-1-dark.png" alt="" width="720" height="720" decoding="async" data-mdf-img><img class="mdf-on-light" src="assets/howto/step-1-light.png" alt="" width="720" height="720" decoding="async" data-mdf-img></span><b>Open the app</b></li>
+        <li><span class="mdf-hw-tile"><span data-lucide="scan-qr-code"></span><img class="mdf-on-dark" src="assets/howto/step-2-dark.png" alt="" width="720" height="720" decoding="async" data-mdf-img><img class="mdf-on-light" src="assets/howto/step-2-light.png" alt="" width="720" height="720" decoding="async" data-mdf-img></span><b>Scan the code</b></li>
+        <li><span class="mdf-hw-tile"><span data-lucide="hand-fist"></span><img class="mdf-on-dark" src="assets/howto/step-3-dark.png" alt="" width="720" height="720" decoding="async" data-mdf-img><img class="mdf-on-light" src="assets/howto/step-3-light.png" alt="" width="720" height="720" decoding="async" data-mdf-img></span><b>Step up</b></li>
+      </ol>
+    </div>
+
+    <div class="mdf-hw mdf-hw-line" data-sv="Timeline" hidden>
+      <ol class="mdf-hw-list">
+        <li><span class="mdf-hw-ic" data-lucide="scan-qr-code"></span><b>Scan</b><span>Phone links up</span></li>
+        <li><span class="mdf-hw-ic" data-lucide="coins"></span><b>Buy credits</b><span>From AED 10</span></li>
+        <li><span class="mdf-hw-ic" data-lucide="hand-fist"></span><b>Punch</b><span>Score in seconds</span></li>
+      </ol>
+    </div>
+
+    <div class="mdf-hw mdf-hw-one" data-sv="One line" hidden>
+      <img class="mdf-hw-bg" src="assets/photos/lib/fist-strike-51.jpg" alt="" loading="lazy" decoding="async" style="object-position: 46% 45%">
+      <p class="mdf-hw-say">
+        <span class="mdf-hw-w"><span data-lucide="scan-qr-code"></span>Scan.</span>
+        <span class="mdf-hw-w"><span data-lucide="wallet"></span>Buy credits.</span>
+        <span class="mdf-hw-w is-hit"><span data-lucide="hand-fist"></span>Punch.</span>
+      </p>
+      <p class="mdf-hw-sub">Your replay lands on your phone.</p>
+    </div>
+  </section>
+
+  <!-- include:parts/ms-ad.html -->
+</div>

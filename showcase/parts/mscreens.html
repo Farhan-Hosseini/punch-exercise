@@ -1,0 +1,27 @@
+<!-- The machine flow around the result screen. Each screen is 1080 x 3840 like the glass above it and lives in its own
+     part (parts/mscreen-KEY.html) with its styles in mscreens/KEY.css and its behaviour in mscreens/KEY.js. app.js shows one
+     screen at a time and dispatches a "mscreen" event on document when one opens (detail: { key, opts }). -->
+<article class="mscreen mscreen-default" data-mscreen="default" aria-label="Machine screen: Default" hidden>
+<!-- include:parts/mscreen-default.html -->
+</article>
+<article class="mscreen mscreen-attract" data-mscreen="attract" aria-label="Machine screen: Leaderboard, between players" hidden>
+<!-- include:parts/mscreen-attract.html -->
+</article>
+<article class="mscreen mscreen-scan" data-mscreen="scan" aria-label="Machine screen: Scan to connect" hidden>
+<!-- include:parts/mscreen-scan.html -->
+</article>
+<article class="mscreen mscreen-countdown" data-mscreen="countdown" aria-label="Machine screen: Punch now" hidden>
+<!-- include:parts/mscreen-countdown.html -->
+</article>
+<article class="mscreen mscreen-loading" data-mscreen="loading" aria-label="Machine screen: Reading the strike" hidden>
+<!-- include:parts/mscreen-loading.html -->
+</article>
+<article class="mscreen mscreen-stats" data-mscreen="stats" aria-label="Machine screen: Your run" hidden>
+<!-- include:parts/mscreen-stats.html -->
+</article>
+<article class="mscreen mscreen-score" data-mscreen="score" aria-label="Machine screen: Big score" hidden>
+<!-- include:parts/mscreen-score.html -->
+</article>
+<article class="mscreen mscreen-record" data-mscreen="record" aria-label="Machine screen: New record" hidden>
+<!-- include:parts/mscreen-record.html -->
+</article>

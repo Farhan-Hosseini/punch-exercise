@@ -1,0 +1,116 @@
+/* Punch again on the Results screens after the Result: Big score, New record and Your run (parts/ms-again.html; Your
+   run joined in round nine, machine fixes A: its frame, stats.js playing it in after the crown). Round nine: "all
+   the result tab pages have a Punch again button". A section of its own at the foot of each frame, 200 px of room, with
+   the Result's five designs (sections/cta.html, sections/cta.css) set for the machine's spacing scale: Full button is
+   the Result's own .cta slab, the rest restate cta.css under .ag-* with the same tokens, so every look applies.
+   Motion only under .is-play (the screen's script adds it on the section's beat); without it every design stands. */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-sec {
+  --room: 200px;
+  position: relative; z-index: 1; flex: none; margin: 0 var(--ms-gut); height: var(--room);
+}
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-sec > [data-sv] { position: relative; height: 100%; min-width: 0; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-sec > [data-sv][hidden] { display: none !important; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-sec p { margin: 0; }
+/* the red word on every slab: trimmed to cap height and baseline so it sits optically centred */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-play { display: grid; place-items: center; border-radius: var(--r); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-word { display: block; letter-spacing: .04em; margin-right: -.04em; text-box: trim-both cap alphabetic; }
+
+/* Full button: the Result's slab, as tall as the room */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-full { display: grid; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-full .cta { min-height: 0; height: 100%; }
+
+/* Button pair: two equal halves. Punch again is the red one; the other says where the hit went (a status: the glass
+   takes no touch) */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-pair {
+  container-type: inline-size;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-grid);
+}
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-pair .ag-word,
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-code .ag-word { font-size: min(calc(64px / var(--cap)), calc((50cqi - var(--gap-grid) / 2 - 2 * var(--card-pad)) / 5.4)); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-save { min-width: 0; display: flex; align-items: center; gap: 24px; padding-inline: var(--card-pad); }
+/* Lucide smartphone at 56 px: 1.5 on the 24 grid draws the 3 px line every glass icon uses */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-ico { flex: none; display: inline-flex; font-size: 56px; line-height: 0; color: var(--ink-1); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-save-t { min-width: 0; display: grid; gap: 10px; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-save-cap { font-size: 24px; color: var(--ink-3); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-say { min-width: 0; font-size: 34px; line-height: 1.15; color: var(--ink-1); text-wrap: balance; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-save .ag-ico { color: var(--up, #2BC46B); }
+
+/* Countdown: the red slab and a shot clock side by side, the clock's caption over the end of the slab */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-clock {
+  --ring: 200px;
+  container-type: inline-size;
+  display: grid; grid-template-columns: minmax(0, 1fr) var(--ring); grid-template-rows: minmax(0, 1fr) 144px; column-gap: var(--gap-grid);
+}
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-next { grid-area: 1 / 1; align-self: start; justify-self: end; font-size: 32px; white-space: nowrap; text-box: trim-both cap alphabetic; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-clock .ag-play { grid-area: 2 / 1; place-items: center start; padding-inline: var(--card-pad); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-clock .ag-word { font-size: min(calc(64px / var(--cap)), calc((100cqi - var(--ring) - 120px) / 5.2)); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-dial { grid-area: 1 / 2 / 3 / 3; width: var(--ring); height: var(--ring); display: grid; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-dial > * { grid-area: 1 / 1; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-ring { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) :is(.ag-ring-track, .ag-ring-left) { fill: none; stroke-width: 22; stroke-dashoffset: -.55; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-ring-track { stroke: var(--track); stroke-dasharray: 3.9 1.1; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-ring-left { stroke: var(--ink-1); stroke-dasharray: 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 3.9 1.1 0 40; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-read { place-self: center; display: grid; justify-items: center; row-gap: 12px; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-num { font-size: calc(60px / var(--cap)); font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-unit { font-size: 32px; color: var(--ink-3); text-box: trim-both cap alphabetic; }
+
+/* Code handoff: Punch again on the left, the run's code on the right with what it is for; the shared PunchQR tile at
+   200 px, for a phone held at arm's length */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-code {
+  container-type: inline-size;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-grid);
+}
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-hand { min-width: 0; display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: center; column-gap: 28px; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-qr { --pqr-size: 200px; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-copy { min-width: 0; display: grid; gap: 20px; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-keep { font-size: 34px; line-height: 1.2; color: var(--ink-1); text-wrap: balance; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-codeword { font-size: calc(32px / var(--cap)); letter-spacing: .14em; color: var(--ink-2); text-box: trim-both cap alphabetic; }
+/* Reference: the frame's wide display face at the Result's Reference slab size (48 px, as its .cta), which the
+   halves hold with room to spare; the condensed Arena sizing would run it past the slab */
+:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-word { font-size: 48px; letter-spacing: 0; margin-right: 0; }
+/* and the run's code in that face: a smaller step and less tracking, so it stays inside the gutter */
+:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-codeword { font-size: 34px; letter-spacing: .06em; }
+/* Sora's "Scan to keep" runs 222 px: a slightly smaller code gives the line its room, so the copy reads in two lines,
+   not three (r9 review) */
+:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-hand { grid-template-columns: 184px minmax(0, 1fr); column-gap: 24px; }
+:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-qr { --pqr-size: 184px; }
+
+/* Big pad: the machine's strike pad, the rings it sends out across the glass fading as they travel */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-band {
+  --d: 200px; --cx: calc(var(--ms-gut) + var(--d) / 2);
+  position: relative; height: 100%; margin-inline: calc(-1 * var(--ms-gut)); overflow: hidden;
+  display: flex; align-items: center; gap: 56px; padding-left: var(--ms-gut);
+}
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-waves {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at var(--cx) 50%,
+    transparent 115px, var(--line) 116px 119px, transparent 120px 137px, var(--line) 138px 141px, transparent 142px 165px,
+    var(--line) 166px 169px, transparent 170px 201px, var(--line) 202px 205px, transparent 206px 245px,
+    var(--line) 246px 249px, transparent 250px 297px, var(--line) 298px 301px, transparent 302px 357px,
+    var(--line) 358px 361px, transparent 362px 427px, var(--line) 428px 431px, transparent 432px 507px,
+    var(--line) 508px 511px, transparent 512px 597px, var(--line) 598px 601px, transparent 602px 697px,
+    var(--line) 698px 701px, transparent 702px 807px, var(--line) 808px 811px, transparent 812px);
+  -webkit-mask-image: radial-gradient(circle at var(--cx) 50%, black 180px, transparent 860px), linear-gradient(to bottom, transparent, black 24%, black 76%, transparent);
+  mask-image: radial-gradient(circle at var(--cx) 50%, black 180px, transparent 860px), linear-gradient(to bottom, transparent, black 24%, black 76%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-padbox { position: relative; flex: none; width: var(--d); height: var(--d); display: grid; place-items: center; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-rings { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--line); stroke-width: 2; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-core { position: relative; width: 156px; height: 156px; border-radius: 50%; display: grid; place-items: center; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-core > svg { grid-area: 1 / 1; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-stitch { width: 100%; height: 100%; fill: none; stroke: var(--cta-ink); stroke-opacity: .4; stroke-width: 2; stroke-dasharray: 5 6; }
+/* Lucide rotate-ccw at 76 px: .95 on the 24 grid draws the 3 px line every glass icon uses */
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-again { width: 76px; height: 76px; color: var(--cta-ink); stroke-width: .95; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-hit { position: relative; font-size: 48px; color: var(--ink-1); white-space: nowrap; text-box: trim-both cap alphabetic; }
+
+/* ---------------------------------------------------------------- motion: in last, after the number and the reel */
+@keyframes ag-rise { from { opacity: 0; transform: translateY(48px); } }
+@keyframes ag-in { from { opacity: 0; } }
+@keyframes ag-pop { 0% { opacity: 0; transform: scale(.6); } 70% { opacity: 1; transform: scale(1.06); } 100% { transform: none; } }
+@keyframes ag-wave { from { opacity: 0; transform: scale(.5); } }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag.is-play:not(.is-settled) { animation: ag-rise .7s cubic-bezier(.16, 1, .3, 1) both; animation-delay: var(--sd, 0ms); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-pad.is-play:not(.is-settled) { animation: ag-in .4s ease-out both; animation-delay: var(--sd, 0ms); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-pad.is-play:not(.is-settled) .ag-core { animation: ag-pop .6s cubic-bezier(.2, .9, .25, 1.2) both; animation-delay: calc(var(--sd, 0ms) + 120ms); }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-pad.is-play:not(.is-settled) .ag-waves { animation: ag-wave 1.2s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--sd, 0ms) + 300ms); transform-origin: var(--cx) 50%; }
+:is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-pad.is-play:not(.is-settled) .ag-hit { animation: ag-in .5s ease-out both; animation-delay: calc(var(--sd, 0ms) + 500ms); }

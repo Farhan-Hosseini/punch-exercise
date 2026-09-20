@@ -1,0 +1,329 @@
+<div class="brief-scrim" data-close-brief aria-hidden="true"></div>
+
+<div class="brief-panel">
+  <header class="bf-head">
+    <div class="bf-head-text">
+      <p class="bf-from">Given by Robotenc</p>
+      <h2 id="briefTitle">The brief</h2>
+      <p class="bf-role">Senior Product Designer, design exercise</p>
+    </div>
+    <button type="button" class="bf-close" id="closeBrief" data-close-brief aria-label="Close the brief">
+      <svg class="bf-ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </header>
+
+  <div class="bf-scroll" tabindex="0" role="region" aria-label="The brief, full text">
+    <article class="bf-doc">
+      <p class="bf-jumpline"><a class="bf-jump" href="#bf-ans">How this showcase answers each point</a></p>
+
+      <section class="bf-sec" aria-labelledby="bf-before">
+        <h3 id="bf-before">Before you start</h3>
+        <p>Aim for about <strong>three hours</strong>. Nothing you produce here will be used in the product.</p>
+        <p><strong>Use AI tools.</strong> We'd be more concerned if you didn't. It's how we work. Just note where you used them and what you changed afterwards.</p>
+        <p>Questions are welcome at any point. We'd rather you ask than guess.</p>
+      </section>
+
+      <section class="bf-sec" aria-labelledby="bf-product">
+        <h3 id="bf-product">The product</h3>
+        <p>A physical arcade machine, installed in malls and entertainment venues, paired with a mobile app.</p>
+        <p>One credit buys one attempt. The player steps up and performs a single full-force strike against a padded target. A sensor measures it and returns a score. The attempt is over in under five seconds, and a camera records it for playback on the machine's screen.</p>
+        <p>The app is where attempts live afterwards: the player's profile, a reel of their recorded attempts and scores, and the people they're competing against.</p>
+        <p>Players are walk-up mall traffic, usually in groups, often with a queue behind them. They didn't leave the house planning to do this. <strong>Revenue is attempts: one attempt and a walk-away is a failure, three attempts and an app install is the goal.</strong></p>
+      </section>
+
+      <section class="bf-sec" aria-labelledby="bf-design">
+        <h3 id="bf-design">What to design</h3>
+        <p>The experience from the end of an attempt through to the player's phone. <strong>How many screens that takes is up to you.</strong> Design what the flow needs.</p>
+        <p>What it has to do:</p>
+
+        <h4>On the machine</h4>
+        <ul class="bf-list">
+          <li>Present the score as an event, not a readout</li>
+          <li>Show the playback of the attempt (a placeholder is fine, don't go sourcing video)</li>
+          <li>Make the player want to go again</li>
+          <li>Get the attempt onto their phone. How that works is your call</li>
+        </ul>
+
+        <h4>On the phone</h4>
+        <ul class="bf-list">
+          <li>The player's profile and a reel of their attempts: score, video, when, where</li>
+          <li>The social layer: watching other people's attempts, reacting to them, feeling connected to the people who use these machines</li>
+        </ul>
+
+        <h4>Competition, optional</h4>
+        <ul class="bf-list">
+          <li>Who's the best. Which surface that belongs on is part of the question</li>
+        </ul>
+      </section>
+
+      <section class="bf-sec" aria-labelledby="bf-constraints">
+        <h3 id="bf-constraints">Constraints</h3>
+
+        <h4>Arcade screen</h4>
+        <ul class="bf-rows">
+          <li>1080&nbsp;×&nbsp;3840&nbsp;px, portrait</li>
+          <li>Physical panel is large, think 1.5 meters tall, 0.5 wide</li>
+          <li>Scores range from 0 to 999,999.000. At full length that's six digits, a separator and three decimals</li>
+          <li>No cursor, no keyboard, no mouse. Touch <span class="bf-open">[IS / IS NOT]</span> available, and the player has just used both hands</li>
+          <li>Viewed standing from 1 to 1.5 m, with spectators a further 2 to 3 m back</li>
+          <li>Loud ambient environment. Nothing can depend on audio</li>
+          <li>Runs unattended all day. Mounted, not adjustable</li>
+        </ul>
+        <p class="bf-aside">The touch line reached us with its choice still open, so it is shown as sent.</p>
+
+        <h4>Mobile</h4>
+        <ul class="bf-rows">
+          <li>Your choice of platform and frame size, just state which</li>
+        </ul>
+      </section>
+
+      <section class="bf-sec" aria-labelledby="bf-brand">
+        <h3 id="bf-brand">Brand</h3>
+        <p>Design tokens are below. They're a starting point, not a rule: extend them, replace them, or argue against them. You're the designer. Just tell us what you changed and why.</p>
+      </section>
+
+      <section class="bf-sec" aria-labelledby="bf-deliver">
+        <h3 id="bf-deliver">Deliverables</h3>
+        <ul class="bf-rows bf-leads">
+          <li><strong>Figma file</strong> (view access is fine), frames at the stated sizes</li>
+          <li><strong>One motion clip</strong>, 5 to 10 seconds, MP4 or GIF: the score reveal on the machine. Any tool you like</li>
+          <li><strong>Half a page of notes</strong>: the decisions you made and why, anything you'd want to validate with users, and anything in this brief you'd have pushed back on</li>
+        </ul>
+      </section>
+
+      <section class="bf-sec" aria-labelledby="bf-eval">
+        <h3 id="bf-eval">What we're evaluating</h3>
+        <ul class="bf-list">
+          <li>Whether the score reveal is genuinely exciting to look at</li>
+          <li>Whether the composition uses the screen it's actually on</li>
+          <li>Whether the motion has weight and timing, or is just movement</li>
+          <li>How you solved the machine-to-phone handoff</li>
+          <li>What you did with the brand, and what you'd change about it</li>
+          <li>Attention to detail</li>
+        </ul>
+      </section>
+
+      <section class="bf-sec" aria-labelledby="bf-time">
+        <h3 id="bf-time">Timeline</h3>
+        <p>Please send it back within 6 days.</p>
+      </section>
+
+      <section class="bf-sec bf-tokens" aria-labelledby="bf-tok">
+        <h3 id="bf-tok">Design tokens</h3>
+
+        <div class="bf-group">
+          <h4>Fonts</h4>
+          <p class="bf-specimen" aria-hidden="true"><span class="w9">Orbitron</span><span class="w7">Orbitron</span></p>
+          <dl class="bf-font">
+            <div><dt><code>--font-display</code></dt><dd>"Orbitron", "Arial Black", Arial, sans-serif</dd></div>
+            <div><dt><code>--font-sans</code></dt><dd>"Orbitron", Arial, sans-serif</dd></div>
+            <div><dt>Weights</dt><dd class="bf-num">400, 700, 900</dd></div>
+          </dl>
+        </div>
+
+        <div class="bf-group">
+          <h4>Brand colors</h4>
+          <div class="bf-ramp-head"><h5>Primary</h5><code>--brand-colors-primary</code></div>
+          <ul class="bf-ramp">
+            <li style="--c:#fef3f3"><span class="bf-chip"></span><b>50</b><code>#fef3f3</code></li>
+            <li style="--c:#fac5c5"><span class="bf-chip"></span><b>100</b><code>#fac5c5</code></li>
+            <li style="--c:#f69898"><span class="bf-chip"></span><b>200</b><code>#f69898</code></li>
+            <li style="--c:#f26b6a"><span class="bf-chip"></span><b>300</b><code>#f26b6a</code></li>
+            <li style="--c:#ee3e3d"><span class="bf-chip"></span><b>400</b><code>#ee3e3d</code></li>
+            <li style="--c:#eb1110"><span class="bf-chip"></span><b>500</b><code>#eb1110</code></li>
+            <li style="--c:#bc0d0c"><span class="bf-chip"></span><b>600</b><code>#bc0d0c</code></li>
+            <li style="--c:#8d0a09"><span class="bf-chip"></span><b>700</b><code>#8d0a09</code></li>
+            <li style="--c:#8d0a09" class="is-repeat"><span class="bf-chip"></span><b>800</b><code>#8d0a09</code></li>
+            <li style="--c:#5e0606"><span class="bf-chip"></span><b>900</b><code>#5e0606</code></li>
+          </ul>
+          <p class="bf-aside">In the brief, 800 repeats the value of 700.</p>
+
+          <div class="bf-ramp-head"><h5>Secondary</h5><code>--brand-colors-secondary</code></div>
+          <ul class="bf-ramp">
+            <li style="--c:#fbecfb"><span class="bf-chip"></span><b>50</b><code>#fbecfb</code></li>
+            <li style="--c:#f9d7f8"><span class="bf-chip"></span><b>100</b><code>#f9d7f8</code></li>
+            <li style="--c:#d842d3"><span class="bf-chip"></span><b>500</b><code>#d842d3</code></li>
+            <li style="--c:#9c339d"><span class="bf-chip"></span><b>900</b><code>#9c339d</code></li>
+          </ul>
+        </div>
+
+        <div class="bf-group">
+          <h4>Neutrals</h4>
+          <div class="bf-ramp-head"><h5>Primary</h5><code>--neutrals-primary</code></div>
+          <ul class="bf-ramp">
+            <li style="--c:#faf9f9"><span class="bf-chip"></span><b>50</b><code>#faf9f9</code></li>
+            <li style="--c:#ebe6e4"><span class="bf-chip"></span><b>100</b><code>#ebe6e4</code></li>
+            <li style="--c:#dcd2d0"><span class="bf-chip"></span><b>200</b><code>#dcd2d0</code></li>
+            <li style="--c:#ccbfbb"><span class="bf-chip"></span><b>300</b><code>#ccbfbb</code></li>
+            <li style="--c:#ccbfbb" class="is-repeat"><span class="bf-chip"></span><b>400</b><code>#ccbfbb</code></li>
+            <li style="--c:#bdaba6"><span class="bf-chip"></span><b>500</b><code>#bdaba6</code></li>
+            <li style="--c:#ae9892"><span class="bf-chip"></span><b>600</b><code>#ae9892</code></li>
+            <li style="--c:#685e5b"><span class="bf-chip"></span><b>700</b><code>#685e5b</code></li>
+            <li style="--c:#453c3a"><span class="bf-chip"></span><b>800</b><code>#453c3a</code></li>
+            <li style="--c:#221e1d"><span class="bf-chip"></span><b>900</b><code>#221e1d</code></li>
+          </ul>
+          <p class="bf-aside">In the brief, 400 repeats the value of 300.</p>
+        </div>
+
+        <div class="bf-group">
+          <h4>Supportive colors</h4>
+          <div class="bf-fams">
+            <div class="bf-fam">
+              <h5>Green</h5>
+              <ul>
+                <li style="--c:#00c853"><span class="bf-chip"></span><b>Primary</b><code>#00c853</code></li>
+                <li style="--c:#04853f"><span class="bf-chip"></span><b>Secondary</b><code>#04853f</code></li>
+                <li style="--c:#e5f8ed"><span class="bf-chip"></span><b>Tertiary</b><code>#e5f8ed</code></li>
+              </ul>
+            </div>
+            <div class="bf-fam">
+              <h5>Yellow</h5>
+              <ul>
+                <li style="--c:#ffab00"><span class="bf-chip"></span><b>Primary</b><code>#ffab00</code></li>
+                <li style="--c:#9f8016"><span class="bf-chip"></span><b>Secondary</b><code>#9f8016</code></li>
+                <li style="--c:#fffae7"><span class="bf-chip"></span><b>Tertiary</b><code>#fffae7</code></li>
+              </ul>
+            </div>
+            <div class="bf-fam">
+              <h5>Red</h5>
+              <ul>
+                <li style="--c:#d50000"><span class="bf-chip"></span><b>Primary</b><code>#d50000</code></li>
+                <li style="--c:#99050a"><span class="bf-chip"></span><b>Secondary</b><code>#99050a</code></li>
+                <li style="--c:#fbe5e5"><span class="bf-chip"></span><b>Tertiary</b><code>#fbe5e5</code></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bf-group">
+          <h4>Opacity colors</h4>
+
+          <div class="bf-ramp-head"><h5>Main BG</h5><code>rgba(255, 255, 255, a)</code></div>
+          <p class="sr-only">White at opacity 0, 10, 20, 30, 40, 50, 60 and 70 percent, as tokens main-bg-0 to main-bg-70.</p>
+          <div class="bf-op" style="--rgb:255 255 255" aria-hidden="true">
+            <span class="bf-op-row">On dark</span>
+            <i style="--a:0"></i><i style="--a:.1"></i><i style="--a:.2"></i><i style="--a:.3"></i><i style="--a:.4"></i><i style="--a:.5"></i><i style="--a:.6"></i><i style="--a:.7"></i>
+            <span class="bf-op-row">On light</span>
+            <i class="on-light" style="--a:0"></i><i class="on-light" style="--a:.1"></i><i class="on-light" style="--a:.2"></i><i class="on-light" style="--a:.3"></i><i class="on-light" style="--a:.4"></i><i class="on-light" style="--a:.5"></i><i class="on-light" style="--a:.6"></i><i class="on-light" style="--a:.7"></i>
+            <span></span>
+            <b>0</b><b>10</b><b>20</b><b>30</b><b>40</b><b>50</b><b>60</b><b>70</b>
+          </div>
+
+          <div class="bf-ramp-head"><h5>Secondary BG</h5><code>rgba(242, 243, 243, a)</code></div>
+          <p class="sr-only">Off-white 242, 243, 243 at opacity 0, 10, 20, 30, 40, 50, 60 and 70 percent, as tokens secondary-bg-0 to secondary-bg-70.</p>
+          <div class="bf-op" style="--rgb:242 243 243" aria-hidden="true">
+            <span class="bf-op-row">On dark</span>
+            <i style="--a:0"></i><i style="--a:.1"></i><i style="--a:.2"></i><i style="--a:.3"></i><i style="--a:.4"></i><i style="--a:.5"></i><i style="--a:.6"></i><i style="--a:.7"></i>
+            <span class="bf-op-row">On light</span>
+            <i class="on-light" style="--a:0"></i><i class="on-light" style="--a:.1"></i><i class="on-light" style="--a:.2"></i><i class="on-light" style="--a:.3"></i><i class="on-light" style="--a:.4"></i><i class="on-light" style="--a:.5"></i><i class="on-light" style="--a:.6"></i><i class="on-light" style="--a:.7"></i>
+            <span></span>
+            <b>0</b><b>10</b><b>20</b><b>30</b><b>40</b><b>50</b><b>60</b><b>70</b>
+          </div>
+          <p class="bf-aside">Chips sit on Neutrals 900 and Neutrals 200. Steps are opacity in percent.</p>
+        </div>
+      </section>
+
+      <section class="bf-answer" aria-labelledby="bf-ans">
+        <h3 id="bf-ans" tabindex="-1">How this showcase answers each point</h3>
+        <p class="bf-answer-lede">Every ask in the brief, and where it lives. Each button closes the brief and takes you there.</p>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /></svg>The goal</h4>
+          <ul>
+            <li><b>Three attempts and an install</b><span>The code on the glass installs the app while it links the phone, so the install happens before the first strike. After it, Punch again closes every result screen, and an empty wallet buys a pack of three. A payment that fails says nothing was charged and tries again with the same pack.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="scan" data-close-brief>Scan</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="default" data-close-brief>Home</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="topup" data-close-brief>Buy credits</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="failed" data-close-brief>Payment failed</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="20" x="6" y="2" rx="2"/></svg>On the machine</h4>
+          <ul>
+            <li><b>How many screens it took</b><span>Eight on the glass, in the three groups of its page bar: Home and the leaderboard under Home, Scan, Punch now and Reading under Play, and the Result, the Big score and New record under Results. Fourteen on the phone, from Home through the link, the credits and the hit to the reel, the leaderboard, the feed and the profile.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-close-brief>The glass</button><button type="button" class="bf-to" data-go-mode="mobile" data-close-brief>The phone</button><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-flow" data-close-brief>Machine flow</button></span></li>
+            <li><b>Between visits</b><span>The glass rests on Home: a Monster Energy banner across the top, a welcome with the code, today’s best and how it works, over the sponsor strip at the foot.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="default" data-close-brief>Home</button></span></li>
+            <li><b>The score as an event</b><span>The glass reads the strike first, so the number arrives as news. A record then gets a moment of its own, and the result lands the score above every head with its charge. Slot reels is one of the four ways the result draws that number. The Big score holds it for the back of the queue, with whose hit it is, one reason to care and the player’s own punch on video.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="loading" data-close-brief>Reading</button><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="record" data-close-brief>New record</button><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="result" data-close-brief>Result</button><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="score" data-close-brief>Big score</button></span></li>
+            <li><b>The playback</b><span>Watch performance on the result plays the attempt with its scrubber, and Recent punches follows it: the last hits other players landed on this machine. The Big score and New record play the player’s own punch on a muted loop, each resting on its strike frame, and the same replay waits on the phone. Licensed punch videos stand in for the camera.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="result" data-close-brief>Replay on the glass</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="hit" data-close-brief>Replay on the phone</button></span></li>
+            <li><b>Going again</b><span>Punch again closes every result screen, the Result, the Big score and New record, as the one red call on the glass. On the phone, Your hit keeps the next credit one tap away, and an empty wallet buys a pack of three.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="result" data-close-brief>Punch again</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="hit" data-close-brief>Your hit</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="topup" data-close-brief>Buy credits</button></span></li>
+            <li><b>Onto the phone</b><span>The phone app’s own code, at chest height on the Scan screen, links a phone before the turn, under the player card and above the three steps that say what happens next. The phone connects and holds a credit, a Connected page names the machine it is linked to, its punch step hands the turn to the glass with our logo on it, and the hit comes back to the phone by itself. The Animation tab plays both screens together.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="scan" data-close-brief>Scan</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="connected" data-close-brief>Connected</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="punch" data-close-brief>Punch step</button><button type="button" class="bf-to" data-go-mode="animation" data-close-brief>Watch the handoff</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>On the phone</h4>
+          <ul>
+            <li><b>Home</b><span>The app opens on Home: the credits chip, the play card with its code, your last hit to replay, the machines near you and your friends’ hits, with Feeds opening the social layer.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="default" data-close-brief>Home</button></span></li>
+            <li><b>Profile and reel</b><span>The profile, then a reel of your hits, each with its score, the video, and when and where it landed. The reel scrolls without end, full screen or as a grid two across, with reel settings and a three dots menu. Saving a hit is one mark on the attempt itself, so there is nothing to file and nothing to manage afterwards.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="profile" data-close-brief>Profile</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="reel" data-close-brief>The reel</button></span></li>
+            <li><b>Your hit</b><span>The score, the replay and the strike in numbers: peak force in kg, the change on your last hit, your best, where most hits here land and hand speed when a camera can measure it, each tagged with where it came from. The glass keeps to one number, so the result leaves its kinematic breakdown switched off at rest and these live on the phone.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="hit" data-close-brief>Your hit</button><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-strike" data-close-brief>Why these numbers</button></span></li>
+            <li><b>The social layer</b><span>A feed of other players’ hits with stories, likes and comments, filters for Following and Nearby, and follow or challenge from any profile, so the people on the same machines feel close.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="feed" data-close-brief>Feed</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"/><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"/><path d="M18 9h1.5a1 1 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6 9H4.5a1 1 0 0 1 0-5H6"/></svg>Competition</h4>
+          <ul>
+            <li><b>Who’s the best</b><span>Both surfaces, for different jobs. The glass shows the board between players, for the queue: a score to beat before anyone steps up. After a hit the result puts the score in its place on this machine, in the city, in the country and in the world, and the Big score names the crown it took or the gap to the next mark. The phone holds the standing rivalry, global, national and Dubai, with your own row pinned wherever you are in it.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="attract" data-close-brief>Board on the glass</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="ranks" data-close-brief>Board on the phone</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>The constraints</h4>
+          <ul>
+            <li><b>1080 × 3840 portrait</b><span>Every machine screen is drawn at that size and opens at actual size, a glass pixel to a screen pixel when the window is wide enough. Under Size on screen, Reading size fits the whole panel in the window instead.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-close-brief>Machine screen</button></span></li>
+            <li><b>1.5 m tall, 0.5 m wide</b><span>Where everyone stands, and the band of glass each of them can read, is drawn in the case study. At that height a 1080 by 3840 panel is closer to 0.42 m wide.</span><span class="bf-links"><button type="button" class="bf-to" data-open-case="case-problem" data-close-brief>Viewing geometry</button></span></li>
+            <li><b>0 to 999,999.000</b><span>Full length by default, with the three decimals smaller and quieter. The Score format control switches every surface to whole points.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-score" data-close-brief>Score format</button></span></li>
+            <li><b>Touch</b><span>Designed as not available. The player has just used both hands, so every state ends on a timer, a credit, a strike or a phone event, and anything that needs a finger happens on the phone.</span><span class="bf-links"><button type="button" class="bf-to" data-open-case="case-notes" data-close-brief>The decision</button></span></li>
+            <li><b>Seen from 1 to 1.5 m, and 2 to 3 m back</b><span>Mounted and not adjustable, so every job keeps a fixed height: the score above heads for the queue, the replay at eye level for the player, the code at chest height. Big numbers are sized by cap height to fit their column.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-principles" data-close-brief>Principles</button></span></li>
+            <li><b>No audio</b><span>Nothing depends on sound. The countdown is a big number in a ring that drains, the strike shows as a flash, and the phone buzzes instead of beeping.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="countdown" data-close-brief>Punch now</button></span></li>
+            <li><b>Unattended all day</b><span>Between visits the glass rests on Home, and between players it loops its leaderboard. A missed punch keeps the credit and frees the machine. Faults, a queued credit and the hours outside a run branch off the state diagram.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="default" data-close-brief>Home</button><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="attract" data-close-brief>Leaderboard</button><button type="button" class="bf-to" data-open-case="case-machine" data-close-brief>State diagram</button></span></li>
+            <li><b>Phone platform and frame</b><span>iPhone 17 Pro Max at 440 × 956 and Android at 412 × 915, opening at actual size. Switch them in Customise, under The phone.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="mobile" data-close-brief>Mobile app</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"/><path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7"/><path d="M7 17h.01"/><path d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8"/></svg>The brand</h4>
+          <ul>
+            <li><b>What changed, and why</b><span>The red stayed and got one job. Orbitron gave way to Big Shoulders Display, Barlow and Barlow Condensed, which hold up from three metres. The ramps became named roles, in Arena and Reference, dark and light. Reference keeps the Figma frames as drawn.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-brand" data-close-brief>Brand, as given and as changed</button></span></li>
+            <li><b>The sponsor</b><span>Monster Energy, in its own green, in four places that never take the player’s moment: a banner across the top of the glass at Home, the strip at the foot of every screen, a banner on the phone’s Home and a post in the feed.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-sponsor" data-close-brief>Sponsor kit</button><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="default" data-close-brief>Top banner</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="default" data-close-brief>Home banner</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="feed" data-close-brief>Feed post</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>Across both surfaces</h4>
+          <ul>
+            <li><b>Pages built from sections</b><span>Every page on the phone and the glass is a stack of sections, and every section is drawn several ways, most of them five. A page bar in two steps picks a group, then a screen in it, and Customise opens on that screen’s own sections with Across the showcase beneath them, the one accordion holding everything the two surfaces share. On the phone every title and its icon button share one centre line, and the content ends one step over the tab bar.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-pages" data-close-brief>Pages and sections</button><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-pagebars" data-close-brief>Page bars</button><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-header" data-close-brief>Page header</button><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="scan" data-close-brief>Try the Scan screen</button></span></li>
+            <li><b>One background</b><span>Eight looks on one host of lights, shared by the phone and the glass and chosen once in Customise. Red glow is the default.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-bg" data-close-brief>Background</button></span></li>
+            <li><b>One QR code</b><span>Every code, on the glass, the phone and the result, is the phone app’s own, on its glass tile.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-qr" data-close-brief>QR code</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="scan" data-close-brief>Scan on the phone</button></span></li>
+            <li><b>Real photographs and videos</b><span>A licensed library of strikes, boxers, venues and friends, each cropped from its own focal point, with the photographers credited. Every player on the boards has a shoot of their own, and no photograph is used twice. Real punch videos play on the reel, the Big score and New record, muted and looping, each resting on its strike frame.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-photo" data-close-brief>Photography</button><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-videos" data-close-brief>Punch videos</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="M3.29 7 12 12l8.71-5"/><path d="m7.5 4.27 9 5.15"/></svg>The deliverables</h4>
+          <ul>
+            <li><b>Figma file</b><span>Frames at 1080 × 3840 for the glass and at the two phone sizes, in the file shared for this task. Both surfaces are built natively there, every layer a frame, text or vector and not one screenshot, across pages for the cover, the design system, the components, the assets, the machine screens, the mobile app and the section variants. Screens are composed from instances of the component sets, and the colours are bound to variables with a mode for Arena and Reference in dark and light.</span><span class="bf-links"><a class="bf-to" href="https://www.figma.com/design/j1cOyUKz9Gys3njKSUve6L" target="_blank" rel="noopener">Open in Figma</a><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-components" data-close-brief>The components here</button></span></li>
+            <li><b>One motion clip</b><span>The score reveal on the live glass, ten seconds, as MP4 and GIF, the glass master beside the presentation cut.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="animation" data-go-anchor="animExtra" data-close-brief>The clip</button></span></li>
+            <li><b>Half a page of notes</b><span>The decisions and why, what to validate with real players, and where I pushed back on the brief.</span><span class="bf-links"><button type="button" class="bf-to" data-open-case="case-notes" data-close-brief>Notes</button><button type="button" class="bf-to" data-open-case="case-push" data-close-brief>Pushback</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4" /> <path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg>What you are evaluating</h4>
+          <ul>
+            <li><b>A reveal worth watching</b><span>The glass reads the strike before it shows the number, a record gets a screen of its own, and the score lands above the queue. The Animation tab plays it beside the phone.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="animation" data-close-brief>Animation</button><button type="button" class="bf-to" data-go-mode="machine" data-go-mscreen="loading" data-close-brief>Reading</button></span></li>
+            <li><b>The screen it is on</b><span>The glass is laid out by who reads which band of it, from the pad and from the back of the queue, not as a phone screen stretched tall.</span><span class="bf-links"><button type="button" class="bf-to" data-open-case="case-problem" data-close-brief>Viewing geometry</button></span></li>
+            <li><b>Weight and timing</b><span>The clip runs every rise and fall on one stage gravity, so the number lands instead of sliding in, then holds still long enough to read.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="animation" data-go-anchor="animExtra" data-close-brief>The clip</button></span></li>
+            <li><b>The handoff</b><span>The phone links at the scan, hands the turn to the glass with no clock of its own, and gets the hit back by itself.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="animation" data-close-brief>Both screens</button><button type="button" class="bf-to" data-go-mode="mobile" data-go-page="punch" data-close-brief>Punch step</button></span></li>
+            <li><b>Attention to detail</b><span>Arena and Reference, dark and light, reduced motion, the score format, eight backgrounds and seven logo marks all run through the same tokens. Customise switches every one of them, down to the loader that opens the site: the chosen mark, a bar and one line of type, and nothing else.</span><span class="bf-links"><button type="button" class="bf-to" data-go-mode="system" data-close-brief>Design system</button><button type="button" class="bf-to" data-go-mode="system" data-go-anchor="ds-loader" data-close-brief>The loader</button></span></li>
+          </ul>
+        </div>
+
+        <div class="bf-where">
+          <h4><svg class="bf-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>The AI note</h4>
+          <ul>
+            <li><b>Where AI was used</b><span>Claude in Claude Code audited the brief, ran directions past separate judges, built the Figma file, the reveal and this showcase, gathered and checked the photo library, and reviewed each screen. An AI panel of four expert lenses advised what the glass should leave out after the reveal, and a research pass replaced the phone’s physics readings with the strike in numbers. What was changed afterwards is listed in the case study.</span><span class="bf-links"><button type="button" class="bf-to" data-open-case="case-ai" data-close-brief>How AI was used</button></span></li>
+          </ul>
+        </div>
+
+      </section>
+
+    </article>
+  </div>
+</div>

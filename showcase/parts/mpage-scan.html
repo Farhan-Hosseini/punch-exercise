@@ -1,0 +1,128 @@
+    <!-- ========== Scan the machine code (mpages/scan.css, mpages/scan.js; Figma 176:1396, 176:1531) ==========
+         Built from sections (psec.js), each paging through its designs in Customise under This screen:
+         Code (the machine's code on its glass tile, the one PunchQR style, in five framings), Hint (the line under the
+         code and the How to use? pill) and Your last punch (each machine played, with the last punch landed there,
+         drawn by scan.js). The How-to sheet
+         (#mSheet in parts/phone.html) sits above the tab bar, outside the page, so its section here is a marker that
+         lists its designs and scan.js shows the chosen one inside the sheet.
+         Any [data-scan-go] starts the scan and any [data-howto] opens the sheet (mobile.js); [data-scan-text] carries the
+         scan's status; .m-scan takes .is-scanning and .is-found. scan.js keeps the ids other scripts reach for
+         (#mScanBtn, #mHowTo, #mScanText) on the designs on show. -->
+    <section class="m-page m-scroll" data-page="scan" aria-labelledby="psTitle">
+      <h2 class="sr-only" id="psTitle">Scan the machine code</h2>
+      <div class="m-scan ps">
+
+        <!-- ---------------------------------------------------------------- Code -->
+        <div class="ps-sec ps-code" data-sec="code" data-sec-label="Code">
+          <!-- the phone app's reference framing: the tile alone on its red glow -->
+          <div class="psc psc-tile" data-sv="Glass tile">
+            <button class="psc-hit" type="button" data-scan-go aria-label="Scan the machine code"><span class="pqr" data-pqr style="--pqr-size: 217px"></span></button>
+          </div>
+
+          <!-- the camera's view: the code held in red corners over the venue, with the torch to hand -->
+          <div class="psc psc-finder" data-sv="Viewfinder">
+            <div class="psc-feed">
+              <img class="psc-feed-img" src="assets/photos/lib/arcade-neon-4.jpg" alt="" loading="lazy" style="object-position: 50% 50%">
+              <span class="psc-corner psc-c1" aria-hidden="true"></span><span class="psc-corner psc-c2" aria-hidden="true"></span>
+              <span class="psc-corner psc-c3" aria-hidden="true"></span><span class="psc-corner psc-c4" aria-hidden="true"></span>
+              <span class="psc-cam"><span data-lucide="camera"></span>Camera on</span>
+              <button class="psc-torch" type="button" data-torch aria-pressed="false" aria-label="Torch"><span data-lucide="flashlight"></span></button>
+              <button class="psc-hit" type="button" data-scan-go aria-label="Scan the machine code"><span class="pqr" data-pqr data-pqr-glow="off" style="--pqr-size: 164px"></span></button>
+            </div>
+          </div>
+
+          <!-- where to find it: the machine's glass in miniature, the code on it, and a word on where it sits -->
+          <div class="psc psc-machine" data-sv="On the machine">
+            <div class="psc-glass">
+              <img class="psc-glass-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+              <p class="psc-glass-kick">Next player</p>
+              <p class="psc-glass-title">Scan<br>to play</p>
+              <button class="psc-hit" type="button" data-scan-go aria-label="Scan the machine code"><span class="pqr" data-pqr data-pqr-glow="off" style="--pqr-size: 116px"></span></button>
+              <p class="psc-glass-wait"><i aria-hidden="true"></i>Waiting for your phone</p>
+            </div>
+            <div class="psc-note">
+              <p class="psc-note-title">Where to find it</p>
+              <p class="psc-note-text">The code sits on the machine's screen, just above the pad.</p>
+              <p class="psc-note-text psc-note-dim">Tap it here to try the scan.</p>
+            </div>
+          </div>
+
+          <!-- the venue you are standing in, with its code on top -->
+          <div class="psc psc-venue" data-sv="Venue photo">
+            <div class="psc-venue-card">
+              <img class="psc-venue-img" src="assets/photos/lib/dubai-night-23.jpg" alt="" loading="lazy" style="object-position: 50% 50%">
+              <span class="psc-venue-chip"><span data-lucide="locate-fixed"></span>Nearest machine</span>
+              <div class="psc-venue-txt">
+                <p class="psc-venue-name">Dubai Mall</p>
+                <p class="psc-venue-spot"><span data-lucide="map-pin"></span>Ground Level, by the Ice Rink</p>
+              </div>
+              <button class="psc-hit" type="button" data-scan-go aria-label="Scan the machine code"><span class="pqr" data-pqr style="--pqr-size: 142px"></span></button>
+            </div>
+          </div>
+
+          <!-- the code and the three moves beside it -->
+          <div class="psc psc-side" data-sv="Side by side">
+            <button class="psc-hit" type="button" data-scan-go aria-label="Scan the machine code"><span class="pqr" data-pqr style="--pqr-size: 148px"></span></button>
+            <ul class="psc-moves">
+              <li><span class="psc-move-ico"><span data-lucide="scan-line"></span></span><span><b>Point at the glass</b>The code is on the machine</span></li>
+              <li><span class="psc-move-ico"><span data-lucide="link"></span></span><span><b>Hold still</b>Your phone links in a second</span></li>
+              <li><span class="psc-move-ico"><span data-lucide="hand-fist"></span></span><span><b>Step up</b>One full strike on the pad</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Hint -->
+        <div class="ps-sec ps-hint" data-sec="hint" data-sec-label="Hint">
+          <!-- the reference: the pill up top, the red-ruled status under the code, the grey try line under that -->
+          <div class="psh psh-ruled" data-sv="Ruled">
+            <button class="m-pill psh-howto" type="button" data-howto aria-haspopup="dialog" aria-controls="mSheet">How to use?</button>
+            <p class="m-ruled"><span class="m-rule" aria-hidden="true"></span><span data-scan-text aria-live="polite">Scan machine QR code</span><span class="m-rule" aria-hidden="true"></span></p>
+            <p class="psh-try">Tap the code to try the scan</p>
+          </div>
+
+          <!-- a glass card: what to do, and the guide one tap below it -->
+          <div class="psh psh-card" data-sv="Card">
+            <div class="psh-box">
+              <div class="psh-box-top">
+                <span class="psh-disc"><span data-lucide="scan-qr-code"></span></span>
+                <p class="psh-box-txt"><b data-scan-text aria-live="polite">Scan machine QR code</b><span>Tap the code to try the scan</span></p>
+              </div>
+              <button class="psh-box-btn" type="button" data-howto aria-haspopup="dialog" aria-controls="mSheet"><span data-lucide="circle-help"></span>How to use?<span class="psh-chev" data-lucide="chevron-right"></span></button>
+            </div>
+          </div>
+
+          <!-- a live read-out, set left: the camera's state, the instruction large, the guide as a link -->
+          <div class="psh psh-status" data-sv="Status">
+            <p class="psh-live"><i aria-hidden="true"></i><span class="psh-st psh-st-wait">Camera on</span><span class="psh-st psh-st-read">Reading</span><span class="psh-st psh-st-found">Machine found</span></p>
+            <p class="psh-big" data-scan-text aria-live="polite">Scan machine QR code</p>
+            <p class="psh-sub">Hold your phone a hand's width from the glass.</p>
+            <button class="psh-link" type="button" data-howto aria-haspopup="dialog" aria-controls="mSheet"><span data-lucide="circle-help"></span>How to use?</button>
+          </div>
+
+          <!-- the ruled status with two tools under it: the torch for a bright venue, and the guide -->
+          <div class="psh psh-tools" data-sv="Tools">
+            <p class="m-ruled"><span class="m-rule" aria-hidden="true"></span><span data-scan-text aria-live="polite">Scan machine QR code</span><span class="m-rule" aria-hidden="true"></span></p>
+            <div class="psh-tools-row">
+              <button class="m-btn m-btn-glass psh-tool" type="button" data-torch aria-pressed="false"><span data-lucide="flashlight"></span>Torch</button>
+              <button class="m-btn m-btn-glass psh-tool" type="button" data-howto aria-haspopup="dialog" aria-controls="mSheet"><span data-lucide="circle-help"></span>How to use?</button>
+            </div>
+          </div>
+
+          <!-- a callout that points up at the code -->
+          <div class="psh psh-callout" data-sv="Callout">
+            <div class="psh-bubble">
+              <p class="psh-title" data-scan-text aria-live="polite">Scan machine QR code</p>
+              <p class="psh-sub">Point your camera at the code on the machine's glass, or tap it here to try.</p>
+              <button class="m-pill psh-howto" type="button" data-howto aria-haspopup="dialog" aria-controls="mSheet">How to use?</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Your last punch (drawn by scan.js): each machine
+             Sara has played, with the last punch she landed there -->
+        <div class="ps-sec ps-recent" data-sec="recent" data-sec-label="Your last punch" data-sv-names="Score rail|List|Latest|Grid|Timeline"></div>
+
+        <!-- the How-to sheet's designs: shown inside #mSheet by scan.js -->
+        <div class="ps-howto-mark" data-sec="howto" data-sec-label="How-to sheet" data-sv-names="Wide art|Step list|Walkthrough|Step cards|In the venue" hidden></div>
+      </div>
+    </section>

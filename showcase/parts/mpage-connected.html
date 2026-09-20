@@ -1,0 +1,170 @@
+    <!-- ========== Connected: the phone is linked to the machine (mpages/connected.css, mpages/connected.js; round nine) ==========
+         Between Connect and Punch: the link is made and a credit is held, so the page says three things, one per section
+         (psec.js), each paging through five designs in Customise under This screen:
+           Linked     the phone is linked, with the chosen logo (<img data-logo-img>, app.js) where the fist used to sit
+           Machine    which machine: Dubai Mall, by the Ice Rink, Machine 07, and the credit held for this turn
+           Next step  step up to the pad; the glass starts the count. It goes on to Punch by itself after about 2.5 s
+         mobile.js runs the page: data-held (yes when a credit is held for this turn, no on a practice go opened from the page
+         bar) and data-auto (run while it counts down to Punch, held when Customise or the page bar holds it still). Every
+         design reads those two attributes. A tap anywhere but Cancel goes on to Punch; so does every [data-cx-go]. -->
+    <section class="m-page" data-page="connected" aria-labelledby="mConnectedTitle" data-held="yes" data-auto="held">
+      <div class="mcx">
+        <div class="mcx-top">
+          <button class="m-punch-cancel" type="button" id="mConnectedCancel">Cancel</button>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Linked -->
+        <div class="mcx-sec mcx-linked" data-sec="linked" data-sec-label="Linked">
+          <!-- the logo large, a tick on its shoulder, and the word under it -->
+          <div class="cxl cxl-badge" data-sv="Badge">
+            <span class="cxl-mark"><span class="cxl-halo" aria-hidden="true"></span><img class="cxl-logo" data-logo-img src="assets/logos/fist-circle.svg" alt=""><span class="cxl-tick" aria-hidden="true"><span data-lucide="check"></span></span></span>
+            <h2 class="m-title cxl-title">Connected</h2>
+            <p class="cxl-line">Your phone is linked to the machine.</p>
+          </div>
+
+          <!-- the phone and the machine, joined: the logo stands for the machine -->
+          <div class="cxl cxl-pair" data-sv="Pair">
+            <div class="cxl-pair-row" aria-hidden="true">
+              <span class="cxl-end"><span data-lucide="smartphone"></span></span>
+              <span class="cxl-wire"><span class="cxl-wire-ok"><span data-lucide="check"></span></span></span>
+              <span class="cxl-end cxl-end-logo"><img data-logo-img src="assets/logos/fist-circle.svg" alt=""></span>
+            </div>
+            <p class="cxl-kick"><span class="cxl-dot" aria-hidden="true"></span>Live link</p>
+            <h2 class="m-title cxl-title">Connected to the <em>machine</em></h2>
+            <p class="cxl-line">Your phone and Machine 07 are talking.</p>
+          </div>
+
+          <!-- the word set large, the logo over it -->
+          <div class="cxl cxl-head" data-sv="Headline">
+            <img class="cxl-head-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <h2 class="cxl-title cxl-head-word">Connected</h2>
+            <p class="cxl-line">The machine is yours. Nobody else can start it until your turn is done.</p>
+          </div>
+
+          <!-- a real strike at the bag, the logo and the word on it -->
+          <figure class="cxl cxl-photo" data-sv="Photo">
+            <img class="cxl-photo-img" src="assets/photos/lib/bag-strike-23.jpg" alt="" style="object-position: 55% 26%" decoding="async">
+            <img class="cxl-photo-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <figcaption class="cxl-photo-txt">
+              <span class="cxl-chip"><span class="cxl-dot" aria-hidden="true"></span>Linked</span>
+              <h2 class="cxl-title">Connected</h2>
+              <span class="cxl-line">The machine is yours for this turn.</span>
+            </figcaption>
+          </figure>
+
+          <!-- one red block: the logo on its white tile, the word beside it -->
+          <div class="cxl cxl-banner" data-sv="Banner">
+            <span class="cxl-banner-tile"><img data-logo-img src="assets/logos/fist-circle.svg" alt=""></span>
+            <div class="cxl-banner-txt">
+              <h2 class="cxl-title">Connected</h2>
+              <p class="cxl-line">Your phone is linked to the machine.</p>
+            </div>
+            <span class="cxl-banner-ok" aria-hidden="true"><span data-lucide="check"></span></span>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Machine -->
+        <div class="mcx-sec mcx-machine" data-sec="machine" data-sec-label="Machine">
+          <!-- a glass card: the venue, the machine, and the credit on a line of its own -->
+          <div class="cxm cxm-card" data-sv="Card">
+            <div class="cxm-card-top">
+              <span class="cxm-thumb"><img src="assets/photos/lib/dubai-night-25.jpg" alt="" loading="lazy" style="object-position: 50% 40%"></span>
+              <p class="cxm-id"><b>Dubai Mall, Ground Level</b><span>By the ice rink, Machine 07</span></p>
+            </div>
+            <p class="cxm-credit"><span class="cxm-coin"><span data-lucide="lock"></span></span><span class="cx-when-held"><b>One credit held</b><span><span data-credits>0 credits</span> left</span></span><span class="cx-when-free"><b>A practice go</b><span>Nothing is taken</span></span></p>
+          </div>
+
+          <!-- four facts in a grid, each with its label -->
+          <dl class="cxm cxm-facts" data-sv="Facts">
+            <div><dt>Venue</dt><dd>Dubai Mall</dd></div>
+            <div><dt>Where</dt><dd>Ground Level, by the Ice Rink</dd></div>
+            <div><dt>Machine</dt><dd class="cxm-num">07</dd></div>
+            <div><dt>This turn</dt><dd><span class="cx-when-held">One credit held</span><span class="cx-when-free">Practice, free</span></dd></div>
+          </dl>
+
+          <!-- a ticket: the machine's number large, the venue and the hold beside it -->
+          <div class="cxm cxm-ticket" data-sv="Ticket">
+            <div class="cxm-ticket-no"><p class="cxm-kick">Machine</p><p class="cxm-big">07</p></div>
+            <div class="cxm-ticket-venue">
+              <p class="cxm-id"><b>Dubai Mall</b><span>Ground Level, by the Ice Rink</span></p>
+              <span class="cxm-chip"><span data-lucide="lock"></span><span class="cx-when-held">One credit held</span><span class="cx-when-free">Practice go</span></span>
+            </div>
+          </div>
+
+          <!-- where it stands: Ground Level drawn small, the rink and the machine's pin -->
+          <div class="cxm cxm-map" data-sv="Floor plan">
+            <svg class="cxm-plan" viewBox="0 0 150 110" aria-hidden="true" focusable="false">
+              <rect class="cxm-plan-floor" x="3" y="3" width="144" height="104" rx="16"/>
+              <path class="cxm-plan-walk" d="M3 70h42M105 70h42M75 3v47"/>
+              <ellipse class="cxm-plan-rink" cx="75" cy="70" rx="30" ry="20"/>
+              <circle class="cxm-plan-halo" cx="118" cy="38" r="13"/>
+              <circle class="cxm-plan-pin" cx="118" cy="38" r="6"/>
+            </svg>
+            <div class="cxm-map-txt">
+              <p class="cxm-kick">Ground Level</p>
+              <p class="cxm-id"><b>Machine 07</b><span>Dubai Mall, by the ice rink</span></p>
+              <p class="cxm-line"><span data-lucide="lock"></span><span class="cx-when-held">One credit held</span><span class="cx-when-free">Practice go</span></p>
+            </div>
+          </div>
+
+          <!-- no card: the place set as a headline, two chips under it -->
+          <div class="cxm cxm-plain" data-sv="Headline">
+            <p class="cxm-plain-name">Dubai Mall</p>
+            <p class="cxm-plain-spot">Ground Level, by the Ice Rink</p>
+            <p class="cxm-chips">
+              <span class="cxm-chip"><span data-lucide="gamepad-2"></span>Machine 07</span>
+              <span class="cxm-chip cxm-chip-red"><span data-lucide="lock"></span><span class="cx-when-held">One credit held</span><span class="cx-when-free">Practice go</span></span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Next step -->
+        <div class="mcx-sec mcx-next" data-sec="next" data-sec-label="Next step">
+          <!-- the line, then the one button: it fills while Punch gets ready to open -->
+          <div class="cxn cxn-button" data-sv="Button">
+            <p class="cxn-say"><span class="cxn-ico"><span data-lucide="footprints"></span></span><span><b>Step up to the pad</b><span>The glass starts the count.</span></span></p>
+            <button class="m-btn m-btn-red cxn-go" type="button" data-cx-go><span class="cxn-fill" aria-hidden="true"></span><span class="cxn-go-txt">I’m at the pad</span><span data-lucide="arrow-right"></span></button>
+            <p class="cxn-hint"><span class="cx-when-run">Punch opens by itself in a moment</span><span class="cx-when-hold">Tap when you are at the pad</span></p>
+          </div>
+
+          <!-- two moves, each with its icon, then the way on -->
+          <div class="cxn cxn-steps" data-sv="Two moves">
+            <ol class="cxn-list">
+              <li><span class="cxn-ico"><span data-lucide="footprints"></span></span><span><b>Step up to the pad</b><span>Stand square to the pad</span></span></li>
+              <li><span class="cxn-ico"><span data-lucide="monitor"></span></span><span><b>Watch the glass</b><span>It starts the count</span></span></li>
+            </ol>
+            <button class="m-btn m-btn-glass cxn-go cxn-go-glass" type="button" data-cx-go><span class="cxn-fill" aria-hidden="true"></span><span class="cxn-go-txt">Go to punch</span><span data-lucide="arrow-right"></span></button>
+          </div>
+
+          <!-- the words large, a bar that fills, and Go now at its end -->
+          <div class="cxn cxn-bar" data-sv="Bar">
+            <p class="cxn-big">Step up to the pad.<span>The glass starts the count.</span></p>
+            <div class="cxn-bar-row">
+              <span class="cxn-track" aria-hidden="true"><span class="cxn-fill"></span></span>
+              <button class="cxn-now" type="button" data-cx-go>Go now<span data-lucide="arrow-right"></span></button>
+            </div>
+            <p class="cxn-hint"><span class="cx-when-run">Opening Punch</span><span class="cx-when-hold">Waiting for you</span></p>
+          </div>
+
+          <!-- look up: the arrow, the line, and a round button ringed by the wait -->
+          <div class="cxn cxn-look" data-sv="Look up">
+            <span class="cxn-up" aria-hidden="true"><span data-lucide="arrow-up"></span></span>
+            <p class="cxn-look-txt"><b>Look up at the glass</b><span>Step up to the pad and it starts the count.</span></p>
+            <button class="cxn-round" type="button" data-cx-go aria-label="Go to punch">
+              <svg class="cxn-ring" viewBox="0 0 60 60" aria-hidden="true" focusable="false"><circle class="cxn-ring-bg" cx="30" cy="30" r="27"/><circle class="cxn-ring-fg" cx="30" cy="30" r="27" pathLength="100"/></svg>
+              <span data-lucide="arrow-right"></span>
+            </button>
+          </div>
+
+          <!-- one card that is the button: the pad drawn with the logo at its heart -->
+          <button class="cxn cxn-card" type="button" data-sv="Pad card" data-cx-go>
+            <span class="cxn-pad" aria-hidden="true"><i></i><i></i><img data-logo-img src="assets/logos/fist-circle.svg" alt=""></span>
+            <span class="cxn-card-txt"><b>Step up to the pad</b><span>The glass starts the count</span></span>
+            <span class="cxn-chev" aria-hidden="true"><span data-lucide="chevron-right"></span></span>
+            <span class="cxn-edge" aria-hidden="true"><span class="cxn-fill"></span></span>
+          </button>
+        </div>
+
+        <p class="sr-only" id="mConnectedLive" role="status" aria-live="polite"></p>
+      </div>
+    </section>

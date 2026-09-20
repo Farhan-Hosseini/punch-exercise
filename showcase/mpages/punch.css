@@ -1,0 +1,222 @@
+/* Phone: punch on the machine (parts/mpage-punch.html, mpages/punch.js; the flow and its states live in mobile.js).
+   Round seven made it simpler. The machine keeps the time, so the phone shows no timer and no number: it says one
+   thing, look up and give the pad one full strike, and names the machine it is linked to. One fixed frame:
+     top     Cancel, alone on the right
+     head    the title and its one line (mobile.js rewrites both for each state)
+     stage   the Look up section: one calm picture pointing at the machine, the one flexible row
+     mach    the Machine section: where the linked machine is and how the link stands
+     miss    Try again and Free the machine, only once time is up on the glass
+   Every design reads the one state on #mPunch (data-state wait, landed, reading, miss): calm while it waits, one kick
+   when the strike lands, a slow turn while the glass reads it, dimmed and still at time up. Motion runs only while the
+   page is open (.is-live, punch.js) and stops under reduced motion, where every state still reads from its shape and
+   colour. The spacing is the page scale (mpages/_shared.css): sections --m-sec-gap apart, nothing tighter.
+   Round nine: the title "Punch on the machine" never changes (only the line under it does), the Machine section says
+   Connected, and the chosen PunchApp logo (<img data-logo-img>, class pp-logo) sits wherever the fist or the machine
+   icon was: in the Arrow disc once the strike lands, on the Pad's core, and in every Machine design. */
+
+.m-punch.pp {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "top" "head" "stage" "mach" "miss";
+  padding: calc(var(--m-top) + var(--m-head-top)) var(--m-gut) calc(var(--m-bottom) + var(--m-group-gap));
+}
+.pp-top { grid-area: top; display: flex; justify-content: flex-end; min-height: 44px; align-items: center; }
+.pp-head { grid-area: head; margin-top: var(--m-group-gap); }
+/* round nine: the title stays through every state and only this line changes, so it keeps room for two lines and the
+   picture under it never jumps; its first words say what just happened */
+.pp .m-punch-sub { margin-top: var(--m-title-gap); min-height: calc(2 * 1.4em); max-width: 30ch; }
+.pp .m-punch-sub b { font-weight: var(--m-w-strong); color: var(--m-ink); }
+
+.pp-look { grid-area: stage; position: relative; min-height: 0; margin-top: var(--m-sec-gap); }
+.pp-look > [data-sv] { position: absolute; inset: 0; container-type: size; }
+.pp-mach { grid-area: mach; margin-top: var(--m-sec-gap); min-width: 0; }
+.pp-miss { grid-area: miss; margin-top: var(--m-group-gap); }
+.pp .m-punch-miss .m-btn [data-lucide] { width: 20px; height: 20px; }
+
+/* time up on the glass: the picture rests, dimmed and still, and the two buttons take over */
+.pp-look > [data-sv] { transition: opacity .4s ease; }
+.pp[data-state="miss"] .pp-look > [data-sv] { opacity: .4; }
+.pp[data-state="miss"] .pp-look *, .pp[data-state="miss"] .pp-look *::before, .pp[data-state="miss"] .pp-look *::after { animation: none !important; }
+
+/* the reading arc, shared by Arrow and Pad: it turns while the glass reads the strike */
+.pp-spin { position: absolute; left: 50%; top: 50%; width: var(--spin, 200px); height: var(--spin, 200px); transform: translate(-50%, -50%); overflow: visible; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.pp-spin path { fill: none; stroke: var(--m-red-hi); stroke-width: 2.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.pp[data-state="reading"] .pp-spin { opacity: 1; }
+.pp.is-live[data-state="reading"] .pp-spin { animation: pp-turn 1.4s linear infinite; }
+@keyframes pp-turn { from { transform: translate(-50%, -50%) rotate(0); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* ---------------------------------------------------------------- Look up, Arrow: one arrow up, in a calm disc */
+.pp-beacon { --d: min(176px, 46cqh, 52cqw); --spin: calc(var(--d) * 1.24); display: grid; place-items: center; }
+.pp-bc-disc, .pp-bc-ring { grid-area: 1 / 1; width: var(--d); height: var(--d); border-radius: 50%; }
+.pp-bc-disc {
+  position: relative; display: grid; place-items: center;
+  background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+  color: var(--m-red-soft); transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+.pp-bc-disc > span { grid-area: 1 / 1; width: calc(var(--d) * .38); height: calc(var(--d) * .38); transition: opacity .25s ease, transform .4s cubic-bezier(.2, 1.4, .4, 1); }
+.pp-bc-disc > span svg { width: 100%; height: 100%; }
+/* waiting: the chevrons point at the glass and the app's mark sits under them, so the disc says look up, then punch */
+.pp-bc-up { transform: translateY(-30%); }
+.pp-bc-fist { opacity: .92; transform: translateY(30%) scale(.52); }
+.pp-bc-ring { border: 1.5px solid var(--m-red-soft); opacity: 0; }
+.pp.is-live[data-state="wait"] .pp-bc-up { animation: pp-bob 2.8s ease-in-out infinite; }
+.pp.is-live[data-state="wait"] .pp-bc-ring { animation: pp-halo 3.6s ease-out infinite; }
+.pp.is-live[data-state="wait"] .pp-bc-ring + .pp-bc-ring { animation-delay: 1.8s; }
+@keyframes pp-bob { 50% { transform: translateY(-10%); } }
+@keyframes pp-halo { 0% { opacity: .5; transform: scale(1); } 100% { opacity: 0; transform: scale(1.8); } }
+/* the strike: the rim lights red and the arrow gives way to the chosen logo (round nine: the logo, where the fist was;
+   the disc stays glass so the red mark reads on it in every look) */
+.pp-bc-disc > .pp-logo { grid-area: 1 / 1; width: calc(var(--d) * .8); height: calc(var(--d) * .8); object-fit: contain; transition: opacity .25s ease, transform .4s cubic-bezier(.2, 1.4, .4, 1); }
+.pp[data-state="landed"] .pp-bc-disc, .pp[data-state="reading"] .pp-bc-disc { border-color: var(--m-red-soft); box-shadow: 0 0 0 4px color-mix(in srgb, var(--m-red-soft) 22%, transparent), 0 18px 44px -18px color-mix(in srgb, var(--m-glow) 90%, transparent); }
+.pp[data-state="landed"] .pp-bc-up, .pp[data-state="reading"] .pp-bc-up { opacity: 0; transform: translateY(-30%) scale(.5); }
+.pp[data-state="landed"] .pp-bc-fist, .pp[data-state="reading"] .pp-bc-fist { opacity: 1; transform: none; }
+.pp.is-live[data-state="wait"] .pp-bc-fist { animation: pp-bob 2.8s ease-in-out infinite; animation-delay: .35s; }
+.pp.is-struck .pp-bc-ring { animation: pp-burst .9s cubic-bezier(.2, .7, .2, 1) forwards; }
+.pp.is-struck .pp-bc-ring + .pp-bc-ring { animation-delay: .12s; }
+@keyframes pp-burst { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(1.7); } }
+
+/* ---------------------------------------------------------------- Look up, Machine: the machine drawn in line */
+.pp-mc { display: grid; place-items: center; }
+.pp-mc-svg { display: block; height: min(360px, 94cqh); width: auto; overflow: visible; }
+.pp-mc-floor { fill: color-mix(in srgb, var(--m-shadow) 45%, transparent); }
+.pp-mc-body { fill: var(--m-glass-hi); stroke: var(--m-line-2); stroke-width: 1.5; }
+/* the glass is dark in every look, as the real one is */
+.pp-mc-glass { fill: #0B0B0C; stroke: color-mix(in srgb, var(--m-red-soft) 70%, transparent); stroke-width: 1.5; }
+.pp-mc-lit { fill: var(--m-red); opacity: .16; transition: opacity .3s ease; }
+.pp.is-live[data-state="wait"] .pp-mc-lit { animation: pp-breathe 3.2s ease-in-out infinite; }
+@keyframes pp-breathe { 50% { opacity: .34; } }
+.pp-mc-ring { fill: none; stroke: #FFFFFF; stroke-width: 2; stroke-linecap: round; stroke-dasharray: .7 .3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.pp-mc-arm, .pp-mc-chain { fill: none; stroke: var(--m-ink-3); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pp-mc-chain { stroke-width: 2; }
+.pp-mc-sack { fill: var(--m-red); }
+.pp-mc-pad { fill: none; stroke: color-mix(in srgb, #FFFFFF 70%, transparent); stroke-width: 2; }
+.pp-mc-bag { transform-box: view-box; transform-origin: 132px 40px; }
+.pp.is-live[data-state="wait"] .pp-mc-bag { animation: pp-sway 4.8s ease-in-out infinite; }
+@keyframes pp-sway { 0%, 100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+/* the strike lights the glass and swings the bag; the glass then reads it */
+.pp[data-state="landed"] .pp-mc-lit { opacity: .9; }
+.pp[data-state="reading"] .pp-mc-lit { opacity: .4; }
+.pp[data-state="reading"] .pp-mc-ring { opacity: 1; }
+.pp.is-live[data-state="reading"] .pp-mc-ring { animation: pp-turn-self 1.2s linear infinite; }
+@keyframes pp-turn-self { to { transform: rotate(360deg); } }
+.pp.is-struck .pp-mc-bag { animation: pp-swing 1.2s cubic-bezier(.3, .6, .3, 1); }
+@keyframes pp-swing { 20% { transform: rotate(14deg); } 45% { transform: rotate(-7deg); } 70% { transform: rotate(3deg); } }
+
+/* ---------------------------------------------------------------- Look up, Pad: the pad on the machine, the target */
+.pp-pad { --s: min(300px, 94cqh, 90cqw); --spin: var(--s); display: grid; place-items: center; }
+.pp-pad-svg { grid-area: 1 / 1; display: block; width: calc(var(--s) * .9); height: calc(var(--s) * .9); overflow: visible; }
+.pp-pad-r { fill: none; stroke: var(--m-line-2); stroke-width: 1.5; transform-box: view-box; transform-origin: 120px 120px; }
+.pp-pad-r1 { fill: color-mix(in srgb, var(--m-red) 12%, transparent); stroke: color-mix(in srgb, var(--m-red-soft) 60%, transparent); }
+.pp-pad-core { fill: var(--m-red); transform-box: view-box; transform-origin: 120px 120px; transition: fill .3s ease; }
+/* the chosen logo sits on the core, a little larger than it, where the fist was */
+.pp-pad-fist { grid-area: 1 / 1; width: calc(var(--s) * .3); height: calc(var(--s) * .3); object-fit: contain; position: relative; }
+/* waiting, the rings draw in towards the centre, slowly, outside first */
+.pp.is-live[data-state="wait"] .pp-pad-r { animation: pp-draw 3.6s ease-in-out infinite; }
+.pp.is-live[data-state="wait"] .pp-pad-r2 { animation-delay: .5s; }
+.pp.is-live[data-state="wait"] .pp-pad-r1 { animation-delay: 1s; }
+@keyframes pp-draw { 0%, 100% { opacity: .45; } 30% { opacity: 1; } }
+.pp.is-struck :is(.pp-pad-core, .pp-pad-fist) { animation: pp-thump .5s cubic-bezier(.2, 1.4, .4, 1); }
+.pp.is-struck .pp-pad-r { animation: pp-burst .9s cubic-bezier(.2, .7, .2, 1); }
+.pp.is-struck .pp-pad-r2 { animation-delay: .06s; }
+.pp.is-struck .pp-pad-r3 { animation-delay: .12s; }
+@keyframes pp-thump { 30% { transform: scale(1.35); } }
+/* after the strike the whole target takes the red, so the change reads without any motion */
+.pp[data-state="landed"] .pp-pad-r, .pp[data-state="reading"] .pp-pad-r { stroke: color-mix(in srgb, var(--m-red-soft) 75%, transparent); }
+.pp[data-state="landed"] .pp-pad-r1, .pp[data-state="reading"] .pp-pad-r1 { fill: color-mix(in srgb, var(--m-red) 34%, transparent); }
+
+/* ---------------------------------------------------------------- Look up, Photo: a real strike, one arrow on it */
+.pp-ph { margin: 0; border-radius: 28px; overflow: hidden; background: #0B0B0C; border: 1px solid var(--m-line); }
+.pp-ph-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: filter .4s ease; }
+.pp-ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .45), rgba(0, 0, 0, 0) 38%); pointer-events: none; }
+.pp-ph-up {
+  position: absolute; z-index: 1; top: var(--m-pad); left: var(--m-pad); width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center; color: #FFFFFF;
+  background: rgba(12, 12, 14, .55); border: 1px solid rgba(255, 255, 255, .22);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+  transition: background-color .3s ease, border-color .3s ease;
+}
+.pp-ph-up [data-lucide] { width: 24px; height: 24px; }
+.pp.is-live[data-state="wait"] .pp-ph-up [data-lucide] { animation: pp-bob 2.8s ease-in-out infinite; }
+.pp.is-live[data-state="wait"] .pp-ph-img { animation: pp-drift 14s ease-in-out infinite alternate; }
+@keyframes pp-drift { to { transform: scale(1.06); } }
+.pp[data-state="landed"] .pp-ph-up, .pp[data-state="reading"] .pp-ph-up { background: var(--m-red); border-color: transparent; }
+.pp.is-struck .pp-ph-img { animation: pp-kick .55s cubic-bezier(.2, 1.4, .4, 1); }
+@keyframes pp-kick { from { transform: scale(1.14); filter: brightness(1.7); } }
+.pp[data-state="miss"] .pp-ph-img { filter: grayscale(1); }
+
+/* ---------------------------------------------------------------- Look up, Big type: the two words, set large */
+.pp-bt { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.pp-bt-word { display: grid; font: var(--m-w-title) min(150px, 38cqw, 36cqh)/.84 var(--m-f-title); text-transform: uppercase; letter-spacing: -.005em; }
+/* Reference sets its titles in a far wider face: LOOK runs about 3.1 times its size across, Arena's about 2.4 */
+:root[data-variant="reference"] .pp-bt-word { font-size: min(150px, 29cqw, 36cqh); }
+.pp-bt-l2 { display: inline-flex; align-items: center; gap: .08em; color: var(--m-red); }
+.pp-bt-arrow { width: .72em; height: .72em; margin-top: -.06em; }
+.pp-bt-arrow svg { width: 100%; height: 100%; stroke-width: 2.25; }
+.pp.is-live[data-state="wait"] .pp-bt-arrow { animation: pp-bob 2.8s ease-in-out infinite; }
+.pp[data-state="landed"] .pp-bt-word, .pp[data-state="reading"] .pp-bt-word { color: var(--m-red); }
+.pp.is-struck .pp-bt-word { animation: pp-slam .45s cubic-bezier(.2, 1.5, .4, 1); transform-origin: left center; }
+@keyframes pp-slam { from { transform: scale(1.25); opacity: .3; } }
+.pp.is-live[data-state="reading"] .pp-bt-arrow { animation: pp-bob 1s ease-in-out infinite; }
+
+/* ---------------------------------------------------------------- Machine: shared parts */
+.pp-m-name { display: grid; gap: 4px; min-width: 0; margin: 0; }
+.pp-m-name b { font: var(--m-w-strong) 16px/1.2 var(--m-f-text); color: var(--m-ink); }
+.pp-m-name > span:not(.pp-m-state) { font: var(--m-w-text) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.pp-m-state { display: inline-flex; align-items: center; gap: 8px; margin: 0; font: var(--m-w-strong) 14px/1.2 var(--m-f-text); color: var(--m-ink-2); white-space: nowrap; }
+
+/* Card: the machine in a glass card, the link on the right */
+.pp-m-row { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: var(--m-item-gap); padding: var(--m-pad); border-radius: 20px; }
+/* the chosen logo, where the machine icon was */
+.pp-m-tile { display: block; width: 48px; height: 48px; object-fit: contain; }
+
+/* Line: no card, the logo and one line of type at the foot of the page */
+.pp-m-line { display: flex; align-items: center; justify-content: space-between; gap: var(--m-item-gap); min-height: 48px; }
+.pp-m-line .pp-m-name { flex: 1; }
+.pp-m-mark { flex: none; display: block; width: 36px; height: 36px; object-fit: contain; }
+.pp-m-line .pp-m-name b { font-size: 17px; }
+
+/* Venue: a picture of the place, the name and the link beside it */
+.pp-m-venue { display: grid; grid-template-columns: 72px minmax(0, 1fr); align-items: center; gap: var(--m-group-gap); }
+.pp-m-picwrap { position: relative; width: 72px; height: 72px; }
+.pp-m-pic { display: block; width: 72px; height: 72px; border-radius: 18px; object-fit: cover; border: 1px solid var(--m-line); }
+/* the logo pinned to the photograph's corner */
+.pp-m-badge { position: absolute; right: -8px; bottom: -8px; width: 32px; height: 32px; object-fit: contain; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .45)); }
+.pp-m-venue .pp-m-name { gap: 6px; }
+.pp-m-venue .pp-m-name b { font: var(--m-w-title) 24px/1 var(--m-f-title); text-transform: uppercase; }
+
+/* Signal: the phone, the path to the machine, the machine */
+.pp-m-sig { display: grid; gap: var(--m-group-gap); }
+.pp-sig { display: flex; align-items: center; gap: var(--m-item-gap); }
+.pp-sig-end { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--m-glass); border: 1px solid var(--m-line-2); color: var(--m-ink); box-shadow: var(--m-lift); }
+.pp-sig-end [data-lucide] { width: 20px; height: 20px; }
+/* the machine's end is the chosen logo */
+.pp-sig-far { background: none; border: 0; box-shadow: none; }
+.pp-sig-far .pp-logo { width: 44px; height: 44px; object-fit: contain; }
+.pp-sig-path { position: relative; flex: 1; height: 2px; background: repeating-linear-gradient(90deg, var(--m-line-2) 0 6px, transparent 6px 12px); }
+.pp-sig-path i { position: absolute; top: -3px; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--m-up); opacity: 0; }
+.pp.is-live .pp-sig-path i { animation: pp-travel 2.6s ease-in-out infinite; }
+@keyframes pp-travel { 0% { left: 0; opacity: 0; } 15%, 85% { opacity: 1; } 100% { left: calc(100% - 8px); opacity: 0; } }
+.pp[data-state="miss"] .pp-sig-path i { animation: none; opacity: 0; }
+.pp-m-sig .pp-m-name { display: flex; align-items: center; justify-content: space-between; gap: var(--m-item-gap); }
+
+/* Label: the place set as a headline, the link as its caption */
+.pp-m-label { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: var(--m-item-gap); row-gap: 8px; align-items: center; }
+.pp-m-label > :not(.pp-m-mark) { grid-column: 2; }
+.pp-m-label .pp-m-mark { grid-row: 1 / span 3; width: 56px; height: 56px; }
+.pp-m-label .pp-m-state { gap: 8px; color: var(--m-ink-2); }
+.pp-m-big { margin: 0; font: var(--m-w-title) 34px/1 var(--m-f-title); text-transform: uppercase; letter-spacing: -.005em; }
+.pp-m-spot { margin: 0; font: var(--m-w-text) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+
+/* ---------------------------------------------------------------- entering, and a design swapped in Customise */
+.pp.is-entering > .pp-sec, .pp.is-entering > .pp-head { animation: pp-rise .55s cubic-bezier(.2, .7, .2, 1) both; }
+.pp.is-entering > .pp-look { animation-delay: .06s; }
+.pp.is-entering > .pp-mach { animation-delay: .12s; }
+.pp .is-swap { animation: pp-rise .5s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes pp-rise { from { opacity: 0; transform: translateY(14px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp *, .pp *::before, .pp *::after { animation: none !important; }
+  .pp.is-entering > *, .pp .is-swap, .m-punch.pp.is-struck { animation: none !important; }
+  .pp-look > [data-sv], .pp-bc-disc, .pp-bc-disc > span, .pp-bc-disc > img, .pp-spin, .pp-mc-lit, .pp-ph-img { transition: none !important; }
+}

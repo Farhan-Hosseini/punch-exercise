@@ -1,0 +1,91 @@
+/* photo: designs B to E. Scope every rule under .s-photo .v-<letter>.
+   Display lines are trimmed to cap height and baseline (text-box), so edges and baselines line up exactly. */
+
+/* B  Full bleed: the fight runs glass edge to glass edge, a frosted panel holds the night's line over the lower third */
+.s-photo .v-b .photo-b-band { position: relative; margin-inline: calc(-1 * var(--pad)); height: 424px; container-type: inline-size; }
+.s-photo .v-b .photo-b-frame { position: absolute; inset: 0; }
+.s-photo .v-b .photo-b-frame > img { object-position: 50% 38%; }
+.s-photo .v-b .photo-b-frame::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0) 60%);
+}
+.s-photo .v-b .photo-b-panel {
+  position: absolute; z-index: 2; left: var(--pad); bottom: calc(36px * var(--space)); max-width: calc(100% - 2 * var(--pad));
+  display: grid; justify-items: start; row-gap: calc(24px * var(--space));
+  padding: calc(34px * var(--space)) calc(56px * var(--space)) calc(34px * var(--space)) calc(44px * var(--space));
+}
+.s-photo .v-b .photo-b-where { color: rgba(255, 255, 255, .82); text-box: trim-both cap alphabetic; }
+.s-photo .v-b .photo-b-title {
+  font-size: min(calc(72px / var(--cap)), calc((100cqi - 2 * var(--pad) - 100px * var(--space)) / (19 * .5)));
+  text-box: trim-both cap alphabetic;
+}
+
+/* C  Slant cut: the photo sheared into a forward-leaning blade across the column (its lower left and upper right corners
+      on the margins), a raised slab leans with it over the bottom corner, its foot on the left margin */
+.s-photo .v-c .photo-c-stage { position: relative; padding-bottom: 48px; --lean: .2126; --cut: calc(382px * var(--lean)); }
+.s-photo .v-c .photo-c-cut {
+  height: 382px;
+  clip-path: polygon(var(--cut) 0, 100% 0, calc(100% - var(--cut)) 100%, 0 100%);
+}
+.s-photo .v-c .photo-c-cut > img { object-position: 40% 42%; }
+.s-photo .v-c .photo-c-slab {
+  position: absolute; z-index: 2; left: 0; bottom: 0;
+  padding: var(--card-pad) calc(var(--card-pad) + 32px) var(--card-pad) var(--card-pad);
+  transform-origin: 0 100%; transform: skewX(-12deg);
+}
+.s-photo .v-c .photo-c-lines { display: grid; justify-items: start; row-gap: calc(22px * var(--space)); }
+/* each line stands upright from its own baseline, so the left edges step along the slant */
+.s-photo .v-c .photo-c-title,
+.s-photo .v-c .photo-c-where { transform-origin: 0 100%; transform: skewX(12deg); text-box: trim-both cap alphabetic; }
+.s-photo .v-c .photo-c-title { font-size: calc(64px / var(--cap)); }
+
+/* D  Promo banner: a swallowtail fight banner across the column, the sponsor line on the dark end */
+.s-photo .v-d .photo-d-banner {
+  position: relative; container-type: inline-size; aspect-ratio: 21 / 9; background: rgba(0, 0, 0, 1);
+  --notch: 44px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--notch)) 50%, 100% 100%, 0 100%, var(--notch) 50%);
+}
+.s-photo .v-d .photo-d-shot {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 64%;
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 38%);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 38%);
+}
+.s-photo .v-d .photo-d-shot > img { object-position: 45% 30%; }
+.s-photo .v-d .photo-d-copy {
+  position: absolute; z-index: 2; left: calc(var(--notch) + 44px); top: 0; bottom: 0; width: 44cqi;
+  display: grid; align-content: center; justify-items: start; row-gap: calc(40px * var(--space));
+}
+.s-photo .v-d .photo-d-head { display: grid; justify-items: start; row-gap: calc(18px * var(--space)); white-space: normal; }
+.s-photo .v-d .photo-d-lead { font-size: calc(34px / var(--cap)); color: var(--ink-2); white-space: nowrap; text-box: trim-both cap alphabetic; }
+.s-photo .v-d .photo-d-big { font-size: min(calc(72px / var(--cap)), calc(44cqi / (10 * .5))); white-space: nowrap; text-box: trim-both cap alphabetic; }
+.s-photo .v-d .photo-d-brand { text-box: trim-both cap alphabetic; }
+
+/* E  Poster print: the fight as a print across the column, level, held up by one strip of tape at the top */
+.s-photo .v-e .photo-e-wall { padding-top: 22px; }
+.s-photo .v-e .photo-e-stack { position: relative; }
+.s-photo .v-e .photo-e-print { position: relative; margin: 0; padding: var(--card-pad) var(--card-pad) 0; }
+.s-photo .v-e .photo-e-frame { height: 256px; border-radius: calc(var(--r) * .5); }
+.s-photo .v-e .photo-e-frame > img { object-position: 45% 62%; }
+.s-photo .v-e .photo-e-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 30px 0 34px; }
+.s-photo .v-e .photo-e-title { font-weight: var(--w-strong); color: var(--ink-1); white-space: nowrap; text-box: trim-both cap alphabetic; }
+.s-photo .v-e .photo-e-where { font-size: 32px; color: var(--ink-3); white-space: nowrap; text-box: trim-both cap alphabetic; }
+.s-photo .v-e .photo-e-tape {
+  position: absolute; z-index: 3; top: -22px; left: 50%; width: 168px; height: 44px; translate: -50% 0;
+  background: color-mix(in oklab, var(--ink-1) 24%, transparent);
+  clip-path: polygon(0 8%, 6% 0, 12% 10%, 18% 0, 82% 0, 88% 10%, 94% 0, 100% 8%, 100% 92%, 94% 100%, 88% 90%, 82% 100%, 18% 100%, 12% 90%, 6% 100%, 0 92%);
+}
+
+/* ---------------------------------------------------------------- Light: the same designs on a daylight ground */
+
+/* D: the banner turns to paper and the fight smokes out of it; the fade starts past the headline, so the copy sits on clean paper */
+:root[data-appearance="light"] .s-photo .v-d { filter: drop-shadow(0 18px 22px color-mix(in oklab, var(--ink-1) 12%, transparent)); }
+:root[data-appearance="light"] .s-photo .v-d .photo-d-banner { background: var(--raised); }
+:root[data-appearance="light"] .s-photo .v-d .photo-d-shot {
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 1) 40%);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 1) 40%);
+}
+
+/* E: masking tape, not grey duct tape: a warm translucent strip that shows on the white print and on the ground */
+:root[data-appearance="light"] .s-photo .v-e .photo-e-tape {
+  background: color-mix(in oklab, color-mix(in oklab, var(--ink-1) 16%, var(--ground)) 80%, transparent);
+}

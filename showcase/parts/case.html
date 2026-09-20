@@ -1,0 +1,514 @@
+  <div class="cs-scroll" id="caseScroll">
+    <!-- icons: Lucide (ISC licence, lucide.dev), one line family with round caps; size and stroke are set in case.css -->
+    <svg class="cs-sprite" aria-hidden="true" focusable="false">
+      <symbol id="cs-i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="cs-i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+      <symbol id="cs-i-rectangle-vertical" viewBox="0 0 24 24"><rect width="12" height="20" x="6" y="2" rx="2"/></symbol>
+      <symbol id="cs-i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol>
+      <symbol id="cs-i-component" viewBox="0 0 24 24"><path d="M15.536 11.293a1 1 0 0 0 0 1.414l2.376 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"/><path d="M2.297 11.293a1 1 0 0 0 0 1.414l2.377 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414L6.088 8.916a1 1 0 0 0-1.414 0z"/><path d="M8.916 17.912a1 1 0 0 0 0 1.415l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.415l-2.377-2.376a1 1 0 0 0-1.414 0z"/><path d="M8.916 4.674a1 1 0 0 0 0 1.414l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"/></symbol>
+      <symbol id="cs-i-bell-ring" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M22 8c0-2.3-.8-4.3-2-6"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/><path d="M4 2C2.8 3.7 2 5.7 2 8"/></symbol>
+      <symbol id="cs-i-credit-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><path d="M6 14h2"/></symbol>
+      <symbol id="cs-i-clapperboard" viewBox="0 0 24 24"><path d="m12.296 3.464 3.02 3.956"/><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m6.18 5.276 3.1 3.899"/></symbol>
+    </svg>
+
+    <!-- the local navigation: sticky, frosted, and it turns with the ground under it. The close button lives here so it is always in reach -->
+    <header class="cs-localnav" data-ground="dark">
+      <div class="cs-localnav-in">
+        <a class="cs-localnav-title" href="#case-top" data-case-jump>
+          <img data-logo-img src="assets/logos/fist-circle.svg" alt="" width="24" height="24">
+          <span>PunchApp</span>
+        </a>
+        <nav class="cs-localnav-links" aria-label="Case study chapters">
+          <ul>
+            <li><a href="#case-problem" data-case-jump>Problem</a></li>
+            <li><a href="#case-idea" data-case-jump>Idea</a></li>
+            <li><a href="#case-machine" data-case-jump>Machine</a></li>
+            <li><a href="#case-phone" data-case-jump>Phone</a></li>
+            <li><a href="#case-system" data-case-jump>File</a></li>
+            <li><a href="#case-notes" data-case-jump>Notes</a></li>
+            <li><a href="#case-ai" data-case-jump>AI</a></li>
+          </ul>
+        </nav>
+        <button class="cs-close" id="closeCase" type="button" aria-label="Close case study">
+          <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-x"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="cs-page" id="case-top" tabindex="-1">
+
+      <!-- ============ hero: the name, and the pair it is about, big and centred on black -->
+      <section class="cs-sec cs-dark cs-hero" data-ground="dark" aria-labelledby="caseTitle">
+        <div class="cs-hero-copy" data-hero-copy>
+          <p class="cs-hero-by cs-rise" data-rise>A design task for <img src="assets/brand/robotenc-light.svg" alt="Robotenc" width="102" height="29"></p>
+          <h1 id="caseTitle" class="cs-rise" data-rise style="--d: 1">PunchApp</h1>
+          <p class="cs-hero-tag cs-rise" data-rise style="--d: 2">A strike the whole queue can read. A hit the striker gets to keep.</p>
+          <div class="cs-actions cs-rise" data-rise style="--d: 3">
+            <button class="cs-btn" type="button" data-go-mode="mobile">
+              <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-smartphone"/></svg>
+              Open the mobile app
+            </button>
+            <button class="cs-btn cs-btn-ghost" type="button" data-go-mode="machine">
+              <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-rectangle-vertical"/></svg>
+              See the machine
+            </button>
+            <button class="cs-btn cs-btn-ghost" type="button" data-go-mode="animation">
+              <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-clapperboard"/></svg>
+              Watch them together
+            </button>
+          </div>
+        </div>
+
+        <figure class="cs-family" data-hero-stage>
+          <div class="cs-family-row">
+            <div class="cs-glass cs-glass-hero" inert>
+              <div class="cs-glass-screen">
+                <div class="cs-glass-idle" aria-hidden="true"></div>
+                <div class="cs-glass-zoom"><iframe class="cs-embed" data-embed="hero" data-screen="result" title="The machine glass, running live" tabindex="-1"></iframe></div>
+              </div>
+            </div>
+            <div class="cs-phone cs-phone-hero">
+              <div class="cs-phone-screen">
+                <img src="assets/case/screen-hit.png" alt="The phone's Your hit screen: a score of 999,999.000, a Perfect punch, first at this machine" width="880" height="1912" decoding="async">
+              </div>
+            </div>
+          </div>
+          <figcaption class="cs-family-cap">The glass, live in this page, and the phone that keeps the hit.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ environment: a full-bleed photograph that settles as it arrives -->
+      <section class="cs-sec cs-env" data-ground="dark" aria-labelledby="csEnv">
+        <div class="cs-env-media" data-scale-in>
+          <img src="assets/case/hero-bag.jpg" alt="A boxer drives a straight punch into a teardrop bag in a bright gym" width="1800" height="1200" loading="lazy" decoding="async">
+        </div>
+        <div class="cs-env-copy">
+          <h2 id="csEnv" class="cs-rise" data-rise>Nobody left the house planning to do this.</h2>
+          <p class="cs-rise" data-rise style="--d: 1">Players are walk-up mall traffic, usually in groups, often with a queue behind them. The attempt is over in under five seconds.</p>
+        </div>
+      </section>
+
+      <!-- ============ chapter: the problem, and the heights it has to serve -->
+      <section class="cs-sec cs-light cs-problem" id="case-problem" data-ground="light" data-chapter="case-problem" aria-labelledby="csProblem">
+        <div class="cs-wrap cs-head">
+          <h2 id="csProblem" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">A column of glass on the ground floor.</h2>
+          <p class="cs-lead cs-rise" data-rise style="--d: 1">A 1080 by 3840 portrait screen, one and a half metres of glass at Dubai Mall by the Ice Rink, running all day. One credit buys one attempt: a sensor turns the strike into a score and a camera records it.</p>
+        </div>
+
+        <div class="cs-wrap">
+          <p class="cs-highlight" data-highlight>
+            <span>Read from a metre by the player,</span>
+            <span>and from three by the queue.</span>
+            <span>Nothing can rely on sound,</span>
+            <span>and nobody is standing by to help.</span>
+          </p>
+        </div>
+
+        <div class="cs-wrap cs-reach">
+          <div class="cs-reach-copy">
+            <h3 class="cs-h3 cs-rise" data-rise>Who is standing in front of it.</h3>
+            <p class="cs-rise" data-rise style="--d: 1">Adults here average about 170 cm for men and about 157 cm for women, and the Mall's crowd comes from everywhere. The column has to work for someone of 150 cm and someone of 190 cm, with no stooping and no reaching. That set the bands.</p>
+            <p class="cs-rise" data-rise style="--d: 2">It is also why the ranking is height. From the back of the queue the column is a poster: a bar taller than the last one reads at that size, six digits do not.</p>
+          </div>
+          <ol class="cs-bands">
+            <li class="cs-rise" data-rise>
+              <p class="cs-band-h">2.00 to 1.80 m</p>
+              <p class="cs-band-t">The bell, the crown and the score plate</p>
+              <p class="cs-band-d">Over the eye line, clearing the head of whoever is at the pad.</p>
+            </li>
+            <li class="cs-rise" data-rise style="--d: 1">
+              <p class="cs-band-h">1.78 to 1.31 m</p>
+              <p class="cs-band-t">The replay</p>
+              <p class="cs-band-d">Where a standing adult's eyes rest, at 150 cm or at 190 cm.</p>
+            </li>
+            <li class="cs-rise" data-rise style="--d: 2">
+              <p class="cs-band-h">1.29 to 1.04 m</p>
+              <p class="cs-band-t">The run block and its code</p>
+              <p class="cs-band-d">The code is centred near 1.16 m: thumb height for a phone held up, in focus at arm's length.</p>
+            </li>
+            <li class="cs-rise" data-rise style="--d: 3">
+              <p class="cs-band-h">1.43 to 1.13 m</p>
+              <p class="cs-band-t">The pad, beside the glass</p>
+              <p class="cs-band-d">Chest height, so the attempt is a punch and not a reach.</p>
+            </li>
+          </ol>
+        </div>
+
+        <figure class="cs-diagram cs-diagram-light cs-rise" data-rise aria-labelledby="csGeoTitle">
+          <figcaption class="cs-wrap cs-diagram-cap">
+            <h3 class="cs-h4" id="csGeoTitle">Where everyone stands.</h3>
+            <p>Side elevation and plan, drawn to scale: every viewing position, and the band of glass each one can read.</p>
+          </figcaption>
+          <div class="cs-diagram-frame" data-diagram-frame="Viewing geometry diagram">
+            <!-- include:parts/case-geometry.html -->
+          </div>
+        </figure>
+      </section>
+
+      <!-- ============ chapter: the idea. The column stays pinned while the copy advances; the charge follows the scroll -->
+      <section class="cs-sec cs-dark cs-idea" id="case-idea" data-ground="dark" data-chapter="case-idea" aria-labelledby="csIdea">
+        <div class="cs-wrap cs-head cs-head-solo">
+          <h2 id="csIdea" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">Play it like a fairground strength tester.</h2>
+        </div>
+
+        <div class="cs-seq cs-seq-idea" data-seq="idea">
+          <div class="cs-seq-stage">
+            <div class="cs-seq-pin">
+              <div class="cs-tester" aria-hidden="true">
+                <p class="cs-tester-score"><span data-count-to="402176" data-count-score data-count-beat="2" data-count-ghost="000,000">402,176</span></p>
+                <div class="cs-tester-body">
+                  <div class="cs-tester-bell"><svg class="cs-ico" width="28" height="28" aria-hidden="true" focusable="false"><use href="#cs-i-bell-ring"/></svg></div>
+                  <div class="cs-tester-track">
+                    <div class="cs-tester-clip"><div class="cs-tester-fill" data-fill></div></div>
+                    <span class="cs-mark" style="--at: .42" data-mark=".42">Today's line</span>
+                    <span class="cs-mark" style="--at: .63" data-mark=".63">Lina</span>
+                    <span class="cs-mark" style="--at: .81" data-mark=".81">Omar</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-seq-beats">
+            <article class="cs-beat">
+              <h3 class="cs-h3">The column is the screen.</h3>
+              <p>A strike sends the charge up the glass, and it climbs only as high as the hit deserves.</p>
+            </article>
+            <article class="cs-beat">
+              <h3 class="cs-h3">Height does the ranking.</h3>
+              <p>On the way up it breaks today's line and friends' marks, so the queue has the verdict before anyone reads a digit.</p>
+            </article>
+            <article class="cs-beat">
+              <h3 class="cs-h3">Then the score lands.</h3>
+              <p>The charge holds while the number drops onto the plate. Scores run to 999,999.000, the decimals smaller so the whole points read first.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ chapter: the machine. The live glass stays pinned and changes screen with the copy -->
+      <section class="cs-sec cs-soft cs-machine" id="case-machine" data-ground="light" data-chapter="case-machine" aria-labelledby="csMachine">
+        <div class="cs-wrap cs-head">
+          <h2 id="csMachine" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">One column. One moment at a time.</h2>
+          <p class="cs-lead cs-rise" data-rise style="--d: 1">Every state ends on a timer, a credit, a strike or a server event, so the glass never waits for a touch. This is the real screen, live in the page.</p>
+        </div>
+
+        <div class="cs-seq cs-seq-machine" data-seq="machine" data-screen="attract">
+          <div class="cs-seq-stage">
+            <div class="cs-seq-pin">
+              <div class="cs-glass cs-glass-seq" inert>
+                <div class="cs-glass-screen">
+                  <div class="cs-glass-idle" aria-hidden="true"></div>
+                  <div class="cs-glass-zoom"><iframe class="cs-embed" data-embed="seq" title="The machine glass, following the story" tabindex="-1"></iframe></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-seq-beats">
+            <article class="cs-beat" data-screen="attract">
+              <h3 class="cs-h3">Between players, the leaderboard.</h3>
+              <p>The queue always has a score to beat. Between visits the glass rests on Home.</p>
+            </article>
+            <article class="cs-beat" data-screen="scan">
+              <h3 class="cs-h3">Scan to connect.</h3>
+              <p>A code at thumb height links a phone before the turn, so the machine knows whose hit is next.</p>
+            </article>
+            <article class="cs-beat" data-screen="countdown">
+              <h3 class="cs-h3">Punch now.</h3>
+              <p>The glass keeps the only clock, twenty seconds with a ring that drains. The phone shows no timer, it says look up.</p>
+            </article>
+            <article class="cs-beat" data-screen="loading">
+              <h3 class="cs-h3">Reading the strike.</h3>
+              <p>Two seconds between the hit and the number, so the striker is looking up when the score lands.</p>
+            </article>
+            <article class="cs-beat" data-screen="score" data-zoom="lift">
+              <h3 class="cs-h3">The big score.</h3>
+              <p>The number at full width for the back of the queue, with the punch itself looping under it.</p>
+            </article>
+            <article class="cs-beat" data-screen="result">
+              <h3 class="cs-h3">The result.</h3>
+              <p>Nine sections: the score and its ranks, the replay, the punches other people landed here, the sponsor. A record gets a red moment of its own first, and all end on the one red call, punch again.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="cs-wrap cs-bignum">
+          <p class="cs-bignum-n cs-rise" data-rise><span data-count-to="67" data-count-live="designs">67</span></p>
+          <div class="cs-bignum-copy cs-rise" data-rise style="--d: 1">
+            <p>designs on the glass. Every section keeps five or more and pages through its own while the rest of the screen stays put.</p>
+            <button class="cs-btn" type="button" data-go-mode="machine">
+              <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-rectangle-vertical"/></svg>
+              Page through them
+            </button>
+          </div>
+        </div>
+
+        <figure class="cs-diagram cs-diagram-light cs-rise" data-rise aria-labelledby="csStateTitle">
+          <figcaption class="cs-wrap cs-diagram-cap">
+            <h3 class="cs-h4" id="csStateTitle">Every state, and every way out of it.</h3>
+            <p>The reveal runs along the middle row. Faults, a queued credit and the hours outside a run branch off it and find their way back.</p>
+          </figcaption>
+          <div class="cs-diagram-frame" data-diagram-frame="Machine state diagram">
+            <!-- include:parts/case-state.html -->
+          </div>
+        </figure>
+      </section>
+
+      <!-- ============ chapter: the phone. Friends first, then the phone pinned while the flow advances -->
+      <section class="cs-sec cs-dark cs-phoneflow" id="case-phone" data-ground="dark" data-chapter="case-phone" aria-labelledby="csPhone">
+        <div class="cs-wrap cs-head">
+          <h2 id="csPhone" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">From the glass to your pocket.</h2>
+          <p class="cs-lead cs-rise" data-rise style="--d: 1">Friends take turns, so the run is the unit. One code stays put for the whole run, a still of every hit waits on it, and each person keeps their own with one tap.</p>
+        </div>
+
+        <div class="cs-trio" aria-hidden="true">
+          <div class="cs-trio-item" data-parallax=".10"><img src="assets/case/trio-hana.jpg" alt="" width="1100" height="1650" loading="lazy" decoding="async"></div>
+          <div class="cs-trio-item" data-parallax="-.06"><img src="assets/case/trio-zayd.jpg" alt="" width="1100" height="1650" loading="lazy" decoding="async"></div>
+          <div class="cs-trio-item" data-parallax=".16"><img src="assets/case/trio-ring.jpg" alt="" width="1100" height="1650" loading="lazy" decoding="async"></div>
+        </div>
+
+        <div class="cs-seq cs-seq-phone" data-seq="phone" data-layer="scan">
+          <div class="cs-seq-stage">
+            <div class="cs-seq-pin">
+              <div class="cs-duo" aria-hidden="true">
+                <div class="cs-phone cs-phone-seq">
+                  <div class="cs-phone-screen">
+                    <img class="cs-layer" data-layer="scan" src="assets/case/screen-scan.png" alt="" width="880" height="1912" loading="lazy" decoding="async">
+                    <img class="cs-layer" data-layer="hit" src="assets/case/screen-hit.png" alt="" width="880" height="1912" loading="lazy" decoding="async">
+                    <img class="cs-layer" data-layer="feed" src="assets/case/screen-feed.png" alt="" width="880" height="1912" loading="lazy" decoding="async">
+                    <img class="cs-layer" data-layer="punch" src="assets/case/screen-punch.png" alt="" width="880" height="1912" loading="lazy" decoding="async">
+                    <div class="cs-sheet">
+                      <p class="cs-sheet-title">Buy credits</p>
+                      <p class="cs-sheet-sub">A pack of three credits</p>
+                      <ul>
+                        <li>Apple Pay</li>
+                        <li>Google Pay</li>
+                        <li><svg class="cs-ico" width="16" height="16" aria-hidden="true" focusable="false"><use href="#cs-i-credit-card"/></svg>Card</li>
+                        <li>PayPal</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="cs-mini">
+                  <div class="cs-mini-glass"><img src="assets/case/glass-countdown.jpg" alt="" width="540" height="1920" loading="lazy" decoding="async"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-seq-beats">
+            <article class="cs-beat" data-layer="scan">
+              <h3 class="cs-h3">Scan.</h3>
+              <p>The code opens the app, or its download, and links the phone to this machine.</p>
+            </article>
+            <article class="cs-beat" data-layer="scan" data-over="sheet">
+              <h3 class="cs-h3">Connect, or buy credits first.</h3>
+              <p>Connecting spends a credit. An empty wallet opens a pack of three: Apple Pay, Google Pay, a card or PayPal. A failed payment gets a page of its own, saying first that nothing was charged.</p>
+            </article>
+            <article class="cs-beat" data-layer="punch">
+              <h3 class="cs-h3">Punch.</h3>
+              <p>The phone names the machine, holds the credit, then gets out of the way. No timer here, only look up.</p>
+            </article>
+            <article class="cs-beat" data-layer="hit">
+              <h3 class="cs-h3">Your hit.</h3>
+              <p>The score lands here too, with the replay, the strike at about 315 kg of peak force, and the boards it just joined: this machine, then the city and the country.</p>
+            </article>
+            <article class="cs-beat" data-layer="feed">
+              <h3 class="cs-h3">The feed, and a reel of your own.</h3>
+              <p>Other people's hits to watch and react to, and your own kept ones: score, video, when and where. Kept hits start private.</p>
+            </article>
+            <article class="cs-beat" data-layer="punch" data-over="machine">
+              <h3 class="cs-h3">The two together.</h3>
+              <p>The phone hands the turn over and the glass keeps the time. The Animation tab plays them live, and holds a clip of each: the score reveal on the glass, the run on the phone, both recorded from the showcase itself.</p>
+              <button class="cs-btn" type="button" data-go-mode="animation">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-clapperboard"/></svg>
+                Watch them together
+              </button>
+            </article>
+          </div>
+        </div>
+
+        <figure class="cs-diagram cs-diagram-dark cs-rise" data-rise aria-labelledby="csRunTitle">
+          <figcaption class="cs-wrap cs-diagram-cap">
+            <h3 class="cs-h4" id="csRunTitle">A run, from the first credit to the phone.</h3>
+            <p>One group, one code. Omar and Sara take turns, and each keeps their own hit.</p>
+          </figcaption>
+          <div class="cs-diagram-frame" data-diagram-frame="A run from the first credit to the phone">
+            <!-- include:parts/case-run.html -->
+          </div>
+        </figure>
+      </section>
+
+      <!-- ============ chapter: what ships. The four variable modes on one specimen, then the contents of the Figma file -->
+      <section class="cs-sec cs-light cs-system" id="case-system" data-ground="light" data-chapter="case-system" aria-labelledby="csSystem">
+        <div class="cs-wrap cs-head">
+          <h2 id="csSystem" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">What ships is one Figma file.</h2>
+          <p class="cs-lead cs-rise" data-rise style="--d: 1">The system and both surfaces are delivered in the project's Figma file, built natively: every layer is a frame, text or a vector, not a screenshot among them, and all of it on real auto layout.</p>
+        </div>
+
+        <div class="cs-seq cs-seq-system" data-seq="system" data-look="arena-dark">
+          <div class="cs-seq-stage">
+            <div class="cs-seq-pin">
+              <div class="cs-specs" aria-hidden="true">
+                <div class="cs-spec-stack">
+                  <div class="cs-spec" data-look="arena-dark"></div>
+                  <div class="cs-spec" data-look="arena-light"></div>
+                  <div class="cs-spec" data-look="ref-dark"></div>
+                  <div class="cs-spec" data-look="ref-light"></div>
+                </div>
+                <div class="cs-glyphs">
+                  <span data-case-glyph="machine"></span><span data-case-glyph="city"></span><span data-case-glyph="country"></span>
+                  <span data-case-glyph="global"></span><span data-case-glyph="energy"></span><span data-case-glyph="force"></span>
+                  <span data-case-glyph="speed"></span><span data-case-glyph="acc"></span><span data-case-glyph="play"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-seq-beats">
+            <article class="cs-beat" data-look="arena-dark">
+              <h3 class="cs-h3">Arena, the default.</h3>
+              <p>Big Shoulders Display for numbers, Barlow for text, Barlow Condensed for labels, on a warm ink with one red: the charge, the replay's progress and punch again, and nothing else.</p>
+            </article>
+            <article class="cs-beat" data-look="arena-light">
+              <h3 class="cs-h3">Colour is a variable, in four modes.</h3>
+              <p>Arena dark, Arena light, Reference dark, Reference light. Daylight turns the ground and nothing else, and no frame is redrawn for it.</p>
+            </article>
+            <article class="cs-beat" data-look="ref-dark">
+              <h3 class="cs-h3">Reference, as first drawn.</h3>
+              <p>The original frames kept as a mode, so every refinement can be compared with where it started.</p>
+            </article>
+            <article class="cs-beat" data-look="ref-light" data-glyphs="on">
+              <h3 class="cs-h3">One icon family.</h3>
+              <p>Line icons with round caps, on the glass, in the app and on this page.</p>
+              <button class="cs-btn" type="button" data-go-mode="system">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-component"/></svg>
+                Open the design system
+              </button>
+            </article>
+          </div>
+        </div>
+
+        <div class="cs-wrap cs-file">
+          <h3 class="cs-h3 cs-rise" data-rise>Eight pages.</h3>
+          <dl class="cs-file-list">
+            <div class="cs-rise" data-rise><dt>Cover</dt><dd>How to read the file.</dd></div>
+            <div class="cs-rise" data-rise><dt>Design system</dt><dd>Type, spacing, the grids, and colour bound to variables in four modes.</dd></div>
+            <div class="cs-rise" data-rise><dt>Components</dt><dd>Buttons, chips, avatars, tab bars, the machine header, the sponsor strip, the backgrounds.</dd></div>
+            <div class="cs-rise" data-rise><dt>Assets</dt><dd>The photography, licensed and credited, none of it used twice.</dd></div>
+            <div class="cs-rise" data-rise><dt>Machine screens</dt><dd>Eight screens, composed from instances, not drawn again.</dd></div>
+            <div class="cs-rise" data-rise><dt>Mobile app</dt><dd>Fourteen screens, the same way.</dd></div>
+            <div class="cs-rise" data-rise><dt>Machine sections</dt><dd><b>37 component sets, 175 variants.</b> Every section of the glass.</dd></div>
+            <div class="cs-rise" data-rise><dt>Sections variants</dt><dd><b>52 sets, 255 variants.</b> The same for the phone.</dd></div>
+          </dl>
+          <p class="cs-file-note cs-rise" data-rise>A screen is a stack of instances, so a section changed in its set changes on every screen carrying it. The showcase runs on the same rule.</p>
+          <p class="cs-file-note cs-rise" data-rise><a class="cs-link" href="https://www.figma.com/design/j1cOyUKz9Gys3njKSUve6L" target="_blank" rel="noopener">Open the file in Figma</a></p>
+        </div>
+      </section>
+
+      <!-- ============ chapter: notes. Decisions, the pushback, then the questions for real players -->
+      <section class="cs-sec cs-soft cs-notes" id="case-notes" data-ground="light" data-chapter="case-notes" aria-labelledby="csNotes">
+        <div class="cs-wrap cs-head cs-head-solo">
+          <h2 id="csNotes" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">The decisions, and where I pushed back.</h2>
+        </div>
+        <div class="cs-wrap cs-decisions">
+          <article class="cs-decision cs-rise" data-rise>
+            <h3 class="cs-h4">No touch, no audio.</h3>
+            <p>The player has just used both hands and the mall is loud. Anything that needs a finger happens on the phone.</p>
+          </article>
+          <article class="cs-decision cs-rise" data-rise style="--d: 1">
+            <h3 class="cs-h4">The run is the unit.</h3>
+            <p>Groups take turns, so the run gets one code and a still of every hit. A face stays blurred until its owner keeps it.</p>
+          </article>
+          <article class="cs-decision cs-rise" data-rise style="--d: 2">
+            <h3 class="cs-h4">The glass keeps to the room.</h3>
+            <p>It names the people in this run, today's crown and the punches landed here. City and country ranks live on the phone.</p>
+          </article>
+        </div>
+
+        <div class="cs-wrap cs-push" id="case-push">
+          <h3 class="cs-h3 cs-rise" data-rise>Four things in the brief I would change.</h3>
+          <ul class="cs-push-list">
+            <li class="cs-rise" data-rise>Touch is left undecided. I designed for none.</li>
+            <li class="cs-rise" data-rise>The panel is narrower than stated: at this height the glass is about 0.42 m wide.</li>
+            <li class="cs-rise" data-rise>Three decimals are false precision from the queue. They stay small and quiet, and one switch drops them.</li>
+            <li class="cs-rise" data-rise>One attempt and a walk-away counts the wrong thing. I would count kept hits per run.</li>
+          </ul>
+        </div>
+
+        <div class="cs-wrap cs-validate">
+          <h3 class="cs-h3 cs-rise" data-rise>What I would put to real players.</h3>
+          <p class="cs-highlight cs-highlight-q" data-highlight>
+            <span>Can the queue read who beat whom?</span>
+            <span>Does the code scan in glare from a step back?</span>
+            <span>Does the striker look up in time for the landing?</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ how AI was used -->
+      <section class="cs-sec cs-dark cs-ai" id="case-ai" data-ground="dark" data-chapter="case-ai" aria-labelledby="csAI">
+        <div class="cs-wrap cs-ai-grid">
+          <div class="cs-ai-head">
+            <h2 id="csAI" class="cs-h2 cs-rise" data-rise>How AI was used.</h2>
+            <p class="cs-lead cs-rise" data-rise style="--d: 1">Claude in Claude Code worked as a design team, and every step had a reviewer. The brief asked where it was used and what changed afterwards, so both are here.</p>
+          </div>
+          <ul class="cs-ai-list">
+            <li class="cs-rise" data-rise><h3 class="cs-h4">An audit, then five directions.</h3><p>The brief audited before any direction, five directions scored by judges working apart, then a spec and three skeptics who reshaped the work around the run.</p></li>
+            <li class="cs-rise" data-rise><h3 class="cs-h4">Builders on a shared contract.</h3><p>Agents built the Figma file through its API, rendered the reveal from code and gathered the photo library.</p></li>
+            <li class="cs-rise" data-rise><h3 class="cs-h4">A panel, then critics.</h3><p>Sensor science, arcade design, social play and information design on what the glass should show instead of four ranks and four physics readings, and a critic on every screen.</p></li>
+          </ul>
+        </div>
+        <div class="cs-wrap cs-ai-after">
+          <h3 class="cs-h3 cs-rise" data-rise>What I changed afterwards.</h3>
+          <ul class="cs-ai-changes">
+            <li class="cs-rise" data-rise><h4 class="cs-h4">One clock, and a beat before the number.</h4><p>The phone lost its timer, and a reading screen now sits between the strike and the score.</p></li>
+            <li class="cs-rise" data-rise><h4 class="cs-h4">Sections, not screens.</h4><p>Whole-screen alternatives became sections with five designs each, so one part of a page can change alone.</p></li>
+            <li class="cs-rise" data-rise><h4 class="cs-h4">The strike in numbers.</h4><p>Energy in kJ and speed in mph were units nobody here uses, two of them impossible. Force in kg and speed in km/h replaced them.</p></li>
+            <li class="cs-rise" data-rise><h4 class="cs-h4">Red, not gold, and a real sponsor.</h4><p>Crowns and records took the brand red, the big score plays the punch itself, and Monster Energy took the sponsor slot in its own green.</p></li>
+            <li class="cs-rise" data-rise><h4 class="cs-h4">Then a pass that only cut.</h4><p>Out went the phone's saved lists, the carousel controls, a header, a dock and twenty designs that only repeated one another. The result opens on centred score, card grid, list and slant cut, its kinematic breakdown off.</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ closing: the call beside a framed photograph that drifts -->
+      <footer class="cs-sec cs-dark cs-close-sec" data-ground="dark" aria-labelledby="csReady">
+        <div class="cs-wrap cs-close-grid">
+          <div class="cs-close-copy">
+            <h2 id="csReady" class="cs-h2 cs-rise cs-chapter" data-rise>Ring the bell.</h2>
+            <p class="cs-rise" data-rise style="--d: 1">The phone, the glass and the two together are all live in this showcase.</p>
+            <div class="cs-actions cs-rise" data-rise style="--d: 2">
+              <button class="cs-btn" type="button" data-go-mode="mobile">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-smartphone"/></svg>
+                Mobile app
+              </button>
+              <button class="cs-btn cs-btn-ghost" type="button" data-go-mode="machine">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-rectangle-vertical"/></svg>
+                Machine screen
+              </button>
+              <button class="cs-btn cs-btn-ghost" type="button" data-go-mode="animation">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-clapperboard"/></svg>
+                Animation
+              </button>
+              <button class="cs-btn cs-btn-ghost" type="button" data-go-mode="system">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-component"/></svg>
+                Design system
+              </button>
+            </div>
+          </div>
+          <div class="cs-close-media cs-rise" data-rise data-parallax=".12" aria-hidden="true">
+            <img src="assets/case/close-adam.jpg" alt="" width="1100" height="1650" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="cs-foot">
+          <img src="assets/brand/robotenc-light.svg" alt="Robotenc" width="98" height="28" loading="lazy">
+          <p>PunchApp, a senior product design exercise for Robotenc.</p>
+          <button class="cs-btn cs-btn-ghost cs-btn-sm" id="closeCase2" type="button">
+            <svg class="cs-ico" width="18" height="18" aria-hidden="true" focusable="false"><use href="#cs-i-arrow-left"/></svg>
+            Back to the showcase
+          </button>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+  <link rel="stylesheet" href="case-diagrams.css">
+  <script src="case-diagrams.js" defer></script>
+  <script src="case.js" defer></script>

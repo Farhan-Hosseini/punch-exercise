@@ -1,0 +1,289 @@
+/* Phone: Connecting to the machine (parts/mpage-connect.html, mpages/connect.js).
+   Three sections stacked on the phone's spacing scale (mpages/_shared.css): Linking (#mConnect, its five designs drawn
+   from one set of parts by data-style), Machine and Credit. The tab bar is away on this screen, so the stack runs from
+   the status bar to the home bar. The older full-screen layout of .m-connect in mobile.css is overridden here.
+   The page carries the link's state (mobile.js setConnect): data-state wait or done, data-held yes or no. */
+.pc [hidden] { display: none !important; }
+
+.pc {
+  position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+  display: flex; flex-direction: column; gap: var(--m-sec-gap);
+  padding: calc(var(--m-top) + 12px) var(--m-gut) calc(var(--m-bottom) + 20px);
+}
+.pc::-webkit-scrollbar { display: none; }
+.pc-sec { min-width: 0; flex: none; }
+.pc .m-connect.pc-link { position: relative; inset: auto; flex: 1 0 336px; }
+
+/* the link's state, for every design that says it */
+.m-page[data-page="connect"] :is(.pc-when-done, .pc-when-held, .pc-when-none) { display: none; }
+.m-page[data-page="connect"][data-state="done"] .pc-when-wait { display: none; }
+.m-page[data-page="connect"][data-state="done"] .pc-when-done,
+.m-page[data-page="connect"][data-state="done"][data-held="yes"] .pc-when-held,
+.m-page[data-page="connect"][data-state="done"][data-held="no"] .pc-when-none { display: inline; }
+/* the states that lead with an icon lay out as a row */
+.m-page[data-page="connect"] :is(.pcc-chip, .pcm-fact-state) > * { align-items: center; gap: 6px; }
+.m-page[data-page="connect"]:not([data-state="done"]) :is(.pcc-chip, .pcm-fact-state) > .pc-when-wait,
+.m-page[data-page="connect"][data-state="done"] :is(.pcc-chip, .pcm-fact-state) > .pc-when-done,
+.m-page[data-page="connect"][data-state="done"][data-held="yes"] .pcc-chip > .pc-when-held,
+.m-page[data-page="connect"][data-state="done"][data-held="no"] .pcc-chip > .pc-when-none { display: inline-flex; }
+/* an empty wallet (mobile.js data-empty) reads "No credit yet" while it links, not "One credit for this turn" */
+.m-page[data-page="connect"][data-empty]:not([data-state="done"]) :is(.pcc, .pc-chk-credit) .pc-when-wait { display: none; }
+.m-page[data-page="connect"][data-empty]:not([data-state="done"]) :is(.pcc, .pc-chk-credit) .pc-when-none { display: inline; }
+.m-page[data-page="connect"][data-empty]:not([data-state="done"]) .pcc-chip > .pc-when-none { display: inline-flex; }
+
+/* entrance: the sections rise in when the page opens, a design rises in when Customise swaps it (connect.js) */
+@keyframes pc-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.pc.is-entering > .pc-machine { animation: pc-rise .5s cubic-bezier(.2, .8, .2, 1) .1s both; }
+.pc.is-entering > .pc-credit { animation: pc-rise .5s cubic-bezier(.2, .8, .2, 1) .2s both; }
+.pc .is-swapped { animation: pc-rise .45s cubic-bezier(.2, .8, .2, 1) both; }
+
+/* ---------------------------------------------------------------- Linking: the parts every design shares */
+.pc .m-connect .m-orbit { top: calc((100% - 84px) / 2); }
+.pc .m-connect .m-connect-copy { top: auto; bottom: 0; gap: var(--m-title-gap); }
+.pc-radar, .pc-beam, .pc-checks { display: none; }
+
+/* round nine: the disc is the chosen logo, drawn whole (a round mark or a rounded square), with no disc behind it */
+.pc .m-orbit-disc.pc-logo { background: none; border-radius: 0; object-fit: contain; filter: drop-shadow(0 16px 30px color-mix(in srgb, var(--m-shadow) 45%, transparent)); }
+
+/* Orbit (the reference): the rings a touch smaller so they sit inside the section */
+.pc .m-connect[data-style="orbit"] .m-ring-soft { width: 320px; height: 321px; }
+
+/* Brackets */
+.pc .m-connect[data-style="brackets"] .m-orbit { top: calc((100% - 84px) / 2); }
+.pc .m-connect[data-style="brackets"] .m-connect-copy { top: auto; bottom: 0; align-content: end; gap: var(--m-title-gap); }
+
+/* Radar: pulses leave the disc and a sweep turns beneath them */
+.m-connect[data-style="radar"] :is(.m-ring-thick, .m-ring-thin, .m-ring-soft, .m-brackets) { display: none; }
+.m-connect[data-style="radar"] .pc-radar { display: block; width: 156px; height: 156px; }
+.pc-radar i {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid var(--m-red-soft); box-shadow: 0 0 12px color-mix(in srgb, var(--m-glow) 60%, transparent);
+  animation: pc-pulse 2.4s cubic-bezier(.2, .6, .3, 1) infinite; opacity: 0;
+}
+.pc-radar i:nth-child(2) { animation-delay: .8s; }
+.pc-radar i:nth-child(3) { animation-delay: 1.6s; }
+@keyframes pc-pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.3); opacity: 0; } }
+.pc-sweep {
+  position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent, color-mix(in srgb, var(--m-glow) 26%, transparent) 60deg, transparent 62deg, transparent);
+  -webkit-mask-image: radial-gradient(closest-side, transparent 50%, #000 52%, #000 99%, transparent);
+  mask-image: radial-gradient(closest-side, transparent 50%, #000 52%, #000 99%, transparent);
+  animation: m-spin 2.6s linear infinite;
+}
+.m-connect[data-style="radar"][data-state="done"] .pc-radar i { animation: none; opacity: 0; }
+.m-connect[data-style="radar"][data-state="done"] .pc-sweep { opacity: 0; transition: opacity .4s ease; }
+
+/* Beam: your phone on the left, the machine on the right, a signal running between them */
+.m-connect[data-style="beam"] .m-orbit { display: none; }
+.pc .m-connect[data-style="beam"] { display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+.m-connect[data-style="beam"] .pc-beam { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 10px; }
+.pc-end { display: grid; justify-items: center; gap: 10px; }
+.pc-end > :first-child {
+  width: 84px; height: 84px; border-radius: 26px; display: grid; place-items: center; font-size: 36px;
+  background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+}
+.pc-end-machine img { padding: 18px; object-fit: contain; }
+.pc-end-phone > :first-child { color: var(--m-ink); }
+.pc-end small { font: var(--m-w-label) 12px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-2); }
+.pc-wire {
+  position: relative; height: 84px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--m-ink) 30%, transparent) 1.6px, transparent 2.2px) 0 50% / 14px 14px repeat-x;
+}
+.pc-wire i {
+  position: absolute; left: 0; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%;
+  background: var(--m-red-soft); box-shadow: 0 0 14px 3px color-mix(in srgb, var(--m-glow) 70%, transparent);
+  animation: pc-run 1.6s cubic-bezier(.45, 0, .55, 1) infinite;
+}
+.pc-wire i:nth-child(2) { animation-delay: .53s; }
+.pc-wire i:nth-child(3) { animation-delay: 1.06s; }
+@keyframes pc-run { 0% { left: 0; opacity: 0; } 15%, 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+.pc-link-ok {
+  position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 22px; background: var(--m-red); color: var(--m-on-red);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--m-red) 20%, transparent), 0 10px 30px -8px color-mix(in srgb, var(--m-glow) 90%, transparent);
+  opacity: 0; transform: scale(.5); transition: opacity .3s ease, transform .45s cubic-bezier(.2, 1.5, .4, 1);
+}
+.m-connect[data-state="done"] .pc-wire { background: linear-gradient(var(--m-red), var(--m-red)) 0 50% / 100% 3px no-repeat; }
+.m-connect[data-state="done"] .pc-wire i { animation: none; opacity: 0; }
+.m-connect[data-state="done"] .pc-link-ok { opacity: 1; transform: none; }
+.m-connect[data-state="done"] .pc-end-machine > :first-child { border-color: var(--m-red-soft); box-shadow: 0 0 0 4px color-mix(in srgb, var(--m-red-soft) 22%, transparent); }
+.pc .m-connect[data-style="beam"] .m-connect-copy { position: static; justify-items: start; text-align: left; }
+
+/* Checklist: the title up top, set left, and the three steps of a link under it */
+.pc .m-connect[data-style="checklist"] {
+  display: flex; flex-direction: column; justify-content: center; gap: var(--m-group-gap);
+}
+.m-connect[data-style="checklist"] .m-orbit { display: none; }
+.pc .m-connect[data-style="checklist"] .m-connect-copy { position: static; order: -1; justify-items: start; text-align: left; gap: var(--m-title-gap); margin-bottom: 8px; }
+.pc .m-connect[data-style="checklist"] .m-connect-title { font-size: min(34px, 8cqi); line-height: 1.15; }
+.m-connect[data-style="checklist"] .pc-checks { display: grid; gap: var(--m-item-gap); list-style: none; margin: 0; padding: 0; }
+.pc-chk {
+  display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; padding: 14px var(--m-pad); border-radius: 18px;
+  background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+}
+.pc-chk b { display: block; font: var(--m-w-strong) 16px/1.25 var(--m-f-text); }
+.pc-chk small { display: block; margin-top: 2px; font: var(--m-w-text) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.pc-chk-ico { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-size: 22px; background: var(--m-glass-hi); border: 1px solid var(--m-line); color: var(--m-ink-2); }
+.pc-chk-ico > * { grid-area: 1 / 1; display: inline-grid; }
+.pc-spin { animation: m-spin 1s linear infinite; }
+.pc-tick, .pc-warn { display: none; }
+.pc-chk.is-done .pc-chk-ico,
+.m-page[data-state="done"] .pc-chk-link .pc-chk-ico,
+.m-page[data-state="done"][data-held="yes"] .pc-chk-credit .pc-chk-ico { background: var(--m-red); border-color: transparent; color: var(--m-on-red); }
+.m-page[data-state="done"] .pc-chk-link .pc-spin,
+.m-page[data-state="done"] .pc-chk-credit .pc-spin { display: none; }
+.m-page[data-state="done"] .pc-chk-link .pc-tick,
+.m-page[data-state="done"][data-held="yes"] .pc-chk-credit .pc-tick,
+.m-page[data-state="done"][data-held="no"] .pc-chk-credit .pc-warn { display: inline-grid; }
+.m-page[data-state="done"][data-held="no"] .pc-chk-credit .pc-chk-ico { color: var(--m-gold); border-color: color-mix(in srgb, var(--m-gold) 50%, transparent); }
+.pc-chk:not(.is-done) .pc-when-done { display: none; }
+
+/* ---------------------------------------------------------------- Machine */
+.pcm-name { font: var(--m-w-strong) 17px/1.25 var(--m-f-text); }
+.pcm-spot { display: flex; align-items: center; gap: 5px; font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
+.pcm-spot [data-lucide] { font-size: 15px; display: inline-grid; color: var(--m-red-soft); }
+.pcm-kick { font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); }
+.pcm img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* the state chip: a dot that pulses while linking and holds still once linked */
+.pc-state {
+  display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px; border-radius: 99px;
+  background: var(--m-glass-hi); border: 1px solid var(--m-line);
+  font: var(--m-w-strong) 13px/1 var(--m-f-text); white-space: nowrap;
+}
+.pc-state i { width: 8px; height: 8px; border-radius: 50%; background: var(--m-gold); animation: pc-blink 1s ease-in-out infinite; }
+@keyframes pc-blink { 50% { opacity: .35; } }
+.m-page[data-state="done"] .pc-state i { background: var(--m-up); animation: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--m-up) 25%, transparent); }
+/* a second punch (data-again, "Machine ready") finds the phone already linked: the link reads Linked from the start,
+   never "Linking" under a title that says the machine is ready */
+.m-page[data-page="connect"][data-again] :is(.pc-state, .pcm-fact-state, .pc-chk-link) .pc-when-wait { display: none; }
+.m-page[data-page="connect"][data-again] :is(.pc-state, .pc-chk-link) .pc-when-done { display: inline; }
+.m-page[data-page="connect"][data-again] .pcm-fact-state > .pc-when-done { display: inline-flex; }
+.m-page[data-page="connect"][data-again] .pc-state i { background: var(--m-up); animation: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--m-up) 25%, transparent); }
+.m-page[data-page="connect"][data-again] .pcm-fact-state [data-lucide] { color: var(--m-up); }
+.m-page[data-page="connect"][data-again] .pc-chk-link .pc-chk-ico { background: var(--m-red); border-color: transparent; color: var(--m-on-red); }
+.m-page[data-page="connect"][data-again] .pc-chk-link .pc-spin { display: none; }
+.m-page[data-page="connect"][data-again] .pc-chk-link .pc-tick { display: inline-grid; }
+
+/* Photo card */
+.pcm-card { display: grid; grid-template-columns: 112px 1fr; overflow: hidden; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.pcm-photo { display: block; min-height: 112px; background: var(--m-well); }
+.pcm-body { display: grid; gap: 4px; align-content: center; justify-items: start; padding: 14px var(--m-pad); }
+.pcm-body .pc-state { margin-top: 6px; }
+
+/* Row */
+.pcm-row { display: grid; grid-template-columns: 52px 1fr auto; gap: 14px; align-items: center; padding: 10px 12px 10px 10px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.pcm-thumb { width: 52px; height: 52px; border-radius: 14px; overflow: hidden; background: var(--m-well); }
+.pcm-row-txt { min-width: 0; }
+.pcm-row-txt > span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pcm-row .pcm-name { font-size: 16px; }
+
+/* Banner */
+.pcm-banner { position: relative; isolation: isolate; height: 150px; overflow: hidden; border-radius: 24px; border: 1px solid var(--m-line); background: #0B0B0C; color: var(--m-on-photo); }
+.pcm-banner-img { position: absolute; inset: 0; z-index: -2; }
+.pcm-banner::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .1) 75%), linear-gradient(90deg, rgba(0, 0, 0, .45), transparent 65%); }
+.pcm-banner-txt { position: absolute; left: 18px; right: 18px; bottom: 16px; display: grid; gap: 4px; }
+.pcm-banner .pcm-kick { color: var(--m-on-photo-3); }
+.pcm-banner .pcm-name { font: var(--m-w-title) 22px/1.1 var(--m-f-title); }
+.pcm-banner .pcm-spot { color: var(--m-on-photo-2); }
+.pc-state-photo { position: absolute; right: 14px; top: 14px; background: rgba(0, 0, 0, .5); border-color: rgba(255, 255, 255, .18); color: var(--m-on-photo); }
+
+/* Ticket: two halves with notches between them, no rule between the words */
+.pcm-ticket {
+  /* the notches sit in the gap between the code and the venue: padding, the code's column, half the gap */
+  --notch: 11px; --nx: calc(18px + 96px + 11px);
+  display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; padding: var(--m-pad) 18px;
+  border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
+  -webkit-mask: radial-gradient(circle var(--notch) at var(--nx) 0, transparent 98%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at var(--nx) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle var(--notch) at var(--nx) 0, transparent 98%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at var(--nx) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+}
+.pcm-ticket-code { width: 96px; display: grid; gap: 4px; }
+/* four characters in the look's numeral face, sized so they always fit the 96 px column */
+.pcm-code { white-space: nowrap; font: var(--m-w-num-hi) min(40px, calc(96px / (4.2 * var(--m-num-w))))/.9 var(--m-num); letter-spacing: .02em; color: var(--m-red-soft); }
+.pcm-ticket-code .pcm-spot { font-size: 13px; }
+.pcm-ticket-venue { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: center; min-width: 0; }
+.pcm-round { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 2px solid var(--m-red); }
+.pcm-ticket-venue p > span { display: block; }
+
+/* Split */
+.pcm-split { display: grid; grid-template-columns: 128px 1fr; gap: 18px; align-items: center; }
+.pcm-square { width: 128px; height: 128px; border-radius: 24px; overflow: hidden; background: var(--m-well); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.pcm-facts { display: grid; gap: 7px; min-width: 0; }
+.pcm-facts .pcm-name { font: var(--m-w-title) 22px/1.1 var(--m-f-title); margin-bottom: 2px; }
+.pcm-fact { display: flex; align-items: center; gap: 8px; font: var(--m-w-text) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.pcm-fact [data-lucide] { font-size: 16px; display: inline-grid; color: var(--m-ink-3); }
+.pcm-fact-state { color: var(--m-ink); font-weight: var(--m-w-mid); }
+.pcm-fact-state [data-lucide] { color: var(--m-gold); }
+.m-page[data-state="done"] .pcm-fact-state [data-lucide] { color: var(--m-up); }
+
+/* ---------------------------------------------------------------- Credit */
+.pcc b { font-weight: var(--m-w-strong); }
+
+/* Coin */
+.pcc-coin { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: center; }
+/* the look's gold, pulled toward the ink so it holds its contrast on a daylight ground too */
+.pcc-coin-ico { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 23px; color: color-mix(in srgb, var(--m-gold) 62%, var(--m-ink)); background: color-mix(in srgb, var(--m-gold) 16%, transparent); border: 1px solid color-mix(in srgb, var(--m-gold) 40%, transparent); }
+.m-page[data-state="done"][data-held="no"] .pcc-coin-ico { color: var(--m-ink-3); background: var(--m-glass-hi); border-color: var(--m-line); }
+.pcc-txt > * { display: block; }
+.pcc-txt b { font-size: 17px; line-height: 1.25; }
+.pcc-txt > span { margin-top: 2px; font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
+
+/* Wallet bar */
+.pcc-bar { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 12px 12px 12px 14px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.pcc-bar-ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-size: 21px; background: var(--m-glass-hi); color: var(--m-ink); }
+.pcc-bar-txt small { display: block; font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); margin-bottom: 4px; }
+.pcc-bar-txt b { font: var(--m-w-title) 20px/1.1 var(--m-f-title); }
+.pcc-chip { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 99px; font: var(--m-w-strong) 13px/1 var(--m-f-text); background: color-mix(in srgb, var(--m-red) 16%, transparent); color: var(--m-ink); border: 1px solid color-mix(in srgb, var(--m-red-soft) 40%, transparent); }
+.pcc-chip [data-lucide] { font-size: 15px; display: inline-grid; color: var(--m-red-soft); }
+
+/* Token */
+.pcc-token { display: grid; justify-items: center; gap: 12px; text-align: center; }
+.pcc-tok {
+  position: relative; width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--m-gold) 55%, #FFFFFF), var(--m-gold) 55%, color-mix(in srgb, var(--m-gold) 60%, #6B4A00));
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--m-gold) 22%, transparent), 0 14px 30px -12px color-mix(in srgb, var(--m-gold) 80%, transparent);
+}
+.pcc-tok img { width: 44px; height: 44px; object-fit: contain; }
+.pcc-lock { position: absolute; right: -4px; bottom: -4px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 15px; background: var(--m-ink); color: var(--m-ground); border: 2px solid var(--m-ground); transform: scale(0); transition: transform .4s cubic-bezier(.2, 1.5, .4, 1); }
+.m-page[data-state="done"][data-held="yes"] .pcc-lock { transform: none; }
+.m-page[data-state="done"][data-held="no"] .pcc-tok { filter: grayscale(1); opacity: .5; }
+.pcc-tok-txt > * { display: block; }
+.pcc-tok-txt b { font-size: 17px; }
+.pcc-tok-txt > span { margin-top: 2px; font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
+.pcc-tok-txt > * > span { justify-content: center; }
+
+/* Receipt */
+.pcc-receipt { padding: var(--m-pad) 18px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); display: grid; gap: 10px; }
+.pcc-rline { display: flex; align-items: center; justify-content: space-between; gap: 12px; font: var(--m-w-text) 15px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.pcc-rline > span { display: inline-flex; align-items: center; gap: 9px; }
+.pcc-rline [data-lucide] { font-size: 17px; display: inline-grid; color: var(--m-red-soft); }
+.pcc-rline b { color: var(--m-ink); }
+.pcc-fine { display: flex; align-items: center; gap: 8px; margin-top: 2px; font: var(--m-w-text) 13px/1.3 var(--m-f-text); color: var(--m-ink-3); }
+.pcc-fine > [data-lucide] { font-size: 15px; display: inline-grid; }
+
+/* Coin row (drawn by connect.js) */
+.pcc-pips-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: var(--m-item-gap); }
+.pcc-pips-head b { font: var(--m-w-title) 18px/1.2 var(--m-f-title); }
+.pcc-pips-head span { font: var(--m-w-text) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.pcc-pips-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.pcc-pip { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 17px; color: color-mix(in srgb, var(--m-gold) 62%, var(--m-ink)); background: color-mix(in srgb, var(--m-gold) 14%, transparent); border: 1px solid color-mix(in srgb, var(--m-gold) 40%, transparent); }
+.pcc-pip.is-turn { color: var(--m-on-red); background: var(--m-red); border-color: transparent; box-shadow: 0 0 0 4px color-mix(in srgb, var(--m-red) 22%, transparent); animation: pc-blink 1.2s ease-in-out infinite; }
+.m-page[data-state="done"] .pcc-pip.is-turn { animation: none; }
+.pcc-pip.is-empty { color: var(--m-ink-3); background: transparent; border: 1px dashed var(--m-line-2); }
+.pcc-more { font: var(--m-w-strong) 14px/1 var(--m-f-text); color: var(--m-ink-2); }
+
+/* ---------------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pc.is-entering > .pc-sec, .pc .is-swapped { animation: none; }
+  .pc-radar i { animation: none; opacity: .5; }
+  .pc-radar i:nth-child(2) { transform: scale(1.4); opacity: .3; }
+  .pc-radar i:nth-child(3) { transform: scale(1.8); opacity: .15; }
+  .pc-spin, .pc-state i, .pcc-pip.is-turn { animation: none; }
+  .pc-sweep { display: none; }
+  .pc-wire i { animation: none; left: 50%; opacity: 1; }
+  .pc-wire i:nth-child(n + 2) { display: none; }
+  .pc-link-ok, .pcc-lock { transition: none; }
+}

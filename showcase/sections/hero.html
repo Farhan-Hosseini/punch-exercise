@@ -1,0 +1,52 @@
+<div class="var v-a" data-name="Centred score">
+  <p class="hero-label">Ultimate result</p>
+  <p class="hero-score" data-bind="score">999,999<span class="dec">.000</span></p>
+  <div class="charge" aria-hidden="true"><span class="charge-fill" data-bind="charge"></span></div>
+  <p class="hero-grade" data-bind="grade">Perfect punch</p>
+</div>
+
+<div class="var v-b" data-name="Power gauge">
+  <div class="hero-b-dial" data-bleed>
+    <svg class="hero-b-svg" viewBox="0 0 1080 504" data-bind="charge" aria-hidden="true">
+      <defs>
+        <mask id="hero-b-cells" class="hero-b-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="504">
+          <path class="hero-b-cellpath" d="M 80 504 A 460 460 0 0 1 1000 504" pathLength="100"/>
+        </mask>
+      </defs>
+      <path class="hero-b-minor" d="M120.2 420.5L139.8 424.4M144.6 340.2L163.1 347.9M184.1 266.2L200.8 277.3M302.2 148.1L313.3 164.8M376.2 108.6L383.9 127.1M456.5 84.2L460.4 103.8M623.5 84.2L619.6 103.8M703.8 108.6L696.1 127.1M777.8 148.1L766.7 164.8M895.9 266.2L879.2 277.3M935.4 340.2L916.9 347.9M959.8 420.5L940.2 424.4"/>
+      <path class="hero-b-major" d="M237.4 201.4L261.4 225.4M540 76L540 110M842.6 201.4L818.6 225.4"/>
+      <g mask="url(#hero-b-cells)">
+        <path class="hero-b-track" d="M 80 504 A 460 460 0 0 1 1000 504" pathLength="100"/>
+        <path class="hero-b-fill" d="M 80 504 A 460 460 0 0 1 1000 504" pathLength="100"/>
+      </g>
+      <g class="hero-b-needle">
+        <polygon points="528,112 552,112 543,6 537,6"/>
+        <circle cx="540" cy="112" r="14"/>
+      </g>
+    </svg>
+    <div class="hero-b-read">
+      <p class="label hero-b-label">Ultimate result</p>
+      <div class="hero-b-num"><p class="display hero-b-score" data-bind="score">999,999<span class="dec">.000</span></p></div>
+    </div>
+  </div>
+  <p class="display hero-b-grade" data-bind="grade">Perfect punch</p>
+</div>
+
+
+
+<div class="var v-e" data-name="Glass">
+  <div class="hero-e-stage" data-bleed>
+    <div class="photo-frame hero-e-photo">
+      <img class="photo" src="assets/photos/lib/fist-strike-4.jpg" alt="" width="1800" height="1202">
+      <span class="hero-e-scrim" aria-hidden="true"></span>
+    </div>
+    <div class="glass hero-e-panel">
+      <div class="hero-e-top">
+        <p class="label hero-e-label">Ultimate result</p>
+        <p class="display hero-e-grade" data-bind="grade">Perfect punch</p>
+      </div>
+      <div class="hero-e-num"><p class="display hero-e-score" data-bind="score">999,999<span class="dec">.000</span></p></div>
+      <div class="hero-e-bar" data-bind="charge" aria-hidden="true"><span class="strike-fill hero-e-fill"></span></div>
+    </div>
+  </div>
+</div>

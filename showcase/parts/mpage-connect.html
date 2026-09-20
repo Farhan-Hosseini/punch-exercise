@@ -1,0 +1,143 @@
+    <!-- ========== Connecting to the machine (mpages/connect.css, mpages/connect.js; Figma 176:1337, 176:1366) ==========
+         Built from sections (psec.js), each paging through its designs in Customise under This screen:
+         Linking (#mConnect, drawn from one set of parts by data-style, mobile.js CONNECT_STYLES: Orbit, Brackets, Radar,
+         Beam, Checklist), Machine (which machine the phone is linking to, with its venue photo) and Credit (the credit
+         held for this turn). mobile.js puts the link's state on the page: data-state (wait, done) and data-held (yes, no),
+         so the Machine and Credit designs follow it in CSS; [data-credits] shows the wallet (mobile.js setCredits). -->
+    <section class="m-page" data-page="connect" aria-label="Connecting to the machine" data-state="wait">
+      <div class="pc">
+
+        <!-- ---------------------------------------------------------------- Linking -->
+        <div class="m-connect pc-sec pc-link" id="mConnect" data-style="orbit" data-state="wait" data-sec="connect" data-sec-label="Linking" data-sv-names="Orbit|Brackets|Radar|Beam|Checklist">
+          <div class="m-orbit" aria-hidden="true">
+            <img class="m-orbit-glow" src="assets/app/load-glow.svg" alt="">
+            <svg class="m-orbit-ring m-ring-thick" viewBox="0 0 218 218"><path d="M208 109A99 99 0 1 0 109 208" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round"/></svg>
+            <svg class="m-orbit-ring m-ring-thin" viewBox="0 0 200 200"><path d="M199 100A99 99 0 1 0 100 199" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="m-orbit-ring m-ring-soft" viewBox="0 0 370 371"><path d="M344.5 185.5A159.5 160 0 1 0 185 345.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="m-brackets" viewBox="0 0 220 220">
+              <circle cx="110" cy="110" r="96" pathLength="100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 18" stroke-dashoffset="3.5"/>
+            </svg>
+            <!-- Radar: three pulses leave the disc, and a sweep turns under them -->
+            <span class="pc-radar"><i></i><i></i><i></i><b class="pc-sweep"></b></span>
+            <!-- round nine: the chosen PunchApp logo sits where the fist disc was (app.js swaps it with the logo) -->
+            <img class="m-orbit-disc pc-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <svg class="m-orbit-check" viewBox="0 0 156 156"><circle cx="78" cy="78" r="77" fill="currentColor"/><path d="M50 80l19 18 38-40" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <!-- Beam: the phone and the machine, a signal travelling between them -->
+          <div class="pc-beam" aria-hidden="true">
+            <span class="pc-end pc-end-phone"><span data-lucide="smartphone"></span><small>Your phone</small></span>
+            <span class="pc-wire"><i></i><i></i><i></i><b class="pc-link-ok"><span data-lucide="check"></span></b></span>
+            <span class="pc-end pc-end-machine"><img data-logo-img src="assets/logos/fist-circle.svg" alt=""><small>The machine</small></span>
+          </div>
+
+          <!-- Checklist: the three things a link does, ticked off as they happen -->
+          <ul class="pc-checks">
+            <li class="pc-chk is-done"><span class="pc-chk-ico"><span data-lucide="check"></span></span><span><b>Code read</b><small>Machine 07, code DXB2 KTRB</small></span></li>
+            <li class="pc-chk pc-chk-link"><span class="pc-chk-ico"><span class="pc-spin" data-lucide="loader-circle"></span><span class="pc-tick" data-lucide="check"></span></span><span><b>Reaching the machine</b><small class="pc-when-wait">Dubai Mall, Ground Level</small><small class="pc-when-done">Linked</small></span></li>
+            <li class="pc-chk pc-chk-credit"><span class="pc-chk-ico"><span class="pc-spin" data-lucide="loader-circle"></span><span class="pc-tick" data-lucide="check"></span><span class="pc-warn" data-lucide="circle-alert"></span></span><span><b>Holding your credit</b><small class="pc-when-wait">One credit for this turn</small><small class="pc-when-held">Held until you strike</small><small class="pc-when-none">Your wallet is empty</small></span></li>
+          </ul>
+
+          <div class="m-connect-copy">
+            <h2 class="m-connect-title"><span data-connect-title>Connect to <em>machine</em></span></h2>
+            <p class="m-connect-sub"><span class="m-rule" aria-hidden="true"></span><span data-connect-sub>Please wait</span><span class="m-rule" aria-hidden="true"></span></p>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Machine -->
+        <div class="pc-sec pc-machine" data-sec="machine" data-sec-label="Machine">
+          <!-- a photo card: the venue up top, the machine under it -->
+          <div class="pcm pcm-card" data-sv="Photo card">
+            <span class="pcm-photo"><img src="assets/photos/lib/dubai-night-22.jpg" alt="" loading="lazy" style="object-position: 50% 40%"></span>
+            <div class="pcm-body">
+              <p class="pcm-name">Dubai Mall, Ground Level</p>
+              <p class="pcm-spot"><span data-lucide="map-pin"></span>Machine by the ice rink</p>
+              <span class="pc-state"><i aria-hidden="true"></i><span class="pc-when-wait">Linking</span><span class="pc-when-done">Linked</span></span>
+            </div>
+          </div>
+
+          <!-- a single row: the photo small, the state at the end -->
+          <div class="pcm pcm-row" data-sv="Row">
+            <span class="pcm-thumb"><img src="assets/photos/lib/dubai-night-22.jpg" alt="" loading="lazy" style="object-position: 50% 40%"></span>
+            <p class="pcm-row-txt"><span class="pcm-name">Dubai Mall</span><span class="pcm-spot">Ground Level, by the Ice Rink</span></p>
+            <span class="pc-state"><i aria-hidden="true"></i><span class="pc-when-wait">Linking</span><span class="pc-when-done">Linked</span></span>
+          </div>
+
+          <!-- a banner: the photograph across the page, the words on it -->
+          <div class="pcm pcm-banner" data-sv="Banner">
+            <img class="pcm-banner-img" src="assets/photos/lib/dubai-night-10.jpg" alt="" loading="lazy" style="object-position: 50% 40%">
+            <span class="pc-state pc-state-photo"><i aria-hidden="true"></i><span class="pc-when-wait">Linking</span><span class="pc-when-done">Linked</span></span>
+            <div class="pcm-banner-txt">
+              <p class="pcm-kick">You are playing at</p>
+              <p class="pcm-name">Dubai Mall, Ground Level</p>
+              <p class="pcm-spot"><span data-lucide="map-pin"></span>Machine by the ice rink</p>
+            </div>
+          </div>
+
+          <!-- a ticket: the machine's own code, large, and its venue beside it -->
+          <div class="pcm pcm-ticket" data-sv="Ticket">
+            <div class="pcm-ticket-code">
+              <p class="pcm-kick">Machine</p>
+              <p class="pcm-code">07</p>
+              <p class="pcm-spot">Code DXB2</p>
+            </div>
+            <div class="pcm-ticket-venue">
+              <span class="pcm-round"><img src="assets/photos/lib/dubai-night-22.jpg" alt="" loading="lazy" style="object-position: 50% 40%"></span>
+              <p><span class="pcm-name">Dubai Mall</span><span class="pcm-spot">Ground Level, by the Ice Rink</span></p>
+            </div>
+          </div>
+
+          <!-- split: a square photograph and three facts beside it -->
+          <div class="pcm pcm-split" data-sv="Split">
+            <span class="pcm-square"><img src="assets/photos/lib/arcade-neon-3.jpg" alt="" loading="lazy" style="object-position: 40% 55%"></span>
+            <div class="pcm-facts">
+              <p class="pcm-name">Dubai Mall</p>
+              <p class="pcm-fact"><span data-lucide="map-pin"></span>Ground Level, by the Ice Rink</p>
+              <p class="pcm-fact"><span data-lucide="rectangle-vertical"></span>Machine 07</p>
+              <p class="pcm-fact pcm-fact-state"><span class="pc-when-wait"><span data-lucide="wifi"></span>Linking now</span><span class="pc-when-done"><span data-lucide="link"></span>Linked to your phone</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Credit -->
+        <div class="pc-sec pc-credit" data-sec="credit" data-sec-label="Credit">
+          <!-- a coin and a line: what this turn costs, and what is left -->
+          <div class="pcc pcc-coin" data-sv="Coin">
+            <span class="pcc-coin-ico"><span data-lucide="coins"></span></span>
+            <p class="pcc-txt">
+              <b><span class="pc-when-wait">One credit for this turn</span><span class="pc-when-held">One credit held</span><span class="pc-when-none">No credit yet</span></b>
+              <span><span class="pc-when-wait">Your wallet has <span data-credits>0 credits</span></span><span class="pc-when-held"><span data-credits>0 credits</span> left in your wallet</span><span class="pc-when-none">Buy credits next, then punch</span></span>
+            </p>
+          </div>
+
+          <!-- the wallet as a bar, with the hold on it as a chip -->
+          <div class="pcc pcc-bar" data-sv="Wallet bar">
+            <span class="pcc-bar-ico"><span data-lucide="wallet"></span></span>
+            <p class="pcc-bar-txt"><small>Wallet</small><b data-credits>0 credits</b></p>
+            <span class="pcc-chip"><span class="pc-when-wait"><span data-lucide="hourglass"></span>Holding one</span><span class="pc-when-held"><span data-lucide="lock"></span>One held</span><span class="pc-when-none"><span data-lucide="plus"></span>Buy credits next</span></span>
+          </div>
+
+          <!-- a token, large, with the promise under it -->
+          <div class="pcc pcc-token" data-sv="Token">
+            <span class="pcc-tok"><img data-logo-img src="assets/logos/fist-circle.svg" alt=""><span class="pcc-lock"><span data-lucide="lock"></span></span></span>
+            <p class="pcc-tok-txt">
+              <b><span class="pc-when-wait">One credit for this turn</span><span class="pc-when-held">Your credit is held</span><span class="pc-when-none">No credit to hold</span></b>
+              <span><span class="pc-when-wait">It comes back if you walk away</span><span class="pc-when-held">It comes back if you walk away</span><span class="pc-when-none">Buy credits next, then punch</span></span>
+            </p>
+          </div>
+
+          <!-- a receipt: this turn, the wallet, the fine print -->
+          <div class="pcc pcc-receipt" data-sv="Receipt">
+            <p class="pcc-rline"><span><span data-lucide="ticket"></span>This turn</span><b>1 credit</b></p>
+            <p class="pcc-rline"><span><span data-lucide="wallet"></span><span class="pc-when-wait">In your wallet</span><span class="pc-when-held">Left after this turn</span><span class="pc-when-none">In your wallet</span></span><b data-credits>0 credits</b></p>
+            <p class="pcc-fine"><span data-lucide="undo-2"></span><span class="pc-when-wait">Returned if you leave before the strike</span><span class="pc-when-held">Returned if you leave before the strike</span><span class="pc-when-none">Nothing is taken until you buy more</span></p>
+          </div>
+
+          <!-- the wallet as coins in a row, the one for this turn lit (drawn by connect.js) -->
+          <div class="pcc pcc-pips" data-sv="Coin row">
+            <div class="pcc-pips-head"><b>Credits</b><span data-pc-pips-note>One for this turn</span></div>
+            <div class="pcc-pips-row" data-pc-pips></div>
+          </div>
+        </div>
+      </div>
+    </section>

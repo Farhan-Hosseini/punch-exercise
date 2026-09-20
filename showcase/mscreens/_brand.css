@@ -1,0 +1,109 @@
+/* The machine's shared header (parts/ms-brand.html): a global section whose wrapper takes no room, so each design is
+   laid out by the screen exactly where the old header sat: the band from --ms-brand-top, --ms-brand-h tall (100 to
+   224 px on the glass). Every design stays inside that band, in the screen's own tokens, so all four looks carry it:
+     Lockup           the mark and the wordmark, centred (styles.css .ms-brand, the frames' own header)
+     Venue and clock  the lockup at the left gutter; the time, large, and the venue at the right
+     Slim bar         one glass bar across the glass: a small lockup, a live light and the machine's number
+     Crest            the mark alone in a lit ring at the centre, the venue to its left and the time to its right
+     Stacked          the mark over a smaller wordmark, centred, for screens that want a quieter top */
+.mscreen .ms-head { display: contents; }
+.mscreen .ms-head > [data-sv][hidden] { display: none !important; }
+/* the wrapper has no box, so pointing at its Customise row marks the design on show instead */
+.mscreen .ms-head.is-target > [data-sv]:not([hidden]) { outline: 10px dashed #EB1110; outline-offset: -10px; }
+
+.mscreen .msh {
+  position: absolute; z-index: 2; top: var(--ms-brand-top); left: 0; right: 0; height: var(--ms-brand-h); margin: 0;
+  display: flex; align-items: center;
+  pointer-events: none;
+}
+.mscreen .msh p { margin: 0; }
+.mscreen .msh-lock { display: flex; align-items: center; flex: none; }
+.mscreen .msh-mark { flex: none; display: block; object-fit: contain; }
+.mscreen .msh-word { flex: none; }
+/* the two wordmarks follow the appearance (styles.css .ms-on-dark, .ms-on-light); say so again at this specificity */
+.mscreen .msh-word.ms-on-light { display: none; }
+:root[data-appearance="light"] .mscreen .msh-word.ms-on-dark { display: none; }
+:root[data-appearance="light"] .mscreen .msh-word.ms-on-light { display: block; }
+.mscreen .msh [data-lucide] { flex: none; }
+
+/* ---------------------------------------------------------------- Venue and clock */
+.mscreen .msh-venue { justify-content: space-between; padding: 0 var(--ms-gut); }
+.mscreen .msh-venue .msh-lock { gap: 18px; }
+.mscreen .msh-venue .msh-mark { width: 96px; height: 101px; }
+.mscreen .msh-venue .msh-word { width: 318px; height: 69.2px; }
+.mscreen .msh-venue .msh-where { display: grid; justify-items: end; row-gap: 14px; }
+.mscreen .msh-clock {
+  font: 800 76px/1 var(--f-display); letter-spacing: .01em; color: var(--ink-1);
+  font-variant-numeric: tabular-nums; text-box: trim-both cap alphabetic;
+}
+.mscreen .msh-place {
+  display: flex; align-items: center; gap: 10px;
+  font: 600 32px/1 var(--f-label); letter-spacing: .04em; color: var(--ink-2); white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+.mscreen .msh-place [data-lucide] { font-size: 32px; color: var(--strike); }
+
+/* ---------------------------------------------------------------- Slim bar: one glass bar, the lockup and the unit,
+   on the glass's gutters like every section below it; the unit is plain text in the bar, not a second pill inside it */
+.mscreen .msh-bar { padding: 0 var(--ms-gut); }
+.mscreen .msh-bar-in {
+  flex: 1; height: 104px; display: flex; align-items: center; gap: 28px;
+  padding: 0 36px 0 30px; border-radius: 52px;
+  background: color-mix(in oklab, var(--ink-1) 7%, transparent);
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--ink-1) 12%, transparent), 0 24px 48px -30px rgba(0, 0, 0, .6);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+}
+.mscreen .msh-bar .msh-lock { gap: 14px; margin-right: auto; }
+.mscreen .msh-bar .msh-mark { width: 68px; height: 72px; }
+.mscreen .msh-bar .msh-word { width: 236px; height: 51.4px; }
+.mscreen .msh-live, .mscreen .msh-unit {
+  display: flex; align-items: center; gap: 12px; white-space: nowrap;
+  font: 700 32px/1 var(--f-label); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-1);
+  text-box: trim-both cap alphabetic;
+}
+.mscreen .msh-unit { color: var(--ink-2); }
+.mscreen .msh-unit [data-lucide] { font-size: 32px; color: var(--ink-1); }
+.mscreen .msh-dot {
+  position: relative; width: 18px; height: 18px; border-radius: 50%; background: var(--strike);
+  box-shadow: 0 0 16px color-mix(in oklab, var(--strike) 80%, transparent);
+}
+.mscreen .msh-dot::after {
+  content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 3px solid var(--strike);
+  opacity: 0; animation: msh-ping 2.4s cubic-bezier(.2, .6, .4, 1) infinite;
+}
+@keyframes msh-ping { 0% { opacity: .9; transform: scale(.5); } 70%, 100% { opacity: 0; transform: scale(1.5); } }
+
+/* ---------------------------------------------------------------- Crest: the mark in a lit ring, flanked */
+.mscreen .msh-crest { justify-content: center; gap: 48px; }
+.mscreen .msh-ring {
+  position: relative; flex: none; width: var(--ms-brand-h); height: var(--ms-brand-h); border-radius: 50%;
+  display: grid; place-items: center;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--strike) 22%, transparent), transparent);
+  box-shadow: inset 0 0 0 4px var(--strike);
+}
+.mscreen .msh-crest .msh-mark { width: 80px; height: 84px; }
+.mscreen .msh-side {
+  flex: 1; display: flex; align-items: center; gap: 12px; white-space: nowrap;
+  font: 700 38px/1 var(--f-label); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
+  text-box: trim-both cap alphabetic;
+}
+.mscreen .msh-side-l { justify-content: flex-end; }
+.mscreen .msh-side-r { font-variant-numeric: tabular-nums; }
+.mscreen .msh-side [data-lucide] { font-size: 38px; color: var(--strike); }
+
+/* ---------------------------------------------------------------- Stacked: the mark over a smaller wordmark */
+.mscreen .msh-stack { flex-direction: column; justify-content: center; gap: 6px; }
+.mscreen .msh-stack .msh-mark { width: 66px; height: 70px; }
+.mscreen .msh-stack .msh-word { width: 220px; height: 47.9px; }
+
+/* Reference draws its labels in Sora at a lower weight, and its ring in the look's own red */
+:root[data-variant="reference"] .mscreen :is(.msh-place, .msh-live, .msh-unit, .msh-side) { font-weight: 600; letter-spacing: .04em; }
+:root[data-variant="reference"] .mscreen .msh-clock { font-weight: 400; }
+:root[data-appearance="light"] .mscreen .msh-bar-in {
+  background: color-mix(in oklab, #FFFFFF 70%, transparent);
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--ink-1) 10%, transparent), 0 24px 48px -30px rgba(70, 45, 30, .35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mscreen .msh-dot::after { animation: none; opacity: .5; transform: scale(1.1); }
+}

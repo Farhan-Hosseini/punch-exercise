@@ -1,0 +1,483 @@
+/* Machine screen: Punch now (parts/mscreen-countdown.html, mscreens/countdown.js), on the 1080 x 3840 glass.
+   One frame, read from 1 to 1.5 m while the player squares up: who is up at the top, the twenty seconds as the hero in
+   the middle, the call nearest the pad, and the screen's own stage of light behind them. countdown.js writes the clock
+   on the frame (.cdn): data-state, --f (time left 1 to 0), --drain (0 to 1), --hot (0 to 1 over the last five seconds),
+   --beat (a pulse each second, twice a second at the end), --spin and --sway (the stage's slow motion) and --cy (the
+   count's centre, in glass pixels, for the stage). Every design reads those, so all of them hold one moment.
+   The shared parts (backdrop host, header, sponsor strip) are drawn elsewhere; every rule here is under .mscreen-countdown. */
+
+.mscreen-countdown {
+  --cdn-k: 1;                  /* the display face's width: Reference's Archivo Black runs wider than Big Shoulders */
+  --cdn-top: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px);
+  --cdn-player-room: 480px;
+  --cdn-call-room: 760px;
+  --cdn-card: var(--surface-bg);
+  --cdn-ground: var(--ground, #0B0B0C);   /* a flat ground colour for rings and cut-out type (--screen-bg is a gradient) */
+  --cdn-card-line: var(--surface-border);
+  --cdn-card-shadow: var(--surface-shadow);
+  --cdn-soft: color-mix(in oklab, var(--strike) 16%, transparent);
+  --cdn-scrim: linear-gradient(180deg, rgba(8, 8, 9, 0) 30%, rgba(8, 8, 9, .86) 100%);
+  /* the stage's light: a warm key light that gives way to red in the last five seconds */
+  --cst-warm: rgb(255, 190, 140);
+  --cst-red: #FF2415;
+  --cst-a: 1;
+  --cst-shade: rgba(0, 0, 0, .62);
+}
+:root[data-appearance="light"] .mscreen-countdown {
+  --cdn-soft: color-mix(in oklab, var(--strike) 11%, transparent);
+  --cst-warm: rgb(255, 128, 72);
+  --cst-red: #EB1110;
+  --cst-a: .5;
+  --cst-shade: rgba(110, 40, 24, .16);
+}
+:root[data-variant="reference"] .mscreen-countdown { --cdn-k: .72; --cdn-soft: rgba(235, 17, 16, .18); --cst-warm: rgb(84, 128, 255); }
+:root[data-variant="reference"][data-appearance="light"] .mscreen-countdown { --cst-warm: rgb(70, 110, 255); }
+
+.mscreen-countdown [data-sv][hidden] { display: none !important; }
+.mscreen-countdown p, .mscreen-countdown h2, .mscreen-countdown figure, .mscreen-countdown ul, .mscreen-countdown ol { margin: 0; }
+.mscreen-countdown ul, .mscreen-countdown ol { list-style: none; padding: 0; }
+.mscreen-countdown img { display: block; }
+.mscreen-countdown [data-lucide] { display: inline-flex; flex: none; }
+
+/* ---------------------------------------------------------------- the frame: sections stacked between header and strip */
+.mscreen-countdown .cdn {
+  --f: 1; --drain: 0; --hot: 0; --beat: 0; --spin: 0; --sway: 0; --cy: 1800;
+  /* read where the clock is written: the number turns red for the last five, the stage's light warms into red */
+  --cdn-heat: var(--ink-1);
+  --cst-c: color-mix(in oklab, var(--cst-red) calc(var(--hot) * 100%), var(--cst-warm));
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; gap: var(--ms-sec-gap);
+  padding: var(--cdn-top) 0 calc(var(--ms-ad-h) + 88px);
+  color: var(--ink-1); font-family: var(--f-text);
+}
+.mscreen-countdown .cdn:is([data-state="urgent"], [data-state="up"]) { --cdn-heat: var(--strike); }
+.mscreen-countdown .cdn[data-demo="on"]:is([data-state="count"], [data-state="urgent"]) { cursor: pointer; }
+.mscreen-countdown .cdn > :not(.ms-lights, .ms-head, .ms-head > *, .ms-brand, .ms-ad, .cdn-stage) { position: relative; z-index: 1; flex: none; }
+.mscreen-countdown .cdn-sec { margin: 0 var(--ms-gut); }
+.mscreen-countdown .cdn-player { height: var(--cdn-player-room); }
+.mscreen-countdown .cdn > .cdn-count { flex: 1 1 auto; min-height: 0; container-type: size; }
+.mscreen-countdown .cdn-call { height: var(--cdn-call-room); }
+.mscreen-countdown .cdn-sec > [data-sv] { position: relative; height: 100%; }
+
+/* the three states' words: go (count and urgent), hit, up */
+.mscreen-countdown .cdn:not([data-state="hit"]) .cdn-hit,
+.mscreen-countdown .cdn:not([data-state="up"]) .cdn-up,
+.mscreen-countdown .cdn:is([data-state="hit"], [data-state="up"]) .cdn-go { display: none; }
+
+/* shared type */
+.mscreen-countdown .cpl-kick, .mscreen-countdown .ccf-kick {
+  display: inline-flex; align-items: center; gap: 14px;
+  font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike);
+}
+.mscreen-countdown .cpl-kick > [data-lucide], .mscreen-countdown .ccf-kick > [data-lucide] { font-size: 40px; }
+.mscreen-countdown .cdn-display {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+}
+.mscreen-countdown .cdn-card { background: var(--cdn-card); border: var(--cdn-card-line); box-shadow: var(--cdn-card-shadow); border-radius: var(--r); }
+
+/* ================================================================ PLAYER: who is up (904 x 480) */
+.mscreen-countdown .cpl-ava {
+  flex: none; width: 176px; height: 176px; border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 6px var(--cdn-ground), 0 0 0 10px var(--strike);
+}
+.mscreen-countdown .cpl-name {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: calc(112px * var(--cdn-k)); line-height: .92; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mscreen-countdown .cpl-line {
+  display: flex; align-items: center; gap: 18px; font-size: 44px; line-height: 1.15; color: var(--ink-2); font-weight: var(--w-text);
+}
+.mscreen-countdown .cpl-line b { color: var(--ink-1); font-weight: var(--w-strong); font-variant-numeric: tabular-nums; }
+.mscreen-countdown .cpl-line > [data-lucide] { font-size: 44px; color: var(--strike); }
+.mscreen-countdown .cpl-pips { display: inline-flex; gap: 12px; align-items: center; }
+.mscreen-countdown .cpl-pips i { width: 30px; height: 30px; border-radius: 50%; background: var(--strike); box-shadow: 0 0 0 4px var(--cdn-soft); }
+.mscreen-countdown .cpl-pips i.is-off { background: transparent; box-shadow: inset 0 0 0 4px var(--track); }
+
+/* Card: the photo and the name, then two facts */
+.mscreen-countdown .cpl-card {
+  display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap);
+  padding: var(--ms-pad) calc(var(--ms-pad) + 8px);
+  background: var(--cdn-card); border: var(--cdn-card-line); box-shadow: var(--cdn-card-shadow); border-radius: var(--r);
+}
+.mscreen-countdown .cpl-top { display: flex; align-items: center; gap: 44px; min-width: 0; }
+.mscreen-countdown .cpl-who { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.mscreen-countdown .cpl-facts { display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px; }
+.mscreen-countdown .cpl-fact { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.mscreen-countdown .cpl-fact-l {
+  display: inline-flex; align-items: center; gap: 12px;
+  font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2);
+}
+.mscreen-countdown .cpl-fact-l > [data-lucide] { font-size: 36px; color: var(--strike); }
+.mscreen-countdown .cpl-fact-v {
+  display: flex; align-items: center; gap: 24px;
+  font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track);
+  font-size: calc(76px * var(--cdn-k)); line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* Photo: Sara mid punch on the left, her name large beside it */
+.mscreen-countdown .cpl-photo { display: grid; grid-template-columns: 400px 1fr; gap: 56px; align-items: center; }
+.mscreen-countdown .cpl-shot { height: 100%; border-radius: var(--r); overflow: hidden; background: #0B0B0C; position: relative; }
+.mscreen-countdown .cpl-shot img { width: 100%; height: 100%; object-fit: cover; object-position: 44% 30%; }
+.mscreen-countdown .cpl-shot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 4px var(--strike); opacity: calc(.35 + var(--hot) * .65); }
+.mscreen-countdown .cpl-side { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.mscreen-countdown .cpl-photo .cpl-name { font-size: calc(170px * var(--cdn-k)); margin: 4px 0 12px; }
+
+/* Versus: you and the machine's best, face to face */
+.mscreen-countdown .cpl-vs {
+  display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: 1fr auto; column-gap: 32px; row-gap: 28px;
+  padding: 40px 48px; align-items: center;
+  background: var(--cdn-card); border: var(--cdn-card-line); box-shadow: var(--cdn-card-shadow); border-radius: var(--r);
+}
+.mscreen-countdown .cpl-vs :is(.cpl-side-a, .cpl-side-b) { display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 0; text-align: center; }
+/* 124 px faces so the two sides and the credits line fit the 480 px card with its padding (the line sat 10 px off the edge) */
+.mscreen-countdown .cpl-vs .cpl-ava { width: 124px; height: 124px; margin-bottom: 8px; }
+.mscreen-countdown .cpl-side-b .cpl-ava { box-shadow: 0 0 0 6px var(--cdn-ground), 0 0 0 10px var(--track); }
+.mscreen-countdown .cpl-vs-name { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(72px * var(--cdn-k)); line-height: 1; }
+.mscreen-countdown .cpl-vs-score { font-size: 48px; line-height: 1.05; font-weight: var(--w-strong); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mscreen-countdown .cpl-vs-l { font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+.mscreen-countdown .cpl-vs-mid {
+  display: grid; place-items: center; width: 116px; height: 116px; border-radius: 50%;
+  background: var(--strike); color: var(--cta-ink); font-size: 60px;
+  transform: rotate(calc(var(--beat) * 10deg)) scale(calc(1 + var(--beat) * .06));
+}
+.mscreen-countdown .cpl-vs-foot {
+  grid-column: 1 / -1; justify-self: center;
+  display: inline-flex; align-items: center; gap: 16px; font-size: 40px; color: var(--ink-2);
+}
+.mscreen-countdown .cpl-vs-foot b { color: var(--ink-1); font-weight: var(--w-strong); }
+.mscreen-countdown .cpl-vs-foot > [data-lucide] { color: var(--strike); font-size: 42px; }
+
+/* Ticket: a red ticket with a torn stub that holds the credits */
+.mscreen-countdown .cpl-ticket {
+  --cut: calc(100% - 300px);
+  display: flex; align-items: stretch;
+  background: var(--strike); color: var(--cta-ink); border-radius: calc(var(--r) * 1.4);
+  -webkit-mask: radial-gradient(circle 38px at var(--cut) 0, #0000 97%, #000 100%) top / 100% 51% no-repeat,
+                radial-gradient(circle 38px at var(--cut) 100%, #0000 97%, #000 100%) bottom / 100% 51% no-repeat;
+          mask: radial-gradient(circle 38px at var(--cut) 0, #0000 97%, #000 100%) top / 100% 51% no-repeat,
+                radial-gradient(circle 38px at var(--cut) 100%, #0000 97%, #000 100%) bottom / 100% 51% no-repeat;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, .12);
+}
+.mscreen-countdown .cpl-stub { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 26px; padding: 0 56px 0 64px; }
+.mscreen-countdown .cpl-ticket .cpl-kick { color: inherit; opacity: .86; }
+.mscreen-countdown .cpl-ticket .cpl-name { font-size: calc(150px * var(--cdn-k)); }
+.mscreen-countdown .cpl-ticket .cpl-line { color: inherit; opacity: .9; }
+.mscreen-countdown .cpl-ticket .cpl-line b { color: inherit; }
+.mscreen-countdown .cpl-ticket .cpl-line > [data-lucide] { color: inherit; }
+.mscreen-countdown .cpl-tear { flex: none; width: 16px; margin: 56px 0; background: radial-gradient(circle 7px, rgba(0, 0, 0, .34) 96%, transparent) 50% 0 / 16px 34px repeat-y; }
+.mscreen-countdown .cpl-holes { flex: none; width: 284px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.mscreen-countdown .cpl-holes-l { font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; opacity: .88; }
+.mscreen-countdown .cpl-holes-n { font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(180px * var(--cdn-k)); line-height: .9; }
+.mscreen-countdown .cpl-ticket .cpl-pips i { background: currentColor; box-shadow: none; }
+.mscreen-countdown .cpl-ticket .cpl-pips i.is-off { background: transparent; box-shadow: inset 0 0 0 4px rgba(255, 255, 255, .5); }
+
+/* Big name: the first name across the glass, two chips under it */
+.mscreen-countdown .cpl-big { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); }
+.mscreen-countdown .cpl-big-name {
+  display: flex; align-items: center; gap: 48px; min-width: 0;
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: calc(270px * var(--cdn-k)); line-height: .82;
+}
+.mscreen-countdown .cpl-big-name > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-top: .06em; }
+.mscreen-countdown .cpl-big .cpl-ava { width: 200px; height: 200px; }
+.mscreen-countdown .cpl-big-row { display: flex; flex-wrap: wrap; gap: 24px; }
+.mscreen-countdown .cpl-chip {
+  display: inline-flex; align-items: center; gap: 16px; height: 96px; padding: 0 36px 0 30px; border-radius: 99px;
+  background: var(--cdn-card); border: var(--cdn-card-line); box-shadow: var(--cdn-card-shadow);
+  font-size: 44px; font-weight: var(--w-strong); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.mscreen-countdown .cpl-chip > [data-lucide] { color: var(--strike); font-size: 46px; }
+.mscreen-countdown .cpl-chip b { font-weight: inherit; }
+
+/* ================================================================ COUNT: the twenty seconds (904 wide, the rest of the height) */
+.mscreen-countdown .ccn { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* Ring: twenty ticks, one per second; the arc drains into the red last five */
+.mscreen-countdown .ccr-dial {
+  position: relative; width: min(100cqw, 88cqh); aspect-ratio: 1; display: grid; place-items: center;
+  container-type: inline-size;
+  transform: scale(calc(1 + var(--beat) * .018));
+}
+.mscreen-countdown .ccr-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.mscreen-countdown .ccr-disc { fill: color-mix(in oklab, var(--cst-c) calc(4% + var(--drain) * 8%), transparent); }
+.mscreen-countdown .ccr-track { fill: none; stroke: var(--track); stroke-width: 2.2; }
+.mscreen-countdown .ccr-arc { fill: none; stroke: var(--strike); stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 100 100; stroke-dashoffset: 0; }
+.mscreen-countdown .ccr-arc.is-empty { opacity: 0; }
+.mscreen-countdown .ccr-ticks line { stroke: var(--ink-1); stroke-width: 1.5; stroke-linecap: round; opacity: .9; }
+.mscreen-countdown .ccr-ticks line.is-hot { stroke: var(--strike); }
+.mscreen-countdown .ccr-ticks line.is-gone { opacity: .16; }
+.mscreen-countdown .ccr-halo {
+  position: absolute; inset: -14%; border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--cst-c) 70%, transparent), transparent 72%);
+  opacity: calc((.16 + var(--drain) * .3 + var(--beat) * .18) * var(--cst-a));
+}
+.mscreen-countdown .ccr-shock { position: absolute; inset: 8%; border-radius: 50%; border: 10px solid var(--strike); opacity: 0; }
+.mscreen-countdown .ccr-face { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2cqi; }
+.mscreen-countdown .ccr-num {
+  font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  font-size: calc(48cqi * var(--cdn-k)); line-height: .82; color: var(--cdn-heat); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.mscreen-countdown .ccr-unit, .mscreen-countdown .ccc-unit, .mscreen-countdown .ccl-unit, .mscreen-countdown .ccg-unit {
+  font: var(--w-label) 48px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2);
+}
+.mscreen-countdown .cdn[data-state="hit"] .ccr-num { color: var(--strike); }
+
+/* Column: twenty cells stacked as the machine's own strength column, draining from the top */
+.mscreen-countdown .ccn-col { flex-direction: row; align-items: stretch; justify-content: flex-start; gap: 64px; padding: 24px 0; }
+.mscreen-countdown .ccc-col { flex: none; width: 250px; display: grid; gap: 12px; }
+.mscreen-countdown .ccc-col i { position: relative; display: block; border-radius: 14px; background: var(--track); overflow: hidden; }
+.mscreen-countdown .ccc-col i b {
+  position: absolute; inset: 0; display: block; border-radius: inherit; background: var(--ink-1);
+  transform-origin: 50% 100%; transform: scaleY(var(--f, 1));
+}
+.mscreen-countdown .ccc-col i.is-hot b { background: var(--strike); box-shadow: 0 0 40px color-mix(in oklab, var(--strike) calc(var(--hot) * 80%), transparent); }
+.mscreen-countdown .ccc-rail { position: relative; flex: 1; min-width: 0; }
+.mscreen-countdown .ccc-tag { position: absolute; left: 0; right: 0; top: var(--lvl, 0px); display: flex; flex-direction: column; gap: 20px; }
+.mscreen-countdown .ccc-arrow {
+  position: absolute; left: -58px; top: calc(var(--arrow, 30px) - 22px); width: 0; height: 0;
+  border-top: 22px solid transparent; border-bottom: 22px solid transparent; border-right: 34px solid var(--cdn-heat);
+}
+.mscreen-countdown .ccc-num {
+  font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  font-size: calc(400px * var(--cdn-k)); line-height: .8; color: var(--cdn-heat); font-variant-numeric: tabular-nums;
+  transform: scale(calc(1 + var(--beat) * .03)); transform-origin: 0 50%;
+}
+
+/* Light drain: a panel of light that drains downward; the number is ink on the ground and cut out of the light */
+.mscreen-countdown .ccl-panel {
+  position: relative; width: 100%; height: 100%; border-radius: calc(var(--r) * 2); overflow: hidden;
+  background: color-mix(in oklab, var(--ink-1) 5%, transparent); box-shadow: inset 0 0 0 3px var(--track);
+  --lf: var(--f);
+}
+.mscreen-countdown .ccl-light {
+  position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--lf) * 100%);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--cst-c) 30%, var(--ink-1)), var(--ink-1) 22%);
+  box-shadow: 0 0 120px color-mix(in oklab, var(--cst-c) 60%, transparent);
+}
+.mscreen-countdown .cdn[data-state="urgent"] .ccl-light, .mscreen-countdown .cdn[data-state="up"] .ccl-light { background: linear-gradient(180deg, #FF6A52, var(--strike) 22%); }
+.mscreen-countdown .ccl-edge { position: absolute; left: 0; right: 0; top: -3px; height: 6px; background: #FFFFFF; opacity: calc(.5 + var(--beat) * .5); }
+.mscreen-countdown .ccl-face { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; container-type: inline-size; }
+.mscreen-countdown .ccl-face.is-lit { clip-path: inset(calc((1 - var(--lf)) * 100%) 0 0 0); color: var(--cdn-ground); }
+:root[data-appearance="light"] .mscreen-countdown .ccl-face.is-lit { color: #FFFFFF; }
+:root[data-appearance="light"] .mscreen-countdown .ccl-light { background: linear-gradient(180deg, color-mix(in oklab, var(--cst-c) 40%, #2A1F1C), #1B1514 22%); }
+.mscreen-countdown .ccl-face.is-lit .ccl-unit { color: inherit; opacity: .8; }
+.mscreen-countdown .ccl-num {
+  font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  font-size: calc(66cqi * var(--cdn-k)); line-height: .8; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* Flip board: two split flap cards; each second turns a flap; twenty segments under them walk into the red */
+.mscreen-countdown .ccn-flip { align-items: stretch; gap: var(--ms-group-gap); }
+.mscreen-countdown .ccf-kick { align-self: flex-start; color: var(--ink-2); font-size: 40px; }
+.mscreen-countdown .ccf-kick > [data-lucide] { color: var(--strike); font-size: 46px; }
+.mscreen-countdown .ccf-board { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; height: min(1080px, 64cqh); perspective: 2400px; }
+.mscreen-countdown .ccf-card {
+  position: relative; display: grid; place-items: center; overflow: hidden; border-radius: calc(var(--r) * 1.3);
+  background: linear-gradient(180deg, #1E1E21 0 50%, #19191B 50% 100%); color: #F5F3EF;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .06), 0 40px 80px -40px rgba(0, 0, 0, .8);
+  container-type: inline-size; transform-origin: 50% 50%;
+}
+:root[data-variant="reference"] .mscreen-countdown .ccf-card { background: linear-gradient(180deg, #22090B 0 50%, #16090B 50% 100%); }
+.mscreen-countdown .ccf-card::after { content: ""; position: absolute; left: 0; right: 0; top: calc(50% - 5px); height: 10px; background: rgba(0, 0, 0, .55); }
+.mscreen-countdown .ccf-card::before { content: ""; position: absolute; top: calc(50% - 22px); width: 18px; height: 44px; border-radius: 6px; background: rgba(255, 255, 255, .14); left: 18px; box-shadow: calc(100cqi - 54px) 0 0 rgba(255, 255, 255, .14); z-index: 1; }
+.mscreen-countdown .ccf-d {
+  font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: 0;
+  font-size: calc(170cqi * var(--cdn-k)); line-height: 1; font-variant-numeric: tabular-nums;
+  color: #F5F3EF;
+}
+.mscreen-countdown .cdn:is([data-state="urgent"], [data-state="up"]) .ccf-d { color: #FF3B2E; }
+:root[data-variant="reference"] .mscreen-countdown .ccf-d { font-size: 118cqi; }
+.mscreen-countdown .ccf-bar { display: grid; grid-template-columns: repeat(20, 1fr); gap: 10px; height: 72px; }
+.mscreen-countdown .ccf-bar i { display: block; border-radius: 10px; background: var(--ink-1); transition: opacity .3s ease, transform .3s ease; }
+.mscreen-countdown .ccf-bar i.is-hot { background: var(--strike); }
+.mscreen-countdown .ccf-bar i.is-gone { opacity: .14; transform: scaleY(.6); }
+.mscreen-countdown .cdn[data-state="hit"] .ccf-d { color: var(--strike); }
+
+/* Gauge: a needle that falls from twenty to nought, into the red zone */
+.mscreen-countdown .ccn-gauge { gap: var(--ms-group-gap); }
+.mscreen-countdown .ccg-dial { position: relative; width: 100%; }
+.mscreen-countdown .ccg-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.mscreen-countdown .ccg-track, .mscreen-countdown .ccg-hotzone, .mscreen-countdown .ccg-fill { fill: none; stroke-linecap: round; }
+.mscreen-countdown .ccg-track { stroke: var(--track); stroke-width: 12; }
+.mscreen-countdown .ccg-hotzone { stroke: color-mix(in oklab, var(--strike) calc(30% + var(--hot) * 50%), transparent); stroke-width: 12; stroke-dasharray: 25 100; stroke-dashoffset: -75; stroke-linecap: butt; }
+.mscreen-countdown .ccg-fill { stroke: var(--ink-1); stroke-width: 4; stroke-dasharray: 100 100; }
+.mscreen-countdown .ccg-marks line { stroke: var(--ink-2); stroke-width: .8; }
+.mscreen-countdown .ccg-marks line.is-major { stroke: var(--ink-1); stroke-width: 1.6; }
+.mscreen-countdown .ccg-marks text { fill: var(--ink-2); font-family: var(--f-label); font-weight: var(--w-label); font-size: 8.4px; text-anchor: middle; dominant-baseline: middle; }
+.mscreen-countdown .ccg-marks text.is-hot { fill: var(--strike); }
+.mscreen-countdown .ccg-needle { fill: var(--cdn-heat); transform-box: view-box; transform-origin: 100px 110px; transform: rotate(calc(-90deg + (1 - var(--gv, 1)) * 180deg)); }
+.mscreen-countdown .ccg-needle circle { fill: var(--strike); stroke: var(--ink-1); stroke-width: 2; }
+.mscreen-countdown .ccg-scale { display: none; }
+.mscreen-countdown .ccg-read { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.mscreen-countdown .ccg-num {
+  font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  font-size: calc(380px * var(--cdn-k)); line-height: .82; color: var(--cdn-heat); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* ================================================================ CALL: the instruction (904 x 760) */
+.mscreen-countdown .cca-title {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  line-height: .86; color: var(--ink-1);
+}
+.mscreen-countdown .cca-title em { font-style: normal; color: var(--strike); }
+.mscreen-countdown .cca-line { display: flex; align-items: flex-start; gap: 22px; font-size: 48px; line-height: 1.2; color: var(--ink-2); font-weight: var(--w-text); text-wrap: balance; }
+.mscreen-countdown .cca-line > span:not([data-lucide]) { text-wrap: balance; }
+.mscreen-countdown .cca-line > [data-lucide] { color: var(--strike); font-size: 56px; margin-top: 2px; }
+
+/* Headline: two big words on two lines, left aligned, the where under them */
+.mscreen-countdown .cca-head { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); }
+.mscreen-countdown .cca-head .cca-title { font-size: calc(290px * var(--cdn-k)); }
+.mscreen-countdown .cca-head .cca-title > span > em { display: block; }
+.mscreen-countdown .cca-head .cca-title { transform: translateX(calc(var(--beat) * 6px)); }
+
+/* Target: the pad drawn head on with the sweet spot, the call beside it */
+.mscreen-countdown .cca-target { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: center; }
+.mscreen-countdown .cca-pad { position: relative; width: 400px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle, color-mix(in oklab, var(--strike) 26%, transparent), transparent 70%); }
+.mscreen-countdown .cca-ring { position: absolute; border-radius: 50%; border: 6px solid var(--ink-1); }
+.mscreen-countdown .cca-ring.r1 { inset: 0; opacity: .3; }
+.mscreen-countdown .cca-ring.r2 { inset: 18%; opacity: .55; }
+.mscreen-countdown .cca-ring.r3 { inset: 34%; border-color: var(--strike); border-width: 8px; }
+.mscreen-countdown .cca-spot { position: absolute; inset: 42%; border-radius: 50%; background: var(--strike); box-shadow: 0 0 60px var(--strike); }
+.mscreen-countdown .cca-ping { position: absolute; inset: 42%; border-radius: 50%; border: 6px solid var(--strike); animation: cdn-ping 1.6s cubic-bezier(.2, .7, .3, 1) infinite; }
+.mscreen-countdown .cdn[data-state="urgent"] .cca-ping { animation-duration: .8s; }
+@keyframes cdn-ping { from { transform: scale(1); opacity: .9; } to { transform: scale(3.6); opacity: 0; } }
+.mscreen-countdown .cca-fist { position: absolute; right: -10px; bottom: 10px; width: 150px; height: 150px; border-radius: 50%; display: grid; place-items: center; font-size: 84px; background: var(--ink-1); color: var(--cdn-ground); box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .7); }
+:root[data-appearance="light"] .mscreen-countdown .cca-fist { color: #FFFFFF; background: #151413; }
+.mscreen-countdown .cca-say { display: flex; flex-direction: column; gap: var(--ms-group-gap); min-width: 0; }
+.mscreen-countdown .cca-target .cca-title { font-size: calc(170px * var(--cdn-k)); }
+.mscreen-countdown .cca-target .cca-title > span > em { display: block; }
+.mscreen-countdown .cca-list { display: flex; flex-direction: column; gap: var(--ms-item-gap); }
+.mscreen-countdown .cca-list li { display: flex; align-items: center; gap: 20px; font-size: 44px; line-height: 1.15; font-weight: var(--w-strong); }
+.mscreen-countdown .cca-list li > [data-lucide] { font-size: 48px; color: var(--strike); }
+:root[data-variant="reference"] .mscreen-countdown .cca-list li { font-size: 40px; }
+.mscreen-countdown .cdn:is([data-state="hit"], [data-state="up"]) .cca-list { opacity: .4; }
+
+/* Photo: a real strike, the call over it */
+.mscreen-countdown .cca-photo { border-radius: calc(var(--r) * 1.4); overflow: hidden; background: #0B0B0C; color: #F5F3EF; }
+.mscreen-countdown .cca-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 42%; transform: scale(calc(1.02 + var(--drain) * .08)); transform-origin: 30% 42%; }
+.mscreen-countdown .cca-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(8, 8, 9, .1) 30%, rgba(8, 8, 9, .8) 100%); }
+.mscreen-countdown .cca-photo::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; box-shadow: inset 0 0 0 5px var(--strike); opacity: calc(var(--hot) * .9); }
+.mscreen-countdown .cca-over { position: absolute; z-index: 2; right: 56px; top: 56px; bottom: 56px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; text-align: right; }
+.mscreen-countdown .cca-photo .cca-title { font-size: calc(220px * var(--cdn-k)); color: #F5F3EF; }
+.mscreen-countdown .cca-photo .cca-title > span > em { display: block; }
+.mscreen-countdown .cca-chips { display: flex; flex-direction: column; align-items: flex-end; gap: 18px; }
+.mscreen-countdown .cca-chip {
+  display: inline-flex; align-items: center; gap: 14px; height: 84px; padding: 0 32px 0 26px; border-radius: 99px;
+  background: rgba(11, 11, 12, .72); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .16);
+  font-size: 40px; font-weight: var(--w-strong); color: #F5F3EF; white-space: nowrap;
+}
+.mscreen-countdown .cca-chip > [data-lucide] { color: #FF4B3E; font-size: 42px; }
+
+/* Steps: three rows, an icon each, what to do in order */
+.mscreen-countdown .cca-steps { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); }
+.mscreen-countdown .cca-steps .cca-title { font-size: calc(150px * var(--cdn-k)); white-space: nowrap; }
+.mscreen-countdown .cca-rows { display: flex; flex-direction: column; gap: var(--ms-item-gap); }
+.mscreen-countdown .cca-row {
+  display: flex; align-items: center; gap: 36px; height: 148px; padding: 0 40px 0 24px;
+  background: var(--cdn-card); border: var(--cdn-card-line); box-shadow: var(--cdn-card-shadow); border-radius: var(--r);
+  font-size: 50px; font-weight: var(--w-strong); line-height: 1.1;
+}
+.mscreen-countdown .cca-ic { flex: none; width: 104px; height: 104px; border-radius: calc(var(--r) * .8); display: grid; place-items: center; background: var(--cdn-soft); color: var(--strike); font-size: 58px; }
+.mscreen-countdown .cca-row:last-child .cca-ic { background: var(--strike); color: var(--cta-ink); }
+.mscreen-countdown .cdn:is([data-state="hit"], [data-state="up"]) .cca-rows { opacity: .4; }
+
+/* Tape: a red tape across the glass with the call running along it */
+.mscreen-countdown .cca-tape { display: flex; flex-direction: column; justify-content: center; gap: 96px; }
+.mscreen-countdown .cca-band {
+  position: relative; height: 300px; margin: 0 calc(-1 * var(--ms-gut) - 80px);
+  background: var(--strike); color: var(--cta-ink); transform: rotate(-5deg);
+  display: flex; align-items: center; overflow: hidden;
+  box-shadow: 0 40px 90px -40px color-mix(in oklab, var(--strike) 80%, transparent);
+}
+.mscreen-countdown .cca-band::before { content: ""; position: absolute; inset: -40px 0; transform: rotate(9deg); border-block: 4px solid color-mix(in oklab, var(--ink-1) 22%, transparent); z-index: -1; }
+.mscreen-countdown .cca-run {
+  display: flex; flex: none; white-space: nowrap;
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: calc(210px * var(--cdn-k)); line-height: 1;
+  animation: cdn-run 9s linear infinite;
+}
+.mscreen-countdown .cdn[data-state="urgent"] .cca-run { animation-duration: 4.5s; }
+.mscreen-countdown .cca-run > span { display: inline-flex; align-items: center; }
+.mscreen-countdown .cca-run > span::after { content: ""; width: 44px; height: 44px; margin: 0 70px; border-radius: 50%; background: currentColor; opacity: .5; }
+@keyframes cdn-run { to { transform: translateX(-50%); } }
+.mscreen-countdown .cca-tape .cca-line { color: var(--ink-1); font-weight: var(--w-strong); font-size: 52px; }
+
+/* ================================================================ STAGE: the screen's own light, on the whole glass */
+.mscreen-countdown .cdn > .cdn-stage { position: absolute; inset: 0; z-index: 0; margin: 0; pointer-events: none; overflow: hidden; }
+.mscreen-countdown .cst { position: absolute; inset: 0; }
+.mscreen-countdown .cst > * { position: absolute; display: block; }
+/* the edges close in as the time drains: depth that builds, and a red rim at the end */
+.mscreen-countdown .cst-vig {
+  inset: 0;
+  background: radial-gradient(ellipse calc(96% - var(--drain) * 22%) calc(56% - var(--drain) * 14%) at 50% calc(var(--cy) * 1px), transparent 58%, var(--cst-shade) 100%);
+  box-shadow: inset 0 0 calc(80px + var(--beat) * 90px) calc(var(--hot) * 30px) color-mix(in oklab, var(--cst-red) calc(var(--hot) * 70%), transparent);
+}
+.mscreen-countdown .cst-core {
+  left: 50%; top: calc(var(--cy) * 1px); width: calc(1000px + var(--drain) * 900px); aspect-ratio: 1; translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--cst-c) 75%, transparent), color-mix(in oklab, var(--cst-c) 22%, transparent) 45%, transparent 100%);
+  opacity: calc((.22 + var(--drain) * .4 + var(--beat) * .22) * var(--cst-a));
+}
+.mscreen-countdown .cst-floor {
+  left: -10%; right: -10%; bottom: calc(var(--ms-ad-h) - 120px); height: 900px;
+  background: radial-gradient(50% 40% at 50% 100%, color-mix(in oklab, var(--cst-c) 70%, transparent), transparent 100%);
+  opacity: calc((.25 + var(--drain) * .45) * var(--cst-a));
+}
+
+/* Surge: rays that turn faster as the time drains, a core that swells, the floor lighting up */
+.mscreen-countdown .cst-rays {
+  left: 50%; top: calc(var(--cy) * 1px); width: 4200px; aspect-ratio: 1; translate: -50% -50%;
+  background: repeating-conic-gradient(from calc(var(--spin) * 1deg), color-mix(in oklab, var(--cst-c) 90%, transparent) 0deg 2.2deg, transparent 2.2deg 12deg);
+  -webkit-mask: radial-gradient(closest-side, transparent 9%, #000 22%, transparent 70%);
+          mask: radial-gradient(closest-side, transparent 9%, #000 22%, transparent 70%);
+  opacity: calc((.07 + var(--drain) * .16 + var(--beat) * .08) * var(--cst-a));
+}
+
+/* Tunnel: frames the shape of the glass rush out of the count toward the player, faster at the end */
+.mscreen-countdown .cst-tunnel i {
+  left: 50%; top: calc(var(--cy) * 1px); width: 760px; height: 2700px; translate: -50% -50%;
+  border-radius: 90px; border: 5px solid color-mix(in oklab, var(--cst-c) 90%, transparent);
+  box-shadow: 0 0 60px color-mix(in oklab, var(--cst-c) 60%, transparent), inset 0 0 60px color-mix(in oklab, var(--cst-c) 40%, transparent);
+  filter: blur(3px);
+  transform: scale(calc(.12 + var(--z, 0) * var(--z, 0) * 1.5));
+  opacity: calc(sin(var(--z, 0) * 3.1416) * (.26 + var(--drain) * .34) * var(--cst-a));
+}
+
+/* Streaks: light rising up the glass, denser and brighter as the time drains */
+.mscreen-countdown .cst-streaks i {
+  left: calc(var(--x) * 1%); bottom: 0; width: 16px; height: calc(760px * var(--s));
+  border-radius: 99px; background: linear-gradient(0deg, transparent, color-mix(in oklab, var(--cst-c) 95%, transparent) 60%, transparent);
+  box-shadow: 0 0 36px color-mix(in oklab, var(--cst-c) 55%, transparent);
+  translate: -50% calc((1 - var(--z, 0)) * 900px - var(--z, 0) * 3600px);
+  opacity: calc(sin(var(--z, 0) * 3.1416) * (.36 + var(--drain) * .5) * var(--cst-a));
+}
+
+/* Spotlights: two lamps that swing toward the count and narrow onto it */
+.mscreen-countdown .cst-cone {
+  top: -200px; width: 1200px; height: calc(var(--cy) * 1px + 900px);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--cst-c) 80%, transparent), transparent 92%);
+  clip-path: polygon(46% 0, 54% 0, calc(100% - var(--drain) * 18%) 100%, calc(var(--drain) * 18%) 100%);
+  opacity: calc((.16 + var(--drain) * .28 + var(--beat) * .1) * var(--cst-a));
+  transform-origin: 50% 0;
+}
+.mscreen-countdown .cst-cone-l { left: -500px; transform: rotate(calc(-24deg + var(--drain) * 8deg + var(--sway) * 3deg)); }
+.mscreen-countdown .cst-cone-r { right: -500px; transform: rotate(calc(24deg - var(--drain) * 8deg - var(--sway) * 3deg)); }
+.mscreen-countdown .cst-pool {
+  left: 50%; top: calc(var(--cy) * 1px); width: calc(1300px - var(--drain) * 300px); height: 1500px; translate: -50% -50%;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--cst-c) 55%, transparent), transparent);
+  opacity: calc((.2 + var(--drain) * .35 + var(--beat) * .15) * var(--cst-a));
+}
+
+/* Shockwave: rings that leave the count on every beat, twice as often at the end */
+.mscreen-countdown .cst-shock i {
+  left: 50%; top: calc(var(--cy) * 1px); width: 900px; aspect-ratio: 1; translate: -50% -50%;
+  border-radius: 50%; border: calc(26px - var(--z, 0) * 20px) solid color-mix(in oklab, var(--cst-c) 90%, transparent);
+  transform: scale(calc(.7 + var(--z, 0) * 3));
+  opacity: calc((1 - var(--z, 0)) * (.18 + var(--drain) * .4) * var(--cst-a));
+}
+
+/* reduced motion: every stage holds a composed still that still builds with the time; the call stops running */
+@media (prefers-reduced-motion: reduce) {
+  .mscreen-countdown .cca-ping { animation: none; opacity: 0; }
+  .mscreen-countdown .cca-run { animation: none; transform: translateX(-4%); }
+}

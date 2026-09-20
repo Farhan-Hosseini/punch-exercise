@@ -1,0 +1,58 @@
+<!-- Machine screen: Your run (data-mscreen="stats"). Round seven rebuilt it from scratch on the expert panel's synthesis,
+     docs/strategy/what-to-show-for-a-punch.md: point the player at the next hit instead of describing the last one.
+     ONE frame of four sections (psec.js), in the synthesis's order and bands, each with five designs paged in Customise
+     under "This screen":
+       Next to beat    Gap slab, Two plates, Count down, Name first, Tape           (the only numerals on the screen)
+       Crew            Column ticks, Stacked plates, Impact faces, Turn strip, Overtake
+       One fix         Two-word order, Stance diagram, Silhouette loop, Glove pair, Upgrade slot
+       Today's crown   Crown line, Crowd band, Takeover, Unclaimed, Reign ribbon
+       Punch again     the Results screens' shared close (parts/ms-again.html, mscreens/_again.css): Full button, Button
+                       pair, Countdown, Code handoff, Big pad; it plays in last, after the crown
+     mscreens/stats.js draws every design from the run it shows (example runs, or the live score) and plays the story in
+     reading order; mscreens/stats.css lays them out. The shared parts: the backdrop host first, the global header next,
+     the sponsor strip last. -->
+<div class="yr">
+  <div class="ms-lights" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+  <!-- include:parts/ms-brand.html -->
+
+  <!-- ============================================================ Next to beat: the gap to the next mark, the one big number -->
+  <section class="yr-sec yr-next" data-sec="next" data-sec-label="Next to beat" aria-label="Next to beat">
+    <div class="yr-d yr-slab" data-sv="Gap slab"></div>
+    <div class="yr-d yr-plates" data-sv="Two plates" hidden></div>
+    <div class="yr-d yr-count" data-sv="Count down" hidden></div>
+    <div class="yr-d yr-name" data-sv="Name first" hidden></div>
+    <div class="yr-d yr-tape" data-sv="Tape" hidden></div>
+  </section>
+
+  <!-- ============================================================ Crew: everyone in this run by height, no numbers -->
+  <section class="yr-sec yr-crew" data-sec="crew" data-sec-label="Crew" aria-label="Crew">
+    <div class="yr-d yr-col" data-sv="Column ticks"></div>
+    <div class="yr-d yr-stack" data-sv="Stacked plates" hidden></div>
+    <div class="yr-d yr-faces" data-sv="Impact faces" hidden></div>
+    <div class="yr-d yr-turns" data-sv="Turn strip" hidden></div>
+    <div class="yr-d yr-over" data-sv="Overtake" hidden></div>
+  </section>
+
+  <!-- ============================================================ One fix: one change for the next hit -->
+  <section class="yr-sec yr-fix" data-sec="fix" data-sec-label="One fix" aria-label="One fix for the next hit">
+    <div class="yr-d yr-order" data-sv="Two-word order"></div>
+    <div class="yr-d yr-stance" data-sv="Stance diagram" hidden></div>
+    <div class="yr-d yr-sil" data-sv="Silhouette loop" hidden></div>
+    <div class="yr-d yr-gloves" data-sv="Glove pair" hidden></div>
+    <div class="yr-d yr-slot" data-sv="Upgrade slot" hidden></div>
+  </section>
+
+  <!-- ============================================================ Today's crown: the day's best on this machine -->
+  <section class="yr-sec yr-today" data-sec="crown" data-sec-label="Today's crown" aria-label="Today's crown">
+    <div class="yr-d yr-cline" data-sv="Crown line"></div>
+    <div class="yr-d yr-crowd" data-sv="Crowd band" hidden></div>
+    <div class="yr-d yr-take" data-sv="Takeover" hidden></div>
+    <div class="yr-d yr-claim" data-sv="Unclaimed" hidden></div>
+    <div class="yr-d yr-reign" data-sv="Reign ribbon" hidden></div>
+  </section>
+
+  <!-- ============================================================ Punch again: the next move, as on every Results screen -->
+  <!-- include:parts/ms-again.html -->
+
+  <!-- include:parts/ms-ad.html -->
+</div>

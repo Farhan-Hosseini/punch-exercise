@@ -1,0 +1,263 @@
+/* Phone: Connected (parts/mpage-connected.html, mpages/connected.js; the flow in mobile.js). Round nine.
+   The page between Connect and Punch: the link is made, a credit is held, and the next move is to step up to the pad.
+   One column on the phone's spacing scale (mpages/_shared.css), from the status bar to the home bar (the tab bar is away):
+     top        Cancel, alone on the right, as on Punch
+     Linked     the one flexible row: the logo and the word, drawn five ways, filling the room the other two leave
+     Machine    which machine, and the credit held for this turn
+     Next step  step up to the pad; a fill runs for the 2.5 s before Punch opens by itself
+   The page carries two states (mobile.js): data-held yes or no (a practice go opened from the page bar holds nothing)
+   and data-auto run or held. connected.js shows the matching [.cx-when-*] copy with the hidden attribute, so every
+   design keeps its own layout. Reduced motion keeps every state readable and nothing moves. */
+.mcx [hidden] { display: none !important; }
+
+.mcx {
+  position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; cursor: pointer;
+  display: flex; flex-direction: column; gap: var(--m-sec-gap);
+  padding: calc(var(--m-top) + var(--m-head-top)) var(--m-gut) calc(var(--m-bottom) + var(--m-group-gap));
+}
+.mcx::-webkit-scrollbar { display: none; }
+.mcx-top { flex: none; display: flex; justify-content: flex-end; align-items: center; min-height: 44px; margin-bottom: calc(var(--m-group-gap) - var(--m-sec-gap)); }
+.mcx-sec { flex: none; min-width: 0; }
+.mcx-linked { flex: 1 0 272px; display: grid; }
+.mcx-linked > [data-sv] { min-width: 0; min-height: 0; }
+.mcx :is(button, [data-cx-go]):focus-visible { outline: 3px solid var(--m-red-soft); outline-offset: 3px; }
+
+/* the shared words */
+.cxl-title { font: var(--m-w-title) 30px/1.05 var(--m-f-title); letter-spacing: -.005em; text-wrap: balance; }
+.cxl-title em { font-style: normal; color: var(--m-red); }
+.cxl-line { display: block; margin-top: var(--m-title-gap); font: var(--m-w-text) 16px/1.4 var(--m-f-text); color: var(--m-ink-2); text-wrap: pretty; }
+.cxl-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--m-up); box-shadow: 0 0 0 3px color-mix(in srgb, var(--m-up) 28%, transparent); }
+.cxl-kick { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; font: var(--m-w-label) 12px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-2); }
+
+/* ---------------------------------------------------------------- Linked, Badge: the logo large, a tick on its shoulder */
+.cxl-badge { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.cxl-mark { position: relative; width: 136px; height: 136px; margin-bottom: 40px; display: grid; place-items: center; }
+.cxl-halo { position: absolute; inset: -44px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--m-glow) 34%, transparent), transparent); pointer-events: none; }
+.cxl-halo::after { content: ""; position: absolute; inset: 26px; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--m-red-soft) 40%, transparent); }
+.cxl-logo { position: relative; width: 136px; height: 136px; object-fit: contain; filter: drop-shadow(0 18px 30px color-mix(in srgb, var(--m-shadow) 45%, transparent)); }
+.cxl-tick {
+  position: absolute; right: -6px; bottom: 0; width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 24px; background: var(--m-up); color: var(--m-ground); border: 3px solid var(--m-ground);
+}
+.cxl-tick [data-lucide], .cxl-wire-ok [data-lucide], .cxl-banner-ok [data-lucide] { display: inline-grid; }
+.cxl-badge .cxl-title { font-size: 34px; }
+
+/* ---------------------------------------------------------------- Linked, Pair: the phone and the machine, joined */
+.cxl-pair { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.cxl-pair-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) 80px; align-items: center; width: 100%; margin-bottom: 40px; }
+.cxl-end {
+  width: 80px; height: 80px; border-radius: 24px; display: grid; place-items: center; font-size: 34px; color: var(--m-ink);
+  background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+}
+.cxl-end [data-lucide] { display: inline-grid; }
+.cxl-end-logo { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.cxl-end-logo img { width: 80px; height: 80px; object-fit: contain; }
+.cxl-wire { position: relative; height: 3px; margin: 0 10px; border-radius: 2px; background: var(--m-up); }
+.cxl-wire-ok {
+  position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 20px; background: var(--m-up); color: var(--m-ground); border: 3px solid var(--m-ground);
+}
+
+/* ---------------------------------------------------------------- Linked, Headline: the word set large, the logo over it */
+.cxl-head { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; container-type: inline-size; }
+.cxl-head-logo { width: 88px; height: 88px; object-fit: contain; margin-bottom: auto; }
+.cxl-head-word { margin-top: var(--m-group-gap); font: var(--m-w-heavy) min(80px, 16.4cqi)/.86 var(--m-f-title); text-transform: uppercase; letter-spacing: -.01em; }
+/* Reference sets its titles in a far wider face */
+:root[data-variant="reference"] .cxl-head-word { font-size: min(64px, 13.4cqi); letter-spacing: 0; }
+.cxl-head-word::after { content: ""; display: block; width: 56px; height: 4px; margin-top: 18px; border-radius: 2px; background: var(--m-red); }
+.cxl-head .cxl-line { margin-top: var(--m-group-gap); max-width: 32ch; }
+
+/* ---------------------------------------------------------------- Linked, Photo: a real strike at the bag */
+.cxl-photo { position: relative; isolation: isolate; margin: 0; overflow: hidden; border-radius: 28px; background: #0B0B0C; border: 1px solid var(--m-line); color: var(--m-on-photo); }
+.cxl-photo-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; display: block; }
+.cxl-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(0, 0, 0, .86), rgba(0, 0, 0, .1) 62%), linear-gradient(180deg, rgba(0, 0, 0, .4), transparent 30%); pointer-events: none; }
+.cxl-photo-logo { position: absolute; left: 18px; top: 18px; width: 60px; height: 60px; object-fit: contain; }
+.cxl-photo-txt { position: absolute; left: 22px; right: 22px; bottom: 22px; display: grid; justify-items: start; }
+.cxl-chip {
+  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 99px; margin-bottom: 14px;
+  background: rgba(0, 0, 0, .5); border: 1px solid rgba(255, 255, 255, .2); font: var(--m-w-strong) 13px/1 var(--m-f-text);
+}
+.cxl-photo .cxl-dot { background: var(--m-up-hi); box-shadow: 0 0 0 3px color-mix(in srgb, var(--m-up-hi) 30%, transparent); }
+.cxl-photo .cxl-title { font-size: 40px; line-height: 1; text-transform: uppercase; }
+.cxl-photo .cxl-line { color: var(--m-on-photo-2); }
+
+/* ---------------------------------------------------------------- Linked, Banner: one red panel */
+.cxl-banner {
+  position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
+  padding: 22px; border-radius: 28px; background: var(--m-cta); color: var(--m-on-red);
+  box-shadow: 0 30px 60px -34px color-mix(in srgb, var(--m-glow) 90%, transparent), inset 0 1px 0 color-mix(in srgb, var(--m-on-red) 22%, transparent);
+}
+/* a soft light across the top corner, so the flat red of Reference still reads as a panel */
+.cxl-banner::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(120% 80% at 100% 0%, rgba(255, 255, 255, .18), transparent 55%); }
+.cxl-banner-tile { width: 84px; height: 84px; border-radius: 24px; display: grid; place-items: center; background: #FFFFFF; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .5); }
+.cxl-banner-tile img { width: 62px; height: 62px; object-fit: contain; }
+.cxl-banner-ok { position: absolute; right: 22px; top: 22px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-size: 22px; border: 2px solid rgba(255, 255, 255, .7); color: var(--m-on-red); }
+.cxl-banner .cxl-title { font-size: 44px; line-height: 1; }
+.cxl-banner .cxl-line { color: rgba(255, 255, 255, .88); }
+
+/* ---------------------------------------------------------------- Machine: shared parts */
+.cxm-id { display: grid; gap: 3px; min-width: 0; }
+.cxm-id b { font: var(--m-w-strong) 17px/1.25 var(--m-f-text); color: var(--m-ink); }
+.cxm-id > span { font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
+.cxm-kick { font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); }
+.cxm img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cxm-chip {
+  display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px; border-radius: 99px; white-space: nowrap;
+  background: var(--m-glass-hi); border: 1px solid var(--m-line); font: var(--m-w-strong) 13px/1 var(--m-f-text); color: var(--m-ink);
+}
+.cxm-chip [data-lucide] { display: inline-grid; font-size: 15px; color: var(--m-ink-2); }
+.cxm-chip-red { background: color-mix(in srgb, var(--m-red) 16%, transparent); border-color: color-mix(in srgb, var(--m-red-soft) 45%, transparent); }
+.cxm-chip-red [data-lucide] { color: var(--m-red-soft); }
+
+/* Card: the venue on top, the held credit in its own well under it */
+.cxm-card {
+  display: grid; gap: var(--m-item-gap); padding: var(--m-pad); border-radius: 22px;
+  background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+}
+.cxm-card-top { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: center; }
+.cxm-thumb { display: block; width: 56px; height: 56px; border-radius: 14px; overflow: hidden; background: var(--m-well); }
+.cxm-credit { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px 14px 10px 10px; border-radius: 14px; background: var(--m-glass-hi); }
+.cxm-coin { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 17px; background: color-mix(in srgb, var(--m-red) 18%, transparent); color: var(--m-red-soft); }
+.cxm-coin [data-lucide] { display: inline-grid; }
+.cxm-credit > span:not(.cxm-coin) { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-width: 0; }
+.cxm-credit b { font: var(--m-w-strong) 15px/1.25 var(--m-f-text); }
+.cxm-credit > span:not(.cxm-coin) > span { font: var(--m-w-text) 14px/1.25 var(--m-f-text); color: var(--m-ink-2); white-space: nowrap; }
+
+/* Facts: four labelled facts, two by two */
+.cxm-facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cxm-facts > div {
+  display: grid; align-content: start; gap: 6px; min-height: 72px; padding: 12px 14px; border-radius: 16px;
+  background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift);
+}
+.cxm-facts dt { font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); }
+.cxm-facts dd { margin: 0; font: var(--m-w-strong) 15px/1.3 var(--m-f-text); color: var(--m-ink); }
+.cxm-facts .cxm-num { font: var(--m-w-num-hi) calc(28px * var(--m-num-scale))/1 var(--m-num); color: var(--m-red-soft); letter-spacing: .02em; }
+
+/* Ticket: the number on the stub, the venue and the hold on the ticket, notches between them */
+.cxm-ticket {
+  --notch: 11px; --nx: calc(18px + 84px + 11px);
+  display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 22px; align-items: center; padding: var(--m-pad) 18px;
+  border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
+  -webkit-mask: radial-gradient(circle var(--notch) at var(--nx) 0, transparent 98%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at var(--nx) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle var(--notch) at var(--nx) 0, transparent 98%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at var(--nx) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+}
+.cxm-ticket-no { display: grid; gap: 6px; }
+/* two numerals in the look's face, sized to the stub */
+.cxm-big { white-space: nowrap; font: var(--m-w-num-hi) min(60px, calc(80px / (2.2 * var(--m-num-w))))/.86 var(--m-num); color: var(--m-red-soft); }
+.cxm-ticket-venue { display: grid; justify-items: start; gap: 10px; min-width: 0; }
+
+/* Floor plan: Ground Level drawn small, the rink in the middle, the machine's pin beside it */
+.cxm-map { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: 18px; align-items: center; }
+.cxm-plan { display: block; width: 136px; height: auto; overflow: visible; }
+.cxm-plan-floor { fill: var(--m-glass); stroke: var(--m-line-2); stroke-width: 1.5; }
+.cxm-plan-walk { fill: none; stroke: var(--m-line-2); stroke-width: 1.5; stroke-dasharray: 3 4; stroke-linecap: round; }
+.cxm-plan-rink { fill: color-mix(in srgb, var(--m-ink) 9%, transparent); stroke: var(--m-line-2); stroke-width: 1.5; }
+.cxm-plan-halo { fill: color-mix(in srgb, var(--m-red) 22%, transparent); transform-box: fill-box; transform-origin: center; }
+.cxm-plan-pin { fill: var(--m-red); stroke: var(--m-on-red); stroke-width: 2; }
+.cxm-map-txt { display: grid; gap: 8px; min-width: 0; }
+.cxm-line { display: flex; align-items: center; gap: 7px; font: var(--m-w-strong) 14px/1.3 var(--m-f-text); color: var(--m-ink); }
+.cxm-line [data-lucide] { display: inline-grid; font-size: 15px; color: var(--m-red-soft); }
+
+/* Headline: no card, the place set large and two chips under it */
+.cxm-plain { display: grid; justify-items: start; }
+.cxm-plain-name { font: var(--m-w-title) 32px/1 var(--m-f-title); text-transform: uppercase; letter-spacing: -.005em; }
+.cxm-plain-spot { margin-top: var(--m-title-gap); font: var(--m-w-text) 16px/1.4 var(--m-f-text); color: var(--m-ink-2); }
+.cxm-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--m-item-gap); }
+
+/* ---------------------------------------------------------------- Next step: shared parts */
+.cxn-ico { flex: none; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-size: 22px; color: var(--m-red-soft); background: color-mix(in srgb, var(--m-red) 14%, transparent); border: 1px solid color-mix(in srgb, var(--m-red-soft) 30%, transparent); }
+.cxn-ico [data-lucide] { display: inline-grid; }
+.cxn b { display: block; font: var(--m-w-strong) 17px/1.25 var(--m-f-text); color: var(--m-ink); }
+.cxn :is(.cxn-say, .cxn-list li) > span:not(.cxn-ico) > span,
+.cxn :is(.cxn-look-txt, .cxn-card-txt) > span { display: block; margin-top: 2px; font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
+.cxn-hint { font: var(--m-w-text) 13px/1.3 var(--m-f-text); color: var(--m-ink-3); }
+/* the fill: it runs the length of the wait before Punch opens, and rests empty while the page is held */
+.cxn-fill { position: absolute; inset: 0; z-index: -1; transform-origin: left center; transform: scaleX(0); pointer-events: none; }
+.m-page[data-page="connected"][data-auto="run"] .cxn-fill { animation: cx-fill var(--cx-ms, 2500ms) linear forwards; }
+@keyframes cx-fill { to { transform: scaleX(1); } }
+
+/* Button: the line, then the one red button, filling */
+.cxn-button { display: grid; gap: var(--m-group-gap); }
+.cxn-say { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; }
+.cxn-go { position: relative; isolation: isolate; overflow: hidden; width: 100%; font-weight: var(--m-w-strong); }
+.cxn-go [data-lucide] { display: inline-grid; font-size: 20px; }
+.m-btn-red .cxn-fill { background: rgba(255, 255, 255, .22); }
+.cxn-go-glass .cxn-fill { background: color-mix(in srgb, var(--m-red) 26%, transparent); }
+.cxn-button .cxn-hint { margin-top: calc(8px - var(--m-group-gap)); text-align: center; }
+
+/* Two moves: each move with its icon, then the way on */
+.cxn-steps { display: grid; gap: var(--m-group-gap); }
+.cxn-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--m-item-gap); }
+.cxn-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; }
+
+/* Bar: the words large, a bar that fills, and Go now at its end */
+.cxn-big { font: var(--m-w-title) 28px/1.1 var(--m-f-title); letter-spacing: -.005em; }
+.cxn-big span { display: block; margin-top: var(--m-title-gap); font: var(--m-w-text) 17px/1.35 var(--m-f-text); color: var(--m-ink-2); letter-spacing: 0; }
+.cxn-bar-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center; margin-top: var(--m-group-gap); }
+.cxn-track { position: relative; isolation: isolate; overflow: hidden; height: 6px; border-radius: 3px; background: var(--m-track); }
+.cxn-track .cxn-fill { background: var(--m-red); border-radius: 3px; }
+.cxn-now {
+  appearance: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 16px; border-radius: 99px;
+  background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift); color: var(--m-ink);
+  font: var(--m-w-strong) 15px/1 var(--m-f-text);
+}
+.cxn-now [data-lucide] { display: inline-grid; font-size: 17px; color: var(--m-red-soft); }
+.cxn-bar .cxn-hint { margin-top: 8px; }
+
+/* Look up: the arrow, the line, and a round button ringed by the wait */
+.cxn-look {
+  display: grid; grid-template-columns: 52px minmax(0, 1fr) 60px; gap: 16px; align-items: center; padding: var(--m-pad); border-radius: 22px;
+  background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+}
+.cxn-up { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-size: 24px; color: var(--m-red-soft); background: color-mix(in srgb, var(--m-red) 14%, transparent); }
+.cxn-up [data-lucide] { display: inline-grid; }
+.cxn-round { appearance: none; cursor: pointer; position: relative; width: 60px; height: 60px; border: 0; padding: 0; border-radius: 50%; display: grid; place-items: center; font-size: 22px; background: var(--m-cta); color: var(--m-on-red); }
+.cxn-round [data-lucide] { display: inline-grid; position: relative; }
+.cxn-ring { position: absolute; inset: -5px; width: 70px; height: 70px; transform: rotate(-90deg); overflow: visible; }
+.cxn-ring circle { fill: none; stroke-width: 3; }
+.cxn-ring-bg { stroke: var(--m-track); }
+.cxn-ring-fg { stroke: var(--m-red-soft); stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; }
+.m-page[data-page="connected"][data-auto="run"] .cxn-ring-fg { animation: cx-ring var(--cx-ms, 2500ms) linear forwards; }
+@keyframes cx-ring { to { stroke-dashoffset: 0; } }
+
+/* Pad card: one card that is the button, the pad drawn with the logo at its heart */
+.cxn-card {
+  appearance: none; cursor: pointer; font: inherit; color: inherit; text-align: left; width: 100%;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; grid-template-columns: 76px minmax(0, 1fr) 24px; gap: 16px; align-items: center; padding: var(--m-pad) var(--m-pad) calc(var(--m-pad) + 3px);
+  border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+}
+.cxn-pad { position: relative; width: 76px; height: 76px; display: grid; place-items: center; }
+.cxn-pad i { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--m-red-soft) 45%, transparent); }
+.cxn-pad i + i { inset: 10px; border-color: color-mix(in srgb, var(--m-red-soft) 70%, transparent); background: color-mix(in srgb, var(--m-red) 10%, transparent); }
+.cxn-pad img { position: relative; width: 42px; height: 42px; object-fit: contain; }
+.cxn-chev { font-size: 22px; color: var(--m-ink-3); display: grid; }
+.cxn-edge { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; overflow: hidden; isolation: isolate; }
+.cxn-edge .cxn-fill { background: var(--m-red); }
+
+/* ---------------------------------------------------------------- motion: the page arrives, a design swaps in */
+@keyframes cx-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes cx-pop { from { opacity: 0; transform: scale(.4); } 60% { opacity: 1; transform: scale(1.12); } }
+@keyframes cx-ring-out { from { opacity: .9; transform: scale(.9); } to { opacity: 0; transform: scale(1.3); } }
+.mcx.is-entering > .mcx-linked { animation: cx-rise .5s cubic-bezier(.2, .8, .2, 1) both; }
+.mcx.is-entering > .mcx-machine { animation: cx-rise .5s cubic-bezier(.2, .8, .2, 1) .08s both; }
+.mcx.is-entering > .mcx-next { animation: cx-rise .5s cubic-bezier(.2, .8, .2, 1) .16s both; }
+.mcx.is-entering :is(.cxl-tick, .cxl-wire-ok, .cxl-banner-ok) { animation: cx-pop .55s cubic-bezier(.2, 1.3, .4, 1) .25s both; }
+.mcx.is-entering .cxl-halo::after { animation: cx-ring-out 1s ease-out .3s both; }
+.mcx .is-swapped { animation: cx-rise .45s cubic-bezier(.2, .8, .2, 1) both; }
+/* the pin breathes and the look-up arrow bobs while the page waits */
+.m-page[data-page="connected"].is-on .cxm-plan-halo { animation: cx-breathe 2.4s ease-in-out infinite; }
+@keyframes cx-breathe { 50% { transform: scale(1.35); opacity: .5; } }
+.m-page[data-page="connected"].is-on .cxn-up [data-lucide] { animation: cx-bob 2.4s ease-in-out infinite; }
+@keyframes cx-bob { 50% { transform: translateY(-4px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mcx *, .mcx *::before, .mcx *::after, .mcx.is-entering > * { animation: none !important; }
+  /* with no fill running, the hint under each design says what happens next */
+}

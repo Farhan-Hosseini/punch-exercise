@@ -1,0 +1,99 @@
+/* Result: Recent punches (sections/clips.html). Round nine: "in results no need for the slo-mo replay clips, just show
+   others' punch history". Other players' punches at this machine, newest first, each with a face (avatar or the punch
+   photo), a name, the score through PunchFormat and when. Five designs on the Result grid (sections/_grid.css): one
+   margin, equal columns on --gap-grid, one card on --r and --card-pad. The section keeps the height the clips had
+   (about 330 glass px with its title), so the glass still fits at full size. Reference shows the first design only,
+   in its frame (the ref card, 24 px corners, Sora and Archivo Black). Scope every rule under .s-clips. */
+
+.s-clips :is(ol, p, figure) { margin: 0; padding: 0; }
+.s-clips ol { list-style: none; }
+/* the pieces every design uses */
+.s-clips .rp-ava { display: block; flex: none; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; background: var(--badge); }
+.s-clips .rp-who { display: grid; gap: 8px; min-width: 0; }
+.s-clips .rp-name { min-width: 0; font-weight: var(--w-strong); line-height: 1.1; color: var(--ink-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* when, in the label face but as said ("2 min ago"): sentence case and untracked, so it stays short beside a score */
+.s-clips :is(.rp-when, .rp-chip) { text-transform: none; letter-spacing: 0; white-space: nowrap; }
+.s-clips .rp-when { color: var(--ink-3); }
+/* a score: the cap asked for, or the size at which its characters fit the column (9 counts the decimals at .46) */
+.s-clips .rp-score {
+  --top: 52px; --chars: 9;
+  display: block; min-width: 0; line-height: .9; font-variant-numeric: tabular-nums; color: var(--ink-1);
+  font-size: min(calc(var(--top) / var(--cap)), calc(100cqi / (var(--chars) * var(--num-w))));
+}
+:root[data-decimals="off"] .s-clips .rp-score { --chars: 7; }
+/* the when, on a dark chip over a photo, so its type reads on any frame */
+.s-clips .rp-chip {
+  position: absolute; z-index: 2; top: 16px; left: 16px; padding: 9px 14px 8px; border-radius: calc(var(--r) * .5);
+  color: #FFFFFF; background: rgba(10, 10, 12, .7);
+}
+
+/* A  Photo cards: the three latest, each a card with the punch photo (the when on its corner, the name at its foot)
+   and the score under it */
+.s-clips .v-a .rp-a { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-grid); }
+.s-clips .v-a .rp-a-card { min-width: 0; overflow: hidden; display: grid; grid-template-rows: 172px auto; container-type: inline-size; }
+.s-clips .v-a .rp-a-shot { height: 172px; background: var(--raised); }
+.s-clips .v-a .rp-a-shot::after { background: linear-gradient(180deg, rgba(8, 8, 9, 0) 34%, rgba(8, 8, 9, .86)); }
+/* the name stands clear of the photo's foot, and the score keeps a margin of its own under it */
+.s-clips .v-a .rp-a-shot .rp-name { position: absolute; z-index: 2; left: 18px; right: 18px; bottom: 18px; color: #FFFFFF; font-size: 26px; }
+.s-clips .v-a .rp-score { --top: 40px; padding: 18px 18px 20px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 36px) / (var(--chars) * var(--num-w)))); }
+
+/* B  List: the three latest as rows, the face, the name over when, the score standing on the right */
+.s-clips .v-b .rp-b { display: grid; gap: 12px; }
+.s-clips .v-b .rp-b-row {
+  display: grid; grid-template-columns: 64px minmax(0, 1fr) 330px; align-items: center; column-gap: 24px;
+  height: 80px; padding: 0 32px 0 10px; container-type: inline-size;
+}
+.s-clips .v-b .rp-b-row .rp-who { gap: 6px; }
+.s-clips .v-b .rp-b-row .rp-score { --top: 50px; justify-self: end; font-size: min(calc(var(--top) / var(--cap)), calc(330px / (var(--chars) * var(--num-w)))); }
+
+/* C  Latest first: the newest punch as a photo on half the row, the three before it as rows beside it */
+.s-clips .v-c .rp-c { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-grid); height: 264px; }
+.s-clips .v-c .rp-c-lead { min-width: 0; border-radius: var(--r); background: var(--raised); }
+.s-clips .v-c .rp-c-lead > img { position: absolute; inset: 0; }
+.s-clips .v-c .rp-c-lead::after { background: linear-gradient(180deg, rgba(8, 8, 9, .35), rgba(8, 8, 9, 0) 36%, rgba(8, 8, 9, .1) 50%, rgba(8, 8, 9, .86)); }
+.s-clips .v-c .rp-c-cap {
+  position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; container-type: inline-size;
+  display: grid; gap: 10px; padding: 0 24px 22px;
+}
+.s-clips .v-c .rp-c-cap .rp-name { color: #FFFFFF; }
+.s-clips .v-c .rp-c-cap .rp-score { --top: 64px; color: #FFFFFF; text-shadow: 0 4px 24px rgba(0, 0, 0, .5); }
+.s-clips .v-c .rp-c-list { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; min-width: 0; }
+.s-clips .v-c .rp-c-row {
+  min-width: 0; display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; column-gap: 16px;
+  padding: 0 22px 0 12px;
+}
+.s-clips .v-c .rp-c-row .rp-ava { width: 56px; height: 56px; }
+.s-clips .v-c .rp-c-row .rp-who { gap: 4px; }
+.s-clips .v-c .rp-c-row .rp-score { font-size: min(calc(36px / var(--cap)), calc(170px / (var(--chars) * var(--num-w)))); }
+
+/* D  Faces: the four latest side by side, face, name, score and when; the newest ringed in the strike colour */
+.s-clips .v-d .rp-d { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-grid); }
+.s-clips .v-d .rp-d-col { min-width: 0; container-type: inline-size; display: grid; justify-items: center; align-content: start; gap: 12px; text-align: center; }
+.s-clips .v-d .rp-d-col .rp-ava { width: 112px; height: 112px; margin-bottom: 4px; box-shadow: 0 0 0 4px var(--line); }
+.s-clips .v-d .rp-d-col.is-new .rp-ava { box-shadow: 0 0 0 6px var(--strike), var(--strike-glow); }
+.s-clips .v-d .rp-d-col .rp-name { max-width: 100%; }
+.s-clips .v-d .rp-d-col .rp-score { --top: 44px; --chars: 9.4; }
+
+/* E  Bars: the five latest in the order they punched, oldest on the left; each bar stands at the score's share of
+   the top score, the face at its head, the score over it; the best of them in the strike colour */
+.s-clips .v-e .rp-e { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap-grid); align-items: end; }
+.s-clips .v-e .rp-e-col { min-width: 0; container-type: inline-size; display: grid; justify-items: center; align-content: end; gap: 8px; text-align: center; }
+.s-clips .v-e .rp-e-col .rp-score { --top: 30px; --chars: 9.6; margin-bottom: 4px; }
+/* the bar: the face's width, from the face alone at .6 of the top score to 64 px more at the top score */
+.s-clips .v-e .rp-e-bar {
+  --w: 84px;
+  display: grid; justify-items: center; align-content: start; width: var(--w); padding-top: 7px;
+  height: calc(var(--w) + (var(--h, .7) - .6) / .4 * 64px); border-radius: calc(var(--w) / 2) calc(var(--w) / 2) 16px 16px;
+  background: var(--track);
+}
+.s-clips .v-e .rp-e-bar .rp-ava { width: 70px; height: 70px; }
+.s-clips .v-e .rp-e-col.is-top .rp-e-bar { background: var(--strike); box-shadow: var(--strike-glow); }
+.s-clips .v-e .rp-e-col .rp-name { max-width: 100%; margin-top: 2px; }
+
+/* ---------------------------------------------------------------- Reference: the Photo cards in the frame's card */
+:root[data-variant="reference"] .s-clips .rp-a-card { background: var(--ref-card); border: 2px solid rgba(235, 17, 16, .3); border-radius: 24px; box-shadow: none; padding: 16px; grid-template-rows: 140px auto; }
+:root[data-variant="reference"] .s-clips .rp-a-shot { height: 140px; border-radius: 12px; }
+:root[data-variant="reference"] .s-clips .rp-name { font: 700 32px/1.26 "Sora", sans-serif; }
+:root[data-variant="reference"] .s-clips .rp-score { font-family: "Archivo Black", sans-serif; font-weight: 400; letter-spacing: 0; text-shadow: none; }
+:root[data-variant="reference"] .s-clips .v-a .rp-score { --top: 40px; padding: 18px 8px 4px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 16px) / (var(--chars) * var(--num-w)))); }
+:root[data-variant="reference"] .s-clips .rp-chip { font: 700 32px/1 "Sora", sans-serif; text-transform: none; letter-spacing: 0; border-radius: 12px; }

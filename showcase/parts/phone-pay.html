@@ -1,0 +1,451 @@
+    <!-- ========== the credit flow: pick a pack, pay, punch. Behaviour in pay.js, look in pay.css ==========
+         Built from sections (psec.js), chosen in Customise under This screen:
+           Buy credits    Packs (drawn by pay.js in the chosen design, a radio group) and Offer (the Monster Energy bundle)
+           Checkout  Summary (every copy filled from [data-pay-f]), Pay with (drawn by pay.js, a radio group) and the
+                     Secure checkout sheet (opened by the Secure checkout button in the header)
+           Paid      Confirmation (every copy filled from [data-paid-f])
+         The Group run carries the Monster bundle: a cold can for each of its three punches, collected at the kiosk on
+         Ground Level. Every Offer design picks the Group run; the order and the confirmation show the cans when it is on. -->
+    <section class="m-page pay-page" data-page="topup" aria-labelledby="mTopupTitle">
+      <header class="pay-top">
+        <button class="m-iconbtn" type="button" id="payTopupBack" aria-label="Back"><span data-icon="back"></span></button>
+        <p class="m-credits pay-balance"><span data-lucide="wallet"></span><span class="pay-sr">Balance: </span><span data-credits>0 credits</span></p>
+      </header>
+      <div class="pay-body">
+        <!-- the page header, measured like every phone page's (round eight): title, its line 8 px under it, then a full
+             section step to the first section -->
+        <div class="pay-head">
+          <p class="pay-linked" id="payLinked" hidden><span class="pay-live" aria-hidden="true"></span><span>Linked to Dubai Mall, Ground Level</span></p>
+          <h2 class="m-title" id="mTopupTitle">Buy credits</h2>
+          <p class="pay-lead" id="payTopupLead">One credit is one punch, on any PunchApp machine.</p>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Packs (pay.js draws the chosen design)
+             Every design ends with the Custom pack: a stepper from 1 to 50 punches, priced per punch at the rate of the
+             pack it reaches (pay.js, customPack) -->
+        <div class="pay-sec pay-sec-packs" data-sec="packs" data-sec-label="Packs" data-sv-names="List|Tiles|Photo cards|Dial|Per punch">
+          <div class="pay-packs" id="payPacks" role="radiogroup" aria-label="Credit packs"></div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Offer -->
+        <div class="pay-sec pay-sec-offer" data-sec="offer" data-sec-label="Offer">
+
+          <div class="pyo pyo-card" data-sv="Monster card">
+            <span class="pyo-claws" data-claw aria-hidden="true"></span>
+            <p class="pyo-brand"><span class="mon-word">Monster<span>Energy</span></span></p>
+            <p class="pyo-head">A cold can for every punch</p>
+            <p class="pyo-text">Pick the Group run and collect three Monster Energy cans at the kiosk by the rink.</p>
+            <button class="pyo-btn" type="button" data-pay-offer><span class="pyo-off"><span data-lucide="plus"></span>Pick the Group run</span><span class="pyo-on"><span data-lucide="check"></span>Included with your Group run</span></button>
+          </div>
+
+          <div class="pyo pyo-can" data-sv="Can">
+            <span class="pyo-can-art" aria-hidden="true"><span class="pyo-can-body"><span data-claw></span><span class="pyo-can-word">Monster</span></span><span class="pyo-can-top"></span></span>
+            <span class="pyo-can-copy">
+              <span class="pyo-cap"><span data-lucide="gift"></span>With the Group run</span>
+              <span class="pyo-head">Three cans, on us</span>
+              <span class="pyo-text">Ice cold at the Monster kiosk, a few steps from the machine.</span>
+              <button class="pyo-btn" type="button" data-pay-offer><span class="pyo-off"><span data-lucide="plus"></span>Pick the Group run</span><span class="pyo-on"><span data-lucide="check"></span>Included</span></button>
+            </span>
+          </div>
+
+          <figure class="pyo pyo-photo" data-sv="Photo">
+            <img src="assets/photos/lib/hydrate-3.jpg" alt="A boxer rests on the ropes with a bottle of water between rounds" style="object-position: 48% 40%" decoding="async">
+            <span class="pyo-photo-shade" aria-hidden="true"></span>
+            <figcaption class="pyo-photo-cap">
+              <span class="pyo-photo-brand"><span data-claw aria-hidden="true"></span><span class="mon-word is-line">Monster<span>Energy</span></span></span>
+              <span class="pyo-head">Refuel between rounds</span>
+              <span class="pyo-text">Three free cans with the Group run, one for each of your crew.</span>
+              <button class="pyo-btn" type="button" data-pay-offer><span class="pyo-off"><span data-lucide="plus"></span>Pick the Group run</span><span class="pyo-on"><span data-lucide="check"></span>Included with your Group run</span></button>
+            </figcaption>
+          </figure>
+
+          <div class="pyo pyo-coupon" data-sv="Coupon">
+            <span class="pyo-coupon-main">
+              <span class="pyo-cap"><span data-lucide="ticket-percent"></span>First purchase</span>
+              <span class="pyo-head">Free Monster with the Group run</span>
+              <span class="pyo-text">Three cans, collected at the kiosk by the rink. Applied at checkout.</span>
+            </span>
+            <span class="pyo-coupon-stub">
+              <span class="pyo-coupon-n">3</span>
+              <span class="pyo-coupon-u">cans</span>
+              <button class="pyo-btn pyo-btn-sm" type="button" data-pay-offer><span class="pyo-off">Apply</span><span class="pyo-on"><span data-lucide="check"></span>On</span></button>
+            </span>
+          </div>
+
+          <div class="pyo pyo-strip" data-sv="Strip">
+            <span class="pyo-strip-tile" data-claw aria-hidden="true"></span>
+            <span class="pyo-strip-copy"><b>Three free Monster cans</b><span>With the Group run, at the Ice Rink kiosk</span></span>
+            <button class="pyo-btn pyo-btn-sm" type="button" data-pay-offer><span class="pyo-off">Add</span><span class="pyo-on"><span data-lucide="check"></span>Added</span></button>
+          </div>
+        </div>
+
+        <p class="pay-note"><span data-lucide="shield-check"></span><span>Credits never expire and work on any PunchApp machine.</span></p>
+      </div>
+      <footer class="pay-foot">
+        <p class="pay-foot-note" id="payTopupNote"><span data-icon="bolt"></span><span></span></p>
+        <button class="m-btn m-btn-red pay-cta" type="button" id="payContinue"><span>Continue</span><span class="pay-cta-price" id="payContinuePrice">AED 25</span></button>
+      </footer>
+    </section>
+
+    <section class="m-page pay-page" data-page="checkout" aria-labelledby="mCheckoutTitle">
+      <header class="pay-top">
+        <button class="m-iconbtn" type="button" id="payCheckoutBack" aria-label="Back to the credit packs"><span data-icon="back"></span></button>
+        <!-- opens the Secure checkout sheet (#paySecure, at the end of this page) -->
+        <button class="pay-secure" type="button" id="paySecureBtn" aria-haspopup="dialog" aria-controls="paySecure"><span data-lucide="lock"></span>Secure checkout</button>
+      </header>
+      <div class="pay-body">
+        <div class="pay-head">
+          <h2 class="m-title" id="mCheckoutTitle">Checkout</h2>
+          <p class="pay-lead" id="mCheckoutLead">Your credits land in your wallet the moment you pay.</p>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Summary -->
+        <div class="pay-sec pay-sec-sum" data-sec="summary" data-sec-label="Summary">
+
+          <div class="pys pys-card m-glass" data-sv="Order card">
+            <div class="pay-order-item">
+              <span class="pay-pack-n"><b data-pay-f="n">3</b><i data-pay-f="unit">punches</i></span>
+              <span class="pay-copy"><span class="pay-name" data-pay-f="name">Group run</span><span class="pay-sub" data-pay-f="where">Any PunchApp machine</span></span>
+              <button class="pay-link" type="button" data-pay-change aria-label="Change the credit pack">Change</button>
+            </div>
+            <div class="pys-cans" data-pay-cans><span data-claw aria-hidden="true"></span><span class="pay-copy"><span class="pay-name">Three Monster Energy cans</span><span class="pay-sub">At the kiosk by the rink</span></span><b class="pys-free">Free</b></div>
+            <div class="pay-order-total">
+              <span class="pay-copy"><span class="pay-name">Total</span><span class="pay-sub">Includes VAT</span></span>
+              <span class="pay-price" data-pay-f="total"><small>AED</small>25.00</span>
+            </div>
+          </div>
+
+          <div class="pys pys-receipt m-glass" data-sv="Receipt">
+            <div class="pys-receipt-head"><span class="m-cap"><span data-lucide="receipt"></span>Your order</span><button class="pay-link" type="button" data-pay-change aria-label="Change the credit pack">Change</button></div>
+            <dl class="pys-lines">
+              <div><dt><span data-pay-f="name">Group run</span><small><span data-pay-f="credits">3 credits</span>, <span data-pay-f="whereShort">any machine</span></small></dt><dd data-pay-f="price">AED 25.00</dd></div>
+              <div data-pay-cans><dt>Monster Energy<small>Three cans at the Ice Rink kiosk</small></dt><dd class="pys-free">Free</dd></div>
+              <div><dt>VAT<small>Included in the price</small></dt><dd data-pay-f="vat">AED 1.19</dd></div>
+            </dl>
+            <div class="pys-receipt-total"><span class="pay-name">Total</span><span class="pay-price" data-pay-f="total"><small>AED</small>25.00</span></div>
+          </div>
+
+          <div class="pys pys-big" data-sv="Big total">
+            <p class="m-cap">You pay</p>
+            <p class="pys-big-n" data-pay-f="total"><small>AED</small>25.00</p>
+            <div class="pys-big-chips">
+              <span class="m-chip"><span data-lucide="hand-fist"></span><span data-pay-f="credits">3 credits</span></span>
+              <span class="m-chip"><span data-lucide="map-pin"></span><span data-pay-f="whereShort">Any machine</span></span>
+              <span class="m-chip pys-chip-mon" data-pay-cans><span data-claw aria-hidden="true"></span>Three free cans</span>
+            </div>
+            <p class="pys-big-pack"><span data-pay-f="name">Group run</span><button class="pay-link" type="button" data-pay-change aria-label="Change the credit pack">Change pack</button></p>
+          </div>
+
+          <div class="pys pys-photo m-glass" data-sv="Photo">
+            <span class="pys-photo-pic"><img data-pay-photo src="assets/photos/lib/friends-1.jpg" alt="" decoding="async"><span class="pys-photo-name"><b data-pay-f="name">Group run</b><span><span data-pay-f="credits">3 credits</span></span></span></span>
+            <div class="pys-photo-rows">
+              <p><span data-lucide="map-pin"></span><span data-pay-f="where">Any PunchApp machine</span><button class="pay-link" type="button" data-pay-change aria-label="Change the credit pack">Change</button></p>
+              <p data-pay-cans><span data-claw aria-hidden="true"></span><span>Three Monster Energy cans, free</span></p>
+              <div class="pay-order-total"><span class="pay-copy"><span class="pay-name">Total</span><span class="pay-sub">Includes VAT</span></span><span class="pay-price" data-pay-f="total"><small>AED</small>25.00</span></div>
+            </div>
+          </div>
+
+          <div class="pys pys-wallet m-glass" data-sv="Wallet after">
+            <div class="pys-wallet-row">
+              <span class="pys-wallet-end"><span class="m-cap">Wallet now</span><b data-pay-f="now">0</b></span>
+              <span class="pys-wallet-add"><span data-lucide="arrow-right"></span><span class="m-chip m-chip-red"><span data-lucide="plus"></span><span data-pay-f="credits">3 credits</span></span></span>
+              <span class="pys-wallet-end pys-wallet-after"><span class="m-cap">After</span><b data-pay-f="after">3</b></span>
+            </div>
+            <div class="pay-order-total"><span class="pay-copy"><span class="pay-name" data-pay-f="name">Group run</span><button class="pay-link pys-inline" type="button" data-pay-change aria-label="Change the credit pack">Change</button></span><span class="pay-price" data-pay-f="total"><small>AED</small>25.00</span></div>
+          </div>
+        </div>
+
+        <h3 class="m-cap pay-label" id="payWithLabel">Pay with</h3>
+        <!-- ---------------------------------------------------------------- Pay with (pay.js draws the chosen design) -->
+        <div class="pay-sec pay-sec-method" data-sec="method" data-sec-label="Pay with" data-sv-names="List|Wallet first|Tiles|Card|Tabs">
+          <div class="pay-methods" id="payMethods" role="radiogroup" aria-labelledby="payWithLabel"></div>
+        </div>
+        <div class="pay-newcard m-glass" id="payNewCard" hidden>
+          <label class="pay-field pay-field-wide"><span>Card number</span><input id="payCardNo" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="23" spellcheck="false"></label>
+          <label class="pay-field"><span>Expiry</span><input id="payCardExp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" maxlength="7" spellcheck="false"></label>
+          <label class="pay-field"><span>Security code</span><input id="payCardCvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="CVC" maxlength="4" spellcheck="false"></label>
+          <p class="pay-error" id="payCardError" role="alert" hidden></p>
+        </div>
+        <p class="pay-note"><span data-lucide="shield-check"></span><span>Payments are encrypted. PunchApp never sees your full card number.</span></p>
+
+        <!-- round nine, for the showcase only: make this payment fail, one of three plain ways, and see the Payment failed
+             page (pay.js failSteps and finishFail). Marked as a demo, on a dashed edge, so it never reads as product -->
+        <div class="pay-demo" role="group" aria-labelledby="payDemoCap">
+          <p class="pay-demo-cap" id="payDemoCap"><b>Demo</b><span>Simulate a failed payment</span></p>
+          <div class="pay-demo-row">
+            <button class="pay-demo-btn" type="button" data-pay-fail="declined"><span data-lucide="credit-card"></span>Declined</button>
+            <button class="pay-demo-btn" type="button" data-pay-fail="cancelled"><span data-lucide="circle-x"></span>Cancelled</button>
+            <button class="pay-demo-btn" type="button" data-pay-fail="offline"><span data-lucide="wifi-off"></span>Offline</button>
+          </div>
+        </div>
+      </div>
+      <footer class="pay-foot">
+        <button class="m-btn m-btn-red pay-cta pay-cta-center" type="button" id="payNow"><span data-lucide="lock"></span><span id="payNowText">Pay AED 25</span></button>
+      </footer>
+
+      <!-- the platform wallet's confirmation, imitated: Apple Pay on iPhone, Google Pay on Android -->
+      <div class="pay-sheet" id="paySheet" role="dialog" aria-modal="true" aria-labelledby="paySheetTitle" aria-describedby="paySheetStatus" hidden>
+        <div class="pay-sheet-scrim" aria-hidden="true"></div>
+        <p class="pay-side" aria-hidden="true"><span>Double-click<br>to pay</span><i></i></p>
+        <div class="pay-sheet-panel">
+          <div class="pay-sheet-head">
+            <span id="paySheetMark"></span>
+            <h3 class="pay-sr" id="paySheetTitle">Confirm payment</h3>
+            <button class="pay-sheet-x" type="button" id="paySheetCancel" aria-label="Cancel payment"><span data-icon="close"></span></button>
+          </div>
+          <dl class="pay-sheet-rows" id="paySheetRows"></dl>
+          <div class="pay-sheet-confirm">
+            <span class="pay-glyph" id="paySheetGlyph" aria-hidden="true"></span>
+            <p class="pay-sheet-status" id="paySheetStatus" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------------------------------------------------------------- Secure checkout sheet
+           How the payment is protected, opened by the Secure checkout button in the header. It is the How-to sheet's
+           pattern (#mSheet, mobile.js): a bottom sheet over a scrim, Tab kept inside, Escape, the scrim, Got it or a drag
+           down close it, and focus goes back to the button. Its five designs are this page's Secure sheet section: the
+           panel is the section, so psec.js shows the chosen one; pay.js runs the sheet, fills the wallet words for the
+           device ([data-ss-f]) and draws the art into every [data-ss-art] from the look's tokens, so one drawing holds in
+           all four looks. -->
+      <div class="m-sheet pay-ss" id="paySecure" role="dialog" aria-modal="true" aria-labelledby="payssTitle0" hidden>
+        <button class="m-sheet-scrim" type="button" data-ss-close aria-label="Close" tabindex="-1"></button>
+        <div class="m-sheet-panel pay-ss-panel" data-sec="secure" data-sec-label="Secure checkout sheet">
+          <span class="m-grab" aria-hidden="true"></span>
+
+          <!-- Shield art: the whole promise in one scene, then the four points -->
+          <div class="pss pss-wide" data-sv="Shield art">
+            <div class="pss-stage"><span class="pss-art" data-ss-art></span></div>
+            <h3 class="pss-title" id="payssTitle0">Secure checkout</h3>
+            <span class="m-rule m-rule-wide" aria-hidden="true"></span>
+            <ul class="pss-rows">
+              <li><span class="pss-ico"><span data-lucide="scan-face" data-ss-bio></span></span><span><b>Pay with <span data-ss-f="wallet">Apple Pay</span></b><span data-ss-f="confirmLine">Face ID confirms it. PunchApp never sees your card.</span></span></li>
+              <li><span class="pss-ico"><span data-lucide="credit-card"></span></span><span><b>No card details kept</b>Your card number is never stored on the machine or on your phone.</span></li>
+              <li><span class="pss-ico"><span data-lucide="hourglass"></span></span><span><b>Held only for your turn</b>A credit is held while the machine is yours. Walk away and it comes back.</span></li>
+              <li><span class="pss-ico"><span data-lucide="rotate-ccw"></span></span><span><b>Refund if the machine fails</b>The credit returns to your wallet at once, or the money to your card if you ask.</span></li>
+            </ul>
+            <button class="m-btn m-btn-red" type="button" data-ss-ok>Got it</button>
+          </div>
+
+          <!-- Walkthrough: one promise at a time, the same scene lit where it happens -->
+          <div class="pss pss-walk" data-sv="Walkthrough" hidden>
+            <div class="pss-stage pss-stage-walk" data-ss-focus="pay"><span class="pss-art" data-ss-art></span></div>
+            <div class="pss-slides" aria-live="polite">
+              <div class="pss-slide is-on" data-step="0" data-focus="pay">
+                <h3 class="pss-title" id="payssTitle1">Pay with <span data-ss-f="wallet">Apple Pay</span></h3>
+                <p data-ss-f="confirmLine">Face ID confirms it. PunchApp never sees your card.</p>
+              </div>
+              <div class="pss-slide" data-step="1" data-focus="card" hidden>
+                <h3 class="pss-title">No card details kept</h3>
+                <p>Your card number is never stored on the machine or on your phone.</p>
+              </div>
+              <div class="pss-slide" data-step="2" data-focus="hold" hidden>
+                <h3 class="pss-title">Held only for your turn</h3>
+                <p>A credit is held while the machine is yours. Walk away and it comes back.</p>
+              </div>
+              <div class="pss-slide" data-step="3" data-focus="refund" hidden>
+                <h3 class="pss-title">Refund if the machine fails</h3>
+                <p>The credit returns to your wallet at once, or the money to your card if you ask.</p>
+              </div>
+            </div>
+            <div class="hs-dots pss-dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i></div>
+            <div class="pss-walk-btns">
+              <button class="m-btn m-btn-glass" type="button" data-ss-back disabled>Back</button>
+              <button class="m-btn m-btn-red" type="button" data-ss-next>Next</button>
+            </div>
+          </div>
+
+          <!-- Checklist: the phone from the scene beside the title, the four promises ticked off in one card -->
+          <div class="pss pss-check" data-sv="Checklist" hidden>
+            <div class="pss-check-head">
+              <span class="pss-tile"><span class="pss-art" data-ss-art="phone"></span></span>
+              <div><h3 class="pss-title" id="payssTitle2">Secure checkout</h3><p class="pss-lede">Four promises on every payment.</p></div>
+            </div>
+            <ul class="pss-ticks">
+              <li><span class="pss-tick"><span data-lucide="check"></span></span><span><b>Pay with <span data-ss-f="wallet">Apple Pay</span></b><span data-ss-f="confirmLine">Face ID confirms it. PunchApp never sees your card.</span></span></li>
+              <li><span class="pss-tick"><span data-lucide="check"></span></span><span><b>No card details kept</b>Never stored on the machine or on your phone.</span></li>
+              <li><span class="pss-tick"><span data-lucide="check"></span></span><span><b>Held only for your turn</b>Walk away and the credit comes back.</span></li>
+              <li><span class="pss-tick"><span data-lucide="check"></span></span><span><b>Refund if the machine fails</b>Your credit back at once, or your money if you ask.</span></li>
+            </ul>
+            <button class="m-btn m-btn-red" type="button" data-ss-ok>Got it</button>
+          </div>
+
+          <!-- Tiles: the scene, then the four promises two by two -->
+          <div class="pss pss-tiles" data-sv="Tiles" hidden>
+            <div class="pss-stage pss-stage-sm"><span class="pss-art" data-ss-art></span></div>
+            <h3 class="pss-title" id="payssTitle3">Secure checkout</h3>
+            <ul class="pss-grid">
+              <li><span class="pss-ico"><span data-lucide="scan-face" data-ss-bio></span></span><b data-ss-f="wallet">Apple Pay</b><span data-ss-f="confirmShort">Confirmed with Face ID</span></li>
+              <li><span class="pss-ico"><span data-lucide="credit-card"></span></span><b>No card kept</b><span>Not on the machine, not on your phone</span></li>
+              <li><span class="pss-ico"><span data-lucide="hourglass"></span></span><b>Held for your turn</b><span>Walk away and it comes back</span></li>
+              <li><span class="pss-ico"><span data-lucide="rotate-ccw"></span></span><b>Machine fails?</b><span>Your credit back, or a refund</span></li>
+            </ul>
+            <button class="m-btn m-btn-red" type="button" data-ss-ok>Got it</button>
+          </div>
+
+          <!-- In your hand: a real photograph of paying by phone, then the promises as icons -->
+          <div class="pss pss-photo" data-sv="In your hand" hidden>
+            <div class="pss-pic">
+              <img src="assets/photos/lib/phone-hand-4.jpg" alt="A hand holding a phone up in a city street at night" style="object-position: 50% 40%" loading="lazy" decoding="async">
+              <span class="pss-pic-chip"><span data-lucide="lock"></span><span data-ss-f="chip">Apple Pay with Face ID</span></span>
+            </div>
+            <h3 class="pss-title" id="payssTitle4">Secure checkout</h3>
+            <ul class="pss-rows pss-rows-tight">
+              <li><span class="pss-ico"><span data-lucide="credit-card"></span></span><span><b>No card details kept</b>Never stored on the machine or on your phone.</span></li>
+              <li><span class="pss-ico"><span data-lucide="hourglass"></span></span><span><b>Held only for your turn</b>Walk away and the credit comes back.</span></li>
+              <li><span class="pss-ico"><span data-lucide="rotate-ccw"></span></span><span><b>Refund if the machine fails</b>Your credit back at once, or your money if you ask.</span></li>
+            </ul>
+            <button class="m-btn m-btn-red" type="button" data-ss-ok>Got it</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-page pay-page" data-page="paid" aria-labelledby="mPaidTitle">
+      <header class="pay-top">
+        <button class="m-iconbtn" type="button" id="payPaidClose" aria-label="Close and go to the feed"><span data-icon="close"></span></button>
+        <!-- no "Payment complete" note here: every confirmation design already says so -->
+      </header>
+      <div class="pay-body">
+        <h2 class="pay-sr" id="mPaidTitle" data-paid-f="title">3 credits added</h2>
+
+        <!-- ---------------------------------------------------------------- Confirmation -->
+        <div class="pay-sec pay-sec-confirm" data-sec="confirm" data-sec-label="Confirmation">
+
+          <div class="pyc pyc-tick" data-sv="Tick">
+            <div class="pay-done">
+              <span class="pay-done-disc" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M13 25l8 8 15-17" pathLength="1"/></svg></span>
+              <!-- round eight: no "Payment complete" line here either; the tick and the title say it -->
+              <p class="m-title pyc-title" data-paid-f="title">3 credits added</p>
+              <p class="pay-lead" data-paid-f="lead">They are in your wallet. Scan any PunchApp machine to use them.</p>
+            </div>
+            <!-- the balance alone: the row of punch icons that sat beside it is gone (round eight) -->
+            <div class="pay-wallet">
+              <p class="m-cap">Wallet balance</p>
+              <p class="pay-wallet-n"><b data-paid-f="balance">3</b><span data-paid-f="unit">credits</span></p>
+            </div>
+          </div>
+
+          <div class="pyc pyc-tokens" data-sv="Tokens">
+            <p class="pyc-tokens-cap"><span data-lucide="circle-check"></span>Paid</p>
+            <p class="m-title pyc-title" data-paid-f="title">3 credits added</p>
+            <span class="pyc-tokens-grid" data-paid-tokens aria-hidden="true"></span>
+            <p class="pyc-tokens-bal"><span data-lucide="wallet"></span><span>Wallet balance</span><b><span data-paid-f="balance">3</span> <span data-paid-f="unit">credits</span></b></p>
+            <p class="pay-lead" data-paid-f="lead">They are in your wallet. Scan any PunchApp machine to use them.</p>
+          </div>
+
+          <figure class="pyc pyc-photo" data-sv="Photo">
+            <span class="pyc-photo-pic"><img src="assets/photos/lib/friends-5.jpg" alt="Two friends laugh together in a blue lit arcade" style="object-position: 62% 30%" decoding="async"><span class="pyc-photo-badge" aria-hidden="true"><span data-lucide="check"></span></span></span>
+            <figcaption>
+              <p class="m-title pyc-title" data-paid-f="title">3 credits added</p>
+              <p class="pay-lead" data-paid-f="lead">They are in your wallet. Scan any PunchApp machine to use them.</p>
+              <p class="pyc-photo-bal"><span data-lucide="wallet"></span>Balance <b><span data-paid-f="balance">3</span> <span data-paid-f="unit">credits</span></b></p>
+            </figcaption>
+          </figure>
+
+          <div class="pyc pyc-ticket" data-sv="Ticket">
+            <div class="pyc-tk-top">
+              <span class="pyc-tk-brand"><img data-logo-img src="assets/logos/fist-circle.svg" alt="" width="28" height="28"><span>PunchApp credits</span></span>
+              <span class="pyc-tk-ok"><span data-lucide="check"></span>Paid</span>
+            </div>
+            <p class="pyc-tk-n"><b data-paid-f="added">3</b><span data-paid-f="addedUnit">punches</span></p>
+            <div class="pyc-tk-foot">
+              <span><small>Use at</small><b data-paid-f="use">Any PunchApp machine</b></span>
+              <span><small>Wallet</small><b><span data-paid-f="balance">3</span> <span data-paid-f="unit">credits</span></b></span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ---------------------------------------------------------------- Monster cans (only with a pack that carries them;
+             pay.js hides the whole section otherwise) -->
+        <div class="pay-sec pay-sec-cans" data-sec="cans" data-sec-label="Monster cans" id="payCans" hidden>
+
+          <div class="pay-cans" data-sv="Strip">
+            <span data-claw aria-hidden="true"></span>
+            <span class="pay-copy"><span class="pay-name">Three Monster Energy cans</span><span class="pay-sub">Show this screen at the kiosk by the rink</span></span>
+          </div>
+
+          <div class="pyo pyo-can pyk-can" data-sv="Can">
+            <span class="pyo-can-art" aria-hidden="true"><span class="pyo-can-body"><span data-claw></span><span class="pyo-can-word">Monster</span></span><span class="pyo-can-top"></span></span>
+            <span class="pyo-can-copy">
+              <span class="pyo-cap"><span data-lucide="gift"></span>With your Group run</span>
+              <span class="pyo-head">Three cans, on us</span>
+              <span class="pyo-text">Ice cold at the Monster kiosk by the rink. Show this screen and they are yours.</span>
+            </span>
+          </div>
+
+          <figure class="pyo pyo-photo pyk-photo" data-sv="Photo">
+            <img src="assets/photos/lib/hydrate-2.jpg" alt="An athlete takes a long drink between rounds" style="object-position: 55% 20%" loading="lazy" decoding="async">
+            <span class="pyo-photo-shade" aria-hidden="true"></span>
+            <figcaption class="pyo-photo-cap">
+              <span class="pyo-photo-brand"><span data-claw aria-hidden="true"></span><span class="mon-word is-line">Monster<span>Energy</span></span></span>
+              <span class="pyo-head">Your cans are cold</span>
+              <span class="pyo-text">Three waiting at the kiosk by the rink, one for each of your crew.</span>
+            </figcaption>
+          </figure>
+
+          <div class="pyo pyo-coupon pyk-voucher" data-sv="Voucher">
+            <span class="pyo-coupon-main">
+              <span class="pyo-cap"><span data-lucide="store"></span>Show at the kiosk</span>
+              <span class="pyo-head">Monster Energy, on the house</span>
+              <span class="pyo-text">Ground Level, beside the machine. The kiosk scans this screen.</span>
+            </span>
+            <span class="pyo-coupon-stub">
+              <span class="pyo-coupon-n">3</span>
+              <span class="pyo-coupon-u">cans</span>
+            </span>
+          </div>
+
+          <div class="pyo pyo-card pyk-card" data-sv="Claim card">
+            <span class="pyo-claws" data-claw aria-hidden="true"></span>
+            <p class="pyo-brand"><span class="mon-word">Monster<span>Energy</span></span></p>
+            <p class="pyo-head">Your cans are waiting</p>
+            <p class="pyo-text">Collect three at the kiosk by the rink before your crew steps up.</p>
+            <p class="pyk-where"><span data-lucide="map-pin"></span>Dubai Mall, Ground Level kiosk</p>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Receipt (pay.js fills every copy) -->
+        <div class="pay-sec pay-sec-receipt" data-sec="receipt" data-sec-label="Receipt">
+
+          <div class="pay-receipt m-glass" data-sv="Fold out">
+            <button class="pay-receipt-btn" type="button" id="payReceiptBtn" aria-expanded="false" aria-controls="payReceipt">
+              <span data-lucide="receipt"></span><span>Receipt</span><span class="pay-receipt-sum" id="payReceiptSum" data-paid-f="price">AED 25.00</span><span class="pay-chev" data-icon="next"></span>
+            </button>
+            <dl class="pay-receipt-list" id="payReceipt" hidden></dl>
+          </div>
+
+          <div class="pyr pyr-lines m-glass" data-sv="Line items">
+            <p class="pyr-head"><span data-lucide="receipt"></span><b>Receipt</b><span class="pyr-when">Today</span></p>
+            <dl class="pay-receipt-list pyr-list" data-paid-list></dl>
+          </div>
+
+          <div class="pyr pyr-slip" data-sv="Paper slip">
+            <p class="pyr-slip-brand"><img data-logo-img src="assets/logos/fist-circle.svg" alt="" width="30" height="30"><b>PunchApp</b></p>
+            <p class="pyr-slip-when">Dubai Mall, Ground Level, today</p>
+            <dl class="pyr-slip-list" data-paid-list></dl>
+            <p class="pyr-slip-thanks">Thanks for playing</p>
+          </div>
+
+          <div class="pyr pyr-total m-glass" data-sv="Total first">
+            <p class="pyr-total-cap"><span data-lucide="circle-check"></span>Paid</p>
+            <p class="pyr-total-n" data-paid-f="price">AED 25.00</p>
+            <p class="pyr-total-sub"><span data-paid-f="pack">Group run</span>, <span data-paid-f="title">3 credits added</span></p>
+            <p class="pyr-total-meta"><span><span data-lucide="wallet"></span><span data-paid-f="paidWith">Apple Pay</span></span><span><span data-lucide="percent"></span>VAT <span data-paid-f="vatAmt">AED 1.19</span></span></p>
+          </div>
+
+          <div class="pyr pyr-line m-glass" data-sv="One line">
+            <span class="pyr-line-ico"><span data-lucide="receipt-text"></span></span>
+            <span class="pyr-line-copy"><b data-paid-f="pack">Group run</b><span>Paid with <span data-paid-f="paidWith">Apple Pay</span></span></span>
+            <b class="pyr-line-sum" data-paid-f="price">AED 25.00</b>
+          </div>
+        </div>
+      </div>
+      <footer class="pay-foot">
+        <!-- round nine: the main call to action carries our own mark, the logo chosen in the design system (app.js swaps
+             every [data-logo-img]), ringed in white so the red mark holds on the red button -->
+        <button class="m-btn m-btn-red pay-cta-center pay-cta-logo" type="button" id="payPunchNow"><img class="pay-logo-ico" data-logo-img src="assets/logos/fist-circle.svg" alt="" width="30" height="30">Punch now</button>
+        <button class="m-btn m-btn-glass pay-cta-center" type="button" id="payToFeed">Back to the feed</button>
+      </footer>
+    </section>

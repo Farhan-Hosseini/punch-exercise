@@ -1,0 +1,593 @@
+/* Phone: Default, the app's home (parts/mpage-default.html, mpages/default.js).
+   Six sections, each with five designs chosen in Customise: Greeting, Play card, Your last hit, Machines near you,
+   From your friends and the Monster Energy promo (a banner in every design since round seven). Spacing comes from the phone's one scale (mpages/_shared.css):
+   --m-sec-gap between sections, --m-group-gap between a heading and its content, --m-item-gap between items, --m-pad
+   inside a card. Colour and type come from the phone's --m-* tokens so all four looks hold; the sponsor keeps its own
+   black and green whatever the look, the way a sponsor's lockup does. */
+
+.mh { display: grid; gap: var(--m-sec-gap); min-width: 0; }
+.mh-sec { min-width: 0; }
+.mh-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.mh [data-lucide] { display: inline-grid; place-items: center; flex: none; line-height: 0; }
+.mh [data-lucide] svg { display: block; }
+.mh p { margin: 0; }
+.mh button { font-family: inherit; }
+.mh .m-btn-sm { height: 44px; }
+.mh img { -webkit-user-drag: none; }
+
+/* the wallet decides which line shows: an empty one offers a top up, a full one counts the attempts */
+.m-app[data-credits="0"] .mh .mh-if-credits { display: none !important; }
+.m-app:not([data-credits="0"]) .mh .mh-if-empty { display: none !important; }
+
+/* ---------------------------------------------------------------- shared pieces */
+.mh-head { display: flex; align-items: center; justify-content: space-between; gap: var(--m-item-gap); margin-bottom: var(--m-group-gap); min-height: 28px; }
+.mh-h { margin: 0; font: var(--m-w-title) 21px/1.15 var(--m-f-title); letter-spacing: -.005em; }
+.mh-head-note { display: inline-flex; align-items: center; gap: 6px; font: var(--m-w-mid) 13px/1.2 var(--m-f-text); color: var(--m-ink-2); white-space: nowrap; }
+.mh-head-note [data-lucide] { font-size: 15px; color: var(--m-red-soft); }
+.mh-link {
+  appearance: none; cursor: pointer; border: 0; background: none; padding: 0 2px; min-height: 44px;
+  display: inline-flex; align-items: center; gap: 4px;
+  font: var(--m-w-strong) 14px/1 var(--m-f-text); color: var(--m-red-soft); white-space: nowrap;
+}
+.mh-link [data-lucide] { font-size: 16px; }
+.mh-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.mh-head-link { margin-right: 0; }
+/* round nine, "the text lines need to be closer, and more space between the text and the avatar": the greeting and the
+   name read as one block, 2 px apart at line-height 1.25, and the avatar keeps 16 px of air beside them */
+.mh { --mh-greet-gap: 2px; --mh-ava-gap: 16px; }
+.mh-kicker { font: var(--m-w-mid) 14px/1.25 var(--m-f-text); color: var(--m-ink-2); }
+.mh-name { font: var(--m-w-title) 26px/1.08 var(--m-f-title); letter-spacing: -.005em; }
+.mh-name-lg { font-size: 27px; }
+.mh-name-xl { font-size: 32px; font-weight: var(--m-w-heavy); }
+.mh-where { display: flex; align-items: center; gap: 6px; font: var(--m-w-mid) 14px/1.4 var(--m-f-text); color: var(--m-ink-2); }
+.mh-where [data-lucide] { font-size: 15px; color: var(--m-red-soft); }
+.mh-g-tools { display: flex; align-items: center; gap: 8px; flex: none; }
+.mh-ava-btn { appearance: none; cursor: pointer; border: 0; background: none; padding: 0; border-radius: 50%; flex: none; display: block; }
+.mh-ava-btn .m-ava { width: 44px; height: 44px; box-shadow: 0 0 0 2px var(--m-cut), 0 0 0 4px var(--m-red); }
+.mh-ava-btn:hover .m-ava { filter: brightness(1.06); }
+
+/* a chip: 36 px to see, 44 px to tap, measured like the credits chip (mobile.css .m-credits) so the two sit as a pair */
+.mh-chip {
+  position: relative; appearance: none; flex: none;
+  display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px 0 12px; border-radius: 999px;
+  background: var(--m-glass); border: 1px solid var(--m-line); color: var(--m-ink); box-shadow: var(--m-lift);
+  -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
+  font: var(--m-w-strong) 13px/1 var(--m-f-text); white-space: nowrap;
+}
+button.mh-chip { cursor: pointer; }
+button.mh-chip::after { content: ""; position: absolute; inset: -4px -2px; }
+button.mh-chip:hover { background: var(--m-hover); }
+.mh-chip [data-lucide] { font-size: 18px; color: var(--m-red-soft); }
+.mh-chip-red { background: color-mix(in srgb, var(--m-red) 16%, transparent); border-color: color-mix(in srgb, var(--m-red-soft) 42%, transparent); color: var(--m-red-ink); }
+.m-app .mh .mh-chip-photo, .mh-iconbtn-photo {
+  background: rgba(0, 0, 0, .42); border-color: rgba(255, 255, 255, .26); color: var(--m-on-photo); box-shadow: none;
+}
+.m-app .mh .mh-chip-photo [data-lucide] { color: var(--m-on-photo); }
+.mh-iconbtn-photo:hover, .m-app .mh button.mh-chip-photo:hover { background: rgba(0, 0, 0, .6); }
+.mh .m-iconbtn [data-lucide] { font-size: 21px; }
+.mh .m-btn [data-lucide] { font-size: 20px; }
+
+/* a play disc on a photograph */
+.mh-play {
+  display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
+  background: var(--m-cta); color: var(--m-on-red);
+  box-shadow: 0 12px 30px -8px color-mix(in srgb, var(--m-glow) 80%, transparent), 0 0 0 6px rgba(255, 255, 255, .14);
+}
+.mh-play [data-lucide] { font-size: 24px; margin-left: 3px; }
+.mh-play svg { fill: currentColor; }
+.mh-play-sm { width: 40px; height: 40px; box-shadow: 0 0 0 4px rgba(255, 255, 255, .16); }
+.mh-play-sm [data-lucide] { font-size: 17px; margin-left: 2px; }
+.mh-tag {
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 11px; border-radius: 999px;
+  background: rgba(0, 0, 0, .5); border: 1px solid rgba(255, 255, 255, .22); color: var(--m-on-photo);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  font: var(--m-w-strong) 12px/1 var(--m-f-text);
+}
+.mh-tag [data-lucide] { font-size: 14px; }
+
+/* a score: Big Shoulders, the three decimals smaller (PunchFormat), sized to its box where the box is tight */
+.mh-pts { display: block; font: var(--m-w-num-hi) 40px/.92 var(--m-num); letter-spacing: .005em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mh-pts .dec { font-size: .5em; letter-spacing: .02em; opacity: .74; }
+.mh-pts-lg { font-size: 46px; }
+.mh-pts-xl { font-size: min(58px, calc(100cqi / (var(--mh-w, 9) * var(--m-num-w, .5)) * .94)); }
+
+/* a photograph's scrim: the ink that sits on it is always white, so the scrim is always dark */
+.mh-veil::after, .mh-l-replay::after, .mh-l-player::after, .mh-p-poster::after, .mh-g-banner::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- Greeting */
+/* Hello: avatar, the greeting, the wallet and the bell on one line */
+.mh-g-hello { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: var(--mh-ava-gap); }
+.mh-g-hello .mh-ava-btn .m-ava { width: 52px; height: 52px; }
+/* the row centres on the same line as every other page's 44 px header buttons, so the wallet and the bell do not
+   jump 4 px when the tab changes: the 52 px avatar rises by half the difference */
+.mh-g-hello { margin-top: calc((44px - 52px) / 2); }
+.mh-g-who { min-width: 0; display: grid; align-content: center; gap: var(--mh-greet-gap); }
+
+/* Wallet: a big hello, and the wallet as its own bar */
+.mh-g-row { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--m-item-gap); }
+.mh-g-row > div:first-child { min-width: 0; display: grid; gap: var(--mh-greet-gap); }
+.mh-g-wallet .mh-g-row { margin-bottom: var(--m-group-gap); }
+.mh-wallet { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--m-item-gap); padding: 12px 12px 12px 14px; border-radius: 22px; }
+.mh-disc { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: color-mix(in srgb, var(--m-red) 16%, transparent); color: var(--m-red-soft); }
+.mh-disc [data-lucide] { font-size: 21px; }
+.mh-wallet-txt { display: grid; gap: 5px; min-width: 0; }
+.mh-wallet-txt b { font: var(--m-w-bold) 20px/1.05 var(--m-f-title); }
+
+/* Portrait: a big ringed avatar with the player's board place, chips underneath */
+.mh-g-portrait {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "ava who bell" "chips chips chips";
+  align-items: center; column-gap: var(--mh-ava-gap); row-gap: var(--m-group-gap);
+}
+.mh-portrait { grid-area: ava; position: relative; appearance: none; cursor: pointer; border: 0; background: none; padding: 0; border-radius: 50%; margin-bottom: 8px; }
+.mh-portrait .m-ava { width: 84px; height: 84px; box-shadow: 0 0 0 3px var(--m-cut), 0 0 0 5px var(--m-red), 0 0 30px -4px color-mix(in srgb, var(--m-glow) 70%, transparent); }
+.mh-g-portrait .mh-g-who { grid-area: who; gap: var(--mh-greet-gap); }
+.mh-g-portrait .mh-where { margin-top: 4px; }
+.mh-g-bell { grid-area: bell; align-self: start; }
+.mh-g-chips { grid-area: chips; display: flex; flex-wrap: wrap; gap: var(--m-item-gap) 8px; }
+
+/* Photo banner: the player's own replay still under the greeting */
+.mh-g-banner { position: relative; isolation: isolate; height: 208px; border-radius: 26px; overflow: hidden; background: var(--m-well); color: var(--m-on-photo); }
+.mh-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 30%; z-index: -1; }
+.mh-g-banner::after { background: linear-gradient(0deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .1) 62%), linear-gradient(90deg, rgba(0, 0, 0, .55), transparent 70%); z-index: 0; }
+.mh-banner-top { position: absolute; z-index: 1; top: 12px; left: 12px; right: 12px; display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+.mh-banner-copy { position: absolute; z-index: 1; left: 20px; right: 20px; bottom: 18px; display: grid; gap: var(--mh-greet-gap); }
+.mh-banner-line { margin-top: 6px !important; }
+.mh-banner-copy .mh-kicker { color: var(--m-on-photo-2); }
+.mh-banner-line { font: var(--m-w-mid) 15px/1.4 var(--m-f-text); color: var(--m-on-photo-2); }
+
+/* Brand: the app's mark, then a line with some swagger */
+.mh-brand { margin: 0; }
+.mh-g-brand .mh-g-row { align-items: center; }
+.mh-statement { margin: var(--m-group-gap) 0 !important; font: var(--m-w-heavy) 36px/1.02 var(--m-f-title); letter-spacing: -.012em; text-wrap: balance; }
+.mh-statement em { font-style: normal; color: var(--m-red-soft); }
+
+/* ---------------------------------------------------------------- Play card */
+.mh-p-title { font: var(--m-w-heavy) 28px/1.04 var(--m-f-title); letter-spacing: -.008em; }
+.mh-p-sub { font: var(--m-w-text) 15px/1.42 var(--m-f-text); color: var(--m-ink-2); }
+.mh-p-state { display: flex; align-items: center; flex-wrap: wrap; column-gap: 8px; font: var(--m-w-mid) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.mh-p-state [data-lucide] { font-size: 17px; color: var(--m-red-soft); }
+.mh-p-state b { color: var(--m-ink); font-weight: var(--m-w-strong); }
+.mh-p-state .mh-link { min-height: 32px; }
+.mh-p-state .mh-link::after { content: ""; position: absolute; inset: -6px -4px; }
+.mh-p-state .mh-link { position: relative; }
+
+/* Glass tile: the machine's code on its tile, the way the scan screen shows it */
+.mh-p-glass {
+  display: grid; gap: var(--m-group-gap); padding: 20px; border-radius: 26px;
+  background: radial-gradient(90% 80% at 100% 0%, color-mix(in srgb, var(--m-red) 20%, transparent), transparent 62%), var(--m-hero);
+}
+.mh-p-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: start; }
+.mh-p-top .mh-p-copy { display: grid; gap: 8px; }
+.mh-p-top .mh-where { font-size: 13px; }
+.mh-p-cta { width: 100%; }
+
+/* Photo poster: a strike in the ring behind the call to play */
+.mh-p-poster { position: relative; isolation: isolate; height: 372px; border-radius: 28px; overflow: hidden; background: var(--m-well); color: var(--m-on-photo); }
+.mh-p-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 30%; z-index: -1; transform-origin: 62% 30%; }
+.mh-p-poster::after { background: linear-gradient(0deg, rgba(0, 0, 0, .86) 8%, rgba(0, 0, 0, .25) 58%, rgba(0, 0, 0, .1)); }
+.mh-p-poster .mh-p-copy { position: absolute; z-index: 1; left: 20px; right: 20px; bottom: 20px; display: grid; gap: 10px; justify-items: start; }
+.mh-p-kick { display: inline-flex; align-items: center; gap: 6px; font: var(--m-w-label-hi) 14px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-on-photo-2); }
+.mh-p-title-xl { font-size: 46px; line-height: .96; text-transform: uppercase; letter-spacing: .005em; margin-bottom: 6px; }
+.mh-p-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.mh-btn-photo { background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .32); color: var(--m-on-photo); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.mh-btn-photo:hover { background: rgba(255, 255, 255, .22); }
+
+/* Big button: one round button that breathes, the copy beside it */
+.mh-p-big { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 20px 14px 20px 20px; border-radius: 26px; }
+.mh-p-big .mh-p-copy { display: grid; gap: 8px; justify-items: start; }
+.mh-p-big .mh-p-title { font-size: 25px; }
+.mh-p-big .mh-p-sub { font-size: 14px; }
+.mh-p-big .mh-p-state { margin-top: 4px; }
+.mh-bigbtn { position: relative; appearance: none; cursor: pointer; border: 0; background: none; padding: 0; width: 132px; height: 132px; display: grid; place-items: center; border-radius: 50%; }
+.mh-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--m-red-soft) 55%, transparent); transform: scale(.86); opacity: .45; }
+.mh-ring + .mh-ring { display: none; }
+.mh-bigbtn-face {
+  position: relative; display: grid; place-items: center; align-content: center; gap: 4px; width: 100px; height: 100px; border-radius: 50%;
+  background: var(--m-cta); color: var(--m-on-red);
+  box-shadow: 0 18px 36px -14px color-mix(in srgb, var(--m-glow) 90%, transparent), inset 0 1px 0 rgba(255, 255, 255, .3);
+  transition: transform .15s ease;
+}
+.mh-bigbtn-face [data-lucide] { font-size: 34px; }
+.mh-bigbtn-face i { font: var(--m-w-label-hi) 14px/1 var(--m-f-label); letter-spacing: .16em; text-transform: uppercase; font-style: normal; padding-left: .16em; }
+.mh-bigbtn:active .mh-bigbtn-face { transform: scale(.95); }
+.mh-bigbtn:focus-visible { outline: none; }
+.mh-bigbtn:focus-visible .mh-bigbtn-face { outline: 2px solid var(--m-ink); outline-offset: 6px; }
+
+/* Ticket: the credits on a red stub, the call on the ticket; two notches, no perforation line */
+.mh-p-ticket {
+  --stub: 118px;
+  display: grid; grid-template-columns: var(--stub) minmax(0, 1fr); min-height: 176px; border-radius: 24px; overflow: hidden;
+  -webkit-mask: radial-gradient(circle at var(--stub) 0, transparent 12px, #000 12.5px) top / 100% 51% no-repeat, radial-gradient(circle at var(--stub) 100%, transparent 12px, #000 12.5px) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle at var(--stub) 0, transparent 12px, #000 12.5px) top / 100% 51% no-repeat, radial-gradient(circle at var(--stub) 100%, transparent 12px, #000 12.5px) bottom / 100% 51% no-repeat;
+  filter: drop-shadow(0 14px 22px color-mix(in srgb, var(--m-shadow) 45%, transparent));
+}
+.mh-t-stub {
+  display: grid; place-items: center; align-content: center; gap: 4px; padding: 18px 8px;
+  background: radial-gradient(90% 70% at 30% 0%, rgba(255, 255, 255, .22), transparent 60%), var(--m-cta); color: var(--m-on-red);
+}
+.mh-t-stub [data-lucide] { font-size: 22px; opacity: .9; }
+.mh-t-count { font: var(--m-w-num-hi) 64px/.86 var(--m-num); font-variant-numeric: tabular-nums; }
+.mh-t-unit { font: var(--m-w-label-hi) 13px/1 var(--m-f-label); letter-spacing: .16em; text-transform: uppercase; padding-left: .16em; }
+.mh-t-body { display: grid; align-content: center; justify-items: start; gap: 10px; padding: 18px 20px 18px 24px; background: var(--m-card); }
+.mh-t-body .mh-p-title { font-size: 25px; }
+.mh-t-body .mh-p-sub { font-size: 14px; }
+.mh-t-body .m-btn { margin-top: 4px; }
+
+/* Split tiles: play and wallet side by side */
+.mh-p-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m-item-gap); }
+.mh-tile {
+  appearance: none; cursor: pointer; border: 0; text-align: left; color: var(--m-ink);
+  display: grid; grid-template-rows: 1fr auto auto; gap: 6px; min-height: 164px; padding: 18px; border-radius: 24px;
+  transition: transform .15s ease, filter .2s ease;
+}
+.mh-tile.m-glass { border: 1px solid var(--m-line); }
+.mh-tile-red { background: radial-gradient(100% 80% at 100% 0%, rgba(255, 255, 255, .22), transparent 60%), var(--m-cta); color: var(--m-on-red); box-shadow: 0 18px 30px -18px color-mix(in srgb, var(--m-glow) 90%, transparent); }
+.mh-tile:active { transform: scale(.98); }
+.mh-tile:hover { filter: brightness(1.05); }
+.mh-tile-ico { align-self: start; font-size: 30px; }
+.mh-tile.m-glass .mh-tile-ico { color: var(--m-gold); }
+.mh-tile-title { font: var(--m-w-heavy) 22px/1.05 var(--m-f-title); }
+.mh-tile-sub { font: var(--m-w-mid) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.mh-tile-red .mh-tile-sub { color: rgba(255, 255, 255, .86); }
+
+/* ---------------------------------------------------------------- Your last hit
+   Round nine: every design is the replay, and says one thing, Replay, beside its play button. No grade, no score. */
+.mh-l { width: 100%; }
+button.mh-l, .mh-l button { font: inherit; }
+button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; color: var(--m-ink); display: block; }
+.mh-replay-t { font: var(--m-w-bold) 19px/1.1 var(--m-f-title); letter-spacing: .005em; white-space: nowrap; }
+.mh-replay-xl { font-size: 34px; font-weight: var(--m-w-heavy); letter-spacing: -.01em; }
+.mh-play-md { width: 50px; height: 50px; box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--m-glow) 80%, transparent); }
+.mh-play-md [data-lucide] { font-size: 21px; margin-left: 2px; }
+.mh-play-xs { width: 30px; height: 30px; box-shadow: 0 0 0 3px rgba(255, 255, 255, .2); }
+.mh-play-xs [data-lucide] { font-size: 13px; margin-left: 2px; }
+.mh-l-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; z-index: -1; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+
+/* Replay card: the still, and the play button with its label on the scrim in the corner */
+.mh-l-replay { position: relative; isolation: isolate; padding: 0; aspect-ratio: 16 / 10.4; border-radius: 24px; overflow: hidden; background: var(--m-well); color: var(--m-on-photo) !important; }
+.mh-l-replay:hover .mh-l-photo, .mh-l-player:hover .mh-l-photo { transform: scale(1.03); }
+.mh-l-replay::after { background: linear-gradient(0deg, rgba(0, 0, 0, .74), rgba(0, 0, 0, 0) 50%); }
+.mh-replay { position: absolute; z-index: 1; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 14px; }
+.mh-replay .mh-replay-t { font-size: 24px; color: var(--m-on-photo); }
+
+/* Side by side: the word set large beside its play button, the portrait still on the right */
+.mh-l-side { display: grid !important; grid-template-columns: minmax(0, 1fr) 96px; align-items: center; gap: 16px; padding: 14px 14px 14px 20px; border-radius: 24px; }
+.mh-l-side-go { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.mh-l-thumb { position: relative; display: block; width: 96px; height: 124px; border-radius: 18px; overflow: hidden; background: var(--m-well); }
+.mh-l-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.mh-l-side:hover .mh-l-thumb img { transform: scale(1.05); }
+
+/* Player: the still under a player's own bar, the play button, the label and the clip's progress */
+.mh-l-player { position: relative; isolation: isolate; padding: 0; aspect-ratio: 16 / 9.6; border-radius: 24px; overflow: hidden; background: var(--m-well); color: var(--m-on-photo) !important; }
+.mh-l-player::after { background: linear-gradient(0deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0) 46%); }
+.mh-l-chrome {
+  position: absolute; z-index: 1; left: 10px; right: 10px; bottom: 10px;
+  display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 12px;
+  padding: 8px 18px 8px 8px; border-radius: 18px;
+  background: rgba(0, 0, 0, .52); border: 1px solid rgba(255, 255, 255, .2);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.mh-l-chrome .mh-replay-t { color: var(--m-on-photo); }
+.mh-l-track { position: relative; height: 4px; border-radius: 2px; overflow: hidden; background: rgba(255, 255, 255, .26); }
+.mh-l-track i { position: absolute; inset: 0 auto 0 0; width: 100%; border-radius: inherit; background: var(--m-red-soft); transform: scaleX(.38); transform-origin: left center; }
+
+/* Film strip: four frames of the replay, the play button and its label underneath */
+.mh-l-strip { padding: 0; background: none; }
+.mh-strip { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; height: 164px; border-radius: 22px; overflow: hidden; }
+.mh-strip img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 30%; min-width: 0; }
+.mh-strip img:nth-child(2) { object-position: 60% 32%; }
+.mh-strip img:nth-child(3) { object-position: 66% 30%; }
+.mh-strip img:nth-child(4) { object-position: 70% 30%; }
+.mh-l-under { display: flex; align-items: center; gap: 12px; margin-top: var(--m-item-gap); }
+.mh-l-under .mh-chev { margin-left: auto; }
+
+/* Compact row: one line, like a list item */
+.mh-l-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 10px 12px 10px 10px; border-radius: 24px; }
+.mh-l-rowbtn { appearance: none; cursor: pointer; border: 0; background: none; padding: 0; color: var(--m-ink); text-align: left; display: grid; grid-template-columns: 68px minmax(0, 1fr) auto; align-items: center; gap: 16px; min-height: 68px; border-radius: 16px; }
+.mh-l-rowimg { position: relative; display: grid; place-items: center; width: 68px; height: 68px; border-radius: 16px; overflow: hidden; background: var(--m-well); }
+.mh-l-rowimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 28%; }
+.mh-l-rowimg .mh-play { position: relative; z-index: 1; }
+.mh-chev { font-size: 20px; color: var(--m-ink-3); }
+
+/* ---------------------------------------------------------------- Machines near you (default.js) */
+.mh-v-dist, .mh-v-near { display: inline-flex; align-items: center; gap: 5px; font: var(--m-w-strong) 13px/1 var(--m-f-text); white-space: nowrap; }
+.mh-v-dist [data-lucide], .mh-v-near [data-lucide] { font-size: 15px; }
+.mh-v-dist [data-lucide], .mh-v-near [data-lucide] { color: var(--m-red-soft); }
+.mh-v-near { color: var(--m-red-ink); }
+.mh-v-name { font: var(--m-w-bold) 18px/1.15 var(--m-f-title); }
+.mh-v-spot { font: var(--m-w-mid) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
+.mh-v-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.mh-v-img { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--m-well); }
+.mh-badge {
+  display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px;
+  background: var(--m-red); color: var(--m-on-red); font: var(--m-w-label-hi) 12px/1 var(--m-f-label); letter-spacing: .12em; text-transform: uppercase;
+}
+.mh-badge [data-lucide] { font-size: 13px; }
+.mh-venue { appearance: none; cursor: pointer; border: 0; padding: 0; font: inherit; color: var(--m-ink); text-align: left; background: none; }
+
+/* The slider (default.js slider()): a track that bleeds to the screen edge and snaps a card to the gutter; a finger
+   swipes it, a mouse drags it (grab, then grabbing), and a bar under it carries the dots or progress bars on the left
+   and pause, previous and next on the right */
+.mh-rail, .mh-track {
+  position: relative; display: flex; gap: var(--m-item-gap); overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
+  margin: -6px calc(var(--m-gut) * -1) -4px; padding: 6px var(--m-gut) 8px; scroll-snap-type: x mandatory; scroll-padding: 0 var(--m-gut);
+}
+.mh-rail::-webkit-scrollbar, .mh-track::-webkit-scrollbar { display: none; }
+[data-sl-track] { cursor: grab; }
+[data-sl-track] > * { scroll-snap-align: start; }
+[data-sl-track].is-free { scroll-snap-type: none; }
+[data-sl-track].is-dragging { cursor: grabbing; user-select: none; }
+[data-sl-track].is-dragging * { pointer-events: none; }
+.mh-sl-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--m-item-gap); margin-top: var(--m-item-gap); }
+.mh-sl-btns { display: flex; align-items: center; gap: 8px; flex: none; }
+.mh .mh-sl-btn [data-lucide] { font-size: 20px; }
+/* pause shows while the slides run, play once they are paused */
+.mh-sl-pause [data-lucide="play"], .mh-sl-pause[aria-pressed="true"] [data-lucide="pause"] { display: none; }
+.mh-sl-pause[aria-pressed="true"] [data-lucide="play"] { display: inline-grid; }
+.mh-sl-pause[aria-pressed="true"] { border-color: var(--m-line-2); }
+.mh-dots { display: flex; align-items: center; gap: 6px; }
+.mh-dots i { display: block; width: 8px; height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--m-ink) 22%, transparent); transition: width .3s cubic-bezier(.2, .7, .2, 1), background-color .3s ease; }
+.mh-dots i.is-on { width: 24px; background: var(--m-red-soft); }
+/* Spotlight's bars: the current one fills over one step while the slides run, and stands full when they hold */
+.mh-bars { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; flex: 1; max-width: 176px; }
+.mh-bars i { position: relative; display: block; height: 4px; border-radius: 2px; overflow: hidden; background: color-mix(in srgb, var(--m-ink) 18%, transparent); }
+.mh-bars b { position: absolute; inset: 0; border-radius: inherit; background: var(--m-red-soft); transform: scaleX(0); transform-origin: left center; }
+.mh-bars i.is-on b { transform: none; }
+
+/* Carousel: photo cards that bleed to the screen edge */
+.mh-vc { flex: none; width: 252px; display: grid; grid-template-rows: 164px auto; border-radius: 24px; overflow: hidden; background: var(--m-card); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.mh-vc-media { position: relative; overflow: hidden; }
+.mh-vc-media .mh-badge { position: absolute; top: 12px; left: 12px; }
+.mh-vc-body { display: grid; gap: 6px; padding: 14px 16px 16px; }
+.mh-vc-body .mh-v-meta { margin-top: 6px; }
+.mh-vc:hover .mh-v-img { transform: scale(1.03); }
+.mh-vc .mh-v-img { transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+
+/* List: one tile per venue */
+.mh-vlist { display: grid; gap: var(--m-item-gap); }
+.mh-vl { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 10px 14px 10px 10px; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px); min-height: 92px; }
+.mh-vl .mh-v-img { width: 72px; height: 72px; border-radius: 16px; }
+.mh-vl-txt { display: grid; gap: 4px; min-width: 0; }
+.mh-vl-txt .mh-v-spot { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mh-vl-txt .mh-v-meta { margin-top: 4px; }
+.mh-vl .mh-chev { align-self: center; }
+.mh-vl:hover { background: var(--m-hover); }
+
+/* Map: a drawn map of the coast with a pin per venue; the chosen venue's card sits under it */
+.mh-map { position: relative; height: 226px; border-radius: 24px; overflow: hidden; background: var(--m-well); border: 1px solid var(--m-line); }
+.mh-map svg.mh-map-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mh-map-sea { fill: color-mix(in srgb, var(--m-ink) 7%, var(--m-well)); }
+.mh-map-land { fill: var(--m-well); }
+.mh-map-road { fill: none; stroke: color-mix(in srgb, var(--m-ink) 16%, transparent); stroke-width: 3; stroke-linecap: round; }
+.mh-map-road.is-small { stroke-width: 1.5; stroke: color-mix(in srgb, var(--m-ink) 10%, transparent); }
+.mh-map-label.is-area { color: var(--m-ink-2); letter-spacing: .14em; }
+.mh-map-label { position: absolute; font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: .2em; text-transform: uppercase; color: var(--m-ink-3); pointer-events: none; }
+.mh-pin {
+  position: absolute; z-index: 2; left: var(--x); top: var(--y); width: 44px; height: 44px; margin: -40px 0 0 -22px;
+  appearance: none; cursor: pointer; border: 0; background: none; padding: 0; display: grid; place-items: end center;
+}
+.mh-pin-dot { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--m-card); color: var(--m-ink); border: 2px solid var(--m-red); box-shadow: 0 6px 14px -6px var(--m-shadow); transition: transform .2s ease, background-color .2s ease; }
+.mh-pin-dot [data-lucide] { transform: rotate(45deg); font-size: 14px; }
+.mh-pin[aria-pressed="true"] .mh-pin-dot { background: var(--m-red); color: var(--m-on-red); transform: rotate(-45deg) scale(1.16); }
+.mh-me { position: absolute; z-index: 1; left: var(--x); top: var(--y); width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #3B82F6; box-shadow: 0 0 0 3px #FFFFFF, 0 2px 8px rgba(0, 0, 0, .4); }
+.mh-me::before { content: ""; position: absolute; inset: -12px; border-radius: 50%; background: rgba(59, 130, 246, .22); }
+.mh-map-track { margin-top: calc(var(--m-item-gap) - 6px); }
+.mh-map-card { flex: none; width: calc(100% - 28px); display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px 14px 10px 10px; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.mh-map-card .mh-v-img { width: 84px; height: 84px; border-radius: 16px; }
+.mh-map-card-txt { display: grid; gap: 4px; min-width: 0; }
+.mh-map-card-txt .mh-v-spot { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mh-map-card-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 2px; }
+.mh-map-card .mh-link { position: relative; min-height: 36px; }
+.mh-map-card .mh-link::after { content: ""; position: absolute; inset: -4px -6px; }
+
+/* Spotlight: one venue at a time, full width with a peek of the next */
+.mh-vhero { position: relative; isolation: isolate; display: block; flex: none; width: calc(100% - 28px); height: 232px; border-radius: 26px; overflow: hidden; color: var(--m-on-photo); background: var(--m-well); }
+.mh-vhero .mh-v-img { position: absolute; inset: 0; z-index: -1; }
+.mh-vhero::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .86), rgba(0, 0, 0, .12) 62%); pointer-events: none; }
+.mh-vhero .mh-badge { position: absolute; z-index: 1; top: 14px; left: 14px; }
+.mh-vhero-txt { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 16px; display: grid; gap: 4px; pointer-events: none; }
+.mh-vhero-txt .mh-v-name { font-size: 24px; }
+.mh-vhero-txt .mh-v-spot { color: var(--m-on-photo-2); }
+.mh-vhero-txt .mh-v-meta { margin-top: 6px; }
+.mh-vhero .mh-v-dist [data-lucide] { color: var(--m-on-photo); }
+.mh-vhero-play { position: absolute; z-index: 2; right: 14px; top: 14px; }
+/* only the card in front speaks: the peeking card shows its photograph, and its words arrive as it lands */
+.mh-vhero .mh-vhero-txt, .mh-vhero .mh-vhero-play { transition: opacity .35s ease; }
+.mh-vhero:not(.is-at) .mh-vhero-txt, .mh-vhero:not(.is-at) .mh-vhero-play:not(:focus-visible) { opacity: 0; }
+
+/* Grid: four photo tiles */
+.mh-vgrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m-item-gap); }
+.mh-vg { position: relative; isolation: isolate; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; color: var(--m-on-photo); background: var(--m-well); }
+.mh-vg .mh-v-img { position: absolute; inset: 0; z-index: -1; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.mh-vg:hover .mh-v-img { transform: scale(1.04); }
+.mh-vg::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, 0) 58%); pointer-events: none; }
+.mh-vg-top { position: absolute; z-index: 1; top: 10px; left: 10px; right: 10px; display: flex; }
+.mh-vg-txt { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 5px; }
+.mh-vg-txt .mh-v-name { font-size: 17px; }
+.mh-vg-txt .mh-v-dist { color: var(--m-on-photo-2); }
+.mh-vg-txt .mh-v-dist [data-lucide] { color: var(--m-on-photo); }
+
+/* ---------------------------------------------------------------- From your friends (default.js) */
+.mh-friend { appearance: none; cursor: pointer; border: 0; padding: 0; font: inherit; color: var(--m-ink); text-align: left; background: none; }
+.mh-f-name { font: var(--m-w-bold) 15px/1.15 var(--m-f-title); }
+.mh-f-when { font: var(--m-w-mid) 13px/1.25 var(--m-f-text); color: var(--m-ink-2); }
+
+/* Hit cards: tall photo cards in a rail */
+.mh-fc { position: relative; isolation: isolate; flex: none; width: 172px; height: 244px; scroll-snap-align: start; border-radius: 22px; overflow: hidden; color: var(--m-on-photo); background: var(--m-well); }
+.mh-fc .mh-v-img { position: absolute; inset: 0; z-index: -1; object-position: 50% 30%; }
+.mh-fc::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .86), rgba(0, 0, 0, .05) 60%); pointer-events: none; }
+.mh-fc .m-ava { position: absolute; z-index: 1; top: 12px; left: 12px; width: 36px; height: 36px; box-shadow: 0 0 0 2px var(--m-red), 0 0 0 4px rgba(0, 0, 0, .35); }
+.mh-fc-txt { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 5px; container-type: inline-size; }
+.mh-fc-txt .mh-pts { font-size: min(30px, calc(100cqi / (var(--mh-w, 9) * var(--m-num-w, .5)) * .94)); }
+.mh-fc-txt .mh-f-when { color: var(--m-on-photo-2); }
+.mh-fc-txt .mh-f-name { color: var(--m-on-photo); }
+
+/* Stories: rings, the way the feed opens */
+.mh-stories { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; margin: -6px calc(var(--m-gut) * -1) -4px; padding: 6px var(--m-gut) 8px; }
+.mh-stories::-webkit-scrollbar { display: none; }
+.mh-story { flex: none; width: 72px; display: grid; justify-items: center; gap: 8px; }
+.mh-story-ring { position: relative; width: 72px; height: 72px; border-radius: 50%; padding: 3px; background: conic-gradient(from 200deg, var(--m-red-soft), var(--m-red-deep), var(--m-red-soft)); }
+.mh-story.is-seen .mh-story-ring { background: var(--m-line-2); }
+.mh-story-ring .m-ava { width: 100%; height: 100%; box-shadow: 0 0 0 3px var(--m-cut); }
+.mh-story-grade { position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%); display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--m-red); color: var(--m-on-red); box-shadow: 0 0 0 2px var(--m-cut); }
+.mh-story-grade [data-lucide] { font-size: 13px; }
+.mh-story .mh-f-name { font-size: 14px; font-weight: var(--m-w-strong); }
+.mh-story .mh-f-when { margin-top: -5px; font-size: 12px; }
+
+/* Activity: one glass card, a row per hit, spaced not ruled */
+.mh-act { display: grid; gap: 4px; padding: 8px; border-radius: 24px; }
+.mh-ar { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 64px; padding: 8px 10px 8px 8px; border-radius: 18px; }
+.mh-ar:hover { background: var(--m-glass-hi); }
+.mh-ar .m-ava { width: 48px; height: 48px; }
+.mh-ar-txt { display: grid; gap: 3px; min-width: 0; }
+.mh-ar-txt .mh-f-when { text-wrap: pretty; }
+.mh-ar .mh-pts { font-size: 24px; text-align: right; }
+
+/* Mosaic: one big hit, two small ones */
+.mh-mosaic { display: grid; grid-template-columns: 1.25fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; height: 300px; }
+.mh-mt { position: relative; isolation: isolate; border-radius: 20px; overflow: hidden; color: var(--m-on-photo); background: var(--m-well); }
+.mh-mt:first-child { grid-row: span 2; border-radius: 24px; }
+.mh-mt .mh-v-img { position: absolute; inset: 0; z-index: -1; object-position: 50% 30%; }
+.mh-mt::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .82), rgba(0, 0, 0, 0) 62%); pointer-events: none; }
+.mh-mt-txt { position: absolute; z-index: 1; left: 10px; right: 10px; bottom: 10px; display: grid; gap: 6px; container-type: inline-size; }
+.mh-mt-who { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.mh-mt-who .m-ava { width: 26px; height: 26px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .7); }
+.mh-mt-who .mh-f-name { color: var(--m-on-photo); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mh-mt-txt .mh-pts { font-size: min(24px, calc(100cqi / (var(--mh-w, 9) * var(--m-num-w, .5)) * .94)); }
+.mh-mt:first-child .mh-mt-txt { left: 14px; right: 14px; bottom: 14px; }
+.mh-mt:first-child .mh-pts { font-size: min(36px, calc(100cqi / (var(--mh-w, 9) * var(--m-num-w, .5)) * .94)); }
+.mh-mt:first-child .mh-mt-who .m-ava { width: 32px; height: 32px; }
+
+/* Rivalry: you against the friend closest behind you */
+.mh-riv { display: grid; gap: var(--m-group-gap); padding: 20px; border-radius: 26px; background: radial-gradient(70% 90% at 0% 0%, color-mix(in srgb, var(--m-red) 18%, transparent), transparent 60%), var(--m-hero); border: 1px solid var(--m-line); }
+.mh-riv-face { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; }
+.mh-riv-side { display: grid; justify-items: start; gap: 8px; min-width: 0; container-type: inline-size; }
+.mh-riv-side.is-them { justify-items: end; text-align: right; }
+.mh-riv-side .m-ava { width: 60px; height: 60px; }
+.mh-riv-side.is-you .m-ava { box-shadow: 0 0 0 2px var(--m-cut), 0 0 0 4px var(--m-red); }
+.mh-riv-side .mh-pts { font-size: min(30px, calc(100cqi / (var(--mh-w, 9) * var(--m-num-w, .5)) * .94)); }
+.mh-riv-side .mh-f-name { font-size: 15px; }
+.mh-riv-mid { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--m-red); color: var(--m-on-red); box-shadow: 0 0 24px -4px color-mix(in srgb, var(--m-glow) 80%, transparent); }
+.mh-riv-mid [data-lucide] { font-size: 20px; }
+.mh-riv-line { font: var(--m-w-mid) 15px/1.4 var(--m-f-text); color: var(--m-ink-2); }
+.mh-riv-line b { color: var(--m-ink); font-weight: var(--m-w-strong); }
+.mh-riv-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ---------------------------------------------------------------- Monster Energy, the sponsor
+   Round seven: a banner in every design, a band about 108 tall like the machine's top ad: the art on the left (a can,
+   the claw disc, the claw), the wordmark and one big line, the green call to action on the right (44 tall, a real
+   button here) and the Sponsored tag in the top right corner. The sponsor keeps its own black and green in every look. */
+.mh-m {
+  --mon-ink: #FFFFFF; --mon-mark: var(--mon-green);
+  position: relative; isolation: isolate; overflow: hidden; border-radius: 22px; color: #FFFFFF;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  min-height: 108px; padding: 16px 14px 16px 16px;
+  background: radial-gradient(90% 140% at 100% 0%, rgba(149, 214, 0, .2), transparent 60%), var(--mon-black);
+  box-shadow: inset 0 0 0 1px rgba(149, 214, 0, .28), 0 18px 34px -24px rgba(0, 0, 0, .8);
+}
+.mh-m svg { fill: var(--mon-green); }
+/* the tag sits on its own dark chip, so it reads over a claw or the green glow as well as over black */
+.mh-m-tag {
+  position: absolute; z-index: 2; top: 8px; right: 10px; padding: 4px 6px 4px 7px; border-radius: 6px;
+  background: rgba(8, 9, 8, .8); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .26);
+  font: 700 11px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .86);
+}
+.mh-m-copy { display: grid; gap: 5px; justify-items: start; min-width: 0; padding-top: 8px; }
+.mh-m-copy .mon-word.is-line { font-size: 15px; }
+.mh-m-title { font: 400 21px/1.02 "Anton", "Archivo Black", sans-serif; letter-spacing: .01em; text-transform: uppercase; color: #FFFFFF; text-wrap: balance; }
+.mh-m-cta {
+  appearance: none; cursor: pointer; border: 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 44px; padding: 0 14px; border-radius: 13px; background: var(--mon-green); color: #0B0B0B;
+  font: 700 15px/1 "Barlow", system-ui, sans-serif; letter-spacing: .01em; white-space: nowrap;
+  box-shadow: 0 12px 26px -12px rgba(149, 214, 0, .7); transition: transform .15s ease, filter .2s ease;
+}
+.mh-m-cta [data-lucide] { font-size: 18px; }
+.mh-m-cta:hover { filter: brightness(1.08); }
+.mh-m-cta:active { transform: scale(.97); }
+.m-app .mh-m-cta:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; }
+.mh-m-mark { display: grid; place-items: center; flex: none; width: 48px; height: 48px; border-radius: 50%; background: #000000; box-shadow: inset 0 0 0 1.5px rgba(149, 214, 0, .7), 0 0 20px -4px rgba(149, 214, 0, .5); }
+.mh-m-mark svg { width: 27px; height: 27px; overflow: visible; }
+
+/* Can card: a can tilted on the left, a torn claw faint behind the whole band */
+.mh-m-can { padding-left: 12px; }
+.mh-m-rip { position: absolute; z-index: -1; right: 70px; top: -46px; width: 170px; height: 170px; opacity: .13; overflow: visible; }
+.mh-can {
+  position: relative; justify-self: center; display: grid; place-items: center; width: 42px; height: 78px; margin: 4px 4px 0;
+  border-radius: 9px / 7px; transform: rotate(-9deg);
+  background: linear-gradient(90deg, #030303 0%, #2E302C 20%, #111210 44%, #000 68%, #262824 90%, #070707 100%);
+  box-shadow: 0 18px 30px -14px #000000, 0 0 34px -6px rgba(149, 214, 0, .55);
+}
+.mh-can::before { content: ""; position: absolute; left: 3px; right: 3px; top: -4px; height: 9px; border-radius: 50%; background: linear-gradient(180deg, #C9CCC6, #6B6E66); box-shadow: inset 0 -2px 0 #3A3C36; }
+.mh-can::after { content: ""; position: absolute; left: 3px; right: 3px; bottom: -3px; height: 7px; border-radius: 50%; background: #1A1B18; }
+.mh-can svg { width: 30px; height: 30px; overflow: visible; filter: drop-shadow(0 0 6px rgba(149, 214, 0, .6)); }
+
+/* Banner: the claw disc, green striping and a light that sweeps across once */
+.mh-m-banner { background: repeating-linear-gradient(118deg, rgba(149, 214, 0, .06) 0 2px, transparent 2px 14px), radial-gradient(60% 120% at 0% 50%, rgba(149, 214, 0, .24), transparent 70%), var(--mon-black); }
+.mh-m-sheen { position: absolute; z-index: -1; top: 0; bottom: 0; left: -40%; width: 40%; background: linear-gradient(100deg, transparent, rgba(214, 255, 120, .22), transparent); transform: translateX(-10%); opacity: 0; pointer-events: none; }
+
+/* Challenge: this week's three bolts under the line, the first one landed */
+.mh-m-challenge { grid-template-columns: minmax(0, 1fr) auto; }
+.mh-m-pips { display: flex; align-items: center; gap: 6px; margin-top: 3px; }
+.mh-m-pips i { display: grid; place-items: center; width: 34px; height: 24px; border-radius: 8px; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .5); }
+.mh-m-pips i [data-lucide] { font-size: 14px; }
+.mh-m-pips i.is-on { background: var(--mon-green); box-shadow: 0 0 16px -4px rgba(149, 214, 0, .7); color: #0B0B0B; }
+.mh-m-pips i.is-on svg { fill: currentColor; }
+.mh-m-pips-note { margin-left: 4px; font: 700 12px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--mon-steel); }
+
+/* Coupon: a tear-off, the code on the left, the save stub on the right past two notches */
+.mh-m-coupon {
+  --stub: 104px;
+  grid-template-columns: minmax(0, 1fr) var(--stub); gap: 0; padding: 0;
+  -webkit-mask: radial-gradient(circle at calc(100% - var(--stub)) 0, transparent 10px, #000 10.5px) top / 100% 51% no-repeat, radial-gradient(circle at calc(100% - var(--stub)) 100%, transparent 10px, #000 10.5px) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle at calc(100% - var(--stub)) 0, transparent 10px, #000 10.5px) top / 100% 51% no-repeat, radial-gradient(circle at calc(100% - var(--stub)) 100%, transparent 10px, #000 10.5px) bottom / 100% 51% no-repeat;
+  box-shadow: none;
+}
+.mh-m-coupon .mh-m-copy { padding: 16px 12px 16px 16px; gap: 6px; }
+.mh-m-coupon .mh-m-title { font-size: 19px; }
+.mh-m-code { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px; border-radius: 9px; background: rgba(149, 214, 0, .12); box-shadow: inset 0 0 0 1px rgba(149, 214, 0, .4); font: 700 14px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .16em; color: var(--mon-green); }
+.mh-m-code [data-lucide] { font-size: 15px; }
+.mh-m-coupon-r { position: relative; align-self: stretch; display: grid; place-items: center; padding: 22px 8px 12px; background: radial-gradient(80% 70% at 50% 30%, rgba(149, 214, 0, .3), transparent 72%), #11140B; border-left: 2px dashed rgba(149, 214, 0, .35); }
+.mh-m-coupon-r .mh-m-tag { right: 50%; translate: 50% 0; white-space: nowrap; }
+.mh-m-coupon-claw { position: absolute; z-index: -1; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; overflow: visible; opacity: .5; filter: drop-shadow(0 0 12px rgba(149, 214, 0, .55)); }
+.mh-m-coupon-r { isolation: isolate; }
+.mh-m-coupon .mh-m-cta { padding: 0 12px; }
+
+/* Poster: the wordmark set large, a giant claw raking down behind the button */
+.mh-m-poster { grid-template-columns: minmax(0, 1fr) auto; }
+.mh-m-poster-claw { position: absolute; z-index: -1; right: -20px; top: -34px; width: 190px; height: 190px; overflow: visible; filter: drop-shadow(0 0 22px rgba(149, 214, 0, .45)); opacity: .9; }
+.mh-m-poster-word { font-size: 34px; justify-items: start; }
+.mh-m-poster-word > span { padding-left: 0; }
+.mh-m-poster-line { font: 700 16px/1.15 "Barlow", system-ui, sans-serif; letter-spacing: -.005em; color: #FFFFFF; }
+.mh-m-poster .mh-m-cta { align-self: end; }
+
+/* ---------------------------------------------------------------- motion
+   The page's sections rise in when Home opens, and a design rises in when Customise swaps it; the play button breathes,
+   the poster drifts, the replay's player runs its progress. Nothing loops while Home is away (data-live), and reduced motion keeps it still. */
+@media (prefers-reduced-motion: no-preference) {
+  .mh.is-entering > .mh-sec { animation: mh-rise .56s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+  .mh-sec .is-swap { animation: mh-rise .46s cubic-bezier(.2, .7, .2, 1) both; }
+  .mh.is-live .mh-ring { display: block; animation: mh-ring 2.6s cubic-bezier(.2, .6, .3, 1) infinite; }
+  .mh.is-live .mh-ring + .mh-ring { animation-delay: 1.3s; }
+  .mh.is-live .mh-p-photo { animation: mh-drift 16s ease-in-out infinite alternate; }
+  .mh.is-live .mh-me::before { animation: mh-ping 2.2s ease-out infinite; }
+  .mh.is-live .mh-l-track i { animation: mh-track 7s linear infinite; }
+  .mh-slider.is-auto .mh-bars i.is-on b { animation: mh-bar 5.2s linear both; }
+  .mh-m.is-rip .mh-m-rip, .mh-m.is-rip .mh-m-poster-claw, .mh-m.is-rip .mh-m-coupon-claw { animation: mh-rip .3s steps(3, end) both .2s; }
+  .mh-m.is-rip .mh-can { animation: mh-can .5s cubic-bezier(.3, 1.5, .5, 1) both .3s; }
+  .mh-m.is-rip .mh-m-sheen { animation: mh-sheen 1.1s cubic-bezier(.3, .6, .3, 1) both .25s; }
+  .mh-m.is-rip .mh-m-mark { animation: mh-pop .5s cubic-bezier(.3, 1.6, .5, 1) both .15s; }
+  .mh-m.is-rip .mh-m-pips i.is-on { animation: mh-pip .7s steps(4, end) both .3s; }
+}
+@keyframes mh-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes mh-ring { 0% { transform: scale(.74); opacity: .9; } 100% { transform: scale(1.04); opacity: 0; } }
+@keyframes mh-drift { from { transform: scale(1); } to { transform: scale(1.08) translate(-1.5%, -1%); } }
+@keyframes mh-ping { 0% { transform: scale(.5); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes mh-track { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes mh-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes mh-rip { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+@keyframes mh-can { from { transform: translateY(-26px) rotate(-18deg); opacity: 0; } to { transform: rotate(-9deg); opacity: 1; } }
+@keyframes mh-sheen { 0% { transform: translateX(-10%); opacity: 1; } 100% { transform: translateX(360%); opacity: 1; } }
+@keyframes mh-pop { from { transform: scale(.4) rotate(-30deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes mh-pip { 0%, 50% { background: rgba(255, 255, 255, .06); color: rgba(255, 255, 255, .5); } 25%, 75%, 100% { background: var(--mon-green); color: #0B0B0B; } }

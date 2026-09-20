@@ -1,0 +1,315 @@
+/* The global background, one look for the phone and the machine alike, chosen in Customise ("Background", app.js
+   BACKDROPS) as html[data-mbackdrop]. Both surfaces carry the same host:
+     <div class="ms-lights" aria-hidden="true"><i class="l1"></i> ... <i class="l6"></i></div>
+   as the first child of every machine screen, and inside the phone's .m-bg (parts/phone.html). Each look restyles those
+   six shapes. The host is a size container, so every length is written once in the glass's own pixels and scales:
+     --u  one glass pixel across (1080 wide), --v  one glass pixel down (3840 tall),
+     --k  a size pixel: 1px on the glass, a little over half of that on the phone (a phone is held closer).
+   (cq units resolve against the host only in its children, so the host itself never uses them.)
+   Colour comes from the surface: --bd-a (the key light) and --bd-b (the brand light) from the machine's --ms-light
+   tokens or the phone's own, and --bd-red, the phone's red glow. So Arena, Reference, dark and light each tint every
+   look. Everything sits behind the content, nothing is brighter than a light pool, nothing moves faster than a slow
+   walk, and reduced motion holds each look on a composed still. */
+
+.ms-lights {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  container-type: size;
+  --u: calc(100cqw / 1080); --v: calc(100cqh / 3840);
+}
+.mscreen .ms-lights {
+  z-index: -1;
+  --k: calc(100cqw / 1080);
+  --bd-a: var(--ms-light); --bd-b: var(--ms-light-2);
+  --bd-red: rgba(235, 17, 16, .26); --bd-blur: 150px;
+  --bd-base: var(--ms-ad-h);
+}
+:root[data-appearance="light"] .mscreen .ms-lights { --bd-red: rgba(235, 17, 16, .1); }
+.m-bg .ms-lights {
+  --k: calc(100cqw / 760);
+  --bd-a: rgba(255, 226, 196, .075); --bd-b: rgb(from var(--m-blob) r g b / calc(alpha * .55));
+  --bd-red: var(--m-blob); --bd-blur: 40px;
+  --bd-base: 0px;
+}
+:root[data-appearance="light"] .m-bg .ms-lights { --bd-a: rgba(255, 170, 120, .16); }
+
+.ms-lights i {
+  --c: var(--bd-a); --cx: 540; --cy: 1920; --w: 950; --h: 950;
+  position: absolute; display: block;
+  left: calc(var(--cx) * var(--u) - var(--w) * var(--k) / 2);
+  top: calc(var(--cy) * var(--v) - var(--h) * var(--k) / 2);
+  width: calc(var(--w) * var(--k)); height: calc(var(--h) * var(--k));
+}
+.ms-lights :is(.l2, .l3, .l6) { --c: var(--bd-b); }
+
+/* ---------------------------------------------------------------- red glow (the default): the phone's own ground
+   three blurred red bodies where the phone app draws them (top right, left, the foot), so the phone looks exactly as it
+   always has; the tall glass gets a fourth down its right side so the light runs the whole way down. Still: it moves
+   only when the phone turns to another page, the way the room turns with you. */
+:root[data-mbackdrop="glow"] .ms-lights i {
+  background: var(--bd-red); border-radius: 999px; filter: blur(var(--bd-blur));
+  transition: transform 1.2s cubic-bezier(.2, .7, .2, 1), opacity .8s ease;
+}
+:root[data-mbackdrop="glow"] .ms-lights .l1 { left: 64%; top: -12%; width: 106%; height: 47%; }
+:root[data-mbackdrop="glow"] .ms-lights .l2 { left: -57%; top: 15%; width: 84%; height: 39%; border-radius: calc(24 * var(--k)); filter: blur(calc(var(--bd-blur) / 2)); opacity: .9; }
+:root[data-mbackdrop="glow"] .ms-lights .l3 { left: 6%; top: 82%; width: 104%; height: 48%; filter: blur(calc(var(--bd-blur) * .75)); opacity: .7; }
+:root[data-mbackdrop="glow"] .ms-lights .l4 { left: 62%; top: 46%; width: 90%; height: 24%; opacity: .5; }
+:root[data-mbackdrop="glow"] .ms-lights :is(.l5, .l6) { display: none; }
+:root[data-mbackdrop="glow"] .m-bg .ms-lights .l4 { display: none; }
+/* the glass's left body is fifteen hundred pixels tall: at the phone's half blur its edges would read as a slab */
+:root[data-mbackdrop="glow"] .mscreen .ms-lights .l2 { border-radius: 999px; filter: blur(var(--bd-blur)); opacity: .8; }
+
+/* ---------------------------------------------------------------- soft lights: six pools, alternating sides
+   warm key light up top beside the logo, the brand light in the middle and low; each drifts and breathes, very slowly */
+:root[data-mbackdrop="lights"] .ms-lights i {
+  --c2: rgb(from var(--c) r g b / min(1, calc(alpha * 1.35)));
+  background: radial-gradient(closest-side, var(--c2), rgb(from var(--c2) r g b / calc(alpha * .5)) 55%, transparent);
+  border-radius: 50%;
+  animation: bd-drift var(--t, 19s) ease-in-out infinite alternate, bd-breathe calc(var(--t, 19s) * .7) ease-in-out infinite alternate;
+  transition: transform 1.2s cubic-bezier(.2, .7, .2, 1);
+}
+:root[data-mbackdrop="lights"] .ms-lights .l1 { --cx: -128; --cy: 403; --dx: 70; --dy: 40; }
+:root[data-mbackdrop="lights"] .ms-lights .l2 { --cx: 1162; --cy: 429; --w: 960; --h: 940; --dx: -60; --dy: 60; --t: 23s; animation-delay: -7s, -3s; }
+:root[data-mbackdrop="lights"] .ms-lights .l3 { --cx: 1033; --cy: 1745; --dx: -80; --dy: -50; --t: 21s; animation-delay: -3s, -9s; }
+:root[data-mbackdrop="lights"] .ms-lights .l4 { --cx: -86; --cy: 2002; --dx: 60; --dy: 70; animation-delay: -11s, -5s; }
+:root[data-mbackdrop="lights"] .ms-lights .l5 { --cx: -111; --cy: 3113; --dx: 80; --dy: -40; --t: 25s; animation-delay: -5s, -12s; }
+:root[data-mbackdrop="lights"] .ms-lights .l6 { --cx: 1105; --cy: 3269; --dx: -70; --dy: -60; --t: 22s; animation-delay: -14s, -2s; }
+@keyframes bd-drift { from { translate: 0 0; scale: 1; } to { translate: calc(var(--dx) * var(--k)) calc(var(--dy) * var(--k)); scale: 1.07; } }
+@keyframes bd-breathe { from { opacity: .72; } to { opacity: 1; } }
+
+/* ---------------------------------------------------------------- stadium beams: lamps along the top edge
+   six lamps, each a hot head and a soft cone that fades before the base, swinging a few degrees and back; they lean
+   only a little inward, so they cross low and faint rather than knotting behind the score */
+:root[data-mbackdrop="beams"] .ms-lights i {
+  --cb: rgb(from var(--c) r g b / min(1, calc(alpha * 1.25)));
+  --w: 2400; --cy: 1700; --h: 3700;
+  top: -4%; height: 97%;
+  background:
+    radial-gradient(calc(46 * var(--k)) calc(30 * var(--k)) at 50% calc(150 * var(--k)), rgb(from var(--cb) r g b / min(1, calc(alpha * 2.4))), transparent),
+    radial-gradient(calc(190 * var(--k)) calc(150 * var(--k)) at 50% calc(150 * var(--k)), var(--cb), transparent),
+    conic-gradient(from 171deg at 50% calc(150 * var(--k)), transparent 0deg, var(--cb) 9deg, transparent 18deg);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 26%, transparent 90%);
+  mask-image: linear-gradient(to bottom, #000 0 26%, transparent 90%);
+  transform-origin: 50% calc(150 * var(--k)); transform: rotate(var(--a));
+  animation: bd-sweep var(--t, 17s) ease-in-out infinite alternate;
+}
+:root[data-mbackdrop="beams"] .ms-lights .l1 { --cx: 90; --a: -9deg; --t: 17s; animation-delay: -4s; }
+:root[data-mbackdrop="beams"] .ms-lights .l2 { --cx: 990; --a: 9deg; --t: 19s; animation-delay: -12s; }
+:root[data-mbackdrop="beams"] .ms-lights .l3 { --cx: 380; --a: 5deg; --t: 23s; animation-delay: -9s; }
+:root[data-mbackdrop="beams"] .ms-lights .l4 { --cx: 700; --a: -5deg; --t: 21s; animation-delay: -2s; }
+:root[data-mbackdrop="beams"] .ms-lights .l5 { --cx: -160; --a: -24deg; --t: 26s; animation-delay: -15s; }
+:root[data-mbackdrop="beams"] .ms-lights .l6 { --cx: 1240; --a: 24deg; --t: 24s; animation-delay: -6s; }
+@keyframes bd-sweep {
+  from { transform: rotate(calc(var(--a) - 7deg)); }
+  to { transform: rotate(calc(var(--a) + 7deg)); }
+}
+
+/* ---------------------------------------------------------------- spotlight: one lamp over the player
+   a single cone from above the logo to a lit pool on the floor, breathing slowly; dust hangs in the beam and drifts */
+:root[data-mbackdrop="spot"] .ms-lights i { --cs: rgb(from var(--bd-a) r g b / min(1, calc(alpha * 1.5))); }
+:root[data-mbackdrop="spot"] .ms-lights .l1 {
+  left: calc(540 * var(--u) - 1800 * var(--k)); width: calc(3600 * var(--k)); top: -3%; height: 103%;
+  background: conic-gradient(from 164deg at 50% 0, transparent 0deg, var(--cs) 12deg, var(--cs) 20deg, transparent 32deg);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .9), #000 30%, rgba(0, 0, 0, .55) 86%, transparent);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .9), #000 30%, rgba(0, 0, 0, .55) 86%, transparent);
+  animation: bd-breathe 7s ease-in-out infinite alternate;
+}
+:root[data-mbackdrop="spot"] .ms-lights .l2 {
+  --w: 1500; --h: 420; --cx: 540;
+  top: calc(100% - var(--bd-base) - 260 * var(--k));
+  background: radial-gradient(closest-side, rgb(from var(--bd-b) r g b / min(1, calc(alpha * 1.6))), transparent);
+  animation: bd-breathe 7s ease-in-out infinite alternate;
+}
+:root[data-mbackdrop="spot"] .ms-lights .l3 {
+  --w: 700; --h: 360; --cx: 540; top: calc(-180 * var(--k));
+  background: radial-gradient(closest-side, var(--cs), transparent);
+}
+:root[data-mbackdrop="spot"] .ms-lights :is(.l4, .l5, .l6) {
+  --dust: rgb(from var(--bd-a) r g b / min(1, calc(alpha * 5)));
+  left: 0; top: 0; width: 100%; height: calc(100% + var(--tile) * var(--k));
+  background-image:
+    radial-gradient(circle at 42% 12%, var(--dust) 0 calc(var(--s) * var(--k)), transparent calc(var(--s) * 2.4 * var(--k))),
+    radial-gradient(circle at 57% 38%, var(--dust) 0 calc(var(--s) * var(--k)), transparent calc(var(--s) * 2.4 * var(--k))),
+    radial-gradient(circle at 48% 64%, var(--dust) 0 calc(var(--s) * var(--k)), transparent calc(var(--s) * 2.4 * var(--k))),
+    radial-gradient(circle at 63% 86%, var(--dust) 0 calc(var(--s) * var(--k)), transparent calc(var(--s) * 2.4 * var(--k))),
+    radial-gradient(circle at 36% 78%, var(--dust) 0 calc(var(--s) * var(--k)), transparent calc(var(--s) * 2.4 * var(--k)));
+  background-size: 100% calc(var(--tile) * var(--k));
+  -webkit-mask-image: radial-gradient(60% 70% at 50% 45%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(60% 70% at 50% 45%, #000 30%, transparent 100%);
+  animation: bd-sink var(--t) linear infinite, bd-sway var(--sw, 11s) ease-in-out infinite alternate;
+}
+:root[data-mbackdrop="spot"] .ms-lights .l4 { --tile: 1300; --s: 3; --t: 90s; }
+:root[data-mbackdrop="spot"] .ms-lights .l5 { --tile: 1700; --s: 4; --t: 70s; --sw: 14s; background-position: 90px 400px; animation-delay: -30s, -4s; }
+:root[data-mbackdrop="spot"] .ms-lights .l6 { --tile: 2100; --s: 2; --t: 110s; --sw: 9s; background-position: -120px 900px; animation-delay: -50s, -7s; }
+@keyframes bd-sink { from { transform: translateY(calc(-1 * var(--tile) * var(--k))); } to { transform: translateY(0); } }
+@keyframes bd-sway { from { translate: calc(-26 * var(--k)) 0; } to { translate: calc(26 * var(--k)) 0; } }
+
+/* ---------------------------------------------------------------- heartbeat: a pulse rising from the base
+   the six are rings of light that start at the foot in pairs, lub and dub, widen as they climb and fade before the
+   logo; the first ring doubles as the glow on the floor, beating twice every two seconds */
+:root[data-mbackdrop="pulse"] .ms-lights i {
+  --cp: rgb(from var(--c) r g b / min(1, calc(alpha * 1.3)));
+  --cx: 540; --w: 2000; --h: 800;
+  top: calc(100% - var(--bd-base) - 460 * var(--k));
+  border-radius: 50%;
+  background: radial-gradient(closest-side, transparent 56%, var(--cp) 78%, transparent 97%);
+  opacity: 0;
+  animation: bd-rise 6s cubic-bezier(.25, .55, .35, 1) infinite;
+}
+:root[data-mbackdrop="pulse"] .ms-lights .l1 { animation-delay: -6s; }
+:root[data-mbackdrop="pulse"] .ms-lights .l2 { animation-delay: -5.7s; }
+:root[data-mbackdrop="pulse"] .ms-lights .l3 { animation-delay: -4s; }
+:root[data-mbackdrop="pulse"] .ms-lights .l4 { animation-delay: -3.7s; }
+:root[data-mbackdrop="pulse"] .ms-lights .l5 { animation-delay: -2s; }
+:root[data-mbackdrop="pulse"] .ms-lights .l6 { animation-delay: -1.7s; }
+/* the floor glow: a separate still pool under the rings, drawn on the host so it never shares a ring's timing */
+:root[data-mbackdrop="pulse"] .ms-lights::before {
+  content: ""; position: absolute; left: -15%; right: -15%; bottom: calc(var(--bd-base) - 9%); height: 18%;
+  background: radial-gradient(closest-side, rgb(from var(--bd-b) r g b / min(1, calc(alpha * 2))), transparent);
+  animation: bd-beat 2s linear infinite;
+}
+@keyframes bd-rise {
+  0% { opacity: 0; transform: translateY(0) scale(.3); }
+  6% { opacity: 1; }
+  55% { opacity: .75; }
+  100% { opacity: 0; transform: translateY(calc(-2900 * var(--v))) scale(1.6); }
+}
+@keyframes bd-beat {
+  0% { opacity: 1; }
+  10% { opacity: .45; }
+  15% { opacity: .85; }
+  45%, 100% { opacity: .3; }
+}
+
+/* ---------------------------------------------------------------- embers: sparks drifting up from below
+   six layers of sparks, each a tall repeating tile carried upward and swaying; the nearer layers are larger and
+   quicker, and they show most near the base, where a low fire glow sits */
+:root[data-mbackdrop="embers"] .ms-lights {
+  -webkit-mask-image: linear-gradient(to top, #000 8%, rgba(0, 0, 0, .45) 92%);
+  mask-image: linear-gradient(to top, #000 8%, rgba(0, 0, 0, .45) 92%);
+}
+:root[data-mbackdrop="embers"] .ms-lights::before {
+  content: ""; position: absolute; left: -10%; right: -10%; bottom: calc(var(--bd-base) - 11%); height: 22%;
+  background: radial-gradient(closest-side, rgb(from var(--bd-b) r g b / min(1, calc(alpha * 1.8))), transparent);
+}
+:root[data-mbackdrop="embers"] .ms-lights i {
+  --ce: rgb(from var(--c) r g b / min(1, calc(alpha * 6)));
+  --ch: rgb(from var(--c) r g b / min(1, calc(alpha * 2)));
+  --r: max(1.4px, calc(var(--s) * var(--k)));
+  left: 0; top: 0; width: 100%; height: calc(100% + var(--tile) * var(--k));
+  background-image:
+    radial-gradient(circle at 8% 14%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2)),
+    radial-gradient(circle at 31% 62%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2)),
+    radial-gradient(circle at 52% 27%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2)),
+    radial-gradient(circle at 71% 83%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2)),
+    radial-gradient(circle at 89% 41%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2)),
+    radial-gradient(circle at 19% 91%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2)),
+    radial-gradient(circle at 44% 4%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2)),
+    radial-gradient(circle at 96% 72%, var(--ce) 0 var(--r), var(--ch) calc(var(--r) + .6px), transparent calc(var(--r) * 3.2));
+  background-size: 100% calc(var(--tile) * var(--k));
+  background-position: calc(var(--bx, 0) * var(--u)) 0;
+  animation: bd-float var(--t) linear infinite, bd-sway var(--sw, 9s) ease-in-out infinite alternate;
+}
+:root[data-mbackdrop="embers"] .ms-lights .l1 { --tile: 1400; --t: 70s; --s: 3; }
+:root[data-mbackdrop="embers"] .ms-lights .l2 { --tile: 1180; --t: 58s; --s: 3; --bx: 410; --sw: 11s; animation-delay: -21s, -3s; }
+:root[data-mbackdrop="embers"] .ms-lights .l3 { --tile: 1560; --t: 48s; --s: 4; --bx: 170; --sw: 13s; animation-delay: -9s, -6s; }
+:root[data-mbackdrop="embers"] .ms-lights .l4 { --tile: 1320; --t: 42s; --s: 4; --bx: 690; --sw: 8s; animation-delay: -30s, -1s; }
+:root[data-mbackdrop="embers"] .ms-lights .l5 { --tile: 1720; --t: 34s; --s: 6; --bx: 300; --sw: 10s; animation-delay: -12s, -4s; }
+:root[data-mbackdrop="embers"] .ms-lights .l6 { --tile: 1900; --t: 30s; --s: 7; --bx: 820; --sw: 12s; animation-delay: -5s, -8s; }
+@keyframes bd-float { from { transform: translateY(0); } to { transform: translateY(calc(-1 * var(--tile) * var(--k))); } }
+
+/* ---------------------------------------------------------------- smoke: haze rolling through stage light
+   four bands of haze, each a strip of long flat wisps twice the glass wide, rolling sideways at its own pace (two each
+   way) so they thicken and thin where they cross; every wisp stays inside its own tile, so a seam never shows. The
+   stage light below warms them from the floor and a soft wash sits above the logo */
+:root[data-mbackdrop="smoke"] .ms-lights i:not(.l5, .l6) {
+  --cm: rgb(from var(--c) r g b / min(1, calc(alpha * 1.1)));
+  left: 0; width: 200%; height: calc(var(--h) * var(--k)); top: calc(var(--cy) * var(--v) - var(--h) * var(--k) / 2);
+  background:
+    radial-gradient(30% 20% at 24% 46%, var(--cm), transparent 70%),
+    radial-gradient(24% 12% at 50% 66%, var(--cm), transparent 70%),
+    radial-gradient(34% 16% at 70% 36%, var(--cm), transparent 70%),
+    radial-gradient(20% 10% at 36% 24%, var(--cm), transparent 70%);
+  background-size: 50% 100%; background-repeat: repeat-x;
+  filter: blur(calc(22 * var(--k)));
+  animation: bd-roll var(--t) linear infinite var(--dir, normal), bd-lift var(--lt, 17s) ease-in-out infinite alternate;
+}
+:root[data-mbackdrop="smoke"] .ms-lights .l1 { --cy: 560; --h: 1300; --t: 150s; }
+:root[data-mbackdrop="smoke"] .ms-lights .l2 { --cy: 1450; --h: 1500; --t: 190s; --dir: reverse; --lt: 21s; animation-delay: -60s, -5s; }
+:root[data-mbackdrop="smoke"] .ms-lights .l3 { --cy: 2400; --h: 1400; --t: 130s; --lt: 19s; animation-delay: -35s, -9s; }
+:root[data-mbackdrop="smoke"] .ms-lights .l4 { --cy: 3200; --h: 1200; --t: 170s; --dir: reverse; animation-delay: -90s, -3s; }
+:root[data-mbackdrop="smoke"] .ms-lights .l5 {
+  --cx: 540; --w: 1900; --h: 900;
+  top: calc(100% - var(--bd-base) - 520 * var(--k));
+  background: radial-gradient(closest-side, rgb(from var(--bd-b) r g b / min(1, calc(alpha * 1.5))), transparent);
+}
+:root[data-mbackdrop="smoke"] .ms-lights .l6 {
+  --cx: 540; --cy: 120; --w: 1700; --h: 800;
+  background: radial-gradient(closest-side, rgb(from var(--bd-a) r g b / min(1, calc(alpha * 1.2))), transparent);
+}
+@keyframes bd-roll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes bd-lift { from { translate: 0 calc(40 * var(--k)); opacity: .75; } to { translate: 0 calc(-40 * var(--k)); opacity: 1; } }
+
+/* ---------------------------------------------------------------- arena grid: a lit floor in perspective
+   a floor grid runs from a horizon six tenths down to the base, gliding toward the player; a band of light sits on the
+   horizon and two pools stay up top, so the logo keeps its light */
+:root[data-mbackdrop="grid"] .ms-lights .l1 {
+  --cg: rgb(from var(--bd-b) r g b / min(1, calc(alpha * 2.6)));
+  --line: max(1px, calc(4 * var(--k))); --cell: calc(120 * var(--k));
+  left: calc(540 * var(--u) - 2540 * var(--k)); width: calc(5080 * var(--k));
+  top: 58%; height: calc(900 * var(--k)); overflow: hidden;
+  transform-origin: 50% 0; transform: perspective(calc(1000 * var(--k))) rotateX(70deg);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 36%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 36%);
+}
+:root[data-mbackdrop="grid"] .ms-lights .l1::before {
+  content: ""; position: absolute; left: 0; right: 0; top: calc(-1 * var(--cell)); bottom: 0;
+  background:
+    linear-gradient(to right, var(--cg) 0 var(--line), transparent var(--line)) calc(var(--cell) / 6) 0 / var(--cell) var(--cell),
+    linear-gradient(to bottom, var(--cg) 0 var(--line), transparent var(--line)) 0 0 / var(--cell) var(--cell);
+  animation: bd-glide 5s linear infinite;
+}
+@keyframes bd-glide { from { transform: translateY(0); } to { transform: translateY(var(--cell)); } }
+:root[data-mbackdrop="grid"] .ms-lights .l2 {
+  --cx: 540; --w: 1680; --h: 600; top: calc(58% - 300 * var(--k));
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(from var(--c) r g b / min(1, calc(alpha * 1.5))), transparent);
+}
+:root[data-mbackdrop="grid"] .ms-lights :is(.l3, .l4) {
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--c), rgb(from var(--c) r g b / calc(alpha * .5)) 55%, transparent);
+}
+:root[data-mbackdrop="grid"] .ms-lights .l3 { --cx: -128; --cy: 403; --c: var(--bd-a); }
+:root[data-mbackdrop="grid"] .ms-lights .l4 { --cx: 1162; --cy: 429; --c: var(--bd-b); }
+:root[data-mbackdrop="grid"] .ms-lights :is(.l5, .l6) { display: none; }
+
+/* ---------------------------------------------------------------- the phone turns in the same room
+   under the two still looks, each page moves the light a little, so paging feels like turning where you stand */
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="connect"] .ms-lights .l1 { transform: translate(-30%, 8%); }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="connect"] .ms-lights .l2 { transform: translate(10%, -30%); }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="punch"] .ms-lights .l1 { transform: translate(-46%, 22%); opacity: .75; }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="punch"] .ms-lights .l3 { transform: translate(-20%, -18%); }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="hit"] .ms-lights .l1 { transform: translate(-40%, -4%); }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="hit"] .ms-lights .l3 { opacity: .35; }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="ranks"] .ms-lights .l2 { transform: translate(40%, 30%); opacity: .5; }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="ranks"] .ms-lights .l3 { opacity: .4; }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="feed"] .ms-lights .l1 { transform: translate(-10%, -20%); opacity: .6; }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="feed"] .ms-lights .l3 { opacity: .3; }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="profile"] .ms-lights .l1 { transform: translate(-58%, 0); }
+:root:is([data-mbackdrop="glow"], [data-mbackdrop="lights"]) .m-app[data-page="profile"] .ms-lights .l2 { opacity: .4; }
+
+/* ---------------------------------------------------------------- reduced motion: every look as a still */
+@media (prefers-reduced-motion: reduce) {
+  .ms-lights i,
+  .ms-lights::before,
+  .ms-lights i::before { animation: none !important; transition: none !important; }
+  :root[data-mbackdrop="beams"] .ms-lights i { transform: rotate(var(--a)); }
+  /* the heartbeat held at three moments of one rise, so the still still reads as light climbing from the base */
+  :root[data-mbackdrop="pulse"] .ms-lights :is(.l2, .l4, .l6) { display: none; }
+  :root[data-mbackdrop="pulse"] .ms-lights .l1 { opacity: .9; transform: translateY(calc(-260 * var(--v))) scale(.55); }
+  :root[data-mbackdrop="pulse"] .ms-lights .l3 { opacity: .6; transform: translateY(calc(-1000 * var(--v))) scale(.95); }
+  :root[data-mbackdrop="pulse"] .ms-lights .l5 { opacity: .3; transform: translateY(calc(-1800 * var(--v))) scale(1.3); }
+  :root[data-mbackdrop="pulse"] .ms-lights::before { opacity: .8; }
+  :root[data-mbackdrop="embers"] .ms-lights i,
+  :root[data-mbackdrop="spot"] .ms-lights i,
+  :root[data-mbackdrop="smoke"] .ms-lights i { translate: none; transform: none; opacity: 1; }
+}

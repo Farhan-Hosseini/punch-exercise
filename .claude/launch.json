@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "punch-showcase",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Claude Database/punch-exercise/tools/serve-showcase.mjs"
+      ],
+      "port": 5770
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+    <!-- ========== Your hit, on the phone (mpages/hit.css, mpages/hit.js) ==========
+         Built from sections (psec.js): each [data-sec] pages through its designs, chosen in Customise under This screen.
+         Score: every [data-app-score] is written by mobile.js (paintHit, countHit) through PunchFormat, the grade by
+         [data-app-grade] and the machine rank by [data-app-rank]; the page carries data-grade for the Grade ladder.
+         Next: [data-yh-again] hands over to pay.js (#payAgainBtn: Punch again, or Buy credits when the wallet is empty),
+         [data-yh-share] shares. Replay: [data-yh-replay] opens Sara's reel. Where you rank is drawn by hit.js. -->
+    <section class="m-page m-scroll" data-page="hit" aria-labelledby="mHitTitle">
+      <!-- ---------------------------------------------------------------- Header: where the hit was and on which machine
+           (Dubai Mall, Ground Level, Machine 07 by the ice rink), five designs on the shared header rhythm (mpages/_shared.css):
+           a line that goes with the title sits --m-title-gap from it at line height 1.4, the buttons centre on the
+           title's own line, and Score starts --m-sec-gap under the header. Every design keeps Save for later, Sara's
+           newest attempt "me:0" (mpages/saved.js answers any [data-save-key]: a tap saves, a hold opens the lists), and
+           the way to the board. The machine is drawn as a glyph: the tall glass with the pad beside it. -->
+      <header class="yh-head" data-sec="head" data-sec-label="Header">
+        <!-- the place over the title, the machine under it -->
+        <div class="yhh yhh-line" data-sv="Place line">
+          <p class="yhh-kick"><span data-lucide="map-pin"></span>Dubai Mall, Ground Level</p>
+          <h2 class="m-title" id="mHitTitle">Your hit</h2>
+          <button class="m-iconbtn yh-save" type="button" data-yh-save data-save-key="me:0" aria-pressed="false" aria-label="Save for later. Hold to choose a list"><span data-lucide="bookmark"></span></button>
+          <button class="m-iconbtn" type="button" data-go="ranks" aria-label="See the leaderboard"><span data-lucide="trophy"></span></button>
+          <p class="yhh-sub"><svg class="yhh-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="2" width="10" height="20" rx="2"/><path d="M6.5 6h4"/><path d="M13.5 11.5H16"/><rect x="16" y="8" width="5" height="7" rx="2"/></svg>Machine 07, by the ice rink</p>
+        </div>
+
+        <!-- a button row over the title: the machine named on the left of it, the place under the title -->
+        <div class="yhh yhh-bar" data-sv="Machine bar">
+          <div class="yhh-top">
+            <p class="yhh-chip"><svg class="yhh-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="2" width="10" height="20" rx="2"/><path d="M6.5 6h4"/><path d="M13.5 11.5H16"/><rect x="16" y="8" width="5" height="7" rx="2"/></svg>Machine 07</p>
+            <button class="m-iconbtn yh-save" type="button" data-yh-save data-save-key="me:0" aria-pressed="false" aria-label="Save for later. Hold to choose a list"><span data-lucide="bookmark"></span></button>
+            <button class="m-iconbtn" type="button" data-go="ranks" aria-label="See the leaderboard"><span data-lucide="trophy"></span></button>
+          </div>
+          <h2 class="m-title">Your hit</h2>
+          <p class="yhh-sub"><span data-lucide="map-pin"></span>Dubai Mall, by the Ice Rink</p>
+        </div>
+
+        <!-- the venue: the mall at night, the machine on a glass chip, the title set on the photograph -->
+        <div class="yhh yhh-photo" data-sv="Venue photo">
+          <img class="yhh-photo-img" src="assets/photos/lib/mall-night-1.jpg" alt="" width="1800" height="1350" loading="lazy" style="object-position: 50% 45%">
+          <div class="yhh-top">
+            <p class="yhh-chip"><svg class="yhh-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="2" width="10" height="20" rx="2"/><path d="M6.5 6h4"/><path d="M13.5 11.5H16"/><rect x="16" y="8" width="5" height="7" rx="2"/></svg>Machine 07</p>
+            <button class="m-iconbtn yh-save" type="button" data-yh-save data-save-key="me:0" aria-pressed="false" aria-label="Save for later. Hold to choose a list"><span data-lucide="bookmark"></span></button>
+            <button class="m-iconbtn" type="button" data-go="ranks" aria-label="See the leaderboard"><span data-lucide="trophy"></span></button>
+          </div>
+          <div class="yhh-photo-copy">
+            <p class="yhh-kick">Dubai Mall, by the Ice Rink</p>
+            <h2 class="m-title">Your hit</h2>
+          </div>
+        </div>
+
+        <!-- the title row alone, then the machine as a card: the venue, its name and where it stands -->
+        <div class="yhh yhh-card" data-sv="Machine card">
+          <div class="yhh-row">
+            <h2 class="m-title">Your hit</h2>
+            <button class="m-iconbtn yh-save" type="button" data-yh-save data-save-key="me:0" aria-pressed="false" aria-label="Save for later. Hold to choose a list"><span data-lucide="bookmark"></span></button>
+            <button class="m-iconbtn" type="button" data-go="ranks" aria-label="See the leaderboard"><span data-lucide="trophy"></span></button>
+          </div>
+          <div class="yhh-mc m-glass">
+            <span class="yhh-mc-thumb"><img src="assets/photos/lib/mall-night-1.jpg" alt="" width="1800" height="1350" loading="lazy" style="object-position: 38% 45%"></span>
+            <p class="yhh-mc-id"><b><svg class="yhh-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="2" width="10" height="20" rx="2"/><path d="M6.5 6h4"/><path d="M13.5 11.5H16"/><rect x="16" y="8" width="5" height="7" rx="2"/></svg>Machine 07</b><span>Dubai Mall, by the Ice Rink</span></p>
+          </div>
+        </div>
+
+        <!-- the machine drawn beside the title: the column, its glass and the pad at its side -->
+      </header>
+
+      <svg class="yh-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="yhHeat" x1="0" y1="0" x2="1" y2="0"><stop class="yh-stop-a" offset="0"/><stop class="yh-stop-b" offset=".6"/><stop class="yh-stop-c" offset="1"/></linearGradient>
+        </defs>
+      </svg>
+
+      <div class="yh">
+
+        <!-- ---------------------------------------------------------------- Score -->
+        <div class="yh-sec yh-score" data-sec="score" data-sec-label="Score">
+          <div class="yh-s yh-card m-glass" data-sv="Glass card">
+            <div class="yh-card-top">
+              <p class="m-cap">Ultimate result</p>
+              <p class="yh-when"><span data-lucide="clock"></span>Just now</p>
+            </div>
+            <p class="m-score yh-num" data-app-score>999,999</p>
+            <div class="m-charge" aria-hidden="true"><span class="m-charge-fill"></span></div>
+            <div class="yh-card-foot">
+              <p class="yh-grade"><span data-lucide="medal"></span><span data-app-grade>Perfect punch</span></p>
+              <p class="m-chip m-chip-red"><span data-lucide="crown"></span><span data-app-rank>#1 at this machine</span></p>
+            </div>
+          </div>
+
+          <div class="yh-s yh-dial m-glass" data-sv="Dial">
+            <div class="yh-dial-gauge">
+              <svg class="yh-dial-svg" viewBox="0 0 200 106" aria-hidden="true" focusable="false">
+                <path class="yh-dial-track" d="M14 100A86 86 0 0 1 186 100" pathLength="100"/>
+                <path class="yh-dial-fill" d="M14 100A86 86 0 0 1 186 100" pathLength="100"/>
+                <g class="yh-dial-ticks"><path d="M43.6 22.3 40 17.5"/><path d="M129.7 8.7 131.5 3"/><path d="M191.3 70.3 197 68.5"/></g>
+              </svg>
+              <div class="yh-dial-read">
+                <p class="m-cap">Ultimate result</p>
+                <p class="m-score yh-num" data-app-score>999,999</p>
+              </div>
+            </div>
+            <div class="yh-dial-foot">
+              <p class="yh-grade"><span data-lucide="gauge"></span><span data-app-grade>Perfect punch</span></p>
+              <p class="m-chip m-chip-red"><span data-lucide="crown"></span><span data-app-rank>#1 at this machine</span></p>
+            </div>
+          </div>
+
+          <div class="yh-s yh-photo" data-sv="Photo">
+            <img class="yh-photo-img" src="assets/photos/hit-photo.jpg" alt="" width="1368" height="1026" loading="lazy">
+            <div class="yh-photo-top">
+              <p class="yh-glass-chip"><span data-lucide="crown"></span><span data-app-rank>#1 at this machine</span></p>
+              <p class="yh-glass-chip"><span data-lucide="clock"></span>Just now</p>
+            </div>
+            <div class="yh-photo-copy">
+              <p class="m-cap">Ultimate result</p>
+              <p class="m-score yh-num" data-app-score>999,999</p>
+              <p class="yh-grade"><span data-lucide="medal"></span><span data-app-grade>Perfect punch</span></p>
+            </div>
+          </div>
+
+          <div class="yh-s yh-ladder m-glass" data-sv="Grade ladder">
+            <div class="yh-ladder-head">
+              <p class="m-cap">Ultimate result</p>
+              <p class="m-score yh-num" data-app-score>999,999</p>
+            </div>
+            <ol class="yh-rungs" aria-label="Grades, highest first">
+              <li data-rung="perfect"><span class="yh-rung-ico"><span data-lucide="crown"></span></span><span class="yh-rung-name">Perfect punch</span><span class="yh-rung-you">Yours</span><span class="yh-rung-min">900,000</span></li>
+              <li data-rung="heavy"><span class="yh-rung-ico"><span data-lucide="flame"></span></span><span class="yh-rung-name">Heavy hitter</span><span class="yh-rung-you">Yours</span><span class="yh-rung-min">600,000</span></li>
+              <li data-rung="solid"><span class="yh-rung-ico"><span data-lucide="zap"></span></span><span class="yh-rung-name">Solid strike</span><span class="yh-rung-you">Yours</span><span class="yh-rung-min">300,000</span></li>
+              <li data-rung="warm"><span class="yh-rung-ico"><span data-lucide="activity"></span></span><span class="yh-rung-name">Warm up</span><span class="yh-rung-you">Yours</span><span class="yh-rung-min">Any hit</span></li>
+            </ol>
+          </div>
+
+          <div class="yh-s yh-ticket" data-sv="Ticket">
+            <div class="yh-tk-main">
+              <div class="yh-tk-row">
+                <p class="m-cap">Ultimate result</p>
+                <p class="yh-when"><span data-lucide="clock"></span>Just now</p>
+              </div>
+              <p class="m-score yh-num" data-app-score>999,999</p>
+              <p class="yh-grade"><span data-lucide="medal"></span><span data-app-grade>Perfect punch</span></p>
+            </div>
+            <div class="yh-tk-stub">
+              <p class="yh-tk-field"><span class="m-cap">Machine</span><b>Dubai Mall, Ground Level</b></p>
+              <p class="yh-tk-field"><span class="m-cap">Standing</span><b data-app-rank>#1 at this machine</b></p>
+              <span class="yh-tk-mark" aria-hidden="true"><span data-lucide="ticket"></span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Next: the two things to do with a hit, clear of the tab bar at first view -->
+        <div class="yh-sec yh-next" data-sec="next" data-sec-label="Next">
+          <div class="yh-n yh-stack" data-sv="Stack">
+            <div class="yh-stack-btns">
+              <button class="m-btn m-btn-red" type="button" data-yh-share="feed"><span data-lucide="send"></span>Share to feed</button>
+              <button class="m-btn m-btn-glass" type="button" data-go="ranks"><span data-lucide="trophy"></span>See where I rank</button>
+            </div>
+            <!-- credits left and the way to a second punch (pay.js) -->
+            <div class="pay-again m-glass" id="payAgain">
+              <span class="pay-again-ico"><span data-lucide="wallet"></span></span>
+              <p class="pay-again-copy"><b data-credits>0 credits</b><span id="payAgainSub">Buy credits to go again</span></p>
+              <button class="m-btn m-btn-red m-btn-sm" type="button" id="payAgainBtn">Buy credits</button>
+            </div>
+          </div>
+
+          <div class="yh-n yh-tiles" data-sv="Two tiles">
+            <button class="yh-tile yh-tile-hot" type="button" data-yh-again>
+              <span class="yh-tile-ico"><span data-lucide="repeat-2"></span></span>
+              <span class="yh-tile-t"><span class="yh-if-credits">Punch again</span><span class="yh-if-empty">Buy credits</span></span>
+              <span class="yh-tile-s"><span data-lucide="coins"></span><span data-credits>0 credits</span></span>
+            </button>
+            <button class="yh-tile m-glass" type="button" data-yh-share="feed">
+              <span class="yh-tile-ico"><span data-lucide="share-2"></span></span>
+              <span class="yh-tile-t">Share</span>
+              <span class="yh-tile-s">Post it to your feed</span>
+            </button>
+          </div>
+
+          <div class="yh-n yh-share" data-sv="Share row">
+            <p class="m-cap yh-share-cap">Share your hit</p>
+            <div class="yh-share-row">
+              <button type="button" data-yh-share="feed"><span class="yh-disc yh-disc-hot"><span data-lucide="send"></span></span><span>Feed</span></button>
+              <button type="button" data-yh-share="story"><span class="yh-disc"><span data-lucide="circle-plus"></span></span><span>Story</span></button>
+              <button type="button" data-yh-share="link"><span class="yh-disc"><span data-lucide="link"></span></span><span>Copy link</span></button>
+              <button type="button" data-yh-share="save"><span class="yh-disc"><span data-lucide="download"></span></span><span>Save clip</span></button>
+            </div>
+            <button class="m-btn m-btn-glass yh-again-wide" type="button" data-yh-again>
+              <span data-lucide="repeat-2"></span><span class="yh-if-credits">Punch again</span><span class="yh-if-empty">Buy credits to go again</span>
+              <span class="yh-count"><span data-credits>0 credits</span></span>
+            </button>
+          </div>
+
+          <div class="yh-n yh-dare" data-sv="Challenge">
+            <div class="yh-dare-card">
+              <img class="yh-dare-img" src="assets/photos/lib/friends-3.jpg" alt="" width="1800" height="1200" loading="lazy" style="object-position: 45% 45%">
+              <div class="yh-dare-copy">
+                <p class="m-cap"><span data-lucide="swords"></span>Challenge</p>
+                <p class="yh-dare-t">Dare a friend to beat it</p>
+                <button class="m-btn m-btn-red m-btn-sm" type="button" data-yh-share="dare"><span data-lucide="send"></span>Send a dare</button>
+              </div>
+            </div>
+            <div class="yh-dare-row m-glass">
+              <span class="yh-disc"><span data-lucide="coins"></span></span>
+              <p class="yh-dare-wallet"><b data-credits>0 credits</b><span class="yh-if-credits">Machine still linked</span><span class="yh-if-empty">One credit is one attempt</span></p>
+              <button class="m-btn m-btn-red m-btn-sm" type="button" data-yh-again><span class="yh-if-credits">Punch again</span><span class="yh-if-empty">Buy credits</span></button>
+            </div>
+          </div>
+
+          <div class="yh-n yh-bar" data-sv="Compact bar">
+            <button class="yh-bar-wallet m-glass" type="button" data-go="topup" aria-label="Wallet, buy credits"><span data-lucide="coins"></span><span data-credits>0 credits</span></button>
+            <button class="m-btn m-btn-red yh-bar-go" type="button" data-yh-again><span data-lucide="repeat-2"></span><span class="yh-if-credits">Punch again</span><span class="yh-if-empty">Buy credits</span></button>
+            <button class="m-iconbtn yh-bar-share" type="button" data-yh-share="feed" aria-label="Share to feed"><span data-lucide="share-2"></span></button>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Replay: Sara's own stills from the machine camera -->
+        <div class="yh-sec yh-replay" data-sec="replay" data-sec-label="Replay">
+          <button class="yh-r yh-player" type="button" data-sv="Player" data-yh-replay aria-label="Open the replay in your reel, 6 seconds">
+            <img class="yh-r-img" src="assets/photos/hit-player.jpg" alt="" width="1368" height="770" loading="lazy">
+            <span class="yh-play"><span data-lucide="play"></span></span>
+            <span class="yh-player-bar">
+              <span class="m-cap">Replay</span>
+              <span class="yh-track"><i class="yh-track-fill"></i></span>
+              <span class="yh-time">0:06</span>
+            </span>
+          </button>
+
+          <button class="yh-r yh-portrait m-glass" type="button" data-sv="Portrait" data-yh-replay aria-label="Open the replay in your reel, 6 seconds">
+            <span class="yh-portrait-media">
+              <img class="yh-r-img" src="assets/photos/hit-portrait.jpg" alt="" width="540" height="960" loading="lazy">
+              <span class="yh-play yh-play-sm"><span data-lucide="play"></span></span>
+            </span>
+            <span class="yh-portrait-txt">
+              <span class="m-cap">Replay</span>
+              <span class="yh-r-title">Your strike, slowed right down</span>
+              <span class="yh-r-meta"><span><span data-lucide="timer"></span>0:06</span><span><span data-lucide="camera"></span>Machine camera</span></span>
+              <span class="yh-r-link">Watch in your reel<span data-lucide="chevron-right"></span></span>
+            </span>
+          </button>
+
+
+          <button class="yh-r yh-contact" type="button" data-sv="Contact moment" data-yh-replay data-yh-contact aria-label="Open the replay in your reel, 6 seconds, peak force about 315 kilograms at contact">
+            <img class="yh-r-img" src="assets/photos/hit-contact.jpg" alt="" width="1138" height="640" loading="lazy">
+            <!-- the pad's reading at contact, in the Stats section's unit (hit.js writes [data-yh-kg]) -->
+            <span class="yh-contact-peak"><span class="m-cap">At contact, about</span><b><span data-yh-kg>315</span><small>kg</small></b></span>
+            <span class="yh-contact-bar">
+              <span class="yh-play yh-play-sm"><span data-lucide="play"></span></span>
+              <span class="yh-contact-track"><i class="yh-track-fill"></i><i class="yh-contact-mark"></i></span>
+              <span class="yh-time">0:06</span>
+            </span>
+          </button>
+
+          <button class="yh-r yh-row m-glass" type="button" data-sv="Compact row" data-yh-replay aria-label="Open the replay in your reel, 6 seconds">
+            <img class="yh-row-img" src="assets/photos/hit-thumb.jpg" alt="" width="360" height="360" loading="lazy">
+            <span class="yh-row-txt"><span class="yh-r-title">Replay</span><span class="yh-row-sub"><span data-lucide="camera"></span>0:06 from the machine camera</span></span>
+            <span class="yh-row-play"><span data-lucide="play"></span></span>
+          </button>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Where you rank: drawn by hit.js from the live board -->
+        <div class="yh-sec yh-ranks" data-sec="ranks" data-sec-label="Ranks" data-sv-names="Tiles|Ladder|Skyline|Percentile|Headline"></div>
+
+        <!-- ---------------------------------------------------------------- Stats: the strike in numbers, drawn by hit.js
+             from the page's data-strike (mobile.js strikeOf, docs/strategy/strike-in-numbers.md): peak force in kg
+             (Measured), the change on the last hit and the best (Your history), the middle half of today's hits here
+             (This machine), hand speed in km/h (Camera estimate), and the hand and the step as words (Camera read) -->
+        <div class="yh-sec yh-stats" data-sec="stats" data-sec-label="Stats" data-sv-names="Kilo line|Plate stack|Lab slip|Hard and fast|Your line"></div>
+
+      </div>
+    </section>

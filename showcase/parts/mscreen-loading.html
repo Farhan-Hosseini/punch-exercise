@@ -1,0 +1,118 @@
+<!-- Machine screen: Reading the strike, about two seconds between the hit and the score.
+     One frame built from sections (psec.js), each with five designs paged in Customise under "This screen":
+       Caption  the line that says what is happening: Headline, Named, Ticker, Phone, Quiet
+       Reading  the reading itself: Sensor trace, Replay saving, Verdict, Photo finish, Checklist (round seven: the
+                trace is one clean line across the glass and one label; Replay saving and Photo finish lost their extras)
+     mscreens/loading.js drives one progress value on the frame (.mld): --p (0 to 1) and --pe (eased), data-phase
+     (reading, ready) and data-step (force, speed, replay, phone), so both sections move from one clock. Opened with
+     opts.next it hands over to that screen when the reading is done; opened from the bar it loops.
+     The shared parts: the backdrop host first, the global header next, the sponsor strip last. -->
+<div class="mld" data-phase="reading" data-step="force">
+  <div class="ms-lights" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+  <!-- include:parts/ms-brand.html -->
+
+  <!-- ============================================================ Caption: what is happening -->
+  <section class="mld-sec mld-caption" data-sec="caption" data-sec-label="Caption" aria-live="polite">
+
+    <div class="mcap mcap-head" data-sv="Headline">
+      <p class="mld-eyebrow"><span class="mld-live" aria-hidden="true"></span>Reading the strike</p>
+      <h2 class="mld-title"><span class="mld-t-read">Reading your force</span><span class="mld-t-ready">Here it comes</span></h2>
+    </div>
+
+    <div class="mcap mcap-named" data-sv="Named" hidden>
+      <img class="mcap-ava" data-mld-ava src="assets/app/avatars/sara.jpg" alt="" width="192" height="192" decoding="async">
+      <div class="mcap-say">
+        <p class="mld-eyebrow"><span><span data-mld-first>Sara</span>, hold still</span></p>
+        <h2 class="mcap-big"><span class="mld-t-read">We are reading your strike</span><span class="mld-t-ready">Your score is ready</span></h2>
+      </div>
+    </div>
+
+    <div class="mcap mcap-ticker" data-sv="Ticker" hidden>
+      <p class="mld-eyebrow"><span class="mld-ring-s" aria-hidden="true"></span>Now</p>
+      <p class="mcap-now" data-mld-status>Reading the force</p>
+      <ol class="mcap-steps" aria-hidden="true">
+        <li data-at="force"><span data-lucide="activity"></span>Force</li>
+        <li data-at="speed"><span data-lucide="gauge"></span>Speed</li>
+        <li data-at="replay"><span data-lucide="film"></span>Replay</li>
+        <li data-at="phone"><span data-lucide="smartphone"></span>Phone</li>
+      </ol>
+    </div>
+
+    <div class="mcap mcap-phone" data-sv="Phone" hidden>
+      <div class="mcap-dev" aria-hidden="true">
+        <span class="mcap-dev-ic"><span data-lucide="smartphone"></span></span>
+        <span class="mcap-dev-wave"><i></i><i></i><i></i></span>
+      </div>
+      <div class="mcap-say">
+        <p class="mld-eyebrow"><span data-lucide="send"></span>On its way</p>
+        <h2 class="mcap-big"><span class="mld-t-read">Your replay is going to your phone</span><span class="mld-t-ready">Score first, right here</span></h2>
+      </div>
+    </div>
+
+    <div class="mcap mcap-quiet" data-sv="Quiet" hidden>
+      <p class="mcap-pill"><span class="mld-ring-s" aria-hidden="true"></span><span class="mld-t-read">Reading your strike</span><span class="mld-t-ready">Here it comes</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ Reading: the strike being read -->
+  <section class="mld-sec mld-reading" data-sec="reading" data-sec-label="Reading">
+
+    <!-- Sensor trace: one line, edge to edge. The pad's reading draws across the glass (flat, the strike's spike rising
+         high up the glass, the ring down), a bright head riding its tip and a ring marking the peak once it is passed.
+         Under it one label in a bar that fills to the hand over: the score on its way. loading.js draws the line to
+         the box and moves the head; no grid, no channels, no panel. -->
+    <div class="mrd mrd-sensor" data-sv="Sensor trace">
+      <div class="mst-trace" aria-hidden="true">
+        <span class="mst-base"></span>
+        <svg class="mst-svg" viewBox="0 0 1080 2000" preserveAspectRatio="none" focusable="false"><path class="mst-line" d=""/></svg>
+        <span class="mst-peak"></span>
+        <span class="mst-head"></span>
+      </div>
+      <p class="mst-bar">
+        <span class="mst-fill" aria-hidden="true"></span>
+        <span class="mst-say"><span class="mld-t-read">Your score is on its way</span><span class="mld-t-ready">Score locked in</span></span>
+        <span class="mst-say mst-say-on" aria-hidden="true"><span class="mld-t-read">Your score is on its way</span><span class="mld-t-ready">Score locked in</span></span>
+      </p>
+    </div>
+
+    <div class="mrd mrd-replay" data-sv="Replay saving" hidden>
+      <figure class="mld-frame" aria-hidden="true">
+        <img src="assets/mscreens/loading-replay.jpg" alt="" width="900" height="1500" decoding="async" style="object-position: 50% 30%; transform-origin: 50% 30%">
+        <span class="mld-flash"></span>
+        <span class="mld-frame-top"><span class="mld-rec"></span>Replay</span>
+        <span class="mld-frame-bar"><i></i></span>
+      </figure>
+      <p class="mld-status"><span class="mld-status-ring" aria-hidden="true"></span><span data-mld-status>Saving the clip</span></p>
+    </div>
+
+    <div class="mrd mrd-verdict" data-sv="Verdict" hidden>
+      <div class="mld-counter" aria-hidden="true">
+        <span class="mld-rings"><i></i><i></i><i></i></span>
+        <div class="mld-reels" data-mld-reels></div>
+      </div>
+      <div class="mld-charge" aria-hidden="true"><i></i></div>
+      <p class="mld-best"><span class="mld-best-label"><span data-lucide="trophy"></span>Your best so far</span><span class="mld-best-score" data-mld-best></span></p>
+    </div>
+
+    <div class="mrd mrd-finish" data-sv="Photo finish" hidden>
+      <figure class="mpf-shot" aria-hidden="true">
+        <img src="assets/mscreens/loading-photo.jpg" alt="" width="900" height="1350" decoding="async">
+        <span class="mpf-beam"></span>
+        <span class="mpf-lock"><i></i><i></i><i></i><i></i></span>
+        <span class="mpf-tag"><span data-lucide="crosshair"></span>Contact</span>
+      </figure>
+    </div>
+
+    <div class="mrd mrd-check" data-sv="Checklist" hidden>
+      <ol class="mck-list">
+        <li class="mck-row" style="--a:0"><span class="mck-ic"><span data-lucide="activity"></span></span><span class="mck-txt"><b>Force</b><span>Read from the pad</span></span><span class="mck-state"><span class="mck-spin"></span><span data-lucide="check"></span></span></li>
+        <li class="mck-row" style="--a:.22"><span class="mck-ic"><span data-lucide="gauge"></span></span><span class="mck-txt"><b>Speed</b><span>Timed to the millisecond</span></span><span class="mck-state"><span class="mck-spin"></span><span data-lucide="check"></span></span></li>
+        <li class="mck-row" style="--a:.44"><span class="mck-ic"><span data-lucide="clapperboard"></span></span><span class="mck-txt"><b>Replay</b><span>Cut in slow motion</span></span><span class="mck-state"><span class="mck-spin"></span><span data-lucide="check"></span></span></li>
+        <li class="mck-row" style="--a:.66"><span class="mck-ic"><span data-lucide="send"></span></span><span class="mck-txt"><b>Phone</b><span>The clip is on its way</span></span><span class="mck-state"><span class="mck-spin"></span><span data-lucide="check"></span></span></li>
+      </ol>
+      <div class="mck-bar" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <!-- include:parts/ms-ad.html -->
+</div>

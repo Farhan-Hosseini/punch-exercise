@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en" data-variant="arena" data-appearance="dark" data-decimals="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PunchApp for Robotenc</title>
+<meta name="description" content="A PunchApp design task for Robotenc: the result screen on the machine's 1080 by 3840 glass and the player's phone flow.">
+<link rel="icon" type="image/svg+xml" href="assets/logos/fist-circle.svg">
+<script>
+  /* the saved look before the first paint, so a reload in Light or Reference never flashes the dark Arena loader */
+  try {
+    const saved = JSON.parse(localStorage.getItem('punch-showcase.v5') || 'null')
+    if (saved) {
+      if (saved.appearance === 'light') document.documentElement.dataset.appearance = 'light'
+      if (saved.variant === 'reference') document.documentElement.dataset.variant = 'reference'
+      if (typeof saved.logo === 'string') document.documentElement.dataset.logo = saved.logo
+      // the loader's count is a score: whole points only when that is the saved format
+      if (saved.decimals === 'off') document.documentElement.dataset.decimals = 'off'
+    }
+  } catch (e) { /* storage unavailable: the defaults stand */ }
+  // Reference sets the loader's count and label in its own faces: fetch them now, so they do not swap in mid count
+  if (document.documentElement.dataset.variant === 'reference') {
+    ['archivo-black-latin-400-normal', 'sora-latin-700-normal'].forEach(function (f) {
+      var l = document.createElement('link')
+      l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = ''; l.href = 'fonts/' + f + '.woff2'
+      document.head.appendChild(l)
+    })
+  }
+  if (/[?&]embed=machine\b/.test(location.search)) document.documentElement.dataset.embed = 'machine'
+</script>
+<link rel="preload" href="fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-condensed-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="sections.css">
+<link rel="stylesheet" href="mscreens.css">
+<link rel="stylesheet" href="qr.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="mpages.css">
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="pay.css">
+<link rel="stylesheet" href="ds.css">
+<link rel="stylesheet" href="brief.css">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="anim.css">
+</head>
+<body>
+
+<!-- ============ loading: the strength tester, charged by the page loading. The rail, the puck and the count follow one
+     value, --lp, which the script below eases toward the real progress app.js writes as --load (fonts, then every image
+     on show). The count runs out to the score's full length as the page loads, a digit a step. When it lands app.js
+     adds is-rung (the bell rings) and then is-done (the loader fades). Under reduced motion it is one still.
+     Only the note speaks: the tester and the count are hidden from screen readers. -->
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="ld">
+    <div class="ld-lock" aria-hidden="true">
+      <img class="ld-mark" data-logo-img src="assets/logos/fist-circle.svg" alt="" width="44" height="44">
+      <img class="ld-word ld-on-dark" src="assets/logos/punchapp-wordmark.svg" alt="" width="452" height="98">
+      <img class="ld-word ld-on-light" src="assets/logos/punchapp-wordmark-dark.svg" alt="" width="452" height="98">
+    </div>
+    <span class="ld-bar" aria-hidden="true"><i></i></span>
+    <p class="loader-note" id="loaderNote">Loading the showcase</p>
+  </div>
+</div>
+<script>
+  /* The loader's own clock, running from the first paint, before the page's scripts arrive. Each frame eases the shown
+     charge toward the real progress (--load, written by app.js), so the bar never sits still and never runs ahead of
+     the page by much. window.PunchLoader.full() resolves once the bar is full, which is when app.js clears the loader. */
+  (function () {
+    var root = document.documentElement, loader = document.getElementById('loader')
+    var file = { punchapp: 'punchapp-mark', boxer: 'boxer-circle', glove: 'glove-tilt', upright: 'glove-upright', pair: 'gloves-pair', bag: 'speedbag' }[root.dataset.logo]
+    if (file) loader.querySelector('.ld-mark').src = 'assets/logos/' + file + '.svg'
+    var waiters = [], shown = 0, last = 0, full = false, was = -1, since = 0
+    // focus stays put while the loader covers the page: app.js makes the page inert once it boots, but before then a
+    // Tab would land on a control hidden behind it. Released when the loader leaves, or at the CSS failsafe (9 s).
+    function hold(e) {
+      if (loader.classList.contains('is-done') || performance.now() > 9000) document.removeEventListener('keydown', hold, true)
+      else if (e.key === 'Tab') e.preventDefault()
+    }
+    document.addEventListener('keydown', hold, true)
+    function land() { full = true; shown = 1; loader.style.setProperty('--lp', '1'); while (waiters.length) waiters.shift()() }
+    window.PunchLoader = { full: function () { return new Promise(function (r) { if (full) r(); else waiters.push(r) }) } }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { loader.classList.add('is-still'); land(); return }
+    function frame(now) {
+      if (loader.classList.contains('is-done')) return
+      var dt = last ? Math.min(64, now - last) : 16
+      last = now
+      var real = parseFloat(loader.style.getPropertyValue('--load')) || 0
+      if (real !== was) { was = real; since = now }
+      var drift = real + Math.max(0, .97 - real) * .35 * (1 - Math.exp(-(now - since) / 2500))
+      var aim = real >= 1 ? 1 : Math.max(real, drift)
+      var step = (aim - shown) * (1 - Math.exp(-dt / (real >= 1 ? 40 : 90)))
+      shown += Math.max(0, Math.min(step, (real >= 1 ? 5 : 2.6) * dt / 1000))
+      if (real >= 1 && 1 - shown < .01) { land(); return }
+      loader.style.setProperty('--lp', shown.toFixed(4))
+      requestAnimationFrame(frame)
+    }
+    requestAnimationFrame(frame)
+  })()
+</script>
+
+<!-- ============ shell: top bar ============ -->
+<header class="topbar">
+  <div class="crumb crumb-stack">
+    <img class="crumb-logo on-dark" src="assets/brand/robotenc-light.svg" alt="Robotenc" width="112" height="32">
+    <img class="crumb-logo on-light" src="assets/brand/robotenc.svg" alt="Robotenc" width="112" height="32">
+    <div class="crumb-text">
+      <div class="crumb-title">
+        <b>Design task for Robotenc</b>
+        <button class="briefbtn" id="openBrief" type="button" aria-label="The brief" aria-haspopup="dialog" aria-controls="brief" aria-expanded="false">
+          <svg class="ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/> <path d="M14 2v5a1 1 0 0 0 1 1h5"/> <path d="M10 9H8"/> <path d="M16 13H8"/> <path d="M16 17H8"/></svg>
+          <span>The brief</span>
+        </button>
+      </div>
+      <span>PunchApp, from the score on the arcade screen to the replay on the player's phone.</span>
+    </div>
+  </div>
+  <div class="modes" role="group" aria-label="What to show">
+    <button class="mode" type="button" data-mode="mobile" aria-pressed="false">
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/> <path d="M12 18h.01"/></svg>
+      <span class="long">Mobile app</span><span class="short">Phone</span>
+    </button>
+    <button class="mode" type="button" data-mode="machine" aria-pressed="true">
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="20" x="6" y="2" rx="2"/></svg>
+      <span class="long">Machine screen</span><span class="short">Machine</span>
+    </button>
+    <button class="mode" type="button" data-mode="animation" aria-pressed="false">
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12.296 3.464 3.02 3.956"/> <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z"/> <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/> <path d="m6.18 5.276 3.1 3.899"/></svg>
+      <span class="long">Animation</span><span class="short">Motion</span>
+    </button>
+    <button class="mode" type="button" data-mode="system" aria-pressed="false">
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"/> <path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7"/> <path d="M 7 17h.01"/> <path d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8"/></svg>
+      <span class="long">Design system</span><span class="short">System</span>
+    </button>
+  </div>
+  <!-- the page bar in two steps (pagenav.js): the groups, then the screens of the chosen group -->
+  <div class="pagenav" data-pagenav="mscreen">
+    <nav class="pagebar pagegroups mpagebar" aria-label="Machine screen groups">
+      <button type="button" data-group="rest">Home</button>
+      <button type="button" data-group="play">Play</button>
+      <button type="button" data-group="results">Results</button>
+    </nav>
+    <nav class="pagebar pagesub mpagebar" aria-label="Machine screens">
+      <button type="button" data-mscreen="default" data-in="rest">Home</button>
+      <button type="button" data-mscreen="attract" data-in="rest">Leaderboard</button>
+      <button type="button" data-mscreen="scan" data-in="play">Scan</button>
+      <button type="button" data-mscreen="countdown" data-in="play">Punch now</button>
+      <button type="button" data-mscreen="loading" data-in="play">Reading</button>
+      <button type="button" data-mscreen="result" data-in="results">Result</button>
+      <button type="button" data-mscreen="score" data-in="results">Big score</button>
+      <button type="button" data-mscreen="record" data-in="results">New record</button>
+    </nav>
+  </div>
+  <!-- the page bar in two steps (pagenav.js): the groups, then the screens of the chosen group -->
+  <div class="pagenav" data-pagenav="page">
+    <nav class="pagebar pagegroups" aria-label="App screen groups">
+      <button type="button" data-group="home">Home</button>
+      <button type="button" data-group="play">Play</button>
+      <button type="button" data-group="pay">Pay</button>
+      <button type="button" data-group="hits">Your hits</button>
+      <button type="button" data-group="social">Social</button>
+    </nav>
+    <nav class="pagebar pagesub" aria-label="App screens">
+      <button type="button" data-page="default" data-in="home">Home</button>
+      <button type="button" data-page="scan" data-in="play">Scan</button>
+      <button type="button" data-page="connect" data-in="play">Connect</button>
+      <button type="button" data-page="connected" data-in="play">Connected</button>
+      <button type="button" data-page="punch" data-in="play">Punch</button>
+      <button type="button" data-page="topup" data-in="pay">Buy credits</button>
+      <button type="button" data-page="checkout" data-in="pay">Checkout</button>
+      <button type="button" data-page="paid" data-in="pay">Paid</button>
+      <button type="button" data-page="failed" data-in="pay">Payment failed</button>
+      <button type="button" data-page="hit" data-in="hits">Your hit</button>
+      <button type="button" data-page="reel" data-in="hits">Reel</button>
+      <button type="button" data-page="ranks" data-in="social">Leaderboard</button>
+      <button type="button" data-page="feed" data-in="social">Feed</button>
+      <button type="button" data-page="profile" data-in="social">Profile</button>
+    </nav>
+  </div>
+  <!-- the Animation tab's controls, right under the tabs (anim.js); the other tabs hide them -->
+  <div class="anim-bar" id="animBar" role="group" aria-label="Play the flow">
+    <button class="anim-play" id="animPlay" type="button" aria-pressed="false">
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+      <span data-play-label>Start</span>
+    </button>
+    <button class="anim-reset" id="animReset" type="button">
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/> <path d="M3 3v5h5"/></svg>
+      Reset
+    </button>
+    <p class="sr-only" id="animStatus" role="status"></p>
+  </div>
+  <div class="topactions">
+    <button class="topbtn" id="openCase" type="button" aria-haspopup="dialog" aria-controls="case">
+      <span class="case-long">Read case study</span><span class="case-short">Case study</span>
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg>
+    </button>
+    <button class="iconbtn" id="openCustom" type="button" aria-label="Customise" aria-expanded="false" aria-controls="custom">
+      <svg class="ico" viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H3"/> <path d="M12 19H3"/> <path d="M14 3v4"/> <path d="M16 17v4"/> <path d="M21 12h-9"/> <path d="M21 19h-5"/> <path d="M21 5h-7"/> <path d="M8 10v4"/> <path d="M8 12H3"/></svg>
+      <span class="btn-label">Customise</span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ the machine ============ -->
+<main class="stage" id="stage">
+  <h1 class="sr-only">Machine screen</h1>
+  <div class="machine" id="machine">
+        <article class="screen" id="screen" aria-label="PunchApp result screen on the machine glass">
+          <div class="screen-scene" aria-hidden="true"></div>
+          <div class="spot spot-top" aria-hidden="true"></div>
+          <div class="spot spot-mid" aria-hidden="true"></div>
+
+          <div class="screen-content" id="screenContent">
+            <header class="sec s-header" data-slot="header">
+              <div class="vars"><!-- include:sections/header.html --></div>
+            </header>
+
+            <section class="sec s-hero" data-slot="hero" aria-label="Result">
+              <div class="vars"><!-- include:sections/hero.html --><!-- include:sections/hero-slot.html --></div>
+            </section>
+
+            <section class="sec s-ranks" data-slot="ranks" aria-labelledby="t-ranks">
+              <h2 class="s-title" id="t-ranks">Leaderboard ranks</h2>
+              <div class="vars"><!-- include:sections/ranks.html --></div>
+            </section>
+
+            <section class="sec s-stats" data-slot="stats" aria-labelledby="t-stats">
+              <h2 class="s-title" id="t-stats">Kinematic breakdown</h2>
+              <div class="vars"><!-- include:sections/stats.html --></div>
+            </section>
+
+            <section class="sec s-video" data-slot="video" aria-labelledby="t-video">
+              <h2 class="s-title" id="t-video">Watch performance</h2>
+              <div class="vars"><!-- include:sections/video.html --></div>
+            </section>
+
+            <section class="sec s-clips" data-slot="clips" aria-labelledby="t-clips">
+              <h2 class="s-title" id="t-clips">Recent punches</h2>
+              <div class="vars"><!-- include:sections/clips.html --></div>
+            </section>
+
+            <section class="sec s-photo" data-slot="photo" aria-label="The fight">
+              <div class="vars"><!-- include:sections/photo.html --></div>
+            </section>
+
+            <div class="sec s-cta" data-slot="cta">
+              <div class="vars"><!-- include:sections/cta.html --></div>
+            </div>
+
+            <footer class="sec s-sponsor" data-slot="sponsor">
+              <div class="vars"><!-- include:sections/sponsor.html --></div>
+            </footer>
+          </div>
+
+          <div class="screen-fx" aria-hidden="true"></div>
+        </article>
+<!-- include:parts/mscreens.html -->
+  </div>
+  <p class="sr-only" id="switchLive" role="status" aria-live="polite"></p>
+</main>
+
+<!-- ============ the phone flow ============ -->
+<main class="phone-stage" id="phoneStage" aria-label="PunchApp on a phone" hidden>
+  <h1 class="sr-only">Mobile app</h1>
+  <div class="device-wrap" id="deviceWrap">
+    <div class="device" id="device" data-device="iphone">
+      <span class="device-keys" aria-hidden="true"><i class="k-action"></i><i class="k-up"></i><i class="k-down"></i><i class="k-power"></i><i class="k-cam"></i></span>
+      <div class="device-screen">
+        <!-- include:parts/phone.html -->
+        <span class="device-island" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+  <!-- the Animation tab (anim.css, anim.js): the rail with the Play control and the steps, a caption under each surface,
+       and the score reveal clip under the pair. The Mobile app tab shows none of it (mobile.css hides it without is-anim) -->
+  <aside class="linked" id="linked" aria-label="The machine, following the phone">
+    <div class="linked-glass"><iframe id="linkedFrame" title="The machine screen, following the phone flow" tabindex="-1" loading="lazy"></iframe></div>
+  </aside>
+  <section class="anim-extra" id="animExtra" aria-labelledby="animTitle">
+    <div class="anim-extra-head">
+      <p class="anim-k">The motion deliverable</p>
+      <h2 class="anim-title" id="animTitle">Two clips, one for each surface</h2>
+      <p class="anim-p">Neither is a screen recording. Headless Chrome loads this showcase, takes the page’s own clock and steps it frame by frame, so every frame is the instant it claims to be and the timing is exactly what the screens play.</p>
+    </div>
+    <article class="anim-piece" aria-labelledby="animOneTitle">
+      <div class="anim-extra-head">
+        <p class="anim-k">The glass</p>
+        <h3 class="anim-piece-title" id="animOneTitle">The score reveal</h3>
+        <p class="anim-p">The last seconds of Punch now, the strike, Reading the strike, New record as the name at the top flaps over from Omar Nasser to Sara, then the Big score with its reason and the still of the strike. Ten seconds at 60 fps, with the designs chosen by default.</p>
+      </div>
+      <div class="anim-clips">
+        <figure class="anim-fig anim-fig-master">
+          <div class="anim-glass"><video class="anim-clip" data-anim-clip src="assets/motion/reveal-live-1080x3840.mp4" poster="assets/motion/reveal-live-1080x3840-poster.jpg" muted loop playsinline preload="none" aria-label="The score reveal on the live glass at its own size, 1080 by 3840"></video></div>
+        </figure>
+        <figure class="anim-fig anim-fig-pres">
+          <video class="anim-clip" data-anim-clip src="assets/motion/reveal-live-1920x1080.mp4" poster="assets/motion/reveal-live-1920x1080-poster.jpg" muted loop playsinline controls preload="none" aria-label="The score reveal presentation cut, 1920 by 1080: the whole glass, a close up of each beat and the beats named beside it"></video>
+        </figure>
+      </div>
+      <p class="anim-files">
+        <a href="assets/motion/reveal-live-1080x3840.mp4" download>Master MP4</a>
+        <a href="assets/motion/reveal-live-1920x1080.mp4" download>Presentation MP4</a>
+        <a href="assets/motion/reveal-live-960.gif" download>GIF</a>
+      </p>
+    </article>
+    <article class="anim-piece" aria-labelledby="animTwoTitle">
+      <div class="anim-extra-head">
+        <p class="anim-k">The phone</p>
+        <h3 class="anim-piece-title" id="animTwoTitle">The run</h3>
+        <p class="anim-p">One turn, end to end: home, the code on the cabinet, the link that holds a credit, the pad, the strike, the number landing in your hand and the replay ready to share. Seventeen seconds at 60 fps, the phone at its own size.</p>
+        <p class="anim-p">The app plays it. The recorder only starts the scan, taps the link and brings the strike forward, because a real turn waits five to twelve seconds for it.</p>
+      </div>
+      <div class="anim-clips">
+        <figure class="anim-fig anim-fig-master">
+          <div class="anim-phone"><video class="anim-clip" data-anim-clip src="assets/motion/run-live-928x1960.mp4" poster="assets/motion/run-live-928x1960-poster.jpg" muted loop playsinline preload="none" aria-label="The run on the phone at its own size, 440 by 956 points"></video></div>
+        </figure>
+        <figure class="anim-fig anim-fig-pres">
+          <video class="anim-clip" data-anim-clip src="assets/motion/run-live-1920x1080.mp4" poster="assets/motion/run-live-1920x1080-poster.jpg" muted loop playsinline controls preload="none" aria-label="The run presentation cut, 1920 by 1080: the phone on a stage with the beats named beside it"></video>
+        </figure>
+      </div>
+      <p class="anim-files">
+        <a href="assets/motion/run-live-928x1960.mp4" download>Master MP4</a>
+        <a href="assets/motion/run-live-1920x1080.mp4" download>Presentation MP4</a>
+        <a href="assets/motion/run-live-960.gif" download>GIF</a>
+      </p>
+    </article>
+    <div class="anim-old" aria-labelledby="animOldTitle">
+      <div class="anim-old-text">
+        <p class="anim-k">Before the glass was built</p>
+        <h3 class="anim-old-title" id="animOldTitle">The first concept</h3>
+        <p class="anim-p">The strength tester idea, rendered from code: the red charge climbs as high as the hit deserves, breaks the day’s marks, and the number drops onto the plate under one stage gravity. Seven seconds.</p>
+        <p class="anim-files">
+          <button type="button" class="anim-case" data-open-case="case-idea">Read the idea</button>
+          <a href="assets/motion/reveal-master-1080x3840.mp4" download>Master MP4</a>
+          <a href="assets/motion/reveal-presentation-1920x1080.mp4" download>Presentation MP4</a>
+          <a href="assets/motion/reveal-presentation-960.gif" download>GIF</a>
+        </p>
+      </div>
+      <figure class="anim-fig anim-fig-old">
+        <video class="anim-clip" src="assets/motion/reveal-presentation-1920x1080.mp4" poster="assets/motion/reveal-presentation-poster.jpg" muted loop playsinline controls preload="none" aria-label="The first concept of the score reveal, 1920 by 1080, rendered from code"></video>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<!-- ============ the design system ============ -->
+<main class="ds-stage" id="dsStage" aria-label="Design system" hidden>
+<!-- include:parts/ds.html -->
+</main>
+
+<!-- ============ shell: settings panel ============ -->
+<div class="custom-scrim" id="customScrim" hidden></div>
+<aside class="custom" id="custom" aria-labelledby="customTitle" hidden>
+  <div class="custom-head">
+    <div>
+      <h2 id="customTitle">Customise</h2>
+      <p class="custom-sub" id="customSub">Shape the result screen on the machine glass.</p>
+    </div>
+    <button class="iconbtn small" id="closeCustom" type="button" aria-label="Close settings">
+      <svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="custom-body">
+    <details class="acc" data-acc="page" data-when="mobile machine animation" open>
+      <summary class="acc-sum"><span class="acc-t"><span class="acc-k" id="accPageKind">Phone screen</span><b class="acc-title" id="accPageName">Home</b></span><span class="acc-note" id="accPageNote"></span><span class="acc-chev" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <div class="sec-rows" id="pageRows"></div>
+        <div class="acc-result" id="resultRows" hidden>
+          <div class="sec-rows" id="secRows"></div>
+        </div>
+        <p class="acc-empty" id="pageEmpty" hidden>This screen has nothing to change yet.</p>
+      </div>
+    </details>
+
+    <details class="acc" data-acc="page2" data-when="animation" open>
+      <summary class="acc-sum"><span class="acc-t"><span class="acc-k" id="accPage2Kind">Machine screen, live</span><b class="acc-title" id="accPage2Name">Home</b></span><span class="acc-chev" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <div class="sec-rows" id="pageRows2"></div>
+        <p class="acc-empty" id="pageEmpty2" hidden>The live glass is on the result screen: its sections are in the Machine screen tab.</p>
+      </div>
+    </details>
+
+    <details class="acc" data-acc="shared" open>
+      <summary class="acc-sum"><span class="acc-t"><span class="acc-k">Shared</span><b class="acc-title" id="g-shared">Across the showcase</b></span><span class="acc-note" id="themeNote">Arena, dark</span><span class="acc-chev" aria-hidden="true"></span></summary>
+      <div class="acc-body cus-shared">
+        <div class="cus-sub" data-when="mobile animation">
+          <span class="acc-sub" id="g-size-phone">Size on screen</span>
+          <div class="seg" role="group" aria-labelledby="g-size-phone">
+            <button type="button" id="phoneActual" aria-pressed="true">Actual size</button>
+            <button type="button" id="phoneFit" aria-pressed="false">Fit to window</button>
+          </div>
+        </div>
+        <div class="cus-sub" data-when="machine">
+          <span class="acc-sub" id="g-size-glass">Size on screen</span>
+          <div class="seg" role="group" aria-labelledby="g-size-glass">
+            <button type="button" id="actualMachine" aria-pressed="true">Actual size</button>
+            <button type="button" id="readSize" aria-pressed="false">Reading size</button>
+          </div>
+        </div>
+        <div class="cus-sub">
+          <span class="acc-sub" id="g-every">Across every screen</span>
+
+        <div class="sec-rows" id="globalRows"></div>
+        <div class="ctl" hidden>
+          <label for="c-score">Score</label><output id="o-score" for="c-score"></output>
+          <input type="range" id="c-score" min="0" max="1000" step="1" aria-describedby="scoreHelp">
+          <p class="ctl-help" id="scoreHelp">The brief's full range, 0 to 999,999.000. Score format sets whether the three decimals show.</p>
+        </div>        </div>
+        <div class="cus-sub">
+          <span class="acc-sub" id="g-theme">Theme</span>
+
+        <div class="themes" role="radiogroup" aria-labelledby="g-theme">
+          <button class="variant theme-tile" type="button" role="radio" data-variant="arena" aria-checked="true">
+            <span class="theme-prev arena" aria-hidden="true"><span>Punch</span></span>
+            <span class="theme-txt"><b>Arena</b><i>Athletic, refined</i></span>
+            <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </button>
+          <button class="variant theme-tile" type="button" role="radio" data-variant="reference" aria-checked="false">
+            <span class="theme-prev reference" aria-hidden="true"><span>Punch</span></span>
+            <span class="theme-txt"><b>Reference</b><i>Figma frame as drawn</i></span>
+            <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </button>
+        </div>
+        <div class="seg seg-appearance" role="group" aria-label="Appearance">
+          <button type="button" data-appearance-btn="dark" aria-pressed="true">
+            <svg class="ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+            Dark
+          </button>
+          <button type="button" data-appearance-btn="light" aria-pressed="false">
+            <svg class="ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/> <path d="M12 2v2"/> <path d="M12 20v2"/> <path d="m4.93 4.93 1.41 1.41"/> <path d="m17.66 17.66 1.41 1.41"/> <path d="M2 12h2"/> <path d="M20 12h2"/> <path d="m6.34 17.66-1.41 1.41"/> <path d="m19.07 4.93-1.41 1.41"/></svg>
+            Light
+          </button>
+        </div>
+        <p class="lock-note" id="lockNote" hidden>Reference shows your Figma frame exactly as drawn, so its sections and colours are locked. Switch to Arena to change them.</p>        </div>
+        <div class="cus-sub">
+          <span class="acc-sub" id="g-logo">Logo</span>
+
+        <div class="logos" role="radiogroup" aria-labelledby="g-logo">
+          <button class="logo-tile" type="button" role="radio" data-logo="punchapp" aria-checked="false"><span class="logo-prev"><img src="assets/logos/punchapp-mark.svg" alt=""></span><span>PunchApp</span></button>
+          <button class="logo-tile" type="button" role="radio" data-logo="fist" aria-checked="true"><span class="logo-prev"><img src="assets/logos/fist-circle.svg" alt=""></span><span>Fist</span></button>
+          <button class="logo-tile" type="button" role="radio" data-logo="boxer" aria-checked="false"><span class="logo-prev"><img src="assets/logos/boxer-circle.svg" alt=""></span><span>Boxer</span></button>
+          <button class="logo-tile" type="button" role="radio" data-logo="glove" aria-checked="false"><span class="logo-prev"><img src="assets/logos/glove-tilt.svg" alt=""></span><span>Glove</span></button>
+          <button class="logo-tile" type="button" role="radio" data-logo="upright" aria-checked="false"><span class="logo-prev"><img src="assets/logos/glove-upright.svg" alt=""></span><span>Guard</span></button>
+          <button class="logo-tile" type="button" role="radio" data-logo="pair" aria-checked="false"><span class="logo-prev"><img src="assets/logos/gloves-pair.svg" alt=""></span><span>Pair</span></button>
+          <button class="logo-tile" type="button" role="radio" data-logo="bag" aria-checked="false"><span class="logo-prev"><img src="assets/logos/speedbag.svg" alt=""></span><span>Speed bag</span></button>
+        </div>        </div>
+        <div class="cus-sub" data-when="mobile animation">
+          <span class="acc-sub" id="g-device">The phone</span>
+
+        <div class="themes" role="radiogroup" aria-labelledby="g-device">
+          <button class="theme-tile dev-tile" type="button" role="radio" data-device="iphone" aria-checked="true">
+            <span class="dev-prev" aria-hidden="true"><span class="dev-phone iphone"><i></i></span></span>
+            <span class="theme-txt"><b>iPhone 17 Pro Max</b><i>440&nbsp;×&nbsp;956, Dynamic Island</i></span>
+            <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </button>
+          <button class="theme-tile dev-tile" type="button" role="radio" data-device="android" aria-checked="false">
+            <span class="dev-prev" aria-hidden="true"><span class="dev-phone android"><i></i></span></span>
+            <span class="theme-txt"><b>Android</b><i>412&nbsp;×&nbsp;915, punch-hole camera</i></span>
+            <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          </button>
+        </div>
+        <div class="ctl-row">
+          <span class="ctl-label" id="walletLabel">Wallet</span>
+          <div class="seg seg-inline" role="group" aria-labelledby="walletLabel">
+            <button type="button" id="walletEmpty" aria-pressed="true">No credits</button>
+            <button type="button" id="walletFull" aria-pressed="false">Three credits</button>
+          </div>
+        </div>
+        <button class="replay" id="replayFlow" type="button">
+          <svg class="ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+          Play the flow from the scan
+        </button>        </div>
+        <div class="cus-sub" data-when="machine">
+          <span class="acc-sub" id="g-display">The glass</span>
+
+        <button class="replay" id="replayReveal" type="button" data-when="machine">
+          <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/> <path d="M3 3v5h5"/></svg>
+          Replay the reveal
+        </button>
+        <div class="ctl" data-when="machine">
+          <label for="c-space">Breathing room</label><output id="o-space" for="c-space"></output>
+          <input type="range" id="c-space" min="70" max="125" step="1">
+        </div>
+        <div class="ctl" data-when="machine">
+          <label for="c-accent">Red accent</label><output id="o-accent" for="c-accent"></output>
+          <input type="range" id="c-accent" min="0" max="100" step="1">
+        </div>
+        <div class="ctl">
+          <label for="c-zoom">Size on screen</label><output id="o-zoom" for="c-zoom"></output>
+          <input type="range" id="c-zoom" min="12" max="80" step="1">
+        </div>
+        <div class="ctl">
+          <label for="c-glow">Light glow</label><output id="o-glow" for="c-glow"></output>
+          <input type="range" id="c-glow" min="0" max="100" step="1">
+        </div>
+        <div class="ctl">
+          <label for="c-photo">Photo colour</label><output id="o-photo" for="c-photo"></output>
+          <input type="range" id="c-photo" min="0" max="100" step="1">
+        </div>
+        <div class="ctl">
+          <label for="c-radius">Corner radius</label><output id="o-radius" for="c-radius"></output>
+          <input type="range" id="c-radius" min="0" max="48" step="1">
+        </div>        </div>
+      </div>
+    </details>
+
+    <button class="resetall" id="resetCustom" type="button">Reset everything</button>
+  </div>
+</aside>
+
+<!-- ============ shell: the brief ============ -->
+<aside class="brief" id="brief" role="dialog" aria-modal="true" aria-labelledby="briefTitle" hidden>
+<!-- include:parts/brief.html -->
+</aside>
+
+<!-- ============ shell: case study ============ -->
+<div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="caseTitle" hidden>
+<!-- include:parts/case.html -->
+</div>
+
+<script src="format.js"></script>
+<script src="psec.js"></script>
+<script src="icons.js"></script>
+<script src="qr.js"></script>
+<script src="app-icons.js"></script>
+<script src="lucide.js"></script>
+<script src="mobile.js"></script>
+<script src="pay.js"></script>
+<script src="mpages/default.js"></script>
+<script src="mpages/connected.js"></script>
+<script src="mpages/failed.js"></script>
+<script src="mpages/saved.js"></script>
+<script src="mpages/punch.js"></script>
+<script src="mpages/scan.js"></script>
+<script src="mpages/connect.js"></script>
+<script src="mpages/feed.js"></script>
+<script src="mpages/profile.js"></script>
+<script src="mpages/hit.js"></script>
+<script src="mpages/ranks.js"></script>
+<script src="mpages/reel.js"></script>
+<script src="ds.js"></script>
+<script src="mscreens/default.js"></script>
+<script src="mscreens/attract.js"></script>
+<script src="mscreens/scan.js"></script>
+<script src="mscreens/_ads.js"></script>
+<script src="mscreens/_backdrops.js"></script>
+<script src="mscreens/_brand.js"></script>
+<script src="mscreens/countdown.js"></script>
+<script src="mscreens/loading.js"></script>
+<script src="mscreens/stats.js"></script>
+<script src="mscreens/score.js"></script>
+<script src="mscreens/record.js"></script>
+<script src="anim.js"></script>
+<script src="app.js"></script>
+<script src="pagenav.js"></script>
+</body>
+</html>

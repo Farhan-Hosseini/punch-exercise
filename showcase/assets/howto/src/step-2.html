@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" data-variant="arena" data-appearance="dark">
+<head>
+<meta charset="utf-8">
+<base href="/">
+<title>How to scan, step 2</title>
+<!-- Step 2: hold the phone up to the glass. The column's scan screen and the phone reading its code.
+     Rendered by render.mjs in this folder (1568 x 760 or 720 x 720, transparent). Open it with ?a=light for the light look. -->
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/qr.css">
+<link rel="stylesheet" href="/assets/howto/src/howto.css">
+</head>
+<body>
+<div class="scene scene-sq">
+  <i class="pool pool-warm" style="left:-20px;top:-60px;width:270px;height:170px"></i>
+  <i class="pool pool-red" style="left:-30px;top:30px;width:400px;height:330px"></i>
+  <div class="col" id="m" data-glass="scan" style="--x:26px;--y:18px;--w:150px;--fade-a:250px;--fade-b:330px"></div>
+  <svg class="beam" data-from="#m .pqr-frame" data-to="#p .ph-qr" aria-hidden="true"></svg>
+  <div class="phone" id="p" data-screen="reading" data-grip="hold" style="--x:206px;--y:98px;--w:108px;--rot:-8deg"></div>
+</div>
+<script src="/qr.js"></script>
+<script src="/assets/howto/src/howto.js"></script>
+</body>
+</html>

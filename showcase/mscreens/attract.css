@@ -1,0 +1,668 @@
+/* Machine screen: attract, the leaderboard the glass shows between players (parts/mscreen-attract.html,
+   mscreens/attract.js). One frame, four sections stacked between the shared header and the sponsor strip, each with
+   five designs chosen in Customise ("This screen"):
+     Title          Phone header, Scope name, Icon tabs, Photo banner, Timer ring, each with the one board switch
+     Top three      Cards, Podium, Champion, Force meter, Tiles (the phone's five board styles at glass scale)
+     Ranks 4 to 10  Glass rows, Table, Meter rows, Tiles, Ladder
+     Call to play   Red card, Big code, Your bar, Phone photo, Open rank (the shared QR style, a line, a You row)
+   Every section has a fixed room (the --msa-*-room heights), so the frame never moves when a design changes, and every
+   design fits its room in all four looks. Spacing is the glass's own scale (mscreens/_space.css). Read from 1 to 1.5 m:
+   body text 40 px and up, labels 32 px and up. Every rule is scoped under .mscreen-attract. */
+
+/* ---------------------------------------------------------------- tokens per look. Arena dark is the default */
+.mscreen-attract {
+  --msa-top: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px);
+  --msa-title-room: 390px;
+  --msa-top-room: 1000px;
+  --msa-ranks-room: 1140px;
+  --msa-cta-room: 432px;
+  --msa-cycle: 9s;
+  --msa-lag: 0ms;
+  --msa-k: 1;                         /* the display face's width: Reference's Archivo Black runs wider */
+  --msa-red: var(--strike);
+  --msa-on-red: #FFFFFF;
+  --msa-badge: linear-gradient(180deg, color-mix(in oklab, var(--strike), #FFFFFF 10%), color-mix(in oklab, var(--strike), #000000 20%));
+  --msa-badge-glow: 0 18px 36px -16px color-mix(in oklab, var(--strike) 80%, transparent);
+  --msa-glass: var(--surface-bg);
+  --msa-glass-line: var(--surface-border);
+  --msa-lead: linear-gradient(135deg, color-mix(in oklab, var(--strike) 24%, transparent), color-mix(in oklab, var(--strike) 6%, transparent) 60%), var(--surface-bg);
+  --msa-lead-line: 3px solid color-mix(in oklab, var(--strike) 62%, transparent);
+  --msa-you: linear-gradient(135deg, #8E0D11, #2A0709 70%);
+  --msa-you-line: 2px solid rgba(250, 84, 83, .45);
+  --msa-champ: linear-gradient(135deg, #C8121A, #7A0A0E 62%, #3A0508);
+  --msa-step: linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .02));
+  --msa-step-first: linear-gradient(180deg, color-mix(in oklab, var(--strike) 62%, transparent), color-mix(in oklab, var(--strike) 6%, transparent));
+  --msa-well: rgba(255, 255, 255, .05);
+  --msa-solid: var(--ground);          /* a flat colour under the wells: Arena's --ms-ground is a gradient list, which cannot follow another layer */
+  --msa-zebra: rgba(255, 255, 255, .045);
+  --msa-ring: rgba(255, 255, 255, .22);
+  --msa-crown: var(--strike);          /* the leader's crown in the brand red, as on every Results screen (round nine) */
+  --msa-up: #43D787;
+  --msa-down: #FF6B6B;
+  --msa-track: rgba(255, 255, 255, .1);
+  --msa-bar: linear-gradient(90deg, #A90E12, var(--strike) 70%, #FA5453);
+  --msa-dash: color-mix(in oklab, var(--ink-1) 26%, transparent);
+  --msa-scrim: linear-gradient(180deg, rgba(8, 8, 9, .05) 30%, rgba(8, 8, 9, .86) 100%);
+  --msa-letter: .5;
+}
+:root[data-appearance="light"] .mscreen-attract {
+  --msa-lead: linear-gradient(135deg, color-mix(in oklab, var(--strike) 12%, #FFFFFF), #FFFFFF 60%);
+  --msa-lead-line: 3px solid color-mix(in oklab, var(--strike) 55%, transparent);
+  --msa-you: linear-gradient(135deg, #D8141A, #8E0D11);
+  --msa-you-line: 0 solid transparent;
+  --msa-champ: linear-gradient(135deg, #E0161D, #A50D12 62%, #6E080B);
+  --msa-step: linear-gradient(180deg, #FFFFFF, rgba(255, 255, 255, .45));
+  --msa-step-first: linear-gradient(180deg, color-mix(in oklab, var(--strike) 96%, #FFFFFF), color-mix(in oklab, var(--strike) 58%, #FFFFFF));
+  --msa-well: rgba(21, 20, 19, .05);
+  --msa-zebra: rgba(21, 20, 19, .04);
+  --msa-ring: rgba(21, 20, 19, .16);
+  --msa-up: #0A6E3A;
+  --msa-down: #B71C1C;
+  --msa-track: rgba(21, 20, 19, .09);
+  --msa-bar: linear-gradient(90deg, #B30D10, var(--strike) 70%, #F04544);
+}
+:root[data-variant="reference"] .mscreen-attract {
+  --msa-solid: var(--ms-ground);
+  --msa-k: .74;
+  --msa-you: linear-gradient(135deg, #6E0A0E, #16090B 72%);
+  --msa-champ: linear-gradient(135deg, #EB1110, #8A080B 62%, #2A0709);
+  --msa-step: linear-gradient(180deg, #1F0C0F, #16090B);
+  --msa-step-first: linear-gradient(180deg, rgba(235, 17, 16, .72), #16090B);
+  --msa-well: rgba(219, 228, 252, .08);
+  --msa-letter: .74;
+}
+:root[data-variant="reference"][data-appearance="light"] .mscreen-attract {
+  --msa-you: linear-gradient(135deg, #EB1110, #99090D);
+  --msa-champ: linear-gradient(135deg, #EB1110, #B00B0E 62%, #7A070A);
+  --msa-step: linear-gradient(180deg, #FFFFFF, #FFF1F0);
+  --msa-step-first: linear-gradient(180deg, #EB1110 30%, #F26B6A);
+  --msa-well: rgba(20, 18, 24, .05);
+}
+
+.mscreen-attract [hidden], .mscreen-attract [data-sv][hidden] { display: none !important; }
+
+/* ---------------------------------------------------------------- the frame: sections stacked between header and strip */
+.mscreen-attract .msa {
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; gap: var(--ms-sec-gap);
+  padding: var(--msa-top) 0 calc(var(--ms-ad-h) + 80px);
+  color: var(--ink-1); font-family: var(--f-text);
+}
+.mscreen-attract .msa > :not(.ms-lights, .ms-head, .ms-head > *, .ms-brand, .ms-ad, .sr-only) { position: relative; z-index: 1; flex: none; }
+.mscreen-attract .msa-sec { margin: 0 var(--ms-gut); }
+.mscreen-attract .msa-title { height: var(--msa-title-room); }
+.mscreen-attract .msa-top { height: var(--msa-top-room); }
+.mscreen-attract .msa-ranks { height: var(--msa-ranks-room); }
+.mscreen-attract .msa-play { height: var(--msa-cta-room); }
+.mscreen-attract .msa-sec > [data-sv], .mscreen-attract .msa-body { position: relative; height: 100%; }
+.mscreen-attract ol, .mscreen-attract ul { list-style: none; margin: 0; padding: 0; }
+.mscreen-attract p, .mscreen-attract h2 { margin: 0; }
+.mscreen-attract img { display: block; }
+.mscreen-attract [data-lucide] { display: inline-flex; flex: none; }
+
+/* shared type */
+.mscreen-attract .msa-t-kicker, .mscreen-attract .msa-c-kicker {
+  display: flex; align-items: center; gap: 14px;
+  font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2);
+}
+.mscreen-attract :is(.msa-t-kicker, .msa-c-kicker) > [data-lucide] { font-size: 44px; color: var(--msa-red); }
+.mscreen-attract .msa-disp {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track); line-height: .9;
+}
+
+/* the pieces every board uses: rank, avatar, who, score, movement */
+.mscreen-attract .msa-rk {
+  display: grid; place-items: center; width: 96px; height: 96px; border-radius: 28px;
+  background: var(--msa-well); border: 2px solid var(--line); color: var(--ink-1);
+  font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(46px / var(--cap)); line-height: 1; font-variant-numeric: tabular-nums;
+}
+.mscreen-attract .msa-rk.is-red { background: var(--msa-badge); color: var(--msa-on-red); border: 0; box-shadow: var(--msa-badge-glow); }
+.mscreen-attract .msa-ava { display: block; flex: none; width: 104px; height: 104px; border-radius: 50%; object-fit: cover; background: var(--msa-well); }
+.mscreen-attract .msa-ghost {
+  display: grid; place-items: center; flex: none; width: 104px; height: 104px; border-radius: 50%;
+  border: 3px dashed var(--msa-dash); color: var(--ink-3); font-size: 48px;
+}
+.mscreen-attract .msa-who { display: grid; gap: 6px; min-width: 0; }
+.mscreen-attract .msa-name { display: flex; align-items: center; gap: 14px; min-width: 0; font: var(--w-strong) 44px/1.1 var(--f-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mscreen-attract .msa-name > span:last-child { overflow: hidden; text-overflow: ellipsis; }
+.mscreen-attract .msa-name .ico { flex: none; color: var(--msa-crown); }
+.mscreen-attract .msa-ghost .ico, .mscreen-attract .msa-crown .ico { display: block; }
+/* an open place on a smaller board keeps the board's shape */
+.mscreen-attract :is(.msa-card, .msa-lite, .msa-meter, .msa-champ-card).is-open { background: transparent; border: 3px dashed var(--msa-dash); box-shadow: none; color: var(--ink-1); }
+.mscreen-attract .msa-city { font: var(--w-text) 32px/1.15 var(--f-text); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mscreen-attract .msa-end { display: grid; justify-items: end; align-content: center; gap: 8px; }
+.mscreen-attract .msa-pts {
+  --budget: 290px; --top: 58px;
+  font-family: var(--f-display); font-weight: var(--w-display); line-height: .9; letter-spacing: var(--display-track);
+  white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink-1);
+  font-size: min(calc(var(--top) / var(--cap)), calc(var(--budget) / (var(--chars, 8.8) * var(--num-w))));
+}
+.mscreen-attract .msa-move { display: inline-flex; align-items: center; gap: 6px; font: var(--w-strong) 32px/1 var(--f-text); font-variant-numeric: tabular-nums; }
+.mscreen-attract .msa-move svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.mscreen-attract .msa-move.up { color: var(--msa-up); }
+.mscreen-attract .msa-move.down { color: var(--msa-down); }
+.mscreen-attract .msa-move.down svg { transform: rotate(180deg); }
+.mscreen-attract .msa-move.same { min-height: 32px; }
+.mscreen-attract .msa-open-name { color: var(--ink-2); }
+.mscreen-attract .msa-open-city { color: var(--msa-red); }
+/* a photo that fills its tile, the look's scrim under white type */
+.mscreen-attract .msa-pic { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mscreen-attract .msa-shade { position: absolute; inset: 0; background: var(--msa-scrim); pointer-events: none; }
+
+/* ================================================================ TITLE */
+/* The board switch (.msa-sw), one control in every Title design, the Global, National and Dubai boards as a segmented
+   control. The well sits on the glass's 40 px radius; the segments inside it on the radius less the inset (10 px) and
+   the line (2 px), so the two curves run parallel. The board on show is the red segment, white type; its bright red
+   drains from right to left over the board's time and leaves the deep red behind, so the switch is also the clock.
+   The other boards read in the second ink on the well. Labels 40 px and up, segments 100 px and up: read from 3 m.
+   Under reduced motion the red stands full and the board still changes. */
+.mscreen-attract {
+  --msa-sw-r: 40px;
+  --msa-sw-pad: 10px;
+  --msa-sw-line: 2px;
+  --msa-sw-seg: calc(var(--msa-sw-r) - var(--msa-sw-pad) - var(--msa-sw-line));
+  --msa-sw-fs: 42px;
+  --msa-sw-track: .06em;
+  --msa-sw-spent: color-mix(in oklab, var(--strike), #000000 50%);
+}
+:root[data-variant="reference"] .mscreen-attract { --msa-sw-fs: 38px; --msa-sw-track: 0em; }
+.mscreen-attract .msa-sw {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; height: 124px; padding: var(--msa-sw-pad);
+  border-radius: var(--msa-sw-r); border: var(--msa-sw-line) solid var(--line);
+  background: linear-gradient(var(--msa-well), var(--msa-well)) var(--msa-solid);
+}
+.mscreen-attract .msa-scope {
+  position: relative; overflow: hidden; isolation: isolate; min-width: 0;
+  display: flex; align-items: center; justify-content: center; gap: 16px; padding: 0 20px;
+  border-radius: var(--msa-sw-seg); color: var(--ink-2);
+  font: var(--w-label) var(--msa-sw-fs)/1 var(--f-label); letter-spacing: var(--msa-sw-track); text-transform: uppercase; white-space: nowrap;
+  transition: background-color .4s ease, color .4s ease;
+}
+.mscreen-attract .msa-sw-l { position: relative; margin-right: calc(-1 * var(--msa-sw-track)); }
+.mscreen-attract .msa-sw-i { position: relative; font-size: 44px; }
+.mscreen-attract .msa-scope.is-on { background: var(--msa-sw-spent); color: var(--msa-on-red); box-shadow: var(--msa-badge-glow); }
+.mscreen-attract .msa-fill {
+  position: absolute; inset: 0; z-index: -1; background: var(--msa-badge);
+  transform-origin: 0 50%; transform: scaleX(0);
+}
+.mscreen-attract .msa-scope.is-on .msa-fill { transform: scaleX(1); }
+.mscreen-attract .is-live .msa-scope.is-on .msa-fill { animation: msa-drain var(--msa-cycle) linear both; animation-delay: var(--msa-lag); }
+
+/* Phone header: the phone's own header, its title and trophy, and its segmented control */
+.mscreen-attract .msa-t-phone { display: grid; align-content: start; gap: 26px; }
+.mscreen-attract .msa-t-live { display: flex; align-items: center; gap: 14px; font: var(--w-strong) 38px/1 var(--f-text); color: var(--ink-2); }
+.mscreen-attract .msa-t-live [data-lucide] { font-size: 44px; color: var(--msa-red); }
+.mscreen-attract .msa-t-row { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.mscreen-attract .msa-t-title {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: min(calc(120px / var(--cap)), calc(700px / (11 * var(--msa-letter)))); line-height: .9;
+}
+.mscreen-attract .msa-t-trophy {
+  flex: none; display: grid; place-items: center; width: 136px; height: 136px; border-radius: 40px; font-size: 68px;
+  background: var(--surface-hi-bg); border: var(--surface-hi-border); box-shadow: var(--surface-shadow); color: var(--ink-1);
+}
+.mscreen-attract .msa-t-phone .msa-sw { margin-top: 6px; }
+
+/* Scope name: the board's name as big as the glass allows, the switch standing beside it, one board to a row */
+.mscreen-attract .msa-t-name { display: grid; grid-template-columns: minmax(0, 1fr) 340px; align-items: center; column-gap: 48px; }
+.mscreen-attract .msa-t-names { display: grid; gap: 28px; min-width: 0; container-type: inline-size; }
+.mscreen-attract .msa-t-big {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: min(calc(210px / var(--cap)), calc(100cqi / (8.4 * var(--msa-letter)))); line-height: .84; white-space: nowrap;
+}
+.mscreen-attract .msa-sw-col { grid-template-columns: none; grid-template-rows: repeat(3, minmax(0, 1fr)); height: 350px; }
+.mscreen-attract .msa-sw-col .msa-scope { justify-content: flex-start; padding: 0 24px; }
+/* Reference's Sora runs wider: the switch takes a little more of the row */
+:root[data-variant="reference"] .mscreen-attract .msa-t-name { grid-template-columns: minmax(0, 1fr) 372px; column-gap: 40px; }
+
+/* Icon tabs: the Force meter's heading over a tall switch, each board's mark over its name */
+.mscreen-attract .msa-t-tabs { display: grid; align-content: center; gap: 24px; }
+.mscreen-attract .msa-t-hard {
+  max-width: 880px; text-wrap: balance; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case);
+  letter-spacing: var(--display-track); font-size: min(calc(94px / var(--cap)), calc(880px / (15 * var(--msa-letter) * 1.1))); line-height: .9; white-space: nowrap;
+}
+.mscreen-attract .msa-sw-tall { height: 164px; margin-top: 8px; }
+.mscreen-attract .msa-sw-tall .msa-scope { flex-direction: column; gap: 14px; }
+.mscreen-attract .msa-sw-tall .msa-sw-i { font-size: 48px; }
+
+/* Photo banner: a real photo for each board, the switch in smoked glass along its top, the board's name at its foot */
+.mscreen-attract .msa-t-photo { overflow: hidden; border-radius: var(--msa-sw-r); color: #FFFFFF; background: #0B0B0C; box-shadow: var(--surface-shadow); }
+.mscreen-attract .msa-t-pics img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; }
+.mscreen-attract .msa-t-pics img.is-on { opacity: 1; }
+.mscreen-attract .msa-t-pics::after {
+  content: ""; position: absolute; inset: 0;
+  /* the switch and the title sit on the photo: a scrim under all of it, deepest where the type is */
+  background: linear-gradient(180deg, rgba(8, 8, 9, .8), rgba(8, 8, 9, .5) 34%, rgba(8, 8, 9, .46) 52%, rgba(8, 8, 9, .9));
+}
+/* the switch in smoked glass, white type in every look (it sits on a photo), inset by the gutter it keeps below */
+.mscreen-attract .msa-sw-glass {
+  position: absolute; left: 32px; right: 32px; top: 32px; height: 112px;
+  background: rgba(8, 8, 9, .56); border-color: rgba(255, 255, 255, .24); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.mscreen-attract .msa-sw-glass .msa-scope { color: rgba(255, 255, 255, .86); }
+.mscreen-attract .msa-sw-glass .msa-scope.is-on { color: #FFFFFF; }
+.mscreen-attract .msa-t-foot { position: absolute; left: 44px; right: 44px; bottom: 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; container-type: inline-size; }
+.mscreen-attract .msa-t-over {
+  display: flex; align-items: center; gap: 24px; min-width: 0;
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: min(calc(96px / var(--cap)), calc((100cqi - 340px) / (8.4 * var(--msa-letter)))); line-height: .9; white-space: nowrap; text-shadow: 0 4px 30px rgba(0, 0, 0, .5);
+}
+.mscreen-attract .msa-t-ic {
+  flex: none; display: grid; place-items: center; width: 112px; height: 112px; border-radius: 32px; font-size: 60px;
+  background: var(--msa-badge); color: var(--msa-on-red); box-shadow: var(--msa-badge-glow);
+}
+.mscreen-attract .msa-t-overtext { display: grid; gap: 14px; min-width: 0; }
+.mscreen-attract .msa-t-small { font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: rgba(255, 255, 255, .84); text-shadow: none; }
+.mscreen-attract .msa-t-chip {
+  flex: none; display: inline-flex; align-items: center; gap: 14px; height: 72px; padding: 0 28px; border-radius: 36px;
+  background: rgba(8, 8, 9, .5); border: 2px solid rgba(255, 255, 255, .24); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
+}
+.mscreen-attract .msa-dot { position: relative; width: 18px; height: 18px; border-radius: 50%; background: #FF3B3B; box-shadow: 0 0 18px #FF3B3B; }
+.mscreen-attract .is-live .msa-dot { animation: msa-blink 1.6s ease-in-out infinite; }
+
+/* Timer ring: the seconds left on this board inside a ring that runs down, the board's name beside it, the switch
+   across the foot. The ring is the clock here, so the switch's red stands full */
+.mscreen-attract .msa-t-ring { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 30px; }
+.mscreen-attract .msa-t-ringrow { display: grid; grid-template-columns: 236px minmax(0, 1fr); align-items: center; column-gap: 48px; min-height: 0; }
+.mscreen-attract .msa-ring { position: relative; display: grid; place-items: center; width: 236px; height: 236px; }
+.mscreen-attract .msa-ring svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+.mscreen-attract .msa-ring circle { fill: none; stroke-width: 10; }
+.mscreen-attract .msa-ring-trk { stroke: var(--msa-track); }
+.mscreen-attract .msa-ring-run { stroke: var(--msa-red); stroke-linecap: round; stroke-dasharray: 1 1; stroke-dashoffset: 0; filter: drop-shadow(0 0 6px color-mix(in oklab, var(--strike) 60%, transparent)); }
+.mscreen-attract .is-live .msa-t-ring .msa-ring-run { animation: msa-ring var(--msa-cycle) linear both; animation-delay: var(--msa-lag); }
+.mscreen-attract .msa-ring-in { position: relative; display: grid; justify-items: center; gap: 10px; }
+.mscreen-attract .msa-ring-in b { font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(104px / var(--cap)); line-height: .8; font-variant-numeric: tabular-nums; }
+.mscreen-attract .msa-ring-in span { font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+.mscreen-attract .msa-t-copy { display: grid; gap: 26px; min-width: 0; container-type: inline-size; }
+.mscreen-attract .msa-t-mid {
+  white-space: nowrap;
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: min(calc(140px / var(--cap)), calc(100cqi / (8.4 * var(--msa-letter)))); line-height: .86;
+}
+.mscreen-attract .msa-sw-slim { height: 112px; }
+.mscreen-attract .msa-sw-slim .msa-scope.is-on .msa-fill { animation: none; transform: scaleX(1); }
+
+/* ================================================================ TOP THREE */
+/* Cards: the phone's Cards board, the top three on big glass cards with the red rank badge */
+.mscreen-attract .msa-cards { display: grid; grid-template-rows: minmax(0, 1.12fr) minmax(0, 1fr) minmax(0, 1fr); gap: var(--ms-item-gap); height: 100%; }
+.mscreen-attract .msa-card {
+  position: relative; display: grid; grid-template-columns: 128px 172px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 34px; row-gap: 16px;
+  grid-template-areas: "rk ava who" "rk ava end"; align-items: center; align-content: center;
+  padding: 0 44px 0 var(--ms-pad); border-radius: 48px;
+  background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-card .msa-rk { grid-area: rk; width: 128px; height: 128px; border-radius: 36px; font-size: calc(70px / var(--cap)); }
+.mscreen-attract .msa-card :is(.msa-ava, .msa-ghost) { grid-area: ava; width: 172px; height: 172px; }
+.mscreen-attract .msa-card .msa-who { grid-area: who; align-self: end; }
+.mscreen-attract .msa-card .msa-name { font-size: 54px; }
+.mscreen-attract .msa-card .msa-end { grid-area: end; align-self: start; display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+.mscreen-attract .msa-card .msa-pts { --budget: 350px; --top: 92px; }
+.mscreen-attract .msa-card.is-lead { background: var(--msa-lead); border: var(--msa-lead-line); }
+.mscreen-attract .msa-card.is-lead::before {
+  content: ""; position: absolute; inset: -3px; border-radius: inherit; pointer-events: none; z-index: -1;
+  box-shadow: 0 0 80px 4px color-mix(in oklab, var(--strike) 30%, transparent);
+}
+.mscreen-attract .is-live .msa-card.is-lead::before { animation: msa-breathe 5.2s ease-in-out infinite; }
+.mscreen-attract .msa-card.is-lead .msa-ava { width: 188px; height: 188px; margin-left: -8px; box-shadow: 0 0 0 7px var(--msa-red), 0 0 50px color-mix(in oklab, var(--strike) 55%, transparent); }
+.mscreen-attract .msa-card.is-lead .msa-pts { --top: 104px; }
+
+/* Podium: second, first and third on steps, the leader under a crown */
+.mscreen-attract .msa-podium {
+  position: relative; height: 100%;
+  display: grid; grid-template-columns: 1fr 1.16fr 1fr; grid-template-areas: "second first third"; align-items: end; column-gap: 18px;
+}
+.mscreen-attract .msa-podium::before {
+  content: ""; position: absolute; left: 50%; top: 0; width: 760px; height: 900px; margin-left: -380px; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--strike) 26%, transparent), transparent);
+}
+.mscreen-attract .msa-step { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 12px; min-width: 0; height: 100%; text-align: center; }
+.mscreen-attract .msa-step.first { grid-area: first; }
+.mscreen-attract .msa-step.second { grid-area: second; }
+.mscreen-attract .msa-step.third { grid-area: third; }
+.mscreen-attract .msa-crown { display: block; font-size: 72px; line-height: 0; margin-bottom: -4px; color: var(--msa-crown); }
+.mscreen-attract .msa-step-ring { display: block; border-radius: 50%; padding: 6px; background: var(--msa-ring); }
+.mscreen-attract .msa-step :is(.msa-ava, .msa-ghost) { width: 168px; height: 168px; }
+.mscreen-attract .msa-step.first .msa-step-ring { padding: 8px; background: var(--msa-red); box-shadow: 0 0 60px color-mix(in oklab, var(--strike) 60%, transparent); }
+.mscreen-attract .msa-step.first .msa-ava { width: 220px; height: 220px; }
+.mscreen-attract .msa-step-name { max-width: 100%; margin-top: 4px; font: var(--w-strong) 48px/1.1 var(--f-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mscreen-attract .msa-step.first .msa-step-name { font-size: 56px; }
+.mscreen-attract .msa-step .msa-pts { --budget: 250px; --top: 60px; }
+.mscreen-attract .msa-step.first .msa-pts { --budget: 300px; --top: 72px; }
+.mscreen-attract .msa-block {
+  flex: none; width: 100%; margin-top: 10px; display: grid; justify-items: center; align-content: start; gap: 16px; padding-top: 40px;
+  border-radius: 40px 40px 12px 12px; background: var(--msa-step); border: 2px solid var(--line); border-bottom: 0;
+  transform-origin: 50% 100%;
+}
+.mscreen-attract .msa-step.first .msa-block { height: 440px; background: var(--msa-step-first); border-color: color-mix(in oklab, var(--strike) 50%, transparent); color: var(--msa-on-red); }
+.mscreen-attract .msa-step.second .msa-block { height: 330px; }
+.mscreen-attract .msa-step.third .msa-block { height: 250px; }
+.mscreen-attract .msa-block-rk { font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(130px / var(--cap)); line-height: .85; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.mscreen-attract .msa-step.first .msa-block-rk { font-size: calc(180px / var(--cap)); color: inherit; }
+.mscreen-attract .msa-block-city { max-width: 90%; font: var(--w-label) 32px/1.15 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mscreen-attract .msa-step.first .msa-block-city { color: color-mix(in oklab, currentColor 84%, transparent); }
+:root[data-appearance="light"] .mscreen-attract .msa-step.first .msa-block { color: #FFFFFF; }
+
+/* Champion: the phone's champion banner, the leader's own photo on red; second and third as rows beneath */
+.mscreen-attract .msa-champ { display: grid; grid-template-rows: 596px minmax(0, 1fr) minmax(0, 1fr); gap: var(--ms-item-gap); height: 100%; }
+.mscreen-attract .msa-champ-card {
+  position: relative; overflow: hidden; isolation: isolate; border-radius: 52px; color: #FFFFFF;
+  background: var(--msa-champ); box-shadow: 0 40px 80px -40px color-mix(in oklab, var(--strike) 80%, transparent);
+  display: grid; align-content: center; gap: 22px; padding: 0 0 0 56px;
+}
+.mscreen-attract .msa-champ-photo { position: absolute; top: 0; bottom: 0; right: 0; width: 50%; z-index: -1; overflow: hidden; }
+.mscreen-attract .msa-champ-photo img { width: 100%; height: 100%; object-fit: cover; }
+.mscreen-attract .msa-champ-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #7A0A0E 0%, rgba(122, 10, 14, .4) 34%, rgba(0, 0, 0, 0) 70%); }
+:root[data-appearance="light"] .mscreen-attract .msa-champ-photo::after { background: linear-gradient(90deg, #A50D12 0%, rgba(165, 13, 18, .4) 34%, rgba(0, 0, 0, 0) 70%); }
+:root[data-variant="reference"] .mscreen-attract .msa-champ-photo::after { background: linear-gradient(90deg, #8A080B 0%, rgba(138, 8, 11, .4) 34%, rgba(0, 0, 0, 0) 70%); }
+:root[data-variant="reference"][data-appearance="light"] .mscreen-attract .msa-champ-photo::after { background: linear-gradient(90deg, #B00B0E 0%, rgba(176, 11, 14, .4) 34%, rgba(0, 0, 0, 0) 70%); }
+.mscreen-attract .msa-champ-mark { position: absolute; left: 330px; bottom: -70px; z-index: -1; font-size: 360px; color: rgba(255, 255, 255, .08); transform: rotate(-12deg); }
+.mscreen-attract .msa-champ-cap { display: flex; align-items: center; gap: 14px; font: var(--w-label) 38px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: #FFD9D9; }
+/* on the red card the crown reads in white */
+.mscreen-attract .msa-champ-cap [data-lucide] { font-size: 46px; color: #FFFFFF; }
+.mscreen-attract .msa-champ-who { display: flex; align-items: center; gap: 28px; min-width: 0; max-width: 560px; }
+.mscreen-attract .msa-champ-who .msa-ava { width: 132px; height: 132px; box-shadow: 0 0 0 6px #FFFFFF; }
+.mscreen-attract .msa-champ-name { min-width: 0; font: var(--w-strong) 60px/1.05 var(--f-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mscreen-attract .msa-champ-card .msa-pts { --budget: 520px; --top: 150px; color: #FFFFFF; }
+.mscreen-attract .msa-champ-foot { display: flex; align-items: center; gap: 24px; font: var(--w-text) 36px/1.1 var(--f-text); color: rgba(255, 255, 255, .86); }
+.mscreen-attract .msa-champ-foot .msa-move { padding: 8px 16px; border-radius: 22px; background: rgba(0, 0, 0, .28); color: #FFFFFF; }
+.mscreen-attract .msa-lite {
+  display: grid; grid-template-columns: 96px 104px minmax(0, 1fr) auto; align-items: center; gap: 26px;
+  padding: 0 40px 0 30px; border-radius: 40px; background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-lite .msa-ava, .mscreen-attract .msa-lite .msa-ghost { width: 104px; height: 104px; }
+.mscreen-attract .msa-lite .msa-name { font-size: 46px; }
+.mscreen-attract .msa-lite .msa-pts { --budget: 250px; --top: 62px; }
+.mscreen-attract .msa-lite .msa-end { gap: 6px; }
+
+/* Force meter: every bar measured against the leader, the top three heavy */
+.mscreen-attract .msa-meters { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: var(--ms-item-gap); height: 100%; }
+.mscreen-attract .msa-meter {
+  display: grid; align-content: center; gap: 30px; padding: 0 40px 0 var(--ms-pad); border-radius: 44px;
+  background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-meter-line { display: grid; grid-template-columns: 104px 136px minmax(0, 1fr) auto; align-items: center; gap: 26px; min-width: 0; }
+.mscreen-attract .msa-meter-run { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; }
+.mscreen-attract .msa-meter .msa-rk { width: 104px; height: 104px; font-size: calc(56px / var(--cap)); }
+.mscreen-attract .msa-meter :is(.msa-ava, .msa-ghost) { width: 136px; height: 136px; }
+.mscreen-attract .msa-meter .msa-name { font-size: 50px; }
+.mscreen-attract .msa-meter .msa-pts { --budget: 300px; --top: 80px; }
+.mscreen-attract .msa-bar { position: relative; display: block; height: 48px; border-radius: 24px; background: var(--msa-track); overflow: hidden; }
+.mscreen-attract .msa-bar i {
+  position: relative; display: block; height: 100%; width: calc(var(--w) * 100%); border-radius: inherit; overflow: hidden;
+  background: var(--msa-bar); box-shadow: 0 0 22px color-mix(in oklab, var(--strike) 45%, transparent); transform-origin: 0 50%;
+}
+.mscreen-attract .msa-meter.is-lead { background: var(--msa-lead); border: var(--msa-lead-line); }
+.mscreen-attract .msa-meter.is-lead .msa-ava { box-shadow: 0 0 0 6px var(--msa-red); }
+.mscreen-attract .msa-meter.is-lead .msa-bar i::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 34%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .5), transparent); transform: translateX(-100%);
+}
+.mscreen-attract .is-live .msa-meter.is-lead .msa-bar i::after { animation: msa-sheen 3.2s 1.2s ease-in-out infinite; }
+
+/* Tiles: the phone's photo tiles, the leader wide, second and third side by side */
+.mscreen-attract .msa-tiles { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 560px minmax(0, 1fr); gap: var(--ms-item-gap); height: 100%; }
+.mscreen-attract .msa-tile {
+  position: relative; overflow: hidden; isolation: isolate; border-radius: 44px; color: #FFFFFF; background: #0B0B0C;
+  box-shadow: var(--surface-shadow); display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 0 40px 36px;
+}
+.mscreen-attract :is(.msa-tile, .msa-rtile) > :not(.msa-pic, .msa-shade, .msa-rk, .msa-move) { position: relative; }
+.mscreen-attract .msa-tile.is-lead { grid-column: 1 / -1; padding: 0 48px 44px; box-shadow: 0 0 0 5px var(--msa-red), 0 30px 80px -30px color-mix(in oklab, var(--strike) 70%, transparent); }
+.mscreen-attract .msa-tile > .msa-rk { position: absolute; top: 32px; left: 32px; width: 104px; height: 104px; font-size: calc(58px / var(--cap)); }
+.mscreen-attract .msa-tile .msa-name { font-size: 50px; }
+.mscreen-attract .msa-tile.is-lead .msa-name { font-size: 64px; }
+.mscreen-attract .msa-tile .msa-city { color: rgba(255, 255, 255, .84); }
+.mscreen-attract .msa-tile .msa-pts { --budget: 360px; --top: 76px; margin-top: 10px; color: #FFFFFF; }
+.mscreen-attract .msa-tile.is-lead .msa-pts { --budget: 520px; --top: 120px; }
+.mscreen-attract .msa-tile-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.mscreen-attract .msa-tile-row .msa-move { margin-bottom: 14px; padding: 8px 16px; border-radius: 22px; background: rgba(8, 8, 9, .5); }
+.mscreen-attract .msa-tile .msa-move { color: #FFFFFF; }
+.mscreen-attract .msa-tile.is-open { background: transparent; border: 3px dashed var(--msa-dash); color: var(--ink-2); box-shadow: none; justify-content: center; align-items: center; text-align: center; }
+
+/* ================================================================ RANKS 4 TO 10 */
+/* Glass rows: the phone's rows at glass scale */
+.mscreen-attract .msa-rows { display: grid; grid-template-rows: repeat(7, minmax(0, 1fr)); gap: var(--ms-item-gap); height: 100%; }
+.mscreen-attract .msa-row {
+  display: grid; grid-template-columns: 88px 96px minmax(0, 1fr) auto; align-items: center; gap: 24px;
+  padding: 0 40px 0 22px; border-radius: 40px;
+  background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-row .msa-end { gap: 6px; }
+.mscreen-attract .msa-row .msa-rk { width: 88px; height: 88px; border-radius: 26px; font-size: calc(46px * var(--msa-k) / var(--cap)); }
+.mscreen-attract .msa-row :is(.msa-ava, .msa-ghost) { width: 96px; height: 96px; }
+.mscreen-attract .msa-row .msa-name { font-size: 42px; }
+.mscreen-attract .msa-row.is-open { background: transparent; border: 3px dashed var(--msa-dash); box-shadow: none; }
+
+/* Table: one glass panel, a header and zebra lines, the numbers in their own columns */
+.mscreen-attract .msa-table {
+  display: grid; grid-template-rows: 72px repeat(7, minmax(0, 1fr)); height: 100%; padding: 14px 18px 18px; border-radius: 44px;
+  background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-tr { display: grid; grid-template-columns: 96px minmax(0, 1fr) 88px 260px; align-items: center; gap: 24px; padding: 0 24px; border-radius: 26px; }
+.mscreen-attract .msa-tr.is-head { font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-3); }
+.mscreen-attract .msa-th-player { grid-column: 2 / 4; }
+.mscreen-attract .msa-th-pts { grid-column: 4; text-align: right; }
+.mscreen-attract .msa-tbody { display: contents; }
+.mscreen-attract .msa-tbody .msa-tr:nth-child(even) { background: var(--msa-zebra); }
+.mscreen-attract .msa-tr.is-open .msa-who { grid-column: 2 / -1; }
+.mscreen-attract .msa-tr .msa-tr-rk { font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(58px * var(--msa-k) / var(--cap)); line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.mscreen-attract .msa-tr :is(.msa-ava, .msa-ghost) { width: 88px; height: 88px; }
+.mscreen-attract .msa-tr .msa-ghost { font-size: 40px; }
+.mscreen-attract .msa-tr .msa-move { justify-content: center; }
+.mscreen-attract .msa-tr .msa-pts { --budget: 260px; --top: 62px; justify-self: end; }
+.mscreen-attract .msa-tr .msa-name { font-size: 42px; }
+.mscreen-attract .msa-tr .msa-move { justify-content: center; }
+
+/* Meter rows: each row's bar against the board's leader */
+.mscreen-attract .msa-mrows { display: grid; grid-template-rows: repeat(7, minmax(0, 1fr)); gap: var(--ms-item-gap); height: 100%; }
+.mscreen-attract .msa-mrow {
+  display: grid; align-content: center; gap: 12px; padding: 0 40px 0 26px; border-radius: 36px;
+  background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-mrow-line { display: grid; grid-template-columns: 72px 76px minmax(0, 1fr) auto; align-items: center; gap: 22px; min-width: 0; }
+.mscreen-attract .msa-mrow .msa-tr-rk { font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(44px * var(--msa-k) / var(--cap)); line-height: 1; text-align: center; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.mscreen-attract .msa-mrow :is(.msa-ava, .msa-ghost) { width: 76px; height: 76px; }
+.mscreen-attract .msa-mrow .msa-ghost { font-size: 36px; border-width: 2px; }
+.mscreen-attract .msa-mrow .msa-who { gap: 2px; }
+.mscreen-attract .msa-mrow .msa-name { font-size: 42px; }
+.mscreen-attract .msa-mrow .msa-city { color: var(--ink-3); }
+.mscreen-attract .msa-mrow .msa-end { gap: 4px; }
+.mscreen-attract .msa-mrow .msa-pts { --budget: 270px; --top: 54px; }
+.mscreen-attract .msa-mrow .msa-bar { height: 18px; border-radius: 9px; margin-left: 94px; }
+.mscreen-attract .msa-mrow.is-open { background: transparent; border: 3px dashed var(--msa-dash); box-shadow: none; }
+.mscreen-attract .msa-mrow.is-open .msa-bar { background: transparent; border: 2px dashed var(--msa-dash); }
+
+/* Tiles: every player on their own photo, rank four wide across the top */
+.mscreen-attract .msa-rtiles { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, minmax(0, 1fr)); gap: var(--ms-item-gap); height: 100%; }
+.mscreen-attract .msa-rtile {
+  position: relative; overflow: hidden; isolation: isolate; border-radius: 40px; background: #0B0B0C; color: #FFFFFF;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-content: end; align-items: end; column-gap: 20px; padding: 0 32px 28px;
+  box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-rtile:first-child { grid-column: 1 / -1; padding: 0 40px 32px; }
+.mscreen-attract .msa-rtile > .msa-rk { position: absolute; top: 22px; left: 22px; width: 72px; height: 72px; border-radius: 22px; font-size: calc(40px / var(--cap)); }
+.mscreen-attract .msa-rtile .msa-who { gap: 4px; }
+.mscreen-attract .msa-rtile-head { display: flex; align-items: center; gap: 16px; min-width: 0; grid-column: 1 / -1; }
+.mscreen-attract .msa-rtile-head .msa-rk { flex: none; width: 64px; height: 64px; border-radius: 20px; font-size: calc(36px * var(--msa-k) / var(--cap)); }
+.mscreen-attract .msa-rtile .msa-name { font-size: 42px; }
+.mscreen-attract .msa-rtile:first-child .msa-name { font-size: 52px; }
+.mscreen-attract .msa-rtile .msa-city { color: rgba(255, 255, 255, .84); }
+.mscreen-attract .msa-rtile .msa-pts { --budget: 340px; --top: 60px; color: #FFFFFF; grid-column: 1 / -1; margin-top: 10px; }
+.mscreen-attract .msa-rtile:first-child .msa-end { display: grid; justify-items: end; gap: 10px; }
+.mscreen-attract .msa-rtile:first-child .msa-pts { --top: 76px; margin-top: 0; }
+.mscreen-attract .msa-rtile:first-child .msa-move { position: static; padding: 0; background: none; }
+.mscreen-attract .msa-rtile .msa-move { color: #FFFFFF; }
+.mscreen-attract .msa-rtile > .msa-move { position: absolute; top: 32px; right: 28px; padding: 8px 14px; border-radius: 20px; background: rgba(8, 8, 9, .5); }
+.mscreen-attract .msa-rtile .msa-move.same { display: none; }
+.mscreen-attract .msa-rtile.is-open { background: transparent; border: 3px dashed var(--msa-dash); color: var(--ink-1); box-shadow: none; }
+.mscreen-attract .msa-rtile.is-open .msa-city { color: var(--msa-red); }
+
+/* Ladder: the ranks climb a spine, cards either side, so the eye walks up towards the top three */
+.mscreen-attract .msa-ladder { position: relative; height: 100%; --step: calc((100% - 196px) / 6); }
+.mscreen-attract .msa-ladder::before {
+  content: ""; position: absolute; left: 50%; top: 40px; bottom: 40px; width: 8px; margin-left: -4px; border-radius: 4px;
+  background: linear-gradient(180deg, var(--msa-red), color-mix(in oklab, var(--msa-red) 10%, transparent));
+}
+.mscreen-attract .msa-rung { position: absolute; left: 0; right: 0; height: 196px; top: calc(var(--n) * var(--step)); }
+.mscreen-attract .msa-rung-rk {
+  position: absolute; left: 50%; top: 50%; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--ms-ground); border: 6px solid var(--msa-red); color: var(--ink-1);
+  font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(44px * var(--msa-k) / var(--cap)); line-height: 1; font-variant-numeric: tabular-nums;
+}
+.mscreen-attract .msa-rung-card {
+  position: absolute; top: 0; bottom: 0; width: calc(50% - 62px);
+  display: grid; grid-template-columns: 96px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 22px; row-gap: 10px; align-content: center; align-items: center;
+  padding: 0 30px; border-radius: 40px; background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-rung.is-left .msa-rung-card { left: 0; }
+.mscreen-attract .msa-rung.is-right .msa-rung-card { right: 0; }
+.mscreen-attract .msa-rung-card :is(.msa-ava, .msa-ghost) { grid-row: 1 / 3; width: 96px; height: 96px; }
+.mscreen-attract .msa-rung-card .msa-name { font-size: 44px; gap: 16px; }
+.mscreen-attract .msa-rung-card .msa-name .msa-move { font-size: 32px; }
+.mscreen-attract .msa-rung-card .msa-pts { --budget: 196px; --top: 56px; }
+.mscreen-attract .msa-rung.is-open .msa-name { font-size: 36px; }
+.mscreen-attract .msa-rung.is-open .msa-rung-card { background: transparent; border: 3px dashed var(--msa-dash); box-shadow: none; }
+
+/* ================================================================ CALL TO PLAY */
+.mscreen-attract .msa-c { display: grid; align-items: center; column-gap: 48px; }
+.mscreen-attract .msa-c .pqr { justify-self: center; }
+.mscreen-attract .msa-c-copy { display: grid; gap: 22px; min-width: 0; align-content: center; }
+.mscreen-attract .msa-c-title {
+  text-wrap: balance; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case);
+  letter-spacing: var(--display-track); font-size: calc(50px * var(--msa-k) / var(--cap)); line-height: .95;
+}
+.mscreen-attract .msa-c-line { text-wrap: balance; font: var(--w-text) 38px/1.25 var(--f-text); color: var(--ink-2); }
+/* the You row: the place the next player takes, and what it needs */
+.mscreen-attract .msa-you { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 22px; min-width: 0; }
+.mscreen-attract .msa-you-ghost {
+  display: grid; place-items: center; width: 88px; height: 88px; border-radius: 50%; font-size: 44px;
+  border: 3px dashed currentColor; opacity: .8;
+}
+.mscreen-attract .msa-you-who { display: grid; gap: 6px; min-width: 0; }
+.mscreen-attract .msa-you-who b { font: var(--w-strong) 44px/1.05 var(--f-text); }
+.mscreen-attract .msa-you-who span { font: var(--w-text) 32px/1.15 var(--f-text); opacity: .86; text-wrap: balance; }
+.mscreen-attract .msa-you-end { display: grid; justify-items: end; gap: 8px; }
+.mscreen-attract .msa-you-need { font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; opacity: .86; white-space: nowrap; }
+.mscreen-attract .msa-you-end .msa-pts { --budget: 240px; --top: 58px; color: inherit; }
+.mscreen-attract .msa-you-end .msa-you-open { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track); font-size: calc(46px / var(--cap)); line-height: .9; }
+.mscreen-attract .is-live .msa-you-ghost { animation: msa-ask 2.4s ease-in-out infinite; }
+
+/* Red card: the phone's pinned red You row turned into the call to play */
+.mscreen-attract .msa-c-red {
+  grid-template-columns: auto minmax(0, 1fr); padding: 0 48px 0 44px; border-radius: 52px;
+  background: var(--msa-you); border: var(--msa-you-line); color: #FFFFFF;
+  box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--strike) 70%, transparent);
+}
+.mscreen-attract .msa-c-red .msa-c-line { color: rgba(255, 255, 255, .86); font-size: 36px; }
+.mscreen-attract .msa-c-red .msa-c-title { font-size: calc(48px * var(--msa-k) / var(--cap)); }
+.mscreen-attract .msa-c-red .msa-you { padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, .22); }
+.mscreen-attract .msa-c-red .msa-you-ghost { width: 72px; height: 72px; font-size: 36px; }
+.mscreen-attract .msa-c-red .msa-you-end .msa-pts { --budget: 200px; --top: 50px; }
+.mscreen-attract .msa-c-red .pqr, .mscreen-attract .msa-c-bar .pqr, .mscreen-attract .msa-c-photo .pqr { --pqr-ink: #FFFFFF; --pqr-bg: rgba(20, 8, 9, .38); --pqr-rim: rgba(255, 255, 255, .9); }
+
+/* Big code: no card, the code as big as the room allows beside the biggest words */
+.mscreen-attract .msa-c-big { grid-template-columns: minmax(0, 1fr) auto; }
+.mscreen-attract .msa-c-huge {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: calc(88px * var(--msa-k) / var(--cap)); line-height: .88; text-wrap: balance;
+}
+.mscreen-attract .msa-you-glass { padding: 18px 30px 18px 18px; border-radius: 60px; background: var(--msa-glass); border: var(--msa-glass-line); box-shadow: var(--surface-shadow); }
+.mscreen-attract .msa-you-glass .msa-you-ghost { color: var(--msa-red); opacity: 1; width: 72px; height: 72px; font-size: 36px; }
+.mscreen-attract .msa-you-glass .msa-you-end .msa-pts { --budget: 196px; --top: 50px; }
+.mscreen-attract .msa-you-glass .msa-you-who span { color: var(--ink-2); opacity: 1; }
+
+/* Your bar: the Force meter's empty bar of your own, running up past the line the top ten needs */
+.mscreen-attract .msa-c-bar {
+  grid-template-columns: minmax(0, 1fr) auto; padding: 0 44px 0 52px; border-radius: 52px;
+  background: var(--msa-you); border: var(--msa-you-line); color: #FFFFFF;
+  box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--strike) 70%, transparent);
+}
+.mscreen-attract .msa-c-bar .msa-c-copy { gap: 26px; }
+.mscreen-attract .msa-c-bar .msa-c-line { color: rgba(255, 255, 255, .86); font-size: 36px; }
+.mscreen-attract .msa-you-meter { grid-template-columns: 1fr; gap: 16px; }
+.mscreen-attract .msa-you-meter .msa-you-who { grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: 20px; }
+.mscreen-attract .msa-you-bar { position: relative; display: block; height: 44px; border-radius: 22px; border: 3px dashed rgba(255, 255, 255, .55); }
+.mscreen-attract .msa-you-run { position: absolute; left: 4px; top: 4px; bottom: 4px; width: calc(var(--cut, .8) * 100% - 8px); border-radius: inherit; background: rgba(255, 255, 255, .92); transform-origin: 0 50%; transform: scaleX(.9); }
+.mscreen-attract .msa-you-cut { position: absolute; top: -14px; bottom: -14px; left: calc(var(--cut, .8) * 100%); width: 6px; margin-left: -3px; border-radius: 3px; background: #FFFFFF; box-shadow: 0 0 0 3px rgba(8, 8, 9, .45); }
+.mscreen-attract .is-live .msa-you-run { animation: msa-bar-ask 3.6s cubic-bezier(.45, 0, .2, 1) infinite; }
+
+/* Phone photo: a hand with a phone, the code where the camera would find it */
+.mscreen-attract .msa-c-photo {
+  overflow: hidden; isolation: isolate; grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; padding: 0 48px 0 52px; border-radius: 52px;
+  background: #0B0B0C; color: #FFFFFF; box-shadow: var(--surface-shadow);
+}
+.mscreen-attract .msa-c-pic { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.mscreen-attract .msa-c-photo::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(8, 8, 9, .9) 0%, rgba(8, 8, 9, .66) 50%, rgba(8, 8, 9, .12) 100%);
+}
+.mscreen-attract .msa-c-photo .msa-c-kicker { color: rgba(255, 255, 255, .84); }
+.mscreen-attract .msa-c-photo .msa-c-title { font-size: calc(64px * var(--msa-k) / var(--cap)); }
+.mscreen-attract .msa-you-chip { padding: 14px 26px 14px 14px; border-radius: 56px; background: rgba(255, 255, 255, .12); border: 2px solid rgba(255, 255, 255, .22); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.mscreen-attract .msa-you-chip { grid-template-columns: minmax(0, 1fr) auto; }
+.mscreen-attract .msa-you-chip .msa-you-ghost { display: none; }
+.mscreen-attract .msa-you-chip .msa-you-end .msa-pts { --budget: 180px; --top: 46px; }
+
+/* Open rank: the next place on the board, as big as a number can be, and the code to take it */
+.mscreen-attract .msa-c-open {
+  grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; padding: 0 44px 0 48px; border-radius: 52px;
+  border: 4px dashed color-mix(in oklab, var(--msa-red) 70%, transparent); background: color-mix(in oklab, var(--strike) 7%, transparent);
+}
+.mscreen-attract .msa-c-rank {
+  flex: none; font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(170px * var(--msa-k) / var(--cap)); line-height: .8;
+  font-variant-numeric: tabular-nums; color: var(--msa-red); letter-spacing: -.02em;
+}
+.mscreen-attract .msa-c-open .msa-c-copy { gap: 18px; }
+.mscreen-attract .msa-c-head { display: flex; align-items: center; gap: 30px; min-width: 0; }
+.mscreen-attract .msa-c-open .msa-you { grid-template-columns: auto minmax(0, 1fr); }
+.mscreen-attract .msa-c-open .msa-you-ghost { width: 76px; height: 76px; font-size: 38px; color: var(--msa-red); opacity: 1; }
+.mscreen-attract .msa-c-open .msa-c-line { font-size: 34px; }
+.mscreen-attract .msa-c-need .msa-pts { --budget: 330px; --top: 72px; }
+.mscreen-attract .msa-c-need .msa-you-open { font: var(--w-label) 44px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--msa-red); }
+
+/* ---------------------------------------------------------------- motion: sections rise in, bars fill, steps stand up */
+.mscreen-attract .msa-body { transition: opacity .32s ease; }
+.mscreen-attract .msa-body.is-leaving { opacity: 0; }
+.mscreen-attract .is-entering :is(.msa-card, .msa-lite, .msa-meter, .msa-tile, .msa-row, .msa-tr, .msa-mrow, .msa-rtile, .msa-rung-card, .msa-champ-card) {
+  animation: msa-rise .8s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 70ms);
+}
+.mscreen-attract .is-entering .msa-bar i { animation: msa-grow 1.1s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(240ms + var(--i, 0) * 80ms); }
+.mscreen-attract .is-entering .msa-block { animation: msa-stand .9s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc((2 - var(--i, 0)) * 120ms); }
+.mscreen-attract .is-entering .msa-step > :not(.msa-block) { animation: msa-rise .7s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(420ms + (2 - var(--i, 0)) * 120ms); }
+.mscreen-attract .is-entering .msa-rung-rk { animation: msa-pop .5s cubic-bezier(.2, 1.4, .4, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+.mscreen-attract .is-entering.msa-t, .mscreen-attract .is-entering.msa-c { animation: msa-rise .8s cubic-bezier(.2, .7, .2, 1) both; }
+.mscreen-attract .is-live .msa-step.first .msa-step-ring { animation: msa-glow 4.8s ease-in-out infinite; }
+@keyframes msa-rise { from { opacity: 0; transform: translateY(56px); } to { opacity: 1; transform: none; } }
+@keyframes msa-pop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+@keyframes msa-breathe { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+@keyframes msa-drain { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes msa-ring { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1; } }
+@keyframes msa-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes msa-sheen { from { transform: translateX(-100%); } 60%, to { transform: translateX(300%); } }
+@keyframes msa-stand { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes msa-blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes msa-ask { 0%, 100% { transform: none; } 50% { transform: scale(1.08); } }
+@keyframes msa-bar-ask { 0% { transform: scaleX(.2); } 45% { transform: scaleX(1.16); } 60% { transform: scaleX(1.08); } 100% { transform: scaleX(.2); } }
+@keyframes msa-glow { 0%, 100% { box-shadow: 0 0 40px color-mix(in oklab, var(--strike) 40%, transparent); } 50% { box-shadow: 0 0 90px color-mix(in oklab, var(--strike) 75%, transparent); } }
+
+/* reduced motion: the boards still change, without the rise, the fill, the sheen or the running bar; every fill at rest
+   stands full so the board on show still reads as the one on show */
+@media (prefers-reduced-motion: reduce) {
+  .mscreen-attract *, .mscreen-attract *::before, .mscreen-attract *::after { animation: none !important; transition: none !important; }
+  .mscreen-attract .msa-card.is-lead::before { opacity: .8; }
+  .mscreen-attract .msa-you-run { transform: scaleX(1.08); }
+}
+
+/* Reference sets its numbers and names in wider faces (Archivo Black, Sora): the names give a little so they never cut */
+:root[data-variant="reference"] .mscreen-attract .msa-row .msa-name,
+:root[data-variant="reference"] .mscreen-attract .msa-rung-card .msa-name { font-size: 38px; }
+:root[data-variant="reference"] .mscreen-attract .msa-tr .msa-name { font-size: 36px; }
+:root[data-variant="reference"] .mscreen-attract .msa-tr { grid-template-columns: 96px minmax(0, 1fr) 88px 250px; }
+:root[data-variant="reference"] .mscreen-attract .msa-tr .msa-pts { --budget: 250px; }
+:root[data-variant="reference"] .mscreen-attract .msa-mrow .msa-name { font-size: 36px; }
+:root[data-variant="reference"] .mscreen-attract .msa-row .msa-pts { --budget: 260px; }
+:root[data-variant="reference"] .mscreen-attract .msa-card .msa-name { font-size: 48px; }
+:root[data-variant="reference"] .mscreen-attract .msa-meter .msa-name { font-size: 44px; }
+:root[data-variant="reference"] .mscreen-attract .msa-champ-name { font-size: 52px; }
+:root[data-variant="reference"] .mscreen-attract .msa-lite .msa-name { font-size: 40px; }
+:root[data-variant="reference"] .mscreen-attract .msa-lite .msa-pts { --budget: 230px; }

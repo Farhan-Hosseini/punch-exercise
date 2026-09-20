@@ -1,0 +1,486 @@
+/* Machine screen: Default, the glass at rest (parts/mscreen-default.html, mscreens/default.js).
+   A calm, confident home for the 1080 x 3840 glass, read from 1 to 1.5 m: a Monster Energy banner across the top, the
+   call to play is the biggest thing below it, then today's best hits and the three steps. One frame, four sections, each
+   with five designs; every design fits its section's room (the --mdf-*-room heights) in all four looks.
+   The shared parts (the backdrop host, the global header, the sponsor strip) are drawn elsewhere; this file places the
+   column between them on the --ms-* spacing scale. Every rule is scoped under .mscreen-default. */
+
+.mscreen-default {
+  --mdf-k: 1;                 /* the display face's width: Reference's Archivo Black runs wider than Big Shoulders */
+  --mdf-top: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px);
+  --mdf-ad-room: 440px;       /* round seven: a banner, not a hero (was 900); the height went to the two below */
+  --mdf-wl-room: 1160px;
+  --mdf-best-room: 900px;
+  --mdf-how-room: 440px;
+  --mdf-head: 80px;
+  --mdf-tk-price: 300px;      /* the group run price on the ticket; Reference's wider face takes less */
+  --mdf-card: var(--surface-bg);
+  --mdf-card-line: var(--surface-border);
+  --mdf-card-shadow: var(--surface-shadow);
+  --mdf-soft: color-mix(in oklab, var(--strike) 16%, transparent);
+  --mdf-scrim: linear-gradient(180deg, rgba(8, 8, 9, 0) 38%, rgba(8, 8, 9, .82) 100%);
+}
+:root[data-variant="reference"] .mscreen-default { --mdf-k: .7; --mdf-tk-price: 188px; --mdf-soft: rgba(235, 17, 16, .18); }
+:root[data-appearance="light"] .mscreen-default { --mdf-soft: color-mix(in oklab, var(--strike) 11%, transparent); }
+
+.mscreen-default [data-sv][hidden] { display: none !important; }
+
+/* ---------------------------------------------------------------- the frame: sections stacked between header and strip */
+.mscreen-default .mdf {
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; gap: var(--ms-sec-gap);
+  padding: var(--mdf-top) 0 calc(var(--ms-ad-h) + 88px);
+  color: var(--ink-1); font-family: var(--f-text);
+}
+.mscreen-default .mdf > :not(.ms-lights, .ms-head, .ms-head > *, .ms-brand, .ms-ad) { position: relative; z-index: 1; flex: none; }
+.mscreen-default .mdf-sec { margin: 0 var(--ms-gut); }
+.mscreen-default .mdf-topad { height: var(--mdf-ad-room); margin: 0; }
+.mscreen-default .mdf-welcome { height: var(--mdf-wl-room); }
+.mscreen-default .mdf-best { height: var(--mdf-best-room); }
+.mscreen-default .mdf-how { height: var(--mdf-how-room); }
+.mscreen-default .mdf-sec > [data-sv] { position: relative; }
+.mscreen-default .mdf-topad > [data-sv], .mscreen-default .mdf-welcome > [data-sv] { height: 100%; }
+.mscreen-default :is(.mdf-best, .mdf-how) > [data-sv] { height: calc(100% - var(--mdf-head) - var(--ms-group-gap)); }
+.mscreen-default ol, .mscreen-default ul { list-style: none; margin: 0; padding: 0; }
+.mscreen-default p, .mscreen-default h2, .mscreen-default figure { margin: 0; }
+.mscreen-default img { display: block; }
+.mscreen-default .ico { flex: none; }
+
+/* shared type */
+.mscreen-default .mdf-kicker {
+  display: inline-flex; align-items: center; gap: 14px;
+  font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike);
+}
+.mscreen-default .mdf-wl-title {
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: calc(150px * var(--mdf-k)); line-height: .9; color: var(--ink-1);
+}
+
+/* the head of a section: its name on the left, one quiet fact on the right */
+.mscreen-default .mdf-h {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  height: var(--mdf-head); margin-bottom: var(--ms-group-gap);
+}
+.mscreen-default .mdf-h-title {
+  display: flex; align-items: center; gap: 22px;
+  font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
+  font-size: calc(80px * var(--mdf-k)); line-height: 1; white-space: nowrap;
+}
+.mscreen-default .mdf-h-title > [data-lucide] { font-size: 60px; color: var(--strike); display: inline-flex; }
+.mscreen-default .mdf-h-meta {
+  display: inline-flex; align-items: center; gap: 12px; white-space: nowrap;
+  font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2);
+}
+.mscreen-default .mdf-h-meta > [data-lucide] { font-size: 36px; display: inline-flex; }
+
+/* a card on the glass, in the look's own surface */
+.mscreen-default .mdf-card {
+  background: var(--mdf-card); border: var(--mdf-card-line); box-shadow: var(--mdf-card-shadow); border-radius: var(--r);
+}
+
+/* ================================================================ TOP AD: Monster Energy, five banners
+   Round seven: the ad is a banner, a band 440 tall across the glass (it was 900), and its height went to Welcome and
+   Today's best. A sponsor keeps its own type and colour in every look: black, the brand green, heavy condensed caps.
+   Every banner carries the wordmark, one big line, a green call to action pointing at the kiosk (nobody can touch the
+   glass) and the Ad tag. Everything is drawn (cans, claws, the wordmark in type); each loops slowly in its own way and
+   settles into a still under reduced motion. The copy block sits in a column from the left gutter, centred on the
+   band's height, so the five read as one family. */
+.mscreen-default .mdf-ad {
+  --mon-ink: #FFFFFF;
+  --mon-mark: var(--mon-green);
+  position: relative; overflow: hidden; isolation: isolate;
+  background:
+    repeating-linear-gradient(118deg, rgba(149, 214, 0, .045) 0 3px, transparent 3px 26px),
+    var(--mon-black);
+  color: #FFFFFF;
+  box-shadow: inset 0 4px 0 var(--mon-green), inset 0 -4px 0 var(--mon-green);
+}
+.mscreen-default .mdf-ad-art { position: absolute; inset: 0; }
+.mscreen-default .mdf-ad-art > * { position: absolute; }
+.mscreen-default .mdf-ad-tag {
+  position: absolute; z-index: 5; right: 32px; top: 32px;
+  padding: 8px 16px; border-radius: 10px; background: rgba(8, 9, 8, .82); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .42);
+  font: 700 32px/1 "Barlow Condensed", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .86);
+}
+.mscreen-default .mdf-ad-copy { left: 88px; top: 50%; translate: 0 -50%; display: grid; justify-items: start; gap: 22px; z-index: 2; }
+.mscreen-default .mdf-ad-copy .mon-word { font-size: 44px; }
+.mscreen-default .mdf-ad-big { display: block; font: 400 112px/.88 "Anton", "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: .01em; color: #FFFFFF; margin-bottom: 8px; }
+.mscreen-default .mdf-ad-mid { display: block; font: 400 52px/.95 "Anton", "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: .01em; color: #FFFFFF; }
+/* the call to action: the brand green, black type, read from the queue */
+.mscreen-default .mdf-ad-cta {
+  display: inline-flex; align-items: center; gap: 16px; height: 88px; padding: 0 36px 0 28px; border-radius: 22px;
+  background: var(--mon-green); color: var(--mon-black); white-space: nowrap;
+  font: 800 38px/1 "Barlow", sans-serif; letter-spacing: .005em;
+  box-shadow: 0 16px 40px -18px rgba(149, 214, 0, .8);
+}
+.mscreen-default .mdf-ad-cta > [data-lucide] { font-size: 44px; display: inline-flex; }
+
+/* the can: a black cylinder with a steel lid and foot, the claw on its face (default.js fills it) */
+.mscreen-default .mdf-can {
+  --can-w: 220px;
+  --can-body: linear-gradient(90deg, #030303 0%, #34362F 16%, #121311 38%, #000 62%, #2A2C27 86%, #060606 100%);
+  --can-claw: var(--mon-green);
+  --can-name: #FFFFFF;
+  --can-glow: rgba(149, 214, 0, .32);
+  display: block; width: var(--can-w); height: calc(var(--can-w) * 1.9);
+  border-radius: calc(var(--can-w) * .11) / calc(var(--can-w) * .06);
+  background: var(--can-body);
+  box-shadow: 0 0 calc(var(--can-w) * .45) var(--can-glow);
+}
+.mscreen-default .mdf-can::before, .mscreen-default .mdf-can::after {
+  content: ""; position: absolute; left: 5%; right: 5%; border-radius: 50%;
+  background: linear-gradient(90deg, #5E625A, #E4E7E0 28%, #8E9289 52%, #F2F4EF 74%, #6E7269);
+}
+.mscreen-default .mdf-can::before { top: calc(var(--can-w) * -.045); height: calc(var(--can-w) * .12); }
+.mscreen-default .mdf-can::after { bottom: calc(var(--can-w) * -.03); height: calc(var(--can-w) * .08); left: 8%; right: 8%; }
+.mscreen-default .mdf-can > * { position: absolute; }
+.mscreen-default .mdf-can-shine { left: 14%; top: 4%; bottom: 4%; width: 10%; border-radius: 99px; background: linear-gradient(180deg, transparent, rgba(255, 255, 255, .22) 30%, rgba(255, 255, 255, .1) 70%, transparent); }
+.mscreen-default .mdf-can-claw { left: 20%; top: 14%; width: 60%; height: 52%; fill: var(--can-claw); overflow: visible; }
+.mscreen-default .mdf-can-name {
+  left: 0; right: 0; top: 70%; text-align: center;
+  font: 400 calc(var(--can-w) * .2)/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .02em; text-transform: uppercase; color: var(--can-name);
+}
+.mscreen-default .mdf-can-band {
+  left: 0; right: 0; top: 83%; text-align: center;
+  font: 700 calc(var(--can-w) * .085)/1 "Barlow Condensed", sans-serif; letter-spacing: .5em; padding-left: .5em; text-transform: uppercase; color: var(--can-claw);
+}
+.mscreen-default .mdf-can[data-flavour="zero"] {
+  --can-body: linear-gradient(90deg, #A9AFB5 0%, #FFFFFF 18%, #DCE0E4 42%, #F6F8F9 66%, #BFC5CA 88%, #9EA4AA 100%);
+  --can-claw: #1D2A35; --can-name: #1D2A35; --can-glow: rgba(255, 255, 255, .22);
+}
+.mscreen-default .mdf-can[data-flavour="mango"] { --can-claw: #FF9A1F; --can-glow: rgba(255, 154, 31, .34); }
+.mscreen-default .mdf-can[data-flavour="citrus"] { --can-claw: #FFE14A; --can-glow: rgba(255, 225, 74, .3); }
+
+/* ---------------------------------------------------------------- ad: Claw tear. The copy on the left; on the right
+   three giant scratches rip down through the band and a can drops in front of them and shakes as they land */
+.mscreen-default .mdf-ad-tear { --loop: 9s; }
+.mscreen-default .mdf-tear-glow { left: 520px; top: -200px; width: 700px; height: 840px; border-radius: 50%; background: radial-gradient(closest-side, rgba(149, 214, 0, .32), rgba(149, 214, 0, .08) 60%, transparent); }
+.mscreen-default .mdf-tear-claw { left: 610px; top: -50px; width: 330px; height: 540px; }
+.mscreen-default .mdf-tear-claw svg { display: block; width: 100%; height: 100%; fill: var(--mon-green); overflow: visible; }
+.mscreen-default .mdf-tear-claw path { transform-box: fill-box; transform-origin: 50% 0; animation: mdf-rip var(--loop) cubic-bezier(.2, .9, .3, 1) infinite both; animation-delay: calc(var(--i) * .09s); }
+@keyframes mdf-rip { 0% { transform: scaleY(0); } 5%, 94% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+.mscreen-default .mdf-tear-can { --can-w: 150px; left: 710px; top: 84px; transform: rotate(-7deg); animation: mdf-can-drop var(--loop) ease-out infinite both; }
+@keyframes mdf-can-drop {
+  0% { transform: translateY(-120px) rotate(-7deg); opacity: 0; }
+  4% { transform: translateY(0) rotate(-7deg); opacity: 1; }
+  6% { transform: translate(-8px, 0) rotate(-9deg); }
+  8% { transform: translate(8px, 0) rotate(-5deg); }
+  10%, 100% { transform: translate(0, 0) rotate(-7deg); }
+}
+
+/* ---------------------------------------------------------------- ad: Lightning. A real boxer washed in the brand
+   green fills the right of the band; a bolt strikes down through her, one flash, then it glows; the big stacked
+   wordmark on the left shakes as it lands */
+.mscreen-default .mdf-ad-bolt { --loop: 7s; background: radial-gradient(60% 90% at 70% 40%, rgba(149, 214, 0, .14), transparent 70%), var(--mon-black); }
+.mscreen-default .mdf-bolt-photo { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 0% 28%; filter: grayscale(1) sepia(1) hue-rotate(38deg) saturate(2.6) brightness(.5) contrast(1.25); opacity: .85; -webkit-mask-image: linear-gradient(90deg, transparent 22%, rgba(0, 0, 0, .5) 45%, #000 70%); mask-image: linear-gradient(90deg, transparent 22%, rgba(0, 0, 0, .5) 45%, #000 70%); }
+.mscreen-default .mdf-bolt { left: 0; top: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 16px rgba(149, 214, 0, .9)); }
+.mscreen-default .mdf-bolt path { fill: none; stroke-linejoin: miter; stroke-linecap: square; stroke-dasharray: 1; stroke-dashoffset: 0; animation: mdf-bolt var(--loop) linear infinite both; }
+.mscreen-default .mdf-bolt-glow { stroke: var(--mon-green); stroke-width: 28px; opacity: .45; }
+.mscreen-default .mdf-bolt-core { stroke: #F4FFD9; stroke-width: 9px; }
+.mscreen-default .mdf-bolt-fork { stroke: #DFFFA0; stroke-width: 7px; animation-name: mdf-bolt-fork !important; }
+@keyframes mdf-bolt { 0% { stroke-dashoffset: 1; } 4%, 100% { stroke-dashoffset: 0; } }
+@keyframes mdf-bolt-fork { 0%, 4% { stroke-dashoffset: 1; } 7%, 100% { stroke-dashoffset: 0; } }
+.mscreen-default .mdf-bolt-flash { inset: 0; background: radial-gradient(50% 80% at 66% 40%, rgba(214, 255, 120, .5), rgba(149, 214, 0, .12) 60%, transparent); opacity: 0; animation: mdf-flash var(--loop) steps(1, end) infinite both; }
+@keyframes mdf-flash { 0%, 3% { opacity: 0; } 4% { opacity: 1; } 6% { opacity: 0; } 8% { opacity: .6; } 10%, 100% { opacity: 0; } }
+.mscreen-default .mdf-bolt-copy { gap: 22px; }
+.mscreen-default .mdf-bolt-copy .mdf-bolt-word { font-size: 124px; justify-items: start; animation: mdf-shake var(--loop) steps(1, end) infinite both; }
+.mscreen-default .mdf-bolt-copy .mdf-bolt-word > span { padding-left: 0; }
+@keyframes mdf-shake { 0%, 3% { translate: 0 0; } 4% { translate: -10px 4px; } 6% { translate: 8px -3px; } 8% { translate: -4px 0; } 10%, 100% { translate: 0 0; } }
+
+/* ---------------------------------------------------------------- ad: Claw drawn. An inset card: the claw is drawn
+   stroke by stroke in green on the left, fills and holds; the copy reads beside it */
+.mscreen-default .mdf-ad-draw { --loop: 10s; margin: 0 var(--ms-gut); border-radius: 44px; box-shadow: inset 0 0 0 4px rgba(149, 214, 0, .5); }
+.mscreen-default .mdf-draw-claw { left: 60px; top: 50px; width: 190px; height: 340px; }
+.mscreen-default .mdf-draw-claw svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.mscreen-default .mdf-draw-claw path {
+  fill: var(--mon-green); stroke: var(--mon-green); stroke-width: 5px; vector-effect: non-scaling-stroke; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 0; fill-opacity: 1;
+  animation: mdf-draw var(--loop) ease-in-out infinite both; animation-delay: calc(var(--i) * .5s);
+}
+@keyframes mdf-draw {
+  0% { stroke-dashoffset: 1; fill-opacity: 0; }
+  12% { stroke-dashoffset: 0; fill-opacity: 0; }
+  18%, 92% { stroke-dashoffset: 0; fill-opacity: 1; }
+  100% { stroke-dashoffset: 0; fill-opacity: 1; opacity: 0; }
+}
+.mscreen-default .mdf-draw-copy { left: 310px; }
+
+/* ---------------------------------------------------------------- ad: Flavours. The copy on the left, four cans on
+   the right rising in turn over a green dawn, each named */
+.mscreen-default .mdf-ad-taste { --loop: 8s; background: radial-gradient(50% 90% at 76% 100%, rgba(149, 214, 0, .3), transparent 70%), repeating-linear-gradient(118deg, rgba(149, 214, 0, .045) 0 3px, transparent 3px 26px), var(--mon-black); }
+.mscreen-default .mdf-taste-row { right: 64px; bottom: 44px; display: flex; gap: 8px; align-items: end; }
+.mscreen-default .mdf-taste { position: relative; display: grid; justify-items: center; gap: 22px; width: 112px; }
+.mscreen-default .mdf-taste .mdf-can { --can-w: 92px; position: relative; animation: mdf-rise var(--loop) cubic-bezier(.2, .9, .3, 1.2) infinite both; animation-delay: calc(var(--i) * .18s); }
+@keyframes mdf-rise { 0% { transform: translateY(80px); opacity: 0; } 8%, 100% { transform: translateY(0); opacity: 1; } }
+.mscreen-default .mdf-taste:nth-child(2) .mdf-can { rotate: -4deg; }
+.mscreen-default .mdf-taste:nth-child(3) .mdf-can { rotate: 3deg; }
+.mscreen-default .mdf-taste-name { font: 700 32px/1 "Barlow Condensed", sans-serif; letter-spacing: .02em; text-transform: uppercase; color: #FFFFFF; white-space: nowrap; }
+
+/* ---------------------------------------------------------------- ad: Score a can. An offer that ties the sponsor to
+   the machine: hit the score and the can is on us; a can in a breathing green ring, the chevrons run to the kiosk */
+.mscreen-default .mdf-ad-offer { --loop: 6s; }
+.mscreen-default .mdf-offer-ring { left: 50px; top: 50px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(closest-side, rgba(149, 214, 0, .4), rgba(149, 214, 0, .1) 62%, transparent); box-shadow: 0 0 0 4px rgba(149, 214, 0, .3); animation: mdf-ring var(--loop) ease-in-out infinite both; }
+@keyframes mdf-ring { 0%, 100% { scale: 1; } 50% { scale: 1.06; } }
+.mscreen-default .mdf-offer-can { --can-w: 130px; left: 155px; top: 96px; transform: rotate(-9deg); }
+.mscreen-default .mdf-offer-copy { left: 432px; gap: 16px; }
+.mscreen-default .mdf-offer-hit { display: flex; align-items: baseline; gap: 22px; }
+.mscreen-default .mdf-offer-k { font: 400 64px/1 "Anton", "Archivo Black", sans-serif; text-transform: uppercase; color: var(--mon-green); }
+.mscreen-default .mdf-offer-score { font: 400 92px/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .01em; color: #FFFFFF; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mscreen-default .mdf-offer-score .dec { color: var(--mon-steel); opacity: .8; }
+.mscreen-default .mdf-offer-k2 { font: 400 54px/1 "Anton", "Archivo Black", sans-serif; text-transform: uppercase; color: #FFFFFF; margin-bottom: 10px; }
+.mscreen-default .mdf-offer-chev { display: flex; gap: 6px; margin-left: 8px; }
+.mscreen-default .mdf-offer-chev i { width: 18px; height: 18px; border-right: 6px solid currentColor; border-bottom: 6px solid currentColor; rotate: -45deg; animation: mdf-chev 1.8s steps(1, end) infinite both; }
+.mscreen-default .mdf-offer-chev i:nth-child(2) { animation-delay: .2s; }
+.mscreen-default .mdf-offer-chev i:nth-child(3) { animation-delay: .4s; }
+@keyframes mdf-chev { 0%, 60% { opacity: .28; } 20%, 40% { opacity: 1; } }
+
+/* ================================================================ WELCOME: the call to play
+   The machine's code in the one shared QR style (qr.css), the group run price and where to stand. Nobody can touch
+   this glass, so everything points at the phone in the player's hand. */
+
+/* Code first: the title, the code big in the middle, three facts in a row */
+.mscreen-default .mdf-wl-code { display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: minmax(0, 1fr); justify-items: center; align-items: center; gap: var(--ms-group-gap); }
+.mscreen-default .mdf-wl-titles { display: grid; justify-items: center; gap: 20px; text-align: center; }
+.mscreen-default .mdf-wl-code .mdf-wl-title { font-size: calc(160px * var(--mdf-k)); white-space: nowrap; }
+.mscreen-default .mdf-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ms-item-gap); width: 100%; }
+.mscreen-default .mdf-facts li { display: grid; justify-items: center; align-content: start; gap: 16px; text-align: center; min-width: 0; }
+.mscreen-default .mdf-fact-ic { display: grid; place-items: center; width: 104px; height: 104px; border-radius: 50%; background: var(--mdf-soft); color: var(--strike); font-size: 62px; }
+.mscreen-default .mdf-facts li > span:last-child { display: grid; gap: 10px; font: var(--w-text) 34px/1.2 var(--f-text); color: var(--ink-2); }
+.mscreen-default .mdf-facts b { font: var(--w-strong) 42px/1.05 var(--f-text); white-space: nowrap; letter-spacing: 0; text-transform: none; color: var(--ink-1); }
+
+/* Side by side: the words on the left, the code on the right with its waiting line */
+.mscreen-default .mdf-wl-side { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 56px; }
+.mscreen-default .mdf-wl-left { display: grid; justify-items: start; gap: var(--ms-group-gap); }
+.mscreen-default .mdf-wl-side .mdf-wl-title { font-size: calc(176px * var(--mdf-k)); line-height: .86; }
+.mscreen-default .mdf-list { display: grid; gap: 36px; }
+.mscreen-default .mdf-list li { display: grid; grid-template-columns: 72px 1fr; align-items: start; gap: 24px; font: var(--w-text) 42px/1.2 var(--f-text); color: var(--ink-1); text-wrap: balance; }
+.mscreen-default .mdf-list li > [data-lucide] { font-size: 64px; color: var(--strike); display: inline-flex; padding-top: 0; }
+.mscreen-default .mdf-wl-right { display: grid; justify-items: center; gap: 56px; }
+.mscreen-default .mdf-wl-note { display: inline-flex; align-items: center; gap: 16px; font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+.mscreen-default .mdf-dot { width: 18px; height: 18px; border-radius: 50%; background: var(--strike); animation: mdf-blink 1.6s ease-in-out infinite; }
+@keyframes mdf-blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
+/* Big type: SCAN at poster size, the facts and an arrow leading to the code */
+.mscreen-default .mdf-wl-type { display: grid; align-content: space-between; }
+.mscreen-default .mdf-wl-huge { display: grid; justify-items: start; margin: 0; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.mscreen-default .mdf-wl-huge span:first-child { font-size: calc(440px * var(--mdf-k)); line-height: .82; }
+.mscreen-default .mdf-wl-huge span:last-child { font-size: calc(228px * var(--mdf-k)); line-height: .95; color: var(--strike); }
+.mscreen-default .mdf-wl-row { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 56px; }
+.mscreen-default .mdf-chips { display: grid; justify-items: start; gap: 18px; }
+.mscreen-default .mdf-chips li {
+  display: inline-flex; align-items: center; gap: 14px; padding: 18px 26px; border-radius: 99px;
+  background: var(--mdf-card); border: var(--mdf-card-line);
+  font: var(--w-strong) 34px/1 var(--f-text); color: var(--ink-1); white-space: nowrap;
+}
+.mscreen-default .mdf-chips li > [data-lucide] { font-size: 52px; color: var(--strike); display: inline-flex; }
+.mscreen-default .mdf-wl-arrow { font-size: 88px; color: var(--strike); display: inline-flex; align-self: center; animation: mdf-nudge 1.8s ease-in-out infinite; }
+@keyframes mdf-nudge { 0%, 100% { translate: 0 0; } 50% { translate: 14px 0; } }
+
+/* Player photo: a player mid-strike fills the section; the title over her shoulder, the code on its glass tile */
+.mscreen-default .mdf-wl-photo { border-radius: var(--ms-photo-r); overflow: hidden; background: #0B0B0C; isolation: isolate; }
+.mscreen-default .mdf-wl-shot { position: absolute; inset: 0; z-index: -1; }
+.mscreen-default .mdf-wl-shot img { width: 100%; height: 100%; object-fit: cover; object-position: 72% 42%; animation: mdf-kb 16s ease-in-out infinite alternate; }
+@keyframes mdf-kb { from { scale: 1; } to { scale: 1.06; } }
+.mscreen-default .mdf-wl-shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(8, 8, 9, .8) 0%, rgba(8, 8, 9, .35) 40%, rgba(8, 8, 9, 0) 62%), linear-gradient(0deg, rgba(8, 8, 9, .78), transparent 42%); }
+.mscreen-default .mdf-wl-over { position: absolute; left: 64px; top: 72px; display: grid; justify-items: start; gap: 40px; color: #FFFFFF; }
+.mscreen-default .mdf-wl-over .mdf-wl-title { color: #FFFFFF; font-size: calc(176px * var(--mdf-k)); }
+.mscreen-default .mdf-wl-over .mdf-chips { margin-top: 6px; }
+.mscreen-default .mdf-wl-over .mdf-kicker { color: #FFFFFF; }
+.mscreen-default .mdf-wl-over .mdf-kicker > [data-lucide] { color: #FF4E4D; }
+.mscreen-default .mdf-wl-over .mdf-chips li { background: rgba(20, 20, 22, .55); border: 2px solid rgba(255, 255, 255, .22); color: #FFFFFF; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.mscreen-default .mdf-wl-over .mdf-chips li > [data-lucide] { color: #FF4E4D; }
+.mscreen-default .mdf-wl-photo > .pqr { position: absolute; right: 48px; bottom: 48px; --pqr-ink: #FFFFFF; --pqr-bg: rgba(38, 38, 38, .32); --pqr-rim: #FFFFFF; }
+
+/* Group ticket: a pass for the group run, the code on its stub */
+.mscreen-default .mdf-wl-ticket { display: grid; align-items: stretch; }
+.mscreen-default .mdf-tk {
+  --notch: 34px;
+  position: relative; display: grid; grid-template-columns: 400px minmax(0, 1fr); border-radius: 40px;
+  background: var(--mdf-card); border: var(--mdf-card-line); box-shadow: var(--mdf-card-shadow);
+  -webkit-mask: radial-gradient(circle var(--notch) at 400px 0, transparent 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at 400px 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle var(--notch) at 400px 0, transparent 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at 400px 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+}
+.mscreen-default .mdf-tk-stub { display: grid; justify-items: center; align-content: center; gap: 56px; padding: 40px 30px; border-right: 6px dashed color-mix(in oklab, var(--ink-1) 22%, transparent); background: var(--mdf-soft); border-radius: 40px 0 0 40px; }
+.mscreen-default .mdf-tk-scan { display: inline-flex; align-items: center; gap: 14px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(72px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-tk-scan > [data-lucide] { color: var(--strike); display: inline-flex; font-size: 56px; }
+.mscreen-default .mdf-tk-body { display: grid; align-content: center; justify-items: start; gap: 36px; padding: 56px 48px; }
+.mscreen-default .mdf-tk-goes { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(124px * var(--mdf-k)); line-height: .95; }
+.mscreen-default .mdf-tk-price { display: flex; align-items: flex-start; gap: 14px; font-family: var(--f-display); font-weight: var(--w-display); font-size: var(--mdf-tk-price); line-height: .8; color: var(--strike); font-variant-numeric: tabular-nums; }
+.mscreen-default .mdf-tk-price span { font-size: 60px; line-height: 1; padding-top: 20px; color: var(--ink-1); }
+.mscreen-default .mdf-tk-was { font: var(--w-label) 36px/1.2 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+/* where to stand, drawn as the red floor mark itself */
+.mscreen-default .mdf-tk-stand { display: grid; grid-template-columns: 132px 1fr; align-items: center; gap: 24px; margin-top: 24px; font: var(--w-strong) 44px/1.15 var(--f-text); }
+.mscreen-default .mdf-tk-mark { display: grid; place-items: center; width: 132px; height: 84px; border-radius: 50%; border: 6px solid var(--strike); background: var(--mdf-soft); color: var(--strike); font-size: 50px; transform: perspective(300px) rotateX(38deg); }
+.mscreen-default .mdf-tk-mark > span { display: inline-flex; }
+
+/* ================================================================ TODAY'S BEST: real players, real photos */
+.mscreen-default .mdf-bst-list { height: 100%; }
+.mscreen-default .mdf-bst img { width: 100%; height: 100%; object-fit: cover; }
+.mscreen-default .mdf-score { font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--display-track); line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mscreen-default .mdf-rank { display: grid; place-items: center; border-radius: 50%; background: var(--strike); color: var(--cta-ink); font-family: var(--f-display); font-weight: var(--w-display); line-height: 1; font-variant-numeric: tabular-nums; }
+:root[data-variant="reference"] .mscreen-default .mdf-rank { background: #EB1110; color: #FFFFFF; }
+.mscreen-default .mdf-name { font: var(--w-strong) 40px/1.1 var(--f-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mscreen-default .mdf-meta { display: inline-flex; align-items: center; gap: 10px; font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+.mscreen-default .mdf-meta > [data-lucide] { display: inline-flex; font-size: 32px; }
+.mscreen-default .mdf-photo { position: relative; display: block; overflow: hidden; border-radius: var(--ms-photo-r); background: #0B0B0C; }
+.mscreen-default .mdf-photo::after { content: ""; position: absolute; inset: 0; background: var(--mdf-scrim); pointer-events: none; }
+.mscreen-default .mdf-on-photo { position: absolute; z-index: 1; color: #FFFFFF; }
+.mscreen-default .mdf-on-photo .mdf-meta { color: rgba(255, 255, 255, .8); }
+
+/* Podium: the best three as photo cards, the day's best in the middle and tallest */
+.mscreen-default .mdf-bst-podium ol { display: grid; grid-template-columns: 270px 1fr 270px; gap: var(--ms-item-gap); align-items: end; }
+.mscreen-default .mdf-bst-podium li { position: relative; }
+.mscreen-default .mdf-bst-podium li[data-rank="1"] { grid-column: 2; grid-row: 1; height: 100%; }
+.mscreen-default .mdf-bst-podium li[data-rank="2"] { grid-column: 1; grid-row: 1; height: 88%; }
+.mscreen-default .mdf-bst-podium li[data-rank="3"] { grid-column: 3; grid-row: 1; height: 80%; }
+.mscreen-default .mdf-bst-podium .mdf-photo { height: 100%; }
+.mscreen-default .mdf-bst-podium li[data-rank="1"] .mdf-photo { box-shadow: 0 0 0 6px var(--strike); }
+.mscreen-default .mdf-bst-podium .mdf-rank { position: absolute; z-index: 2; left: 22px; top: 22px; width: 76px; height: 76px; font-size: 48px; }
+.mscreen-default .mdf-bst-podium .mdf-on-photo { left: 24px; right: 20px; bottom: 26px; display: grid; gap: 12px; }
+.mscreen-default .mdf-bst-podium .mdf-score { font-size: calc(24px / var(--num-w)); }
+.mscreen-default .mdf-bst-podium li[data-rank="1"] .mdf-score { font-size: calc(30px / var(--num-w)); }
+.mscreen-default .mdf-bst-podium .mdf-crown { position: absolute; z-index: 2; right: 22px; top: 22px; font-size: 56px; color: var(--strike); display: inline-flex; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5)); }
+.mscreen-default .mdf-bst-podium li { animation: mdf-up .7s cubic-bezier(.2, .9, .3, 1) both; animation-delay: calc(var(--d, 0) * .12s); }
+@keyframes mdf-up { from { transform: translateY(60px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Leader and list: the day's best as a big photo card, the next four beside */
+.mscreen-default .mdf-bst-lead .mdf-bst-list { display: grid; grid-template-columns: 420px 1fr; gap: 36px; }
+.mscreen-default .mdf-bst-lead .mdf-photo { height: 100%; }
+.mscreen-default .mdf-bst-lead .mdf-on-photo { left: 32px; right: 28px; bottom: 32px; display: grid; gap: 14px; }
+.mscreen-default .mdf-bst-lead .mdf-on-photo .mdf-name { font-size: 48px; }
+.mscreen-default .mdf-bst-lead .mdf-on-photo .mdf-score { font-size: calc(37px / var(--num-w)); }
+.mscreen-default .mdf-bst-lead .mdf-flag { position: absolute; z-index: 1; left: 28px; top: 28px; display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 99px; background: var(--strike); color: var(--cta-ink); font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; }
+:root[data-variant="reference"] .mscreen-default .mdf-bst-lead .mdf-flag { background: #EB1110; color: #FFFFFF; }
+.mscreen-default .mdf-bst-lead .mdf-flag > [data-lucide] { display: inline-flex; font-size: 34px; }
+.mscreen-default .mdf-bst-lead ol { display: grid; grid-template-rows: repeat(4, 1fr); gap: var(--ms-item-gap); }
+.mscreen-default .mdf-bst-lead ol li { display: grid; grid-template-columns: 44px 96px 1fr; align-items: center; gap: 20px; padding: 0 24px 0 20px; animation: mdf-in .6s cubic-bezier(.2, .9, .3, 1) both; animation-delay: calc(var(--d, 0) * .1s + .2s); }
+@keyframes mdf-in { from { transform: translateX(50px); opacity: 0; } to { transform: none; opacity: 1; } }
+.mscreen-default .mdf-bst-lead ol .mdf-no { font-family: var(--f-display); font-weight: var(--w-display); font-size: 48px; line-height: 1; color: var(--ink-2); text-align: center; font-variant-numeric: tabular-nums; }
+.mscreen-default .mdf-ava { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--mdf-card-ring, rgba(255, 255, 255, .16)); }
+:root[data-appearance="light"] .mscreen-default { --mdf-card-ring: rgba(21, 20, 19, .1); }
+.mscreen-default .mdf-bst-lead ol .mdf-who { display: grid; gap: 8px; min-width: 0; }
+.mscreen-default .mdf-bst-lead ol .mdf-score { font-size: calc(20px / var(--num-w)); }
+
+/* Film strip: five frames from today; a highlight walks along them and the caption below reads the one it rests on */
+.mscreen-default .mdf-bst-strip .mdf-bst-list { display: grid; grid-template-rows: 1fr auto; gap: var(--ms-item-gap); }
+.mscreen-default .mdf-strip-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; min-height: 0; padding-top: 14px; }
+.mscreen-default .mdf-strip-row .mdf-photo { height: 100%; border-radius: calc(var(--ms-photo-r) * .8); transition: transform .5s cubic-bezier(.2, .9, .3, 1), box-shadow .5s ease; }
+.mscreen-default .mdf-strip-row .mdf-photo::after { background: linear-gradient(180deg, rgba(8, 8, 9, .45), transparent 34%); }
+.mscreen-default .mdf-strip-row .mdf-rank { position: absolute; z-index: 2; left: 14px; top: 14px; width: 60px; height: 60px; font-size: 38px; }
+.mscreen-default .mdf-strip-row li.is-on .mdf-photo { transform: translateY(-14px); box-shadow: 0 0 0 6px var(--strike); }
+.mscreen-default .mdf-strip-cap { position: relative; height: 150px; }
+.mscreen-default .mdf-strip-cap .mdf-slide { position: absolute; inset: 0; display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; align-items: center; gap: 24px; padding: 0 36px 0 28px; opacity: 0; transition: opacity .45s ease; }
+.mscreen-default .mdf-strip-cap .mdf-slide.is-on { opacity: 1; }
+.mscreen-default .mdf-strip-cap .mdf-rank { width: 76px; height: 76px; font-size: 46px; }
+.mscreen-default .mdf-strip-cap .mdf-who { display: grid; gap: 10px; min-width: 0; }
+.mscreen-default .mdf-strip-cap .mdf-name { font-size: 44px; }
+.mscreen-default .mdf-strip-cap .mdf-score { font-size: calc(28px / var(--num-w)); }
+.mscreen-default .mdf-gap { display: inline-block; width: 18px; }
+
+/* Live board: a departures board of the day, each row flipping in */
+.mscreen-default .mdf-bst-board ol { display: grid; grid-template-rows: repeat(5, 1fr); gap: 20px; perspective: 1400px; }
+.mscreen-default .mdf-bst-board li {
+  display: grid; grid-template-columns: 56px 96px minmax(0, 1fr) auto; align-items: center; gap: 24px; padding: 0 36px 0 24px;
+  transform-origin: 50% 0; animation: mdf-flip .6s cubic-bezier(.2, .9, .3, 1) both; animation-delay: calc(var(--d, 0) * .09s);
+}
+@keyframes mdf-flip { from { transform: rotateX(-88deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.mscreen-default .mdf-bst-board li:first-child { box-shadow: inset 0 0 0 4px var(--strike), var(--mdf-card-shadow); }
+.mscreen-default .mdf-bst-board .mdf-no { font-family: var(--f-display); font-weight: var(--w-display); font-size: 52px; line-height: 1; text-align: center; font-variant-numeric: tabular-nums; }
+.mscreen-default .mdf-bst-board li:first-child .mdf-no { color: var(--strike); }
+.mscreen-default .mdf-bst-board .mdf-ava { width: 96px; height: 96px; }
+.mscreen-default .mdf-bst-board .mdf-name { font-size: 44px; }
+.mscreen-default .mdf-bst-board .mdf-who { display: grid; gap: 6px; min-width: 0; }
+.mscreen-default .mdf-bst-board .mdf-score { font-size: calc(25px / var(--num-w)); text-align: right; }
+
+/* Spotlight: one player at a time, big; five bars show who is next */
+.mscreen-default .mdf-bst-spot .mdf-bst-list { display: grid; grid-template-columns: 1fr 400px; gap: 0; overflow: hidden; border-radius: var(--r); }
+.mscreen-default .mdf-bst-spot .mdf-spot-info { position: relative; display: grid; grid-template-rows: auto 1fr; gap: 24px; padding: 44px 48px; }
+.mscreen-default .mdf-bst-spot .mdf-bars { display: flex; gap: 10px; }
+.mscreen-default .mdf-bst-spot .mdf-bars i { position: relative; flex: 1; height: 8px; border-radius: 99px; background: var(--track); overflow: hidden; }
+.mscreen-default .mdf-bst-spot .mdf-bars i::after { content: ""; position: absolute; inset: 0; background: var(--strike); transform-origin: 0 50%; transform: scaleX(0); }
+.mscreen-default .mdf-bst-spot .mdf-bars i.is-done::after { transform: scaleX(1); }
+.mscreen-default .mdf-bst-spot .mdf-bars i.is-on::after { animation: mdf-bar var(--spot, 4.5s) linear both; }
+@keyframes mdf-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.mscreen-default .mdf-bst-spot .mdf-slides { position: relative; }
+.mscreen-default .mdf-bst-spot .mdf-slide { position: absolute; inset: 0; display: grid; align-content: center; gap: 20px; opacity: 0; transition: opacity .5s ease; }
+.mscreen-default .mdf-bst-spot .mdf-slide.is-on { opacity: 1; }
+.mscreen-default .mdf-bst-spot .mdf-spot-rank { display: inline-flex; align-items: center; gap: 14px; font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
+.mscreen-default .mdf-bst-spot .mdf-name { font-size: 54px; line-height: 1.05; white-space: normal; }
+.mscreen-default .mdf-bst-spot .mdf-score { font-size: calc(42px / var(--num-w)); }
+.mscreen-default .mdf-bst-spot .mdf-shots { position: relative; background: #0B0B0C; }
+.mscreen-default .mdf-bst-spot .mdf-shots img { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease; }
+.mscreen-default .mdf-bst-spot .mdf-shots img.is-on { opacity: 1; }
+
+/* ================================================================ HOW IT WORKS */
+.mscreen-default .mdf-hw-ic { display: grid; place-items: center; border-radius: 50%; background: var(--mdf-soft); color: var(--strike); }
+
+/* Three cards */
+.mscreen-default .mdf-hw-cards ol { height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ms-item-gap); }
+.mscreen-default .mdf-hw-cards li { display: grid; align-content: start; justify-items: start; gap: 14px; padding: 30px 30px 26px; }
+.mscreen-default .mdf-hw-cards .mdf-hw-ic { width: 88px; height: 88px; font-size: 48px; margin-bottom: 8px; }
+.mscreen-default .mdf-hw-cards b { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(58px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-hw-cards li > span:last-child { font: var(--w-label) 32px/1.2 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+.mscreen-default .mdf-hw-cards li { animation: mdf-up .6s cubic-bezier(.2, .9, .3, 1) both; }
+.mscreen-default .mdf-hw-cards li:nth-child(2) { animation-delay: .12s; }
+.mscreen-default .mdf-hw-cards li:nth-child(3) { animation-delay: .24s; }
+
+/* Illustrated: the how-to art with the three words beside it */
+.mscreen-default .mdf-hw-art { display: grid; grid-template-columns: auto 1fr; gap: 44px; align-items: center; }
+.mscreen-default .mdf-hw-wide { display: block; height: 100%; aspect-ratio: 1568 / 760; border-radius: var(--r); overflow: hidden; background: var(--mdf-soft); }
+.mscreen-default .mdf-hw-wide img { width: 100%; height: 100%; object-fit: cover; }
+.mscreen-default .mdf-hw-caps { display: grid; gap: 30px; }
+.mscreen-default .mdf-hw-caps li { display: flex; align-items: center; gap: 18px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(62px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-hw-caps li > [data-lucide] { font-size: 50px; color: var(--strike); display: inline-flex; }
+
+/* Step tiles: the three step illustrations, a word under each */
+.mscreen-default .mdf-hw-tiles ol { height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ms-item-gap); }
+.mscreen-default .mdf-hw-tiles li { display: grid; grid-template-rows: 1fr auto; justify-items: center; gap: 18px; min-height: 0; }
+.mscreen-default .mdf-hw-tile { position: relative; height: 100%; aspect-ratio: 1; border-radius: var(--r); overflow: hidden; background: var(--mdf-soft); display: grid; place-items: center; }
+.mscreen-default .mdf-hw-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mscreen-default .mdf-hw-tile > [data-lucide] { font-size: 100px; color: var(--strike); display: inline-flex; }
+.mscreen-default .mdf-hw-tiles b { font: var(--w-strong) 34px/1 var(--f-text); white-space: nowrap; }
+
+/* Timeline: three stops on a rail, a pulse running from the code to the pad */
+.mscreen-default .mdf-hw-line { display: grid; align-content: center; }
+.mscreen-default .mdf-hw-line ol { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); }
+.mscreen-default .mdf-hw-line li { display: grid; justify-items: center; gap: 14px; text-align: center; }
+.mscreen-default .mdf-hw-line .mdf-hw-ic { position: relative; z-index: 1; width: 124px; height: 124px; font-size: 60px; background: var(--ms-ground); box-shadow: inset 0 0 0 6px var(--strike), inset 0 0 0 124px var(--mdf-soft), 0 0 0 14px color-mix(in oklab, var(--ground) 80%, transparent); margin-bottom: 8px; }
+:root[data-variant="reference"] .mscreen-default .mdf-hw-line .mdf-hw-ic { background: #141218; }
+:root[data-variant="reference"][data-appearance="light"] .mscreen-default .mdf-hw-line .mdf-hw-ic { background: #F7F5FA; }
+.mscreen-default .mdf-hw-line b { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(56px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-hw-line li > span:last-child { font: var(--w-label) 32px/1.2 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+.mscreen-default .mdf-hw-line ol::before, .mscreen-default .mdf-hw-line ol::after { content: ""; position: absolute; top: 59px; height: 6px; border-radius: 99px; }
+.mscreen-default .mdf-hw-line ol::before { left: calc(100% / 6); right: calc(100% / 6); background: color-mix(in oklab, var(--strike) 32%, transparent); }
+.mscreen-default .mdf-hw-line ol::after { left: calc(100% / 6); width: 120px; background: linear-gradient(90deg, transparent, var(--strike), transparent); animation: mdf-pulse 3.2s cubic-bezier(.5, 0, .5, 1) infinite; }
+@keyframes mdf-pulse { from { translate: -60px 0; opacity: 0; } 10%, 90% { opacity: 1; } to { translate: 543px 0; opacity: 0; } }
+
+/* One line: the whole flow in three words; the last one lands */
+.mscreen-default .mdf-hw-one { display: grid; align-content: center; gap: 26px; padding: 0 48px; border-radius: var(--ms-photo-r); overflow: hidden; isolation: isolate; background: #0B0B0C; color: #FFFFFF; }
+.mscreen-default .mdf-hw-bg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: 55% 26%; }
+.mscreen-default .mdf-hw-one::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8, 8, 9, .9) 0%, rgba(8, 8, 9, .72) 55%, rgba(8, 8, 9, .2) 100%); }
+.mscreen-default .mdf-hw-one .mdf-hw-w > [data-lucide], .mscreen-default .mdf-hw-one .mdf-hw-w.is-hit { color: #FF4E4D; }
+.mscreen-default .mdf-hw-say { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 44px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track); font-size: calc(100px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-hw-w { display: inline-flex; align-items: center; gap: 20px; animation: mdf-word 4.8s ease-in-out infinite both; }
+.mscreen-default .mdf-hw-w > [data-lucide] { font-size: .7em; color: var(--strike); display: inline-flex; }
+.mscreen-default .mdf-hw-w:nth-child(2) { animation-delay: .6s; }
+.mscreen-default .mdf-hw-w:nth-child(3) { animation-delay: 1.2s; }
+.mscreen-default .mdf-hw-w.is-hit { color: var(--strike); }
+@keyframes mdf-word { 0%, 100% { opacity: .45; } 12%, 60% { opacity: 1; } }
+.mscreen-default .mdf-hw-sub { font: var(--w-text) 40px/1.25 var(--f-text); color: rgba(255, 255, 255, .82); }
+
+/* ================================================================ reduced motion: one composed still per design */
+@media (prefers-reduced-motion: reduce) {
+  .mscreen-default .mdf-sec *, .mscreen-default .mdf-sec *::before, .mscreen-default .mdf-sec *::after { animation: none !important; transition: none !important; }
+  .mscreen-default .mdf-offer-chev i { opacity: 1; }
+  .mscreen-default .mdf-bst-spot .mdf-bars i.is-on::after { transform: scaleX(1); }
+}
+
+/* the how-to art comes in a dark and a light drawing; until it loads (or if it cannot), icons stand in */
+.mscreen-default .mdf-on-light { display: none !important; }
+:root[data-appearance="light"] .mscreen-default .mdf-on-dark { display: none !important; }
+:root[data-appearance="light"] .mscreen-default .mdf-on-light:not([hidden]) { display: block !important; }
+.mscreen-default .mdf-hw-wide { position: relative; }
+.mscreen-default .mdf-hw-wide img { position: absolute; inset: 0; }
+.mscreen-default .mdf-hw-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 40px; font-size: 110px; color: var(--strike); }
+.mscreen-default .mdf-hw-fallback > span { display: inline-flex; }
+.mscreen-default .mdf-hw-tile[data-art] > [data-lucide], .mscreen-default .mdf-hw-wide[data-art] > .mdf-hw-fallback { display: none; }

@@ -1,0 +1,9 @@
+/* One spacing scale for every machine flow screen on the 1080 x 3840 glass (round six: "every page needs better
+   spacing"). Read from 1 to 1.5 m, so the steps are big; screens use these instead of one-off numbers:
+   --ms-gut        the glass's side margin
+   --ms-sec-gap    between two sections of a screen
+   --ms-group-gap  between groups inside a section (a heading and its content)
+   --ms-item-gap   between items in a list
+   --ms-pad        inside a card or a tile
+   The sponsor strip at the foot (140 px) and the header at the top are shared chrome; a screen's sections sit between. */
+.mscreen { --ms-gut: 88px; --ms-sec-gap: 120px; --ms-group-gap: 56px; --ms-item-gap: 28px; --ms-pad: 48px; }

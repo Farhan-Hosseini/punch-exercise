@@ -1,0 +1,114 @@
+    <!-- ========== punch on the machine (mpages/punch.css, mpages/punch.js; the flow in mobile.js) ==========
+         Only the machine keeps time: it counts twenty seconds on the glass, and the phone shows no timer and no number.
+         The page says one thing: look up and strike the pad once. Cancel, the title and its one line, then two sections
+         (psec.js), one idea each:
+           Look up   one calm picture that points at the machine; it marks the strike when it lands and rests at time up
+           Machine   the machine this phone is connected to (Dubai Mall), the state of that link, and the chosen logo
+         Round nine: the title "Punch on the machine" stays on screen through the wait, the strike, the reading and time up;
+         only the line under it changes. The chosen PunchApp logo (<img data-logo-img>, app.js) sits where the fist was.
+         mobile.js writes every [data-punch-title], [data-punch-sub] and [data-punch-link] and puts the state on #mPunch:
+         data-state wait, landed, reading or miss. Every design reads that one attribute. -->
+    <section class="m-page" data-page="punch" aria-labelledby="mPunchTitle">
+      <div class="m-punch pp" id="mPunch" data-state="wait">
+        <div class="pp-top">
+          <button class="m-punch-cancel" type="button" id="mPunchCancel">Cancel</button>
+        </div>
+        <header class="pp-head">
+          <h2 class="m-title m-punch-title" id="mPunchTitle" data-punch-title>Punch on the <em>machine</em></h2>
+          <p class="m-punch-sub" data-punch-sub>Look up at the glass and give the pad one full strike.</p>
+        </header>
+
+        <!-- ---------------------------------------------------------------- Look up -->
+        <div class="pp-sec pp-look" data-sec="look" data-sec-label="Look up" aria-hidden="true">
+
+          <div class="pp-l pp-beacon" data-sv="Arrow">
+            <span class="pp-bc-ring"></span><span class="pp-bc-ring"></span>
+            <span class="pp-bc-disc">
+              <span class="pp-bc-up" data-lucide="chevrons-up"></span>
+              <img class="pp-bc-fist pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            </span>
+            <svg class="pp-spin" viewBox="0 0 200 200" focusable="false"><path d="M199 100A99 99 0 1 0 100 199"/></svg>
+          </div>
+
+          <div class="pp-l pp-mc" data-sv="Machine">
+            <svg class="pp-mc-svg" viewBox="0 0 160 240" focusable="false">
+              <ellipse class="pp-mc-floor" cx="80" cy="232" rx="70" ry="6"/>
+              <rect class="pp-mc-body" x="16" y="6" width="74" height="220" rx="12"/>
+              <rect class="pp-mc-glass" x="25" y="17" width="56" height="178" rx="6"/>
+              <rect class="pp-mc-lit" x="25" y="17" width="56" height="178" rx="6"/>
+              <circle class="pp-mc-ring" cx="53" cy="106" r="15" pathLength="1"/>
+              <path class="pp-mc-arm" d="M90 26h42v14"/>
+              <g class="pp-mc-bag">
+                <path class="pp-mc-chain" d="M132 40v10"/>
+                <rect class="pp-mc-sack" x="116" y="50" width="32" height="98" rx="16"/>
+                <circle class="pp-mc-pad" cx="132" cy="99" r="8"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="pp-l pp-pad" data-sv="Pad">
+            <svg class="pp-pad-svg" viewBox="0 0 240 240" focusable="false">
+              <circle class="pp-pad-r pp-pad-r3" cx="120" cy="120" r="114"/>
+              <circle class="pp-pad-r pp-pad-r2" cx="120" cy="120" r="84"/>
+              <circle class="pp-pad-r pp-pad-r1" cx="120" cy="120" r="56"/>
+              <circle class="pp-pad-core" cx="120" cy="120" r="34"/>
+            </svg>
+            <img class="pp-pad-fist pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <svg class="pp-spin" viewBox="0 0 200 200" focusable="false"><path d="M199 100A99 99 0 1 0 100 199"/></svg>
+          </div>
+
+          <figure class="pp-l pp-ph" data-sv="Photo">
+            <img class="pp-ph-img" src="assets/photos/lib/boxer-68.jpg" alt="" style="object-position: 40% 40%" decoding="async">
+            <span class="pp-ph-up"><span data-lucide="arrow-up"></span></span>
+          </figure>
+
+          <div class="pp-l pp-bt" data-sv="Big type">
+            <p class="pp-bt-word"><span>Look</span><span class="pp-bt-l2">up<span class="pp-bt-arrow" data-lucide="arrow-up"></span></span></p>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Machine -->
+        <div class="pp-sec pp-mach" data-sec="machine" data-sec-label="Machine">
+
+          <div class="pp-m pp-m-row m-glass" data-sv="Card">
+            <img class="pp-m-tile pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <p class="pp-m-name"><b>Dubai Mall</b><span>Ground Level, by the Ice Rink</span></p>
+            <p class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></p>
+          </div>
+
+          <div class="pp-m pp-m-line" data-sv="Line">
+            <img class="pp-m-mark pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <p class="pp-m-name"><b>Dubai Mall, Ground Level</b></p>
+            <p class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></p>
+          </div>
+
+          <div class="pp-m pp-m-venue" data-sv="Venue">
+            <span class="pp-m-picwrap"><img class="pp-m-pic" src="assets/photos/lib/dubai-night-12.jpg" alt="" style="object-position: 50% 45%" decoding="async"><img class="pp-m-badge pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt=""></span>
+            <p class="pp-m-name"><b>Dubai Mall</b><span class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></span></p>
+          </div>
+
+          <div class="pp-m pp-m-sig" data-sv="Signal">
+            <span class="pp-sig" aria-hidden="true">
+              <span class="pp-sig-end"><span data-lucide="smartphone"></span></span>
+              <span class="pp-sig-path"><i></i></span>
+              <span class="pp-sig-end pp-sig-far"><img class="pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt=""></span>
+            </span>
+            <p class="pp-m-name"><b>Dubai Mall, Ground Level</b><span class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></span></p>
+          </div>
+
+          <div class="pp-m pp-m-label" data-sv="Label">
+            <img class="pp-m-mark pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <p class="pp-m-state m-cap"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></p>
+            <p class="pp-m-big">Dubai Mall</p>
+            <p class="pp-m-spot">Ground Level, by the Ice Rink</p>
+          </div>
+        </div>
+
+        <div class="m-punch-miss pp-miss">
+          <button class="m-btn m-btn-red" type="button" id="mPunchRetry"><span data-lucide="rotate-ccw"></span>Try again</button>
+          <button class="m-btn m-btn-glass" type="button" id="mPunchFree">Free the machine</button>
+        </div>
+
+        <p class="sr-only" id="mPunchLive" role="status" aria-live="polite"></p>
+      </div>
+    </section>

@@ -1,0 +1,112 @@
+/* video: designs B to E. Scope every rule under .s-video .v-<letter>.
+   Red appears once per design: the contact mark in B, the replay progress in C, D and E.
+   Round nine review: every design plays Sara's reel (video.rv, driven by the script at the foot of video.html); the
+   progress fills read --rv, the share of the reel played, which the script sets on the design. No play keys: the glass
+   takes no touch and the reel runs by itself. */
+.s-video .rv { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; background: #000; }
+.s-video .player > .rv { position: absolute; inset: 0; }
+:root .s-video .timeline .progress { width: calc(var(--rv, .294) * 100%); }
+
+/* B  Filmstrip: a wide player, and under it six frames of the hit on the six columns, contact ringed and marked.
+      Level and on the margins (the strip used to lie tilted across the player's lower edge and past both margins). */
+.s-video .v-b .video-b-wrap { display: grid; gap: var(--gap-grid); }
+.s-video .v-b .video-b-player { aspect-ratio: 7 / 3; border-radius: var(--r); background: rgba(0, 0, 0, 1); }
+.s-video .v-b .video-b-control {
+  position: absolute; z-index: 2; top: calc(32px * var(--space)); left: calc(32px * var(--space));
+  display: flex; align-items: center; gap: 20px; padding: 18px 32px; border-radius: 999px;
+}
+.s-video .v-b .video-b-control-copy { display: grid; gap: 8px; }
+.s-video .v-b .video-b-replay { color: inherit; font-size: 32px; text-box: trim-both cap alphabetic; }
+.s-video .v-b .video-b-time { font-size: 32px; line-height: 1; color: rgba(255, 255, 255, .82); font-variant-numeric: tabular-nums; }
+.s-video .v-b .video-b-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); align-items: start; gap: var(--gap-grid); }
+.s-video .v-b .video-b-frame { aspect-ratio: 4 / 3; border-radius: calc(var(--r) * .5); background: var(--track); }
+.s-video .v-b .video-b-strip > .video-b-frame { opacity: .62; transition: opacity .2s ease; }
+/* the frame nearest the reel's playhead lights (contact is always lit) */
+.s-video .v-b .video-b-strip > .video-b-frame.is-now { opacity: 1; }
+.s-video .v-b .video-b-contact { position: relative; display: grid; justify-items: center; gap: 14px; }
+.s-video .v-b .video-b-contact .video-b-frame { width: 100%; box-shadow: 0 0 0 4px var(--ink-1); border-bottom: 6px solid var(--strike); }
+.s-video .v-b .video-b-mark { font-size: 32px; color: var(--ink-1); white-space: nowrap; }
+
+/* C  Phone clip: the replay held upright in a drawn phone on the first column, the line and the replay on the other two */
+.s-video .v-c .video-c-wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gap-grid); }
+.s-video .v-c .video-c-phone { position: relative; height: 540px; padding: 12px 14px; border-radius: 52px; }
+.s-video .v-c .video-c-screen { height: 100%; border-radius: 40px; background: rgba(0, 0, 0, 1); }
+.s-video .v-c .video-c-screen::before { content: ""; position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(to top, rgba(0, 0, 0, .66), rgba(0, 0, 0, 0)); }
+.s-video .v-c .video-c-island { position: absolute; z-index: 3; top: 14px; left: 50%; width: 92px; height: 28px; border-radius: 14px; background: rgba(0, 0, 0, .94); transform: translateX(-50%); }
+.s-video .v-c .video-c-scrub { position: absolute; z-index: 3; left: 26px; right: 26px; bottom: 30px; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, .3); }
+.s-video .v-c .video-c-scrub-fill { display: block; width: calc(var(--rv, .294) * 100%); height: 100%; border-radius: inherit; }
+
+.s-video .v-c .video-c-copy {
+  grid-column: 2 / span 2; container-type: inline-size; min-width: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr); align-content: space-between; padding: 36px 0 24px var(--card-pad);
+}
+.s-video .v-c .video-c-head { display: grid; gap: calc(28px * var(--space)); }
+.s-video .v-c .video-c-title { display: grid; gap: 12px; font-size: min(calc(72px / var(--cap)), calc(100cqi / (11 * .53))); }
+.s-video .v-c .video-c-title span { display: block; text-box: trim-both cap alphabetic; }
+.s-video .v-c .video-c-line { color: var(--ink-2); text-wrap: balance; }
+.s-video .v-c .video-c-play { display: flex; align-items: baseline; gap: 24px; }
+.s-video .v-c .video-c-play-label { font-size: 32px; color: var(--ink-1); }
+.s-video .v-c .video-c-time { font-size: 32px; line-height: 1; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+/* D  Cinema: the replay runs to the glass edges, letterbox bars carry the credits and the progress */
+.s-video .v-d .video-d-scope { margin-inline: calc(-1 * var(--pad)); height: 556px; background: rgba(0, 0, 0, 1); }
+.s-video .v-d .video-d-scrim {
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    linear-gradient(to left, rgba(0, 0, 0, .62), rgba(0, 0, 0, 0) 58%),
+    linear-gradient(to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0) 48%);
+}
+.s-video .v-d .video-d-bar { position: absolute; z-index: 3; left: 0; right: 0; background: rgba(0, 0, 0, .9); }
+.s-video .v-d .video-d-top { top: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; padding-inline: var(--pad); }
+.s-video .v-d .video-d-cap { font-size: 32px; color: var(--ink-2); }
+.s-video .v-d .video-d-title {
+  position: absolute; z-index: 3; right: var(--pad); bottom: calc(84px + 36px * var(--space));
+  font-size: calc(72px / var(--cap)); color: var(--ink-1); text-box: trim-both cap alphabetic;
+}
+.s-video .v-d .video-d-bottom { bottom: 0; height: 84px; }
+.s-video .v-d .video-d-line { position: absolute; left: 0; right: 0; top: 0; height: 6px; background: rgba(255, 255, 255, .2); }
+.s-video .v-d .video-d-fill { display: block; width: calc(var(--rv, .294) * 100%); height: 100%; }
+.s-video .v-d .video-d-row { height: 100%; padding: 6px var(--pad) 0; display: flex; align-items: center; justify-content: space-between; }
+.s-video .v-d .video-d-time { font-size: 32px; line-height: 1; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.s-video .v-d .video-d-replay { display: flex; align-items: center; gap: 16px; color: var(--ink-1); }
+
+/* E  Reel and contact: the reel and its moment of contact cut apart on a slant, stamped, one progress line beneath */
+.s-video .v-e .video-e-wrap { display: grid; gap: calc(28px * var(--space)); }
+.s-video .v-e .video-e-pair { position: relative; height: 470px; }
+.s-video .v-e .video-e-shot { position: absolute; top: 0; bottom: 0; width: 58%; margin: 0; border-radius: var(--r); background: rgba(0, 0, 0, 1); }
+.s-video .v-e .video-e-shot > img { display: block; }
+.s-video .v-e .video-e-windup { left: 0; clip-path: polygon(0 0, calc(100% - 10px) 0, calc(72.41% - 10px) 100%, 0 100%); }
+.s-video .v-e .video-e-hit { right: 0; clip-path: polygon(calc(27.59% + 10px) 0, 100% 0, 100% 100%, 10px 100%); }
+.s-video .v-e .video-e-stamp {
+  position: absolute; z-index: 3; color: var(--ink-1);
+  border: 3px solid currentColor; border-radius: 6px; background: rgba(0, 0, 0, .42);
+  transform: rotate(-6deg);
+}
+.s-video .v-e .video-e-stamp-a { top: calc(36px * var(--space)); left: calc(36px * var(--space)); padding: 12px 18px; font-size: 32px; }
+.s-video .v-e .video-e-stamp-b {
+  right: calc(40px * var(--space)); bottom: calc(40px * var(--space)); padding: 16px 22px 14px;
+  letter-spacing: .04em; font-size: calc(48px / var(--cap));
+}
+.s-video .v-e .video-e-time { display: grid; gap: 16px; }
+.s-video .v-e .video-e-line { height: 6px; border-radius: 3px; background: var(--track); overflow: hidden; }
+.s-video .v-e .video-e-fill { display: block; width: calc(var(--rv, .294) * 100%); height: 100%; border-radius: inherit; }
+.s-video .v-e .video-e-ends { display: flex; justify-content: space-between; color: var(--ink-2); }
+.s-video .v-e .video-e-ends .text { font-size: 32px; line-height: 1; font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- Light
+   The photographs stay dark, the chrome around them joins the daylight page.
+   Anything that sits on a photograph or on film keeps photo ink (white); anything on the page takes the page tokens. */
+
+/* D: the letterbox bars become the page itself, so credits and controls sit on daylight and the photograph is the band between them */
+:root[data-appearance="light"] .s-video .v-d .video-d-scope { background: transparent; }
+:root[data-appearance="light"] .s-video .v-d .video-d-scope > :is(img, video) { margin-top: 52px; height: calc(100% - 136px); }
+:root[data-appearance="light"] .s-video .v-d .video-d-scrim { inset: 52px 0 84px; }
+:root[data-appearance="light"] .s-video .v-d .video-d-bar { background: transparent; }
+:root[data-appearance="light"] .s-video .v-d .video-d-line { background: var(--track); }
+:root[data-appearance="light"] .s-video .v-d .video-d-title { color: #FFFFFF; }
+
+/* E: the stamps become paper labels stuck on the photographs, ink on white */
+:root[data-appearance="light"] .s-video .v-e .video-e-stamp {
+  background: var(--raised); color: var(--ink-1);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .55);
+}

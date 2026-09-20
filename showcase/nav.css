@@ -1,0 +1,318 @@
+/* The app's tab bar in five styles, chosen in Customise (Across every screen, Tab bar): Red glow (the default), Tab
+   bar, Dock, Notch and Minimal. The base rules in mobile.css are the Figma frame's floating pill, which round eight
+   retired; every style here restyles the same five buttons over them. Every colour and face comes from the app tokens,
+   so each style works in Arena and Reference, dark and light.
+   Hooks from mobile.js: --nav-i is the index of the current tab (0 when none), .m-app gets data-nav-none when no tab is
+   current (someone else's profile), and each button carries aria-current="page" when it is the current tab.
+   Three measures every style sets, so the pinned You bar and the toast clear whatever the bar does:
+     --m-nav-top   how far the top edge of the bar sits above the screen's bottom edge
+     --m-nav-rise  how far the logo (or the bar's hump) rises above that edge
+     --m-nav-gap   the air left between the rise and the You bar
+   --m-nav-safe is the home indicator zone a bar anchored to the bottom edge keeps clear: 34 px on the iPhone, as iOS does,
+   24 px on Android, where the gesture bar is smaller. */
+
+.m-app {
+  --m-nav-safe: calc(var(--m-bottom) - 10px);
+  --m-nav-top: calc(var(--m-bottom) + 46px);
+  --m-nav-rise: 8px;
+  --m-nav-gap: 8px;
+}
+.m-nav-ind { display: none; }
+.m-nav-item i { font-style: normal; }
+.m-app .m-you { bottom: calc(var(--m-nav-top) + var(--m-nav-rise) + var(--m-nav-gap)); }
+.m-app .m-toast { bottom: calc(var(--m-nav-top) + var(--m-nav-rise) + var(--m-nav-gap) + 14px); }
+/* on the leaderboard the pinned You bar (68 px) sits on that line, so the toast rises above it */
+.m-app[data-page="ranks"] .m-toast { bottom: calc(var(--m-nav-top) + var(--m-nav-rise) + var(--m-nav-gap) + 68px + 12px); }
+
+/* every style: a focus ring that follows the control's own shape; on the raised logo it hugs the mark (mobile.css) */
+.m-nav-item { border-radius: 23px; touch-action: manipulation; }
+/* the logo is the button in every style: no disc behind it */
+.m-nav-fist::before { content: none; }
+
+/* The two bars on the bottom edge are cut from one shape: a strip with a 120 px tile in the middle. The tile is drawn
+   once as SVG so the curve has proper fillets where it meets the straight edge, and the strip either side is plain.
+   Bar grows a hump that the fist sits on; Notch is cut with a cradle the fist floats in. The same mask on .m-nav-ind,
+   lifted by one pixel and laid underneath, draws the hairline along the whole top contour, curve and corners too.
+   The #000 in these masks is coverage, not a colour: a mask only reads alpha, and what shows is the token behind it. */
+.m-app {
+  --nav-hump: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-60 -30 120 230'%3E%3Cpath d='M-60 0H-39.94A10 10 0 0 0-30.43-6.9A32 32 0 0 1 30.43-6.9A10 10 0 0 0 39.94 0H60V200H-60Z'/%3E%3C/svg%3E");
+  --nav-cradle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-60 0 120 200'%3E%3Cpath d='M-60 0H-41.57A8 8 0 0 1-33.65 6.86A34 34 0 0 0 33.65 6.86A8 8 0 0 1 41.57 0H60V200H-60Z'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------ Red glow, the default (round eight): a bar on the bottom edge,
+   every tab labelled. The current tab is lit from the bar: a short red edge on the bar's rim, the light it throws down
+   into the bar behind the icon, and a soft halo rising above the rim; its icon and label turn to full ink. The logo sits
+   raised on the middle of the rim, cut out of the bar by a ring of the bar's own colour, and glows red. The dark looks
+   get the light; the light looks get a warm red wash inside the bar and no halo, so a pale page never carries a neon
+   blob. The light slides from tab to tab on --nav-i, and holds still under reduced motion. */
+.m-app[data-nav="glow"] {
+  --m-nav-top: calc(var(--m-nav-safe) + 58px); --m-nav-rise: 24px; --m-nav-gap: 14px;
+  --gl-bar: var(--m-sheet);
+  --gl-core: color-mix(in srgb, var(--m-red) 56%, transparent);
+  --gl-halo: color-mix(in srgb, var(--m-red) 34%, transparent);
+  --gl-edge: 0 0 8px 1px color-mix(in srgb, var(--m-glow) 90%, transparent), 0 0 22px 5px color-mix(in srgb, var(--m-glow) 38%, transparent);
+  --gl-lit: var(--m-ink);
+  --gl-lit-fx: drop-shadow(0 0 7px color-mix(in srgb, var(--m-red) 75%, transparent));
+  --gl-logo: 0 0 0 4px var(--gl-bar), 0 0 28px 2px color-mix(in srgb, var(--m-glow) 50%, transparent), 0 10px 24px -8px color-mix(in srgb, var(--m-glow) 90%, transparent);
+  --gl-logo-on: 0 0 0 4px var(--gl-bar), 0 0 0 6px var(--m-red-soft), 0 0 34px 4px color-mix(in srgb, var(--m-glow) 60%, transparent);
+}
+:root[data-appearance="light"] .m-app[data-nav="glow"] {
+  --gl-core: color-mix(in srgb, var(--m-red) 15%, transparent);
+  --gl-halo: transparent;
+  --gl-edge: 0 2px 8px -1px color-mix(in srgb, var(--m-red) 45%, transparent);
+  --gl-lit: var(--m-red-soft);
+  --gl-lit-fx: none;
+  --gl-logo: 0 0 0 4px var(--gl-bar), 0 0 0 5px var(--m-line), 0 10px 22px -8px color-mix(in srgb, var(--m-red) 60%, transparent);
+  --gl-logo-on: 0 0 0 4px var(--gl-bar), 0 0 0 6px var(--m-red-soft), 0 10px 22px -8px color-mix(in srgb, var(--m-red) 60%, transparent);
+}
+.m-app[data-nav="glow"] .m-nav { left: 0; right: 0; bottom: 0; height: var(--m-nav-top); align-items: start; padding: 5px 8px 0; }
+.m-app[data-nav="glow"] .m-nav-bar {
+  border: 0; border-radius: 0; background: var(--gl-bar);
+  box-shadow: inset 0 1px 0 var(--m-line), 0 -18px 30px -26px var(--m-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3); backdrop-filter: blur(20px) saturate(1.3);
+}
+/* the light: one element that slides to the current tab. Its top 26 px rise above the rim (the halo), the rest is the
+   light inside the bar; ::before is the lit edge on the rim */
+.m-app[data-nav="glow"] .m-nav-ind {
+  display: block; position: absolute; z-index: 0; pointer-events: none;
+  top: -26px; height: calc(26px + 58px); width: calc((100% - 16px) / 5);
+  left: calc(8px + (100% - 16px) / 5 * var(--nav-i, 0));
+  background:
+    radial-gradient(46% 26px at 50% 26px, var(--gl-halo), transparent) 0 0 / 100% 26px no-repeat,
+    radial-gradient(60% 72px at 50% 0, var(--gl-core), transparent) 0 26px / 100% 58px no-repeat;
+  transition: left .45s cubic-bezier(.2, .7, .2, 1), opacity .25s ease;
+}
+.m-app[data-nav="glow"] .m-nav-ind::before {
+  content: ""; position: absolute; left: 50%; top: 26px; width: 34px; height: 3px; border-radius: 0 0 3px 3px;
+  transform: translateX(-50%); background: var(--m-red-hi); box-shadow: var(--gl-edge);
+  transition: opacity .25s ease;
+}
+/* under the logo the lit edge would hide behind it: the logo's own glow says current there */
+.m-app[data-nav="glow"] .m-nav:has(> .m-nav-fist[aria-current="page"]) .m-nav-ind::before { opacity: 0; }
+.m-app[data-nav="glow"][data-nav-none] .m-nav-ind { opacity: 0; }
+.m-app[data-nav="glow"] .m-nav-item {
+  height: 50px; border-radius: 14px;
+  display: grid; grid-template-rows: 28px 12px; row-gap: 5px; justify-items: center; align-content: center;
+  color: var(--m-ink-2); transition: color .25s ease;
+}
+.m-app[data-nav="glow"] .m-nav-item [data-icon] { margin: 0; align-self: center; transition: filter .25s ease; }
+.m-app[data-nav="glow"] .m-nav-item i {
+  display: block; position: static; transform: none; opacity: 1; pointer-events: none; align-self: end;
+  font: var(--m-w-strong) 11px/1 var(--m-f-text); letter-spacing: .01em; color: currentColor; white-space: nowrap;
+}
+.m-app[data-nav="glow"] .m-nav-item[aria-current="page"] { color: var(--gl-lit); }
+.m-app[data-nav="glow"] .m-nav-item[aria-current="page"] [data-icon] { filter: var(--gl-lit-fx); }
+.m-app[data-nav="glow"] .m-nav-item[aria-current="page"] i { font-weight: var(--m-w-bold); }
+.m-app[data-nav="glow"] .m-nav-item:not([aria-current="page"]):hover { color: var(--m-ink); }
+.m-app[data-nav="glow"] .m-nav-item:hover [data-icon] { transform: none; }
+.m-app[data-nav="glow"] .m-nav-item:not(.m-nav-fist)::after { display: none; }
+/* the logo, raised on the rim; its label stays on the line with the others */
+.m-app[data-nav="glow"] .m-nav-logo,
+.m-app[data-nav="glow"] .m-nav-fist[aria-current="page"] .m-nav-logo { position: absolute; left: 50%; top: -1px; height: 54px; transform: translate(-50%, -50%); box-shadow: var(--gl-logo); }
+.m-app[data-nav="glow"] .m-nav-fist[aria-current="page"] .m-nav-logo { box-shadow: var(--gl-logo-on); }
+.m-app[data-nav="glow"] .m-nav-fist:hover .m-nav-logo { transform: translate(-50%, -50%) scale(1.05); }
+.m-app[data-nav="glow"] .m-nav-fist:active .m-nav-logo { transform: translate(-50%, -50%) scale(.96); }
+.m-app[data-nav="glow"] .m-nav-fist i { grid-row: 2; }
+
+/* ------------------------------------------------------------ Tab bar: a full-width bar on the bottom edge, every tab labelled.
+   The current tab gets a tinted capsule behind its icon that grows out from the middle, and its label turns bold.
+   The fist sits on a hump in the bar, its label on the same line as the others. */
+.m-app[data-nav="bar"] { --m-nav-top: calc(var(--m-nav-safe) + 54px); --m-nav-rise: 29px; --m-nav-gap: 14px; }
+.m-app[data-nav="bar"] .m-nav {
+  left: 0; right: 0; bottom: 0; height: var(--m-nav-top);
+  align-items: start; padding: 4px 8px 0;
+}
+.m-app[data-nav="bar"] .m-nav-bar,
+.m-app[data-nav="bar"] .m-nav-ind {
+  inset: -30px 0 0; border: 0; border-radius: 0;
+  -webkit-mask:
+    var(--nav-hump) 50% 0 / 120px 230px no-repeat,
+    linear-gradient(#000 0 0) 0 30px / calc(50% - 59px) calc(100% - 30px) no-repeat,
+    linear-gradient(#000 0 0) 100% 30px / calc(50% - 59px) calc(100% - 30px) no-repeat;
+  mask:
+    var(--nav-hump) 50% 0 / 120px 230px no-repeat,
+    linear-gradient(#000 0 0) 0 30px / calc(50% - 59px) calc(100% - 30px) no-repeat,
+    linear-gradient(#000 0 0) 100% 30px / calc(50% - 59px) calc(100% - 30px) no-repeat;
+}
+.m-app[data-nav="bar"] .m-nav-bar {
+  background: var(--m-sheet); box-shadow: none;
+  -webkit-backdrop-filter: blur(20px) saturate(1.3); backdrop-filter: blur(20px) saturate(1.3);
+}
+.m-app[data-nav="bar"] .m-nav-ind { display: block; position: absolute; z-index: -1; transform: translateY(-1px); background: var(--m-line-2); }
+.m-app[data-nav="bar"] .m-nav-item {
+  height: 48px; border-radius: 14px;
+  display: grid; grid-template-rows: 30px 11px; row-gap: 5px; justify-items: center; align-content: center;
+  color: var(--m-ink-2);
+}
+.m-app[data-nav="bar"] .m-nav-item [data-icon] { position: relative; z-index: 1; margin: 0; align-self: center; }
+.m-app[data-nav="bar"] .m-nav-item i {
+  display: block; position: static; transform: none; opacity: 1; pointer-events: none;
+  font: var(--m-w-strong) 11px/1 var(--m-f-text); letter-spacing: .01em; color: currentColor; white-space: nowrap;
+}
+.m-app[data-nav="bar"] .m-nav-item[aria-current="page"] { color: var(--m-red-soft); }
+.m-app[data-nav="bar"] .m-nav-item[aria-current="page"] i { font-weight: var(--m-w-bold); }
+.m-app[data-nav="bar"] .m-nav-item:not(.m-nav-fist)::after {
+  top: 1px; bottom: auto; width: 56px; height: 30px; border-radius: 15px;
+  background: color-mix(in srgb, var(--m-red) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--m-red-soft) 22%, transparent);
+  opacity: 0; transform: translateX(-50%) scaleX(.45);
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1), opacity .2s ease;
+}
+.m-app[data-nav="bar"] .m-nav-item[aria-current="page"]:not(.m-nav-fist)::after { opacity: 1; transform: translateX(-50%) scaleX(1); }
+.m-app[data-nav="bar"] .m-nav-item:not(.m-nav-fist):hover::after { opacity: 1; transform: translateX(-50%) scaleX(1); background: var(--m-glass-hi); box-shadow: none; }
+.m-app[data-nav="bar"] .m-nav-item[aria-current="page"]:not(.m-nav-fist):hover::after { background: color-mix(in srgb, var(--m-red) 16%, transparent); }
+.m-app[data-nav="bar"] .m-nav-item:hover [data-icon] { transform: none; }
+/* the logo sits in the hump, its centre on the hump's centre; its label stays on the line with the others */
+.m-app[data-nav="bar"] .m-nav-logo { position: absolute; left: 50%; top: -1px; height: 52px; transform: translate(-50%, -50%); }
+.m-app[data-nav="bar"] .m-nav-fist:hover .m-nav-logo { transform: translate(-50%, -50%) scale(1.05); }
+.m-app[data-nav="bar"] .m-nav-fist:active .m-nav-logo { transform: translate(-50%, -50%) scale(.96); }
+.m-app[data-nav="bar"] .m-nav-fist i { grid-row: 2; }
+.m-app[data-nav="bar"] .m-nav-fist[aria-current="page"] { color: var(--m-red-soft); }
+
+/* ------------------------------------------------------------ Dock: a floating dock; the current tab opens into a labelled pill.
+   The logo is held dead centre as the dock's own icon, a little larger than the line icons: each half of the dock keeps
+   the same width whichever tab is open, so the pill grows inside its own half and nothing on the other side moves. */
+.m-app[data-nav="dock"] { --m-nav-top: calc(var(--m-nav-safe) + 60px); --m-nav-rise: 0px; --m-nav-gap: 14px; }
+.m-app[data-nav="dock"] .m-nav {
+  --q: calc(25% - 18px);  /* a closed tab when its half has none open */
+  --c: 36px;              /* a closed tab beside the open one: its icon with 6 px either side */
+  --o: calc(50% - 72px);  /* the open tab: its half, less the closed one. Wide enough for "Your hit" in Sora on Android */
+  left: var(--m-gut); right: var(--m-gut); bottom: var(--m-nav-safe); height: 60px; padding: 6px;
+  grid-template-columns: var(--q) var(--q) 56px var(--q) var(--q); column-gap: 4px;
+  transition: grid-template-columns .45s cubic-bezier(.2, .7, .2, 1), transform .4s cubic-bezier(.2, .7, .2, 1), opacity .3s ease;
+}
+.m-app[data-nav="dock"] .m-nav:has(> [data-go="default"][aria-current="page"]) { grid-template-columns: var(--o) var(--c) 56px var(--q) var(--q); }
+.m-app[data-nav="dock"] .m-nav:has(> [data-go="ranks"][aria-current="page"]) { grid-template-columns: var(--c) var(--o) 56px var(--q) var(--q); }
+.m-app[data-nav="dock"] .m-nav:has(> [data-go="feed"][aria-current="page"]) { grid-template-columns: var(--q) var(--q) 56px var(--o) var(--c); }
+.m-app[data-nav="dock"] .m-nav:has(> [data-go="profile"][aria-current="page"]) { grid-template-columns: var(--q) var(--q) 56px var(--c) var(--o); }
+.m-app[data-nav="dock"] .m-nav-bar {
+  border-radius: 22px; border: 1px solid var(--m-line);
+  background: var(--m-sheet);
+  box-shadow: var(--m-lift), 0 22px 40px -22px var(--m-shadow);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3); backdrop-filter: blur(18px) saturate(1.3);
+}
+.m-app[data-nav="dock"] .m-nav-item {
+  height: 48px; min-width: 0; padding: 0 10px; border-radius: 16px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  color: var(--m-ink-2);
+  transition: background-color .25s ease, color .25s ease, gap .45s cubic-bezier(.2, .7, .2, 1);
+}
+.m-app[data-nav="dock"] .m-nav-item [data-icon] { margin: 0; }
+.m-app[data-nav="dock"] .m-nav-item:hover [data-icon] { transform: none; }
+.m-app[data-nav="dock"] .m-nav-item:not(.m-nav-fist):hover { background: var(--m-glass-hi); color: var(--m-ink); }
+.m-app[data-nav="dock"] .m-nav-item i {
+  position: static; transform: none; display: block; pointer-events: none;
+  max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap;
+  font: var(--m-w-strong) 14px/1 var(--m-f-text); color: var(--m-red-ink);
+  transition: max-width .45s cubic-bezier(.2, .7, .2, 1), opacity .25s ease;
+}
+.m-app[data-nav="dock"] .m-nav-item[aria-current="page"]:not(.m-nav-fist),
+.m-app[data-nav="dock"] .m-nav-item[aria-current="page"]:not(.m-nav-fist):hover {
+  gap: 6px; color: var(--m-red-soft);
+  background: color-mix(in srgb, var(--m-red) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--m-red-soft) 22%, transparent);
+}
+.m-app[data-nav="dock"] .m-nav-item[aria-current="page"]:not(.m-nav-fist) i { max-width: 72px; opacity: 1; transition-delay: 0s, .1s; }
+.m-app[data-nav="dock"] .m-nav-fist i { display: none; }
+.m-app[data-nav="dock"] .m-nav-item:not(.m-nav-fist)::after { display: none; }
+/* the logo tab is a plain tab: hover and current are the same tinted capsule the other tabs open into */
+.m-app[data-nav="dock"] .m-nav-fist { padding: 0; }
+.m-app[data-nav="dock"] .m-nav-fist:hover { background: var(--m-glass-hi); }
+.m-app[data-nav="dock"] .m-nav-fist[aria-current="page"],
+.m-app[data-nav="dock"] .m-nav-fist[aria-current="page"]:hover {
+  background: color-mix(in srgb, var(--m-red) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--m-red-soft) 22%, transparent);
+}
+.m-app[data-nav="dock"] .m-nav-logo,
+.m-app[data-nav="dock"] .m-nav-fist[aria-current="page"] .m-nav-logo { height: 32px; box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--m-glow) 80%, transparent); }
+.m-app[data-nav="dock"] .m-nav-fist:hover .m-nav-logo { transform: none; }
+.m-app[data-nav="dock"] .m-nav-fist:active { transform: scale(.96); }
+.m-app[data-nav="dock"] .m-nav-fist:focus-visible { outline: 2px solid var(--m-ink); outline-offset: 2px; }
+.m-app[data-nav="dock"] .m-nav-fist:focus-visible .m-nav-logo { outline: none; }
+
+/* ------------------------------------------------------------ Notch: a bar with a cradle cut out of its edge; the logo floats in it.
+   Icons only at rest; the current tab lifts its icon and names itself underneath. */
+.m-app[data-nav="notch"] { --m-nav-top: calc(var(--m-nav-safe) + 56px); --m-nav-rise: 26px; --m-nav-gap: 14px; }
+.m-app[data-nav="notch"] .m-nav {
+  left: 0; right: 0; bottom: 0; height: var(--m-nav-top);
+  align-items: start; padding: 6px 10px 0;
+}
+.m-app[data-nav="notch"] .m-nav-bar,
+.m-app[data-nav="notch"] .m-nav-ind {
+  inset: 0; border: 0; border-radius: 24px 24px 0 0;
+  -webkit-mask:
+    var(--nav-cradle) 50% 0 / 120px 200px no-repeat,
+    linear-gradient(#000 0 0) 0 0 / calc(50% - 59px) 100% no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / calc(50% - 59px) 100% no-repeat;
+  mask:
+    var(--nav-cradle) 50% 0 / 120px 200px no-repeat,
+    linear-gradient(#000 0 0) 0 0 / calc(50% - 59px) 100% no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / calc(50% - 59px) 100% no-repeat;
+}
+.m-app[data-nav="notch"] .m-nav-bar {
+  background: var(--m-sheet); box-shadow: none;
+  -webkit-backdrop-filter: blur(18px) saturate(1.3); backdrop-filter: blur(18px) saturate(1.3);
+}
+.m-app[data-nav="notch"] .m-nav-ind { display: block; position: absolute; z-index: -1; transform: translateY(-1px); background: var(--m-line-2); }
+.m-app[data-nav="notch"] .m-nav-item { height: 50px; border-radius: 16px; color: var(--m-ink-2); }
+.m-app[data-nav="notch"] .m-nav-item [data-icon] { margin: 0; transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
+.m-app[data-nav="notch"] .m-nav-item:hover [data-icon] { transform: translateY(-1px); }
+.m-app[data-nav="notch"] .m-nav-item:not(.m-nav-fist) i {
+  display: block; top: 34px; bottom: auto;
+  font: var(--m-w-strong) 11px/1 var(--m-f-text); letter-spacing: .01em; color: var(--m-red-soft);
+  transition: opacity .25s ease, transform .35s cubic-bezier(.2, .7, .2, 1);
+}
+.m-app[data-nav="notch"] .m-nav-item[aria-current="page"] { color: var(--m-red-soft); }
+.m-app[data-nav="notch"] .m-nav-item[aria-current="page"]:not(.m-nav-fist) [data-icon] { transform: translateY(-7px); }
+.m-app[data-nav="notch"] .m-nav-item:not(.m-nav-fist)::after { display: none; }
+/* the logo is centred 2 px under the edge, on the cradle's centre, with 6 px of air all round it */
+.m-app[data-nav="notch"] .m-nav-logo { position: absolute; left: 50%; top: -4px; height: 56px; transform: translate(-50%, -50%); }
+.m-app[data-nav="notch"] .m-nav-fist:hover .m-nav-logo { transform: translate(-50%, -50%) scale(1.05); }
+.m-app[data-nav="notch"] .m-nav-fist:active .m-nav-logo { transform: translate(-50%, -50%) scale(.96); }
+.m-app[data-nav="notch"] .m-nav-fist i { display: none; }
+
+/* ------------------------------------------------------------ Minimal: no container, labels in small caps, one red line slides to the current tab.
+   The logo keeps its red as the brand's mark, but its label reads like every other tab: only the line and full ink say current. */
+.m-app[data-nav="line"] { --m-nav-top: calc(var(--m-nav-safe) + 56px); --m-nav-rise: 0px; --m-nav-gap: 14px; }
+.m-app[data-nav="line"] .m-nav { left: 12px; right: 12px; height: 56px; bottom: var(--m-nav-safe); align-items: end; }
+.m-app[data-nav="line"] .m-nav-bar {
+  border-radius: 0; border: 0; background: none; box-shadow: inset 0 1px 0 var(--m-line);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.m-app[data-nav="line"] .m-nav-item {
+  height: 52px; border-radius: 12px;
+  display: grid; grid-template-rows: 26px 10px; row-gap: 6px; justify-items: center; align-content: center;
+  color: var(--m-ink-3);
+}
+.m-app[data-nav="line"] .m-nav-item [data-icon] { margin: 0; align-self: center; }
+.m-app[data-nav="line"] .m-nav-item i {
+  display: block; position: static; transform: none; opacity: 1; pointer-events: none;
+  font: var(--m-w-label) 10px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: currentColor; white-space: nowrap;
+  margin-right: calc(var(--m-track-label) * -1); /* the tracking after the last letter would push the word off centre */
+}
+.m-app[data-nav="line"] .m-nav-item[aria-current="page"] { color: var(--m-ink); }
+.m-app[data-nav="line"] .m-nav-item[aria-current="page"] i { font-weight: var(--m-w-label-hi); }
+.m-app[data-nav="line"] .m-nav-item:hover { color: var(--m-ink); }
+.m-app[data-nav="line"] .m-nav-item:not(.m-nav-fist)::after { display: none; }
+.m-app[data-nav="line"] .m-nav-logo,
+.m-app[data-nav="line"] .m-nav-fist[aria-current="page"] .m-nav-logo { height: 28px; margin: -1px 0; align-self: center; box-shadow: none; }
+.m-app[data-nav="line"] .m-nav-fist:hover .m-nav-logo { transform: none; }
+.m-app[data-nav="line"] .m-nav-fist:focus-visible { outline: 2px solid var(--m-ink); outline-offset: 2px; }
+.m-app[data-nav="line"] .m-nav-fist:focus-visible .m-nav-logo { outline: none; }
+.m-app[data-nav="line"] .m-nav-ind {
+  display: block; position: absolute; top: 0; height: 3px; width: 28px; border-radius: 0 0 3px 3px;
+  left: calc(100% / 5 * var(--nav-i, 0) + 100% / 10 - 14px);
+  background: var(--m-red); box-shadow: 0 0 12px color-mix(in srgb, var(--m-glow) 80%, transparent);
+  transition: left .4s cubic-bezier(.2, .7, .2, 1), opacity .2s ease;
+}
+.m-app[data-nav="line"][data-nav-none] .m-nav-ind { opacity: 0; }
+/* the line style lets the page run to the edge, so give the bottom a soft ground to keep the tabs legible */
+.m-app[data-nav="line"] .m-nav::before {
+  content: ""; position: absolute; left: -12px; right: -12px; top: -28px; bottom: calc(var(--m-nav-safe) * -1);
+  background: linear-gradient(to top, var(--m-ground) 62%, transparent);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m-nav, .m-nav-ind, .m-nav-item, .m-nav-item i, .m-nav-item [data-icon], .m-nav-logo, .m-nav-item::before, .m-nav-item::after { transition: none !important; }
+}

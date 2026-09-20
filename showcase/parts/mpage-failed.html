@@ -1,0 +1,148 @@
+    <!-- ========== Payment failed: the payment did not go through (mpages/failed.css, mpages/failed.js) ==========
+         Reached from Checkout when a payment fails (the demo row there makes one fail: declined, cancelled or offline);
+         pay.js keeps the pack and the way to pay, and window.punchPay says what happened and runs the buttons.
+         The pay pages' frame (pay.css .pay-top, .pay-body, .pay-foot): the header keeps the unchanged balance in view,
+         the body says what happened, why and what else to do, and the footer's Try again goes back to the same checkout.
+         Built from sections (psec.js), five designs each, chosen in Customise under This screen:
+           What happened  Cross, Slip, Wallet, Banner, Photo (every copy filled from [data-fail-f])
+           Why            List, Tabs, Most likely, Plain, Questions (the reason this time first, the other two after it)
+           What to do     Ways, Chips, Buttons, Wallet first, Pack kept (drawn by failed.js: the ways to pay that did not
+                          fail, and Back to the packs) -->
+    <section class="m-page pay-page mfx" data-page="failed" data-reason="declined" aria-labelledby="mFailedTitle">
+      <header class="pay-top">
+        <button class="m-iconbtn" type="button" data-fail-go="topup" aria-label="Close, back to the packs"><span data-icon="close"></span></button>
+        <p class="m-credits pay-balance"><span data-lucide="wallet"></span><span class="pay-sr">Balance, unchanged: </span><span data-credits>0 credits</span></p>
+      </header>
+      <div class="pay-body">
+        <h2 class="pay-sr" id="mFailedTitle">Payment failed</h2>
+
+        <!-- ---------------------------------------------------------------- What happened -->
+        <div class="pay-sec mfx-sec-notice" data-sec="notice" data-sec-label="What happened">
+
+          <!-- Cross: the Paid tick's twin, centred the same way, and the two facts that matter as chips under it -->
+          <div class="mfn mfn-cross" data-sv="Cross">
+            <span class="mfn-disc" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M17 17l14 14M31 17 17 31" pathLength="1"/></svg></span>
+            <p class="m-title mfn-title">Payment failed</p>
+            <p class="pay-lead" data-fail-f="lead">Your AED 25 payment for the Group run did not go through.</p>
+            <ul class="mfn-facts">
+              <li><span data-lucide="circle-check"></span>Nothing was charged</li>
+              <li><span data-lucide="circle-check"></span>No credit is held</li>
+            </ul>
+          </div>
+
+          <!-- Slip: the till slip that never printed a charge, stamped Not charged -->
+          <div class="mfn mfn-slip" data-sv="Slip" hidden>
+            <p class="m-title mfn-title">Payment failed</p>
+            <p class="pay-lead" data-fail-f="lead">Your AED 25 payment for the Group run did not go through.</p>
+            <div class="mfn-paper">
+              <p class="mfn-paper-brand"><img data-logo-img src="assets/logos/fist-circle.svg" alt="" width="26" height="26"><b>PunchApp</b></p>
+              <p class="mfn-stamp" aria-hidden="true">Not charged</p>
+              <dl class="mfn-paper-list">
+                <div><dt data-fail-f="pack">Group run</dt><dd data-fail-f="creditsText">3 credits</dd></div>
+                <div><dt>Tried with</dt><dd data-fail-f="paidWith">Apple Pay</dd></div>
+                <div><dt>Credit held</dt><dd>None</dd></div>
+                <div class="is-total"><dt>Charged</dt><dd>AED 0.00</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- Wallet: what did not change, the balance, said as the headline -->
+          <div class="mfn mfn-wallet" data-sv="Wallet" hidden>
+            <p class="mfn-cap"><span data-lucide="circle-x"></span>Payment failed</p>
+            <p class="m-title mfn-title">Nothing was charged</p>
+            <p class="pay-lead" data-fail-f="leadHeld">Your AED 25 payment for the Group run did not go through, and no credit is held.</p>
+            <div class="mfn-wal">
+              <span class="mfn-wal-copy"><span class="m-cap">Wallet balance</span><span class="mfn-wal-same"><span data-lucide="check"></span>Unchanged</span></span>
+              <p class="mfn-wal-n"><b data-fail-f="balance">0</b><span data-fail-f="balanceUnit">credits</span></p>
+            </div>
+          </div>
+
+          <!-- Banner: one strong alert card with the reason in it, then the reassurance in plain words -->
+          <div class="mfn mfn-banner" data-sv="Banner" hidden>
+            <div class="mfn-banner-card">
+              <span class="mfn-banner-ico" aria-hidden="true"><span data-lucide="triangle-alert"></span></span>
+              <span class="mfn-banner-copy"><span class="mfn-banner-title">Payment failed</span><span data-fail-f="short">Declined by your bank</span></span>
+            </div>
+            <p class="pay-lead" data-fail-f="lead">Your AED 25 payment for the Group run did not go through.</p>
+            <p class="mfn-line"><span data-lucide="shield-check"></span><span>Nothing was charged and no credit is held. Your wallet is just as it was.</span></p>
+          </div>
+
+          <!-- Photo: a real photograph, a boxer wrapping up to go again, the cross on it -->
+          <figure class="mfn mfn-photo" data-sv="Photo" hidden>
+            <span class="mfn-photo-pic"><img src="assets/photos/lib/gloves-wrap-2.jpg" alt="A boxer pulls red hand wraps tight" style="object-position: 40% 45%" loading="lazy" decoding="async"><span class="mfn-photo-badge" aria-hidden="true"><span data-lucide="x"></span></span></span>
+            <figcaption>
+              <p class="m-title mfn-title">Payment failed</p>
+              <p class="pay-lead" data-fail-f="lead">Your AED 25 payment for the Group run did not go through.</p>
+              <p class="mfn-line"><span data-lucide="shield-check"></span><span>Nothing charged, no credit held</span></p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Why
+             Every design names the reason this time first (failed.js marks it .is-now and puts it first), then the other
+             two ways a payment fails, each in plain words. -->
+        <h3 class="m-cap pay-label" id="mfxWhyLabel">Why it failed</h3>
+        <div class="pay-sec mfx-sec-why" data-sec="why" data-sec-label="Why">
+
+          <!-- List: a row a reason, this time's marked -->
+          <ul class="mfw mfw-list" data-sv="List" aria-labelledby="mfxWhyLabel">
+            <li data-why="declined"><span class="mfw-ico"><span data-lucide="credit-card"></span></span><span class="mfw-copy"><b data-why-f="head">Your bank declined it</b><span class="mfw-text" data-why-f="text"></span><span class="mfw-brief" data-why-f="brief"></span></span><span class="mfw-now">This time</span></li>
+            <li data-why="cancelled"><span class="mfw-ico"><span data-lucide="circle-x"></span></span><span class="mfw-copy"><b data-why-f="head">It was cancelled</b><span class="mfw-text" data-why-f="text"></span><span class="mfw-brief" data-why-f="brief"></span></span><span class="mfw-now">This time</span></li>
+            <li data-why="offline"><span class="mfw-ico"><span data-lucide="wifi-off"></span></span><span class="mfw-copy"><b data-why-f="head">The connection dropped</b><span class="mfw-text" data-why-f="text"></span><span class="mfw-brief" data-why-f="brief"></span></span><span class="mfw-now">This time</span></li>
+          </ul>
+
+          <!-- Tabs: the three reasons as tabs, this time's picked; each explains itself under them -->
+          <div class="mfw mfw-tabs" data-sv="Tabs" hidden>
+            <div class="mfw-tablist" role="tablist" aria-labelledby="mfxWhyLabel">
+              <button type="button" role="tab" id="mfwTab-declined" data-why="declined" aria-controls="mfwPanel" aria-selected="true"><span data-lucide="credit-card"></span><span>Declined</span></button>
+              <button type="button" role="tab" id="mfwTab-cancelled" data-why="cancelled" aria-controls="mfwPanel" aria-selected="false" tabindex="-1"><span data-lucide="circle-x"></span><span>Cancelled</span></button>
+              <button type="button" role="tab" id="mfwTab-offline" data-why="offline" aria-controls="mfwPanel" aria-selected="false" tabindex="-1"><span data-lucide="wifi-off"></span><span>Offline</span></button>
+            </div>
+            <div class="mfw-panel" id="mfwPanel" role="tabpanel" aria-labelledby="mfwTab-declined" tabindex="0">
+              <p class="mfw-panel-now" data-why-f="tag">What happened this time</p>
+              <b data-why-f="head">Your bank declined it</b>
+              <p data-why-f="text"></p>
+            </div>
+          </div>
+
+          <!-- Most likely: this time's reason large, the other two small under it -->
+          <div class="mfw mfw-likely" data-sv="Most likely" hidden>
+            <div class="mfw-likely-main" data-why-slot="now">
+              <span class="mfw-ico mfw-ico-lg"><span data-lucide="credit-card" data-why-f="icon"></span></span>
+              <p class="mfw-now">This time</p>
+              <b data-why-f="head">Your bank declined it</b>
+              <p data-why-f="text"></p>
+            </div>
+            <p class="mfw-also">It can also fail when</p>
+            <div class="mfw-likely-rest">
+              <div data-why-slot="rest0"><span class="mfw-ico"><span data-lucide="circle-x" data-why-f="icon"></span></span><b data-why-f="head">It was cancelled</b><span data-why-f="brief"></span></div>
+              <div data-why-slot="rest1"><span class="mfw-ico"><span data-lucide="wifi-off" data-why-f="icon"></span></span><b data-why-f="head">The connection dropped</b><span data-why-f="brief"></span></div>
+            </div>
+          </div>
+
+          <!-- Plain: a few sentences, as a person would say it -->
+          <div class="mfw mfw-plain" data-sv="Plain" hidden>
+            <p class="mfw-plain-now"><span class="mfw-ico"><span data-lucide="credit-card" data-why-f="icon"></span></span><span><b data-why-f="head">Your bank declined it.</b> <span data-why-f="text"></span></span></p>
+            <p class="mfw-plain-rest" data-why-f="rest">A payment can also fail when it is cancelled before it finishes, or when the phone loses its signal part way.</p>
+          </div>
+
+          <!-- Questions: the three as questions, this time's open -->
+          <div class="mfw mfw-faq" data-sv="Questions" hidden>
+            <details data-why="declined"><summary><span class="mfw-ico"><span data-lucide="credit-card"></span></span><span class="mfw-q">Did my bank decline it?</span><span class="mfw-now">This time</span><span class="mfw-chev" data-lucide="chevron-down"></span></summary><p data-why-f="text"></p></details>
+            <details data-why="cancelled"><summary><span class="mfw-ico"><span data-lucide="circle-x"></span></span><span class="mfw-q">Was it cancelled?</span><span class="mfw-now">This time</span><span class="mfw-chev" data-lucide="chevron-down"></span></summary><p data-why-f="text"></p></details>
+            <details data-why="offline"><summary><span class="mfw-ico"><span data-lucide="wifi-off"></span></span><span class="mfw-q">Did the connection drop?</span><span class="mfw-now">This time</span><span class="mfw-chev" data-lucide="chevron-down"></span></summary><p data-why-f="text"></p></details>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- What to do (failed.js draws the chosen design)
+             Pay another way (the ways that did not fail, each straight into the checkout with the same pack) and Back to
+             the packs; Try again is the footer's button. -->
+        <h3 class="m-cap pay-label" id="mfxWaysLabel">Or pay another way</h3>
+        <div class="pay-sec mfx-sec-ways" data-sec="ways" data-sec-label="What to do" data-sv-names="Ways|Chips|Buttons|Wallet first|Pack kept">
+          <div class="mfa" id="mfxWays" role="group" aria-labelledby="mfxWaysLabel"></div>
+        </div>
+      </div>
+      <footer class="pay-foot">
+        <button class="m-btn m-btn-red pay-cta" type="button" id="failRetry" data-fail-go="retry"><span class="mfx-retry"><span data-lucide="rotate-ccw"></span>Try again</span><span class="pay-cta-price" data-fail-f="price">AED 25</span></button>
+      </footer>
+    </section>

@@ -1,0 +1,231 @@
+<!-- Machine screen: New record. Round six: ONE frame built from sections (psec.js), each with five designs chosen
+     in Customise under "This screen": Moment (the celebration), Score (the new best and the old best it beat), Video
+     (round nine: the record strike as a reel, five treatments) and Punch again (round nine: the next move, as on the
+     Result, parts/ms-again.html, shared with the Big score). Styled in mscreens/record.css; mscreens/record.js fills
+     the names and scores (every score through window.PunchFormat), plays each section when the screen opens
+     ("mscreen") and replays one when Customise changes it ("psec"). Round nine: "in New record and Big score, yellow
+     must change to red", so the gold that was this screen's own colour is the brand red now, in every look (the
+     confetti's gold pieces are a lighter red). The shared parts: the backdrop host first, the global header next, the
+     sponsor strip last. Generated from build/review/r6-record/tpl.html (the Burst keeps the Figma frame's confetti,
+     187:3006, its colours turned red). -->
+<div class="rec">
+  <div class="ms-lights" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+  <!-- include:parts/ms-brand.html -->
+
+  <!-- ============================================================ Moment: the celebration -->
+  <section class="rec-sec rec-moment" data-sec="moment" data-sec-label="Moment" aria-label="The record moment">
+    <!-- Rollover: the machine's name board turns over, letter by letter, from the old holder to the player. -->
+    <div class="rm rm-roll" data-sv="Rollover" hidden>
+      <p class="rm-kick"><span data-lucide="crown"></span>Machine 07 best</p>
+      <h2 class="rm-roll-h">New name at the top</h2>
+      <p class="rm-flaps"><span class="sr-only" data-rec="name">Sara Malik</span></p>
+      <div class="rm-hands">
+        <figure class="rm-who rm-was">
+          <span class="rm-face"><img data-rec-avatar="holder" src="assets/app/avatars/omar.jpg" alt="" width="256" height="256" decoding="async"></span>
+          <figcaption><span>Was</span><b data-rec="holder">Omar Nasser</b></figcaption>
+        </figure>
+        <span class="rm-arrow" aria-hidden="true"><span data-lucide="arrow-right"></span></span>
+        <figure class="rm-who rm-now">
+          <span class="rm-face"><img data-rec-avatar="name" src="assets/app/avatars/sara.jpg" alt="" width="256" height="256" decoding="async"></span>
+          <figcaption><span>Now</span><b data-rec="name">Sara Malik</b></figcaption>
+        </figure>
+      </div>
+    </div>
+
+
+    <!-- Through the line: the old machine best is a striped tape across the glass; the strike rises as a red column on
+         the strength tower, strains against the tape and tears through it. -->
+    <div class="rm rm-line" data-sv="Through the line" hidden>
+      <div class="rm-line-copy">
+        <p class="rm-kick"><span data-lucide="gamepad-2"></span>Machine 07</p>
+        <h2 class="rm-line-h">Through the line</h2>
+        <p class="rm-line-t"><b data-rec="holder">Omar Nasser</b> set the line. <b data-rec="name">Sara Malik</b> went through it.</p>
+      </div>
+      <div class="rm-tower" aria-hidden="true">
+        <span class="rm-bell"><span data-lucide="bell-ring"></span></span>
+        <div class="rm-track"><div class="rm-fill"><span class="rm-cap"></span></div><span class="rm-name"><span data-rec="name">Sara Malik</span></span></div>
+      </div>
+      <div class="rm-tape" aria-hidden="true">
+        <i class="rm-half rm-half-l"><b>Old best</b></i>
+        <i class="rm-half rm-half-r"></i>
+        <div class="rm-sparks"></div>
+      </div>
+    </div>
+
+
+    <!-- Stamp: the machine's record book, its past bests in a column, and NEW RECORD stamped across it. -->
+    <div class="rm rm-stamp" data-sv="Stamp" hidden>
+      <div class="rm-book">
+        <p class="rm-kick"><span data-lucide="history"></span>Machine 07 record book</p>
+        <ol class="rm-rows" data-rec-book>
+          <li><span>Omar Nasser</span><span>931,440.000</span></li>
+          <li><span>Yara Haddad</span><span>918,210.000</span></li>
+          <li><span>Faris Aziz</span><span>902,655.000</span></li>
+          <li><span>Leila Nour</span><span>889,030.000</span></li>
+        </ol>
+      </div>
+      <div class="rm-ink" role="img" aria-label="Stamped across the book: new record">
+        <span class="rm-ink-top">Machine 07</span>
+        <span class="rm-ink-big">New record</span>
+        <span class="rm-ink-foot" data-rec-date>19 Sep 2026</span>
+      </div>
+      <div class="rm-shock" aria-hidden="true"></div>
+    </div>
+
+    <!-- Belt: the machine's title belt, its two halves drawn in from the edges of the glass and buckled on the plate. -->
+    <div class="rm rm-belt" data-sv="Belt" hidden>
+      <div class="rm-belt-head">
+        <p class="rm-kick"><span data-lucide="medal"></span>Machine 07 champion</p>
+        <h2 class="rm-belt-name" data-rec="name">Sara Malik</h2>
+      </div>
+      <div class="rm-strap" aria-hidden="true">
+        <i class="rm-strap-l"><span class="rm-stud"><span data-lucide="map-pin"></span></span></i>
+        <i class="rm-strap-r"><span class="rm-stud"><span data-lucide="zap"></span></span></i>
+        <span class="rm-plate"><span class="rm-plate-in"><span data-lucide="trophy"></span><b>Record</b></span><span class="rm-plate-sheen"></span></span>
+      </div>
+      <p class="rm-belt-t">Yours until someone hits harder</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ Score: the new best and the old best it beat -->
+  <section class="rec-sec rec-score" data-sec="score" data-sec-label="Score" aria-label="The new machine best">
+    <div class="rs rs-reels" data-sv="Reels" hidden>
+      <p class="rs-kick"><span data-lucide="crown"></span>Machine best</p>
+      <p class="rs-reelbox"><span class="sr-only" data-rec-sr>999,999.000</span></p>
+      <dl class="rs-facts">
+        <div class="rs-fact"><dt>Old best</dt><dd class="rs-fv" data-rec-old>931,440.000</dd><dd class="rs-who" data-rec="holder">Omar Nasser</dd></div>
+        <div class="rs-fact rs-fact-gain" data-rec-gainbox><dt>Beat by</dt><dd class="rs-fv" data-rec-gain>68,559.000</dd><dd class="rs-who">on Machine 07</dd></div>
+      </dl>
+    </div>
+
+    <!-- Record card: the Figma frame's card (gold until round nine, the brand red now), and under it the old best with
+         its holder and the margin. -->
+    <div class="rs rs-card" data-sv="Record card">
+      <div class="rs-slab">
+        <span class="rs-sheen" aria-hidden="true"></span>
+        <p class="rs-num"><span class="rs-ghost" aria-hidden="true" data-rec-ghost>999,999.000</span><span class="rs-val" data-rec-num>999,999.000</span></p>
+        <p class="rs-label">New machine best</p>
+      </div>
+      <dl class="rs-facts">
+        <div class="rs-fact"><dt>Old best</dt><dd class="rs-fv" data-rec-old>931,440.000</dd><dd class="rs-who" data-rec="holder">Omar Nasser</dd></div>
+        <div class="rs-fact rs-fact-gain" data-rec-gainbox><dt>Beat by</dt><dd class="rs-fv" data-rec-gain>68,559.000</dd><dd class="rs-who">on Machine 07</dd></div>
+      </dl>
+    </div>
+
+    <!-- Reels: the machine best as a board of reels. It opens on the old best; the reels roll forward and land on the
+         new score one by one from the left. -->
+
+    <!-- Old and new: the old best is struck through, the new one rises under it. -->
+    <div class="rs rs-duel" data-sv="Old and new" hidden>
+      <div class="rs-row rs-was">
+        <p class="rs-kick"><span data-lucide="history"></span>Old best<b data-rec="holder">Omar Nasser</b></p>
+        <p class="rs-old"><span data-rec-old>931,440.000</span><i class="rs-strike" aria-hidden="true"></i></p>
+      </div>
+      <span class="rs-down" aria-hidden="true"><span data-lucide="arrow-down"></span></span>
+      <div class="rs-row rs-now">
+        <p class="rs-kick"><span data-lucide="trophy"></span>New best<b data-rec="name">Sara Malik</b></p>
+        <p class="rs-new"><span class="rs-ghost" aria-hidden="true" data-rec-ghost>999,999.000</span><span class="rs-val" data-rec-num>999,999.000</span></p>
+      </div>
+    </div>
+
+    <!-- Bars: the two bests as bars on one scale, the stretch the player added lit in the full red. -->
+    <div class="rs rs-bars" data-sv="Bars" hidden>
+      <p class="rs-kick"><span data-lucide="chart-no-axes-column"></span>New machine best</p>
+      <p class="rs-big"><span class="rs-ghost" aria-hidden="true" data-rec-ghost>999,999.000</span><span class="rs-val" data-rec-num>999,999.000</span></p>
+      <div class="rs-lanes">
+        <div class="rs-lane rs-lane-new">
+          <p class="rs-lane-k"><b data-rec="name">Sara Malik</b><span class="rs-lane-gain" data-rec-gainbox>+<span data-rec-gain>68,559.000</span></span></p>
+          <span class="rs-track"><i class="rs-fill"></i><i class="rs-add"></i></span>
+        </div>
+        <div class="rs-lane rs-lane-old">
+          <p class="rs-lane-k"><b data-rec="holder">Omar Nasser</b><span data-rec-old>931,440.000</span></p>
+          <span class="rs-track"><i class="rs-fill"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full width: the number and nothing else, as wide as the glass, the decimals and the margin under it. -->
+    <div class="rs rs-full" data-sv="Full width" hidden>
+      <p class="rs-kick"><span data-lucide="sparkles"></span>New machine best</p>
+      <p class="rs-whole"><span class="rs-ghost" aria-hidden="true" data-rec-wghost>999,999</span><span class="rs-val" data-rec-whole>999,999</span></p>
+      <p class="rs-tail">
+        <span class="rs-decs" data-rec-decs>.000</span>
+        <span class="rs-chip" data-rec-gainbox><span data-lucide="trending-up"></span><span>Up <b data-rec-gain>68,559.000</b> on <b data-rec="holder">Omar Nasser</b></span></span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ Video: the record strike as a reel, five treatments.
+       Round nine: "the hit is not an image, it's a video reel of the punch, which also autoplays". Sara's own clip
+       from the punch video library (assets/video/lib, bag-backlit: the young woman at the backlit heavy bag, the reel
+       the Big score shows for her hit), the square cut, muted and looping; record.js plays the shown design's reels
+       while it is on show and in view, and never under reduced motion, when the poster (the strike frame) stands.
+       The old best's print is Omar's own clip (shadow-bars, the young man at the lens), in grey. -->
+  <section class="rec-sec rec-photo" data-sec="photo" data-sec-label="Video" aria-label="Video of the record strike">
+
+    <figure class="rp rp-frame ms-photo photo-frame" data-sv="Framed">
+      <video class="photo" src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-label="Sara's record strike: her right hand drives into the heavy bag against the light" style="--pos: 55% 50%"></video>
+      <figcaption class="rp-tag"><span data-lucide="video"></span>The record strike</figcaption>
+    </figure>
+
+    <figure class="rp rp-grade" data-sv="Red grade" hidden>
+      <video src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-label="Sara's record strike, printed in red" style="--pos: 50% 50%"></video>
+      <figcaption class="rp-grade-cap"><b>Record</b><span><span data-rec="name">Sara Malik</span> on Machine 07</span></figcaption>
+    </figure>
+
+    <!-- Replay: the player, its bar following the reel with the moment of contact marked, and six frames of the reel
+         under it (rec-reel-1 to 6, taken from the clip at its sixths with the strike as the second); the frame the
+         playhead is on lights as the reel runs -->
+    <div class="rp rp-replay" data-sv="Replay" hidden>
+      <figure class="rp-screen">
+        <video src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-label="Replay: Sara's record strike" data-strike="1.2" data-dur="4.08" style="--pos: 55% 50%"></video>
+        <figcaption class="rp-chip"><span data-lucide="circle-play"></span>Replay</figcaption>
+        <span class="rp-scrub" aria-hidden="true"><i class="rp-scrub-fill"></i><i class="rp-scrub-mark"></i></span>
+      </figure>
+      <ol class="rp-film" aria-label="The strike, frame by frame">
+        <li data-t="0.52"><img src="assets/mscreens/rec-reel-1.jpg" alt="" width="320" height="320" decoding="async"></li>
+        <li class="is-key" data-t="1.2"><img src="assets/mscreens/rec-reel-2.jpg" alt="The frame of contact" width="320" height="320" decoding="async"></li>
+        <li data-t="1.88"><img src="assets/mscreens/rec-reel-3.jpg" alt="" width="320" height="320" decoding="async"></li>
+        <li data-t="2.56"><img src="assets/mscreens/rec-reel-4.jpg" alt="" width="320" height="320" decoding="async"></li>
+        <li data-t="3.24"><img src="assets/mscreens/rec-reel-5.jpg" alt="" width="320" height="320" decoding="async"></li>
+        <li data-t="3.92"><img src="assets/mscreens/rec-reel-6.jpg" alt="" width="320" height="320" decoding="async"></li>
+      </ol>
+      <p class="rp-replay-t"><span data-lucide="film"></span>The strike that did it, frame by frame</p>
+    </div>
+
+    <!-- Three speeds: the one reel in three bands, at full speed, half speed and a quarter, the half speed the big one -->
+    <div class="rp rp-trio" data-sv="Three speeds" hidden>
+      <figure class="rp-band" style="--i: 0" data-rate="1">
+        <video src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true" style="--pos: 50% 42%"></video>
+        <figcaption><b>Full speed</b><span>As it landed</span></figcaption>
+      </figure>
+      <figure class="rp-band is-key" style="--i: 1" data-rate=".5">
+        <video src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-label="Sara's record strike at half speed" style="--pos: 55% 50%"></video>
+        <figcaption><b>Half speed</b><span>Slowed down</span></figcaption>
+      </figure>
+      <figure class="rp-band" style="--i: 2" data-rate=".25">
+        <video src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true" style="--pos: 70% 55%"></video>
+        <figcaption><b>Quarter speed</b><span>Frame by frame</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="rp rp-print" data-sv="Pinned print" hidden>
+      <figure class="rp-card rp-card-old">
+        <video src="assets/video/lib/shadow-bars-sq.mp4" poster="assets/video/lib/shadow-bars-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-label="The old record: Omar Nasser's strike" style="--pos: 50% 40%"></video>
+        <figcaption><b data-rec="holder">Omar Nasser</b><span>Old best</span></figcaption>
+      </figure>
+      <figure class="rp-card rp-card-new">
+        <i class="rp-tape" aria-hidden="true"></i>
+        <video src="assets/video/lib/bag-backlit-sq.mp4" poster="assets/video/lib/bag-backlit-sq.jpg" width="1080" height="1080" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-label="The new record: Sara's strike" style="--pos: 55% 50%"></video>
+        <figcaption><b data-rec="name">Sara Malik</b><span>New machine best</span></figcaption>
+        <span class="rp-seal" aria-hidden="true"><span data-lucide="trophy"></span></span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================ Punch again: the next move -->
+  <!-- include:parts/ms-again.html -->
+
+  <div class="rec-rain" aria-hidden="true"></div>
+  <!-- include:parts/ms-ad.html -->
+</div>

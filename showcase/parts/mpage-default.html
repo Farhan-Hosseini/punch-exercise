@@ -1,0 +1,267 @@
+    <!-- ========== Default: the app's home (mpages/default.css, mpages/default.js) ==========
+         Built from sections (psec.js): each [data-sec] pages through its designs, chosen in Customise under This screen.
+         Greeting, Play card and the Monster promo carry their designs here as [data-sv] children; Your last hit is the replay in
+         every design, one label beside its play button; Machines near you and From your friends are drawn by default.js (data-sv-names).
+         Credits show through [data-credits] (mobile.js setCredits) and the empty wallet through .m-app[data-credits="0"]. -->
+    <section class="m-page m-scroll" data-page="default" aria-labelledby="mHomeTitle">
+      <h2 class="sr-only" id="mHomeTitle">Home</h2>
+      <svg class="mh-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <!-- an original claw mark drawn for this project, not the sponsor's logo file -->
+        <symbol id="mhClaw" viewBox="0 0 48 48" overflow="visible"><path d="M25 4C19 16 11 29-1 43C14 31 24 18 30.5 6Z"/><path d="M34 2.5C28 14.5 20 27.5 8 41.5C23 29.5 33 16.5 39.5 4.5Z"/><path d="M43 7C37 19 29 32 17 46C32 34 42 21 48.5 9Z"/></symbol>
+      </svg>
+      <div class="mh">
+
+        <!-- ---------------------------------------------------------------- Greeting -->
+        <header class="mh-sec mh-greet" data-sec="greeting" data-sec-label="Greeting">
+          <div class="mh-g mh-g-hello" data-sv="Hello">
+            <button class="mh-ava-btn" type="button" data-go="profile" data-player="me" aria-label="Your profile"><img class="m-ava" src="assets/app/avatars/sara.jpg" alt="" width="52" height="52"></button>
+            <div class="mh-g-who">
+              <p class="mh-kicker" data-greet>Good evening</p>
+              <p class="mh-name">Sara</p>
+            </div>
+            <div class="mh-g-tools">
+              <button class="m-credits" type="button" data-go="topup"><span data-lucide="wallet"></span><span class="sr-only">Balance: </span><span data-credits>0 credits</span></button>
+              <button class="m-iconbtn m-has-dot" type="button" data-mh-bell aria-label="Notifications, two new"><span data-lucide="bell"></span></button>
+            </div>
+          </div>
+
+          <div class="mh-g mh-g-wallet" data-sv="Wallet">
+            <div class="mh-g-row">
+              <div>
+                <p class="mh-kicker" data-greet>Good evening</p>
+                <p class="mh-name mh-name-xl">Hi, Sara</p>
+              </div>
+              <div class="mh-g-tools">
+                <button class="m-iconbtn m-has-dot" type="button" data-mh-bell aria-label="Notifications, two new"><span data-lucide="bell"></span></button>
+                <button class="mh-ava-btn" type="button" data-go="profile" data-player="me" aria-label="Your profile"><img class="m-ava" src="assets/app/avatars/sara.jpg" alt="" width="44" height="44"></button>
+              </div>
+            </div>
+            <div class="mh-wallet m-glass">
+              <span class="mh-disc"><span data-lucide="wallet"></span></span>
+              <div class="mh-wallet-txt"><span class="m-cap">Wallet</span><b data-credits>0 credits</b></div>
+              <button class="m-btn m-btn-red m-btn-sm" type="button" data-go="topup"><span data-lucide="plus"></span>Buy credits</button>
+            </div>
+          </div>
+
+          <div class="mh-g mh-g-portrait" data-sv="Portrait">
+            <button class="mh-portrait" type="button" data-go="profile" data-player="me" aria-label="Your profile">
+              <img class="m-ava" src="assets/app/avatars/sara.jpg" alt="" width="84" height="84">
+            </button>
+            <div class="mh-g-who">
+              <p class="mh-kicker" data-greet>Good evening</p>
+              <p class="mh-name mh-name-lg">Sara Malik</p>
+              <p class="mh-where"><span data-lucide="map-pin"></span>Downtown Dubai</p>
+            </div>
+            <button class="m-iconbtn m-has-dot mh-g-bell" type="button" data-mh-bell aria-label="Notifications, two new"><span data-lucide="bell"></span></button>
+            <div class="mh-g-chips">
+              <button class="m-credits" type="button" data-go="topup"><span data-lucide="wallet"></span><span class="sr-only">Balance: </span><span data-credits>0 credits</span></button>
+              <button class="mh-chip" type="button" data-go="ranks"><span data-lucide="trophy"></span><span data-mh-rank-text>Top of the board</span></button>
+            </div>
+          </div>
+
+          <div class="mh-g mh-g-banner" data-sv="Photo banner">
+            <img class="mh-banner-img" src="assets/photos/home-greeting.jpg" alt="" width="1178" height="850">
+            <div class="mh-banner-top">
+              <button class="m-credits mh-chip-photo" type="button" data-go="topup"><span data-lucide="wallet"></span><span class="sr-only">Balance: </span><span data-credits>0 credits</span></button>
+              <button class="m-iconbtn m-has-dot mh-iconbtn-photo" type="button" data-mh-bell aria-label="Notifications, two new"><span data-lucide="bell"></span></button>
+            </div>
+            <div class="mh-banner-copy">
+              <p class="mh-kicker" data-greet>Good evening</p>
+              <p class="mh-name mh-name-xl">Sara</p>
+              <p class="mh-banner-line">Your best still stands at Dubai Mall.</p>
+            </div>
+          </div>
+
+          <div class="mh-g mh-g-brand" data-sv="Brand">
+            <div class="mh-g-row">
+              <p class="m-brand mh-brand"><img class="m-brand-mark" data-logo-img src="assets/logos/fist-circle.svg" alt=""><span>PUNCH <b>APP</b></span></p>
+              <div class="mh-g-tools">
+                <button class="m-iconbtn m-has-dot" type="button" data-mh-bell aria-label="Notifications, two new"><span data-lucide="bell"></span></button>
+                <button class="mh-ava-btn" type="button" data-go="profile" data-player="me" aria-label="Your profile"><img class="m-ava" src="assets/app/avatars/sara.jpg" alt="" width="44" height="44"></button>
+              </div>
+            </div>
+            <p class="mh-statement"><span data-greet-short>Evening</span>, Sara.<br><em>The bag is waiting.</em></p>
+            <button class="m-credits" type="button" data-go="topup"><span data-lucide="wallet"></span><span class="sr-only">Balance: </span><span data-credits>0 credits</span></button>
+          </div>
+        </header>
+
+        <!-- ---------------------------------------------------------------- Play card -->
+        <div class="mh-sec mh-playcard" data-sec="play" data-sec-label="Play card">
+          <div class="mh-p mh-p-glass m-glass" data-sv="Glass tile">
+            <div class="mh-p-top">
+              <div class="mh-p-copy">
+                <p class="mh-where"><span data-lucide="map-pin"></span>Dubai Mall, Ground Level</p>
+                <p class="mh-p-title">Scan to play</p>
+                <p class="mh-p-sub">The nearest machine is 350&nbsp;m away, by the ice rink.</p>
+              </div>
+              <div class="pqr mh-p-qr" data-pqr data-pqr-glow="off" data-pqr-label="The machine's code" style="--pqr-size: 96px"></div>
+            </div>
+            <button class="m-btn m-btn-red mh-p-cta" type="button" data-go="scan"><span data-lucide="scan-qr-code"></span>Scan the machine code</button>
+            <p class="mh-p-state mh-if-credits"><span data-lucide="ticket"></span><span><b data-credits>0 credits</b> ready. One per attempt.</span></p>
+            <p class="mh-p-state mh-if-empty"><span data-lucide="wallet"></span><span>No credits yet.</span><button class="mh-link" type="button" data-go="topup">Buy credits first</button></p>
+          </div>
+
+          <div class="mh-p mh-p-poster" data-sv="Photo poster">
+            <img class="mh-p-photo" src="assets/photos/lib/fist-strike-43.jpg" alt="" width="1800" height="1200" style="object-position: 40% 32%; transform-origin: 40% 32%">
+            <div class="mh-p-copy">
+              <p class="mh-p-kick">Dubai Mall, Ground Level</p>
+              <p class="mh-p-title mh-p-title-xl">Step up.<br>Swing hard.</p>
+              <div class="mh-p-row">
+                <button class="m-btn m-btn-red" type="button" data-go="scan"><span data-lucide="scan-qr-code"></span>Scan to play</button>
+                <button class="m-btn mh-btn-photo mh-if-empty" type="button" data-go="topup">Buy credits</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mh-p mh-p-big m-glass" data-sv="Big button">
+            <div class="mh-p-copy">
+              <p class="mh-p-title">One tap to play</p>
+              <p class="mh-p-sub">Point the camera at the code on the glass. The machine does the rest.</p>
+              <p class="mh-p-state mh-if-credits"><span data-lucide="ticket"></span><b data-credits>0 credits</b></p>
+              <p class="mh-p-state mh-if-empty"><span data-lucide="wallet"></span><button class="mh-link" type="button" data-go="topup">Buy credits to play</button></p>
+            </div>
+            <button class="mh-bigbtn" type="button" data-go="scan" aria-label="Scan to play">
+              <span class="mh-ring" aria-hidden="true"></span><span class="mh-ring" aria-hidden="true"></span>
+              <span class="mh-bigbtn-face"><span data-lucide="scan-qr-code"></span><i>Scan</i></span>
+            </button>
+          </div>
+
+          <div class="mh-p mh-p-ticket" data-sv="Ticket">
+            <div class="mh-t-stub">
+              <span data-lucide="ticket"></span>
+              <b class="mh-t-count" data-mh-credit-count>0</b>
+              <span class="mh-t-unit" data-mh-credit-unit>credits</span>
+            </div>
+            <div class="mh-t-body">
+              <p class="mh-p-title">Scan to play</p>
+              <p class="mh-p-sub mh-if-credits">One credit buys one strike, with the replay.</p>
+              <p class="mh-p-sub mh-if-empty">Your wallet is empty. Add a credit first.</p>
+              <button class="m-btn m-btn-red m-btn-sm mh-if-credits" type="button" data-go="scan"><span data-lucide="scan-qr-code"></span>Scan the code</button>
+              <button class="m-btn m-btn-red m-btn-sm mh-if-empty" type="button" data-go="topup"><span data-lucide="plus"></span>Buy credits</button>
+            </div>
+          </div>
+
+          <div class="mh-p mh-p-split" data-sv="Split tiles">
+            <button class="mh-tile mh-tile-red" type="button" data-go="scan">
+              <span class="mh-tile-ico" data-lucide="scan-qr-code"></span>
+              <span class="mh-tile-title">Scan to play</span>
+              <span class="mh-tile-sub">Dubai Mall, 350&nbsp;m</span>
+            </button>
+            <button class="mh-tile m-glass" type="button" data-go="topup">
+              <span class="mh-tile-ico" data-lucide="wallet"></span>
+              <span class="mh-tile-title" data-credits>0 credits</span>
+              <span class="mh-tile-sub"><span class="mh-if-empty">Buy credits to play</span><span class="mh-if-credits">Add more</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Your last hit -->
+        <section class="mh-sec mh-last" data-sec="last" data-sec-label="Your last hit" aria-labelledby="mhLastH">
+          <div class="mh-head"><h3 class="mh-h" id="mhLastH">Your last hit</h3><span class="mh-head-note"><span data-lucide="clock"></span>Today, Dubai Mall</span></div>
+
+          <!-- round nine: every design is the replay and says one thing, Replay, beside its play button (no grade, no score) -->
+          <button class="mh-l mh-l-replay" type="button" data-go="hit" data-sv="Replay card" aria-label="Replay your last hit">
+            <img class="mh-l-photo" src="assets/photos/last-card.jpg" alt="" width="600" height="450" style="object-position: 50% 42%">
+            <span class="mh-replay"><span class="mh-play" aria-hidden="true"><span data-lucide="play"></span></span><span class="mh-replay-t">Replay</span></span>
+          </button>
+
+          <button class="mh-l mh-l-side m-glass" type="button" data-go="hit" data-sv="Side by side" aria-label="Replay your last hit">
+            <span class="mh-l-side-go"><span class="mh-play mh-play-md" aria-hidden="true"><span data-lucide="play"></span></span><span class="mh-replay-t mh-replay-xl">Replay</span></span>
+            <span class="mh-l-thumb"><img src="assets/photos/last-portrait.jpg" alt="" width="540" height="960"></span>
+          </button>
+
+          <button class="mh-l mh-l-player" type="button" data-go="hit" data-sv="Player" aria-label="Replay your last hit">
+            <img class="mh-l-photo" src="assets/photos/video-b-player.jpg" alt="" width="1368" height="770" style="object-position: 52% 34%">
+            <span class="mh-l-chrome">
+              <span class="mh-play mh-play-sm" aria-hidden="true"><span data-lucide="play"></span></span>
+              <span class="mh-replay-t">Replay</span>
+              <span class="mh-l-track" aria-hidden="true"><i></i></span>
+            </span>
+          </button>
+
+
+          <div class="mh-l mh-l-row m-glass" data-sv="Compact row">
+            <button class="mh-l-rowbtn" type="button" data-go="hit" aria-label="Replay your last hit">
+              <span class="mh-l-rowimg"><img src="assets/photos/last-f3.jpg" alt="" width="300" height="400"><span class="mh-play mh-play-xs" aria-hidden="true"><span data-lucide="play"></span></span></span>
+              <span class="mh-replay-t">Replay</span>
+              <span class="mh-chev" data-lucide="chevron-right"></span>
+            </button>
+            <button class="m-iconbtn" type="button" data-mh-share aria-label="Share your hit"><span data-lucide="share-2"></span></button>
+          </div>
+        </section>
+
+        <!-- ---------------------------------------------------------------- Machines near you (drawn by default.js) -->
+        <section class="mh-sec mh-near" data-sec="near" data-sec-label="Machines near you" data-sv-names="Carousel|List|Map|Spotlight|Grid" aria-labelledby="mhNearH">
+          <div class="mh-head"><h3 class="mh-h" id="mhNearH">Machines near you</h3><span class="mh-head-note"><span data-lucide="map-pin"></span>Dubai</span></div>
+          <div class="mh-body" data-mh-body></div>
+        </section>
+
+        <!-- ---------------------------------------------------------------- From your friends (drawn by default.js) -->
+        <section class="mh-sec mh-friends" data-sec="friends" data-sec-label="From your friends" data-sv-names="Hit cards|Stories|Activity|Mosaic|Rivalry" aria-labelledby="mhFriendsH">
+          <div class="mh-head"><h3 class="mh-h" id="mhFriendsH">From your friends</h3><button class="mh-link mh-head-link" type="button" data-go="feed">Feeds<span data-lucide="chevron-right"></span></button></div>
+          <div class="mh-body" data-mh-body></div>
+        </section>
+
+        <!-- ---------------------------------------------------------------- Monster Energy, the sponsor
+             Round seven: every design is a banner, a band about 108 tall, in the spirit of the machine's top ad: the
+             drawn art on the left, the wordmark and one big line, the green call to action on the right and the
+             Sponsored tag in the top corner. Each plays its own short motion when Home opens (is-rip), never loops. -->
+        <aside class="mh-sec mh-mon" data-sec="promo" data-sec-label="Monster Energy" aria-label="Sponsored, Monster Energy">
+          <div class="mh-m mh-m-can" data-sv="Can card">
+            <svg class="mh-m-rip" aria-hidden="true"><use href="#mhClaw"/></svg>
+            <span class="mh-m-tag">Sponsored</span>
+            <span class="mh-can" aria-hidden="true"><svg><use href="#mhClaw"/></svg></span>
+            <div class="mh-m-copy">
+              <span class="mon-word is-line">Monster<span>Energy</span></span>
+              <p class="mh-m-title">Perfect punch, free can</p>
+            </div>
+            <button class="mh-m-cta" type="button" data-mh-claim aria-label="Claim a free can">Claim<span data-lucide="arrow-right"></span></button>
+          </div>
+
+          <div class="mh-m mh-m-banner" data-sv="Banner">
+            <span class="mh-m-sheen" aria-hidden="true"></span>
+            <span class="mh-m-tag">Sponsored</span>
+            <span class="mh-m-mark"><svg aria-hidden="true"><use href="#mhClaw"/></svg></span>
+            <div class="mh-m-copy">
+              <span class="mon-word is-line">Monster<span>Energy</span></span>
+              <p class="mh-m-title">Refuel between rounds</p>
+            </div>
+            <button class="mh-m-cta" type="button" data-mh-claim aria-label="Claim a can at the Ice Rink kiosk">Claim<span data-lucide="arrow-right"></span></button>
+          </div>
+
+          <div class="mh-m mh-m-challenge" data-sv="Challenge">
+            <span class="mh-m-tag">Sponsored</span>
+            <div class="mh-m-copy">
+              <span class="mon-word is-line">Monster<span>Energy</span></span>
+              <p class="mh-m-title">The Monster week</p>
+              <div class="mh-m-pips" role="img" aria-label="One of three Perfect punches landed; three before Sunday unlock a four pack at the kiosk"><i class="is-on"><span data-lucide="zap"></span></i><i><span data-lucide="zap"></span></i><i><span data-lucide="zap"></span></i><span class="mh-m-pips-note">by Sunday</span></div>
+            </div>
+            <button class="mh-m-cta" type="button" data-mh-claim data-mh-toast="You joined the Monster week" aria-label="Join the Monster week challenge">Join<span data-lucide="arrow-right"></span></button>
+          </div>
+
+          <div class="mh-m mh-m-coupon" data-sv="Coupon">
+            <div class="mh-m-copy">
+              <span class="mon-word is-line">Monster<span>Energy</span></span>
+              <p class="mh-m-title">A free can, on the house</p>
+              <p class="mh-m-code"><span data-lucide="ticket"></span>PUNCH-CAN</p>
+            </div>
+            <div class="mh-m-coupon-r">
+              <span class="mh-m-tag">Sponsored</span>
+              <svg class="mh-m-coupon-claw" aria-hidden="true"><use href="#mhClaw"/></svg>
+              <button class="mh-m-cta" type="button" data-mh-claim data-mh-toast="Coupon saved to your wallet" aria-label="Save the free can coupon">Save<span data-lucide="download"></span></button>
+            </div>
+          </div>
+
+          <div class="mh-m mh-m-poster" data-sv="Poster">
+            <svg class="mh-m-poster-claw" aria-hidden="true"><use href="#mhClaw"/></svg>
+            <span class="mh-m-tag">Sponsored</span>
+            <div class="mh-m-copy">
+              <span class="mon-word mh-m-poster-word">Monster<span>Energy</span></span>
+              <p class="mh-m-poster-line">Fuel the next punch.</p>
+            </div>
+            <button class="mh-m-cta" type="button" data-mh-claim aria-label="Get a can at the kiosk">Get a can<span data-lucide="arrow-right"></span></button>
+          </div>
+        </aside>
+
+      </div>
+    </section>

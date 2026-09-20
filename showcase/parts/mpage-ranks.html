@@ -1,0 +1,106 @@
+    <!-- ========== Leaderboard (mpages/ranks.css, mpages/ranks.js) ==========
+         Built from sections (psec.js). The page itself holds still and its list scrolls inside .lb-scroll, so Your place
+         can sit pinned above the tab bar without the list's fade dissolving it.
+         Header: five designs, each with its own search ([data-lb-search], [data-lb-clear]) and scope switch
+         ([data-scope]); mobile.js keeps them in step and ranks.js hands the ids mSearch and mSearchClear to the one on
+         show. Board and Your place are drawn by mobile.js (renderBoard) in the design Customise has chosen.
+         Round eight: every Header design shows the title alone, with no live line, count or caption beside it. -->
+    <section class="m-page lb-page" data-page="ranks" aria-label="Leaderboard">
+      <div class="m-scroll lb-scroll" id="lbScroll">
+        <div class="lb-sec lb-head" data-sec="header" data-sec-label="Header">
+
+          <div class="lb-h lb-h-classic" data-sv="Classic">
+            <div class="m-head lb-h-row">
+              <h2 class="m-title">Leaderboard</h2>
+              <button class="m-iconbtn" type="button" data-go="hit" aria-label="Back to your hit"><span data-lucide="trophy"></span></button>
+            </div>
+            <label class="m-search m-glass lb-search">
+              <span data-lucide="search"></span>
+              <input type="search" data-lb-search placeholder="Search punchers" autocomplete="off" aria-label="Search punchers">
+              <button class="lb-clear" type="button" data-lb-clear aria-label="Clear the search" hidden><span data-lucide="x"></span></button>
+            </label>
+            <div class="m-seg lb-seg" role="group" aria-label="Leaderboard scope">
+              <button type="button" data-scope="global" aria-pressed="true">Global</button>
+              <button type="button" data-scope="national" aria-pressed="false">National</button>
+              <button type="button" data-scope="regional" aria-pressed="false">Dubai</button>
+            </div>
+          </div>
+
+          <div class="lb-h lb-h-banner" data-sv="Photo banner">
+            <div class="lb-banner">
+              <img class="lb-banner-img" src="assets/photos/lib/boxer-62.jpg" alt="" width="1200" height="1800" loading="lazy" style="object-position: 50% 36%">
+              <div class="lb-banner-top">
+                <button class="m-iconbtn lb-onphoto" type="button" data-go="hit" aria-label="Back to your hit"><span data-lucide="trophy"></span></button>
+              </div>
+              <h2 class="lb-banner-title">Leaderboard</h2>
+            </div>
+            <label class="m-search m-glass lb-search">
+              <span data-lucide="search"></span>
+              <input type="search" data-lb-search placeholder="Search punchers" autocomplete="off" aria-label="Search punchers">
+              <button class="lb-clear" type="button" data-lb-clear aria-label="Clear the search" hidden><span data-lucide="x"></span></button>
+            </label>
+            <div class="m-seg lb-seg" role="group" aria-label="Leaderboard scope">
+              <button type="button" data-scope="global" aria-pressed="true">Global</button>
+              <button type="button" data-scope="national" aria-pressed="false">National</button>
+              <button type="button" data-scope="regional" aria-pressed="false">Dubai</button>
+            </div>
+          </div>
+
+          <div class="lb-h lb-h-tabs" data-sv="Tabs">
+            <div class="lb-h-top">
+              <h2 class="m-title">Leaderboard</h2>
+            </div>
+            <div class="lb-tabs" role="group" aria-label="Leaderboard scope">
+              <button type="button" data-scope="global" aria-pressed="true"><span data-lucide="globe"></span>Global</button>
+              <button type="button" data-scope="national" aria-pressed="false"><span data-lucide="flag"></span>National</button>
+              <button type="button" data-scope="regional" aria-pressed="false"><span data-lucide="building-2"></span>Dubai</button>
+            </div>
+            <label class="m-search m-glass lb-search">
+              <span data-lucide="search"></span>
+              <input type="search" data-lb-search placeholder="Search punchers" autocomplete="off" aria-label="Search punchers">
+              <button class="lb-clear" type="button" data-lb-clear aria-label="Clear the search" hidden><span data-lucide="x"></span></button>
+            </label>
+          </div>
+
+          <div class="lb-h lb-h-chips" data-sv="Chips">
+            <h2 class="m-title">Leaderboard</h2>
+            <div class="lb-h-searchrow">
+              <label class="m-search m-glass lb-search">
+                <span data-lucide="search"></span>
+                <input type="search" data-lb-search placeholder="Search punchers" autocomplete="off" aria-label="Search punchers">
+                <button class="lb-clear" type="button" data-lb-clear aria-label="Clear the search" hidden><span data-lucide="x"></span></button>
+              </label>
+              <button class="m-iconbtn" type="button" data-go="hit" aria-label="Back to your hit"><span data-lucide="trophy"></span></button>
+            </div>
+            <div class="lb-chips" role="group" aria-label="Leaderboard scope">
+              <button type="button" data-scope="global" aria-pressed="true"><span data-lucide="globe"></span>Global</button>
+              <button type="button" data-scope="national" aria-pressed="false"><span data-lucide="flag"></span>UAE</button>
+              <button type="button" data-scope="regional" aria-pressed="false"><span data-lucide="map-pin"></span>Dubai</button>
+            </div>
+          </div>
+
+          <div class="lb-h lb-h-big" data-sv="Big switch">
+            <div class="lb-h-row">
+              <h2 class="m-title lb-title-xl">Ranks</h2>
+              <button class="m-iconbtn" type="button" data-go="hit" aria-label="Back to your hit"><span data-lucide="trophy"></span></button>
+            </div>
+            <div class="lb-bigseg" role="group" aria-label="Leaderboard scope">
+              <button type="button" data-scope="global" aria-pressed="true"><span data-lucide="globe"></span><span>Global</span></button>
+              <button type="button" data-scope="national" aria-pressed="false"><span data-lucide="flag"></span><span>National</span></button>
+              <button type="button" data-scope="regional" aria-pressed="false"><span data-lucide="building-2"></span><span>Dubai</span></button>
+            </div>
+            <label class="m-search m-glass lb-search">
+              <span data-lucide="search"></span>
+              <input type="search" data-lb-search placeholder="Search punchers by name or city" autocomplete="off" aria-label="Search punchers">
+              <button class="lb-clear" type="button" data-lb-clear aria-label="Clear the search" hidden><span data-lucide="x"></span></button>
+            </label>
+          </div>
+        </div>
+
+        <div class="m-board" id="mBoard" data-style="cards" data-sec="board" data-sec-label="Board" data-sv-names="Cards|Champion|Podium|Tiles|Force meter"></div>
+        <p class="m-empty" id="mEmpty" hidden><span data-lucide="search"></span>No punchers match that name.</p>
+      </div>
+
+      <!-- pinned above the tab bar, outside the list's fade -->
+      <div class="lb-you" id="lbYou" data-sec="you" data-sec-label="Your place" data-sv-names="Pinned row|Gap to beat|Find me|Photo card|Percentile"></div>
+    </section>

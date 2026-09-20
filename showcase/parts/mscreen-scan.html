@@ -1,0 +1,155 @@
+<!-- Machine screen: Scan. The glass shows its code the way the phone app shows it: the one QR style (qr.js, PunchQR) on
+     its glass tile with the red glow and scan line, over the calm global background. One frame built from sections
+     (psec.js), each with five designs paged in Customise under "This screen":
+       Status   where the player is: waiting, linked (with their photo), holding while they buy credits, missed
+       Code     the machine's code: Glow, Corner marks, Stage, Beside a phone, Machine number
+       How to   the way in, drawn from the how-to art (assets/howto): Picture, Three steps, Icons, Short line, Sequence
+     mscreens/scan.js writes the state on the frame (.scn[data-state]) and every line of copy from the opts the flow
+     sends; motion runs only while this screen is up. The shared parts: the backdrop host first, the global header next,
+     the sponsor strip last. -->
+<div class="scn" data-state="wait">
+  <div class="ms-lights" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+  <!-- include:parts/ms-brand.html -->
+
+  <!-- ============================================================ Status: where the player is -->
+  <section class="scn-sec scn-status" data-sec="status" data-sec-label="Status" aria-live="polite">
+    <div class="sst sst-card" data-sv="Player card" hidden>
+      <span class="sst-ava">
+        <span class="sst-ava-empty" aria-hidden="true"><span data-lucide="scan-qr-code"></span></span>
+        <img data-scn-ava src="assets/app/avatars/sara.jpg" alt="" width="192" height="192" decoding="async">
+        <span class="sst-badge scn-ics" aria-hidden="true"><span class="i-wait" data-lucide="smartphone"></span><span class="i-linked" data-lucide="check"></span><span class="i-holding" data-lucide="hourglass"></span><span class="i-missed" data-lucide="rotate-ccw"></span></span>
+      </span>
+      <div class="sst-who">
+        <p class="sst-kick"><span data-scn="kicker">Next player</span></p>
+        <p class="sst-name" data-scn="who">Scan to play</p>
+        <p class="sst-line"><span class="sst-dot" aria-hidden="true"></span><span data-scn="line">Waiting for your phone</span></p>
+      </div>
+    </div>
+
+    <div class="sst sst-headline" data-sv="Headline">
+      <p class="sst-kick"><span class="sst-live" aria-hidden="true"></span><span data-scn="kicker">Next player</span></p>
+      <h2 class="sst-title"><span data-scn="t1">Scan</span> <span data-scn="t2">to play</span></h2>
+      <p class="sst-line"><span class="scn-ics" aria-hidden="true"><span class="i-wait" data-lucide="smartphone"></span><span class="i-linked" data-lucide="circle-check"></span><span class="i-holding" data-lucide="hourglass"></span><span class="i-missed" data-lucide="rotate-ccw"></span></span><span data-scn="line">Waiting for your phone</span></p>
+    </div>
+
+
+    <div class="sst sst-beacon" data-sv="Beacon" hidden>
+      <span class="sst-disc" aria-hidden="true">
+        <span class="sst-ring"></span><span class="sst-ring sst-ring-2"></span>
+        <span class="scn-ics"><span class="i-wait" data-lucide="scan-qr-code"></span><span class="i-linked" data-lucide="check"></span><span class="i-holding" data-lucide="hourglass"></span><span class="i-missed" data-lucide="rotate-ccw"></span></span>
+      </span>
+      <div class="sst-beacon-copy">
+        <p class="sst-beacon-t" data-scn="phrase">Scan the code to play</p>
+        <p class="sst-beacon-s" data-scn="line">Waiting for your phone</p>
+      </div>
+    </div>
+
+    <div class="sst sst-progress" data-sv="Progress" hidden>
+      <p class="sst-line"><span class="sst-dot" aria-hidden="true"></span><span data-scn="line">Waiting for your phone</span></p>
+      <ol class="sst-rail" aria-label="The way in">
+        <li class="scn-step" data-step="scan"><span class="sst-mark"><span class="ic" data-lucide="scan-qr-code"></span><span class="tick" data-lucide="check"></span></span><span class="sst-lab">Scan</span></li>
+        <li class="scn-step" data-step="app"><span class="sst-mark"><span class="ic" data-lucide="smartphone"></span><span class="tick" data-lucide="check"></span></span><span class="sst-lab">Link</span></li>
+        <li class="scn-step" data-step="credit"><span class="sst-mark"><span class="ic" data-lucide="coins"></span><span class="tick" data-lucide="check"></span></span><span class="sst-lab">Buy credits</span></li>
+        <li class="scn-step" data-step="punch"><span class="sst-mark"><span class="ic" data-lucide="hand-fist"></span><span class="tick" data-lucide="check"></span></span><span class="sst-lab">Punch</span></li>
+      </ol>
+    </div>
+
+    <div class="sst sst-crowd" data-sv="Crowd" hidden>
+      <p class="sst-kick"><span data-lucide="users-round"></span>Played here tonight</p>
+      <div class="sst-faces" aria-hidden="true">
+        <span class="sst-face sst-you"><span class="sst-ava-empty"><span data-lucide="user-plus"></span></span><img data-scn-ava src="assets/app/avatars/sara.jpg" alt="" width="192" height="192" decoding="async"></span>
+        <span class="sst-face"><img src="assets/app/avatars/omar.jpg" alt="" width="192" height="192" decoding="async"></span>
+        <span class="sst-face"><img src="assets/app/avatars/leila.jpg" alt="" width="192" height="192" decoding="async"></span>
+        <span class="sst-face"><img src="assets/app/avatars/karim.jpg" alt="" width="192" height="192" decoding="async"></span>
+        <span class="sst-face"><img src="assets/app/avatars/noor.jpg" alt="" width="192" height="192" decoding="async"></span>
+        <span class="sst-face"><img src="assets/app/avatars/yusuf.jpg" alt="" width="192" height="192" decoding="async"></span>
+      </div>
+      <p class="sst-crowd-t" data-scn="crowd">Scan to join tonight's board</p>
+      <p class="sst-line"><span class="sst-dot" aria-hidden="true"></span><span data-scn="line">Waiting for your phone</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ Code: the machine's code, in the phone's style -->
+  <section class="scn-sec scn-code" data-sec="code" data-sec-label="Code">
+
+    <div class="scd scd-glow" data-sv="Glow">
+      <div class="pqr scn-qr" data-pqr style="--pqr-size: 820px"></div>
+    </div>
+
+    <div class="scd scd-marks" data-sv="Corner marks" hidden>
+      <div class="scd-box">
+        <svg class="scd-corner scd-c-tl" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M5 59V25A20 20 0 0 1 25 5h34"/></svg>
+        <svg class="scd-corner scd-c-tr" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M5 59V25A20 20 0 0 1 25 5h34"/></svg>
+        <svg class="scd-corner scd-c-br" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M5 59V25A20 20 0 0 1 25 5h34"/></svg>
+        <svg class="scd-corner scd-c-bl" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M5 59V25A20 20 0 0 1 25 5h34"/></svg>
+        <div class="pqr scn-qr" data-pqr data-pqr-glow="off" style="--pqr-size: 700px"></div>
+      </div>
+    </div>
+
+
+
+    <div class="scd scd-plate" data-sv="Machine number" hidden>
+      <div class="scd-plate-card">
+        <p class="scd-plate-top"><span class="scd-plate-id"><span data-lucide="gamepad-2"></span>Machine <b>07</b></span><span class="scd-plate-where"><span data-lucide="map-pin"></span>Dubai Mall, Ground Level</span></p>
+        <div class="pqr scn-qr" data-pqr data-pqr-glow="off" style="--pqr-size: 640px"></div>
+        <p class="scd-plate-code"><span class="scd-plate-lab"><span data-lucide="key-round"></span>No camera? Type this code</span><span class="scd-plate-chars">DXB2 KTRB</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ How to: the way in -->
+  <section class="scn-sec scn-howto" data-sec="howto" data-sec-label="How to" aria-labelledby="scnHowto">
+    <div class="sho sho-three" data-sv="Three steps" hidden>
+      <p class="sho-title"><span class="sho-badge" data-lucide="scan-qr-code"></span>How to use the QR code</p>
+      <ol class="sho-row">
+        <li class="sho-tile"><span class="sho-pic"><img class="scn-on-dark" src="assets/howto/step-1-dark.png" alt="" width="720" height="720" decoding="async"><img class="scn-on-light" src="assets/howto/step-1-light.png" alt="" width="720" height="720" decoding="async"></span><span class="sho-t">Open PunchApp</span><span class="sho-s">Or your camera</span></li>
+        <li class="sho-tile"><span class="sho-pic"><img class="scn-on-dark" src="assets/howto/step-2-dark.png" alt="" width="720" height="720" decoding="async"><img class="scn-on-light" src="assets/howto/step-2-light.png" alt="" width="720" height="720" decoding="async"></span><span class="sho-t">Point at the code</span><span class="sho-s">It links in a second</span></li>
+        <li class="sho-tile"><span class="sho-pic"><img class="scn-on-dark" src="assets/howto/step-3-dark.png" alt="" width="720" height="720" decoding="async"><img class="scn-on-light" src="assets/howto/step-3-light.png" alt="" width="720" height="720" decoding="async"></span><span class="sho-t">Step up, punch</span><span class="sho-s">One full strike</span></li>
+      </ol>
+    </div>
+    <h3 class="sr-only" id="scnHowto">How to use the QR code</h3>
+
+    <div class="sho sho-picture" data-sv="Picture">
+      <img class="sho-art scn-on-dark" src="assets/howto/howto-wide-dark.png" alt="A hand holds a phone up to the punch machine's code" width="1568" height="760" decoding="async">
+      <img class="sho-art scn-on-light" src="assets/howto/howto-wide-light.png" alt="A hand holds a phone up to the punch machine's code" width="1568" height="760" decoding="async">
+      <div class="sho-copy">
+        <p class="sho-title"><span class="sho-badge" data-lucide="scan-qr-code"></span>How to use the QR code</p>
+        <p class="sho-text">Open PunchApp or your camera and point it at the code. Your phone links to this machine, then step up and give it one full strike.</p>
+      </div>
+    </div>
+
+
+    <div class="sho sho-icons" data-sv="Icons" hidden>
+      <ol class="sho-grid">
+        <li class="scn-step sho-cell" data-step="scan"><span class="sho-mark"><span class="ic" data-lucide="scan-qr-code"></span><span class="tick" data-lucide="check"></span></span><span class="sho-t">Scan the code</span><span class="sho-s" data-scn-step="scan">Point your camera at it</span></li>
+        <li class="scn-step sho-cell" data-step="app"><span class="sho-mark"><span class="ic" data-lucide="smartphone"></span><span class="tick" data-lucide="check"></span></span><span class="sho-t">PunchApp opens</span><span class="sho-s" data-scn-step="app">Your phone links here</span></li>
+        <li class="scn-step sho-cell" data-step="credit"><span class="sho-mark"><span class="ic" data-lucide="coins"></span><span class="tick" data-lucide="check"></span></span><span class="sho-t">Buy a credit</span><span class="sho-s" data-scn-step="credit">One credit, one punch</span></li>
+        <li class="scn-step sho-cell" data-step="punch"><span class="sho-mark"><span class="ic" data-lucide="hand-fist"></span><span class="tick" data-lucide="check"></span></span><span class="sho-t">Step up and punch</span><span class="sho-s" data-scn-step="punch">The glass counts you in</span></li>
+      </ol>
+    </div>
+
+    <div class="sho sho-short" data-sv="Short line" hidden>
+      <figure class="sho-photo"><img src="assets/photos/lib/phone-hand-2.jpg" alt="" width="1200" height="1800" style="object-position: 40% 58%" decoding="async"></figure>
+      <div class="sho-copy">
+        <p class="sho-kick"><span data-lucide="scan-qr-code"></span>How to scan</p>
+        <p class="sho-line">Point your phone at the code, then step up and punch.</p>
+        <p class="sho-with"><span class="sho-chip"><span data-lucide="smartphone"></span>PunchApp</span><span class="sho-chip"><span data-lucide="camera"></span>Camera</span></p>
+      </div>
+    </div>
+
+    <div class="sho sho-seq" data-sv="Sequence" hidden>
+      <div class="sho-stage" aria-hidden="true">
+        <span class="sho-frame sho-f1"><img class="scn-on-dark" src="assets/howto/step-1-dark.png" alt="" width="720" height="720" decoding="async"><img class="scn-on-light" src="assets/howto/step-1-light.png" alt="" width="720" height="720" decoding="async"></span>
+        <span class="sho-frame sho-f2"><img class="scn-on-dark" src="assets/howto/step-2-dark.png" alt="" width="720" height="720" decoding="async"><img class="scn-on-light" src="assets/howto/step-2-light.png" alt="" width="720" height="720" decoding="async"></span>
+        <span class="sho-frame sho-f3"><img class="scn-on-dark" src="assets/howto/step-3-dark.png" alt="" width="720" height="720" decoding="async"><img class="scn-on-light" src="assets/howto/step-3-light.png" alt="" width="720" height="720" decoding="async"></span>
+      </div>
+      <ol class="sho-list">
+        <li class="sho-item sho-i1"><span class="sho-t"><span data-lucide="smartphone"></span>Open PunchApp</span><span class="sho-s">Or your phone's camera</span><span class="sho-fill" aria-hidden="true"></span></li>
+        <li class="sho-item sho-i2"><span class="sho-t"><span data-lucide="scan-qr-code"></span>Point at the code</span><span class="sho-s">Your phone links here</span><span class="sho-fill" aria-hidden="true"></span></li>
+        <li class="sho-item sho-i3"><span class="sho-t"><img class="sho-mark" data-logo-img src="assets/logos/fist-circle.svg" alt="" width="52" height="52">Step up, punch</span><span class="sho-s">One full strike</span><span class="sho-fill" aria-hidden="true"></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- include:parts/ms-ad.html -->
+</div>

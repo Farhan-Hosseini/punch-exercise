@@ -1,0 +1,95 @@
+/* sponsor: designs A to E, all for Monster Energy. Every rule is scoped under .s-sponsor .v-<letter>.
+   The lockup (claw mark, MONSTER ENERGY wordmark) and the brand colours come from the kit in mscreens/_ads.css,
+   the same one the machine's sponsor slot draws with; each design keeps its own shape and sets the lockup its way. */
+
+/* A: centred credit. The host's quiet Powered by, then the brand's own lockup in one line. */
+.s-sponsor .v-a b.mon-lock { display: inline-flex; align-items: center; gap: 14px; }
+.s-sponsor .v-a .mon-claw { width: 36px; height: 48px; }
+/* the design's own rules (Arena's and Reference's) style every span in it as a label, so the wordmark restates its
+   type here, matching their weight so this later sheet wins */
+:root .s-sponsor .v-a span.mon-word { font: 400 42px/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .012em; text-transform: uppercase; color: var(--ink-1); }
+:root .s-sponsor .v-a span.mon-word > span { font: inherit; letter-spacing: inherit; color: var(--mon-mark); }
+
+/* B: sponsor card. One card across the column: the brand's own lockup on the left, the offer and what to do with it
+   on the right, both on the card's one padding. */
+.s-sponsor .v-b .sponsor-b-card {
+  container-type: inline-size;
+  display: flex; align-items: center; justify-content: space-between; gap: calc(32px * var(--space));
+  height: calc(104px + 12px * var(--space)); padding-inline: var(--card-pad);
+}
+.s-sponsor .v-b .sponsor-b-name { display: flex; align-items: center; gap: 16px; margin: 0; font-size: min(50px, 5.4cqi); }
+.s-sponsor .v-b .sponsor-b-name .mon-claw { width: 1em; height: 1.3em; }
+.s-sponsor .v-b .sponsor-b-body { min-width: 0; display: grid; justify-items: end; gap: 12px; text-align: right; }
+.s-sponsor .v-b .sponsor-b-offer { font-size: 32px; line-height: 1.1; color: var(--ink-1); white-space: nowrap; }
+.s-sponsor .v-b .sponsor-b-desk { font-size: 32px; white-space: nowrap; }
+
+/* C: two sides. A quiet footer. The hairline is a strength tester's scale laid on its side,
+   ticks growing taller toward the right; who powers the machine sits left, where it stands sits right. */
+.s-sponsor .v-c { container-type: inline-size; display: grid; gap: calc(22px * var(--space)); }
+.s-sponsor .v-c .sponsor-c-scale { position: relative; height: 20px; border-top: 2px solid var(--line); }
+.s-sponsor .v-c .sponsor-c-ticks {
+  position: absolute; left: 0; right: 0; top: 0; height: 18px;
+  background:
+    repeating-linear-gradient(90deg, var(--ink-3) 0 2px, transparent 2px 10%),
+    repeating-linear-gradient(90deg, var(--track) 0 2px, transparent 2px 2%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 22%);
+}
+.s-sponsor .v-c .sponsor-c-ticks::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 2px; background: var(--ink-3); }
+.s-sponsor .v-c .sponsor-c-row { display: flex; align-items: center; justify-content: space-between; gap: calc(32px * var(--space)); }
+.s-sponsor .v-c .sponsor-c-credit,
+.s-sponsor .v-c .sponsor-c-venue { font-size: 32px; line-height: 1; white-space: nowrap; color: var(--ink-3); }
+.s-sponsor .v-c .sponsor-c-credit { display: flex; align-items: center; gap: 12px; }
+.s-sponsor .v-c .sponsor-c-credit b.mon-lock { display: inline-flex; align-items: center; gap: 10px; }
+.s-sponsor .v-c .sponsor-c-credit .mon-claw { width: 26px; height: 34px; }
+.s-sponsor .v-c .sponsor-c-credit .mon-word { font-size: 32px; }
+.s-sponsor .v-c .sponsor-c-venue { display: flex; align-items: center; gap: 14px; color: var(--ink-2); }
+.s-sponsor .v-c .sponsor-c-pin { width: 44px; height: 44px; }
+/* every line icon on the glass draws 3 glass px: 3 x 40 / 44 */
+.s-sponsor .v-c .sponsor-c-pin svg g { stroke-width: 2.73; }
+
+/* D: ticket. An arcade redemption ticket as the machine would print it, notched at both ends: the brand on one half,
+   the run code and the offer on the other, two equal halves on the card's one padding. */
+.s-sponsor .v-d { container-type: inline-size; --d-notch: 16px; }
+.s-sponsor .v-d .sponsor-d-ticket {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; column-gap: var(--gap-grid);
+  height: calc(100px + 14px * var(--space)); padding-inline: var(--card-pad);
+  border-radius: calc(var(--r) * .6);
+  -webkit-mask-image:
+    radial-gradient(circle at 0 50%, transparent var(--d-notch), rgba(0, 0, 0, 1) calc(var(--d-notch) + .5px)),
+    radial-gradient(circle at 100% 50%, transparent var(--d-notch), rgba(0, 0, 0, 1) calc(var(--d-notch) + .5px));
+  mask-image:
+    radial-gradient(circle at 0 50%, transparent var(--d-notch), rgba(0, 0, 0, 1) calc(var(--d-notch) + .5px)),
+    radial-gradient(circle at 100% 50%, transparent var(--d-notch), rgba(0, 0, 0, 1) calc(var(--d-notch) + .5px));
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.s-sponsor .v-d .sponsor-d-brand,
+.s-sponsor .v-d .sponsor-d-copy { display: grid; gap: 12px; min-width: 0; }
+.s-sponsor .v-d .sponsor-d-copy { justify-items: end; text-align: right; }
+.s-sponsor .v-d .sponsor-d-by { font-size: 32px; color: var(--ink-3); }
+.s-sponsor .v-d .sponsor-d-name { display: flex; align-items: center; gap: 12px; margin: 0; font-size: 40px; }
+.s-sponsor .v-d .sponsor-d-name .mon-claw { width: 34px; height: 46px; }
+.s-sponsor .v-d .sponsor-d-code { font-size: 32px; white-space: nowrap; }
+.s-sponsor .v-d .sponsor-d-offer { font-size: min(calc(44px / var(--cap)), 7.6cqi); color: var(--ink-1); }
+
+/* E: seal. A round seal read as a force gauge: the dial ticks sweep round and stop short at the base, the claw mark
+   torn across the disc; the wordmark and its role set beside it as one centred lockup. */
+.s-sponsor .v-e { container-type: inline-size; }
+.s-sponsor .v-e .sponsor-e-lockup { display: flex; align-items: center; justify-content: center; gap: calc(32px * var(--space)); }
+.s-sponsor .v-e .sponsor-e-seal { position: relative; flex: none; width: 116px; height: 116px; display: grid; place-items: center; }
+.s-sponsor .v-e .sponsor-e-dial { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.s-sponsor .v-e .sponsor-e-minor,
+.s-sponsor .v-e .sponsor-e-major { fill: none; stroke-linecap: round; }
+.s-sponsor .v-e .sponsor-e-minor { stroke: var(--ink-3); stroke-width: 1.6; }
+.s-sponsor .v-e .sponsor-e-major { stroke: var(--ink-1); stroke-width: 2.6; }
+.s-sponsor .v-e .sponsor-e-disc { position: absolute; left: 50%; top: 50%; width: 82px; height: 82px; translate: -50% -50%; border-radius: 50%; }
+.s-sponsor .v-e .sponsor-e-claw { position: relative; width: 38px; height: 50px; }
+.s-sponsor .v-e .sponsor-e-copy { display: grid; gap: 14px; min-width: 0; }
+.s-sponsor .v-e .sponsor-e-name { margin: 0; }
+.s-sponsor .v-e .sponsor-e-name .mon-word { font-size: 46px; }
+.s-sponsor .v-e .sponsor-e-role { font-size: 32px; white-space: nowrap; }
+
+/* ---------------------------------------------------------------- Light: the same designs on a daylight ground */
+
+/* C: the pin's badge tone is built to sit on a white card; on the bare ground it vanished, so here it is the card */
+:root[data-appearance="light"] .s-sponsor .v-c .sponsor-c-pin { background: var(--raised); box-shadow: inset 0 0 0 2px var(--line); }
+

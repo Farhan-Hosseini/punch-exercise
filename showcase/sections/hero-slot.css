@@ -1,0 +1,110 @@
+/* hero F "Slot reels": the score lands on spinning reels, like a jackpot. app.js builds the reels from the
+   live score and spins them on the reveal, on switching to this design and on releasing the Score slider.
+   The one red thing is the charge: the bulb row lights up to the height of the hit.
+   The cabinet and the drums are set by local tokens: at night the drums are dark glass lit from the middle,
+   in daylight they are bright drums in a recessed window, shaded over the digits where they turn away. */
+.s-hero .v-f {
+  container-type: inline-size;
+  --cab-bg: var(--surface-hi-bg);
+  --cab-bezel: inset 0 0 0 6px var(--ground), inset 0 0 0 8px rgba(255, 255, 255, .14), 0 40px 70px -40px rgba(0, 0, 0, .9);
+  --drum: linear-gradient(#060607 0%, #1B1B1E 16%, #2E2E33 50%, #1B1B1E 84%, #060607 100%);
+  --drum-rim: inset 0 0 0 2px rgba(255, 255, 255, .08), inset 0 .12em .2em rgba(0, 0, 0, .8), inset 0 -.12em .2em rgba(0, 0, 0, .8);
+  --drum-fade: linear-gradient(transparent 2%, #000 27%, #000 73%, transparent 98%);
+  --drum-turn: none;
+  --drum-edge: none;
+  --drum-ink: var(--ink-1);
+  --bulb-glow: drop-shadow(0 0 8px var(--strike));
+}
+:root[data-appearance="light"] .s-hero .v-f {
+  --cab-bg: linear-gradient(180deg, color-mix(in oklab, var(--ink-1) 9%, var(--ground)), color-mix(in oklab, var(--ink-1) 4%, var(--ground)));
+  --cab-bezel: inset 0 0 0 6px var(--raised), inset 0 0 0 8px var(--line), inset 0 22px 26px -22px color-mix(in oklab, var(--ink-1) 30%, transparent), 0 40px 70px -40px rgba(70, 45, 30, .38);
+  --drum: linear-gradient(color-mix(in oklab, var(--ink-1) 3%, var(--raised)), var(--raised) 50%, color-mix(in oklab, var(--ink-1) 3%, var(--raised)));
+  --drum-rim: none;
+  --drum-edge: inset 0 0 0 2px var(--line);
+  /* the rows above and below fade into the recessed window, so the neighbours of each digit do not sit on the
+     bright drum as grey smudges */
+  --drum-fade: linear-gradient(transparent 7%, #000 25%, #000 75%, transparent 93%);
+  --drum-shade: color-mix(in oklab, var(--ink-1) 38%, var(--raised));
+  --drum-turn: linear-gradient(var(--drum-shade), color-mix(in oklab, var(--drum-shade) 55%, transparent) 12%, color-mix(in oklab, var(--drum-shade) 18%, transparent) 24%,
+    transparent 34%, transparent 66%, color-mix(in oklab, var(--drum-shade) 18%, transparent) 76%, color-mix(in oklab, var(--drum-shade) 55%, transparent) 88%, var(--drum-shade));
+  --bulb-glow: drop-shadow(0 0 5px color-mix(in oklab, var(--strike) 55%, transparent));
+}
+.s-hero .v-f .hero-f { display: grid; justify-items: center; gap: calc(28px * var(--space)); }
+.s-hero .v-f .hero-f-label { font-size: 32px; }
+
+/* the reel bank: a chrome-edged cabinet with payline markers pointing at the centre row */
+.s-hero .v-f .hero-f-cabinet {
+  position: relative; width: 100%;
+  padding: calc(22px * var(--space)) 44px;
+  display: flex; justify-content: center;
+  border-radius: calc(var(--r) * 1.2);
+  background: var(--cab-bg);
+  box-shadow: var(--cab-bezel);
+}
+.s-hero .v-f .hero-f-cabinet::before,
+.s-hero .v-f .hero-f-cabinet::after {
+  content: ""; position: absolute; top: 50%; width: 0; height: 0;
+  border-block: 18px solid transparent; transform: translateY(-50%);
+}
+.s-hero .v-f .hero-f-cabinet::before { left: -2px; border-left: 22px solid var(--ink-1); }
+.s-hero .v-f .hero-f-cabinet::after { right: -2px; border-right: 22px solid var(--ink-1); }
+
+/* reel sizing: the brief's full length, 999,999.000. Six digit reels and a comma cell take the full size, and the
+   three decimals turn on a small bank of their own after the point (.reel-dec), so the width in em is
+   6 x .64 + .24 + 6 gaps x .045 for the whole points, plus a gap and the bank at .46: .04 + (.3 + 3 x .64 + 3 x .06) x .46,
+   5.47em in all; whole points only, 4.35em */
+.s-hero .v-f { --reel-ems: 5.52; }
+:root[data-decimals="off"] .s-hero .v-f { --reel-ems: 4.4; }
+.s-hero .v-f .hero-f-window { width: 100%; container-type: inline-size; display: flex; justify-content: center; }
+.s-hero .v-f .hero-f-reels {
+  --fs: min(190px, calc(100cqi / var(--reel-ems)));
+  display: flex; align-items: stretch; gap: calc(var(--fs) * .045);
+  margin: 0; font-size: var(--fs); line-height: 1;
+  text-shadow: none;
+}
+.s-hero .v-f .reel {
+  position: relative; overflow: hidden; flex: none;
+  width: .64em; height: 1.46em; border-radius: .07em;
+  background: var(--drum);
+  box-shadow: var(--drum-rim);
+  -webkit-mask-image: var(--drum-fade);
+  mask-image: var(--drum-fade);
+}
+/* where the drum turns away from the eye: shade over the digits, so the rows above and below sink into it */
+.s-hero .v-f .reel::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  border-radius: inherit; background: var(--drum-turn); box-shadow: var(--drum-edge);
+}
+.s-hero .v-f .reel-strip {
+  position: absolute; left: 0; right: 0; top: .21em;
+  display: flex; flex-direction: column;
+  will-change: transform;
+}
+.s-hero .v-f .reel-strip > span { display: grid; place-items: center; height: 1.04em; color: var(--drum-ink); font-variant-numeric: tabular-nums; }
+.s-hero .v-f .reel-sep { display: grid; place-items: end center; width: .24em; padding-bottom: .24em; color: var(--ink-1); }
+/* the decimal bank: the same drums at the .dec size, set on the whole reels' baseline (the big digit's baseline
+   stands .33em above its drum's foot, the small one's .33em above its own), and a step quieter, like the text .dec */
+.s-hero .v-f .reel-dec {
+  display: flex; gap: .06em; align-self: flex-end; margin-left: .04em;
+  font-size: .46em; margin-bottom: calc(.33em / .46 - .19em);
+}
+/* the small drums are cut down to the digit row, so they read as three counters, not as a strip of half digits;
+   the whole bank's drums are 1.46em with the row at .21em, these 1.14em with the row at .05em */
+.s-hero .v-f .reel-dec .reel { height: 1.14em; border-radius: .1em; -webkit-mask-image: none; mask-image: none; }
+.s-hero .v-f .reel-dec .reel-strip { top: .05em; }
+.s-hero .v-f .reel-dec .reel-strip > span { color: color-mix(in oklab, var(--drum-ink) 72%, transparent); }
+.s-hero .v-f .reel-dec .reel-point { width: .3em; padding-bottom: .19em; color: color-mix(in oklab, var(--ink-1) 72%, transparent); }
+
+/* the charge: a bulb row that lights up to the height of the hit. The pitch divides the row exactly,
+   so the last bulb is never cut, and the lit row shares the same pitch so its bulbs sit on the unlit ones. */
+.s-hero .v-f .hero-f-bulbs {
+  --pitch: calc(100cqi / 26);
+  position: relative; width: 100%; height: 24px;
+  background: radial-gradient(circle, var(--track) 0 7px, transparent 8px) 0 50% / var(--pitch) 24px repeat-x;
+}
+.s-hero .v-f .hero-f-lit {
+  position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--charge, 1) * 100%);
+  background: radial-gradient(circle, var(--strike) 0 7px, transparent 8px) 0 50% / var(--pitch) 24px repeat-x;
+  filter: var(--bulb-glow);
+}
+.s-hero .v-f .hero-f-grade { font-size: 64px; letter-spacing: .06em; color: var(--ink-1); }

@@ -1,0 +1,34 @@
+/* Shared rules for the phone page sections (psec.js): a section never shows two designs at once. */
+.m-page [data-sv][hidden] { display: none !important; }
+
+/* One spacing scale for every phone page, on a 4 px grid (round six: "every page needs better spacing"). Pages use these
+   instead of one-off numbers, so the rhythm is the same from screen to screen:
+   --m-gut       the page's side margin
+   --m-sec-gap   between two sections of a page
+   --m-group-gap between groups inside a section (a title and its list)
+   --m-item-gap  between items in a list or a row of chips
+   --m-pad       inside a card or a tile */
+.m-app { --m-gut: 20px; --m-sec-gap: 32px; --m-group-gap: 16px; --m-item-gap: 12px; --m-pad: 16px; }
+
+/* Round eight: every page header keeps one measured rhythm.
+   --m-head-top   from the status bar to the header's first row (a 44 px button row, or the title row itself)
+   --m-title-gap  between a title and the line that goes with it, under it or over it as a kicker; that line reads at
+                  line-height 1.4
+   Under the header, the first section starts --m-sec-gap down, and the header keeps the page's --m-gut side margins.
+   A page with a button row over its title (Buy credits, Checkout, Paid, Punch) puts the title --m-group-gap under the row. */
+.m-app { --m-head-top: 12px; --m-title-gap: 8px; }
+
+/* Round nine, "the header, the bottom navigator and the content in the middle, and the space between them":
+   --m-foot      the bottom of every scrolling page: the highest point of whichever tab bar is chosen (nav.css sets
+                 --m-nav-top and --m-nav-rise per style) plus one section step, so the last content always ends
+                 --m-sec-gap over the bar and nothing rests under it (mobile.css .m-scroll)
+   --m-title-lh  the line box of a page title (.m-title, 30 px at line-height 1.05) */
+.m-app { --m-foot: calc(var(--m-nav-top) + var(--m-nav-rise) + var(--m-sec-gap)); --m-title-lh: 31.5px; }
+
+/* One centre line: any header row that holds a page title and a 44 px icon button centres the title's line box and the
+   button's box together, on every page and in every design (the leaderboard's rows included) */
+.m-app .m-page :is(header, div):has(> .m-iconbtn):has(> :is(.m-title, h2)) { align-items: center; }
+/* a title with a kicker line over it (Your hit): the button centres on the title's own line, not on the pair, and hangs
+   the difference below it so the header keeps its measured height */
+.m-app .m-page :is(header, div):has(> .m-iconbtn):has(> div > .m-title:last-child):not(:has(> .m-title)) { align-items: flex-end; }
+.m-app .m-page :is(header, div):has(> div > .m-title:last-child):not(:has(> .m-title)) > .m-iconbtn { margin-bottom: calc((var(--m-title-lh) - 44px) / 2); }

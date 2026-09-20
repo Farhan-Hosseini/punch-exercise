@@ -1,0 +1,52 @@
+<!-- Machine screen: the Big score (data-mscreen="score"), for the back of the queue at 3 m: the number as the event.
+     Round seven rebuilt it from scratch. ONE frame of four sections (psec.js), top to bottom, each with five designs
+     paged in Customise under "This screen":
+       Score          the number at the brief's full length, the decimals smaller, and whose hit it is:
+                      Poster, Red field, Flap board, Scoreboard, Pole
+       Why it counts  one reason to care: the crown this hit took, the gap to the next mark, the lead of the run:
+                      Statement, Versus, Measure, Band, Headline
+       Video          round nine: the strike as a reel, the player's own clip from the punch video library, muted,
+                      looping and playing on its own (the poster, the strike frame, under reduced motion):
+                      Bleed, Framed, Circle, Loupe, Slices
+       Punch again    round nine: the next move, as on the Result (parts/ms-again.html, shared with New record):
+                      Full button, Button pair, Countdown, Code handoff, Big pad
+     mscreens/score.js draws every design from the hit it shows (the example runs Your run uses, or the live score),
+     counts the number up and plays the story in reading order; mscreens/score.css lays them out (round nine: the
+     crown's gold is the one red now, as everything else on the glass). The shared parts: the backdrop host first,
+     the global header next, the sponsor strip last. -->
+<div class="bs">
+  <div class="ms-lights" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+  <!-- include:parts/ms-brand.html -->
+
+  <!-- ============================================================ Score: the number as the event, and whose it is -->
+  <section class="bs-sec bs-score" data-sec="score" data-sec-label="Score" aria-label="Score">
+    <div class="bs-d bs-poster" data-sv="Poster"></div>
+    <div class="bs-d bs-field" data-sv="Red field" hidden></div>
+    <div class="bs-d bs-flap" data-sv="Flap board" hidden></div>
+    <div class="bs-d bs-led" data-sv="Scoreboard" hidden></div>
+    <div class="bs-d bs-pole" data-sv="Pole" hidden></div>
+  </section>
+
+  <!-- ============================================================ Why it counts: one reason to care -->
+  <section class="bs-sec bs-why" data-sec="why" data-sec-label="Why it counts" aria-label="Why it counts">
+    <div class="bs-d bs-state" data-sv="Statement"></div>
+    <div class="bs-d bs-vs" data-sv="Versus" hidden></div>
+    <div class="bs-d bs-ruler" data-sv="Measure" hidden></div>
+    <div class="bs-d bs-band" data-sv="Band" hidden></div>
+    <div class="bs-d bs-words" data-sv="Headline" hidden></div>
+  </section>
+
+  <!-- ============================================================ Video: the strike itself, as a reel -->
+  <section class="bs-sec bs-photo" data-sec="photo" data-sec-label="Video" aria-label="Video of the strike">
+    <div class="bs-d bs-bleed" data-sv="Bleed"></div>
+    <div class="bs-d bs-framed" data-sv="Framed" hidden></div>
+    <div class="bs-d bs-circle" data-sv="Circle" hidden></div>
+    <div class="bs-d bs-loupe" data-sv="Loupe" hidden></div>
+    <div class="bs-d bs-slices" data-sv="Slices" hidden></div>
+  </section>
+
+  <!-- ============================================================ Punch again: the next move -->
+  <!-- include:parts/ms-again.html -->
+
+  <!-- include:parts/ms-ad.html -->
+</div>

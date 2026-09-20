@@ -1,0 +1,177 @@
+<!-- Machine screen: Leaderboard, between players (mscreens/attract.css, mscreens/attract.js). ONE frame built from four
+     sections (psec.js), each with five designs paged in Customise under "This screen":
+       Title          the board's name and the board switch (Global, National, Dubai), a segmented control whose red
+                      segment drains as the board's time runs out: Phone header, Scope name, Icon tabs, Photo banner, Timer ring
+       Top three      Cards, Podium, Champion, Force meter, Tiles: the phone's five board styles at glass scale (drawn by attract.js)
+       Ranks 4 to 10  Glass rows, Table, Meter rows, Tiles (drawn by attract.js)
+       Call to play   the machine's code in the shared QR style (qr.js), a short line and a You row
+     The glass cycles the Global, National and Dubai boards every few seconds; attract.js fills them from the phone's own
+     players (window.punchApp.leaders()) with scores through window.PunchFormat. The shared parts: the backdrop host
+     first, the global header next, the sponsor strip last. -->
+<div class="msa">
+  <div class="ms-lights" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><i class="l5"></i><i class="l6"></i></div>
+  <!-- include:parts/ms-brand.html -->
+
+  <p class="sr-only">The board changes every few seconds between Global, National and Dubai.</p>
+
+  <!-- ============================================================ Title -->
+  <!-- Every design carries the one board switch (.msa-sw): a segmented control on the glass's 40 px radius (28 px for
+       the segment inside it, so the curves run parallel), the board on show in the brand red, and that red draining
+       toward the left as its time runs out, so the switch is also the clock (the Timer ring's ring does that job there).
+       Read from 3 m: labels 38 px and up, segments 100 px and up. -->
+  <section class="msa-sec msa-title" data-sec="title" data-sec-label="Title" aria-label="Leaderboard">
+
+    <div class="msa-t msa-t-phone" data-sv="Phone header">
+      <p class="msa-t-live"><span data-lucide="flame"></span>Updated live</p>
+      <div class="msa-t-row">
+        <h2 class="msa-t-title"><span class="sr-only"><span data-msa-name>Global</span> </span>Leaderboard</h2>
+        <span class="msa-t-trophy" aria-hidden="true"><span data-lucide="trophy"></span></span>
+      </div>
+      <ul class="msa-scopes msa-sw" aria-hidden="true">
+        <li class="msa-scope" data-scope="global"><i class="msa-fill"></i><span class="msa-sw-l">Global</span></li>
+        <li class="msa-scope" data-scope="national"><i class="msa-fill"></i><span class="msa-sw-l">National</span></li>
+        <li class="msa-scope" data-scope="dubai"><i class="msa-fill"></i><span class="msa-sw-l">Dubai</span></li>
+      </ul>
+    </div>
+
+    <div class="msa-t msa-t-name" data-sv="Scope name" hidden>
+      <div class="msa-t-names">
+        <p class="msa-t-kicker"><span data-lucide="podium"></span>Leaderboard</p>
+        <h2 class="msa-t-big"><span data-msa-name>Global</span><span class="sr-only"> leaderboard</span></h2>
+      </div>
+      <ul class="msa-scopes msa-sw msa-sw-col" aria-hidden="true">
+        <li class="msa-scope" data-scope="global"><i class="msa-fill"></i><span class="msa-sw-i" data-lucide="globe"></span><span class="msa-sw-l">Global</span></li>
+        <li class="msa-scope" data-scope="national"><i class="msa-fill"></i><span class="msa-sw-i" data-lucide="flag"></span><span class="msa-sw-l">National</span></li>
+        <li class="msa-scope" data-scope="dubai"><i class="msa-fill"></i><span class="msa-sw-i" data-lucide="map-pin"></span><span class="msa-sw-l">Dubai</span></li>
+      </ul>
+    </div>
+
+    <div class="msa-t msa-t-tabs" data-sv="Icon tabs" hidden>
+      <p class="msa-t-kicker"><span data-lucide="gauge"></span>Force meter</p>
+      <h2 class="msa-t-hard">Who hits hardest<span class="sr-only">, <span data-msa-name>Global</span></span></h2>
+      <ul class="msa-scopes msa-sw msa-sw-tall" aria-hidden="true">
+        <li class="msa-scope" data-scope="global"><i class="msa-fill"></i><span class="msa-sw-i" data-lucide="globe"></span><span class="msa-sw-l">Global</span></li>
+        <li class="msa-scope" data-scope="national"><i class="msa-fill"></i><span class="msa-sw-i" data-lucide="flag"></span><span class="msa-sw-l">National</span></li>
+        <li class="msa-scope" data-scope="dubai"><i class="msa-fill"></i><span class="msa-sw-i" data-lucide="map-pin"></span><span class="msa-sw-l">Dubai</span></li>
+      </ul>
+    </div>
+
+    <div class="msa-t msa-t-photo" data-sv="Photo banner" hidden>
+      <span class="msa-t-pics" aria-hidden="true">
+        <img data-scope="global" src="assets/photos/lib/arcade-neon-5.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async" style="object-position: 50% 55%">
+        <img data-scope="national" src="assets/photos/lib/dubai-night-8.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async" style="object-position: 45% 45%">
+        <img data-scope="dubai" src="assets/photos/lib/dubai-night-21.jpg" alt="" width="1013" height="1800" loading="lazy" decoding="async" style="object-position: 50% 45%">
+      </span>
+      <ul class="msa-scopes msa-sw msa-sw-glass" aria-hidden="true">
+        <li class="msa-scope" data-scope="global"><i class="msa-fill"></i><span class="msa-sw-l">Global</span></li>
+        <li class="msa-scope" data-scope="national"><i class="msa-fill"></i><span class="msa-sw-l">National</span></li>
+        <li class="msa-scope" data-scope="dubai"><i class="msa-fill"></i><span class="msa-sw-l">Dubai</span></li>
+      </ul>
+      <div class="msa-t-foot">
+        <h2 class="msa-t-over"><span class="msa-t-ic" data-msa-icon data-lucide="globe"></span><span class="msa-t-overtext"><span class="msa-t-small">Leaderboard</span><span data-msa-name>Global</span></span></h2>
+        <p class="msa-t-chip"><span class="msa-dot" aria-hidden="true"></span>Live</p>
+      </div>
+    </div>
+
+    <div class="msa-t msa-t-ring" data-sv="Timer ring" hidden>
+      <div class="msa-t-ringrow">
+        <span class="msa-ring" aria-hidden="true">
+          <svg viewBox="0 0 120 120" focusable="false"><circle class="msa-ring-trk" cx="60" cy="60" r="54"/><circle class="msa-ring-run" cx="60" cy="60" r="54" pathLength="1"/></svg>
+          <span class="msa-ring-in"><b data-msa-left>9</b><span data-msa-left-word>sec</span></span>
+        </span>
+        <div class="msa-t-copy">
+          <p class="msa-t-kicker"><span data-lucide="trophy"></span>Leaderboard</p>
+          <h2 class="msa-t-mid"><span data-msa-name>Global</span></h2>
+        </div>
+      </div>
+      <ul class="msa-scopes msa-sw msa-sw-slim" aria-hidden="true">
+        <li class="msa-scope" data-scope="global"><i class="msa-fill"></i><span class="msa-sw-l">Global</span></li>
+        <li class="msa-scope" data-scope="national"><i class="msa-fill"></i><span class="msa-sw-l">National</span></li>
+        <li class="msa-scope" data-scope="dubai"><i class="msa-fill"></i><span class="msa-sw-l">Dubai</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ Top three (attract.js draws the chosen design) -->
+  <section class="msa-sec msa-top" data-sec="top" data-sec-label="Top three" data-sv-names="Cards|Podium|Champion|Force meter|Tiles" aria-label="Top three">
+    <div class="msa-body" data-msa-top></div>
+  </section>
+
+  <!-- ============================================================ Ranks 4 to 10 (attract.js draws the chosen design) -->
+  <section class="msa-sec msa-ranks" data-sec="ranks" data-sec-label="Ranks 4 to 10" data-sv-names="Glass rows|Table|Meter rows|Tiles" aria-label="Ranks four to ten">
+    <div class="msa-body" data-msa-ranks></div>
+  </section>
+
+  <!-- ============================================================ Call to play -->
+  <section class="msa-sec msa-play" data-sec="cta" data-sec-label="Call to play" aria-label="Play">
+
+    <div class="msa-c msa-c-red" data-sv="Red card">
+      <div class="pqr" data-pqr data-pqr-glow="off" style="--pqr-size: 316px"></div>
+      <div class="msa-c-copy">
+        <p class="msa-c-title">Your name up here next?</p>
+        <p class="msa-c-line">Scan with your phone camera to play</p>
+        <div class="msa-you">
+          <span class="msa-you-ghost" aria-hidden="true"><span data-lucide="user-round"></span></span>
+          <span class="msa-you-who"><b>You</b></span>
+          <span class="msa-you-end"><span class="msa-you-need" data-msa-you-line>Top ten needs</span><span data-msa-you-score></span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="msa-c msa-c-big" data-sv="Big code" hidden>
+      <div class="msa-c-copy">
+        <p class="msa-c-kicker"><span data-lucide="scan-qr-code"></span>Scan to play</p>
+        <p class="msa-c-huge">Beat the board</p>
+        <div class="msa-you msa-you-glass">
+          <span class="msa-you-ghost" aria-hidden="true"><span data-lucide="user-round"></span></span>
+          <span class="msa-you-who"><b>You</b></span>
+          <span class="msa-you-end"><span class="msa-you-need" data-msa-you-line>Top ten needs</span><span data-msa-you-score></span></span>
+        </div>
+      </div>
+      <div class="pqr" data-pqr style="--pqr-size: 360px"></div>
+    </div>
+
+    <div class="msa-c msa-c-bar" data-sv="Your bar" hidden>
+      <div class="msa-c-copy">
+        <p class="msa-c-title">Where would your bar land?</p>
+        <div class="msa-you msa-you-meter">
+          <span class="msa-you-who"><b>You</b><span data-msa-bar-line>Top ten needs this much</span></span>
+          <span class="msa-you-bar" aria-hidden="true"><i class="msa-you-run"></i><i class="msa-you-cut" data-msa-cut></i></span>
+        </div>
+        <p class="msa-c-line">Scan the code and find out in one strike</p>
+      </div>
+      <div class="pqr" data-pqr data-pqr-glow="off" style="--pqr-size: 300px"></div>
+    </div>
+
+    <div class="msa-c msa-c-photo" data-sv="Phone photo" hidden>
+      <img class="msa-c-pic" src="assets/photos/lib/phone-hand-1.jpg" alt="" width="1200" height="1800" loading="lazy" decoding="async">
+      <div class="msa-c-copy">
+        <p class="msa-c-kicker"><span data-lucide="smartphone"></span>Phone out</p>
+        <p class="msa-c-title">Point, scan, punch</p>
+        <div class="msa-you msa-you-chip">
+          <span class="msa-you-ghost" aria-hidden="true"><span data-lucide="user-round"></span></span>
+          <span class="msa-you-who"><b>You</b></span>
+          <span class="msa-you-end"><span class="msa-you-need" data-msa-you-line>Top ten needs</span><span data-msa-you-score></span></span>
+        </div>
+      </div>
+      <div class="pqr" data-pqr data-pqr-glow="off" style="--pqr-size: 280px"></div>
+    </div>
+
+    <div class="msa-c msa-c-open" data-sv="Open rank" hidden>
+      <div class="msa-c-copy">
+        <div class="msa-c-head">
+          <p class="msa-c-rank" aria-hidden="true"><span data-msa-open-rank>10</span></p>
+          <div class="msa-you msa-you-plain">
+            <span class="msa-you-ghost" aria-hidden="true"><span data-lucide="user-round"></span></span>
+            <span class="msa-you-who"><b>You</b><span data-msa-open-line>Your spot on the Global board</span></span>
+          </div>
+        </div>
+        <p class="msa-c-line" data-msa-rank-line>Beat this score to take it</p>
+        <p class="msa-c-need" data-msa-rank-need></p>
+      </div>
+      <div class="pqr" data-pqr style="--pqr-size: 300px"></div>
+    </div>
+  </section>
+
+  <!-- include:parts/ms-ad.html -->
+</div>

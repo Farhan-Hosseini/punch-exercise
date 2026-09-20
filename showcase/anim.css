@@ -1,0 +1,96 @@
+/* The Animation tab: the phone and the live machine side by side, and the score reveal clip under the pair.
+   Start and Reset sit in the top bar under the tabs (styles.css, .anim-bar); nothing is captioned under the screens,
+   the two surfaces speak for themselves. It shares the phone stage with the Mobile app tab; everything here is scoped
+   to .phone-stage.is-anim, and the Mobile app tab hides the glass and the clip (mobile.css).
+   app.js (syncLinked) sizes the glass to the phone's height and sets data-anim-layout:
+   mid     the phone and the machine side by side
+   stack   the machine under the phone, when the window is too narrow for the pair */
+.phone-stage.is-anim .pagebar { display: none; }
+.phone-stage.is-anim {
+  display: grid; justify-content: center; align-items: start;
+  column-gap: clamp(32px, 4vw, 64px); row-gap: 14px;
+  grid-template-columns: auto auto;
+  grid-template-areas: "phone machine" "clip clip";
+  padding-bottom: 96px;
+}
+.phone-stage.is-anim[data-anim-layout="stack"] {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "phone" "machine" "clip";
+  justify-items: center;
+}
+/* the phone sizes itself to the window (mobile.js); here it gives up a few percent so the pair sits clear of the
+   window's bottom edge */
+.phone-stage.is-anim .device-wrap { grid-area: phone; zoom: calc(var(--pz, 1) * .92); }
+/* the machine's column: the glass, as tall as the phone and no wider than itself */
+.phone-stage.is-anim .linked { grid-area: machine; margin: 0; display: grid; justify-items: start; align-self: start; width: max(var(--linked-w, 270px), 240px); }
+.phone-stage.is-anim .linked-glass { justify-self: start; }
+.phone-stage[data-anim-layout="stack"] .linked { justify-self: center; margin-top: 28px; }
+
+/* ---------------------------------------------------------------- the clip under the pair */
+/* it spans the row without widening it: it takes the pair's width, it never sets it */
+.phone-stage.is-anim .anim-extra { grid-area: clip; width: 0; min-width: 100%; }
+.anim-extra {
+  scroll-margin-top: 88px; margin-top: clamp(72px, 9vw, 128px); padding-top: 40px;
+  display: grid; gap: 28px; min-width: 0; container-type: inline-size;
+  border-top: 1px solid color-mix(in oklab, var(--shell-ink) 12%, transparent);
+}
+.phone-stage[data-anim-layout="stack"] .anim-extra { max-width: 620px; }
+.anim-extra-head { max-width: 64ch; }
+.anim-k { margin: 0 0 10px; font: 600 12px/1 "Barlow Condensed", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--shell-mute); }
+.anim-title { margin: 0; font: 900 clamp(34px, 3.2vw, 46px)/.95 "Big Shoulders Display", "Arial Narrow", sans-serif; text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; }
+.anim-p { margin: 14px 0 0; font: 500 15px/1.55 "Barlow", system-ui, sans-serif; color: var(--shell-mute); text-wrap: pretty; max-width: 58ch; }
+
+/* the two clips, one for each surface: each is its own block with its name, the pair of figures and its downloads */
+.anim-piece { display: grid; gap: 24px; }
+.anim-piece + .anim-piece { margin-top: 16px; padding-top: 40px; border-top: 1px solid color-mix(in oklab, var(--shell-ink) 12%, transparent); }
+.anim-piece-title { margin: 0; font: 900 clamp(28px, 2.6vw, 36px)/.95 "Big Shoulders Display", "Arial Narrow", sans-serif; text-transform: uppercase; letter-spacing: .01em; }
+
+/* the master stands exactly as tall as the presentation cut beside it: with the row T wide and a 40 px gap,
+   the glass solves h = (T - 40 - h x 1080 / 3840) x 9 / 16, and the phone the same with 928 / 1960 */
+.anim-clips { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 40px; align-items: start; }
+.anim-fig { margin: 0; display: grid; min-width: 0; }
+/* the master is exactly as wide as its own screen, so it never widens the column */
+.anim-fig-master { width: calc((100cqw - 40px) * .1366); }
+.anim-piece:has(.anim-phone) .anim-fig-master { width: calc((100cqw - 40px) * .2103); }
+.anim-glass, .anim-phone { justify-self: start; overflow: hidden; background: #060606; }
+.anim-glass { height: calc((100cqw - 40px) * .4857); aspect-ratio: 1080 / 3840; border-radius: 8px; box-shadow: 0 0 0 5px var(--bezel, #1B1A19), 0 0 0 6px color-mix(in oklab, var(--shell-ink) 12%, transparent); }
+/* the phone clip carries the handset itself, so it needs no bezel drawn around it: only the corners cut back to the
+   device's own radius, 74 of its 464 px */
+.anim-phone { height: calc((100cqw - 40px) * .4442); aspect-ratio: 928 / 1960; border-radius: calc((100cqw - 40px) * .0335); }
+.anim-glass .anim-clip, .anim-phone .anim-clip { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+.anim-clip { display: block; width: 100%; height: auto; border-radius: 12px; background: #060606; }
+.anim-fig-pres .anim-clip, .anim-fig-old .anim-clip { aspect-ratio: 16 / 9; }
+.anim-fig-pres .anim-clip { box-shadow: 0 40px 80px -48px rgba(0, 0, 0, .8); }
+.anim-clip:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* the downloads, and Read the idea leading the first concept's row: the one filled button, the downloads after it */
+.anim-files { margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.anim-files a, .anim-case {
+  display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 12px;
+  font: 600 14px/1 "Barlow", sans-serif; color: var(--shell-ink); text-decoration: none;
+  border: 1px solid color-mix(in oklab, var(--shell-ink) 22%, transparent);
+}
+.anim-files a:hover { background: color-mix(in oklab, var(--shell-ink) 8%, transparent); }
+.anim-case { appearance: none; cursor: pointer; background: var(--shell-pill-on); color: var(--shell-pill-on-ink); border-color: var(--shell-pill-on); }
+.anim-case:hover { background: color-mix(in oklab, var(--shell-pill-on) 88%, var(--shell-pill-on-ink)); }
+.anim-files a:focus-visible, .anim-case:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* the first concept, the canvas clip made before the glass was built: second, smaller, and it plays only on request */
+.anim-old { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 32px; align-items: start; }
+.anim-old-text { display: grid; align-content: start; min-width: 0; }
+.anim-old-text .anim-files { margin-top: 18px; }
+.anim-old-title { margin: 0; font: 900 clamp(26px, 2.4vw, 32px)/.95 "Big Shoulders Display", "Arial Narrow", sans-serif; text-transform: uppercase; letter-spacing: .01em; }
+
+/* too narrow for the pair: the presentation cut alone, which frames the glass anyway */
+@container (max-width: 760px) {
+  .anim-clips { grid-template-columns: minmax(0, 1fr); }
+  .anim-fig-master { display: none; }
+  .anim-old { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+
+/* Start and Reset (styles.css .anim-bar draws them): a press and a hover */
+.anim-play:hover { background: color-mix(in oklab, var(--shell-pill-on) 88%, var(--shell-pill-on-ink)); }
+.anim-play:active, .anim-reset:active { transform: translateY(1px); }
+@media (prefers-reduced-motion: reduce) {
+  .anim-play, .anim-reset { transition: none; }
+}

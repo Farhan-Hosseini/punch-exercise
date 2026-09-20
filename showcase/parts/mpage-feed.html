@@ -1,0 +1,169 @@
+    <!-- ========== social feed ==========
+         Built from sections (psec.js), each with five designs chosen in Customise under This screen. Stories and Posts
+         are drawn by mpages/feed.js (data-sv-names) from the model mobile.js keeps; Filter and Sponsored carry their
+         designs here. The sponsored post sits after the second post, so Posts is one section in two parts around it. -->
+    <section class="m-page m-scroll" data-page="feed" aria-labelledby="mFeedTitle">
+      <svg class="mf-defs" aria-hidden="true" focusable="false">
+        <symbol id="mfClaw" viewBox="0 0 48 48" overflow="visible"><path d="M25 4C19 16 11 29-1 43C14 31 24 18 30.5 6Z"/><path d="M34 2.5C28 14.5 20 27.5 8 41.5C23 29.5 33 16.5 39.5 4.5Z"/><path d="M43 7C37 19 29 32 17 46C32 34 42 21 48.5 9Z"/></symbol>
+      </svg>
+      <header class="m-head m-head-brand">
+        <h2 class="m-brand" id="mFeedTitle"><img class="m-brand-mark" data-logo-img src="assets/logos/fist-circle.svg" alt=""><span>PUNCH <b>APP</b></span></h2>
+        <div class="m-head-btns">
+          <!-- the view switch, as the reel has: the posts one to a row in the chosen design, or two to a row as tiles
+               (data-view="list|grid" on #mPosts, kept per viewer by mpages/feed.js) -->
+          <div class="mf-view" role="group" aria-label="Posts view">
+            <button type="button" data-fview="list" aria-pressed="true" aria-label="One column"><span data-lucide="rectangle-vertical"></span></button>
+            <button type="button" data-fview="grid" aria-pressed="false" aria-label="Two columns"><span data-lucide="layout-grid"></span></button>
+          </div>
+          <button class="m-iconbtn" type="button" id="mFeedSearch" aria-label="Search punchers"><span data-icon="search"></span></button>
+          <button class="m-iconbtn m-has-dot" type="button" id="mBell" aria-label="Notifications, two new"><span data-icon="bell"></span></button>
+        </div>
+      </header>
+
+      <div class="mf">
+        <!-- ---------------------------------------------------------------- Stories (drawn by feed.js) -->
+        <div class="mf-sec mf-stories" id="mStories" role="region" aria-label="Stories" data-sec="stories" data-sec-label="Stories" data-sv-names="Rings|Hit cards|Force rings|Live pills|Spotlight"></div>
+
+        <!-- ---------------------------------------------------------------- Filter -->
+        <div class="mf-sec mf-filter" data-sec="filter" data-sec-label="Filter">
+          <div class="mf-f mf-f-chips" data-sv="Chips" role="group" aria-label="Feed filter">
+            <button type="button" data-filter="all" aria-pressed="true"><span data-lucide="sparkles"></span>For you</button>
+            <button type="button" data-filter="following" aria-pressed="false"><span data-lucide="users-round"></span>Following</button>
+            <button type="button" data-filter="nearby" aria-pressed="false"><span data-lucide="map-pin"></span>Nearby</button>
+            <button type="button" data-filter="machine" aria-pressed="false"><span data-lucide="hand-fist"></span>Dubai Mall</button>
+          </div>
+
+          <div class="mf-f mf-f-seg" data-sv="Segmented" role="group" aria-label="Feed filter">
+            <button type="button" data-filter="all" aria-pressed="true">For you</button>
+            <button type="button" data-filter="following" aria-pressed="false">Following</button>
+            <button type="button" data-filter="nearby" aria-pressed="false">Nearby</button>
+            <button type="button" data-filter="machine" aria-pressed="false">Dubai Mall</button>
+          </div>
+
+          <div class="mf-f mf-f-tabs" data-sv="Underline tabs" role="group" aria-label="Feed filter">
+            <button type="button" data-filter="all" aria-pressed="true">For you</button>
+            <button type="button" data-filter="following" aria-pressed="false">Following</button>
+            <button type="button" data-filter="nearby" aria-pressed="false">Nearby</button>
+            <button type="button" data-filter="machine" aria-pressed="false">Dubai Mall</button>
+          </div>
+
+          <div class="mf-f mf-f-tiles" data-sv="Icon tiles" role="group" aria-label="Feed filter">
+            <button type="button" data-filter="all" aria-pressed="true"><span class="mf-f-ico"><span data-lucide="sparkles"></span></span><span>For you</span></button>
+            <button type="button" data-filter="following" aria-pressed="false"><span class="mf-f-ico"><span data-lucide="users-round"></span></span><span>Following</span></button>
+            <button type="button" data-filter="nearby" aria-pressed="false"><span class="mf-f-ico"><span data-lucide="radar"></span></span><span>Nearby</span></button>
+            <button type="button" data-filter="machine" aria-pressed="false"><span class="mf-f-ico"><span data-lucide="hand-fist"></span></span><span>Dubai Mall</span></button>
+          </div>
+
+          <div class="mf-f mf-f-club" data-sv="Machine club" role="group" aria-label="Feed filter">
+            <button class="mf-club" type="button" data-filter="machine" aria-pressed="false" aria-label="The machine at Dubai Mall, Ground Level: show its community's hits">
+              <img class="mf-club-img" src="assets/photos/lib/dubai-night-11.jpg" alt="" loading="lazy" style="object-position: 50% 40%">
+              <span class="mf-club-txt">
+                <span class="mf-club-kick"><span data-lucide="hand-fist"></span>The machine community</span>
+                <b>Dubai Mall, Ground Level</b>
+                <span class="mf-club-meta">
+                  <span class="mf-club-faces" aria-hidden="true"><img src="assets/app/avatars/noor.jpg" alt=""><img src="assets/app/avatars/omar.jpg" alt=""><img src="assets/app/avatars/leila.jpg" alt=""><img src="assets/app/avatars/sara.jpg" alt=""></span>
+                  <span>312 punchers this week</span>
+                </span>
+              </span>
+              <span class="mf-club-go"><span class="mf-club-on">Showing</span><span class="mf-club-off">Their hits</span><span data-lucide="chevron-right"></span></span>
+            </button>
+            <div class="mf-club-chips">
+              <button type="button" data-filter="all" aria-pressed="true">For you</button>
+              <button type="button" data-filter="following" aria-pressed="false">Following</button>
+              <button type="button" data-filter="nearby" aria-pressed="false">Nearby</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------- Posts, with the sponsored post inside -->
+        <div class="mf-posts" id="mPosts" data-view="list">
+          <div class="mf-list" data-sec="posts" data-sec-label="Posts" data-sv-names="Photo card|Score first|Replay strip|Compact|Immersive" data-part="a"></div>
+
+          <!-- Sponsored: Monster Energy, labelled, with its own green call to action. It keeps its black and green in
+               every look, the way a sponsor's lockup does; the claw marks are drawn here, not the brand's logo. -->
+          <aside class="mf-sec mf-spon" data-sec="sponsored" data-sec-label="Sponsored" data-post="ad-monster" aria-label="Sponsored post from Monster Energy">
+
+            <article class="mf-ad mf-ad-can" data-sv="Can card">
+              <div class="mf-ad-head">
+                <span class="mf-ad-mark" aria-hidden="true"><svg><use href="#mfClaw"/></svg></span>
+                <div class="mf-who"><span class="m-name">Monster Energy</span><span class="m-city"><b>Sponsored</b>, Dubai Mall</span></div>
+                <button class="mf-more" type="button" data-act="more" aria-label="About this ad"><span data-icon="more"></span></button>
+              </div>
+              <div class="mf-ad-stage">
+                <svg class="mf-ad-rake" aria-hidden="true"><use href="#mfClaw"/></svg>
+                <span class="mf-can" aria-hidden="true"><svg><use href="#mfClaw"/></svg><i>Energy</i></span>
+                <div class="mf-ad-copy"><span class="mf-ad-kick">This week at Dubai Mall</span><b>Land a Perfect punch. The next can is on us.</b></div>
+              </div>
+              <button class="mf-ad-cta" type="button" data-act="claim"><span>Claim a free can</span><span data-lucide="arrow-right"></span></button>
+              <div class="mf-actions">
+                <button class="m-act" type="button" data-act="like" aria-pressed="false" aria-label="Like, 1.8K likes"><span data-icon="heart"></span><span data-likes>1.8K</span></button>
+                <button class="m-act" type="button" data-act="comment" aria-label="96 comments"><span data-icon="comment"></span><span>96</span></button>
+                <button class="m-act" type="button" data-act="share" aria-label="Share"><span data-icon="share"></span></button>
+              </div>
+              <p class="mf-cap"><b>Monster Energy</b> Every Perfect punch at Dubai Mall this week earns a cold can at the Monster kiosk by the rink. Show your hit in the app.</p>
+            </article>
+
+            <article class="mf-ad mf-ad-photo" data-sv="Photo offer">
+              <div class="mf-ad-photo-media">
+                <img src="assets/photos/lib/hydrate-1.jpg" alt="" loading="lazy" style="object-position: 62% 35%">
+                <div class="mf-ad-photo-top">
+                  <span class="mf-ad-pill">Sponsored</span>
+                  <button class="mf-more mf-more-photo" type="button" data-act="more" aria-label="About this ad"><span data-icon="more"></span></button>
+                </div>
+                <div class="mf-ad-photo-copy">
+                  <span class="mon-word">Monster<span>Energy</span></span>
+                  <b>Refuel between rounds.</b>
+                  <p>Show a Perfect punch at the kiosk by the rink and the can is free.</p>
+                </div>
+              </div>
+              <div class="mf-ad-photo-foot">
+                <button class="mf-ad-cta mf-ad-cta-pill" type="button" data-act="claim"><span>Claim a free can</span><span data-lucide="arrow-right"></span></button>
+                <button class="m-act" type="button" data-act="like" aria-pressed="false" aria-label="Like, 1.8K likes"><span data-icon="heart"></span><span data-likes>1.8K</span></button>
+              </div>
+            </article>
+
+            <article class="mf-ad mf-ad-meter" data-sv="Cans left">
+              <div class="mf-ad-head">
+                <span class="mf-ad-mark" aria-hidden="true"><svg><use href="#mfClaw"/></svg></span>
+                <div class="mf-who"><span class="m-name">Monster Energy</span><span class="m-city"><b>Sponsored</b>, ends Sunday</span></div>
+                <button class="mf-more" type="button" data-act="more" aria-label="About this ad"><span data-icon="more"></span></button>
+              </div>
+              <div class="mf-ad-meter-body">
+                <span class="mon-word is-line">Monster<span>Energy</span></span>
+                <b class="mf-ad-meter-h">Perfect punch week</b>
+                <div class="mf-ad-count"><span class="mf-ad-big">88</span><span>free cans left at<br>Dubai Mall, Ground Level</span></div>
+                <span class="mf-ad-track" role="img" aria-label="412 of 500 cans claimed"><i style="--w: .824"></i></span>
+                <span class="mf-ad-note"><span data-lucide="cup-soda"></span>412 claimed since Monday</span>
+              </div>
+              <button class="mf-ad-cta" type="button" data-act="claim"><span>Save my can</span><span data-lucide="arrow-right"></span></button>
+            </article>
+
+            <article class="mf-ad mf-ad-rail" data-sv="Offer rail">
+              <div class="mf-ad-head">
+                <span class="mf-ad-mark" aria-hidden="true"><svg><use href="#mfClaw"/></svg></span>
+                <div class="mf-who"><span class="m-name">Monster Energy</span><span class="m-city"><b>Sponsored</b>, three offers</span></div>
+                <button class="mf-more" type="button" data-act="more" aria-label="About this ad"><span data-icon="more"></span></button>
+              </div>
+              <div class="mf-ad-cards">
+                <button class="mf-ad-card" type="button" data-act="claim"><span class="mf-ad-card-ico"><span data-lucide="cup-soda"></span></span><b>A free can</b><span>For every Perfect punch this week.</span><span class="mf-ad-card-go">Claim<span data-lucide="arrow-right"></span></span></button>
+                <button class="mf-ad-card" type="button" data-act="claim"><span class="mf-ad-card-ico"><span data-lucide="coins"></span></span><b>A credit back</b><span>Buy a pack at the kiosk, the next punch is on us.</span><span class="mf-ad-card-go">Claim<span data-lucide="arrow-right"></span></span></button>
+                <button class="mf-ad-card" type="button" data-act="claim"><span class="mf-ad-card-ico"><span data-lucide="trophy"></span></span><b>Top the board</b><span>Friday's leader wins a case for the crew.</span><span class="mf-ad-card-go">Enter<span data-lucide="arrow-right"></span></span></button>
+              </div>
+            </article>
+
+            <article class="mf-ad mf-ad-slim" data-sv="Slim banner">
+              <span class="mf-ad-slim-mark" aria-hidden="true"><svg><use href="#mfClaw"/></svg></span>
+              <div class="mf-ad-slim-txt">
+                <span class="mf-ad-slim-tag">Sponsored</span>
+                <b>Perfect punch, free Monster.</b>
+              </div>
+              <button class="mf-ad-cta mf-ad-cta-slim" type="button" data-act="claim" aria-label="Claim a free can"><span>Claim</span><span data-lucide="arrow-right"></span></button>
+              <button class="mf-more" type="button" data-act="more" aria-label="About this ad"><span data-icon="more"></span></button>
+            </article>
+          </aside>
+
+          <div class="mf-list" data-sec="posts" data-sec-label="Posts" data-sv-names="Photo card|Score first|Replay strip|Compact|Immersive" data-part="b"></div>
+          <p class="mf-empty" id="mFeedEmpty" hidden>Nobody you follow has punched yet today.</p>
+        </div>
+      </div>
+    </section>

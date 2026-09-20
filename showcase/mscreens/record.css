@@ -1,0 +1,623 @@
+/* Machine screen: New record, on the 1080 x 3840 glass. Round six: ONE frame (.rec) built from three sections
+   (psec.js), each with five designs chosen in Customise: Moment, Score, Photo (parts/mscreen-record.html).
+   Read from 1 to 1.5 m: body text 40 px and over, labels 32 px and over, the score the biggest thing on the glass.
+   Each section has a fixed room (--room) that every design fills, so a choice never moves its neighbours; the photo
+   takes what is left. Spacing comes from the machine scale (--ms-*, mscreens/_space.css).
+   Round nine: "in New record and Big score, yellow must change to red". The gold that was this screen's own colour
+   is the brand red now (--rc-accent is --strike in every look; --rc-soft, a lighter red, gives the confetti a second
+   tone), and the Photo became the Video (the strike as a reel) with Punch again at the foot (mscreens/_again.css), so
+   the video's room is 1036. Colour and type come from the theme tokens so Arena and Reference, dark and light all
+   apply; the Burst and the Record card keep the Figma frame's own type in Reference (Poppins). */
+@font-face { font-family: "Poppins"; src: url("../fonts/poppins-latin-300-normal.woff2") format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../fonts/poppins-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../fonts/poppins-latin-900-normal.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+
+/* ------------------------------------------------------------ tokens: Arena dark first, then the other three looks */
+.mscreen-record {
+  --rc-accent: var(--strike);
+  --rc-soft: color-mix(in oklab, var(--strike) 58%, #FFFFFF);
+  --rc-title: var(--rc-accent);
+  --rc-ink: var(--ink-1);
+  --rc-red: var(--strike);
+  --rc-star-glow: color-mix(in oklab, var(--rc-accent) 45%, transparent);
+  --rc-glow: color-mix(in oklab, var(--rc-accent) 22%, transparent);
+  --rc-card-ink: var(--ink-1);
+  --rc-card-bg: linear-gradient(160deg,
+    color-mix(in oklab, var(--rc-accent) 24%, var(--raised)),
+    color-mix(in oklab, var(--rc-accent) 9%, var(--raised)) 58%,
+    color-mix(in oklab, var(--rc-accent) 17%, var(--raised)));
+  --rc-card-border: 2px solid color-mix(in oklab, var(--rc-accent) 72%, transparent);
+  --rc-card-shadow: 0 0 90px -10px color-mix(in oklab, var(--rc-accent) 45%, transparent), inset 0 2px 0 color-mix(in oklab, var(--rc-accent) 26%, transparent);
+  --rc-badge-bg: color-mix(in oklab, var(--rc-accent) 12%, var(--ground));
+  --rc-deep: color-mix(in oklab, var(--rc-ink) 82%, transparent);
+  --rc-sheen: rgba(255, 255, 255, .16);
+  --rec-tile: var(--raised);
+  --rec-tile-edge: var(--line);
+  --rec-track: color-mix(in oklab, var(--ink-1) 8%, transparent);
+  --rec-track-edge: color-mix(in oklab, var(--ink-1) 14%, transparent);
+  --rec-ink-c: var(--strike);
+  --rec-duo-hi: var(--strike);
+  --rec-duo-lo: #2A0606;
+  --rec-leather: #2B0B0B;
+  --rec-leather-2: #170505;
+  --rec-fade: var(--ground);            /* the ground a photo fades into (the screen's own ground may be a gradient) */
+}
+:root:not([data-variant="reference"])[data-appearance="light"] .mscreen-record {
+  --rc-glow: color-mix(in oklab, var(--strike) 18%, transparent);
+  --rc-star-glow: color-mix(in oklab, var(--strike) 35%, transparent);
+  --rc-card-bg: linear-gradient(160deg, #FFE6E3, #FFFFFF 58%, #FFDAD6);
+  --rc-card-border: 2px solid color-mix(in oklab, var(--strike) 70%, transparent);
+  --rc-card-shadow: 0 0 90px -10px color-mix(in oklab, var(--strike) 35%, transparent), inset 0 2px 0 rgba(255, 255, 255, .9);
+  --rc-deep: color-mix(in oklab, var(--strike) 45%, #5E0606);
+  --rc-sheen: rgba(255, 255, 255, .7);
+  --rec-duo-lo: #3A0808;
+}
+:root[data-variant="reference"] .mscreen-record {
+  --rc-accent: #EB1110;
+  --rc-soft: #FF6B61;
+  --rc-title: #EB1110;
+  --rc-ink: #FFFFFF;
+  --rc-star-glow: rgba(235, 17, 16, .45);
+  --rc-glow: rgba(235, 17, 16, .22);
+  --rc-card-ink: #FFFFFF;
+  --rc-card-bg: linear-gradient(163.17deg, rgba(235, 17, 16, .58) 0%, rgba(170, 12, 12, .34) 50%, rgba(120, 8, 8, .56) 100%);
+  --rc-card-border: 2px solid #EB1110;
+  --rc-card-shadow: 0 0 80px rgba(235, 17, 16, .6);
+  --rc-badge-bg: color-mix(in srgb, #EB1110 13%, #141218);
+  --rc-sheen: rgba(255, 255, 255, .22);
+  --rec-ink-c: #EA1916;
+  --rec-duo-hi: #EB1110;
+  --rec-fade: #141218;
+}
+:root[data-variant="reference"][data-appearance="light"] .mscreen-record {
+  --rc-accent: #D10F0E;         /* the frame's red, a step darker so small red labels keep 4.5:1 on the light ground */
+  --rc-soft: #F26A60;
+  --rc-title: #D10F0E;
+  --rc-ink: #141218;
+  --rc-card-bg: linear-gradient(163.17deg, #D4100F 0%, #B80E0D 50%, #8E0A0A 100%);
+  --rc-card-shadow: 0 0 80px rgba(235, 17, 16, .45);
+  --rc-badge-bg: color-mix(in srgb, #EB1110 10%, #F7F5FA);
+  --rec-duo-lo: #3A0808;
+  --rec-fade: #F7F5FA;
+}
+:root[data-appearance="light"] .mscreen-record { --rec-tile-edge: rgba(21, 20, 19, .14); }
+
+/* ------------------------------------------------------------ the frame: three sections between header and strip */
+.mscreen-record [data-sv][hidden] { display: none !important; }
+.mscreen-record .rec :is(p, h2, figure, ol, ul, dl, dd) { margin: 0; }
+.mscreen-record .rec :is(ol, ul) { list-style: none; padding: 0; }
+.mscreen-record .rec [data-lucide] { display: inline-flex; flex: none; }
+.mscreen-record .rec .dec { font-size: .5em; }
+.mscreen-record .rec {
+  --rec-top: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px);
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; gap: var(--ms-sec-gap);
+  padding: var(--rec-top) 0 calc(var(--ms-ad-h) + 88px);
+  color: var(--ink-1); font-family: var(--f-text);
+}
+.mscreen-record .rec > :not(.ms-lights, .ms-head, .ms-head > *, .ms-brand, .ms-ad, .rec-rain) { position: relative; z-index: 1; flex: none; }
+.mscreen-record .rec-sec { margin: 0 var(--ms-gut); height: var(--room); }
+.mscreen-record .rec-sec > [data-sv] { position: relative; height: 100%; min-width: 0; }
+.mscreen-record .rec > .rec-moment { --room: 1000px; z-index: 2; }
+.mscreen-record .rec > .rec-score { --room: 720px; }
+.mscreen-record .rec > .rec-photo { flex: 1 1 0; height: auto; min-height: 0; }
+/* confetti through the whole glass, under the sponsor strip */
+.mscreen-record .rec-rain { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+.mscreen-record .rx-bit { position: absolute; left: 0; top: 0; border-radius: 3px; opacity: 0; will-change: transform, opacity; }
+.mscreen-record .rx-bit.hi { background: var(--rc-soft); }
+.mscreen-record .rx-bit.red { background: var(--strike); }
+.mscreen-record .rx-bit.ink { background: color-mix(in oklab, var(--ink-1) 80%, transparent); }
+
+/* the kicker every design opens with: an icon and a label in the screen's red */
+.mscreen-record :is(.rm-kick, .rs-kick) {
+  display: flex; align-items: center; gap: 18px; white-space: nowrap; color: var(--rc-accent);
+  font: var(--w-label) 40px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
+}
+.mscreen-record :is(.rm-kick, .rs-kick) [data-lucide] { font-size: 48px; }
+/* the number blocks: a hidden ghost of the final number holds the width while the count runs */
+.mscreen-record :is(.rs-num, .rs-new, .rs-big, .rs-whole) { display: grid; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mscreen-record :is(.rs-num, .rs-new, .rs-big, .rs-whole) > span { grid-area: 1 / 1; }
+.mscreen-record .rs-ghost { visibility: hidden; }
+
+/* ================================================================ MOMENT */
+
+/* ---------------------------------------------------------------- Burst: the Figma frame's celebration */
+.mscreen-record .rm-party {
+  position: absolute; left: 50%; top: 50%; width: 1032px; height: 791px; margin: -395.5px 0 0 -516px;
+  container-type: inline-size;
+}
+.mscreen-record .rm-glow {
+  position: absolute; z-index: 1; left: calc(50% - 315px); top: calc(50% - 286px); width: 621px; height: 608px; border-radius: 50%;
+  background: radial-gradient(closest-side, var(--rc-glow), transparent);
+}
+.mscreen-record .rm-bits { position: absolute; z-index: 1; inset: 0; }
+.mscreen-record .rm-k {
+  position: absolute; display: block;
+  left: calc(var(--x) * 1px); top: calc(var(--y) * 1px);
+  width: calc(var(--w) * 1px); height: calc(var(--h) * 1px);
+  margin: calc(var(--h) * -.5px) 0 0 calc(var(--w) * -.5px);
+  border-radius: 2.243px; transform: rotate(var(--r));
+  background: var(--k, var(--c));
+}
+.mscreen-record .rm-k.rm-dot { border-radius: 50%; }
+.mscreen-record .rm-k.hi { --k: var(--rc-soft); }
+.mscreen-record .rm-k.red { --k: var(--rc-red); }
+.mscreen-record .rm-k.deep { --k: var(--rc-deep); }
+.mscreen-record .rm-k.fhi { --k: color-mix(in oklab, var(--rc-soft) 32%, transparent); }
+.mscreen-record .rm-k.fred { --k: color-mix(in oklab, var(--rc-red) 32%, transparent); }
+.mscreen-record .rm-k.fdeep { --k: color-mix(in oklab, var(--rc-ink) 22%, transparent); }
+:root[data-variant="reference"] .mscreen-record .rm-k { --k: var(--c); }
+:root[data-variant="reference"][data-appearance="light"] .mscreen-record .rm-k.deep { --k: #8E0A0A; }
+.mscreen-record .rm-star {
+  position: absolute; display: block;
+  left: calc(var(--x) * 1px); top: calc(var(--y) * 1px);
+  width: calc(var(--s) * 1px); height: calc(var(--s) * 1px);
+  margin: calc(var(--s) * -.5px) 0 0 calc(var(--s) * -.5px);
+  color: var(--rc-accent); filter: drop-shadow(0 0 9px var(--rc-star-glow));
+}
+.mscreen-record .rm-star svg { display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.mscreen-record .rm-win {
+  position: absolute; z-index: 2; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+.mscreen-record .rm-badge {
+  display: grid; place-items: center; flex: none;
+  width: 96px; height: 96px; border-radius: 50%;
+  border: 3px solid var(--rc-accent); background: var(--rc-badge-bg);
+  box-shadow: 0 6px 24px color-mix(in oklab, var(--rc-accent) 30%, transparent);
+  color: var(--rc-accent); font-size: 48px;
+}
+.mscreen-record .rm-title {
+  margin-top: 36px; white-space: nowrap;
+  font: 900 96px/1 "Poppins", sans-serif; letter-spacing: -1.9px; text-transform: uppercase;
+  color: var(--rc-title); text-shadow: 0 6px 12px rgba(0, 0, 0, .7);
+}
+.mscreen-record .rm-sub {
+  margin-top: 18px; white-space: nowrap;
+  font: 600 40px/1.4 "Poppins", sans-serif; letter-spacing: .6px;
+  color: var(--rc-ink); text-shadow: 0 3px 6px #000000;
+}
+:root[data-appearance="light"] .mscreen-record :is(.rm-title, .rm-sub) { text-shadow: none; }
+/* Arena: the same celebration in the Arena type */
+:root:not([data-variant="reference"]) .mscreen-record .rm-badge {
+  width: 132px; height: 132px; font-size: 64px;
+  box-shadow: 0 8px 32px color-mix(in oklab, var(--rc-accent) 28%, transparent);
+}
+:root:not([data-variant="reference"]) .mscreen-record .rm-title {
+  margin-top: 40px;
+  font: var(--w-display) min(176px, 16.5cqi)/.9 var(--f-display);
+  letter-spacing: var(--display-track); text-transform: var(--display-case); text-shadow: var(--display-glow);
+}
+:root:not([data-variant="reference"]) .mscreen-record .rm-sub { margin-top: 26px; font: 600 44px/1.25 var(--f-text); letter-spacing: 0; text-shadow: none; }
+/* the bigger Arena title would sit on three of the frame's confetti pieces: they stay out of its way */
+:root:not([data-variant="reference"]) .mscreen-record .rm-near { visibility: hidden; }
+@keyframes rm-twinkle { from { opacity: 1; scale: 1; } to { opacity: .72; scale: .9; } }
+@keyframes rm-drift { from { translate: 0 0; } to { translate: 0 -9px; } }
+.mscreen-record .rm-burst.is-idle .rm-star { animation: rm-twinkle 2.6s ease-in-out infinite alternate; }
+.mscreen-record .rm-burst.is-idle .rm-star:nth-child(2n) { animation-duration: 3.4s; animation-delay: -1.2s; }
+.mscreen-record .rm-burst.is-idle .rm-star:nth-child(3n) { animation-duration: 2.2s; animation-delay: -.6s; }
+.mscreen-record .rm-burst.is-idle .rm-k { animation: rm-drift 3.2s ease-in-out infinite alternate; }
+.mscreen-record .rm-burst.is-idle .rm-k:nth-child(2n) { animation-duration: 4.1s; animation-delay: -1.7s; }
+.mscreen-record .rm-burst.is-idle .rm-k:nth-child(3n) { animation-duration: 2.7s; animation-delay: -.9s; }
+
+/* ---------------------------------------------------------------- Through the line: the tower and the tape */
+.mscreen-record .rm-line { --v: 0; --old: .93; --a-l: 0deg; --a-r: 0deg; --cut: 0px; --tw: 300px; --tt: 150px; }
+.mscreen-record .rm-line-copy {
+  position: absolute; left: 0; bottom: 0; width: calc(100% - var(--tw) - 64px);
+  display: flex; flex-direction: column; gap: 36px;
+}
+.mscreen-record .rm-line-h {
+  font: var(--w-display) 128px/.9 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  text-wrap: balance;
+}
+:root[data-variant="reference"] .mscreen-record .rm-line-h { font-size: 104px; line-height: 1; }
+.mscreen-record .rm-line-t { font: var(--w-text) 44px/1.3 var(--f-text); color: var(--ink-2); }
+.mscreen-record .rm-line-t b { font-weight: var(--w-strong); color: var(--ink-1); }
+.mscreen-record .rm-tower { position: absolute; right: 0; top: 0; bottom: 0; width: var(--tw); }
+.mscreen-record .rm-bell {
+  position: absolute; left: 50%; top: 0; width: 112px; height: 112px; margin-left: -56px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 60px; color: var(--rc-accent);
+  background: var(--rc-badge-bg); box-shadow: inset 0 0 0 3px color-mix(in oklab, var(--rc-accent) 70%, transparent);
+  transform-origin: 50% 10%;
+}
+.mscreen-record .rm-line.is-rung .rm-bell { box-shadow: inset 0 0 0 3px var(--rc-accent), 0 0 60px color-mix(in oklab, var(--rc-accent) 55%, transparent); }
+.mscreen-record .rm-track {
+  position: absolute; left: 0; right: 0; top: var(--tt); bottom: 0; overflow: hidden;
+  border-radius: 30px; background: var(--rec-track); box-shadow: inset 0 0 0 2px var(--rec-track-edge);
+}
+/* ten grades up the tower, as the arcade column marks them */
+.mscreen-record .rm-track::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    repeating-linear-gradient(to top, transparent 0 calc(10% - 4px), color-mix(in oklab, var(--ink-1) 22%, transparent) calc(10% - 4px) 10%) left / 44px 100% no-repeat,
+    repeating-linear-gradient(to top, transparent 0 calc(10% - 4px), color-mix(in oklab, var(--ink-1) 22%, transparent) calc(10% - 4px) 10%) right / 44px 100% no-repeat;
+}
+.mscreen-record .rm-fill {
+  position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--v) * 100%);
+  background: linear-gradient(to top, color-mix(in oklab, var(--strike) 85%, #000000), var(--strike) 70%, color-mix(in oklab, var(--strike) 78%, #FFFFFF));
+  box-shadow: 0 0 80px color-mix(in oklab, var(--strike) 50%, transparent);
+}
+.mscreen-record .rm-cap { position: absolute; left: 0; right: 0; top: 0; height: 20px; background: color-mix(in oklab, var(--strike) 45%, #FFFFFF); box-shadow: 0 0 40px 10px color-mix(in oklab, var(--strike) 60%, transparent); }
+/* the player's name reads up the red column, revealed with it: the box is the whole track, clipped to the fill */
+.mscreen-record .rm-name { position: absolute; z-index: 1; inset: 0; pointer-events: none; clip-path: inset(calc((1 - var(--v)) * 100%) 0 0 0); }
+.mscreen-record .rm-name span {
+  position: absolute; left: 50%; bottom: 48px; transform-origin: 0 50%; transform: rotate(-90deg) translateY(50%);
+  white-space: nowrap; color: var(--cta-ink);
+  font: var(--w-display) 150px/1 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+}
+:root[data-variant="reference"] .mscreen-record .rm-name span { font-size: 110px; }
+/* the old best: a striped red tape across the whole glass at its height on the tower (gold until round nine); broken,
+   each half hangs from its edge */
+.mscreen-record .rm-tape {
+  position: absolute; z-index: 3; left: calc(var(--ms-gut) * -1); right: calc(var(--ms-gut) * -1); height: 0;
+  top: calc(var(--tt) + (1 - var(--old)) * (100% - var(--tt)));
+  --split: calc(100% - var(--ms-gut) - var(--tw) / 2);
+}
+.mscreen-record .rm-half {
+  position: absolute; top: -28px; height: 56px; border-radius: 4px; overflow: hidden;
+  display: flex; align-items: center; padding: 0 56px;
+  background: repeating-linear-gradient(118deg, var(--rc-soft) 0 46px, color-mix(in oklab, var(--rc-accent) 55%, #000000) 46px 58px);
+  box-shadow: 0 0 28px color-mix(in oklab, var(--rc-accent) 45%, transparent);
+}
+.mscreen-record .rm-half-l { left: 0; width: calc(var(--split) - var(--cut)); transform-origin: 0 50%; transform: rotate(var(--a-l)); }
+.mscreen-record .rm-half-r { right: 0; width: calc(100% - var(--split) - var(--cut)); transform-origin: 100% 50%; transform: rotate(var(--a-r)); padding: 0; }
+.mscreen-record .rm-half b {
+  padding: 6px 14px 4px; border-radius: 4px; background: color-mix(in oklab, var(--rc-accent) 55%, #000000); color: #FFFFFF; white-space: nowrap;
+  font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
+}
+.mscreen-record .rm-sparks { position: absolute; left: var(--split); top: 0; width: 0; height: 0; }
+.mscreen-record .rm-sparks i { position: absolute; left: -9px; top: -4px; width: 18px; height: 8px; border-radius: 2px; opacity: 0; background: var(--rc-soft); }
+.mscreen-record .rm-sparks i.red { background: var(--strike); }
+.mscreen-record .rm-sparks i.shred {
+  left: -70px; top: -28px; width: 140px; height: 56px; border-radius: 4px;
+  background: repeating-linear-gradient(118deg, var(--rc-soft) 0 46px, color-mix(in oklab, var(--rc-accent) 55%, #000000) 46px 58px);
+}
+
+/* ---------------------------------------------------------------- Rollover: the name board turns over (no sunburst
+   turning behind it any more: the board and the two faces carry the moment) */
+.mscreen-record .rm-roll { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); isolation: isolate; }
+.mscreen-record .rm-roll > * { position: relative; z-index: 1; }
+.mscreen-record .rm-roll-h {
+  font: var(--w-display) 124px/.92 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case);
+  text-wrap: balance;
+}
+:root[data-variant="reference"] .mscreen-record .rm-roll-h { font-size: 104px; line-height: 1; }
+.mscreen-record .rm-flaps { --fw: 80px; display: flex; gap: 10px; height: calc(var(--fw) * 1.42); perspective: 900px; }
+.mscreen-record .rm-flap {
+  position: relative; flex: none; width: var(--fw); height: 100%; border-radius: calc(var(--fw) * .12);
+  display: grid; place-items: center; overflow: hidden;
+  background: var(--rec-tile); color: var(--ink-1);
+  box-shadow: inset 0 0 0 2px var(--rec-tile-edge), inset 0 -.28em .3em -.2em color-mix(in oklab, #000000 24%, transparent);
+  font: var(--w-display) calc(var(--fw) * 1.02)/1 var(--f-display); text-transform: uppercase;
+}
+.mscreen-record .rm-flap::after { content: ""; position: absolute; left: 0; right: 0; top: calc(50% - 1px); height: 3px; background: color-mix(in oklab, var(--rec-fade) 80%, transparent); }
+.mscreen-record .rm-flap.is-gap { width: calc(var(--fw) * .45); background: none; box-shadow: none; }
+.mscreen-record .rm-flap.is-gap::after { display: none; }
+.mscreen-record .rm-flap.is-landed { box-shadow: inset 0 0 0 4px color-mix(in oklab, var(--rc-accent) 85%, transparent); color: var(--rc-accent); }
+.mscreen-record .rm-hands { display: flex; align-items: center; justify-content: space-between; }
+.mscreen-record .rm-who { width: 380px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+.mscreen-record .rm-face {
+  display: block; width: 176px; height: 176px; border-radius: 50%; overflow: hidden; flex: none;
+  background: var(--rec-tile); box-shadow: 0 0 0 4px var(--rec-tile-edge);
+  display: grid; place-items: center; font: var(--w-display) 72px/1 var(--f-display); color: var(--ink-2);
+}
+.mscreen-record .rm-face img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mscreen-record .rm-who figcaption { display: flex; flex-direction: column; gap: 10px; }
+.mscreen-record .rm-who figcaption span { font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+.mscreen-record .rm-who figcaption b { font: var(--w-strong) 48px/1.15 var(--f-text); white-space: nowrap; }
+.mscreen-record .rm-was .rm-face img { filter: grayscale(1) contrast(.9); opacity: .75; }
+.mscreen-record .rm-was figcaption b { color: var(--ink-2); }
+.mscreen-record .rm-now .rm-face { width: 208px; height: 208px; box-shadow: 0 0 0 6px var(--rc-accent), 0 0 70px color-mix(in oklab, var(--rc-accent) 45%, transparent); }
+.mscreen-record .rm-now figcaption span { color: var(--rc-accent); }
+.mscreen-record .rm-arrow { font-size: 72px; color: var(--rc-accent); }
+
+/* ---------------------------------------------------------------- Stamp: the record book, stamped */
+.mscreen-record .rm-stamp { isolation: isolate; }
+.mscreen-record .rm-book { display: flex; flex-direction: column; gap: 40px; }
+.mscreen-record .rm-rows { display: flex; flex-direction: column; }
+/* the book keeps its top three, so the stamp lands on clear ground under them and never prints over a name */
+.mscreen-record .rm-stamp .rm-rows li:nth-child(n + 4) { display: none; }
+.mscreen-record .rm-rows li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 40px; padding: 26px 0;
+  border-bottom: 2px solid var(--rec-track-edge);
+  font: var(--w-text) 48px/1.1 var(--f-text); color: var(--ink-2); font-variant-numeric: tabular-nums;
+}
+.mscreen-record .rm-rows li span:first-child { color: var(--ink-1); font-weight: var(--w-strong); }
+.mscreen-record .rm-rows .dec { font-size: .6em; }
+.mscreen-record .rm-ink {
+  position: absolute; z-index: 2; left: 50%; top: 716px; width: 760px; translate: -50% -50%; rotate: -7deg;
+  display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 44px 40px 40px;
+  border: 12px solid var(--rec-ink-c); border-radius: 28px; outline: 4px solid var(--rec-ink-c); outline-offset: -30px;
+  background: color-mix(in oklab, var(--rec-fade) 82%, transparent); color: var(--rec-ink-c); text-align: center;
+  /* worn ink: a fine noise knocks small holes in the print */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.6 2.05'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.6 2.05'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.mscreen-record .rm-ink-top, .mscreen-record .rm-ink-foot { font: var(--w-label) 40px/1 var(--f-label); letter-spacing: .12em; text-transform: uppercase; }
+.mscreen-record .rm-ink-big {
+  max-width: 560px; font: var(--w-display) 150px/.88 var(--f-display); letter-spacing: var(--display-track); text-transform: uppercase;
+}
+:root[data-variant="reference"] .mscreen-record .rm-ink-big { font-weight: 900; font-family: "Poppins", sans-serif; font-size: 118px; line-height: .98; }
+.mscreen-record .rm-shock {
+  position: absolute; z-index: 1; left: 50%; top: 716px; width: 820px; height: 560px; translate: -50% -50%; rotate: -7deg;
+  border: 6px solid var(--rc-accent); border-radius: 44px; opacity: 0; pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- Belt: the machine's title belt */
+.mscreen-record .rm-belt { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--ms-group-gap); text-align: center; }
+.mscreen-record .rm-belt-head { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 24px; container-type: inline-size; }
+.mscreen-record .rm-belt-name {
+  --nc: 10; white-space: nowrap;
+  font: var(--w-display) min(150px, calc(100cqi / (var(--nc) * var(--num-w) * 1.2)))/.95 var(--f-display);
+  letter-spacing: var(--display-track); text-transform: var(--display-case);
+}
+.mscreen-record .rm-strap { position: relative; flex: none; width: 1080px; height: 430px; margin: 0 calc(var(--ms-gut) * -1); }
+.mscreen-record .rm-strap > i {
+  position: absolute; top: 95px; height: 240px; width: 50%; display: grid; place-items: center;
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, .1), transparent 30%, transparent 70%, rgba(0, 0, 0, .35)),
+    linear-gradient(90deg, var(--rec-leather-2), var(--rec-leather) 30%, var(--rec-leather) 70%, var(--rec-leather-2));
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
+}
+/* the stitching along both edges of the strap */
+.mscreen-record .rm-strap > i::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 22px; bottom: 22px;
+  border-top: 5px dashed color-mix(in oklab, var(--rc-soft) 70%, transparent); border-bottom: 5px dashed color-mix(in oklab, var(--rc-soft) 70%, transparent);
+}
+.mscreen-record .rm-strap-l { left: 0; padding-right: 180px; }
+.mscreen-record .rm-strap-r { right: 0; padding-left: 180px; }
+.mscreen-record .rm-stud {
+  position: relative; display: grid; place-items: center; width: 132px; height: 132px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFB0A9, #E3231D 45%, #7A0707); color: #FFFFFF; font-size: 64px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .45), inset 0 0 0 5px rgba(255, 214, 210, .45);
+}
+.mscreen-record .rm-plate {
+  position: absolute; z-index: 1; left: 50%; top: 50%; width: 430px; height: 430px; margin: -215px 0 0 -215px;
+  display: grid; place-items: center; overflow: hidden;
+  clip-path: polygon(29% 0, 71% 0, 100% 29%, 100% 71%, 71% 100%, 29% 100%, 0 71%, 0 29%);
+  background: linear-gradient(145deg, #6E0606, #FF6157 40%, #B80E0D 70%, #4E0404);
+}
+.mscreen-record .rm-plate::before {
+  content: ""; position: absolute; inset: 22px;
+  clip-path: polygon(29% 0, 71% 0, 100% 29%, 100% 71%, 71% 100%, 29% 100%, 0 71%, 0 29%);
+  background: radial-gradient(circle at 40% 30%, #FFB3AD, #EB1110 42%, #9A0B0B 80%);
+}
+.mscreen-record .rm-plate-in { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; color: #FFFFFF; font-size: 140px; }
+.mscreen-record .rm-plate-in b { font: var(--w-label) 44px/1 var(--f-label); letter-spacing: .14em; text-transform: uppercase; }
+.mscreen-record .rm-plate-sheen {
+  position: absolute; inset: 0; transform: translateX(-130%);
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .6) 50%, transparent 65%);
+}
+.mscreen-record .rm-belt-t { font: var(--w-text) 44px/1.3 var(--f-text); color: var(--ink-2); }
+
+/* ================================================================ SCORE */
+.mscreen-record .rs { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); }
+.mscreen-record .rs-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin: 0; }
+.mscreen-record .rs-fact { display: flex; flex-direction: column; gap: 16px; min-width: 0; container-type: inline-size; }
+.mscreen-record .rs-fact dt { font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
+.mscreen-record .rs-fv {
+  --chars: 9.5; white-space: nowrap; font-variant-numeric: tabular-nums;
+  font: var(--w-display) min(calc(88px / var(--cap)), calc(100cqi / (var(--chars) * var(--num-w) * 1.12)))/.95 var(--f-display);
+  letter-spacing: var(--display-track);
+}
+.mscreen-record .rs-fact-gain .rs-fv { color: var(--rc-accent); }
+.mscreen-record .rs-who { font: var(--w-text) 40px/1.2 var(--f-text); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ---------------------------------------------------------------- Record card: the frame's card, in red since round nine */
+.mscreen-record .rs-slab {
+  position: relative; flex: none; overflow: hidden; isolation: isolate; height: 380px; border-radius: 45px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  border: var(--rc-card-border); background: var(--rc-card-bg); box-shadow: var(--rc-card-shadow);
+  color: var(--rc-card-ink); container-type: inline-size;
+}
+.mscreen-record .rs-sheen {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; transform: translateX(-120%);
+  background: linear-gradient(105deg, transparent 32%, var(--rc-sheen) 50%, transparent 68%);
+}
+.mscreen-record .rs-num { position: relative; z-index: 1; --chars: 9.5; }
+.mscreen-record .rs-num > span { text-align: center; }
+:root[data-variant="reference"] .mscreen-record .rs-num { font: 600 min(128px, calc(86cqi / (var(--chars) * .62)))/1.1 "Poppins", sans-serif; }
+:root:not([data-variant="reference"]) .mscreen-record .rs-num {
+  font-family: var(--f-display); font-weight: var(--w-display); line-height: .9;
+  letter-spacing: var(--display-track); text-shadow: var(--display-glow);
+  font-size: min(calc(180px / var(--cap)), calc(84cqi / (var(--chars) * 1.07 * var(--num-w))));
+}
+.mscreen-record .rs-label { position: relative; z-index: 1; font: var(--w-label) 40px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--rc-accent); }
+:root[data-variant="reference"] .mscreen-record .rs-label { font: 300 60px/1.1 "Poppins", sans-serif; letter-spacing: 0; text-transform: none; color: var(--rc-card-ink); }
+
+/* ---------------------------------------------------------------- Reels */
+.mscreen-record .rs-reelbox { position: relative; }
+.mscreen-record .rs-reelrow {
+  display: flex; align-items: flex-end; gap: .05em; width: max-content;
+  font: var(--w-display) 100px/1 var(--f-display); font-variant-numeric: tabular-nums; letter-spacing: 0;
+}
+.mscreen-record .rs-decs-row { display: flex; align-items: flex-end; gap: .05em; font-size: .5em; }
+.mscreen-record .rs-tile {
+  position: relative; flex: none; overflow: hidden;
+  width: calc(var(--dw, .5em) + .16em); height: 1.12em; border-radius: .09em;
+  background: var(--rec-tile); box-shadow: inset 0 0 0 max(2px, .018em) var(--rec-tile-edge), inset 0 -.28em .3em -.2em color-mix(in oklab, #000000 26%, transparent);
+}
+:root[data-appearance="light"] .mscreen-record .rs-tile { box-shadow: inset 0 0 0 max(2px, .018em) var(--rec-tile-edge), 0 .06em .16em -.08em rgba(70, 45, 30, .3); }
+.mscreen-record .rs-tile.is-landed { box-shadow: inset 0 0 0 max(3px, .024em) color-mix(in oklab, var(--rc-accent) 80%, transparent); }
+.mscreen-record .rs-strip { position: absolute; left: 0; right: 0; top: 0; text-align: center; will-change: transform; }
+.mscreen-record .rs-strip span { display: block; height: 1.12em; line-height: 1.12em; padding-top: .06em; }
+.mscreen-record .rs-sep { flex: none; width: .26em; line-height: 1; text-align: center; color: var(--ink-2); padding-bottom: .02em; }
+
+/* ---------------------------------------------------------------- Old and new */
+.mscreen-record .rs-duel { gap: 36px; }
+.mscreen-record .rs-row.rs-was, .mscreen-record .rs-row.rs-now { display: flex; flex-direction: column; gap: 20px; container-type: inline-size; width: 100%; font: inherit; align-items: stretch; }
+.mscreen-record .rs-duel .rs-kick b, .mscreen-record .rs-bars .rs-lane-k b {
+  font: var(--w-strong) 42px/1 var(--f-text); letter-spacing: 0; text-transform: none; color: var(--ink-1);
+}
+.mscreen-record .rs-duel .rs-kick b { margin-left: 8px; }
+.mscreen-record .rs-was .rs-kick { color: var(--ink-2); }
+.mscreen-record .rs-was .rs-kick b { color: var(--ink-2); }
+.mscreen-record .rs-old {
+  --chars: 9.5; --k: 0; position: relative; width: max-content; white-space: nowrap; color: var(--ink-2); font-variant-numeric: tabular-nums;
+  font: var(--w-display) min(calc(110px / var(--cap)), calc(100cqi / (var(--chars) * var(--num-w) * 1.1)))/1 var(--f-display);
+  letter-spacing: var(--display-track);
+}
+.mscreen-record .rs-strike {
+  position: absolute; left: -3%; right: -3%; top: calc(50% - 6px); height: 12px; border-radius: 6px; background: var(--rc-accent);
+  transform-origin: 0 50%; transform: rotate(-4deg) scaleX(var(--k));
+}
+.mscreen-record .rs-down { color: var(--rc-accent); font-size: 64px; }
+.mscreen-record .rs-new {
+  --chars: 9.5;
+  font: var(--w-display) min(calc(230px / var(--cap)), calc(100cqi / (var(--chars) * var(--num-w) * 1.05)))/.92 var(--f-display);
+  letter-spacing: var(--display-track); text-shadow: var(--display-glow);
+}
+
+/* ---------------------------------------------------------------- Bars: the player's bar a muted red to the old best, the
+   stretch added in the full red and lit */
+.mscreen-record .rs-bars { container-type: inline-size; gap: 36px; }
+.mscreen-record .rs-big {
+  --chars: 9.5;
+  font: var(--w-display) min(calc(190px / var(--cap)), calc(100cqi / (var(--chars) * var(--num-w) * 1.05)))/.92 var(--f-display);
+  letter-spacing: var(--display-track); text-shadow: var(--display-glow);
+}
+.mscreen-record .rs-lanes { display: flex; flex-direction: column; gap: var(--ms-item-gap); }
+.mscreen-record .rs-lane { --o: .93; --n: 1; --g: 1; display: flex; flex-direction: column; gap: 16px; }
+.mscreen-record .rs-lane-k { display: flex; justify-content: space-between; align-items: baseline; gap: 32px; font: var(--w-text) 44px/1 var(--f-text); color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mscreen-record .rs-lane-gain { color: var(--rc-accent); font-weight: var(--w-strong); }
+.mscreen-record .rs-lane-old .rs-lane-k b { color: var(--ink-2); }
+.mscreen-record .rs-track { position: relative; display: block; height: 88px; border-radius: 22px; overflow: hidden; background: var(--rec-track); box-shadow: inset 0 0 0 2px var(--rec-track-edge); }
+.mscreen-record .rs-fill { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--o) * var(--g) * 100%); background: color-mix(in oklab, var(--strike) 42%, var(--rec-track-base, #2A1414)); }
+:root[data-appearance="light"] .mscreen-record .rs-fill { --rec-track-base: #F2DAD7; }
+.mscreen-record .rs-lane-old .rs-fill { background: color-mix(in oklab, var(--ink-1) 34%, transparent); }
+.mscreen-record .rs-add {
+  position: absolute; top: 0; bottom: 0; left: calc(var(--o) * 100%); width: calc(max(0, var(--n) - var(--o)) * var(--k, 1) * 100%);
+  background: var(--rc-accent); box-shadow: 0 0 40px color-mix(in oklab, var(--rc-accent) 60%, transparent);
+}
+
+/* ---------------------------------------------------------------- Full width */
+.mscreen-record .rs-full { container-type: inline-size; gap: 28px; }
+.mscreen-record .rs-whole {
+  width: max-content; max-width: none;
+  font: var(--w-display) 300px/.86 var(--f-display);
+  letter-spacing: var(--display-track); text-shadow: var(--display-glow);
+}
+.mscreen-record .rs-tail { display: flex; flex-direction: column; align-items: flex-end; gap: 36px; }
+.mscreen-record .rs-decs { font: var(--w-display) calc(130px / var(--cap))/.9 var(--f-display); color: var(--rc-accent); font-variant-numeric: tabular-nums; }
+.mscreen-record .rs-decs:empty { display: none; }
+.mscreen-record .rs-chip {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 18px; padding: 22px 34px 20px; border-radius: 999px;
+  background: color-mix(in oklab, var(--rc-accent) 16%, transparent); box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--rc-accent) 55%, transparent);
+  font: var(--w-text) 40px/1.1 var(--f-text); white-space: nowrap; color: var(--ink-1);
+}
+.mscreen-record .rs-chip [data-lucide] { font-size: 48px; color: var(--rc-accent); }
+.mscreen-record .rs-chip b { font-weight: var(--w-strong); font-variant-numeric: tabular-nums; }
+.mscreen-record .rs-chip .dec { font-size: .7em; }
+
+/* ================================================================ VIDEO (round nine: the reel, in the Photo's designs) */
+.mscreen-record .rp :is(img, video) { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: var(--pos, 50% 40%); }
+.mscreen-record .rp video { background: #0B0B0C; }
+
+/* ---------------------------------------------------------------- Framed: the shared photo card, the reel in it */
+.mscreen-record .rp-tag, .mscreen-record .rp-chip {
+  position: absolute; z-index: 2; left: 40px; top: 40px; display: inline-flex; align-items: center; gap: 16px;
+  padding: 18px 28px 16px; border-radius: 999px; background: rgba(12, 10, 10, .62); color: #FFFFFF;
+  font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+.mscreen-record :is(.rp-tag, .rp-chip) [data-lucide] { font-size: 44px; color: var(--rc-accent); }
+/* the chip is dark in every look, so its icon takes a red that reads on it */
+:root[data-appearance="light"] .mscreen-record :is(.rp-tag, .rp-chip) [data-lucide] { color: #FF5A4E; }
+
+/* ---------------------------------------------------------------- Red grade: a duotone print of the reel, edge to edge
+   (gold until round nine) */
+.mscreen-record .rp-grade { margin: 0 calc(var(--ms-gut) * -1); overflow: hidden; isolation: isolate; background: var(--rec-duo-hi); }
+.mscreen-record .rp-grade video { filter: grayscale(1) contrast(1.15) brightness(1.9); mix-blend-mode: multiply; }
+.mscreen-record .rp-grade::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--rec-duo-lo); mix-blend-mode: lighten; pointer-events: none; }
+.mscreen-record .rp-grade::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to bottom, var(--rec-fade), transparent 14%, transparent 50%, color-mix(in oklab, var(--rec-fade) 82%, transparent) 74%, var(--rec-fade));
+}
+.mscreen-record .rp-grade-cap { position: absolute; z-index: 3; left: var(--ms-gut); right: var(--ms-gut); bottom: 40px; display: flex; flex-direction: column; gap: 22px; }
+.mscreen-record .rp-grade-cap b {
+  display: block; width: max-content;
+  font: var(--w-display) 300px/.8 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); color: var(--ink-1);
+}
+.mscreen-record .rp-grade-cap > span { font: var(--w-text) 44px/1.2 var(--f-text); color: var(--ink-2); }
+.mscreen-record .rp-grade-cap > span span { color: var(--ink-1); font-weight: var(--w-strong); }
+
+/* ---------------------------------------------------------------- Replay: the player and its frames. The bar follows the
+   reel (record.js), the mark on it is the moment of contact, and the frame the playhead is on lights; the six frames
+   sit on one strip so the player keeps the room */
+.mscreen-record .rp-replay { display: flex; flex-direction: column; gap: 36px; }
+.mscreen-record .rp-screen { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; border-radius: var(--ms-photo-r); background: #0B0B0C; }
+.mscreen-record .rp-screen video { filter: var(--photo-filter); }
+.mscreen-record .rp-chip { background: var(--strike); color: var(--cta-ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.mscreen-record .rp-chip [data-lucide] { color: currentColor !important; }
+.mscreen-record .rp-scrub { --p: .62; position: absolute; z-index: 2; left: 40px; right: 40px; bottom: 44px; height: 12px; border-radius: 6px; background: rgba(255, 255, 255, .32); }
+.mscreen-record .rp-scrub-fill { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--p) * 100%); border-radius: 6px; background: var(--strike); }
+.mscreen-record .rp-scrub-mark {
+  position: absolute; left: calc(var(--at, .294) * 100%); top: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%;
+  background: #FFFFFF; box-shadow: 0 0 0 7px var(--strike), 0 4px 14px rgba(0, 0, 0, .5);
+}
+/* the strip's own padding holds the sprocket rows clear of the frames (the list reset above, .rec :is(ol, ul), outranked
+   a plain .rp-film and laid the sprockets over the frames until round nine) */
+.mscreen-record .rp-replay .rp-film {
+  flex: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; padding: 44px 20px; border-radius: 24px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, .5) 22px 44px, transparent 44px 66px) 0 14px / 100% 20px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, .5) 22px 44px, transparent 44px 66px) 0 calc(100% - 14px) / 100% 20px no-repeat,
+    #0B0B0C;
+}
+.mscreen-record .rp-film li { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 10px; }
+.mscreen-record .rp-film li img { opacity: .55; transition: opacity .15s linear; }
+.mscreen-record .rp-film li.is-key img, .mscreen-record .rp-film li.is-now img { opacity: 1; }
+/* the contact frame keeps a red rim; the frame under the playhead gets a white one */
+.mscreen-record .rp-film li.is-key { box-shadow: 0 0 0 6px var(--strike); }
+.mscreen-record .rp-film li.is-now::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 5px #FFFFFF; }
+.mscreen-record .rp-replay-t { display: flex; align-items: center; gap: 18px; font: var(--w-text) 44px/1.2 var(--f-text); color: var(--ink-2); }
+.mscreen-record .rp-replay-t [data-lucide] { font-size: 48px; color: var(--rc-accent); }
+
+/* ---------------------------------------------------------------- Three speeds: the reel in three bands (round nine: they
+   were three stills), full speed, half speed (the big one) and a quarter */
+.mscreen-record .rp-trio { display: flex; flex-direction: column; gap: var(--ms-item-gap); }
+.mscreen-record .rp-band { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; border-radius: var(--ms-photo-r); background: #0B0B0C; }
+.mscreen-record .rp-band.is-key { flex: 0 0 540px; box-shadow: 0 0 0 6px var(--rc-accent), 0 30px 80px -30px color-mix(in oklab, var(--rc-accent) 60%, transparent); }
+.mscreen-record .rp-band video { filter: var(--photo-filter); }
+.mscreen-record .rp-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, .72), transparent 55%); pointer-events: none; }
+.mscreen-record .rp-band figcaption {
+  position: absolute; z-index: 1; left: 44px; right: 44px; bottom: 34px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+  color: #FFFFFF; text-shadow: 0 2px 16px rgba(0, 0, 0, .6); white-space: nowrap;
+}
+.mscreen-record .rp-band figcaption b { font: var(--w-display) 76px/.9 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); }
+:root[data-variant="reference"] .mscreen-record .rp-band figcaption b { font-size: 60px; }
+.mscreen-record .rp-band figcaption span { font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; }
+/* the big band's name in a red that reads on the dark foot of the reel in every look */
+.mscreen-record .rp-band.is-key figcaption b { color: #FF5A4E; }
+
+/* ---------------------------------------------------------------- Pinned print: the new record pinned over the old.
+   Both prints stand inside the gutters with their tilt, and the new one is pinned low enough that the old one's
+   caption (who held it) still reads above it; it used to hide under the new print and hang past both gutters. */
+.mscreen-record .rp-card {
+  position: absolute; margin: 0; padding: 26px 26px 0; background: #F6F2EA; color: #16100C;
+  box-shadow: 0 50px 90px -40px rgba(0, 0, 0, .75), 0 2px 0 rgba(0, 0, 0, .06);
+}
+.mscreen-record .rp-card video { height: auto; aspect-ratio: 4 / 3; }
+.mscreen-record .rp-card figcaption { display: flex; flex-direction: column; gap: 10px; padding: 30px 8px 36px; }
+.mscreen-record .rp-card figcaption b { font: var(--w-strong) 52px/1.05 var(--f-text); }
+.mscreen-record .rp-card figcaption span { font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: #6B6259; }
+/* round nine: the room is 1036, so the prints trade places: the new one pinned high on the left over the old one, which
+   hangs lower on the right with its caption (who held it) clear under the new print's foot */
+.mscreen-record .rp-card-old { right: 30px; top: 392px; width: 500px; rotate: 6deg; }
+.mscreen-record .rp-card-old video { filter: grayscale(1) contrast(.95); }
+.mscreen-record .rp-card-new { left: 24px; top: 70px; width: 640px; rotate: -4deg; z-index: 1; }
+.mscreen-record .rp-card-new video { filter: var(--photo-filter); }
+.mscreen-record .rp-card-new figcaption span { color: #B80F0D; }
+.mscreen-record .rp-tape { position: absolute; z-index: 2; left: 50%; top: -34px; width: 240px; height: 70px; margin-left: -120px; rotate: 3deg; background: rgba(255, 255, 255, .55); box-shadow: 0 2px 6px rgba(0, 0, 0, .12); }
+.mscreen-record .rp-seal {
+  position: absolute; z-index: 2; right: -64px; bottom: 60px; width: 196px; height: 196px; border-radius: 50%;
+  display: grid; place-items: center; color: #FFFFFF; font-size: 96px; rotate: 10deg;
+  background: radial-gradient(circle at 38% 30%, #FF8F86, #EB1110 45%, #9A0B0B);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, .6), inset 0 0 0 10px rgba(255, 214, 210, .3), inset 0 0 0 14px rgba(94, 6, 6, .35);
+}
+
+/* ================================================================ calm: every design rests where it lands */
+@media (prefers-reduced-motion: reduce) {
+  .mscreen-record .rec-rain, .mscreen-record .rm-sparks { display: none; }
+  .mscreen-record .rm-burst .rm-star, .mscreen-record .rm-burst .rm-k { animation: none !important; }
+}
