@@ -54,9 +54,7 @@
   const EXAMPLE_SCORE = 863412.576
   const DEFAULTS = {
     arena:     { score: EXAMPLE_SCORE, accent: 100, glow: 40, photo: 35, space: 100, radius: 20 },
-    reference: { score: EXAMPLE_SCORE, accent: 100, glow: 100, photo: 100, space: 100, radius: 24 },
   }
-  const LOCKED_IN_REFERENCE = ['accent', 'glow', 'photo', 'space', 'radius']
   const KEY = 'punch-showcase.v5'
 
   const MACHINE_W = 1080, MACHINE_H = 3840
@@ -124,15 +122,15 @@
     clearTimeout(saveTimer)
     saveTimer = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(state)) } catch { /* private window */ } }, 200)
   }
-  const locked = () => state.variant === 'reference'
+  const locked = () => false
 
   /* ------------------------------------------------------------ readable ink on the strike colour */
   const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255)
   const lin = (c) => (c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4))
   const lum = (rgb) => 0.2126 * lin(rgb[0]) + 0.7152 * lin(rgb[1]) + 0.0722 * lin(rgb[2])
   const contrast = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05) }
-  const ACCENT = { arena: '#EB1110', reference: '#EB1110' }
-  const OFF = { arena: '#F5F3EF', reference: '#FFFFFF' }
+  const ACCENT = { arena: '#EB1110' }
+  const OFF = { arena: '#F5F3EF' }
   function ctaInk(variant, amt) {
     const off = state.appearance === 'light' ? '#151413' : OFF[variant]
     const a = hex(state.appearance === 'light' ? '#E3100F' : ACCENT[variant]), o = hex(off), t = amt / 100
@@ -264,7 +262,6 @@
       fitNote.textContent = 'Everything fits the glass.'
       fitNote.classList.remove('is-scaled')
     } else {
-      // Reference locks the sections, so it cannot be told to hide or swap one
       fitNote.textContent = fit >= .95
         ? 'Everything fits the glass, drawn a little smaller.'
         : locked()
@@ -294,22 +291,16 @@
     root.dataset.mbackdrop = state.backdrop
     root.dataset.decimals = state.decimals
     const themeNote = $('themeNote')
-    if (themeNote) themeNote.textContent = `${v === 'reference' ? 'Reference' : 'Arena'}, ${state.appearance}`
+    if (themeNote) themeNote.textContent = state.appearance === 'light' ? 'Light' : 'Dark'
     document.querySelectorAll('[data-decimals-btn]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.decimalsBtn === state.decimals)))
     document.querySelectorAll('[data-appearance-btn]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.appearanceBtn === state.appearance)))
     root.style.setProperty('--zoom', zoomNow() / 100)
     root.style.setProperty('--accent-amt', s.accent)
     root.style.setProperty('--glow', s.glow / 100)
     root.style.setProperty('--photo-sat', s.photo / 100)
-    if (v !== 'reference') {
-      root.style.setProperty('--space', s.space / 100)
-      root.style.setProperty('--r', s.radius + 'px')
-    } else {
-      root.style.removeProperty('--space')
-      root.style.removeProperty('--r')
-    }
-    root.style.setProperty('--cta-ink', v === 'reference' ? '#FFFFFF' : ctaInk(v, s.accent))
-    // Reference is the frame as drawn, so every section shows
+    root.style.setProperty('--space', s.space / 100)
+    root.style.setProperty('--r', s.radius + 'px')
+    root.style.setProperty('--cta-ink', ctaInk(v, s.accent))
     for (const k of TOGGLES) slotEl(k).hidden = !locked() && !s.on[k]
     renderLayout()
     if (!counting) paintScore(s.score)
@@ -339,7 +330,7 @@
   }
 
   /* ------------------------------------------------------------ the logo: six marks from the Figma file, on every
-     surface in both themes. The Reference frame drew a placeholder badge where the logo goes, so the mark stands in. */
+     surface in both themes. */
   const favicon = document.querySelector('link[rel="icon"]')
   function applyLogo() {
     const key = LOGOS[state.logo] ? state.logo : 'fist', logo = LOGOS[key]
@@ -416,7 +407,7 @@
     for (const [k, c] of Object.entries(controls)) {
       const value = k === 'zoom' ? zoomNow() : s[k]
       if (document.activeElement !== c.el) c.el.value = c.toPos ? c.toPos(value) : value
-      const isLocked = lock && LOCKED_IN_REFERENCE.includes(k)
+      const isLocked = false
       c.out.textContent = isLocked ? 'as designed' : c.show(value)
       if (c.toPos) c.el.setAttribute('aria-valuetext', c.show(value))
       c.el.disabled = isLocked
@@ -427,7 +418,6 @@
     const actual = state.zoom === 'actual'
     $('actualMachine').setAttribute('aria-pressed', String(actual))
     $('readSize').setAttribute('aria-pressed', String(!actual))
-    $('lockNote').hidden = !lock || state.mode !== 'machine'
     syncRows()
   }
   for (const [k, c] of Object.entries(controls)) {

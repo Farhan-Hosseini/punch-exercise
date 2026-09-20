@@ -41,19 +41,6 @@
   --scn-phone-ink: #151413;
   --scn-phone-body: #2A2A2D;
 }
-:root[data-variant="reference"] .mscreen-scan {
-  --scn-solid: var(--ms-ground);
-  --scn-soft: rgba(235, 17, 16, .18);
-  --scn-well: rgba(235, 17, 16, .08);
-  --scn-track: rgba(235, 17, 16, .22);
-  --scn-phone: radial-gradient(130% 70% at 50% 42%, #3A0A0C 0%, #16090B 55%, #080406 100%);
-}
-:root[data-variant="reference"][data-appearance="light"] .mscreen-scan {
-  --scn-well: rgba(235, 17, 16, .06);
-  --scn-track: rgba(235, 17, 16, .18);
-  --scn-phone: radial-gradient(130% 70% at 50% 42%, #FFE1DF 0%, #FFF3F2 55%, #FFF7F6 100%);
-  --scn-phone-ink: #16090B;
-}
 
 .mscreen-scan [data-sv][hidden] { display: none !important; }
 .mscreen-scan [data-lucide] { display: inline-flex; flex: none; }
@@ -115,7 +102,6 @@
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
   font-size: min(calc(150px / var(--cap)), 26cqi); line-height: .9; white-space: nowrap;
 }
-:root[data-variant="reference"] .mscreen-scan .sst-title { font-size: min(calc(104px / var(--cap)), 17cqi); line-height: 1.02; }
 .mscreen-scan .sst-title > [data-scn="t2"] { color: var(--scn-red); }
 
 /* Player card: who is up, their photo once the phone has linked */
@@ -141,7 +127,6 @@
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
   font-size: min(calc(92px / var(--cap)), 12cqi); line-height: .95; overflow-wrap: anywhere;
 }
-:root[data-variant="reference"] .mscreen-scan .sst-name { font-size: min(calc(62px / var(--cap)), 9cqi); line-height: 1.08; }
 .mscreen-scan .sst-card .sst-line { font-size: 42px; align-items: flex-start; }
 .mscreen-scan .sst-card .sst-dot { margin-top: 16px; }
 
@@ -160,7 +145,6 @@
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
   font-size: min(calc(84px / var(--cap)), 11cqi); line-height: .95; text-wrap: balance;
 }
-:root[data-variant="reference"] .mscreen-scan .sst-beacon-t { font-size: min(calc(56px / var(--cap)), 8.4cqi); line-height: 1.1; }
 .mscreen-scan .sst-beacon-s { font: var(--w-strong) 42px/1.25 var(--f-text); color: var(--ink-2); }
 
 /* Progress: the way in as a lit track, the rail filled to the step the player is on */
@@ -213,7 +197,6 @@
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
   font-size: min(calc(76px / var(--cap)), 10.4cqi); line-height: .98; text-wrap: balance;
 }
-:root[data-variant="reference"] .mscreen-scan .sst-crowd-t { font-size: min(calc(50px / var(--cap)), 7.6cqi); line-height: 1.1; }
 
 /* ================================================================ Code: the machine's code, in the phone's style */
 .mscreen-scan .scd { display: grid; place-items: center; }
@@ -252,7 +235,6 @@
   --pqr-ink: #FAF9F9; --pqr-bg: rgba(38, 38, 38, .35); --pqr-rim: rgba(255, 255, 255, .9); --pqr-red: #FA5453; --pqr-veil: rgba(11, 11, 12, .78);
   --pqr-ly: 0; --pqr-lb: 0; --pqr-ls: 0;
 }
-:root[data-variant="reference"] .mscreen-scan .scd-stage .pqr { --pqr-bg: rgba(22, 9, 11, .72); --pqr-rim: rgba(235, 17, 16, .8); --pqr-red: #FF4E4D; }
 .mscreen-scan .scd-flip { position: relative; width: 660px; height: 648px; margin-top: -40px; perspective: 3000px; }
 .mscreen-scan .scd-flip > * { position: absolute; inset: 0; display: grid; place-items: center; -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: transform .9s cubic-bezier(.3, .9, .25, 1.05); }
 .mscreen-scan .scd-back {
@@ -304,7 +286,6 @@
 }
 .mscreen-scan .scd-plate-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; }
 .mscreen-scan .scd-plate-id, .mscreen-scan .scd-plate-where { display: flex; align-items: center; gap: 16px; white-space: nowrap; font: var(--w-strong) 42px/1.2 var(--f-text); }
-:root[data-variant="reference"] .mscreen-scan :is(.scd-plate-id, .scd-plate-where) { font-size: 40px; }
 .mscreen-scan .scd-plate-id b { font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(56px / var(--cap)); line-height: 1; color: var(--scn-red); }
 .mscreen-scan .scd-plate-where { color: var(--ink-2); font-weight: var(--w-text); }
 .mscreen-scan .scd-plate-top [data-lucide] { font-size: 46px; color: var(--scn-red); }
@@ -316,8 +297,6 @@
   font-family: var(--f-display); font-weight: var(--w-display); font-size: calc(80px / var(--cap)); line-height: 1.05; letter-spacing: .12em;
   font-variant-numeric: tabular-nums; white-space: nowrap;
 }
-:root[data-variant="reference"] .mscreen-scan .scd-plate-chars { font-size: calc(58px / var(--cap)); letter-spacing: .08em; }
-:root[data-variant="reference"] .mscreen-scan .scd-plate-id b { font-size: calc(44px / var(--cap)); }
 
 /* ================================================================ How to: the way in */
 .mscreen-scan .sho-title {
@@ -325,7 +304,6 @@
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
   font-size: min(calc(64px / var(--cap)), 9cqi); line-height: 1;
 }
-:root[data-variant="reference"] .mscreen-scan .sho-title { font-size: min(calc(46px / var(--cap)), 7cqi); }
 .mscreen-scan .sho-badge { display: grid !important; place-items: center; width: 96px; height: 96px; border-radius: 50%; font-size: 54px; background: var(--scn-badge); color: var(--scn-on-red); }
 .mscreen-scan .sho-t { font: var(--w-strong) 48px/1.15 var(--f-text); color: var(--ink-1); }
 .mscreen-scan .sho-s { font: var(--w-text) 40px/1.3 var(--f-text); color: var(--ink-2); }
@@ -377,7 +355,6 @@
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
   font-size: calc(70px / var(--cap)); line-height: .98; text-wrap: balance;
 }
-:root[data-variant="reference"] .mscreen-scan .sho-line { font-size: calc(44px / var(--cap)); line-height: 1.12; }
 .mscreen-scan .sho-with { display: grid; gap: 20px; }
 .mscreen-scan .sho-chip { display: flex; align-items: center; gap: 20px; font: var(--w-strong) 42px/1.2 var(--f-text); color: var(--ink-2); }
 .mscreen-scan .sho-chip [data-lucide] { font-size: 50px; color: var(--scn-red); }

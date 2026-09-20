@@ -507,9 +507,7 @@
     }
     const space = parseFloat(getComputedStyle(root).getPropertyValue('--space')) || 1
     const note = q('[data-ds-space-note]')
-    if (note) note.textContent = root.dataset.variant === 'reference'
-      ? 'Fixed values from the Figma frame, in glass pixels'
-      : `Breathing room at ${Math.round(space * 100)}%, in glass pixels`
+    if (note) note.textContent = `Breathing room at ${Math.round(space * 100)}%, in glass pixels`
   }
   const RADII = [
     { group: 'Glass' },
@@ -691,7 +689,7 @@
 
   /* ------------------------------------------------------------ refresh: read everything again */
   function paintLook() {
-    const look = `${root.dataset.variant === 'reference' ? 'Reference' : 'Arena'}, ${root.dataset.appearance === 'light' ? 'Light' : 'Dark'}`
+    const look = root.dataset.appearance === 'light' ? 'Light' : 'Dark'
     const el = q('[data-ds-look]')
     if (el) el.textContent = look
     const accent = q('[data-ds-accent]')

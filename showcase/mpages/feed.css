@@ -161,8 +161,6 @@
 .mf-f-tabs button::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 3px; border-radius: 2px; background: var(--m-red); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
 .mf-f-tabs button[aria-pressed="true"] { color: var(--m-ink); }
 .mf-f-tabs button[aria-pressed="true"]::after { transform: none; }
-/* Reference's wider face: the four titles fit a 412 wide Android without the last one cut at the edge */
-:root[data-variant="reference"] .mf-f-tabs button { font-size: 16.5px; }
 
 /* Icon tiles */
 .mf-f-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }

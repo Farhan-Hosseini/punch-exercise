@@ -123,7 +123,6 @@
   --play-bg: #F5F3EF;
   --play-ink: #0B0B0C;
 
-  /* Reference only: the Figma frame's card and well colours, as tokens so Light can restate them */
   --ref-card: #16090B;
   --ref-well: #050304;
   --ref-sponsor: #140A0A;
@@ -141,50 +140,6 @@
   --panel-mute: #6B635C;
   --panel-line: #E4DED6;
   --focus: #F2EFEA;
-}
-
-/* ---------------------------------------------------------------- Glass: frosted panels over a blurred fight scene */
-
-/* ---------------------------------------------------------------- Fight poster: printed paper, heavy ink, halftone photos */
-
-/* an inverted surface flips its own ink so any design can use it */
-
-/* ---------------------------------------------------------------- Neon arcade: glowing tubes, scanlines, Orbitron */
-
-/* ---------------------------------------------------------------- Reference: the Figma frame as designed */
-:root[data-variant="reference"] {
-  --f-display: "Archivo Black", sans-serif;
-  --w-display: 400;
-  --display-case: none;
-  --display-track: 0;
-  --display-glow: none;
-  --num-w: .593;
-  --cap: .69;
-  --f-text: "Sora", sans-serif;
-  --f-label: "Sora", sans-serif;
-  --w-label: 700;
-  --label-track: 0;
-  --ground: #080406;
-  --raised: #16090B;
-  --raised-hi: #16090B;
-  --badge: #EB1110;
-  --badge-ink: #FFFFFF;
-  --ink-1: #FFFFFF;
-  --ink-2: rgba(255, 255, 255, .5);
-  --ink-3: rgba(255, 255, 255, .5);
-  --track: rgba(255, 255, 255, .2);
-  --surface-bg: #16090B;
-  --surface-border: 2px solid rgba(235, 17, 16, .3);
-  --surface-shadow: none;
-  --photo-filter: none;
-  --screen-bg: #080406;
-  --pad: 64px;
-  --pad-top: 64px;
-  --pad-bottom: 64px;
-  --gap-sec: 72px;
-  --gap-title: 32px;
-  --gap-grid: 32px;
-  --card-pad: 40px;
 }
 
 /* ---------------------------------------------------------------- Light: the same system on a daylight ground.
@@ -224,25 +179,6 @@
   --shell-pill-on-ink: #F7F4EF;
   --bezel: #1A1614;
   --focus: #1A1614;
-}
-:root[data-variant="reference"][data-appearance="light"] {
-  --ground: #FFF7F6;
-  --raised: #FFFFFF;
-  --raised-hi: #FFFFFF;
-  --badge: #EB1110;
-  --badge-ink: #FFFFFF;
-  --ink-1: #16090B;
-  /* one secondary ink, as in the frame; 60% holds 4.5:1 for small text on the pink panels (56% fell to 4.3) */
-  --ink-2: rgba(22, 9, 11, .6);
-  --ink-3: rgba(22, 9, 11, .6);
-  --track: rgba(22, 9, 11, .14);
-  --surface-bg: #FFFFFF;
-  --surface-border: 2px solid rgba(235, 17, 16, .3);
-  --screen-bg: #FFF7F6;
-  --ref-card: #FFFFFF;
-  --ref-well: #F6E9E8;
-  --ref-sponsor: #FFEDEC;
-  --ref-ink: #16090B;
 }
 
 /* ---------------------------------------------------------------- base */
@@ -468,11 +404,6 @@ img { display: block; max-width: 100%; }
 .spot-mid { display: none; }
 
 :root[data-appearance="light"] .spot-top { opacity: calc(var(--glow) * .16 * var(--accent-amt) / 100); }
-
-/* ---------------------------------------------------------------- design A: the refined Figma layout */
-/* Design A is also what Reference shows. Where the two differ in copy, the markup carries both: Reference keeps
-   the frame's own placeholder copy as drawn, Arena shows this run, the same one the phone shows. */
-:root[data-variant="reference"] .in-arena, :root:not([data-variant="reference"]) .in-ref { display: none; }
 .s-header .v-a { display: flex; align-items: center; justify-content: center; gap: 28px; }
 .wordmark { font: var(--w-display) 96px/.9 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); text-shadow: var(--display-glow); white-space: nowrap; }
 .wordmark span { color: var(--ink-3); }
@@ -551,60 +482,6 @@ img { display: block; max-width: 100%; }
 .s-sponsor .v-a span { font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-3); }
 .s-sponsor .v-a b { font: var(--w-display) 44px/1 var(--f-display); letter-spacing: .03em; color: var(--ink-2); }
 
-/* ---------------------------------------------------------------- reference: the Figma frame, exact values */
-:root[data-variant="reference"] .screen { border-radius: 0; }
-:root[data-variant="reference"] .cta, :root[data-variant="reference"] .charge-fill, :root[data-variant="reference"] .progress { box-shadow: none; }
-:root[data-variant="reference"] .screen-content { align-items: center; }
-:root[data-variant="reference"] .screen-content > .sec { width: 100%; }
-:root[data-variant="reference"] .spot-top { display: block; top: -100px; width: 900px; height: 600px; opacity: 1; filter: blur(90px); background: rgba(235, 17, 16, .4); }
-:root[data-variant="reference"] .spot-mid { display: block; top: 1600px; width: 1100px; height: 900px; opacity: 1; filter: blur(110px); background: rgba(235, 17, 16, .149); }
-:root[data-variant="reference"] .wordmark { font: 400 72px/1.088 "Archivo Black", sans-serif; letter-spacing: 0; text-shadow: none; }
-:root[data-variant="reference"] .wordmark span { color: #EB1110; }
-:root[data-variant="reference"] .badge-logo { box-shadow: 0 0 24px rgba(235, 17, 16, .4); }
-:root[data-variant="reference"] .s-hero .v-a { background: var(--ref-card); border: 4px solid #EB1110; border-radius: 32px; padding: 56px; gap: 16px; filter: drop-shadow(0 16px 24px rgba(235, 17, 16, .4)); container-type: normal; }
-:root[data-variant="reference"] .hero-label { font: 700 36px/1.26 "Sora", sans-serif; letter-spacing: 0; color: #EB1110; }
-:root[data-variant="reference"] .hero-score { font: 400 160px/1.088 "Archivo Black", sans-serif; letter-spacing: 0; font-variant-numeric: normal; text-shadow: none; }
-:root[data-variant="reference"] .rank > div, :root[data-variant="reference"] .stat { container-type: normal; }
-:root[data-variant="reference"] .rank .v { font: 800 64px/1.26 "Sora", sans-serif; font-variant-numeric: normal; text-shadow: none; }
-:root[data-variant="reference"] .charge { display: none; }
-:root[data-variant="reference"] .hero-grade { font: 600 32px/1.26 "Sora", sans-serif; letter-spacing: 0; color: var(--ink-2); }
-:root[data-variant="reference"] .s-title { font: 800 40px/1.26 "Sora", sans-serif; letter-spacing: 0; color: var(--ink-1); }
-:root[data-variant="reference"] .s-video .s-title, :root[data-variant="reference"] .s-clips .s-title { margin-bottom: 24px; }
-:root[data-variant="reference"] .card { border: 2px solid rgba(235, 17, 16, .3); border-radius: 24px; justify-self: start; box-shadow: none; background: var(--ref-card); }
-:root[data-variant="reference"] .stat { padding: 48px; gap: 24px; }
-:root[data-variant="reference"] .stat .v { font: 400 80px/1.088 "Archivo Black", sans-serif; gap: .333em; text-shadow: none; }
-:root[data-variant="reference"] .stat .v small { font: 400 40px/1.088 "Archivo Black", sans-serif; letter-spacing: 0; color: var(--ink-2); }
-:root[data-variant="reference"] .badge-rank { box-shadow: 0 0 16px rgba(235, 17, 16, .4); }
-:root[data-variant="reference"] .rank.is-key { border: 3px solid #EB1110; background: var(--ref-card); filter: drop-shadow(0 4px 8px rgba(235, 17, 16, .15)); }
-:root[data-variant="reference"] .rank.is-key .k { color: #EB1110; font-weight: 700; }
-:root[data-variant="reference"] .k { font: 400 32px/1.26 "Sora", sans-serif; text-transform: capitalize; }
-:root[data-variant="reference"] .rank .k { font-size: 32px; }
-:root[data-variant="reference"] .player { aspect-ratio: auto; height: 800px; border: 4px solid #EB1110; border-radius: 24px; background: var(--ref-well); box-shadow: none; }
-:root[data-variant="reference"] .poster { display: none; }
-:root[data-variant="reference"] .player::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(235, 17, 16, .12), transparent); }
-:root[data-variant="reference"] .badge-play { background: #EB1110; color: #FFFFFF; box-shadow: 0 0 40px rgba(235, 17, 16, .4); }
-:root[data-variant="reference"] .player-center { gap: 0; }
-:root[data-variant="reference"] .player-cap { font: 700 32px/40px "Sora", sans-serif; letter-spacing: 0; text-transform: uppercase; color: var(--ink-2); text-shadow: none; }
-:root[data-variant="reference"] .timeline { left: -4px; right: -4px; bottom: -4px; background: rgba(0, 0, 0, .7); padding: 24px; gap: 16px; }
-:root[data-variant="reference"] .time-row { font: 400 32px/1.26 "Sora", sans-serif; color: #FFFFFF; }
-:root[data-variant="reference"] .time-row b { font: 700 32px/1.26 "Sora", sans-serif; color: #EB1110; letter-spacing: 0; }
-:root[data-variant="reference"] .progress { width: 240px; background: #EB1110; border-radius: 0; }
-:root[data-variant="reference"] .thumbs { display: flex; gap: 24px; }
-:root[data-variant="reference"] .thumb { flex: 1 0 0; background: var(--ref-card); border: 2px solid rgba(235, 17, 16, .3); border-radius: 16px; padding: 16px; gap: 12px; }
-:root[data-variant="reference"] .thumb img { box-sizing: border-box; padding-left: 100%; height: 140px; aspect-ratio: auto; border-radius: 12px; background: var(--ref-well); }
-:root[data-variant="reference"] .thumb figcaption { font: 700 32px/1.26 "Sora", sans-serif; white-space: nowrap; text-transform: capitalize; }
-:root[data-variant="reference"] .boxer { aspect-ratio: auto; height: 500px; border: 3px solid #EB1110; border-radius: 24px; box-shadow: none; }
-:root[data-variant="reference"] .boxer::after { background: rgba(235, 17, 16, .15); mix-blend-mode: color; box-shadow: none; }
-:root[data-variant="reference"] .cta { font: 400 48px/1.088 "Archivo Black", sans-serif; background: #EB1110; color: #FFFFFF; min-height: 0; padding: 48px; border-radius: 24px; letter-spacing: 0; filter: drop-shadow(0 12px 16px rgba(235, 17, 16, .4)); }
-:root[data-variant="reference"] .s-sponsor .v-a { background: var(--ref-sponsor); border: 0; border-radius: 16px; padding: 24px; gap: 16px; }
-:root[data-variant="reference"] .s-sponsor .v-a span { font: 400 32px/1.26 "Sora", sans-serif; letter-spacing: 0; color: var(--ink-2); }
-:root[data-variant="reference"] .s-sponsor .v-a b { font: 400 36px/1.088 "Archivo Black", sans-serif; color: #EB1110; letter-spacing: 0; }
-/* Reference in daylight restates two values the frame drew for a dark ground. The player's control bar stays a
-   dark bar: 70% black over the pink well came out mid grey and put the red Replay at 2.1:1. And the glow behind
-   the header is thinner, so the red APP keeps 3:1 over it. */
-:root[data-variant="reference"][data-appearance="light"] .timeline { background: #16090B; }
-:root[data-variant="reference"][data-appearance="light"] .spot-top { background: rgba(235, 17, 16, .14); }
-
 /* ---------------------------------------------------------------- section designs: switching */
 .vars { position: relative; }
 .vars.is-switching { overflow: clip; overflow-clip-margin: calc(40px * var(--space)); transition: height .42s cubic-bezier(.2, .7, .2, 1); }
@@ -678,11 +555,8 @@ img { display: block; max-width: 100%; }
 .theme-tile:focus-visible { outline: 2px solid var(--panel-ink); outline-offset: 3px; }
 .theme-prev { position: relative; height: 92px; border-radius: 10px; overflow: hidden; display: grid; place-items: center; }
 .theme-prev.arena { background: radial-gradient(90% 60% at 50% 0%, rgba(255, 236, 214, .22), transparent 70%), #0E0E10; }
-.theme-prev.reference { background: radial-gradient(60% 70% at 50% 0%, rgba(235, 17, 16, .5), transparent 75%), #080406; }
 .theme-prev span { font: 900 38px/1 "Big Shoulders Display", sans-serif; letter-spacing: .02em; text-transform: uppercase; color: #F5F3EF; }
-.theme-prev.reference span { font: 400 24px/1 "Archivo Black", sans-serif; letter-spacing: 0; }
 .theme-prev::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: 16px; height: 6px; border-radius: 3px; background: #EB1110; }
-.theme-prev.reference::after { left: 12%; right: 12%; top: 12px; bottom: 12px; height: auto; background: transparent; border: 2px solid #EB1110; border-radius: 8px; }
 .theme-txt { display: grid; gap: 4px; padding: 0 4px 2px; }
 .theme-txt b { font: 700 16px/1.1 "Barlow", sans-serif; }
 .theme-txt i { font: 500 13px/1.35 "Barlow", sans-serif; font-style: normal; color: var(--panel-mute); }
@@ -885,7 +759,7 @@ input[type="range"]:focus-visible { outline: 2px solid var(--panel-ink); outline
 }
 
 /* ---------------------------------------------------------------- the machine flow: six screens around the result
-   Each is the glass itself (1080 x 3840) drawn in the same tokens, so Arena or Reference and dark or light apply.
+   Each is the glass itself (1080 x 3840) drawn in the same tokens, so the appearance applies.
    Their own layouts live in mscreens/KEY.css; this sets the frame they share. */
 .mpagebar { margin: 0 auto 24px; }
 /* seven screens do not fit one row on a phone: wrap into two centred rows rather than scroll the current one out of sight */
@@ -914,20 +788,6 @@ input[type="range"]:focus-visible { outline: 2px solid var(--panel-ink); outline
   --ms-light: rgba(255, 170, 120, .18);
   --ms-light-2: color-mix(in oklab, var(--strike) 8%, transparent);
   --ms-photo-edge: none;
-}
-/* Reference keeps the frames as drawn: the cool ground under blue light, the 45 px photo card */
-:root[data-variant="reference"] .mscreen {
-  --ms-ground: #141218;
-  --ms-light: rgba(47, 107, 255, .2);
-  --ms-light-2: rgba(47, 107, 255, .2);
-  --ms-photo-r: 45px;
-  --ms-photo-edge: none;
-  border-radius: 0;
-}
-:root[data-variant="reference"][data-appearance="light"] .mscreen {
-  --ms-ground: #F7F5FA;
-  --ms-light: rgba(47, 107, 255, .12);
-  --ms-light-2: rgba(47, 107, 255, .12);
 }
 
 /* the backdrop host .ms-lights and its six shapes are drawn in mscreens/_backdrops.css, one look per html[data-mbackdrop] */

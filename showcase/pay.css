@@ -129,8 +129,6 @@
 }
 .pay-pack-n b { font: var(--m-w-num-hi) calc(30px * var(--m-num-scale))/.9 var(--m-num); font-variant-numeric: tabular-nums; }
 .pay-pack-n i { font: var(--m-w-label) 11px/1 var(--m-f-label); font-style: normal; letter-spacing: calc(var(--m-track-label) * .6); text-transform: uppercase; color: var(--m-ink-2); }
-/* Sora is wider than Barlow Condensed: a size smaller keeps PUNCHES 7 px clear of the tile's rounded sides */
-:root[data-variant="reference"] .pay-pack-n i { font-size: 10px; letter-spacing: .03em; }
 .pay-pack[aria-checked="true"] .pay-pack-n,
 .pys-card .pay-pack-n {
   background: var(--m-cta); border-color: transparent; color: var(--m-on-red);

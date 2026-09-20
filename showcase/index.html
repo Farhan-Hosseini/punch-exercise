@@ -7,25 +7,16 @@
 <meta name="description" content="A PunchApp design task for Robotenc: the result screen on the machine's 1080 by 3840 glass and the player's phone flow.">
 <link rel="icon" type="image/svg+xml" href="assets/logos/fist-circle.svg">
 <script>
-  /* the saved look before the first paint, so a reload in Light or Reference never flashes the dark Arena loader */
+  /* the saved look before the first paint, so a reload in Light never flashes the dark loader */
   try {
     const saved = JSON.parse(localStorage.getItem('punch-showcase.v5') || 'null')
     if (saved) {
       if (saved.appearance === 'light') document.documentElement.dataset.appearance = 'light'
-      if (saved.variant === 'reference') document.documentElement.dataset.variant = 'reference'
       if (typeof saved.logo === 'string') document.documentElement.dataset.logo = saved.logo
       // the loader's count is a score: whole points only when that is the saved format
       if (saved.decimals === 'off') document.documentElement.dataset.decimals = 'off'
     }
   } catch (e) { /* storage unavailable: the defaults stand */ }
-  // Reference sets the loader's count and label in its own faces: fetch them now, so they do not swap in mid count
-  if (document.documentElement.dataset.variant === 'reference') {
-    ['archivo-black-latin-400-normal', 'sora-latin-700-normal'].forEach(function (f) {
-      var l = document.createElement('link')
-      l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = ''; l.href = 'fonts/' + f + '.woff2'
-      document.head.appendChild(l)
-    })
-  }
   if (/[?&]embed=machine\b/.test(location.search)) document.documentElement.dataset.embed = 'machine'
 </script>
 <link rel="preload" href="fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -393,21 +384,9 @@
           <p class="ctl-help" id="scoreHelp">The brief's full range, 0 to 999,999.000. Score format sets whether the three decimals show.</p>
         </div>        </div>
         <div class="cus-sub">
-          <span class="acc-sub" id="g-theme">Theme</span>
+          <span class="acc-sub" id="g-appearance">Appearance</span>
 
-        <div class="themes" role="radiogroup" aria-labelledby="g-theme">
-          <button class="variant theme-tile" type="button" role="radio" data-variant="arena" aria-checked="true">
-            <span class="theme-prev arena" aria-hidden="true"><span>Punch</span></span>
-            <span class="theme-txt"><b>Arena</b><i>Athletic, refined</i></span>
-            <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-          </button>
-          <button class="variant theme-tile" type="button" role="radio" data-variant="reference" aria-checked="false">
-            <span class="theme-prev reference" aria-hidden="true"><span>Punch</span></span>
-            <span class="theme-txt"><b>Magical</b><i>PunchApp preferences</i></span>
-            <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-          </button>
-        </div>
-        <div class="seg seg-appearance" role="group" aria-label="Appearance">
+        <div class="seg seg-appearance" role="group" aria-labelledby="g-appearance">
           <button type="button" data-appearance-btn="dark" aria-pressed="true">
             <svg class="ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
             Dark
@@ -416,8 +395,7 @@
             <svg class="ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/> <path d="M12 2v2"/> <path d="M12 20v2"/> <path d="m4.93 4.93 1.41 1.41"/> <path d="m17.66 17.66 1.41 1.41"/> <path d="M2 12h2"/> <path d="M20 12h2"/> <path d="m6.34 17.66-1.41 1.41"/> <path d="m19.07 4.93-1.41 1.41"/></svg>
             Light
           </button>
-        </div>
-        <p class="lock-note" id="lockNote" hidden>Reference shows your Figma frame exactly as drawn, so its sections and colours are locked. Switch to Arena to change them.</p>        </div>
+        </div>                </div>
         <div class="cus-sub">
           <span class="acc-sub" id="g-logo">Logo</span>
 

@@ -50,11 +50,6 @@
   --bs-paper: #FFFFFF;
   --bs-paper-shadow: 0 40px 80px -44px rgba(70, 45, 30, .5), 0 0 0 2px rgba(21, 20, 19, .06);
 }
-:root[data-variant="reference"] .mscreen-score {
-  --bs-tile: #1D0C0F;
-  --bs-board: #0B0507;
-  --bs-led-rim: #2A1015;
-}
 
 /* ---------------------------------------------------------------- the frame */
 .mscreen-score [data-sv][hidden] { display: none !important; }
@@ -284,7 +279,6 @@
 .mscreen-score .bs-vs-mid { position: relative; min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: 28px; margin-bottom: 96px; }
 .mscreen-score .bs-vs-over { display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .mscreen-score .bs-vs-fig { font-size: 104px; line-height: .9; color: var(--strike); }
-:root[data-variant="reference"] .mscreen-score .bs-vs-fig { font-size: 64px; }
 .mscreen-score .bs-vs-crown { font-size: 120px; line-height: 0; color: var(--bs-crown); }
 .mscreen-score .bs-vs-w { font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
 .mscreen-score .bs-vs-w.is-taken { color: var(--bs-crown); }
@@ -324,11 +318,9 @@
 .mscreen-score .bs-br { position: absolute; left: 16%; right: 16%; top: 40px; height: 250px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 24px; }
 .mscreen-score .bs-br-w { display: flex; flex-direction: column; align-items: center; gap: 10px; font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
 .mscreen-score .bs-br-w.is-taken { gap: 8px; font: var(--w-display) 72px/1 var(--f-display); letter-spacing: var(--display-track); text-transform: uppercase; color: var(--bs-crown); }
-:root[data-variant="reference"] .mscreen-score .bs-br-w.is-taken { font-size: 56px; }
 .mscreen-score .bs-br-w.is-taken .bs-ico { font-size: 84px; }
 .mscreen-score .bs-br-w.is-taken .bs-ico svg { fill: var(--bs-crown); }
 .mscreen-score .bs-br-fig { font: var(--w-display) 112px/.9 var(--f-display); letter-spacing: var(--display-track); color: var(--strike); font-variant-numeric: tabular-nums; }
-:root[data-variant="reference"] .mscreen-score .bs-br-fig { font-size: 72px; }
 /* the bracket: a rule with its ends turned down to the two marks */
 .mscreen-score .bs-br-line { position: relative; align-self: stretch; height: 42px; border: 10px solid var(--strike); border-bottom: 0; border-radius: 14px 14px 0 0; transform-origin: 50% 100%; }
 .mscreen-score .bs-ruler[data-k="crown"] .bs-br-line { border-color: var(--bs-crown); }

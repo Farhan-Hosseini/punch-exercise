@@ -17,16 +17,6 @@
   --pqr-hi: rgba(21, 20, 19, .05);
   --pqr-ly: .0645; --pqr-lb: .129; --pqr-ls: -.092; --pqr-lc: rgba(70, 45, 30, .4); --pqr-lh: rgba(70, 45, 30, .06);
 }
-:root[data-variant="reference"] {
-  --pqr-ink: #FFFFFF; --pqr-bg: rgba(22, 9, 11, .72); --pqr-rim: rgba(235, 17, 16, .8); --pqr-red: #FF4E4D; --pqr-veil: rgba(22, 9, 11, .8);
-  --pqr-hi: rgba(235, 17, 16, .1);
-  --pqr-ly: .0737; --pqr-lb: .147; --pqr-ls: -.11; --pqr-lc: rgba(235, 17, 16, .45); --pqr-lh: transparent;
-}
-:root[data-variant="reference"][data-appearance="light"] {
-  --pqr-ink: #16090B; --pqr-bg: #FFFFFF; --pqr-rim: rgba(235, 17, 16, .8); --pqr-red: #C20F0F; --pqr-veil: rgba(255, 255, 255, .8);
-  --pqr-hi: rgba(235, 17, 16, .1);
-  --pqr-ly: .0645; --pqr-lb: .129; --pqr-ls: -.092; --pqr-lc: rgba(235, 17, 16, .4); --pqr-lh: transparent;
-}
 .m-app .pqr {
   --pqr-ink: var(--m-qr-ink); --pqr-bg: var(--m-qr-bg); --pqr-rim: var(--m-qr-rim); --pqr-red: var(--m-red-soft);
   --pqr-veil: color-mix(in srgb, var(--m-ground) 78%, transparent); --pqr-hi: var(--m-glass-hi);

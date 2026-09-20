@@ -61,23 +61,6 @@
   --msa-track: rgba(21, 20, 19, .09);
   --msa-bar: linear-gradient(90deg, #B30D10, var(--strike) 70%, #F04544);
 }
-:root[data-variant="reference"] .mscreen-attract {
-  --msa-solid: var(--ms-ground);
-  --msa-k: .74;
-  --msa-you: linear-gradient(135deg, #6E0A0E, #16090B 72%);
-  --msa-champ: linear-gradient(135deg, #EB1110, #8A080B 62%, #2A0709);
-  --msa-step: linear-gradient(180deg, #1F0C0F, #16090B);
-  --msa-step-first: linear-gradient(180deg, rgba(235, 17, 16, .72), #16090B);
-  --msa-well: rgba(219, 228, 252, .08);
-  --msa-letter: .74;
-}
-:root[data-variant="reference"][data-appearance="light"] .mscreen-attract {
-  --msa-you: linear-gradient(135deg, #EB1110, #99090D);
-  --msa-champ: linear-gradient(135deg, #EB1110, #B00B0E 62%, #7A070A);
-  --msa-step: linear-gradient(180deg, #FFFFFF, #FFF1F0);
-  --msa-step-first: linear-gradient(180deg, #EB1110 30%, #F26B6A);
-  --msa-well: rgba(20, 18, 24, .05);
-}
 
 .mscreen-attract [hidden], .mscreen-attract [data-sv][hidden] { display: none !important; }
 
@@ -165,7 +148,6 @@
   --msa-sw-track: .06em;
   --msa-sw-spent: color-mix(in oklab, var(--strike), #000000 50%);
 }
-:root[data-variant="reference"] .mscreen-attract { --msa-sw-fs: 38px; --msa-sw-track: 0em; }
 .mscreen-attract .msa-sw {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; height: 124px; padding: var(--msa-sw-pad);
   border-radius: var(--msa-sw-r); border: var(--msa-sw-line) solid var(--line);
@@ -212,8 +194,6 @@
 }
 .mscreen-attract .msa-sw-col { grid-template-columns: none; grid-template-rows: repeat(3, minmax(0, 1fr)); height: 350px; }
 .mscreen-attract .msa-sw-col .msa-scope { justify-content: flex-start; padding: 0 24px; }
-/* Reference's Sora runs wider: the switch takes a little more of the row */
-:root[data-variant="reference"] .mscreen-attract .msa-t-name { grid-template-columns: minmax(0, 1fr) 372px; column-gap: 40px; }
 
 /* Icon tabs: the Force meter's heading over a tall switch, each board's mark over its name */
 .mscreen-attract .msa-t-tabs { display: grid; align-content: center; gap: 24px; }
@@ -354,8 +334,6 @@
 .mscreen-attract .msa-champ-photo img { width: 100%; height: 100%; object-fit: cover; }
 .mscreen-attract .msa-champ-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #7A0A0E 0%, rgba(122, 10, 14, .4) 34%, rgba(0, 0, 0, 0) 70%); }
 :root[data-appearance="light"] .mscreen-attract .msa-champ-photo::after { background: linear-gradient(90deg, #A50D12 0%, rgba(165, 13, 18, .4) 34%, rgba(0, 0, 0, 0) 70%); }
-:root[data-variant="reference"] .mscreen-attract .msa-champ-photo::after { background: linear-gradient(90deg, #8A080B 0%, rgba(138, 8, 11, .4) 34%, rgba(0, 0, 0, 0) 70%); }
-:root[data-variant="reference"][data-appearance="light"] .mscreen-attract .msa-champ-photo::after { background: linear-gradient(90deg, #B00B0E 0%, rgba(176, 11, 14, .4) 34%, rgba(0, 0, 0, 0) 70%); }
 .mscreen-attract .msa-champ-mark { position: absolute; left: 330px; bottom: -70px; z-index: -1; font-size: 360px; color: rgba(255, 255, 255, .08); transform: rotate(-12deg); }
 .mscreen-attract .msa-champ-cap { display: flex; align-items: center; gap: 16px; font: var(--w-label) 38px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: #FFD9D9; }
 /* on the red card the crown reads in white */
@@ -652,17 +630,3 @@
   .mscreen-attract .msa-card.is-lead::before { opacity: .8; }
   .mscreen-attract .msa-you-run { transform: scaleX(1.08); }
 }
-
-/* Reference sets its numbers and names in wider faces (Archivo Black, Sora): the names give a little so they never cut */
-:root[data-variant="reference"] .mscreen-attract .msa-row .msa-name,
-:root[data-variant="reference"] .mscreen-attract .msa-rung-card .msa-name { font-size: 38px; }
-:root[data-variant="reference"] .mscreen-attract .msa-tr .msa-name { font-size: 36px; }
-:root[data-variant="reference"] .mscreen-attract .msa-tr { grid-template-columns: 96px minmax(0, 1fr) 88px 250px; }
-:root[data-variant="reference"] .mscreen-attract .msa-tr .msa-pts { --budget: 250px; }
-:root[data-variant="reference"] .mscreen-attract .msa-mrow .msa-name { font-size: 36px; }
-:root[data-variant="reference"] .mscreen-attract .msa-row .msa-pts { --budget: 260px; }
-:root[data-variant="reference"] .mscreen-attract .msa-card .msa-name { font-size: 48px; }
-:root[data-variant="reference"] .mscreen-attract .msa-meter .msa-name { font-size: 44px; }
-:root[data-variant="reference"] .mscreen-attract .msa-champ-name { font-size: 52px; }
-:root[data-variant="reference"] .mscreen-attract .msa-lite .msa-name { font-size: 40px; }
-:root[data-variant="reference"] .mscreen-attract .msa-lite .msa-pts { --budget: 230px; }

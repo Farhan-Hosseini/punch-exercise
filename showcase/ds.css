@@ -460,8 +460,6 @@
 .ds-lockup-app .ds-app-in { display: grid; place-items: center; padding-block: 40px; }
 .ds-lockup-app .m-brand { font-size: 26px; }
 .ds-lockup-app .m-brand-mark { width: 44px; height: 44px; }
-/* captions that differ by theme */
-:root[data-variant="reference"] .ds-when-arena, :root:not([data-variant="reference"]) .ds-when-reference { display: none; }
 
 .ds-foot { margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--ds-line); font: 500 14px/1.5 var(--ds-f-text); color: var(--ds-mute); }
 
@@ -920,11 +918,6 @@
 /* the glass samples keep the Result glass's margin, the flow screens' 88 at breathing room 100 (sections/_grid.css
    sets it on #screen this round; the root --pad is still 80) */
 .ds-glass { --pad: calc(88px * var(--space)); }
-:root[data-variant="reference"] .ds-glass { --pad: 88px; }
-/* Reference's result score, as the Result glass now sets it (sections/_grid.css): the big-number rule inside its card,
-   capped at the frame's 160 px, so the full length never runs past the card */
-:root[data-variant="reference"] .ds-scoreglass .s-hero .v-a { container-type: inline-size; }
-:root[data-variant="reference"] .ds-scoreglass .hero-score { font-size: min(160px, calc(100cqi / (var(--score-chars, 9.8) * var(--num-w)))); }
 
 /* ---------------------------------------------------------------- round nine: the strike in numbers, the flow states,
    the reel and saving a hit, the punch videos, the page header and the credits chip */
@@ -957,8 +950,6 @@
 .ds-num-v { font: var(--m-w-num) 27px/1.05 var(--m-num); letter-spacing: .005em; color: var(--ds-ink); overflow-wrap: anywhere; }
 /* an estimate reads lighter than a reading, as it does on the phone */
 .ds-num-v.is-est { color: var(--ds-mute); }
-/* Reference's Archivo Black runs far wider than the condensed Arena face: a step smaller keeps each value on its line */
-:root[data-variant="reference"] .ds-num-v { font-size: 20px; line-height: 1.2; }
 .ds-num-p { font: 500 14px/1.5 var(--ds-f-text); color: var(--ds-mute); }
 
 /* flow states: each page in its flow, its rules, then its sections */

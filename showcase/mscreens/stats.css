@@ -333,8 +333,6 @@
 .mscreen-stats .yr-fx-seen { font: 500 36px/1.15 var(--f-text); color: var(--ink-2); }
 .mscreen-stats .yr-fx-word { font-size: 200px; line-height: .88; color: var(--ink-1); white-space: nowrap; }
 .mscreen-stats .yr-fx-word > span { display: block; }
-:root[data-variant="reference"] .mscreen-stats :is(.yr-fx-word, .yr-slab-bw) { line-height: 1; }
-:root[data-variant="reference"] .mscreen-stats .yr-slab-bw { --fit-cap: calc(118px / var(--cap)); }
 .mscreen-stats .yr-fx-line { font: 500 44px/1.2 var(--f-text); color: var(--ink-2); }
 .mscreen-stats .yr-order > div { height: 100%; }
 .mscreen-stats .yr-fx-grid { display: grid; grid-template-columns: 400px minmax(0, 1fr); column-gap: 48px; height: 100%; }

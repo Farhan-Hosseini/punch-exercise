@@ -497,9 +497,7 @@
   transition: opacity .7s ease, transform 1s var(--ease);
 }
 .cs-seq-system[data-look="arena-dark"]  .cs-spec[data-look="arena-dark"],
-.cs-seq-system[data-look="arena-light"] .cs-spec[data-look="arena-light"],
-.cs-seq-system[data-look="ref-dark"]    .cs-spec[data-look="ref-dark"],
-.cs-seq-system[data-look="ref-light"]   .cs-spec[data-look="ref-light"] { opacity: 1; transform: none; }
+.cs-seq-system[data-look="arena-light"] .cs-spec[data-look="arena-light"] { opacity: 1; transform: none; }
 .cs-spec[data-look="arena-dark"] {
   --s-bg: radial-gradient(90% 40% at 50% 0%, rgba(255, 236, 214, .12), transparent 70%), linear-gradient(#101012, #09090A);
   --s-ink: #F5F3EF; --s-ink2: rgba(245, 243, 239, .72); --s-card: #19191B; --s-line: rgba(255, 255, 255, .09); --s-track: rgba(255, 255, 255, .12);
@@ -507,14 +505,6 @@
 .cs-spec[data-look="arena-light"] {
   --s-bg: linear-gradient(#F8F5F1, #EEEAE4); --s-red: #E3100F;
   --s-ink: #151413; --s-ink2: rgba(21, 20, 19, .74); --s-card: #FFFFFF; --s-line: rgba(21, 20, 19, .08); --s-track: rgba(21, 20, 19, .12);
-}
-.cs-spec[data-look="ref-dark"] {
-  --s-bg: radial-gradient(80% 40% at 50% 0%, rgba(235, 17, 16, .3), transparent 70%), #080406;
-  --s-ink: #FFFFFF; --s-ink2: rgba(255, 255, 255, .6); --s-card: #16090B; --s-line: rgba(235, 17, 16, .3); --s-track: rgba(255, 255, 255, .2);
-}
-.cs-spec[data-look="ref-light"] {
-  --s-bg: #FFF7F6;
-  --s-ink: #16090B; --s-ink2: rgba(22, 9, 11, .62); --s-card: #FFFFFF; --s-line: rgba(235, 17, 16, .3); --s-track: rgba(22, 9, 11, .14);
 }
 .sp-label { font: 600 4cqi/1 var(--f-cond); letter-spacing: .16em; text-transform: uppercase; color: var(--s-ink2); }
 /* sized to its character count, so 999,999.000 fits the card as well as 999,999 (--sp-chars from PunchFormat.width) */
@@ -534,12 +524,6 @@
 .sp-glyph svg { width: 100%; height: 100%; display: block; }
 .sp-rank small { display: block; font: 500 3.6cqi/1.1 var(--f-prod); color: var(--s-ink2); }
 .sp-rank b { display: block; margin-top: 1cqi; font: 900 8.4cqi/.9 var(--f-num); }
-.cs-spec[data-look^="ref"] .sp-label { font: 700 4.2cqi/1.1 "Sora", sans-serif; letter-spacing: 0; text-transform: none; color: var(--s-red); }
-.cs-spec[data-look^="ref"] .sp-score { font: 400 calc(17cqi * 7 / var(--sp-chars, 7))/1.05 "Archivo Black", sans-serif; letter-spacing: 0; }
-.cs-spec[data-look^="ref"] .sp-grade { font: 600 4.4cqi/1.1 "Sora", sans-serif; letter-spacing: 0; text-transform: none; color: var(--s-ink2); }
-.cs-spec[data-look^="ref"] .sp-rank { border-radius: 5cqi; }
-.cs-spec[data-look^="ref"] .sp-rank small { font-family: "Sora", sans-serif; }
-.cs-spec[data-look^="ref"] .sp-rank b { font: 800 7cqi/1 "Sora", sans-serif; }
 .cs-glyphs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 420px; color: var(--fg); opacity: .4; transition: opacity .6s ease; }
 .cs-glyphs span { width: 40px; height: 40px; display: block; }
 .cs-glyphs svg { width: 100%; height: 100%; display: block; }

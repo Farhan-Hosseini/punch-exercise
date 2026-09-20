@@ -63,8 +63,6 @@
 .cxl-head { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; container-type: inline-size; }
 .cxl-head-logo { width: 88px; height: 88px; object-fit: contain; margin-bottom: auto; }
 .cxl-head-word { margin-top: var(--m-group-gap); font: var(--m-w-heavy) min(80px, 16.4cqi)/.86 var(--m-f-title); text-transform: uppercase; letter-spacing: -.01em; }
-/* Reference sets its titles in a far wider face */
-:root[data-variant="reference"] .cxl-head-word { font-size: min(64px, 13.4cqi); letter-spacing: 0; }
 .cxl-head-word::after { content: ""; display: block; width: 56px; height: 4px; margin-top: 20px; border-radius: 2px; background: var(--m-red); }
 .cxl-head .cxl-line { margin-top: var(--m-group-gap); max-width: 32ch; }
 

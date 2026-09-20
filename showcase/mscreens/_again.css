@@ -65,15 +65,6 @@
 :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-copy { min-width: 0; display: grid; gap: 20px; }
 :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-keep { font-size: 34px; line-height: 1.2; color: var(--ink-1); text-wrap: balance; }
 :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-codeword { font-size: calc(32px / var(--cap)); letter-spacing: .14em; color: var(--ink-2); text-box: trim-both cap alphabetic; }
-/* Reference: the frame's wide display face at the Result's Reference slab size (48 px, as its .cta), which the
-   halves hold with room to spare; the condensed Arena sizing would run it past the slab */
-:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-word { font-size: 48px; letter-spacing: 0; margin-right: 0; }
-/* and the run's code in that face: a smaller step and less tracking, so it stays inside the gutter */
-:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-codeword { font-size: 34px; letter-spacing: .06em; }
-/* Sora's "Scan to keep" runs 222 px: a slightly smaller code gives the line its room, so the copy reads in two lines,
-   not three (r9 review) */
-:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-hand { grid-template-columns: 184px minmax(0, 1fr); column-gap: 24px; }
-:root[data-variant="reference"] :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-qr { --pqr-size: 184px; }
 
 /* Big pad: the machine's strike pad, the rings it sends out across the glass fading as they travel */
 :is(.mscreen-score, .mscreen-record, .mscreen-stats) .ag-band {

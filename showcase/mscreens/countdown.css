@@ -30,8 +30,6 @@
   --cst-a: .5;
   --cst-shade: rgba(110, 40, 24, .16);
 }
-:root[data-variant="reference"] .mscreen-countdown { --cdn-k: .72; --cdn-soft: rgba(235, 17, 16, .18); --cst-warm: rgb(84, 128, 255); }
-:root[data-variant="reference"][data-appearance="light"] .mscreen-countdown { --cst-warm: rgb(70, 110, 255); }
 
 .mscreen-countdown [data-sv][hidden] { display: none !important; }
 .mscreen-countdown p, .mscreen-countdown h2, .mscreen-countdown figure, .mscreen-countdown ul, .mscreen-countdown ol { margin: 0; }
@@ -277,7 +275,6 @@
   box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .06), 0 40px 80px -40px rgba(0, 0, 0, .8);
   container-type: inline-size; transform-origin: 50% 50%;
 }
-:root[data-variant="reference"] .mscreen-countdown .ccf-card { background: linear-gradient(180deg, #22090B 0 50%, #16090B 50% 100%); }
 .mscreen-countdown .ccf-card::after { content: ""; position: absolute; left: 0; right: 0; top: calc(50% - 5px); height: 10px; background: rgba(0, 0, 0, .55); }
 .mscreen-countdown .ccf-card::before { content: ""; position: absolute; top: calc(50% - 22px); width: 18px; height: 44px; border-radius: 6px; background: rgba(255, 255, 255, .14); left: 18px; box-shadow: calc(100cqi - 54px) 0 0 rgba(255, 255, 255, .14); z-index: 1; }
 .mscreen-countdown .ccf-d {
@@ -286,7 +283,6 @@
   color: #F5F3EF;
 }
 .mscreen-countdown .cdn:is([data-state="urgent"], [data-state="up"]) .ccf-d { color: #FF3B2E; }
-:root[data-variant="reference"] .mscreen-countdown .ccf-d { font-size: 118cqi; }
 .mscreen-countdown .ccf-bar { display: grid; grid-template-columns: repeat(20, 1fr); gap: 10px; height: 72px; }
 .mscreen-countdown .ccf-bar i { display: block; border-radius: 10px; background: var(--ink-1); transition: opacity .3s ease, transform .3s ease; }
 .mscreen-countdown .ccf-bar i.is-hot { background: var(--strike); }
@@ -349,7 +345,6 @@
 .mscreen-countdown .cca-list { display: flex; flex-direction: column; gap: var(--ms-item-gap); }
 .mscreen-countdown .cca-list li { display: flex; align-items: center; gap: 20px; font-size: 44px; line-height: 1.15; font-weight: var(--w-strong); }
 .mscreen-countdown .cca-list li > [data-lucide] { font-size: 48px; color: var(--strike); }
-:root[data-variant="reference"] .mscreen-countdown .cca-list li { font-size: 40px; }
 .mscreen-countdown .cdn:is([data-state="hit"], [data-state="up"]) .cca-list { opacity: .4; }
 
 /* Photo: a real strike, the call over it */

@@ -89,11 +89,3 @@
 .s-clips .v-e .rp-e-bar .rp-ava { width: 70px; height: 70px; }
 .s-clips .v-e .rp-e-col.is-top .rp-e-bar { background: var(--strike); box-shadow: var(--strike-glow); }
 .s-clips .v-e .rp-e-col .rp-name { max-width: 100%; margin-top: 2px; }
-
-/* ---------------------------------------------------------------- Reference: the Photo cards in the frame's card */
-:root[data-variant="reference"] .s-clips .rp-a-card { background: var(--ref-card); border: 2px solid rgba(235, 17, 16, .3); border-radius: 24px; box-shadow: none; padding: 16px; grid-template-rows: 140px auto; }
-:root[data-variant="reference"] .s-clips .rp-a-shot { height: 140px; border-radius: 12px; }
-:root[data-variant="reference"] .s-clips .rp-name { font: 700 32px/1.26 "Sora", sans-serif; }
-:root[data-variant="reference"] .s-clips .rp-score { font-family: "Archivo Black", sans-serif; font-weight: 400; letter-spacing: 0; text-shadow: none; }
-:root[data-variant="reference"] .s-clips .v-a .rp-score { --top: 40px; padding: 20px 8px 4px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 16px) / (var(--chars) * var(--num-w)))); }
-:root[data-variant="reference"] .s-clips .rp-chip { font: 700 32px/1 "Sora", sans-serif; text-transform: none; letter-spacing: 0; border-radius: 12px; }

@@ -6,27 +6,3 @@
      or quarters, never a card sized by its own content next to one sized by the row.
    - One card: the surface radius (--r), one inner padding (--card-pad), one border, no card inside a card. */
 #screen { --pad: calc(88px * var(--space)); }
-:root[data-variant="reference"] #screen { --pad: 88px; }
-
-/* Reference drew its rank and stat cards to hug their text (justify-self: start), so the two cards in a row came out
-   344, 374 and 406 px wide and none of them met the right margin. Every card now fills its column. */
-:root[data-variant="reference"] #screen .card { justify-self: stretch; }
-
-/* Reference ran taller than the glass (fit 0.90, so every margin shrank to 57 px). The two drawn frames that did it
-   take the Arena proportions: the player 16:9 and the fight photo 920:420, so the frame fits at full size. */
-:root[data-variant="reference"] #screen .player { height: auto; aspect-ratio: 16 / 9; }
-:root[data-variant="reference"] #screen .boxer { height: auto; aspect-ratio: 920 / 420; }
-
-/* Reference, one card: the frame boxed its score in 56 px, its stats in 48 and its ranks in 40, rounded them 32, 24
-   and 16, and spaced its titles 32 or 24. Every box now takes the ranks' 40 and the cards' 24, every title 24. */
-:root[data-variant="reference"] #screen .s-hero .v-a { padding: var(--card-pad); border-radius: 24px; container-type: inline-size; }
-/* the frame set the score at a fixed 160 px, which ran past the card once the card kept the margins; it now takes
-   the big-number rule every other score uses, capped at the frame's 160 */
-:root[data-variant="reference"] #screen .hero-score { font-size: min(160px, calc(100cqi / (var(--score-chars, 9.8) * var(--num-w)))); }
-:root[data-variant="reference"] #screen .stat { padding: var(--card-pad); gap: 16px; }
-:root[data-variant="reference"] #screen .thumb,
-:root[data-variant="reference"] #screen .s-sponsor .v-a { border-radius: 24px; }
-:root[data-variant="reference"] #screen .s-title { margin-bottom: 24px; }
-/* the rank figures keep to the card padding: 23,400 at the frame's 64 px ran 10 px into it in a 436 px card */
-:root[data-variant="reference"] #screen .rank > div { container-type: inline-size; }
-:root[data-variant="reference"] #screen .rank .v { line-height: 1.1; font-size: min(64px, calc(100cqi / 3.8)); }
