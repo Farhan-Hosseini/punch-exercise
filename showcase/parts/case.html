@@ -126,6 +126,57 @@
           </ol>
         </div>
 
+        <figure class="cs-wrap cs-heights cs-rise" data-rise aria-labelledby="csHeightsTitle">
+          <figcaption class="cs-heights-cap">
+            <h3 class="cs-h4" id="csHeightsTitle">Where everyone stands.</h3>
+            <p>Adults in the Emirates average about 170 cm for men and about 157 cm for women, and the Mall draws from everywhere. Eye level sits roughly a hand below the top of the head, so those two averages put almost every reader's eyes between <b>1.31 m and 1.78 m</b>. That band, not the middle of the panel, is where the replay goes.</p>
+          </figcaption>
+
+          <svg class="cs-heights-svg" viewBox="0 0 920 430" role="img" aria-labelledby="csHeightsAlt">
+            <title id="csHeightsAlt">A height chart: average adult heights in the Emirates against the band of glass each viewer can read. Women average 157 cm with eye level near 146 cm, men average 170 cm with eye level near 159 cm, and the design serves 150 cm to 190 cm. The replay sits between 1.31 m and 1.78 m, the score plate above 1.80 m, and the code near 1.16 m.</title>
+
+            <!-- the scale -->
+            <g class="hx-axis">
+              <line x1="70" y1="380" x2="880" y2="380"/>
+              <g class="hx-tick"><line x1="70" y1="123" x2="880" y2="123"/><text x="62" y="127">150</text></g>
+              <g class="hx-tick"><line x1="70" y1="54"  x2="880" y2="54"/><text x="62" y="58">190</text></g>
+              <text class="hx-unit" x="62" y="384">0 cm</text>
+            </g>
+
+            <!-- the span the design has to serve -->
+            <rect class="hx-serve" x="70" y="54" width="810" height="69" rx="4"/>
+            <text class="hx-serve-t" x="86" y="46">the span it has to serve, 150 to 190 cm</text>
+
+            <!-- two averages, drawn as the people they are -->
+            <g class="hx-person" transform="translate(150,0)">
+              <rect class="hx-body" x="-30" y="111" width="60" height="269" rx="8"/>
+              <circle class="hx-eye" cx="0" cy="130" r="9"/>
+              <line class="hx-eyeline" x1="0" y1="130" x2="600" y2="130"/>
+              <text class="hx-h" x="0" y="100">157 cm</text>
+              <text class="hx-l" x="0" y="404">women, average</text>
+            </g>
+            <g class="hx-person" transform="translate(300,0)">
+              <rect class="hx-body" x="-30" y="89" width="60" height="291" rx="8"/>
+              <circle class="hx-eye" cx="0" cy="107" r="9"/>
+              <line class="hx-eyeline" x1="0" y1="107" x2="450" y2="107"/>
+              <text class="hx-h" x="0" y="78">170 cm</text>
+              <text class="hx-l" x="0" y="404">men, average</text>
+            </g>
+
+            <!-- the glass, and what each band carries -->
+            <g class="hx-glass" transform="translate(760,0)">
+              <rect class="hx-col" x="-46" y="37" width="92" height="257" rx="6"/>
+              <rect class="hx-band hx-band-score" x="-46" y="37"  width="92" height="34"/>
+              <rect class="hx-band hx-band-replay" x="-46" y="75"  width="92" height="80"/>
+              <rect class="hx-band hx-band-code"  x="-46" y="159" width="92" height="43"/>
+              <text class="hx-band-t" x="60" y="58">score, over every head</text>
+              <text class="hx-band-t" x="60" y="119">the replay, at eye level</text>
+              <text class="hx-band-t" x="60" y="185">the code, at chest height</text>
+              <text class="hx-glass-l" x="0" y="404">the glass</text>
+            </g>
+          </svg>
+        </figure>
+
         <figure class="cs-diagram cs-diagram-light cs-rise" data-rise aria-labelledby="csGeoTitle">
           <figcaption class="cs-wrap cs-diagram-cap">
             <h3 class="cs-h4" id="csGeoTitle">Where everyone stands.</h3>
@@ -227,10 +278,16 @@
           <p class="cs-bignum-n cs-rise" data-rise><span data-count-to="67" data-count-live="designs">67</span></p>
           <div class="cs-bignum-copy cs-rise" data-rise style="--d: 1">
             <p>designs on the glass. Every section keeps five or more and pages through its own while the rest of the screen stays put.</p>
-            <button class="cs-btn" type="button" data-go-mode="machine">
-              <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-rectangle-vertical"/></svg>
-              Page through them
-            </button>
+            <span class="cs-actions">
+              <button class="cs-btn" type="button" data-go-mode="machine">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-rectangle-vertical"/></svg>
+                Page through them
+              </button>
+              <a class="cs-btn cs-btn-ghost cs-btn-figma" href="https://www.figma.com/design/j1cOyUKz9Gys3njKSUve6L?node-id=1-5" target="_blank" rel="noopener">
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M8.5 2h3.5v5H8.5a2.5 2.5 0 0 1 0-5Z"/><path d="M12 2h3.5a2.5 2.5 0 0 1 0 5H12V2Z"/><path d="M12 7h3.5a2.5 2.5 0 0 1 0 5H12V7Z"/><path d="M8.5 7H12v5H8.5a2.5 2.5 0 0 1 0-5Z"/><path d="M8.5 12H12v2.5A2.5 2.5 0 1 1 8.5 12Z"/></svg>
+                See them in Figma
+              </a>
+            </span>
           </div>
         </div>
       </section>
@@ -381,7 +438,12 @@
             <div class="cs-rise" data-rise><dt>Sections variants</dt><dd><b>52 sets, 255 variants.</b> The same for the phone.</dd></div>
           </dl>
           <p class="cs-file-note cs-rise" data-rise>A screen is a stack of instances, so a section changed in its set changes on every screen carrying it. The showcase runs on the same rule.</p>
-          <p class="cs-file-note cs-rise" data-rise><a class="cs-link" href="https://www.figma.com/design/j1cOyUKz9Gys3njKSUve6L" target="_blank" rel="noopener">Open the file in Figma</a></p>
+          <p class="cs-actions cs-rise" data-rise>
+            <a class="cs-btn cs-btn-figma" href="https://www.figma.com/design/j1cOyUKz9Gys3njKSUve6L" target="_blank" rel="noopener">
+              <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M8.5 2h3.5v5H8.5a2.5 2.5 0 0 1 0-5Z"/><path d="M12 2h3.5a2.5 2.5 0 0 1 0 5H12V2Z"/><path d="M12 7h3.5a2.5 2.5 0 0 1 0 5H12V7Z"/><path d="M8.5 7H12v5H8.5a2.5 2.5 0 0 1 0-5Z"/><path d="M8.5 12H12v2.5A2.5 2.5 0 1 1 8.5 12Z"/></svg>
+              Open the file in Figma
+            </a>
+          </p>
         </div>
       </section>
 
@@ -415,14 +477,6 @@
           </ul>
         </div>
 
-        <div class="cs-wrap cs-validate">
-          <h3 class="cs-h3 cs-rise" data-rise>What I would put to real players.</h3>
-          <p class="cs-highlight cs-highlight-q" data-highlight>
-            <span>Can the queue read who beat whom?</span>
-            <span>Does the code scan in glare from a step back?</span>
-            <span>Does the striker look up in time for the landing?</span>
-          </p>
-        </div>
       </section>
 
       <!-- ============ how AI was used -->
