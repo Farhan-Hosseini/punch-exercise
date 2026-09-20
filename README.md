@@ -27,7 +27,7 @@ in front of you, and the choice survives a reload.
 |---|---|
 | `showcase/` | The whole thing: the machine screens (`mscreens/`), the phone pages (`mpages/`), the result screen's sections (`sections/`), the design system, the brief and the case study. Plain HTML, CSS and ES modules, no framework. |
 | `deliverables/` | What gets handed over: the two motion clips, their posters and GIFs, and the notes. |
-| `tools/` | The harness. Headless Chrome over raw CDP: screen shooters, the two clip recorders, the checkers, and the Figma pipeline. |
+| `tools/` | The harness. Headless Chrome over raw CDP: screen shooters, the two clip recorders, and verification checkers. |
 | `docs/` | The strategy and the build briefs the work was planned from. |
 | `build/` | Intermediate renders and verification output. Not in the repository; the tools rebuild it. |
 
@@ -42,12 +42,9 @@ is exactly what the screens play. Every Web Animation and every video is paused 
   `tools/record-run.mjs`, cut by `tools/run-cut.mjs`. The app plays the run itself; the recorder only starts the
   scan, taps the link and brings the strike forward, because a real turn waits five to twelve seconds for one.
 
-## The Figma file
+## Design system
 
-The same two surfaces are built natively in Figma, every layer a frame, text or vector and not one screenshot:
-37 component sets and 175 variants for the machine, 52 and 255 for the phone, with colour bound to variables in four
-modes. `tools/figma-native/` is the pipeline that builds it from the running showcase: serialize the DOM, tidy it
-into auto layout, pack it into carriers, render it in Figma, then check it three ways.
+The design system is captured as live HTML and CSS. Every screen uses a shared library of sections, each with multiple design variants that can be switched in real time.
 
 ## Placeholder material
 
