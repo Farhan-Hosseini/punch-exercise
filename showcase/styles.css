@@ -834,7 +834,8 @@ input[type="range"]:focus-visible { outline: 2px solid var(--panel-ink); outline
 
 /* ?embed=phone: this same page as the handset alone, for the case study's hero. Nothing but the phone draws, and
    mobile.js fits it to the frame that holds it. */
-:root[data-embed="phone"] body { min-height: 0; overflow: hidden; background: transparent; }
+/* the root paints the stage base for the site; in the hero the handset stands on the glow, so nothing behind it */
+:root[data-embed="phone"], :root[data-embed="phone"] body { min-height: 0; overflow: hidden; background: transparent; }
 :root[data-embed="phone"] .topbar, :root[data-embed="phone"] .loader, :root[data-embed="phone"] .mpagebar,
 :root[data-embed="phone"] .pagebar, :root[data-embed="phone"] .pagenav, :root[data-embed="phone"] .custom,
 :root[data-embed="phone"] .custom-scrim, :root[data-embed="phone"] .panel-veil, :root[data-embed="phone"] .brief,

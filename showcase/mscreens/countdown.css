@@ -226,6 +226,8 @@
 .mscreen-countdown .cdn[data-state="hit"] .ccr-num { color: var(--strike); }
 /* about four screen pixels under the count at reading size, six or seven on the glass */
 .mscreen-countdown .cdn[data-state="hit"] { --cdn-hit-k: .985; }
+/* and the word under it, landed / strike landed, a size down too */
+.mscreen-countdown .cdn[data-state="hit"] :is(.ccr-unit, .ccc-unit, .ccl-unit, .ccg-unit) { font-size: 42px; }
 
 /* Column: twenty cells stacked as the machine's own strength column, draining from the top */
 .mscreen-countdown .ccn-col { flex-direction: row; align-items: stretch; justify-content: flex-start; gap: 64px; padding: 24px 0; }

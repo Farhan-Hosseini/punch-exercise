@@ -38,11 +38,11 @@ const DUR = (Math.round(B.end * FPS) + 1) / FPS
 /* ------------------------------------------------------------ the beats, and where the close-up looks on the glass */
 // y is the top of a 1080 x 1080 window on the 1080 x 3840 glass
 const BEATS = [
-  { at: 0, name: 'Punch now', line: 'The last seconds of the count. The glass is the only clock, and it speeds up as the time drains.', y: 1260 },
+  { at: 0, name: 'Punch now', line: 'The count runs down. The panel is the only clock, and it speeds up as the time drains.', y: 1260 },
   { at: B.strike, name: 'The strike', line: 'The count breaks the moment the bag moves. The ring flashes and the call changes to Great punch.', y: 1260 },
   { at: B.reading, name: 'Reading the strike', line: 'No number yet. One line draws the strike as the sensor felt it, so the wait reads as work.', y: 940 },
   { at: B.record, name: 'New record', line: 'The name at the top flaps over from Omar Nasser to Sara, and the machine best rolls up to her number.', y: 460 },
-  { at: B.score, name: 'Big score', line: 'The number again, as wide as the glass and whose hit it is, for the back of the queue.', y: 540 },
+  { at: B.score, name: 'Big score', line: 'The number again, as wide as the panel and whose hit it is, for the back of the queue.', y: 540 },
   { at: B.why, name: 'Why it counts', line: 'One reason to care, and only one: this hit took today’s crown from Hamad.', y: 1700 },
   { at: B.photo, name: 'The still', line: 'Then the strike itself, a still from Sara’s own shoot, so the number has a face.', y: 2580 },
 ]
@@ -88,10 +88,10 @@ li.now::before { content: ""; position: absolute; left: -26px; top: 50%; width: 
 <div class="col">
   <p class="k">The motion deliverable</p>
   <h1>The score reveal</h1>
-  <p class="sub">Recorded frame by frame from the live glass in the showcase, with the designs chosen by default.</p>
+  <p class="sub">Recorded frame by frame from the live Punch Machine in the showcase, with the designs chosen by default.</p>
   <ol>${BEATS.map((b, i) => `<li class="${i === k ? 'now' : i < k ? 'done' : ''}"><b>${secs(b.at)}</b><span>${b.name}</span></li>`).join('')}</ol>
   <p class="say">${quiet ? '' : BEATS[k].line}</p>
-  <p class="foot">Left, the whole glass. Right, the beat up close.</p>
+  <p class="foot">Left, the whole panel. Right, the beat up close.</p>
 </div>
 </body></html>`
 

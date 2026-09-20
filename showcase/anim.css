@@ -59,18 +59,6 @@
 .anim-piece:has(.anim-phone) .anim-fig-master { width: calc((100cqw - 40px) * .2103); }
 .anim-glass, .anim-phone { justify-self: start; overflow: hidden; background: #060606; }
 .anim-glass { height: calc((100cqw - 40px) * .4857); aspect-ratio: 1080 / 3840; border-radius: 8px; box-shadow: 0 0 0 5px var(--bezel, #1B1A19), 0 0 0 6px color-mix(in oklab, var(--shell-ink) 12%, transparent); }
-/* the machine piece follows the phone piece above it: words on top, then a clips row with the panel on the left
-   at a third of its size and the beats on the right, where the phone piece has its presentation cut */
-.anim-piece-tall .anim-clips { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
-.anim-fig-tall { width: clamp(300px, calc(100cqw * .3), 360px); }
-.anim-fig-tall .anim-glass { width: 100%; height: auto; }
-.anim-beats-col { display: grid; gap: 24px; align-content: start; min-width: 0; padding-top: 4px; }
-/* what happens, in order, beside the clip rather than burnt into it */
-.anim-beats { margin: 0; display: grid; gap: 20px; max-width: 64ch; }
-.anim-beats > div { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 4px 24px; align-items: baseline; }
-.anim-beats dt { font: 800 20px/1.1 "Big Shoulders Display", "Arial Narrow", sans-serif; text-transform: uppercase; letter-spacing: .01em; }
-.anim-beats dd { margin: 0; font: 500 14px/1.5 "Barlow", system-ui, sans-serif; color: var(--shell-mute); text-wrap: pretty; }
-.anim-fig-tall .anim-glass { width: 100%; height: auto; }
 
 /* the phone clip carries the handset itself, so it needs no bezel drawn around it: only the corners cut back to the
    device's own radius, 74 of its 464 px */
@@ -105,9 +93,6 @@
 @container (max-width: 760px) {
   .anim-clips { grid-template-columns: minmax(0, 1fr); }
   .anim-fig-master { display: none; }
-  .anim-piece-tall .anim-clips { grid-template-columns: minmax(0, 1fr); }
-  .anim-beats > div { grid-template-columns: minmax(0, 1fr); }
-  .anim-fig-tall { width: min(100%, 320px); justify-self: center; }
   .anim-old { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 

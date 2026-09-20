@@ -32,9 +32,11 @@ if (opt('face')) {
 }
 if (opt('mscreen')) { await js(`window.showcase.mscreen('${opt('mscreen')}'); 1`); await sleep(2500) }
 if (opt('page')) { await js(`window.punchApp.go('${opt('page')}'); 1`); await sleep(1800) }
+// jsb64=<base64 of an expression> runs it in the page before the shot, for states no route reaches
+if (opt('jsb64')) { await js(Buffer.from(opt('jsb64'), 'base64').toString('utf8')); await sleep(Number(opt('wait') || 1500)) }
 const b = JSON.parse(await js(`JSON.stringify((() => { const el = document.querySelector('${SEL.replace(/'/g, "\\'")}'); if (!el) return null; el.scrollIntoView({ block: 'start' }); const r = el.getBoundingClientRect(); return { x: Math.max(0, Math.round(r.left) - 8), y: Math.max(0, Math.round(r.top + scrollY) - 8), width: Math.round(r.width) + 16, height: Math.round(r.height) + 16 } })())`) || 'null')
 if (!b) { console.log('not found:', SEL); ws.close(); chrome.kill(); process.exit(1) }
-await sleep(600)
+await sleep(opt('wait') ? 80 : 600)
 const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { ...b, scale: SCALE } })
 if (!shot.result) { console.log('capture failed', JSON.stringify(shot).slice(0, 200)); ws.close(); chrome.kill(); process.exit(1) }
 await writeFile(OUT, Buffer.from(shot.result.data, 'base64'))

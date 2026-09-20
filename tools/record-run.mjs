@@ -134,8 +134,14 @@ try {
   console.log('phone', JSON.stringify(box))
   if (!box.shim) throw new Error('the virtual clock did not load')
   if (!Number(box.credits)) throw new Error('the wallet is empty: the run would go to Buy credit instead of the pad')
+  // the handset moves during the run (the page bar above it changes height with the page), so the box is measured
+  // again before every frame rather than once: a fixed box let the phone slide down and the page show above it
   const clip = { x: box.x, y: box.y, width: box.w, height: box.h, scale: SCALE }
-  const shoot = async () => Buffer.from((await send('Page.captureScreenshot', { format: 'png', clip, captureBeyondViewport: true, optimizeForSpeed: true })).data, 'base64')
+  const track = async () => {
+    const r = await ev(`(() => { const r = document.getElementById('device').getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY } })()`)
+    clip.x = r.x; clip.y = r.y
+  }
+  const shoot = async () => { await track(); return Buffer.from((await send('Page.captureScreenshot', { format: 'png', clip, captureBeyondViewport: true, optimizeForSpeed: true })).data, 'base64') }
 
   await ev('window.__vt.freeze()')
   const DT = 1000 / FPS
