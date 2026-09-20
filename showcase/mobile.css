@@ -179,7 +179,7 @@
   --m-w-label-hi: 700;
   --m-track-label: .16em;
   /* layout */
-  --m-gut: 22px;
+  --m-gut: 24px;
   --m-top: 58px;
   --m-bottom: 44px;
   /* clip, not hidden: nothing, not even a focused control, can scroll the screen itself */

@@ -46,7 +46,7 @@
    get the light; the light looks get a warm red wash inside the bar and no halo, so a pale page never carries a neon
    blob. The light slides from tab to tab on --nav-i, and holds still under reduced motion. */
 .m-app[data-nav="glow"] {
-  --m-nav-top: calc(var(--m-nav-safe) + 58px); --m-nav-rise: 24px; --m-nav-gap: 14px;
+  --m-nav-top: calc(var(--m-nav-safe) + 58px); --m-nav-rise: 24px; --m-nav-gap: 16px;
   --gl-bar: var(--m-sheet);
   --gl-core: color-mix(in srgb, var(--m-red) 56%, transparent);
   --gl-halo: color-mix(in srgb, var(--m-red) 34%, transparent);
@@ -117,7 +117,7 @@
 /* ------------------------------------------------------------ Tab bar: a full-width bar on the bottom edge, every tab labelled.
    The current tab gets a tinted capsule behind its icon that grows out from the middle, and its label turns bold.
    The fist sits on a hump in the bar, its label on the same line as the others. */
-.m-app[data-nav="bar"] { --m-nav-top: calc(var(--m-nav-safe) + 54px); --m-nav-rise: 29px; --m-nav-gap: 14px; }
+.m-app[data-nav="bar"] { --m-nav-top: calc(var(--m-nav-safe) + 54px); --m-nav-rise: 29px; --m-nav-gap: 16px; }
 .m-app[data-nav="bar"] .m-nav {
   left: 0; right: 0; bottom: 0; height: var(--m-nav-top);
   align-items: start; padding: 4px 8px 0;
@@ -172,7 +172,7 @@
 /* ------------------------------------------------------------ Dock: a floating dock; the current tab opens into a labelled pill.
    The logo is held dead centre as the dock's own icon, a little larger than the line icons: each half of the dock keeps
    the same width whichever tab is open, so the pill grows inside its own half and nothing on the other side moves. */
-.m-app[data-nav="dock"] { --m-nav-top: calc(var(--m-nav-safe) + 60px); --m-nav-rise: 0px; --m-nav-gap: 14px; }
+.m-app[data-nav="dock"] { --m-nav-top: calc(var(--m-nav-safe) + 60px); --m-nav-rise: 0px; --m-nav-gap: 16px; }
 .m-app[data-nav="dock"] .m-nav {
   --q: calc(25% - 18px);  /* a closed tab when its half has none open */
   --c: 36px;              /* a closed tab beside the open one: its icon with 6 px either side */
@@ -232,7 +232,7 @@
 
 /* ------------------------------------------------------------ Notch: a bar with a cradle cut out of its edge; the logo floats in it.
    Icons only at rest; the current tab lifts its icon and names itself underneath. */
-.m-app[data-nav="notch"] { --m-nav-top: calc(var(--m-nav-safe) + 56px); --m-nav-rise: 26px; --m-nav-gap: 14px; }
+.m-app[data-nav="notch"] { --m-nav-top: calc(var(--m-nav-safe) + 56px); --m-nav-rise: 26px; --m-nav-gap: 16px; }
 .m-app[data-nav="notch"] .m-nav {
   left: 0; right: 0; bottom: 0; height: var(--m-nav-top);
   align-items: start; padding: 6px 10px 0;
@@ -273,7 +273,7 @@
 
 /* ------------------------------------------------------------ Minimal: no container, labels in small caps, one red line slides to the current tab.
    The logo keeps its red as the brand's mark, but its label reads like every other tab: only the line and full ink say current. */
-.m-app[data-nav="line"] { --m-nav-top: calc(var(--m-nav-safe) + 56px); --m-nav-rise: 0px; --m-nav-gap: 14px; }
+.m-app[data-nav="line"] { --m-nav-top: calc(var(--m-nav-safe) + 56px); --m-nav-rise: 0px; --m-nav-gap: 16px; }
 .m-app[data-nav="line"] .m-nav { left: 12px; right: 12px; height: 56px; bottom: var(--m-nav-safe); align-items: end; }
 .m-app[data-nav="line"] .m-nav-bar {
   border-radius: 0; border: 0; background: none; box-shadow: inset 0 1px 0 var(--m-line);

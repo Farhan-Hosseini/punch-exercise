@@ -3,7 +3,7 @@
 #   python ../tools/check-spacing.py --apply   snap them to the nearest step
 # The scale is defined as --s-* tokens on :root in styles.css and drawn on the Design system page.
 import re, glob, sys, io, collections
-SCALE = [2,4,6,8,10,12,16,20,24,28,32,36,40,48,56,64,72,80,96,112,128,160,192]
+SCALE = [2, 4, 6, 8, 10, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 144, 160, 176, 192]
 def snap(x):
     if x in SCALE: return x
     if x <= 1: return x                       # hairlines stay

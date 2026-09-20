@@ -46,13 +46,15 @@
   --gap-live: calc(64px * var(--space));
 
   /* The spacing scale. Every margin, padding and gap in this showcase is one of these steps: 2 to 12 in twos,
-     then fours to 24, then eights. A value that is not on the scale is a bug, not a decision — the design
+     fours to 48, then eights. A value that is not on the scale is a bug, not a decision — the design
      system page draws the whole ladder, and tools/check-spacing.py is the check that keeps it honest. */
-  --s-2: 2px;    --s-4: 4px;    --s-6: 6px;    --s-8: 8px;
+  --s-2: 2px;  --s-4: 4px;  --s-6: 6px;  --s-8: 8px;
   --s-10: 10px;  --s-12: 12px;  --s-16: 16px;  --s-20: 20px;
   --s-24: 24px;  --s-28: 28px;  --s-32: 32px;  --s-36: 36px;
   --s-40: 40px;  --s-48: 48px;  --s-56: 56px;  --s-64: 64px;
-  --s-72: 72px;  --s-80: 80px;  --s-96: 96px;  --s-112: 112px;  --s-128: 128px;
+  --s-72: 72px;  --s-80: 80px;  --s-88: 88px;  --s-96: 96px;
+  --s-104: 104px;  --s-112: 112px;  --s-120: 120px;  --s-128: 128px;
+  --s-144: 144px;  --s-160: 160px;  --s-176: 176px;  --s-192: 192px;
 
   /* type. Big numbers: font-size: min(calc(CAP_PX / var(--cap)), calc(100cqi / (CHARS * var(--num-w)))) */
   --f-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
