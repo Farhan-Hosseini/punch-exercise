@@ -49,7 +49,7 @@
       const beat = 0.6 * Math.pow(Math.min(1, Math.max(0, 1 - s / 1000000)), 3)
       const city = Math.min(1204, Math.max(machine, Math.round(1204 * beat)))
       const country = Math.min(8930, Math.max(city, Math.round(8930 * beat)))
-      const global = Math.min(412660, Math.max(country, Math.round(412660 * beat)))
+      const global = Math.min(63123, Math.max(country, Math.round(63123 * beat)))
       return { machine, city, country, global }
     },
     // a player's score with stable decimals derived from their name, for example data that only has whole points

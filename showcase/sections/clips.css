@@ -8,7 +8,7 @@
 .s-clips :is(ol, p, figure) { margin: 0; padding: 0; }
 .s-clips ol { list-style: none; }
 /* the pieces every design uses */
-.s-clips .rp-ava { display: block; flex: none; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; background: var(--badge); }
+.s-clips .rp-ava { display: block; flex: none; width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background: var(--badge); }
 .s-clips .rp-who { display: grid; gap: 8px; min-width: 0; }
 .s-clips .rp-name { min-width: 0; font-weight: var(--w-strong); line-height: 1.1; color: var(--ink-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* when, in the label face but as said ("2 min ago"): sentence case and untracked, so it stays short beside a score */
@@ -38,12 +38,12 @@
 .s-clips .v-a .rp-score { --top: 40px; padding: 20px 24px 24px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 64px) / (var(--chars) * var(--num-w)))); }
 
 /* B  List: the three latest as rows, the face, the name over when, the score standing on the right */
-.s-clips .v-b .rp-b { display: grid; gap: 12px; }
+.s-clips .v-b .rp-b { display: grid; gap: 16px; }
 .s-clips .v-b .rp-b-row {
-  display: grid; grid-template-columns: 64px minmax(0, 1fr) 330px; align-items: center; column-gap: 24px;
-  height: 80px; padding: 0 40px 0 12px; container-type: inline-size;
+  display: grid; grid-template-columns: 72px minmax(0, 1fr) 290px; align-items: center; column-gap: 28px;
+  height: 104px; padding: 0 40px 0 16px; container-type: inline-size;
 }
-.s-clips .v-b .rp-b-row .rp-who { gap: 6px; }
+.s-clips .v-b .rp-b-row .rp-who { gap: 8px; }
 .s-clips .v-b .rp-b-row .rp-score { --top: 50px; justify-self: end; font-size: min(calc(var(--top) / var(--cap)), calc(290px / (var(--chars) * var(--num-w)))); }
 
 /* C  Latest first: the newest punch as a photo on half the row, the three before it as rows beside it */

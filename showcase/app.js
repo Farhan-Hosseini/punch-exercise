@@ -323,18 +323,20 @@
     const txt = (k) => '#' + r[k].toLocaleString('en-US')
     // a rank runs from one character to twelve. Every design sizes its number to fit a fixed character count,
     // so the count has to travel with the number, or a weak punch overflows the card and the digits clip.
+    // the four cards read as one row, so they take one size: the longest rank sets it for all of them, or the
+    // global rank ends up visibly smaller than the machine rank beside it
+    const longest = Math.max(...['machine', 'city', 'country', 'global'].map((k) => txt(k).length))
     document.querySelectorAll('[data-glass-rank]').forEach((el) => {
-      const t = txt(el.dataset.glassRank)
-      el.textContent = t
+      el.textContent = txt(el.dataset.glassRank)
       // Card grid puts the number in a span inside the sized <p>, and custom properties only inherit downward,
       // so the count goes on the parent too or that design never sees it
-      el.style.setProperty('--rank-chars', t.length)
-      if (el.parentElement) el.parentElement.style.setProperty('--rank-chars', t.length)
+      el.style.setProperty('--rank-chars', longest)
+      if (el.parentElement) el.parentElement.style.setProperty('--rank-chars', longest)
     })
     document.querySelectorAll('[data-glass-rank-tiles]').forEach((el) => {
       const t = txt(el.dataset.glassRankTiles)
       el.setAttribute('aria-label', t)
-      el.style.setProperty('--rank-chars', t.length)
+      el.style.setProperty('--rank-chars', longest)
       el.innerHTML = '<span class="ranks-d-hash">#</span>' + [...t.slice(1)].map((c) => (c === ',' ? '<span class="ranks-d-sep">,</span>' : `<span class="ranks-d-tile">${c}</span>`)).join('')
     })
   }
