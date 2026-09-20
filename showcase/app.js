@@ -321,10 +321,20 @@
     if (!window.PunchFormat || !window.PunchFormat.ranks) return
     const r = window.PunchFormat.ranks(score)
     const txt = (k) => '#' + r[k].toLocaleString('en-US')
-    document.querySelectorAll('[data-glass-rank]').forEach((el) => { el.textContent = txt(el.dataset.glassRank) })
+    // a rank runs from one character to twelve. Every design sizes its number to fit a fixed character count,
+    // so the count has to travel with the number, or a weak punch overflows the card and the digits clip.
+    document.querySelectorAll('[data-glass-rank]').forEach((el) => {
+      const t = txt(el.dataset.glassRank)
+      el.textContent = t
+      // Card grid puts the number in a span inside the sized <p>, and custom properties only inherit downward,
+      // so the count goes on the parent too or that design never sees it
+      el.style.setProperty('--rank-chars', t.length)
+      if (el.parentElement) el.parentElement.style.setProperty('--rank-chars', t.length)
+    })
     document.querySelectorAll('[data-glass-rank-tiles]').forEach((el) => {
       const t = txt(el.dataset.glassRankTiles)
       el.setAttribute('aria-label', t)
+      el.style.setProperty('--rank-chars', t.length)
       el.innerHTML = '<span class="ranks-d-hash">#</span>' + [...t.slice(1)].map((c) => (c === ',' ? '<span class="ranks-d-sep">,</span>' : `<span class="ranks-d-tile">${c}</span>`)).join('')
     })
   }
