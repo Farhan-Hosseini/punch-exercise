@@ -19,15 +19,12 @@
       <li><a href="#ds-strike" data-ds-link>Strike in numbers</a></li>
       <li><a href="#ds-states" data-ds-link>Flow states</a></li>
       <li><a href="#ds-reel" data-ds-link>The reel</a></li>
-      <li><a href="#ds-loader" data-ds-link>Loader</a></li>
       <li><a href="#ds-components" data-ds-link>Components</a></li>
       <li><a href="#ds-flow" data-ds-link>Machine flow</a></li>
       <li><a href="#ds-logo" data-ds-link>Logo</a></li>
     </ul>
     <div class="ds-look">
-      <p class="ds-look-k">Drawn in</p>
-      <p class="ds-look-v" data-ds-look>Arena, Dark</p>
-      <button class="ds-look-btn" type="button" data-ds-custom>Change the look</button>
+      <button class="ds-look-btn" type="button" data-ds-custom>Open Customise</button>
     </div>
   </nav>
 
@@ -36,7 +33,7 @@
     <!-- ============ intro ============ -->
     <header class="ds-hero">
       <h1 class="ds-h1">One system. Two surfaces.</h1>
-      <p class="ds-lede">The tokens, type and parts shared by the machine's 1080&nbsp;×&nbsp;3840 glass and the player's phone. Every sample on this page is drawn by the live stylesheets, so it restyles itself when you change the theme or the appearance. Only the background stills are pictures, and they swap with the appearance.</p>
+      <p class="ds-lede">The tokens, type and parts shared by the machine's 1080&nbsp;×&nbsp;3840 glass and the player's phone. Every sample on this page is drawn by the live stylesheets, so it restyles itself when you change the appearance or the typeface. Only the background stills are pictures, and they swap with the appearance.</p>
       <dl class="ds-facts">
         <div><dt>Surfaces</dt><dd>Machine glass, 1080&nbsp;×&nbsp;3840 portrait. Phone, 440&nbsp;×&nbsp;956 on iPhone and 412&nbsp;×&nbsp;915 on Android. Both open at actual size.</dd></div>
         <div><dt>Faces</dt><dd data-ds-faces>Big Shoulders Display, Barlow and Barlow Condensed</dd></div>
@@ -209,7 +206,7 @@
     <section class="ds-sec" id="ds-type" aria-labelledby="dsh-type">
       <div class="ds-sec-head">
         <h2 class="ds-h2" id="dsh-type" tabindex="-1">Type</h2>
-        <p class="ds-sec-lede">Each theme gives the glass a display face, a text face and a label face, and the phone uses the same families at hand size. One rule keeps every big number inside its column.</p>
+        <p class="ds-sec-lede">Each typeface gives the glass a display face, a text face and a label face, and the phone uses the same families at hand size. One rule keeps every big number inside its column.</p>
       </div>
 
       <div class="ds-faces" data-ds-faces-grid>
@@ -669,7 +666,7 @@
         </article>
         <article class="ds-part">
           <p class="ds-k">Tinted by the look</p>
-          <p class="ds-p">The colour comes from the surface: its key light, its brand light and the red glow. Arena and Reference, dark and light each tint every look.</p>
+          <p class="ds-p">The colour comes from the surface: its key light, its brand light and the red glow. Dark and light each tint it.</p>
         </article>
         <article class="ds-part">
           <p class="ds-k">Calm by default</p>
@@ -997,7 +994,7 @@
             <li><button class="ds-path-s" type="button" data-go-mode="mobile" data-go-page="punch">Punch</button></li>
           </ol>
           <ul class="ds-state-rules">
-            <li>The link, the chosen logo and the machine by name: Dubai Mall, by the Ice Rink, Machine 07, with the credit held for this turn.</li>
+            <li>The link, the chosen logo and the machine by name: Dubai Mall, Grand Atrium, Machine 07, with the credit held for this turn.</li>
             <li>It goes on to Punch by itself after two and a half seconds, or at once on a tap, and a fill in Next step shows the wait.</li>
             <li>Cancel frees the machine and gives the credit back. Opened from the page bar it holds still, as a practice go that takes nothing.</li>
           </ul>
@@ -1091,41 +1088,6 @@
     </section>
 
     <!-- ============ the showcase's own loader (#loader in index.html, styles.css loader block) ============ -->
-    <section class="ds-sec" id="ds-loader" aria-labelledby="dsh-loader">
-      <div class="ds-sec-head">
-        <h2 class="ds-h2" id="dsh-loader" tabindex="-1">Loader</h2>
-        <p class="ds-sec-lede">The first thing the showcase shows is the lockup, a thin bar and one line of type. Nothing else. It used to be the strength tester in miniature, with a puck that climbed and a count that lit a digit at a time, which made the wait look like the thing the player came for and stole the score's one entrance. It draws in the look already chosen, before any script arrives.</p>
-      </div>
-      <div class="ds-panel ds-ldpanel">
-        <div class="ds-ldstage" data-ds-ld aria-hidden="true"></div>
-        <div class="ds-ldctl">
-          <div class="ds-ctl">
-            <label for="ds-ld-charge">Progress</label><output id="ds-ld-out" for="ds-ld-charge">Full</output>
-            <input type="range" id="ds-ld-charge" min="0" max="100" step="1" value="100" data-ds-ldrange>
-          </div>
-          <button class="ds-look-btn" type="button" data-ds-ldplay>Play a load</button>
-        </div>
-      </div>
-      <div class="ds-parts ds-parts-4">
-        <article class="ds-part">
-          <p class="ds-k">One value</p>
-          <p class="ds-p"><code>--lp</code> scales the bar and nothing else. A clock under the markup eases it toward the real progress app.js reports, so it never sits still and never runs ahead.</p>
-        </article>
-        <article class="ds-part">
-          <p class="ds-k">Nothing to decode</p>
-          <p class="ds-p">A bar says how far along in a glance, which is all a wait has to say. The mark holds the brand and the line says what is happening, in the label face the rest of the showcase uses.</p>
-        </article>
-        <article class="ds-part">
-          <p class="ds-k">Quiet while it shows</p>
-          <p class="ds-p">Focus stays put and a screen reader hears one polite line, then Ready. With reduced motion the bar is simply full and only its fade moves.</p>
-        </article>
-        <article class="ds-part">
-          <p class="ds-k">It cannot outstay</p>
-          <p class="ds-p">The bar is 320 px at most and never wider than the phone it is on. A CSS failsafe fades the whole screen at nine seconds, so a script that never arrives cannot hold the page.</p>
-        </article>
-      </div>
-    </section>
-
     <!-- ============ components ============ -->
     <section class="ds-sec" id="ds-components" aria-labelledby="dsh-components">
       <div class="ds-sec-head">

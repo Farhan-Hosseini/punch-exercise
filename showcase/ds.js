@@ -1256,7 +1256,7 @@
 
 
 /* Round seven on the design system page (parts/ds.html): the page bars in two steps with Customise's This screen under
-   them (#ds-pagebars), Your run (#ds-yourrun), the Big score (#ds-bigscore) and the showcase's own loader (#ds-loader).
+   them (#ds-pagebars), Your run (#ds-yourrun) and the Big score (#ds-bigscore).
    As before, everything is read from the showcase itself: the bars from the real page navs, the rows and picks from
    psec.js, the loader from its own markup, and each live glass is this page in ?embed=machine&follow=0. A pick here is
    the real choice, the same as its Customise row. */
@@ -1550,49 +1550,8 @@
     }
   }
 
-  /* ------------------------------------------------------------ the loader, drawn by its own markup and rules
-     Round eleven cut the strength tester: the lockup, one bar and one line, so --lp scales the bar and nothing else. */
-  function loader() {
-    const host = q('[data-ds-ld]'), range = q('[data-ds-ldrange]'), out = q('#ds-ld-out'), play = q('[data-ds-ldplay]')
-    const src = document.querySelector('#loader .ld')
-    if (!host || !src) return
-    const ld = src.cloneNode(true)
-    ld.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'))
-    host.replaceChildren(ld)
-    const note = ld.querySelector('.loader-note')
-    function set(c, done) {
-      host.style.setProperty('--lp', c.toFixed(4))
-      if (note) note.textContent = done ? 'Ready' : 'Loading the showcase'
-      const pct = Math.round(c * 100)
-      if (range) { range.value = String(pct); range.style.setProperty('--fill', `${pct}%`) }
-      if (out) out.textContent = done ? 'Full' : `${pct}%`
-    }
-    let raf = 0
-    set(1, true)
-    if (range) range.addEventListener('input', () => {
-      cancelAnimationFrame(raf)
-      const c = Number(range.value) / 100
-      set(c, c >= 1)
-    })
-    if (play) play.addEventListener('click', () => {
-      cancelAnimationFrame(raf)
-      if (reduced()) { set(1, true); return }
-      // a fast load as the real one plays it: the bar creeps toward most of its length while the page fetches, then
-      // runs out the rest once everything is in
-      const t0 = performance.now(), dur = 1100
-      const tick = (now) => {
-        const t = Math.min(1, (now - t0) / dur)
-        if (t >= 1) { set(1, false); raf = requestAnimationFrame(() => set(1, true)); return }
-        set(t < .7 ? .86 * (1 - Math.pow(1 - t / .7, 2)) : .86 + .14 * Math.pow((t - .7) / .3, 2), false)
-        raf = requestAnimationFrame(tick)
-      }
-      set(0, false)
-      raf = requestAnimationFrame(tick)
-    })
-  }
-
   /* ------------------------------------------------------------ start, once the other scripts have drawn the pages */
-  function start() { wireBars(); secBlocks(); lives(); loader() }
+  function start() { wireBars(); secBlocks(); lives() }
   if (document.readyState !== 'loading') setTimeout(start, 0)
   else document.addEventListener('DOMContentLoaded', () => setTimeout(start, 80))
   document.addEventListener('psec', syncSecPicks)
