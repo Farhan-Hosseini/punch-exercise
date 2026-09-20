@@ -37,35 +37,42 @@
 
     <div class="cs-page" id="case-top" tabindex="-1">
 
-      <!-- ============ hero: the name, and the pair it is about, big and centred on black -->
+      <!-- ============ hero: the file's own cover, rebuilt. Figma node 32:2171 — the byline, the mark, the name
+           set huge, the promise, and what is in the file, with the two surfaces layered on the red glow to the right.
+           The surfaces are shown as screens, not as devices: the cover has no bezels. -->
       <section class="cs-sec cs-dark cs-hero" data-ground="dark" aria-labelledby="caseTitle">
-        <div class="cs-hero-copy" data-hero-copy>
-          <p class="cs-hero-by cs-rise" data-rise>PunchApp &nbsp;·&nbsp; a Design Task for <img src="assets/brand/robotenc-light.svg" alt="Robotenc" width="102" height="29"></p>
-          <h1 id="caseTitle" class="cs-rise cs-hero-h1" data-rise style="--d: 1">A strike the whole queue can read.<br><span class="cs-hero-h1-soft">A hit the striker gets to keep.</span></h1>
-          <div class="cs-actions cs-rise" data-rise style="--d: 2">
-            <a class="cs-btn" href="#case-problem" data-case-jump>
-              Start with the problem
-              <svg class="cs-ico cs-btn-down" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-            </a>
+        <div class="cs-hero-grid">
+          <div class="cs-hero-copy" data-hero-copy>
+            <p class="cs-hero-by cs-rise" data-rise>A Design Task For <img src="assets/brand/robotenc-light.svg" alt="Robotenc" width="167" height="48"></p>
+            <p class="cs-hero-who cs-rise" data-rise><b>Farhan Hosseini</b><span>20 September 2026</span></p>
+            <img class="cs-hero-mark cs-rise" data-rise data-logo-img src="assets/logos/fist-circle.svg" alt="" width="104" height="103">
+            <h1 id="caseTitle" class="cs-hero-h1 cs-rise" data-rise style="--d: 1">PunchApp</h1>
+            <p class="cs-hero-tag cs-rise" data-rise style="--d: 2"><b>Ring the Bell:</b> Make your mark on the machine. Take the glory to your phone.</p>
+            <div class="cs-hero-contents cs-rise" data-rise style="--d: 3">
+              <p class="cs-hero-contents-l">In this file</p>
+              <ul class="cs-hero-pages">
+                <li>Design system</li><li>Components</li>
+                <li>Machine screens</li><li>Machine sections</li>
+                <li>Mobile app</li><li>Sections variants</li>
+              </ul>
+            </div>
+            <p class="cs-actions cs-rise" data-rise style="--d: 4">
+              <a class="cs-btn" href="#case-problem" data-case-jump>
+                Start with the problem
+                <svg class="cs-ico cs-btn-down" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+              </a>
+            </p>
+          </div>
+
+          <div class="cs-hero-stage" data-hero-stage aria-hidden="true">
+            <div class="cs-hero-glass" inert>
+              <iframe class="cs-embed" data-embed="hero" data-screen="default" title="" tabindex="-1"></iframe>
+            </div>
+            <div class="cs-hero-phone">
+              <img src="assets/case/screen-hit.webp" alt="" width="880" height="1912" decoding="async">
+            </div>
           </div>
         </div>
-
-        <figure class="cs-family" data-hero-stage>
-          <div class="cs-family-row">
-            <div class="cs-glass cs-glass-hero" inert>
-              <div class="cs-glass-screen">
-                <div class="cs-glass-idle" aria-hidden="true"></div>
-                <div class="cs-glass-zoom"><iframe class="cs-embed" data-embed="hero" data-screen="score" title="The machine glass, running live" tabindex="-1"></iframe></div>
-              </div>
-            </div>
-            <div class="cs-phone cs-phone-hero">
-              <div class="cs-phone-screen">
-                <img src="assets/case/screen-hit.webp" alt="The phone's Your hit screen: a score of 999,999.000, a Perfect punch, first at this machine" width="880" height="1912" decoding="async" loading="lazy">
-              </div>
-            </div>
-          </div>
-          <figcaption class="cs-family-cap">The glass, live in this page, and the phone that keeps the hit.</figcaption>
-        </figure>
       </section>
 
       <!-- ============ environment: a full-bleed photograph that settles as it arrives -->

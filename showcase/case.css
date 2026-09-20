@@ -192,40 +192,78 @@
 .cs-motion .cs-chapter:not(.is-in) { transform: translate3d(0, 64px, 0) scale(.96); transform-origin: 0 100%; }
 
 /* ------------------------------------------------------------ hero */
+/* ------------------------------------------------------------ the hero, from the file's cover (Figma 32:2171).
+   Measurements are that frame's, taken at 1920 x 1080 and expressed against the page width so they hold at any size:
+   the copy column starts at 120/1920 of the width, the title runs to about 47% of it, the glow sits behind the pair. */
 .cs-hero {
-  padding-top: clamp(40px, 5vw, 80px); padding-bottom: clamp(40px, 5vw, 72px); overflow: clip;
-  position: relative;
+  position: relative; overflow: clip;
+  padding-top: clamp(40px, 4.6vw, 88px); padding-bottom: clamp(48px, 5vw, 96px);
 }
 .cs-hero::before {
-  /* the same red light the pair below throws, seated behind the claim */
-  content: ""; position: absolute; left: 0; top: 0; width: 80vw; height: 70%; z-index: 0;
-  background: radial-gradient(50% 55% at 30% 35%, rgba(235, 17, 16, .13), rgba(235, 17, 16, 0) 72%);
-  pointer-events: none;
+  /* the cover's Red glow ellipse, 1000 x 1250 seated off the right edge */
+  content: ""; position: absolute; z-index: 0; pointer-events: none;
+  left: 54%; top: -6%; width: 52vw; height: 116%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(196, 14, 14, .72), rgba(120, 8, 8, .26) 52%, transparent 76%);
 }
-/* the claim leads, left aligned: the wordmark is a byline, not the headline */
-.cs-hero-copy {
+.cs-hero-grid {
   position: relative; z-index: 1;
-  display: grid; justify-items: start; gap: clamp(16px, 2vw, 24px);
-  width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto; will-change: transform;
+  width: min(100% - 2 * var(--gut), 1680px); margin-inline: auto;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .74fr);
+  align-items: center; column-gap: clamp(24px, 3vw, 56px);
 }
+.cs-hero-copy { display: grid; justify-items: start; gap: 0; }
+
 .cs-hero-by {
-  display: inline-flex; align-items: center; gap: 10px;
-  font: 500 15px/1 var(--f-doc); color: var(--muted); letter-spacing: -.005em;
+  display: inline-flex; align-items: center; gap: 16px;
+  font: 400 clamp(15px, 1.15vw, 21px)/1.2 var(--f-doc); color: var(--fg); letter-spacing: -.01em;
 }
-.cs-hero-by img { height: 20px; width: auto; }
+.cs-hero-by img { height: clamp(22px, 1.7vw, 30px); width: auto; }
+.cs-hero-who {
+  margin-top: 16px; display: inline-flex; align-items: baseline; gap: 24px;
+  font: 400 clamp(14px, 1.05vw, 19px)/1.2 var(--f-doc);
+}
+.cs-hero-who b { font-weight: 600; color: var(--fg); }
+.cs-hero-who span { color: var(--muted); }
+.cs-hero-mark { margin-top: clamp(24px, 3vw, 56px); width: clamp(56px, 5.4vw, 104px); height: auto; }
+
 .case .cs-hero-h1 {
-  /* two sentences, one line each where there is room: sized so the pair below still lands in the first frame */
-  font: 700 clamp(24px, 3vw, 44px)/1.18 var(--f-doc);
-  letter-spacing: -.028em; text-wrap: pretty; max-width: 42ch;
+  margin-top: clamp(12px, 1.4vw, 24px);
+  font: 400 clamp(64px, 11.6vw, 206px)/.86 var(--f-num);
+  letter-spacing: -.012em; text-transform: uppercase; color: var(--fg);
 }
-.case .cs-hero-h1-soft { color: var(--muted); }
 .cs-hero-tag {
-  font: 600 clamp(21px, 2.3vw, 32px)/1.25 var(--f-doc); letter-spacing: -.022em;
-  max-width: 24ch; text-wrap: balance;
+  margin-top: clamp(16px, 1.6vw, 28px); max-width: 24ch;
+  font: 400 clamp(17px, 1.6vw, 30px)/1.34 var(--f-doc); color: var(--muted); letter-spacing: -.014em;
 }
-.cs-hero .cs-actions { justify-content: flex-start; margin-top: 8px; }
-.cs-btn-down { transition: transform .2s ease; }
-.cs-btn:hover .cs-btn-down { transform: translateY(2px); }
+.cs-hero-tag b { font-weight: 700; color: var(--fg); }
+
+.cs-hero-contents { margin-top: clamp(24px, 3.2vw, 56px); }
+.cs-hero-contents-l {
+  font: 700 clamp(11px, .78vw, 14px)/1 var(--f-doc); letter-spacing: .1em; text-transform: uppercase; color: var(--red);
+}
+.cs-hero-pages {
+  margin-top: 20px; display: grid; grid-template-columns: repeat(3, auto);
+  grid-auto-flow: column; grid-template-rows: repeat(2, auto);
+  column-gap: clamp(24px, 2.6vw, 48px); row-gap: 8px;
+  font: 400 clamp(14px, 1.05vw, 19px)/1.4 var(--f-doc); color: var(--fg);
+}
+.cs-hero .cs-actions { margin-top: clamp(28px, 3vw, 48px); justify-content: flex-start; }
+
+/* the pair, as the cover shows them: flat screens, layered, no device around either */
+.cs-hero-stage { position: relative; height: min(76vh, 760px); }
+.cs-hero-glass, .cs-hero-phone {
+  position: absolute; overflow: hidden; border-radius: 12px;
+  box-shadow: 0 40px 90px -24px rgba(0, 0, 0, .75), 0 0 0 1px rgba(255, 255, 255, .06);
+}
+.cs-hero-glass { right: 0; top: -8%; width: 46%; aspect-ratio: 1080 / 3840; background: #0B0B0C; }
+.cs-hero-phone { left: 2%; top: 14%; width: 52%; aspect-ratio: 880 / 1912; }
+.cs-hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+@media (max-width: 900px) {
+  .cs-hero-grid { grid-template-columns: minmax(0, 1fr); row-gap: clamp(32px, 6vw, 56px); }
+  .cs-hero-stage { height: min(56vh, 460px); }
+  .cs-hero-pages { grid-template-columns: repeat(2, auto); grid-template-rows: repeat(3, auto); }
+}
 
 .cs-family { --gh: min(calc(var(--vh) * .78), 820px); margin-top: clamp(64px, 8vw, 112px); display: grid; justify-items: center; gap: 32px; transform-origin: 50% 0; will-change: transform; }
 .cs-family-row { position: relative; display: flex; align-items: flex-end; gap: clamp(28px, 5vw, 80px); }
