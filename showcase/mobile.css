@@ -1030,7 +1030,6 @@
   transition: transform .2s ease, box-shadow .25s ease;
 }
 .m-nav-logo[src*="-circle"] { border-radius: 50%; }
-.m-nav-logo[src*="punchapp"] { border-radius: 13.5% / 12.8%; }
 .m-nav-logo[src*="speedbag"] { border-radius: 19.8%; }
 .m-nav-fist:hover .m-nav-logo { transform: scale(1.05); }
 .m-nav-fist:active .m-nav-logo { transform: scale(.96); }

@@ -1,5 +1,9 @@
 // Build script for static deployment (Netlify): processes HTML includes and writes the concatenated CSS files
 // that serve-showcase.mjs otherwise generates on the fly (sections.css, mscreens.css, mpages.css).
+//
+// It expands showcase/index.html over itself, which is what a static host needs and what the source must never be
+// left as: the include markers are the only copy of where each part goes. So it only writes with --in-place, which
+// netlify.toml passes and a local run does not.
 import { readFile, writeFile, readdir } from 'node:fs/promises'
 import { extname, join, normalize } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -39,15 +43,22 @@ async function writeConcatCss() {
 }
 
 async function buildFiles() {
+  const inPlace = process.argv.includes('--in-place')
   console.log('Writing concatenated CSS...')
   await writeConcatCss()
 
   console.log('Processing HTML includes...')
   const filepath = join(ROOT, 'index.html')
   let html = await readFile(filepath, 'utf8')
+  const marks = (html.match(/<!-- include:/g) || []).length
   html = await processIncludes(html)
+  if (!inPlace) {
+    console.log(`! index.html left alone: expanding it here would drop its ${marks} include markers.`)
+    console.log('  Pass --in-place to write the expanded file (netlify.toml does).')
+    return
+  }
   await writeFile(filepath, html, 'utf8')
-  console.log('✓ index.html')
+  console.log(`✓ index.html (${marks} includes expanded)`)
 
   console.log('Build complete')
 }

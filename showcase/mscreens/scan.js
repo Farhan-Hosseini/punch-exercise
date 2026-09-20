@@ -43,7 +43,7 @@
       t1: { wait: 'Scan', linked: 'Welcome,', holding: 'Hold tight,', missed: 'Go again,' }[s],
       t2: { wait: 'to play', linked: f, holding: f, missed: f }[s],
       line: {
-        wait: 'Waiting for your phone',
+        wait: 'Waiting for\nyour phone',
         linked: 'Get ready to punch',
         holding: 'Topping up on your phone',
         missed: 'No punch landed, your turn is held',

@@ -36,6 +36,19 @@
 </head>
 <body>
 
+<!-- ============ the desktop gate. This showcase draws a 1080 x 3840 arcade panel and a phone side by side, at their
+     real sizes, and Customise opens as a panel beside them. None of that survives a narrow screen, so rather than
+     serve a broken version of the work, a small screen gets this instead. ============ -->
+<div class="deskgate" role="alertdialog" aria-labelledby="deskgateTitle">
+  <div class="deskgate-card">
+    <img class="deskgate-mark" src="assets/logos/fist-circle.svg" alt="" width="64" height="64">
+    <h1 class="deskgate-t" id="deskgateTitle">Best seen on a desktop</h1>
+    <p class="deskgate-p">This showcase puts a one and a half metre arcade panel next to a phone, both running at their real sizes, with a panel beside them for changing any section on screen. A small screen cannot hold that, so rather than show you a cut-down version, it waits.</p>
+    <p class="deskgate-p deskgate-p-quiet">Open it on a laptop or a desktop.</p>
+  </div>
+</div>
+
+
 <!-- ============ loading: the strength tester, charged by the page loading. The rail, the puck and the count follow one
      value, --lp, which the script below eases toward the real progress app.js writes as --load (fonts, then every image
      on show). The count runs out to the score's full length as the page loads, a digit a step. When it lands app.js
@@ -58,7 +71,7 @@
      the page by much. window.PunchLoader.full() resolves once the bar is full, which is when app.js clears the loader. */
   (function () {
     var root = document.documentElement, loader = document.getElementById('loader')
-    var file = { punchapp: 'punchapp-mark', boxer: 'boxer-circle', glove: 'glove-tilt', upright: 'glove-upright', pair: 'gloves-pair', bag: 'speedbag' }[root.dataset.logo]
+    var file = { boxer: 'boxer-circle', glove: 'glove-tilt', upright: 'glove-upright', pair: 'gloves-pair', bag: 'speedbag' }[root.dataset.logo]
     if (file) loader.querySelector('.ld-mark').src = 'assets/logos/' + file + '.svg'
     var waiters = [], shown = 0, last = 0, full = false, was = -1, since = 0
     // focus stays put while the loader covers the page: app.js makes the page inert once it boots, but before then a
@@ -273,7 +286,7 @@
     <div class="anim-extra-head">
       <p class="anim-k">The motion deliverable</p>
       <h2 class="anim-title" id="animTitle">Two clips, one for each surface</h2>
-      <p class="anim-p">Neither is a screen recording. Headless Chrome loads this showcase, takes the page’s own clock and steps it frame by frame, so every frame is the instant it claims to be and the timing is exactly what the screens play.</p>
+      <p class="anim-p">Neither is a screen recording. Both are rendered a frame at a time from the running screens, so the timing is exactly what they play.</p>
     </div>
     <article class="anim-piece" aria-labelledby="animTwoTitle">
       <div class="anim-extra-head">
@@ -296,25 +309,29 @@
         <a href="assets/motion/run-live-960.gif" download>GIF</a>
       </p>
     </article>
-    <article class="anim-piece" aria-labelledby="animOneTitle">
-      <div class="anim-extra-head">
-        <p class="anim-k">The glass</p>
-        <h3 class="anim-piece-title" id="animOneTitle">The score reveal</h3>
-        <p class="anim-p">The last seconds of Punch now, the strike, Reading the strike, New record as the name at the top flaps over from Omar Nasser to Sara, then the Big score with its reason and the still of the strike. Ten seconds at 60 fps, with the designs chosen by default.</p>
+    <article class="anim-piece anim-piece-tall" aria-labelledby="animOneTitle">
+      <div class="anim-tall-text">
+        <div class="anim-extra-head">
+          <p class="anim-k">The Punch Machine</p>
+          <h3 class="anim-piece-title" id="animOneTitle">The score reveal</h3>
+          <p class="anim-p">The panel alone, at its own size, with nothing else in frame. Every part of it is the live component, not a mock-up.</p>
+        </div>
+        <dl class="anim-beats">
+          <div><dt>Punch now</dt><dd>The count's last seconds, and it speeds up as the time drains.</dd></div>
+          <div><dt>The strike</dt><dd>The count breaks the moment the bag moves.</dd></div>
+          <div><dt>Reading the strike</dt><dd>No number yet. One line draws the hit as the sensor felt it.</dd></div>
+          <div><dt>New record</dt><dd>The name at the top flaps over, and the machine best rolls up to hers.</dd></div>
+          <div><dt>Big score</dt><dd>The number again, as wide as the panel, for the back of the queue.</dd></div>
+          <div><dt>Why it counts</dt><dd>One reason to care, and only one: this hit took today's crown.</dd></div>
+          <div><dt>The still</dt><dd>Then the strike itself, so the number has a face.</dd></div>
+        </dl>
+        <p class="anim-files">
+          <a href="assets/motion/reveal-live-1080x3840.mp4" download>Master MP4</a>
+        </p>
       </div>
-      <div class="anim-clips">
-        <figure class="anim-fig anim-fig-master">
-          <div class="anim-glass"><video class="anim-clip" data-anim-clip src="assets/motion/reveal-live-1080x3840.mp4" poster="assets/motion/reveal-live-1080x3840-poster.jpg" muted loop playsinline preload="none" aria-label="The score reveal on the live glass at its own size, 1080 by 3840"></video></div>
-        </figure>
-        <figure class="anim-fig anim-fig-pres">
-          <video class="anim-clip" data-anim-clip src="assets/motion/reveal-live-1920x1080.mp4" poster="assets/motion/reveal-live-1920x1080-poster.jpg" muted loop playsinline controls preload="none" aria-label="The score reveal presentation cut, 1920 by 1080: the whole glass, a close up of each beat and the beats named beside it"></video>
-        </figure>
-      </div>
-      <p class="anim-files">
-        <a href="assets/motion/reveal-live-1080x3840.mp4" download>Master MP4</a>
-        <a href="assets/motion/reveal-live-1920x1080.mp4" download>Presentation MP4</a>
-        <a href="assets/motion/reveal-live-960.gif" download>GIF</a>
-      </p>
+      <figure class="anim-fig anim-fig-tall">
+        <div class="anim-glass"><video class="anim-clip" data-anim-clip src="assets/motion/reveal-live-1080x3840.mp4" poster="assets/motion/reveal-live-1080x3840-poster.jpg" muted loop playsinline preload="none" aria-label="The score reveal on the live machine panel at its own size, 1080 by 3840"></video></div>
+      </figure>
     </article>
   </section>
 </main>
@@ -358,7 +375,7 @@
     </details>
 
     <details class="acc" data-acc="shared" open>
-      <summary class="acc-sum"><span class="acc-t"><span class="acc-k">Shared</span><b class="acc-title" id="g-shared">Across the showcase</b></span><span class="acc-note" id="themeNote">Arena, dark</span><span class="acc-chev" aria-hidden="true"></span></summary>
+      <summary class="acc-sum"><span class="acc-t"><span class="acc-k">Applies everywhere</span><b class="acc-title" id="g-shared">General settings</b></span><span class="acc-note" id="themeNote">Arena, dark</span><span class="acc-chev" aria-hidden="true"></span></summary>
       <div class="acc-body cus-shared">
         <div class="cus-sub" data-when="mobile animation">
           <span class="acc-sub" id="g-size-phone">Size on screen</span>
@@ -384,6 +401,21 @@
           <p class="ctl-help" id="scoreHelp">The brief's full range, 0 to 999,999.000. Score format sets whether the three decimals show.</p>
         </div>        </div>
         <div class="cus-sub">
+          <span class="acc-sub" id="g-typeface">Typeface</span>
+
+        <div class="faces" role="radiogroup" aria-labelledby="g-typeface">
+          <button class="face-tile" type="button" role="radio" data-typeface="arena" aria-checked="true">
+            <span class="face-tile-s" aria-hidden="true">999,999</span><span class="face-tile-n">Big Shoulders</span>
+          </button>
+          <button class="face-tile" type="button" role="radio" data-typeface="orbitron" aria-checked="false">
+            <span class="face-tile-s" aria-hidden="true">999,999</span><span class="face-tile-n">Orbitron</span>
+          </button>
+          <button class="face-tile" type="button" role="radio" data-typeface="chakra" aria-checked="false">
+            <span class="face-tile-s" aria-hidden="true">999,999</span><span class="face-tile-n">Chakra Petch</span>
+          </button>
+        </div>
+        <p class="ctl-help">Orbitron is the face the brief specified. Each carries its own digit width and cap height, so the big numbers keep fitting their columns. Body text stays in Barlow.</p>        </div>
+        <div class="cus-sub">
           <span class="acc-sub" id="g-appearance">Appearance</span>
 
         <div class="seg seg-appearance" role="group" aria-labelledby="g-appearance">
@@ -406,7 +438,6 @@
           <button class="logo-tile" type="button" role="radio" data-logo="upright" aria-checked="false"><span class="logo-prev"><img src="assets/logos/glove-upright.svg" alt=""></span><span>Guard</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="pair" aria-checked="false"><span class="logo-prev"><img src="assets/logos/gloves-pair.svg" alt=""></span><span>Pair</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="bag" aria-checked="false"><span class="logo-prev"><img src="assets/logos/speedbag.svg" alt=""></span><span>Speed bag</span></button>
-          <button class="logo-tile" type="button" role="radio" data-logo="punchapp" aria-checked="false"><span class="logo-prev"><img src="assets/logos/punchapp-mark.svg" alt=""></span><span>PunchApp</span></button>
         </div>        </div>
         <div class="cus-sub" data-when="mobile animation">
           <span class="acc-sub" id="g-device">The phone</span>

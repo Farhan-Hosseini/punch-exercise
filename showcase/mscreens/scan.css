@@ -420,3 +420,6 @@
 
 /* the punch step carries the app's own mark, at the size of the line beside it */
 .mscreen-scan .sho-mark { width: 52px; height: 52px; flex: none; display: block; }
+
+/* the status line is written with textContent, so its break travels in the string (mscreens/scan.js) */
+.scn [data-scn="line"] { white-space: pre-line; }

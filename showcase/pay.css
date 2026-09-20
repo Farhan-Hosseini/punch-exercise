@@ -1001,7 +1001,6 @@
   box-shadow: 0 0 0 2px var(--m-on-red), 0 4px 10px -4px rgba(0, 0, 0, .45);
 }
 .pay-logo-ico[src*="-circle"] { border-radius: 50%; }
-.pay-logo-ico[src*="punchapp"] { border-radius: 13.5% / 12.8%; }
 .pay-logo-ico[src*="speedbag"] { border-radius: 19.8%; }
 .pay-cta-logo { gap: 12px; }
 

@@ -70,7 +70,6 @@
   const zoomNow = () => (state.zoom === 'actual' ? maxZoom() : state.zoom === 'whole' ? Math.min(wholeZoom(), maxZoom()) : Math.min(state.zoom ?? fitZoom(), maxZoom()))
 
   const LOGOS = {
-    punchapp: { name: 'PunchApp', src: 'assets/logos/punchapp-mark.svg' },
     fist:    { name: 'Fist', src: 'assets/logos/fist-circle.svg' },
     boxer:   { name: 'Boxer', src: 'assets/logos/boxer-circle.svg' },
     glove:   { name: 'Glove', src: 'assets/logos/glove-tilt.svg' },
@@ -95,13 +94,14 @@
   // an embedded machine is an illustration beside the phone or inside the case study, and the page around it speaks for
   // it: its live regions stay quiet, or the glass's "Great punch" would be read out on top of the phone's own
   if (EMBED) document.querySelectorAll('[aria-live], [role="status"]').forEach((el) => el.setAttribute('aria-live', 'off'))
-  let state = { variant: 'arena', appearance: 'dark', zoom: null, viewV: 3, sets: {}, layout: layoutA(), mode: 'mobile', logo: 'fist', mscreen: 'default', mvar: {}, backdrop: BACKDROPS[0].key, decimals: 'on' }
+  let state = { variant: 'arena', appearance: 'dark', typeface: 'arena', zoom: null, viewV: 3, sets: {}, layout: layoutA(), mode: 'mobile', logo: 'fist', mscreen: 'default', mvar: {}, backdrop: BACKDROPS[0].key, decimals: 'on' }
   try {
     const saved = JSON.parse(localStorage.getItem(KEY) || 'null')
     if (saved && DEFAULTS[saved.variant]) {
       state = {
         // the glass opens whole ('whole' follows the window); a setting saved before that became the default moves once
-        variant: saved.variant, zoom: saved.viewV === 3 ? (saved.zoom ?? null) : null, viewV: 3, sets: saved.sets || {}, layout: { ...layoutA(), ...(saved.layout || {}) },
+        variant: saved.variant, typeface: ['arena', 'orbitron', 'chakra'].includes(saved.typeface) ? saved.typeface : 'arena',
+        zoom: saved.viewV === 3 ? (saved.zoom ?? null) : null, viewV: 3, sets: saved.sets || {}, layout: { ...layoutA(), ...(saved.layout || {}) },
         mode: MODES.includes(saved.mode) ? saved.mode : 'mobile', logo: LOGOS[saved.logo] ? saved.logo : 'fist',
         appearance: saved.appearance === 'light' ? 'light' : 'dark',
         mscreen: MSCREENS.includes(saved.mscreen) ? saved.mscreen : 'default',
@@ -288,6 +288,8 @@
     }
     root.dataset.variant = v
     root.dataset.appearance = state.appearance
+    root.dataset.typeface = state.typeface
+    document.querySelectorAll('[data-typeface]').forEach((b) => { if (b.tagName === 'BUTTON') b.setAttribute('aria-checked', String(b.dataset.typeface === state.typeface)) })
     root.dataset.mbackdrop = state.backdrop
     root.dataset.decimals = state.decimals
     const themeNote = $('themeNote')
@@ -441,6 +443,12 @@
       apply(); save()
     })
   }
+  document.querySelectorAll('button[data-typeface]').forEach((b) => b.addEventListener('click', () => {
+    state.typeface = b.dataset.typeface
+    apply(); save(); fitScreen()
+    if (window.designSystem) requestAnimationFrame(() => window.designSystem.refresh())
+    live.textContent = 'Typeface: ' + (b.querySelector('.face-tile-n') || {}).textContent
+  }))
   document.querySelectorAll('[data-appearance-btn]').forEach((b) => b.addEventListener('click', () => {
     state.appearance = b.dataset.appearanceBtn === 'light' ? 'light' : 'dark'
     apply(); save()
@@ -451,6 +459,7 @@
   $('resetCustom').addEventListener('click', () => {
     state.variant = 'arena'
     state.appearance = 'dark'
+    state.typeface = 'arena'
     for (const v of Object.keys(DEFAULTS)) state.sets[v] = fresh(v)
     state.zoom = null
     state.logo = 'fist'
@@ -943,7 +952,8 @@
     panelKey = key
     if (first) {
       $('accPageKind').textContent = first.surface === 'machine' ? 'Machine screen' : 'Phone screen'
-      $('accPageName').textContent = labelOf(first.surface, first.page)
+      // the first accordion names the screen it is open on, so it reads as that screen's own settings
+      $('accPageName').textContent = labelOf(first.surface, first.page) + ' settings'
       const isResult = first.surface === 'machine' && first.page === 'result'
       $('resultRows').hidden = !isResult
       $('pageRows').hidden = isResult
