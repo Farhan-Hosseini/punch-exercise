@@ -646,7 +646,7 @@
     const d = v.closest('[data-sv]')
     const go = v._want && (v._seen ?? true) && !!open && !reduced.matches && !root.hidden && !!d && !d.hidden
     v.muted = true
-    if (go && v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}) }
+    if (go && v.paused) { if (v.preload === 'none') v.preload = 'auto'; const p = v.play(); if (p && p.catch) p.catch(() => {}) }
     else if (!go && !v.paused) v.pause()
   }
   function reels(sec, want) {
