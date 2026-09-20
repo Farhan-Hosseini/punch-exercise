@@ -5,7 +5,7 @@
            Look up   one calm picture that points at the machine; it marks the strike when it lands and rests at time up
            Machine   the machine this phone is connected to (Dubai Mall), the state of that link, and the chosen logo
          Round nine: the title "Punch on the machine" stays on screen through the wait, the strike, the reading and time up;
-         only the line under it changes. The chosen PunchApp logo (<img data-logo-img>, app.js) sits where the fist was.
+         only the line under it changes. The chosen PunchApp logo (<img data-logo-img loading="lazy" decoding="async">, app.js) sits where the fist was.
          mobile.js writes every [data-punch-title], [data-punch-sub] and [data-punch-link] and puts the state on #mPunch:
          data-state wait, landed, reading or miss. Every design reads that one attribute. -->
     <section class="m-page" data-page="punch" aria-labelledby="mPunchTitle">
@@ -25,7 +25,7 @@
             <span class="pp-bc-ring"></span><span class="pp-bc-ring"></span>
             <span class="pp-bc-disc">
               <span class="pp-bc-up" data-lucide="chevrons-up"></span>
-              <img class="pp-bc-fist pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+              <img class="pp-bc-fist pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="" loading="lazy" decoding="async">
             </span>
             <svg class="pp-spin" viewBox="0 0 200 200" focusable="false"><path d="M199 100A99 99 0 1 0 100 199"/></svg>
           </div>
@@ -53,12 +53,12 @@
               <circle class="pp-pad-r pp-pad-r1" cx="120" cy="120" r="56"/>
               <circle class="pp-pad-core" cx="120" cy="120" r="34"/>
             </svg>
-            <img class="pp-pad-fist pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <img class="pp-pad-fist pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="" loading="lazy" decoding="async">
             <svg class="pp-spin" viewBox="0 0 200 200" focusable="false"><path d="M199 100A99 99 0 1 0 100 199"/></svg>
           </div>
 
           <figure class="pp-l pp-ph" data-sv="Photo">
-            <img class="pp-ph-img" src="assets/photos/lib/boxer-68.jpg" alt="" style="object-position: 40% 40%" decoding="async">
+            <img class="pp-ph-img" src="assets/photos/lib/boxer-68.jpg" alt="" style="object-position: 40% 40%" decoding="async" loading="lazy">
             <span class="pp-ph-up"><span data-lucide="arrow-up"></span></span>
           </figure>
 
@@ -71,19 +71,19 @@
         <div class="pp-sec pp-mach" data-sec="machine" data-sec-label="Machine">
 
           <div class="pp-m pp-m-row m-glass" data-sv="Card">
-            <img class="pp-m-tile pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <img class="pp-m-tile pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="" loading="lazy" decoding="async">
             <p class="pp-m-name"><b>Dubai Mall</b><span>Ground Level, by the Ice Rink</span></p>
             <p class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></p>
           </div>
 
           <div class="pp-m pp-m-line" data-sv="Line">
-            <img class="pp-m-mark pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <img class="pp-m-mark pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="" loading="lazy" decoding="async">
             <p class="pp-m-name"><b>Dubai Mall, Ground Level</b></p>
             <p class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></p>
           </div>
 
           <div class="pp-m pp-m-venue" data-sv="Venue">
-            <span class="pp-m-picwrap"><img class="pp-m-pic" src="assets/photos/lib/dubai-night-12.jpg" alt="" style="object-position: 50% 45%" decoding="async"><img class="pp-m-badge pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt=""></span>
+            <span class="pp-m-picwrap"><img class="pp-m-pic" src="assets/photos/lib/dubai-night-12.jpg" alt="" style="object-position: 50% 45%" decoding="async" loading="lazy"><img class="pp-m-badge pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="" loading="lazy" decoding="async"></span>
             <p class="pp-m-name"><b>Dubai Mall</b><span class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></span></p>
           </div>
 
@@ -91,13 +91,13 @@
             <span class="pp-sig" aria-hidden="true">
               <span class="pp-sig-end"><span data-lucide="smartphone"></span></span>
               <span class="pp-sig-path"><i></i></span>
-              <span class="pp-sig-end pp-sig-far"><img class="pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt=""></span>
+              <span class="pp-sig-end pp-sig-far"><img class="pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="" loading="lazy" decoding="async"></span>
             </span>
             <p class="pp-m-name"><b>Dubai Mall, Ground Level</b><span class="pp-m-state"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></span></p>
           </div>
 
           <div class="pp-m pp-m-label" data-sv="Label">
-            <img class="pp-m-mark pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="">
+            <img class="pp-m-mark pp-logo" data-logo-img src="assets/logos/fist-circle.svg" alt="" loading="lazy" decoding="async">
             <p class="pp-m-state m-cap"><span class="m-link-dot" aria-hidden="true"></span><span data-punch-link>Connected</span></p>
             <p class="pp-m-big">Dubai Mall</p>
             <p class="pp-m-spot">Ground Level, by the Ice Rink</p>
