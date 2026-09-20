@@ -12,7 +12,9 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
   // the live machine beside the phone is this same page in ?embed=machine: its phone never runs, saves or announces,
   // so it cannot spend a credit, start a second countdown or talk over the phone that drives it
-  const EMBED = document.documentElement.dataset.embed === 'machine'
+  const EMBED_PHONE = document.documentElement.dataset.embed === 'phone'
+  // an embedded surface, machine or phone, keeps to itself: no saved state, no flow channel
+  const EMBED = document.documentElement.dataset.embed === 'machine' || EMBED_PHONE
 
   /* ------------------------------------------------------------ icons */
   // two Lucide icons the punch step needs (assets/icons/lucide/footprints.svg, hand.svg), drawn like the rest at 1.75
@@ -1876,7 +1878,8 @@
     const top = wrap.getBoundingClientRect().top + window.scrollY
     const availH = window.innerHeight - Math.min(top, 190) - 44
     const availW = document.documentElement.clientWidth - 32
-    const z = st.fit ? Math.max(.4, Math.min(1, availH / h, availW / w)) : Math.min(1, availW / w)
+    // an embedded phone fills the frame that holds it
+    const z = EMBED_PHONE ? Math.min(1, window.innerHeight / h, document.documentElement.clientWidth / w) : st.fit ? Math.max(.4, Math.min(1, availH / h, availW / w)) : Math.min(1, availW / w)
     wrap.style.setProperty('--pz', z.toFixed(3))
     $('phoneFit')?.setAttribute('aria-pressed', String(st.fit))
     $('phoneActual')?.setAttribute('aria-pressed', String(!st.fit))
@@ -1978,6 +1981,8 @@
   // a reload mid countdown starts again from the scan: the machine has long since moved on
   // pages is a plain object, so "constructor" or "toString" would pass a bare lookup and take the app nowhere
   if (!EMBED) go(Object.hasOwn(pages, String(st.page)) && st.page !== 'punch' ? st.page : 'default')
+  // the phone embed opens on the page its frame asks for (?page=hit), as the player who just punched
+  else if (EMBED_PHONE) { const want = (/[?&]page=([a-z]+)/.exec(location.search) || [])[1]; go(Object.hasOwn(pages, String(want)) ? want : 'hit', { player: 'me' }) }
 
   window.punchApp = {
     announce,

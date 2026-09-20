@@ -89,11 +89,13 @@
   ]
   // the phone's live machine panel loads this same page as ?embed=machine: it shows only the glass and follows the phone
   const EMBED = document.documentElement.dataset.embed === 'machine'
+  // ?embed=phone: the handset alone, for the case study's hero; it reads the saved state and writes nothing
+  const EMBED_PHONE = document.documentElement.dataset.embed === 'phone'
   // ?embed=machine&follow=0 is a machine that keeps its own screen (the case study's), not one that follows the phone
   const FOLLOW = EMBED && !/[?&]follow=0\b/.test(location.search)
   // an embedded machine is an illustration beside the phone or inside the case study, and the page around it speaks for
   // it: its live regions stay quiet, or the glass's "Great punch" would be read out on top of the phone's own
-  if (EMBED) document.querySelectorAll('[aria-live], [role="status"]').forEach((el) => el.setAttribute('aria-live', 'off'))
+  if (EMBED || EMBED_PHONE) document.querySelectorAll('[aria-live], [role="status"]').forEach((el) => el.setAttribute('aria-live', 'off'))
   let state = { variant: 'arena', appearance: 'dark', typeface: 'arena', zoom: null, viewV: 3, sets: {}, layout: layoutA(), mode: 'mobile', logo: 'fist', mscreen: 'default', mvar: {}, backdrop: BACKDROPS[0].key, decimals: 'on' }
   try {
     const saved = JSON.parse(localStorage.getItem(KEY) || 'null')
@@ -119,7 +121,7 @@
   const cur = () => state.sets[state.variant]
   let saveTimer = 0
   const save = () => {
-    if (EMBED) return // the embedded machine never writes: the page around it owns the saved state
+    if (EMBED || EMBED_PHONE) return // an embedded surface never writes: the page around it owns the saved state
     clearTimeout(saveTimer)
     saveTimer = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(state)) } catch { /* private window */ } }, 200)
   }
@@ -1081,7 +1083,7 @@
   // The embedded glass is a second copy of this page, so it is not fetched on arrival: that would undo the
   // weight the lazy images saved. It is warmed on intent instead — hovering or focusing the Animation tab
   // starts the load, so by the time the click lands the glass is usually already up.
-  if (linkedFrame && !EMBED) {
+  if (linkedFrame && !EMBED && !EMBED_PHONE) {
     const warmGlass = () => { if (!linkedFrame.getAttribute('src')) linkedFrame.setAttribute('src', './?embed=machine') }
     const animBtn = document.querySelector('.mode[data-mode="animation"]')
     if (animBtn) for (const ev of ['pointerenter', 'focus', 'touchstart']) animBtn.addEventListener(ev, warmGlass, { once: true, passive: true })
@@ -1160,11 +1162,11 @@
   function boot() {
     buildRows()
     drawQR()
-    setMode(EMBED ? 'machine' : state.mode, true)
+    setMode(EMBED ? 'machine' : EMBED_PHONE ? 'mobile' : state.mode, true)
     setMscreen(EMBED ? 'default' : state.mscreen, {}, true)
     apply()
     renderPanel(true)
-    if (EMBED) { loader.classList.add('is-done'); loader.setAttribute('aria-hidden', 'true'); fitScreen(); return }
+    if (EMBED || EMBED_PHONE) { loader.classList.add('is-done'); loader.setAttribute('aria-hidden', 'true'); fitScreen(); return }
     quiet.loader = true
     syncInert()
     // the loader has shown since the first paint, so its least time counts from the navigation (performance.now()'s

@@ -833,6 +833,17 @@ input[type="range"]:focus-visible { outline: 2px solid var(--panel-ink); outline
 :root[data-embed="machine"] netlify-hud,
 :root[data-embed="machine"] [id^="netlify-"],
 :root[data-embed="machine"] [class*="netlify-badge"] { display: none !important; }
+
+/* ?embed=phone: this same page as the handset alone, for the case study's hero. Nothing but the phone draws, and
+   mobile.js fits it to the frame that holds it. */
+:root[data-embed="phone"] body { min-height: 0; overflow: hidden; background: transparent; }
+:root[data-embed="phone"] .topbar, :root[data-embed="phone"] .loader, :root[data-embed="phone"] .mpagebar,
+:root[data-embed="phone"] .pagebar, :root[data-embed="phone"] .pagenav, :root[data-embed="phone"] .custom,
+:root[data-embed="phone"] .custom-scrim, :root[data-embed="phone"] .panel-veil, :root[data-embed="phone"] .brief,
+:root[data-embed="phone"] .case, :root[data-embed="phone"] .helpwrap, :root[data-embed="phone"] .stage,
+:root[data-embed="phone"] .ds-stage, :root[data-embed="phone"] .anim-extra, :root[data-embed="phone"] .linked,
+:root[data-embed="phone"] netlify-hud, :root[data-embed="phone"] [id^="netlify-"] { display: none !important; }
+:root[data-embed="phone"] body .phone-stage { display: grid; place-items: center; min-height: 100vh; padding: 0 !important; }
 :root[data-embed="machine"] .stage { padding: 0 !important; min-height: 0; display: block; }
 :root[data-embed="machine"] .machine { margin: 0; }
 :root[data-embed="machine"] .screen,
@@ -1027,8 +1038,8 @@ body:not([data-mode="mobile"]) .topbar > [data-pagenav="page"] { display: none; 
 /* The embedded machine glass loads this same page in a 486px wide iframe, which is narrower than any phone.
    The gate is about the device the reader is on, not the width of a frame inside the page, so embeds are exempt. */
 @media (max-width: 767px) {
-  :root[data-embed="machine"] .deskgate { display: none !important; }
-  :root:not([data-embed="machine"]) .deskgate {
+  :root[data-embed] .deskgate { display: none !important; }
+  :root:not([data-embed]) .deskgate {
     display: grid; place-items: center;
     position: fixed; inset: 0; z-index: 200;
     padding: 24px;
@@ -1044,8 +1055,8 @@ body:not([data-mode="mobile"]) .topbar > [data-pagenav="page"] { display: none; 
   .deskgate-p { margin: 0; font: 400 16px/1.55 "Barlow", system-ui, sans-serif; color: #B5B0A8; }
   .deskgate-p-quiet { font-weight: 600; color: #F5F3EF; }
   /* nothing behind the gate should scroll, animate or be reachable */
-  :root:not([data-embed="machine"]) body { overflow: hidden !important; }
-  :root:not([data-embed="machine"]) :is(.topbar, .stage, .phone-stage, .ds-stage, .custom, .custom-scrim, .brief, .case, .helpwrap, .loader) { display: none !important; }
+  :root:not([data-embed]) body { overflow: hidden !important; }
+  :root:not([data-embed]) :is(.topbar, .stage, .phone-stage, .ds-stage, .custom, .custom-scrim, .brief, .case, .helpwrap, .loader) { display: none !important; }
 }
 
 /* ------------------------------------------------------------ the typeface, chosen in Customise under General settings.

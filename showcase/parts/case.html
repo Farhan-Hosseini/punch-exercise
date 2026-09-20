@@ -4,6 +4,7 @@
       <symbol id="cs-i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
       <symbol id="cs-i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
       <symbol id="cs-i-rectangle-vertical" viewBox="0 0 24 24"><rect width="12" height="20" x="6" y="2" rx="2"/></symbol>
+      <symbol id="cs-i-gallery" viewBox="0 0 24 24"><path d="M2 3v18"/><rect width="12" height="18" x="6" y="3" rx="2"/><path d="M22 3v18"/></symbol>
       <symbol id="cs-i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol>
       <symbol id="cs-i-component" viewBox="0 0 24 24"><path d="M15.536 11.293a1 1 0 0 0 0 1.414l2.376 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"/><path d="M2.297 11.293a1 1 0 0 0 0 1.414l2.377 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414L6.088 8.916a1 1 0 0 0-1.414 0z"/><path d="M8.916 17.912a1 1 0 0 0 0 1.415l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.415l-2.377-2.376a1 1 0 0 0-1.414 0z"/><path d="M8.916 4.674a1 1 0 0 0 0 1.414l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"/></symbol>
       <symbol id="cs-i-bell-ring" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M22 8c0-2.3-.8-4.3-2-6"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/><path d="M4 2C2.8 3.7 2 5.7 2 8"/></symbol>
@@ -23,7 +24,6 @@
             <li><a href="#case-problem" data-case-jump>Problem</a></li>
             <li><a href="#case-machine" data-case-jump>Machine</a></li>
             <li><a href="#case-phone" data-case-jump>Phone</a></li>
-            <li><a href="#case-motion" data-case-jump>Motion</a></li>
             <li><a href="#case-ds" data-case-jump>System</a></li>
             <li><a href="#case-system" data-case-jump>File</a></li>
             <li><a href="#case-ai" data-case-jump>AI</a></li>
@@ -49,10 +49,19 @@
             <h1 id="caseTitle" class="cs-hero-h1 cs-rise" data-rise style="--d: 1">PunchApp</h1>
             <p class="cs-hero-t cs-rise" data-rise style="--d: 2">The machine and the app, designed as one turn.</p>
             <p class="cs-hero-lead cs-rise" data-rise style="--d: 3">A one and a half metre panel on the ground floor of Dubai Mall, and the phone in the player's hand. Both surfaces are running in this showcase at their real sizes, every screen and every design of it.</p>
+          <dl class="cs-hero-facts cs-rise" data-rise style="--d: 4">
+            <div><dt>Task duration</dt><dd>6 days</dd></div>
+            <div><dt>Time it took</dt><dd>2 days</dd></div>
+          </dl>
           </div>
 
           <div class="cs-hero-stage" data-hero-stage aria-hidden="true">
-            <img class="cs-hero-kv" src="assets/case/hero-key-visual.webp" alt="" width="1678" height="1986" decoding="async" fetchpriority="high">
+            <div class="cs-hero-glass" inert>
+              <iframe class="cs-embed" data-embed="hero" data-screen="default" title="" tabindex="-1"></iframe>
+            </div>
+            <div class="cs-hero-phone" inert>
+              <iframe class="cs-embed cs-embed-phone" data-embed="hero-phone" data-kind="phone" data-page="hit" title="" tabindex="-1"></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -60,32 +69,27 @@
       <!-- ============ the overview and the time it took, over a full-bleed photograph -->
       <section class="cs-sec cs-env" data-ground="dark" aria-labelledby="csEnv">
         <div class="cs-env-media" data-scale-in>
-          <img src="assets/case/hero-bag.jpg" alt="A boxer drives a straight punch into a teardrop bag in a bright gym" width="1800" height="1200" loading="lazy" decoding="async">
+          <img src="assets/case/overview-strike.jpg" alt="A boxer in guard beside a heavy bag, in red and teal light" width="1800" height="1146" loading="lazy" decoding="async">
         </div>
         <div class="cs-env-copy">
           <p class="cs-env-k cs-rise" data-rise>Overview</p>
           <h2 id="csEnv" class="cs-rise" data-rise style="--d: 1">Make your mark on the machine. Take the glory to your phone.</h2>
-          <p class="cs-rise" data-rise style="--d: 2">A punch machine for a mall floor and the app that carries the hit home, designed as one turn. Both surfaces run live in this showcase, every screen and every design of them, and the Figma file behind them is built the same way.</p>
+          <p class="cs-rise" data-rise style="--d: 2">A punch machine for a mall floor and the app that carries the hit home, designed as one turn. Both surfaces run live in this showcase, every screen and every design of them, and the Figma behind them is built the same way.</p>
           <dl class="cs-time cs-rise" data-rise style="--d: 3">
-            <div><dt>Two hours</dt><dd>The Figma base: type, colour, spacing, the first screens.</dd></div>
-            <div><dt>Two hours</dt><dd>Expanding the Figma, screen by screen.</dd></div>
-            <div><dt>Four hours</dt><dd>Working with AI on the designs and the variants of every section.</dd></div>
-            <div><dt>Two hours</dt><dd>Expanding those and moving them into Figma with AI.</dd></div>
-            <div><dt>One day</dt><dd>Expanding the work and polishing the designs.</dd></div>
+            <div><dt>2 hours</dt><dd>Figma first: the basic structure of the pages, planned and built as the base.</dd></div>
+            <div><dt>2 hours</dt><dd>The first website prototypes of the mobile and machine screens.</dd></div>
+            <div><dt>4 hours</dt><dd>Expanding the variants, building them in Figma, and growing the website and the case study.</dd></div>
+            <div><dt>1 day</dt><dd>Polish, better results, and the case study.</dd></div>
           </dl>
+          <p class="cs-time-note cs-rise" data-rise style="--d: 4">The task allowed 6 days. This was made in the last 2 of them: for the first 4 I was away on an urgent personal matter and had to travel to Iran.</p>
         </div>
       </section>
 
       <!-- ============ chapter: the problem, and the heights it has to serve -->
-      <section class="cs-sec cs-light cs-problem" id="case-problem" data-ground="light" data-chapter="case-problem" aria-labelledby="csProblem">
-        <div class="cs-wrap cs-head">
-          <h2 id="csProblem" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">A column of glass on the ground floor.</h2>
-          <p class="cs-lead cs-rise" data-rise style="--d: 1">A 1080 by 3840 portrait screen, one and a half metres of glass at Dubai Mall, running all day. One credit buys one attempt: a sensor turns the strike into a score and a camera records it.</p>
-        </div>
-
+      <section class="cs-sec cs-light cs-problem" id="case-problem" data-ground="light" data-chapter="case-problem" aria-labelledby="csHeightsTitle">
         <figure class="cs-wrap cs-heights cs-rise" data-rise aria-labelledby="csHeightsTitle">
           <figcaption class="cs-heights-cap">
-            <h3 class="cs-h4" id="csHeightsTitle">Where everyone stands.</h3>
+            <h3 class="cs-h4" id="csHeightsTitle" tabindex="-1">Where everyone stands.</h3>
             <p>Grown-ups here are mostly between 150 and 190 cm tall. Your eyes sit a little below the top of your head, so whoever walks up, their eyes land in roughly <b>the same stretch of the panel</b>. The replay goes there. Nobody has to stoop, and nobody has to look up.</p>
           </figcaption>
 
@@ -197,7 +201,7 @@
             <p>designs on the Punch Machine. Every section keeps five or more and pages through its own while the rest of the screen stays put.</p>
             <span class="cs-actions">
               <button class="cs-btn" type="button" data-go-mode="machine">
-                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-rectangle-vertical"/></svg>
+                <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-gallery"/></svg>
                 Page through them
               </button>
               <a class="cs-btn cs-btn-ghost cs-btn-figma" href="https://www.figma.com/design/j1cOyUKz9Gys3njKSUve6L?node-id=1-5" target="_blank" rel="noopener">
@@ -282,36 +286,6 @@
           </div>
         </div>
 
-      </section>
-
-      <!-- ============ chapter: motion. The two clips, each on the surface it was cut for -->
-      <section class="cs-sec cs-dark cs-motion" id="case-motion" data-ground="dark" data-chapter="case-motion" aria-labelledby="csMotion">
-        <div class="cs-wrap cs-head">
-          <h2 id="csMotion" class="cs-h2 cs-rise cs-chapter" data-rise tabindex="-1">Neither clip is a screen recording.</h2>
-          <p class="cs-lead cs-rise" data-rise style="--d: 1">Each one is rendered a frame at a time from the running screens, so the timing is exactly what they play.</p>
-        </div>
-
-        <div class="cs-wrap cs-motion-pair">
-          <figure class="cs-motion-fig cs-rise" data-rise>
-            <div class="cs-motion-tall">
-              <video src="assets/motion/reveal-live-1080x3840.mp4" poster="assets/motion/reveal-live-1080x3840-poster.jpg" muted loop playsinline preload="none" aria-label="The score reveal on the Punch Machine, ten seconds"></video>
-            </div>
-            <figcaption><b>The reveal</b><span>Ten seconds on the Punch Machine.</span></figcaption>
-          </figure>
-          <figure class="cs-motion-fig cs-rise" data-rise style="--d: 1">
-            <div class="cs-motion-phone">
-              <video src="assets/motion/run-live-928x1960.mp4" poster="assets/motion/run-live-928x1960-poster.jpg" muted loop playsinline preload="none" aria-label="One turn on the phone, seventeen seconds"></video>
-            </div>
-            <figcaption><b>The run</b><span>Seventeen seconds on the phone.</span></figcaption>
-          </figure>
-        </div>
-
-        <p class="cs-wrap cs-actions cs-rise" data-rise style="--d: 2">
-          <button class="cs-btn" type="button" data-go-mode="animation">
-            <svg class="cs-ico" width="20" height="20" aria-hidden="true" focusable="false"><use href="#cs-i-clapperboard"/></svg>
-            Watch them together
-          </button>
-        </p>
       </section>
 
       <!-- ============ chapter: the system both surfaces are built from -->
@@ -420,7 +394,7 @@
           </div>
           <ul class="cs-ai-list">
             <li class="cs-rise" data-rise><h3 class="cs-h4">An audit, then five directions.</h3><p>Five directions scored by judges working apart, then three skeptics who reshaped the work around the run.</p></li>
-            <li class="cs-rise" data-rise><h3 class="cs-h4">Builders on a shared contract.</h3><p>Agents built the Figma file through its API, rendered the clips from code and gathered the photo library.</p></li>
+            <li class="cs-rise" data-rise><h3 class="cs-h4">Created in Figma, expanded by AI into Figma.</h3><p>The base was drawn by hand in Figma. AI grew the variants and wrote them back into Figma, rendered the clips from code and gathered the photo library.</p></li>
             <li class="cs-rise" data-rise><h3 class="cs-h4">Then a pass that only cut.</h3><p>A critic on every screen, and out went whatever repeated something already on it.</p></li>
           </ul>
         </div>

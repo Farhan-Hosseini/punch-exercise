@@ -93,18 +93,18 @@
   /* ------------------------------------------------------------ live embeds of the machine glass: two at most, loaded late */
   const embeds = {}
   for (const frame of $$('iframe[data-embed]')) {
-    embeds[frame.dataset.embed] = { frame, want: frame.dataset.screen || null, shown: null, sc: null, ready: false, loading: false }
+    embeds[frame.dataset.embed] = { frame, kind: frame.dataset.kind || 'machine', want: frame.dataset.screen || frame.dataset.page || null, shown: null, sc: null, ready: false, loading: false }
   }
   function loadEmbed(e) {
     if (!e || e.loading) return
     e.loading = true
     e.frame.addEventListener('load', () => waitReady(e, 0))
-    e.frame.src = './?embed=machine&follow=0'
+    e.frame.src = e.kind === 'phone' ? `./?embed=phone&page=${e.want || 'hit'}` : './?embed=machine&follow=0'
   }
   function waitReady(e, tries) {
     let sc = null
-    try { sc = e.frame.contentWindow && e.frame.contentWindow.showcase } catch (err) { sc = null }
-    if (sc && typeof sc.mscreen === 'function') {
+    try { sc = e.frame.contentWindow && (e.kind === 'phone' ? e.frame.contentWindow.punchApp : e.frame.contentWindow.showcase) } catch (err) { sc = null }
+    if (sc && typeof (e.kind === 'phone' ? sc.go : sc.mscreen) === 'function') {
       e.sc = sc
       e.ready = true
       applyEmbed(e)
@@ -116,7 +116,7 @@
   }
   function applyEmbed(e) {
     if (!e.ready || !e.want || e.shown === e.want) return
-    try { e.sc.mscreen(e.want) } catch (err) { /* the embed went away: it reloads on the next open */ }
+    try { if (e.kind === 'phone') e.sc.go(e.want, { player: 'me' }); else e.sc.mscreen(e.want) } catch (err) { /* the embed went away: it reloads on the next open */ }
     e.shown = e.want
   }
   function showOnEmbed(e, key) {
@@ -378,6 +378,7 @@
     prime()
     if (embeds.hero) loadEmbed(embeds.hero)
     else if (embeds.seq) setTimeout(() => { if (open) loadEmbed(embeds.seq) }, 1200)
+    if (embeds['hero-phone']) loadEmbed(embeds['hero-phone'])
     // the embeds also follow the phone flow while the dialog is closed, so each open puts them back on their story
     for (const e of Object.values(embeds)) { e.shown = null; applyEmbed(e) }
     // synchronous, before the first frame paints: whatever is already on screen settles without waiting
