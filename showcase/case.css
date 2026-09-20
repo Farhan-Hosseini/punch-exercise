@@ -241,16 +241,9 @@
 }
 .cs-hero .cs-actions { margin-top: clamp(28px, 3vw, 48px); justify-content: flex-start; }
 
-/* the pair, as the cover shows them: flat screens, layered, no device around either. Both stand whole in the frame,
-   sized off its height, so neither is cut by an edge: the panel full height, the phone a little under it. */
-.cs-hero-stage { position: relative; height: min(76vh, 760px); }
-.cs-hero-glass, .cs-hero-phone {
-  position: absolute; overflow: hidden;
-  box-shadow: 0 40px 90px -24px rgba(0, 0, 0, .75), 0 0 0 1px rgba(255, 255, 255, .08);
-}
-.cs-hero-glass { right: 0; top: 0; height: 100%; width: auto; aspect-ratio: 1080 / 3840; border-radius: 8px; background: #0B0B0C; }
-.cs-hero-phone { left: 0; top: 13%; height: 74%; width: auto; aspect-ratio: 880 / 1912; border-radius: 20px; }
-.cs-hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+/* the cover's key visual, one drawing: it stands as tall as the stage and keeps its own proportions */
+.cs-hero-stage { position: relative; height: min(76vh, 760px); display: grid; justify-items: end; align-items: center; }
+.cs-hero-kv { height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: right center; filter: drop-shadow(0 40px 90px rgba(0, 0, 0, .55)); }
 
 @media (max-width: 900px) {
   .cs-hero-grid { grid-template-columns: minmax(0, 1fr); row-gap: clamp(32px, 6vw, 56px); }
@@ -326,26 +319,14 @@
   font: 700 clamp(40px, 6vw, 88px)/1.03 var(--f-doc); letter-spacing: -.038em;
   max-width: 13ch; text-wrap: balance; color: #FFFFFF;
 }
-.cs-env-copy .cs-env-slogan {
-  margin-top: clamp(28px, 3vw, 48px); max-width: 22ch;
-  font: 700 clamp(22px, 2.4vw, 40px)/1.18 var(--f-doc); color: var(--fg); letter-spacing: -.028em;
-}
-.cs-chapters {
-  margin: clamp(24px, 2.6vw, 40px) 0 0; padding: 0; list-style: none;
-  display: grid; max-width: 34em;
-  border-top: 1px solid rgba(245, 245, 247, .16);
-}
-.cs-chapters li { border-bottom: 1px solid rgba(245, 245, 247, .16); }
-.cs-chapters a {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 20px;
-  padding-block: 12px; color: inherit; text-decoration: none;
-}
-.cs-chapters a:hover .cs-ch-n { color: var(--red); }
-.cs-ch-n { font: 500 clamp(16px, 1.25vw, 20px)/1.35 var(--f-doc); color: var(--fg); letter-spacing: -.014em; transition: color .2s ease; }
-.cs-chapters-all { margin-top: 16px; font: 600 clamp(12px, .9vw, 14px)/1.35 var(--f-cond); letter-spacing: .1em; text-transform: uppercase; color: rgba(245, 245, 247, .56); }
-.cs-ch-t { font: 600 clamp(12px, .9vw, 14px)/1.35 var(--f-cond); letter-spacing: .1em; text-transform: uppercase; color: rgba(245, 245, 247, .56); }
-
-.cs-env-copy p { margin-top: 20px; max-width: 30em; font: 500 clamp(17px, 1.5vw, 21px)/1.5 var(--f-doc); color: rgba(245, 245, 247, .88); }
+.cs-env-k { font: 700 clamp(11px, .8vw, 13px)/1 var(--f-doc); letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+.cs-env-copy h2 { margin-top: 20px; }
+/* how long each part took: the time on the left, the part on the right */
+.cs-time { margin: clamp(28px, 3vw, 44px) 0 0; display: grid; gap: 0; max-width: 40em; border-top: 1px solid rgba(245, 245, 247, .18); }
+.cs-time > div { display: grid; grid-template-columns: minmax(0, 8.5em) minmax(0, 1fr); gap: 20px; align-items: baseline; padding-block: 14px; border-bottom: 1px solid rgba(245, 245, 247, .18); }
+.cs-time dt { font: 700 clamp(17px, 1.4vw, 22px)/1.2 var(--f-doc); color: var(--fg); letter-spacing: -.018em; }
+.cs-time dd { margin: 0; font: 400 clamp(14px, 1.1vw, 17px)/1.45 var(--f-doc); color: rgba(245, 245, 247, .8); }
+.cs-env-copy > p:not(.cs-env-k) { margin-top: 20px; max-width: 34em; font: 500 clamp(17px, 1.5vw, 21px)/1.5 var(--f-doc); color: rgba(245, 245, 247, .88); }
 
 /* ------------------------------------------------------------ diagrams from the Figma file, built by case-diagrams.* */
 .cs-diagram { margin-top: clamp(96px, 12vw, 192px); }
@@ -568,24 +549,7 @@
 [data-parallax] > img { position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; will-change: transform; }
 
 /* ------------------------------------------------------------ notes */
-.cs-validate { margin-top: clamp(80px, 11vw, 160px); }
-.cs-highlight-q { margin-top: clamp(28px, 3.5vw, 48px); max-width: 22ch; }
-.cs-highlight-q span { display: block; }
-.cs-highlight-q span + span { margin-top: .5em; }
 
-/* ------------------------------------------------------------ where I pushed back: four statements, each under a short strike of red */
-.cs-push { margin-top: clamp(80px, 11vw, 160px); }
-/* the pushback is the chapter now, so it sits under its own heading rather than a chapter of cards */
-.cs-head-solo + .cs-push { margin-top: clamp(32px, 4vw, 64px); }
-.cs-push-list {
-  margin-top: clamp(32px, 4vw, 56px);
-  columns: 2; column-gap: clamp(40px, 6vw, 96px);
-}
-.cs-push-list li {
-  break-inside: avoid; margin-bottom: clamp(28px, 3.5vw, 48px);
-  color: var(--muted); font-size: clamp(17px, 1.4vw, 21px); line-height: 1.45; max-width: 28em;
-}
-.cs-push-list li::before { content: ""; display: block; width: 32px; height: 2px; margin-bottom: 16px; background: var(--red); }
 
 /* ------------------------------------------------------------ what is in the Figma file */
 .cs-file { margin-top: clamp(80px, 11vw, 160px); display: grid; gap: clamp(24px, 3vw, 40px); }
@@ -672,7 +636,6 @@
   .cs-glyphs span { width: 30px; height: 30px; }
 
   .cs-bignum { grid-template-columns: 1fr; }
-  .cs-push-list { columns: 1; }
   .cs-bands { --band-col: 7em; }
   .cs-file-list > div { grid-template-columns: 1fr; }
   .cs-ai-grid { grid-template-columns: 1fr; }
@@ -695,13 +658,6 @@
 }
 
 /* the changes after review read as a list under the AI note */
-.cs-ai-after { margin-top: clamp(64px, 8vw, 112px); }
-.cs-ai-after > .cs-h3 { margin-bottom: clamp(28px, 3vw, 40px); }
-.cs-ai-changes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.5vw, 48px) clamp(24px, 3vw, 48px); }
-.cs-ai-changes li { display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); }
-.cs-ai-changes p { color: var(--muted); margin: 0; }
-@media (max-width: 960px) { .cs-ai-changes { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px) { .cs-ai-changes { grid-template-columns: 1fr; } }
 
 /* the Figma mark is drawn as filled shapes, unlike the Lucide line family everything else uses */
 .case .cs-btn-figma .cs-ico { fill: currentColor; stroke: none; }
@@ -751,11 +707,11 @@
 }
 .cs-motion-fig { display: grid; gap: 20px; }
 .cs-motion-tall, .cs-motion-phone {
-  position: relative; overflow: hidden; border-radius: 12px; background: #0B0B0C;
-  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .06);
+  position: relative; overflow: hidden; background: #060606;
+  box-shadow: 0 0 0 5px #1B1A19, 0 0 0 6px rgba(255, 255, 255, .1), 0 40px 90px -40px rgba(0, 0, 0, .9);
 }
-.cs-motion-tall { aspect-ratio: 1080 / 3840; max-height: min(64vh, 620px); margin-inline: auto; width: auto; }
-.cs-motion-phone { aspect-ratio: 928 / 1960; max-height: min(64vh, 620px); margin-inline: auto; width: auto; }
+.cs-motion-tall { aspect-ratio: 1080 / 3840; height: min(78vh, 760px); margin-inline: auto; width: auto; border-radius: 8px; }
+.cs-motion-phone { aspect-ratio: 928 / 1960; height: min(78vh, 760px); margin-inline: auto; width: auto; border-radius: 28px; }
 .cs-motion-tall video, .cs-motion-phone video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .cs-motion-fig figcaption { display: grid; gap: 6px; }
 .cs-motion-fig figcaption b { font: 600 clamp(17px, 1.4vw, 21px)/1.2 var(--f-doc); }

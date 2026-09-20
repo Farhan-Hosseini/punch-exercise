@@ -376,7 +376,8 @@
     setMotion()
     measure()
     prime()
-    loadEmbed(embeds.hero)
+    if (embeds.hero) loadEmbed(embeds.hero)
+    else if (embeds.seq) setTimeout(() => { if (open) loadEmbed(embeds.seq) }, 1200)
     // the embeds also follow the phone flow while the dialog is closed, so each open puts them back on their story
     for (const e of Object.values(embeds)) { e.shown = null; applyEmbed(e) }
     // synchronous, before the first frame paints: whatever is already on screen settles without waiting

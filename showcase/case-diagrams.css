@@ -540,3 +540,8 @@
   :is(.cd-state, .cd-run, .cd-geometry) .cd-trail.is-drawn, :is(.cd-state, .cd-run, .cd-geometry) .cd-ga.is-on .cd-draw, :is(.cd-state, .cd-run, .cd-geometry) .cd-draw.is-on { transition: none; }
   :is(.cd-state, .cd-run, .cd-geometry) .cd-spot, :is(.cd-state, .cd-run, .cd-geometry) .cd-axis i, :is(.cd-state, .cd-run, .cd-geometry) .cd-dot, :is(.cd-state, .cd-run, .cd-geometry) .cd-n-ring, :is(.cd-state, .cd-run, .cd-geometry) .cd-bar-fill, :is(.cd-state, .cd-run, .cd-geometry) .cd-geo-note::before { transition-duration: .01s !important; }
 }
+
+/* round eleven: the notes beside the geometry say one thing each, and say it smaller */
+.cd-lead { font-size: 15px; max-width: 46em; }
+.cd-small, .cd-geo-note-d, .cd-geo-spec-d { font-size: 13px; line-height: 1.45; }
+.cd-geo-note-t, .cd-geo-spec-t { font-size: 13px; }
