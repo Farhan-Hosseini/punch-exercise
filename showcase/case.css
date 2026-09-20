@@ -192,10 +192,27 @@
 .cs-motion .cs-chapter:not(.is-in) { transform: translate3d(0, 64px, 0) scale(.96); transform-origin: 0 100%; }
 
 /* ------------------------------------------------------------ hero */
-.cs-hero { padding-top: clamp(56px, 8vw, 112px); padding-bottom: clamp(64px, 8vw, 120px); text-align: center; overflow: clip; }
-.cs-hero-copy { display: grid; justify-items: center; gap: clamp(16px, 2vw, 24px); width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto; will-change: transform; }
+.cs-hero {
+  padding-top: clamp(56px, 8vw, 112px); padding-bottom: clamp(64px, 8vw, 120px); text-align: center; overflow: clip;
+  position: relative;
+}
+.cs-hero::before {
+  /* a faint red glow seated behind the headline, the same light the family row throws */
+  content: ""; position: absolute; left: 50%; top: 6%; width: 90vw; height: 60%; transform: translateX(-50%); z-index: 0;
+  background: radial-gradient(45% 50% at 50% 30%, rgba(235, 17, 16, .14), rgba(235, 17, 16, 0) 72%);
+  pointer-events: none;
+}
+.cs-hero-copy { position: relative; z-index: 1; display: grid; justify-items: center; gap: clamp(16px, 2vw, 24px); width: min(100% - 2 * var(--gut), var(--maxw)); margin-inline: auto; will-change: transform; }
 .cs-hero-by { display: inline-flex; align-items: center; gap: 10px; font: 500 17px/1 var(--f-doc); color: var(--muted); }
+.cs-hero-badge {
+  display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px 7px 12px; border-radius: 100px;
+  background: rgba(235, 17, 16, .12); box-shadow: inset 0 0 0 1px rgba(235, 17, 16, .35);
+  font: 600 13px/1 var(--f-doc); letter-spacing: .01em; color: #FF6B69; text-transform: uppercase;
+}
+.cs-hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px rgba(235, 17, 16, .25); }
 .cs-hero-by img { height: 22px; width: auto; }
+.cs-hero-h1 { font-family: var(--f-num); font-weight: 800; letter-spacing: -.015em; text-transform: uppercase; }
+.cs-hero-h1-accent { color: var(--red); }
 .cs-hero-tag {
   font: 600 clamp(21px, 2.3vw, 32px)/1.25 var(--f-doc); letter-spacing: -.022em;
   max-width: 24ch; text-wrap: balance;
