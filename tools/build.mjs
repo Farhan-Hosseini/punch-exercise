@@ -1,11 +1,12 @@
-// Build script to process HTML includes for static deployment
+// Build script for static deployment (Netlify): processes HTML includes and writes the concatenated CSS files
+// that serve-showcase.mjs otherwise generates on the fly (sections.css, mscreens.css, mpages.css).
 import { readFile, writeFile, readdir } from 'node:fs/promises'
-import { extname, join, normalize, sep } from 'node:path'
+import { extname, join, normalize } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = fileURLToPath(new URL('../showcase/', import.meta.url))
 
-async function processIncludes(html, file) {
+async function processIncludes(html) {
   for (let depth = 0; depth < 4 && html.includes('<!-- include:'); depth++) {
     const parts = html.split(/<!-- include:([\w/.-]+) -->/)
     for (let i = 1; i < parts.length; i += 2) {
@@ -25,25 +26,30 @@ async function processIncludes(html, file) {
   return html
 }
 
-async function buildFiles() {
-  console.log('Processing HTML includes...')
-  const htmlFiles = [
-    'index.html'
-  ]
-
-  for (const filename of htmlFiles) {
-    const filepath = join(ROOT, filename)
-    console.log(`Processing ${filename}...`)
-    try {
-      let html = await readFile(filepath, 'utf8')
-      html = await processIncludes(html, filepath)
-      await writeFile(filepath, html, 'utf8')
-      console.log(`✓ ${filename}`)
-    } catch (err) {
-      console.error(`✗ ${filename}: ${err.message}`)
-    }
+async function writeConcatCss() {
+  // matches the CONCAT map in tools/serve-showcase.mjs: every design's own CSS file, joined, sorted by name
+  const CONCAT = { 'sections.css': 'sections', 'mscreens.css': 'mscreens', 'mpages.css': 'mpages' }
+  for (const [out, dir] of Object.entries(CONCAT)) {
+    const dirPath = join(ROOT, dir)
+    const names = (await readdir(dirPath)).filter((n) => n.endsWith('.css')).sort()
+    const body = (await Promise.all(names.map((n) => readFile(join(dirPath, n), 'utf8')))).join('\n')
+    await writeFile(join(ROOT, out), body, 'utf8')
+    console.log(`✓ ${out} (${names.length} files)`)
   }
+}
+
+async function buildFiles() {
+  console.log('Writing concatenated CSS...')
+  await writeConcatCss()
+
+  console.log('Processing HTML includes...')
+  const filepath = join(ROOT, 'index.html')
+  let html = await readFile(filepath, 'utf8')
+  html = await processIncludes(html)
+  await writeFile(filepath, html, 'utf8')
+  console.log('✓ index.html')
+
   console.log('Build complete')
 }
 
-buildFiles()
+buildFiles().catch((err) => { console.error(err); process.exit(1) })

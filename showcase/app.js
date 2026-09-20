@@ -277,15 +277,9 @@
 
   /* ------------------------------------------------------------ controls in the panel */
   const controls = {
-    zoom:   { el: $('c-zoom'),   out: $('o-zoom'),   show: (x) => `${x}%` },
     // the slider moves in whole points, a thousand a step, and its last step lands on the top score; the readout keeps
     // the decimals the glass shows (999,999.000 by default)
     score:  { el: $('c-score'),  out: $('o-score'),  show: (x) => window.PunchFormat.score(x), toPos: (x) => (x >= TOP_SCORE ? 1000 : Math.round(x / 1000)), fromPos: (p) => (p >= 1000 ? TOP_SCORE : p * 1000) },
-    accent: { el: $('c-accent'), out: $('o-accent'), show: (x) => `${x}%` },
-    glow:   { el: $('c-glow'),   out: $('o-glow'),   show: (x) => `${x}%` },
-    photo:  { el: $('c-photo'),  out: $('o-photo'),  show: (x) => `${x}%` },
-    space:  { el: $('c-space'),  out: $('o-space'),  show: (x) => `${x}%` },
-    radius: { el: $('c-radius'), out: $('o-radius'), show: (x) => `${x} px` },
   }
 
   /* ------------------------------------------------------------ apply everything */
@@ -303,7 +297,6 @@
     if (themeNote) themeNote.textContent = `${v === 'reference' ? 'Reference' : 'Arena'}, ${state.appearance}`
     document.querySelectorAll('[data-decimals-btn]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.decimalsBtn === state.decimals)))
     document.querySelectorAll('[data-appearance-btn]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.appearanceBtn === state.appearance)))
-    controls.zoom.el.max = maxZoom()
     root.style.setProperty('--zoom', zoomNow() / 100)
     root.style.setProperty('--accent-amt', s.accent)
     root.style.setProperty('--glow', s.glow / 100)
@@ -453,18 +446,6 @@
     live.textContent = state.appearance === 'light' ? 'Light appearance' : 'Dark appearance'
   }))
   controls.score.el.addEventListener('change', () => setReels(cur().score, true))
-  $('replayReveal').addEventListener('click', () => {
-    stopCount()
-    if (reduced.matches) {
-      // no movement when motion is reduced: the glass fades back in with the score already landed
-      paintScore(cur().score)
-      setReels(cur().score, false)
-      if (content.animate) content.animate([{ opacity: .15 }, { opacity: 1 }], { duration: 700, easing: 'ease-out' })
-      live.textContent = 'Motion is reduced, so the reveal replays as a fade'
-      return
-    }
-    countUp(cur().score)
-  })
   $('resetCustom').addEventListener('click', () => {
     state.variant = 'arena'
     state.appearance = 'dark'
