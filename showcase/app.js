@@ -619,7 +619,7 @@
   const quiet = { loader: true }
   let caseEl = null, briefEl = null
   // queried rather than captured: the help panel is declared further down, and a const would still be in its dead zone here
-  const dialogOpen = () => !!document.querySelector('.case.is-open, .brief.is-open')
+  const dialogOpen = () => !!document.querySelector('.case.is-open, .brief.is-open, .helpwrap.is-open')
   function syncInert() {
     const dialog = quiet.loader || dialogOpen()
     const sheet = custom.classList.contains('is-open') && overPage.matches
@@ -760,7 +760,7 @@
   function openHelp() {
     if (!helpEl) return
     clearTimeout(helpTimer)
-    const sc = helpEl.querySelector('.bf-scroll')
+    const sc = helpEl.querySelector('.help-card')
     if (sc) sc.scrollTop = 0
     body.style.overflow = 'hidden'
     helpEl.hidden = false

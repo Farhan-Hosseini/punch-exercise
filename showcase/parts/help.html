@@ -1,51 +1,37 @@
-<div class="brief-scrim" data-close-help aria-hidden="true"></div>
+<div class="help-scrim" data-close-help aria-hidden="true"></div>
 
-<div class="brief-panel">
-  <header class="bf-head">
-    <div class="bf-head-text">
-      <p class="bf-from">A short guide</p>
+<div class="help-card">
+  <header class="help-head">
+    <div>
       <h2 id="helpTitle">How this works</h2>
-      <p class="bf-role">What you are looking at, and what you can change</p>
+      <p class="help-sub">Nothing here is a picture. Both surfaces are running code, at their real sizes.</p>
     </div>
-    <button type="button" class="bf-close" id="closeHelp" data-close-help aria-label="Close the guide">
-      <svg class="bf-ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    <button type="button" class="help-x" id="closeHelp" data-close-help aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>
   </header>
 
-  <div class="bf-scroll" tabindex="0" role="region" aria-label="How this works">
-    <article class="bf-doc">
+  <ul class="help-tabs">
+    <li>
+      <span class="help-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span>
+      <b>Mobile app</b><span>The phone, page by page.</span>
+    </li>
+    <li>
+      <span class="help-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="20" x="6" y="2" rx="2"/></svg></span>
+      <b>Machine screen</b><span>The glass. Pick a group, then a screen.</span>
+    </li>
+    <li>
+      <span class="help-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+      <b>Animation</b><span>Both surfaces playing one turn together.</span>
+    </li>
+    <li>
+      <span class="help-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 11.3a1 1 0 0 0 0 1.4l2.4 2.4a1 1 0 0 0 1.4 0l2.4-2.4a1 1 0 0 0 0-1.4l-2.4-2.4a1 1 0 0 0-1.4 0z"/><path d="M2.3 11.3a1 1 0 0 0 0 1.4l2.4 2.4a1 1 0 0 0 1.4 0l2.4-2.4a1 1 0 0 0 0-1.4L6.1 8.9a1 1 0 0 0-1.4 0z"/><path d="M8.9 17.9a1 1 0 0 0 0 1.4l2.4 2.4a1 1 0 0 0 1.4 0l2.4-2.4a1 1 0 0 0 0-1.4l-2.4-2.4a1 1 0 0 0-1.4 0z"/><path d="M8.9 4.7a1 1 0 0 0 0 1.4l2.4 2.4a1 1 0 0 0 1.4 0l2.4-2.4a1 1 0 0 0 0-1.4l-2.4-2.4a1 1 0 0 0-1.4 0z"/></svg></span>
+      <b>Design system</b><span>The parts both surfaces are built from.</span>
+    </li>
+  </ul>
 
-      <section class="bf-sec">
-        <h3>Nothing here is a picture</h3>
-        <p>Both surfaces are running code. The arcade glass and the phone app are live HTML, drawn at their real sizes: a 1080 by 3840 panel and a 440 by 956 phone. What you see is what the screens actually do.</p>
-      </section>
-
-      <section class="bf-sec">
-        <h3>The four tabs</h3>
-        <ul class="bf-rows bf-leads">
-          <li><strong>Mobile app</strong> The phone, page by page, from the code on the cabinet to the replay you keep.</li>
-          <li><strong>Machine screen</strong> The glass. Its page bar picks a group first, then a screen inside it.</li>
-          <li><strong>Animation</strong> The phone and the glass side by side, playing one turn together, with the two motion clips underneath.</li>
-          <li><strong>Design system</strong> The tokens, type, spacing and parts both surfaces are built from.</li>
-        </ul>
-      </section>
-
-      <section class="bf-sec">
-        <h3>Customise is the point</h3>
-        <p>Every screen is a stack of sections, and every section is drawn several ways. <strong>Customise</strong>, at the top right, opens on whatever screen is in front of you and lets you page through those designs one section at a time.</p>
-        <p>The panel has two parts. The top is this screen. Underneath, <strong>Across the showcase</strong> holds what both surfaces share: the theme, the background, the logo, the phone model and the score format. Your choices survive a reload.</p>
-      </section>
-
-      <section class="bf-sec">
-        <h3>The brief and the case study</h3>
-        <p><strong>The brief</strong> is the task exactly as it arrived, tokens and all. <strong>Read case study</strong> is the long version: the problem, the idea, how each surface answers it, and what I would push back on.</p>
-      </section>
-
-      <section class="bf-sec">
-        <h3>Placeholder material</h3>
-        <p>Photography and clips are licensed stock standing in for the cabinet camera. Faces, handles and scores are invented. No real venue, player or brand is shown.</p>
-      </section>
-
-    </article>
+  <div class="help-point">
+    <h3>Customise works per screen</h3>
+    <p>Every screen is a stack of sections, and each section is drawn several ways. <b>Customise</b> opens on whatever screen is in front of you and pages through that screen's own designs. Under it, <b>Across the showcase</b> holds what both surfaces share: theme, background, logo, phone model, score format. Choices survive a reload.</p>
   </div>
 </div>

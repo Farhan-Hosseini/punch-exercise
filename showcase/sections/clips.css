@@ -35,16 +35,16 @@
 .s-clips .v-a .rp-a-shot::after { background: linear-gradient(180deg, rgba(8, 8, 9, 0) 34%, rgba(8, 8, 9, .86)); }
 /* the name stands clear of the photo's foot, and the score keeps a margin of its own under it */
 .s-clips .v-a .rp-a-shot .rp-name { position: absolute; z-index: 2; left: 18px; right: 18px; bottom: 18px; color: #FFFFFF; font-size: 26px; }
-.s-clips .v-a .rp-score { --top: 40px; padding: 20px 20px 20px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 36px) / (var(--chars) * var(--num-w)))); }
+.s-clips .v-a .rp-score { --top: 40px; padding: 20px 24px 24px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 64px) / (var(--chars) * var(--num-w)))); }
 
 /* B  List: the three latest as rows, the face, the name over when, the score standing on the right */
 .s-clips .v-b .rp-b { display: grid; gap: 12px; }
 .s-clips .v-b .rp-b-row {
   display: grid; grid-template-columns: 64px minmax(0, 1fr) 330px; align-items: center; column-gap: 24px;
-  height: 80px; padding: 0 32px 0 10px; container-type: inline-size;
+  height: 80px; padding: 0 40px 0 12px; container-type: inline-size;
 }
 .s-clips .v-b .rp-b-row .rp-who { gap: 6px; }
-.s-clips .v-b .rp-b-row .rp-score { --top: 50px; justify-self: end; font-size: min(calc(var(--top) / var(--cap)), calc(330px / (var(--chars) * var(--num-w)))); }
+.s-clips .v-b .rp-b-row .rp-score { --top: 50px; justify-self: end; font-size: min(calc(var(--top) / var(--cap)), calc(290px / (var(--chars) * var(--num-w)))); }
 
 /* C  Latest first: the newest punch as a photo on half the row, the three before it as rows beside it */
 .s-clips .v-c .rp-c { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-grid); height: 264px; }
@@ -53,7 +53,7 @@
 .s-clips .v-c .rp-c-lead::after { background: linear-gradient(180deg, rgba(8, 8, 9, .35), rgba(8, 8, 9, 0) 36%, rgba(8, 8, 9, .1) 50%, rgba(8, 8, 9, .86)); }
 .s-clips .v-c .rp-c-cap {
   position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; container-type: inline-size;
-  display: grid; gap: 10px; padding: 0 24px 24px;
+  display: grid; gap: 10px; padding: 0 28px 28px;
 }
 .s-clips .v-c .rp-c-cap .rp-name { color: #FFFFFF; }
 .s-clips .v-c .rp-c-cap .rp-score { --top: 64px; color: #FFFFFF; text-shadow: 0 4px 24px rgba(0, 0, 0, .5); }
