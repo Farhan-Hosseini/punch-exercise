@@ -58,7 +58,7 @@
 .brief .bf-head {
   flex: none;
   display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
-  padding: 26px 20px 20px var(--bf-pad);
+  padding: 28px 20px 20px var(--bf-pad);
   border-bottom: 1px solid var(--bf-line);
 }
 .brief .bf-from {
@@ -92,16 +92,16 @@
 .brief .bf-doc { padding: 4px var(--bf-pad) var(--bf-pad); }
 
 /* ------------------------------------------------------------ type */
-.brief .bf-sec { padding: 28px 0 30px; }
+.brief .bf-sec { padding: 28px 0 32px; }
 .brief .bf-sec + .bf-sec { border-top: 1px solid var(--bf-line-soft); }
 .brief h3 {
   font: 700 24px/1 "Barlow Condensed", sans-serif; letter-spacing: .01em; text-transform: uppercase;
   color: var(--bf-ink);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .brief h4 {
   font: 700 15px/1.3 "Barlow", sans-serif; color: var(--bf-ink);
-  margin: 22px 0 10px;
+  margin: 24px 0 10px;
 }
 .brief h3 + h4 { margin-top: 0; }
 .brief h5 {
@@ -127,7 +127,7 @@
 /* ruled rows: the constraints and the deliverables */
 .brief .bf-rows { border-top: 1px solid var(--bf-line-soft); }
 .brief .bf-rows li {
-  padding: 11px 0 12px;
+  padding: 12px 0 12px;
   border-bottom: 1px solid var(--bf-line-soft);
   font: 400 16px/1.5 "Barlow", sans-serif; color: var(--bf-ink-2);
   font-variant-numeric: tabular-nums;
@@ -138,18 +138,18 @@
 
 /* the brief left touch open; show it as sent, marked as a gap */
 .brief .bf-open {
-  padding: 1px 5px; border-radius: 4px;
+  padding: 1px 6px; border-radius: 4px;
   background: #fffae7; color: #6e5a10;
   box-shadow: inset 0 0 0 1px #e7d58f;
   font-weight: 600; white-space: nowrap;
 }
 
 /* ------------------------------------------------------------ design tokens */
-.brief .bf-group + .bf-group { margin-top: 30px; }
-.brief .bf-group > h4 { margin: 0 0 14px; }
+.brief .bf-group + .bf-group { margin-top: 32px; }
+.brief .bf-group > h4 { margin: 0 0 16px; }
 .brief .bf-ramp-head {
   display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-  margin: 18px 0 10px;
+  margin: 20px 0 10px;
 }
 .brief .bf-group > h4 + .bf-ramp-head { margin-top: 0; }
 .brief code, .brief .bf-num {
@@ -159,7 +159,7 @@
 
 .brief .bf-sec p.bf-specimen {
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 20px;
-  padding: 18px 20px; border-radius: 14px;
+  padding: 20px 20px; border-radius: 14px;
   background: var(--bf-ink); color: var(--bf-paper);
   max-width: none;
 }
@@ -169,7 +169,7 @@
 .brief .bf-font { margin-top: 12px; border-top: 1px solid var(--bf-line-soft); }
 .brief .bf-font > div {
   display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 12px; align-items: baseline;
-  padding: 9px 0; border-bottom: 1px solid var(--bf-line-soft);
+  padding: 10px 0; border-bottom: 1px solid var(--bf-line-soft);
 }
 .brief .bf-font dt { font: 600 13px/1.3 "Barlow Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--bf-mute); }
 .brief .bf-font dt code { text-transform: none; letter-spacing: .01em; font-size: 13px; color: var(--bf-ink); font-weight: 600; }
@@ -177,8 +177,8 @@
 .brief .bf-font dd.bf-num { font-size: 14.5px; color: var(--bf-ink-2); }
 
 /* swatch tiles, five to a row */
-.brief .bf-ramp { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px 8px; }
-.brief .bf-ramp li, .brief .bf-fam li { display: grid; gap: 3px; min-width: 0; }
+.brief .bf-ramp { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px 8px; }
+.brief .bf-ramp li, .brief .bf-fam li { display: grid; gap: 4px; min-width: 0; }
 .brief .bf-chip {
   display: block; height: 44px; border-radius: 10px; margin-bottom: 4px;
   background: var(--c);
@@ -209,10 +209,10 @@
 }
 .brief .bf-op i.on-light { background: linear-gradient(rgb(var(--rgb) / var(--a)), rgb(var(--rgb) / var(--a))), var(--bf-light-chip); }
 .brief .bf-op b {
-  padding-top: 3px; text-align: center;
+  padding-top: 4px; text-align: center;
   font: 600 12.5px/1 "Barlow Condensed", sans-serif; font-variant-numeric: tabular-nums; color: var(--bf-ink);
 }
-.brief .bf-op + .bf-ramp-head { margin-top: 22px; }
+.brief .bf-op + .bf-ramp-head { margin-top: 24px; }
 
 /* ------------------------------------------------------------ how this showcase answers it */
 .brief .bf-answer {
@@ -223,7 +223,7 @@
 }
 .brief .bf-answer h3 { color: var(--bf-paper); margin-bottom: 10px; }
 .brief .bf-answer-lede { font: 400 15.5px/1.5 "Barlow", sans-serif; color: #ccbfbb; max-width: 52ch; }
-.brief .bf-where { padding: 22px 0 20px; }
+.brief .bf-where { padding: 24px 0 20px; }
 .brief .bf-where + .bf-where { border-top: 1px solid rgba(250, 249, 249, .14); }
 .brief .bf-where h4 {
   display: flex; align-items: center; gap: 10px;
@@ -235,12 +235,12 @@
 .brief .bf-where h4 .bf-ico { flex: none; color: var(--bf-paper); }
 .brief .bf-ico { display: block; flex: none; }
 .brief .bf-where ul { display: grid; gap: 12px; }
-.brief .bf-where li { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 14px; align-items: baseline; }
+.brief .bf-where li { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 16px; align-items: baseline; }
 .brief .bf-where li b { font: 600 15px/1.35 "Barlow", sans-serif; color: var(--bf-paper); }
 .brief .bf-where li span { font: 400 15px/1.45 "Barlow", sans-serif; color: #dcd2d0; }
 .brief .bf-go {
   appearance: none; border: 0; cursor: pointer;
-  margin-top: 18px; height: 44px; padding: 0 16px 0 18px; border-radius: 12px;
+  margin-top: 20px; height: 44px; padding: 0 16px 0 20px; border-radius: 12px;
   display: inline-flex; align-items: center; gap: 10px;
   background: var(--bf-paper); color: var(--bf-ink);
   font: 700 14.5px/1 "Barlow", sans-serif;
@@ -255,7 +255,7 @@
 @media (max-width: 640px) {
   .brief { --bf-pad: 20px; }
   .brief .brief-panel { top: 0; left: 0; bottom: 0; width: 100%; border-radius: 0; box-shadow: none; transform: translateX(-100%); }
-  .brief .bf-head { padding: 18px 12px 16px var(--bf-pad); }
+  .brief .bf-head { padding: 20px 12px 16px var(--bf-pad); }
   .brief #briefTitle { font-size: 36px; }
   .brief .bf-scroll:focus-visible { border-radius: 0; }
   .brief .bf-ramp { gap: 12px 6px; }
@@ -263,11 +263,11 @@
   .brief .bf-ramp code { font-size: 11.5px; letter-spacing: 0; }
   .brief .bf-fams { gap: 10px; }
   .brief .bf-fam code { font-size: 11.5px; letter-spacing: 0; }
-  .brief .bf-op { grid-template-columns: 50px repeat(8, minmax(0, 1fr)); gap: 3px; }
+  .brief .bf-op { grid-template-columns: 50px repeat(8, minmax(0, 1fr)); gap: 4px; }
   .brief .bf-op-row { font-size: 11.5px; letter-spacing: .03em; }
   .brief .bf-op i { height: 28px; border-radius: 5px; }
   .brief .bf-font > div { grid-template-columns: 1fr; gap: 2px; }
-  .brief .bf-answer { padding: 24px 18px 8px; margin-inline: -4px; }
+  .brief .bf-answer { padding: 24px 20px 8px; margin-inline: -4px; }
   .brief .bf-where li { grid-template-columns: 1fr; gap: 2px; }
 }
 
@@ -280,7 +280,7 @@
 /* ------------------------------------------------------------ the answers: a jump from the top, and a row of ways in under each */
 .brief .bf-jumpline { margin: 0 0 8px; }
 .brief .bf-jump {
-  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 10px;
+  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 10px;
   background: var(--bf-ink); color: var(--bf-paper); text-decoration: none;
   font: 700 14px/1 "Barlow", sans-serif;
 }
@@ -290,7 +290,7 @@
 .brief #bf-ans:focus { outline: none; }
 .brief .bf-where li .bf-links { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
 .brief .bf-to {
-  appearance: none; cursor: pointer; display: inline-flex; align-items: center; height: 44px; padding: 0 14px; border-radius: 11px;
+  appearance: none; cursor: pointer; display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 11px;
   border: 1px solid rgba(250, 249, 249, .28); background: transparent; color: var(--bf-paper); text-decoration: none;
   font: 600 13.5px/1 "Barlow", sans-serif; white-space: nowrap;
   transition: background-color .15s ease, color .15s ease, border-color .15s ease;

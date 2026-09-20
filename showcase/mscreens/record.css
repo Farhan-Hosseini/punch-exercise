@@ -92,7 +92,7 @@
   --rec-top: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px);
   position: absolute; inset: 0; overflow: hidden; isolation: isolate;
   display: flex; flex-direction: column; gap: var(--ms-sec-gap);
-  padding: var(--rec-top) 0 calc(var(--ms-ad-h) + 88px);
+  padding: var(--rec-top) 0 calc(var(--ms-ad-h) + 96px);
   color: var(--ink-1); font-family: var(--f-text);
 }
 .mscreen-record .rec > :not(.ms-lights, .ms-head, .ms-head > *, .ms-brand, .ms-ad, .rec-rain) { position: relative; z-index: 1; flex: none; }
@@ -110,7 +110,7 @@
 
 /* the kicker every design opens with: an icon and a label in the screen's red */
 .mscreen-record :is(.rm-kick, .rs-kick) {
-  display: flex; align-items: center; gap: 18px; white-space: nowrap; color: var(--rc-accent);
+  display: flex; align-items: center; gap: 20px; white-space: nowrap; color: var(--rc-accent);
   font: var(--w-label) 40px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
 }
 .mscreen-record :is(.rm-kick, .rs-kick) [data-lucide] { font-size: 48px; }
@@ -173,7 +173,7 @@
   color: var(--rc-title); text-shadow: 0 6px 12px rgba(0, 0, 0, .7);
 }
 .mscreen-record .rm-sub {
-  margin-top: 18px; white-space: nowrap;
+  margin-top: 20px; white-space: nowrap;
   font: 600 40px/1.4 "Poppins", sans-serif; letter-spacing: .6px;
   color: var(--rc-ink); text-shadow: 0 3px 6px #000000;
 }
@@ -188,7 +188,7 @@
   font: var(--w-display) min(176px, 16.5cqi)/.9 var(--f-display);
   letter-spacing: var(--display-track); text-transform: var(--display-case); text-shadow: var(--display-glow);
 }
-:root:not([data-variant="reference"]) .mscreen-record .rm-sub { margin-top: 26px; font: 600 44px/1.25 var(--f-text); letter-spacing: 0; text-shadow: none; }
+:root:not([data-variant="reference"]) .mscreen-record .rm-sub { margin-top: 28px; font: 600 44px/1.25 var(--f-text); letter-spacing: 0; text-shadow: none; }
 /* the bigger Arena title would sit on three of the frame's confetti pieces: they stay out of its way */
 :root:not([data-variant="reference"]) .mscreen-record .rm-near { visibility: hidden; }
 @keyframes rm-twinkle { from { opacity: 1; scale: 1; } to { opacity: .72; scale: .9; } }
@@ -262,7 +262,7 @@
 .mscreen-record .rm-half-l { left: 0; width: calc(var(--split) - var(--cut)); transform-origin: 0 50%; transform: rotate(var(--a-l)); }
 .mscreen-record .rm-half-r { right: 0; width: calc(100% - var(--split) - var(--cut)); transform-origin: 100% 50%; transform: rotate(var(--a-r)); padding: 0; }
 .mscreen-record .rm-half b {
-  padding: 6px 14px 4px; border-radius: 4px; background: color-mix(in oklab, var(--rc-accent) 55%, #000000); color: #FFFFFF; white-space: nowrap;
+  padding: 6px 16px 4px; border-radius: 4px; background: color-mix(in oklab, var(--rc-accent) 55%, #000000); color: #FFFFFF; white-space: nowrap;
   font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
 }
 .mscreen-record .rm-sparks { position: absolute; left: var(--split); top: 0; width: 0; height: 0; }
@@ -295,7 +295,7 @@
 .mscreen-record .rm-flap.is-gap::after { display: none; }
 .mscreen-record .rm-flap.is-landed { box-shadow: inset 0 0 0 4px color-mix(in oklab, var(--rc-accent) 85%, transparent); color: var(--rc-accent); }
 .mscreen-record .rm-hands { display: flex; align-items: center; justify-content: space-between; }
-.mscreen-record .rm-who { width: 380px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+.mscreen-record .rm-who { width: 380px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
 .mscreen-record .rm-face {
   display: block; width: 176px; height: 176px; border-radius: 50%; overflow: hidden; flex: none;
   background: var(--rec-tile); box-shadow: 0 0 0 4px var(--rec-tile-edge);
@@ -318,7 +318,7 @@
 /* the book keeps its top three, so the stamp lands on clear ground under them and never prints over a name */
 .mscreen-record .rm-stamp .rm-rows li:nth-child(n + 4) { display: none; }
 .mscreen-record .rm-rows li {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 40px; padding: 26px 0;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 40px; padding: 28px 0;
   border-bottom: 2px solid var(--rec-track-edge);
   font: var(--w-text) 48px/1.1 var(--f-text); color: var(--ink-2); font-variant-numeric: tabular-nums;
 }
@@ -326,7 +326,7 @@
 .mscreen-record .rm-rows .dec { font-size: .6em; }
 .mscreen-record .rm-ink {
   position: absolute; z-index: 2; left: 50%; top: 716px; width: 760px; translate: -50% -50%; rotate: -7deg;
-  display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 44px 40px 40px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 48px 40px 40px;
   border: 12px solid var(--rec-ink-c); border-radius: 28px; outline: 4px solid var(--rec-ink-c); outline-offset: -30px;
   background: color-mix(in oklab, var(--rec-fade) 82%, transparent); color: var(--rec-ink-c); text-align: center;
   /* worn ink: a fine noise knocks small holes in the print */
@@ -364,8 +364,8 @@
   content: ""; position: absolute; left: 0; right: 0; top: 22px; bottom: 22px;
   border-top: 5px dashed color-mix(in oklab, var(--rc-soft) 70%, transparent); border-bottom: 5px dashed color-mix(in oklab, var(--rc-soft) 70%, transparent);
 }
-.mscreen-record .rm-strap-l { left: 0; padding-right: 180px; }
-.mscreen-record .rm-strap-r { right: 0; padding-left: 180px; }
+.mscreen-record .rm-strap-l { left: 0; padding-right: 192px; }
+.mscreen-record .rm-strap-r { right: 0; padding-left: 192px; }
 .mscreen-record .rm-stud {
   position: relative; display: grid; place-items: center; width: 132px; height: 132px; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #FFB0A9, #E3231D 45%, #7A0707); color: #FFFFFF; font-size: 64px;
@@ -382,7 +382,7 @@
   clip-path: polygon(29% 0, 71% 0, 100% 29%, 100% 71%, 71% 100%, 29% 100%, 0 71%, 0 29%);
   background: radial-gradient(circle at 40% 30%, #FFB3AD, #EB1110 42%, #9A0B0B 80%);
 }
-.mscreen-record .rm-plate-in { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; color: #FFFFFF; font-size: 140px; }
+.mscreen-record .rm-plate-in { position: relative; display: flex; flex-direction: column; align-items: center; gap: 16px; color: #FFFFFF; font-size: 140px; }
 .mscreen-record .rm-plate-in b { font: var(--w-label) 44px/1 var(--f-label); letter-spacing: .14em; text-transform: uppercase; }
 .mscreen-record .rm-plate-sheen {
   position: absolute; inset: 0; transform: translateX(-130%);
@@ -406,7 +406,7 @@
 /* ---------------------------------------------------------------- Record card: the frame's card, in red since round nine */
 .mscreen-record .rs-slab {
   position: relative; flex: none; overflow: hidden; isolation: isolate; height: 380px; border-radius: 45px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
   border: var(--rc-card-border); background: var(--rc-card-bg); box-shadow: var(--rc-card-shadow);
   color: var(--rc-card-ink); container-type: inline-size;
 }
@@ -501,7 +501,7 @@
 .mscreen-record .rs-decs { font: var(--w-display) calc(130px / var(--cap))/.9 var(--f-display); color: var(--rc-accent); font-variant-numeric: tabular-nums; }
 .mscreen-record .rs-decs:empty { display: none; }
 .mscreen-record .rs-chip {
-  align-self: flex-start; display: inline-flex; align-items: center; gap: 18px; padding: 22px 34px 20px; border-radius: 999px;
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 20px; padding: 24px 36px 20px; border-radius: 999px;
   background: color-mix(in oklab, var(--rc-accent) 16%, transparent); box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--rc-accent) 55%, transparent);
   font: var(--w-text) 40px/1.1 var(--f-text); white-space: nowrap; color: var(--ink-1);
 }
@@ -516,7 +516,7 @@
 /* ---------------------------------------------------------------- Framed: the shared photo card, the reel in it */
 .mscreen-record .rp-tag, .mscreen-record .rp-chip {
   position: absolute; z-index: 2; left: 40px; top: 40px; display: inline-flex; align-items: center; gap: 16px;
-  padding: 18px 28px 16px; border-radius: 999px; background: rgba(12, 10, 10, .62); color: #FFFFFF;
+  padding: 20px 28px 16px; border-radius: 999px; background: rgba(12, 10, 10, .62); color: #FFFFFF;
   font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
 }
@@ -533,7 +533,7 @@
   content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background: linear-gradient(to bottom, var(--rec-fade), transparent 14%, transparent 50%, color-mix(in oklab, var(--rec-fade) 82%, transparent) 74%, var(--rec-fade));
 }
-.mscreen-record .rp-grade-cap { position: absolute; z-index: 3; left: var(--ms-gut); right: var(--ms-gut); bottom: 40px; display: flex; flex-direction: column; gap: 22px; }
+.mscreen-record .rp-grade-cap { position: absolute; z-index: 3; left: var(--ms-gut); right: var(--ms-gut); bottom: 40px; display: flex; flex-direction: column; gap: 24px; }
 .mscreen-record .rp-grade-cap b {
   display: block; width: max-content;
   font: var(--w-display) 300px/.8 var(--f-display); letter-spacing: var(--display-track); text-transform: var(--display-case); color: var(--ink-1);
@@ -558,7 +558,7 @@
 /* the strip's own padding holds the sprocket rows clear of the frames (the list reset above, .rec :is(ol, ul), outranked
    a plain .rp-film and laid the sprockets over the frames until round nine) */
 .mscreen-record .rp-replay .rp-film {
-  flex: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; padding: 44px 20px; border-radius: 24px;
+  flex: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; padding: 48px 20px; border-radius: 24px;
   background:
     repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, .5) 22px 44px, transparent 44px 66px) 0 14px / 100% 20px no-repeat,
     repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, .5) 22px 44px, transparent 44px 66px) 0 calc(100% - 14px) / 100% 20px no-repeat,
@@ -570,7 +570,7 @@
 /* the contact frame keeps a red rim; the frame under the playhead gets a white one */
 .mscreen-record .rp-film li.is-key { box-shadow: 0 0 0 6px var(--strike); }
 .mscreen-record .rp-film li.is-now::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 5px #FFFFFF; }
-.mscreen-record .rp-replay-t { display: flex; align-items: center; gap: 18px; font: var(--w-text) 44px/1.2 var(--f-text); color: var(--ink-2); }
+.mscreen-record .rp-replay-t { display: flex; align-items: center; gap: 20px; font: var(--w-text) 44px/1.2 var(--f-text); color: var(--ink-2); }
 .mscreen-record .rp-replay-t [data-lucide] { font-size: 48px; color: var(--rc-accent); }
 
 /* ---------------------------------------------------------------- Three speeds: the reel in three bands (round nine: they
@@ -594,11 +594,11 @@
    Both prints stand inside the gutters with their tilt, and the new one is pinned low enough that the old one's
    caption (who held it) still reads above it; it used to hide under the new print and hang past both gutters. */
 .mscreen-record .rp-card {
-  position: absolute; margin: 0; padding: 26px 26px 0; background: #F6F2EA; color: #16100C;
+  position: absolute; margin: 0; padding: 28px 28px 0; background: #F6F2EA; color: #16100C;
   box-shadow: 0 50px 90px -40px rgba(0, 0, 0, .75), 0 2px 0 rgba(0, 0, 0, .06);
 }
 .mscreen-record .rp-card video { height: auto; aspect-ratio: 4 / 3; }
-.mscreen-record .rp-card figcaption { display: flex; flex-direction: column; gap: 10px; padding: 30px 8px 36px; }
+.mscreen-record .rp-card figcaption { display: flex; flex-direction: column; gap: 10px; padding: 32px 8px 36px; }
 .mscreen-record .rp-card figcaption b { font: var(--w-strong) 52px/1.05 var(--f-text); }
 .mscreen-record .rp-card figcaption span { font: var(--w-label) 34px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: #6B6259; }
 /* round nine: the room is 1036, so the prints trade places: the new one pinned high on the left over the old one, which
@@ -608,7 +608,7 @@
 .mscreen-record .rp-card-new { left: 24px; top: 70px; width: 640px; rotate: -4deg; z-index: 1; }
 .mscreen-record .rp-card-new video { filter: var(--photo-filter); }
 .mscreen-record .rp-card-new figcaption span { color: #B80F0D; }
-.mscreen-record .rp-tape { position: absolute; z-index: 2; left: 50%; top: -34px; width: 240px; height: 70px; margin-left: -120px; rotate: 3deg; background: rgba(255, 255, 255, .55); box-shadow: 0 2px 6px rgba(0, 0, 0, .12); }
+.mscreen-record .rp-tape { position: absolute; z-index: 2; left: 50%; top: -34px; width: 240px; height: 70px; margin-left: -128px; rotate: 3deg; background: rgba(255, 255, 255, .55); box-shadow: 0 2px 6px rgba(0, 0, 0, .12); }
 .mscreen-record .rp-seal {
   position: absolute; z-index: 2; right: -64px; bottom: 60px; width: 196px; height: 196px; border-radius: 50%;
   display: grid; place-items: center; color: #FFFFFF; font-size: 96px; rotate: 10deg;

@@ -13,7 +13,7 @@
 .s-video .v-b .video-b-player { aspect-ratio: 7 / 3; border-radius: var(--r); background: rgba(0, 0, 0, 1); }
 .s-video .v-b .video-b-control {
   position: absolute; z-index: 2; top: calc(32px * var(--space)); left: calc(32px * var(--space));
-  display: flex; align-items: center; gap: 20px; padding: 18px 32px; border-radius: 999px;
+  display: flex; align-items: center; gap: 20px; padding: 20px 32px; border-radius: 999px;
 }
 .s-video .v-b .video-b-control-copy { display: grid; gap: 8px; }
 .s-video .v-b .video-b-replay { color: inherit; font-size: 32px; text-box: trim-both cap alphabetic; }
@@ -23,13 +23,13 @@
 .s-video .v-b .video-b-strip > .video-b-frame { opacity: .62; transition: opacity .2s ease; }
 /* the frame nearest the reel's playhead lights (contact is always lit) */
 .s-video .v-b .video-b-strip > .video-b-frame.is-now { opacity: 1; }
-.s-video .v-b .video-b-contact { position: relative; display: grid; justify-items: center; gap: 14px; }
+.s-video .v-b .video-b-contact { position: relative; display: grid; justify-items: center; gap: 16px; }
 .s-video .v-b .video-b-contact .video-b-frame { width: 100%; box-shadow: 0 0 0 4px var(--ink-1); border-bottom: 6px solid var(--strike); }
 .s-video .v-b .video-b-mark { font-size: 32px; color: var(--ink-1); white-space: nowrap; }
 
 /* C  Phone clip: the replay held upright in a drawn phone on the first column, the line and the replay on the other two */
 .s-video .v-c .video-c-wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gap-grid); }
-.s-video .v-c .video-c-phone { position: relative; height: 540px; padding: 12px 14px; border-radius: 52px; }
+.s-video .v-c .video-c-phone { position: relative; height: 540px; padding: 12px 16px; border-radius: 52px; }
 .s-video .v-c .video-c-screen { height: 100%; border-radius: 40px; background: rgba(0, 0, 0, 1); }
 .s-video .v-c .video-c-screen::before { content: ""; position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(to top, rgba(0, 0, 0, .66), rgba(0, 0, 0, 0)); }
 .s-video .v-c .video-c-island { position: absolute; z-index: 3; top: 14px; left: 50%; width: 92px; height: 28px; border-radius: 14px; background: rgba(0, 0, 0, .94); transform: translateX(-50%); }
@@ -82,9 +82,9 @@
   border: 3px solid currentColor; border-radius: 6px; background: rgba(0, 0, 0, .42);
   transform: rotate(-6deg);
 }
-.s-video .v-e .video-e-stamp-a { top: calc(36px * var(--space)); left: calc(36px * var(--space)); padding: 12px 18px; font-size: 32px; }
+.s-video .v-e .video-e-stamp-a { top: calc(36px * var(--space)); left: calc(36px * var(--space)); padding: 12px 20px; font-size: 32px; }
 .s-video .v-e .video-e-stamp-b {
-  right: calc(40px * var(--space)); bottom: calc(40px * var(--space)); padding: 16px 22px 14px;
+  right: calc(40px * var(--space)); bottom: calc(40px * var(--space)); padding: 16px 24px 16px;
   letter-spacing: .04em; font-size: calc(48px / var(--cap));
 }
 .s-video .v-e .video-e-time { display: grid; gap: 16px; }
@@ -99,7 +99,7 @@
 
 /* D: the letterbox bars become the page itself, so credits and controls sit on daylight and the photograph is the band between them */
 :root[data-appearance="light"] .s-video .v-d .video-d-scope { background: transparent; }
-:root[data-appearance="light"] .s-video .v-d .video-d-scope > :is(img, video) { margin-top: 52px; height: calc(100% - 136px); }
+:root[data-appearance="light"] .s-video .v-d .video-d-scope > :is(img, video) { margin-top: 56px; height: calc(100% - 136px); }
 :root[data-appearance="light"] .s-video .v-d .video-d-scrim { inset: 52px 0 84px; }
 :root[data-appearance="light"] .s-video .v-d .video-d-bar { background: transparent; }
 :root[data-appearance="light"] .s-video .v-d .video-d-line { background: var(--track); }

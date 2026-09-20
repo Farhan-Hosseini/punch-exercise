@@ -9,7 +9,7 @@
 .s-stats .v-b .stats-b-speed { --share: .64; }
 .s-stats .v-b .stats-b-acc { --share: .78; }
 .s-stats .v-b .stats-b-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-grid); }
-.s-stats .v-b .stats-b-gauge { min-width: 0; display: grid; justify-items: center; gap: calc(22px * var(--space)); }
+.s-stats .v-b .stats-b-gauge { min-width: 0; display: grid; justify-items: center; gap: calc(24px * var(--space)); }
 .s-stats .v-b .stats-b-dial {
   position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%;
   display: grid; place-items: center;
@@ -40,7 +40,7 @@
 .s-stats .v-c .stats-c-speed { --share: .64; }
 .s-stats .v-c .stats-c-acc { --share: .78; }
 .s-stats .v-c { --slant: 12deg; --bar-h: 100px; --inset: 12px; }
-.s-stats .v-c .stats-c-head { margin: 0 calc(var(--bar-h) * .22) calc(18px * var(--space)) 0; text-align: right; font-size: 32px; color: var(--ink-3); }
+.s-stats .v-c .stats-c-head { margin: 0 calc(var(--bar-h) * .22) calc(20px * var(--space)) 0; text-align: right; font-size: 32px; color: var(--ink-3); }
 .s-stats .v-c .stats-c-list { display: grid; gap: var(--gap-grid); padding-inline: calc(var(--bar-h) * .11 + 2px); }
 .s-stats .v-c .stats-c-bar {
   position: relative; height: var(--bar-h); padding: var(--inset);
@@ -74,7 +74,7 @@
 .s-stats .v-d { display: grid; gap: calc(24px * var(--space)); }
 .s-stats .v-d .stats-d-field { position: relative; display: grid; justify-items: center; }
 .s-stats .v-d .stats-d-note { position: absolute; top: 0; right: 0; width: 280px; text-align: right; font-size: 32px; line-height: 1.25; color: var(--ink-3); }
-.s-stats .v-d .stats-d-radar { position: relative; width: min(480px, 100% - 300px); display: grid; justify-items: center; row-gap: 14px; }
+.s-stats .v-d .stats-d-radar { position: relative; width: min(480px, 100% - 300px); display: grid; justify-items: center; row-gap: 16px; }
 .s-stats .v-d .stats-d-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .s-stats .v-d .stats-d-ring, .s-stats .v-d .stats-d-axis { fill: none; stroke: var(--line); stroke-width: 2; }
 .s-stats .v-d .stats-d-best { fill: none; stroke: var(--ink-3); stroke-width: 3; }
@@ -85,7 +85,7 @@
 .s-stats .v-d .stats-d-left { right: calc(100% + 22px); }
 .s-stats .v-d .stats-d-right { left: calc(100% + 22px); }
 .s-stats .v-d .stats-d-values { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gap-grid); padding: var(--card-pad); }
-.s-stats .v-d .stats-d-cell { min-width: 0; display: grid; justify-items: center; gap: 14px; }
+.s-stats .v-d .stats-d-cell { min-width: 0; display: grid; justify-items: center; gap: 16px; }
 .s-stats .v-d .stats-d-key { font-size: 32px; }
 .s-stats .v-d .stats-d-read { container-type: inline-size; width: 100%; display: flex; justify-content: center; align-items: baseline; gap: 10px; }
 .s-stats .v-d .stats-d-value {
@@ -102,7 +102,7 @@
   display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: calc(32px * var(--space));
   padding: var(--card-pad);
 }
-.s-stats .v-e .stats-e-id { display: grid; justify-items: start; gap: 18px; }
+.s-stats .v-e .stats-e-id { display: grid; justify-items: start; gap: 20px; }
 .s-stats .v-e .stats-e-badge { width: 88px; height: 88px; }
 .s-stats .v-e .stats-e-badge svg g { stroke-width: 1.36; }
 .s-stats .v-e .stats-e-kicker { font-size: 32px; color: var(--ink-1); }

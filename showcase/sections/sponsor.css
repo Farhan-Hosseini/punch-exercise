@@ -3,7 +3,7 @@
    the same one the machine's sponsor slot draws with; each design keeps its own shape and sets the lockup its way. */
 
 /* A: centred credit. The host's quiet Powered by, then the brand's own lockup in one line. */
-.s-sponsor .v-a b.mon-lock { display: inline-flex; align-items: center; gap: 14px; }
+.s-sponsor .v-a b.mon-lock { display: inline-flex; align-items: center; gap: 16px; }
 .s-sponsor .v-a .mon-claw { width: 36px; height: 48px; }
 /* the design's own rules (Arena's and Reference's) style every span in it as a label, so the wordmark restates its
    type here, matching their weight so this later sheet wins */
@@ -25,7 +25,7 @@
 
 /* C: two sides. A quiet footer. The hairline is a strength tester's scale laid on its side,
    ticks growing taller toward the right; who powers the machine sits left, where it stands sits right. */
-.s-sponsor .v-c { container-type: inline-size; display: grid; gap: calc(22px * var(--space)); }
+.s-sponsor .v-c { container-type: inline-size; display: grid; gap: calc(24px * var(--space)); }
 .s-sponsor .v-c .sponsor-c-scale { position: relative; height: 20px; border-top: 2px solid var(--line); }
 .s-sponsor .v-c .sponsor-c-ticks {
   position: absolute; left: 0; right: 0; top: 0; height: 18px;
@@ -42,7 +42,7 @@
 .s-sponsor .v-c .sponsor-c-credit b.mon-lock { display: inline-flex; align-items: center; gap: 10px; }
 .s-sponsor .v-c .sponsor-c-credit .mon-claw { width: 26px; height: 34px; }
 .s-sponsor .v-c .sponsor-c-credit .mon-word { font-size: 32px; }
-.s-sponsor .v-c .sponsor-c-venue { display: flex; align-items: center; gap: 14px; color: var(--ink-2); }
+.s-sponsor .v-c .sponsor-c-venue { display: flex; align-items: center; gap: 16px; color: var(--ink-2); }
 .s-sponsor .v-c .sponsor-c-pin { width: 44px; height: 44px; }
 /* every line icon on the glass draws 3 glass px: 3 x 40 / 44 */
 .s-sponsor .v-c .sponsor-c-pin svg g { stroke-width: 2.73; }
@@ -83,7 +83,7 @@
 .s-sponsor .v-e .sponsor-e-major { stroke: var(--ink-1); stroke-width: 2.6; }
 .s-sponsor .v-e .sponsor-e-disc { position: absolute; left: 50%; top: 50%; width: 82px; height: 82px; translate: -50% -50%; border-radius: 50%; }
 .s-sponsor .v-e .sponsor-e-claw { position: relative; width: 38px; height: 50px; }
-.s-sponsor .v-e .sponsor-e-copy { display: grid; gap: 14px; min-width: 0; }
+.s-sponsor .v-e .sponsor-e-copy { display: grid; gap: 16px; min-width: 0; }
 .s-sponsor .v-e .sponsor-e-name { margin: 0; }
 .s-sponsor .v-e .sponsor-e-name .mon-word { font-size: 46px; }
 .s-sponsor .v-e .sponsor-e-role { font-size: 32px; white-space: nowrap; }

@@ -42,7 +42,7 @@
 .mscreen-stats .yr {
   position: absolute; inset: 0; overflow: hidden; isolation: isolate;
   display: flex; flex-direction: column; gap: var(--ms-sec-gap);
-  padding: var(--yr-top) 0 calc(var(--ms-ad-h) + 88px);
+  padding: var(--yr-top) 0 calc(var(--ms-ad-h) + 96px);
   color: var(--ink-1); font-family: var(--f-text);
 }
 .mscreen-stats .yr-sec { position: relative; z-index: 1; flex: none; margin: 0 var(--ms-gut); height: var(--room); }
@@ -67,7 +67,7 @@
 }
 /* the comma drops well below the line in the display faces: a little room under the figure keeps it off the next line */
 .mscreen-stats .yr-gap { --fit-cap: calc(280px / var(--cap)); line-height: .84; padding-bottom: .08em; color: var(--strike); text-shadow: var(--display-glow); }
-.mscreen-stats .yr-anchor { display: flex; align-items: baseline; gap: 22px; }
+.mscreen-stats .yr-anchor { display: flex; align-items: baseline; gap: 24px; }
 .mscreen-stats .yr-anchor-n { font-size: 64px; line-height: 1; }
 /* the one bell mark */
 .mscreen-stats .yr-bellmark {
@@ -92,7 +92,7 @@
 .mscreen-stats .yr-slots i.is-on { background: var(--ink-1); box-shadow: none; }
 /* next up, at the foot of the crew */
 .mscreen-stats .yr-nextup-row { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-.mscreen-stats .yr-nextup { display: flex; align-items: center; gap: 22px; }
+.mscreen-stats .yr-nextup { display: flex; align-items: center; gap: 24px; }
 .mscreen-stats .yr-nextup-n { font: var(--w-display) 64px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 /* a band name on a column's edge, centred in its span (--b0 from the foot, --bh tall) */
 .mscreen-stats .yr-bandname {
@@ -102,7 +102,7 @@
 .mscreen-stats .yr-bandname.is-sponsor { color: var(--mon-mark); }
 /* the camera's tags: a viewfinder's corners, never a pill */
 .mscreen-stats .yr-cam {
-  position: relative; display: inline-flex; align-items: center; gap: 14px; padding: 14px 24px 14px 20px; flex: none;
+  position: relative; display: inline-flex; align-items: center; gap: 16px; padding: 16px 24px 16px 20px; flex: none;
   font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-1); white-space: nowrap;
 }
 .mscreen-stats .yr-cam .yr-ico { font-size: 38px; color: var(--strike); }
@@ -118,8 +118,8 @@
 /* ================================================================ Next to beat (room 600) */
 /* Gap slab: the score small above, the gap as large as the column allows, the name at half size under it */
 .mscreen-stats .yr-slab { display: flex; flex-direction: column; justify-content: space-between; }
-.mscreen-stats .yr-slab-body { display: flex; flex-direction: column; gap: 44px; }
-.mscreen-stats .yr-slab-body.is-flip { gap: 26px; }
+.mscreen-stats .yr-slab-body { display: flex; flex-direction: column; gap: 48px; }
+.mscreen-stats .yr-slab-body.is-flip { gap: 28px; }
 .mscreen-stats .yr-slab-body.is-flip .yr-gap { --fit-cap: calc(230px / var(--cap)); }
 .mscreen-stats .yr-slab-body.is-flip .yr-who :is(.yr-ava, .yr-badge) { width: 104px; height: 104px; }
 .mscreen-stats .yr-slab-body.is-flip .yr-who-n { --fit-cap: calc(104px / var(--cap)); }
@@ -128,7 +128,7 @@
 .mscreen-stats .yr-who-k { flex: none; font: var(--w-label) 48px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
 .mscreen-stats .yr-who-n { --fit-cap: calc(130px / var(--cap)); --fit-room: calc(100cqi - 420px); line-height: .9; }
 .mscreen-stats .yr-slab-line { font: 500 48px/1.15 var(--f-text); color: var(--ink-2); }
-.mscreen-stats .yr-slab-bell { display: flex; align-items: center; gap: 44px; }
+.mscreen-stats .yr-slab-bell { display: flex; align-items: center; gap: 48px; }
 .mscreen-stats .yr-slab-bw > span { display: block; }
 .mscreen-stats .yr-slab-bw { --fit-cap: calc(170px / var(--cap)); --fit-room: calc(100cqi - 270px); font-family: var(--f-display); font-weight: var(--w-display); line-height: .86; text-transform: var(--display-case); letter-spacing: var(--display-track); color: var(--strike); }
 
@@ -136,27 +136,27 @@
 .mscreen-stats .yr-pl-stack { height: 100%; display: flex; flex-direction: column; }
 .mscreen-stats .yr-pl {
   flex: none; height: 128px; border-radius: var(--r);
-  display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 40px 0 18px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 40px 0 20px;
   background: var(--yr-card); border: var(--yr-line); box-shadow: var(--yr-shadow);
 }
 .mscreen-stats .yr-pl.is-you { background: var(--strike); color: var(--cta-ink); border: 0; box-shadow: none; }
 .mscreen-stats .yr-pl.is-bell { background: color-mix(in oklab, var(--strike) 14%, transparent); border: 3px solid var(--strike); box-shadow: none; }
 .mscreen-stats .yr-plates.is-bell .yr-pl.is-you { margin-top: 12px; }
-.mscreen-stats .yr-pl-who { display: flex; align-items: center; gap: 22px; min-width: 0; }
+.mscreen-stats .yr-pl-who { display: flex; align-items: center; gap: 24px; min-width: 0; }
 .mscreen-stats .yr-pl :is(.yr-ava, .yr-badge) { width: 92px; height: 92px; font-size: 52px; }
 .mscreen-stats .yr-pl.is-you .yr-ava { box-shadow: 0 0 0 4px var(--cta-ink); }
 .mscreen-stats .yr-pl-n { font-size: 60px; line-height: 1; white-space: nowrap; }
 .mscreen-stats .yr-pl-v { font-size: 60px; line-height: 1; white-space: nowrap; }
 .mscreen-stats .yr-pl.is-bell .yr-pl-v { font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
-.mscreen-stats .yr-pl-mid { flex: 1 1 0; min-height: 0; display: flex; align-items: stretch; gap: 44px; padding-left: 36px; }
-.mscreen-stats .yr-pl-dim { position: relative; flex: none; width: 6px; margin: 22px 0; background: var(--strike); border-radius: 3px; transform-origin: 50% 0; }
-.mscreen-stats .yr-pl-dim::before, .mscreen-stats .yr-pl-dim::after { content: ""; position: absolute; left: 50%; width: 0; height: 0; margin-left: -17px; border: 17px solid transparent; }
+.mscreen-stats .yr-pl-mid { flex: 1 1 0; min-height: 0; display: flex; align-items: stretch; gap: 48px; padding-left: 36px; }
+.mscreen-stats .yr-pl-dim { position: relative; flex: none; width: 6px; margin: 24px 0; background: var(--strike); border-radius: 3px; transform-origin: 50% 0; }
+.mscreen-stats .yr-pl-dim::before, .mscreen-stats .yr-pl-dim::after { content: ""; position: absolute; left: 50%; width: 0; height: 0; margin-left: -16px; border: 17px solid transparent; }
 .mscreen-stats .yr-pl-dim::before { top: -20px; border-bottom: 26px solid var(--strike); border-top: 0; }
 .mscreen-stats .yr-pl-dim::after { bottom: -20px; border-top: 26px solid var(--strike); border-bottom: 0; }
-.mscreen-stats .yr-pl-fig { flex: 1 1 0; min-width: 0; container-type: inline-size; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+.mscreen-stats .yr-pl-fig { flex: 1 1 0; min-width: 0; container-type: inline-size; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
 .mscreen-stats .yr-pl-fig .yr-gap { --fit-cap: calc(220px / var(--cap)); }
 .mscreen-stats .yr-pl-line { font: var(--w-label) 44px/1.1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
-.mscreen-stats .yr-pl-mid.is-bell { flex-direction: column; justify-content: center; gap: 22px; padding-left: 0; container-type: inline-size; }
+.mscreen-stats .yr-pl-mid.is-bell { flex-direction: column; justify-content: center; gap: 24px; padding-left: 0; container-type: inline-size; }
 .mscreen-stats .yr-pl-bw { --fit-cap: calc(190px / var(--cap)); font-family: var(--f-display); font-weight: var(--w-display); line-height: .86; text-transform: var(--display-case); letter-spacing: var(--display-track); color: var(--strike); }
 
 /* Count down: the sum, then what is left, set right as a ledger sets its total */
@@ -165,7 +165,7 @@
 .mscreen-stats .yr-cd-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
 .mscreen-stats .yr-cd-k { font: var(--w-label) 40px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
 .mscreen-stats .yr-cd-v { font-size: 72px; line-height: 1; white-space: nowrap; }
-.mscreen-stats .yr-cd-fig { display: flex; flex-direction: column; align-items: flex-end; gap: 18px; text-align: right; }
+.mscreen-stats .yr-cd-fig { display: flex; flex-direction: column; align-items: flex-end; gap: 20px; text-align: right; }
 .mscreen-stats .yr-cd-n { --fit-cap: calc(250px / var(--cap)); }
 .mscreen-stats .yr-cd-left { font: var(--w-label) 44px/1.1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
 .mscreen-stats .yr-cd-bell { display: flex; align-items: center; gap: 36px; }
@@ -177,7 +177,7 @@
 .mscreen-stats .yr-nf-head { --fit-cap: calc(260px / var(--cap)); line-height: .86; color: var(--ink-1); }
 .mscreen-stats .yr-nf-v { color: var(--strike); }
 .mscreen-stats .yr-nf-line {
-  display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 22px; row-gap: 8px;
+  display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 24px; row-gap: 8px;
   font: var(--w-label) 52px/1.1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2);
 }
 .mscreen-stats .yr-nf-line b {
@@ -196,7 +196,7 @@
     repeating-linear-gradient(to top, transparent 0 96px, var(--cta-ink) 96px 100px) right top / 56px 100% no-repeat,
     var(--strike);
 }
-.mscreen-stats .yr-tp-tick { position: absolute; left: 0; right: 0; bottom: calc(var(--at) * (100% - 24px)); height: 6px; margin-bottom: -3px; background: var(--cta-ink); }
+.mscreen-stats .yr-tp-tick { position: absolute; left: 0; right: 0; bottom: calc(var(--at) * (100% - 24px)); height: 6px; margin-bottom: -4px; background: var(--cta-ink); }
 .mscreen-stats .yr-tp-tick > span {
   position: absolute; left: 14px; bottom: 14px; writing-mode: vertical-rl; transform: rotate(180deg);
   font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--cta-ink); white-space: nowrap;
@@ -239,7 +239,7 @@
 .mscreen-stats .yr-st-rows { position: absolute; left: 0; right: 0; top: 0; height: 840px; --pitch: calc(700px / max(var(--n), 3)); }
 .mscreen-stats .yr-st-guides > i { position: absolute; top: 44px; height: calc(var(--n) * var(--pitch) - 40px); left: calc(var(--b0) * 100%); width: 3px; margin-left: -1px; background: var(--track); }
 .mscreen-stats .yr-st-row { position: absolute; left: 0; right: 0; top: calc(44px + var(--i) * var(--pitch)); }
-.mscreen-stats .yr-st-who { display: flex; align-items: center; gap: 22px; height: 84px; padding-top: 6px; }
+.mscreen-stats .yr-st-who { display: flex; align-items: center; gap: 24px; height: 84px; padding-top: 6px; }
 .mscreen-stats .yr-st-n { font: var(--w-display) 60px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-st-row.is-you .yr-st-n { color: var(--strike); }
 .mscreen-stats .yr-st-plate { position: relative; margin-top: 16px; height: 120px; width: calc(var(--f) * 100%); min-width: 150px; transform-origin: 0 50%; }
@@ -253,7 +253,7 @@
 .mscreen-stats .yr-st-row.is-you .yr-st-bar { box-shadow: inset 0 0 0 6px var(--strike); }
 .mscreen-stats .yr-st-axis { position: absolute; left: 0; right: 0; top: calc(44px + var(--n) * var(--pitch) + 6px); height: 40px; }
 .mscreen-stats .yr-st-axis > span {
-  position: absolute; top: 0; left: calc(var(--b0) * 100%); width: calc(var(--bh) * 100%); padding-left: 14px; overflow: hidden;
+  position: absolute; top: 0; left: calc(var(--b0) * 100%); width: calc(var(--bh) * 100%); padding-left: 16px; overflow: hidden;
   font: var(--w-label) 32px/40px var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-3); white-space: nowrap;
 }
 .mscreen-stats .yr-st-axis > span.is-sponsor { color: var(--mon-mark); }
@@ -271,7 +271,7 @@
 .mscreen-stats .yr-fc-mark.is-leader .yr-fc-img { box-shadow: 0 0 0 12px var(--yr-crown); }
 .mscreen-stats .yr-fc-crown { position: absolute; left: 50%; top: -58px; transform: translateX(-50%); font-size: 76px; }
 .mscreen-stats .yr-fc-crown svg { fill: var(--yr-crown); }
-.mscreen-stats .yr-fc-lab { position: absolute; left: 572px; right: 0; top: var(--ly); transform: translateY(-50%); display: flex; flex-direction: column; gap: 18px; }
+.mscreen-stats .yr-fc-lab { position: absolute; left: 572px; right: 0; top: var(--ly); transform: translateY(-50%); display: flex; flex-direction: column; gap: 20px; }
 .mscreen-stats .yr-fc-who { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
 .mscreen-stats .yr-fc-n { font: var(--w-display) 64px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-fc-mark.is-you .yr-fc-n { color: var(--strike); }
@@ -294,7 +294,7 @@
   position: absolute; left: 0; right: 0; top: -70px; text-align: center;
   font: var(--w-label) 44px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); white-space: nowrap;
 }
-.mscreen-stats .yr-tn-who { position: absolute; left: 0; right: 0; top: 684px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.mscreen-stats .yr-tn-who { position: absolute; left: 0; right: 0; top: 684px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .mscreen-stats .yr-tn-n { --fit-cap: 60px; font-family: var(--f-display); font-weight: var(--w-display); line-height: 1; text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-tn-col.is-you .yr-tn-n { color: var(--strike); }
 .mscreen-stats .yr-tn-col > .yr-slots { position: absolute; left: 0; right: 0; top: 862px; justify-content: center; }
@@ -307,7 +307,7 @@
 .mscreen-stats .yr-ov-rung { position: absolute; left: 0; right: 0; top: 0; height: 0; }
 .mscreen-stats .yr-ov-tick { position: absolute; left: calc(var(--lane) - 20px); width: 80px; top: calc(var(--y) - 6px); height: 12px; border-radius: 6px; background: var(--tag); }
 .mscreen-stats .yr-ov-lead { position: absolute; left: calc(var(--lane) - 20px); top: calc(var(--y) - 2px); width: var(--len); height: 4px; background: var(--tag); transform-origin: 0 50%; transform: rotate(var(--ang)); }
-.mscreen-stats .yr-ov-lab { position: absolute; right: calc(100% - var(--lane) + 64px); top: var(--ly); transform: translateY(-50%); display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.mscreen-stats .yr-ov-lab { position: absolute; right: calc(100% - var(--lane) + 64px); top: var(--ly); transform: translateY(-50%); display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
 .mscreen-stats .yr-ov-who { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
 .mscreen-stats .yr-ov-n { font: var(--w-display) 64px/1 var(--f-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-ov-rung.is-passed :is(.yr-ov-tick, .yr-ov-lead, .yr-ov-lab) { opacity: var(--yr-dim); }
@@ -324,12 +324,12 @@
 .mscreen-stats .yr-ov-you.is-leader .yr-ov-face .yr-ava { box-shadow: 0 0 0 6px var(--strike), 0 0 0 12px var(--ground), 0 0 0 18px var(--yr-crown); }
 .mscreen-stats .yr-ov-face .yr-crown { position: absolute; left: 50%; top: -66px; transform: translateX(-50%); font-size: 72px; }
 .mscreen-stats .yr-ov-face .yr-crown svg { fill: var(--yr-crown); }
-.mscreen-stats .yr-ov-me > div { display: flex; flex-direction: column; gap: 14px; }
+.mscreen-stats .yr-ov-me > div { display: flex; flex-direction: column; gap: 16px; }
 .mscreen-stats .yr-ov-mn { --fit-cap: 80px; --fit-room: 212px; font-family: var(--f-display); font-weight: var(--w-display); line-height: 1; text-transform: var(--display-case); letter-spacing: var(--display-track); color: var(--strike); white-space: nowrap; }
 
 /* ================================================================ One fix (room 500) */
 .mscreen-stats .yr-fx-text { display: flex; flex-direction: column; justify-content: center; gap: 28px; min-width: 0; height: 100%; }
-.mscreen-stats .yr-fx-tag { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; }
+.mscreen-stats .yr-fx-tag { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; }
 .mscreen-stats .yr-fx-seen { font: 500 36px/1.15 var(--f-text); color: var(--ink-2); }
 .mscreen-stats .yr-fx-word { font-size: 200px; line-height: .88; color: var(--ink-1); white-space: nowrap; }
 .mscreen-stats .yr-fx-word > span { display: block; }
@@ -355,7 +355,7 @@
 .mscreen-stats .yr-fx-pic marker path { fill: var(--strike); }
 
 /* Silhouette loop: the replay as a flat figure, a second of the strike, holding on the frame the fix is about */
-.mscreen-stats .yr-sil-pic { display: grid; place-items: center; padding: 20px 20px 70px; }
+.mscreen-stats .yr-sil-pic { display: grid; place-items: center; padding: 20px 20px 72px; }
 .mscreen-stats .yr-sil-svg { width: 100%; height: 100%; overflow: visible; }
 .mscreen-stats .yr-sil-pad { fill: var(--track); }
 .mscreen-stats :is(.yr-sil-limb, .yr-sil-torso, .yr-sil-leg, .yr-sil-foot) { fill: none; stroke: var(--ink-1); stroke-linecap: round; stroke-linejoin: round; }
@@ -375,7 +375,7 @@
 
 /* Glove pair: the glove that struck filled, the other outlined */
 .mscreen-stats .yr-gl { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 28px 16px; }
-.mscreen-stats .yr-gl-one { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.mscreen-stats .yr-gl-one { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .mscreen-stats .yr-gl-svg { display: block; width: 172px; height: 196px; overflow: visible; }
 .mscreen-stats .yr-gl-body { fill: none; stroke: var(--ink-2); stroke-width: 8; stroke-linejoin: round; }
 .mscreen-stats .yr-gl-lace { stroke: var(--ink-2); stroke-width: 6; stroke-linecap: round; }
@@ -404,7 +404,7 @@
 /* ================================================================ Today's crown (room 536, what the frame leaves) */
 /* Crown line: a thin red rule at the crown's height, the holder at its end, the player's mark below at its share */
 .mscreen-stats .yr-cl { position: relative; height: 100%; --rule: 196px; --fall: 300px; }
-.mscreen-stats .yr-cl-k { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 14px; font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--yr-crown); }
+.mscreen-stats .yr-cl-k { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 16px; font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--yr-crown); }
 .mscreen-stats .yr-cl-k .yr-ico { font-size: 44px; }
 .mscreen-stats .yr-cl-rule { position: absolute; left: 0; right: 0; top: var(--rule); height: 0; }
 .mscreen-stats .yr-cl-line { position: absolute; left: 0; right: 0; top: -4px; height: 8px; border-radius: 4px; background: var(--yr-crown); transform-origin: 100% 50%; }
@@ -418,19 +418,19 @@
   content: ""; position: absolute; left: 86px; bottom: 16px; width: 8px; height: calc(var(--y) * var(--fall) - 20px);
   background: repeating-linear-gradient(to top, var(--ink-3) 0 14px, transparent 14px 28px);
 }
-.mscreen-stats .yr-cl-me { position: absolute; left: 212px; top: 0; transform: translateY(-50%); display: flex; align-items: center; gap: 18px; font: var(--w-label) 44px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-1); white-space: nowrap; }
+.mscreen-stats .yr-cl-me { position: absolute; left: 212px; top: 0; transform: translateY(-50%); display: flex; align-items: center; gap: 20px; font: var(--w-label) 44px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-1); white-space: nowrap; }
 .mscreen-stats .yr-cl-me .yr-ava { width: 88px; height: 88px; box-shadow: 0 0 0 5px var(--strike); }
 .mscreen-stats .yr-cl-old { position: absolute; left: 0; right: 0; top: calc(var(--rule) + 230px); height: 0; }
 .mscreen-stats .yr-cl-oline { position: absolute; left: 0; right: 0; top: -3px; height: 6px; background: repeating-linear-gradient(to right, var(--ink-3) 0 24px, transparent 24px 40px); }
 .mscreen-stats .yr-cl-ow { position: absolute; right: 0; top: 22px; font: 500 42px/1 var(--f-text); color: var(--ink-2); white-space: nowrap; }
 .mscreen-stats .yr-cl-up { position: absolute; left: 420px; bottom: 18px; width: 10px; height: 170px; background: var(--yr-crown); border-radius: 5px; }
-.mscreen-stats .yr-cl-up::before { content: ""; position: absolute; left: 50%; top: -18px; margin-left: -26px; border: 26px solid transparent; border-top: 0; border-bottom: 34px solid var(--yr-crown); }
-.mscreen-stats .yr-cl-new { position: absolute; left: 0; top: calc(var(--rule) + 40px); display: flex; align-items: center; gap: 18px; max-width: 400px; font: var(--w-label) 40px/1.1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; }
+.mscreen-stats .yr-cl-up::before { content: ""; position: absolute; left: 50%; top: -18px; margin-left: -28px; border: 26px solid transparent; border-top: 0; border-bottom: 34px solid var(--yr-crown); }
+.mscreen-stats .yr-cl-new { position: absolute; left: 0; top: calc(var(--rule) + 40px); display: flex; align-items: center; gap: 20px; max-width: 400px; font: var(--w-label) 40px/1.1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; }
 .mscreen-stats .yr-cl-new .yr-ava { width: 88px; height: 88px; box-shadow: 0 0 0 5px var(--strike); }
 
 /* Crowd band: today's hits as a soft band, the crown at its right, the player's mark on it */
 .mscreen-stats .yr-cw { position: relative; height: 100%; }
-.mscreen-stats .yr-cw-head { display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+.mscreen-stats .yr-cw-head { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
 .mscreen-stats .yr-cw-head .yr-crown { font-size: 60px; }
 .mscreen-stats .yr-cw-head .yr-crown svg, .mscreen-stats .yr-cw-crown svg { fill: var(--yr-crown); }
 .mscreen-stats .yr-cw-head .yr-k { color: var(--yr-crown); }
@@ -451,7 +451,7 @@
 .mscreen-stats .yr-cw-me .yr-ava { width: 72px; height: 72px; box-shadow: 0 0 0 5px var(--strike); }
 .mscreen-stats .yr-cw-axis { position: absolute; left: 0; right: 0; top: 356px; display: flex; justify-content: space-between; font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-3); }
 .mscreen-stats .yr-cw-axis span:nth-child(2) { display: none; }
-.mscreen-stats .yr-cw-line { position: absolute; left: 0; bottom: 0; display: flex; align-items: center; gap: 14px; font: var(--w-label) 44px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
+.mscreen-stats .yr-cw-line { position: absolute; left: 0; bottom: 0; display: flex; align-items: center; gap: 16px; font: var(--w-label) 44px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
 .mscreen-stats .yr-cw-line .yr-ico { font-size: 48px; }
 
 /* Takeover: the hit that takes the crown floods the section in the brand red and holds the impact frame */
@@ -466,7 +466,7 @@
   font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
 }
 .mscreen-stats .yr-tk-cap .yr-ico { font-size: 34px; color: #FF5A4E; }
-.mscreen-stats .yr-tk-text { container-type: inline-size; min-width: 0; padding: 36px 44px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 18px; }
+.mscreen-stats .yr-tk-text { container-type: inline-size; min-width: 0; padding: 36px 48px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; }
 .mscreen-stats .yr-tk-crown { font-size: 80px; }
 .mscreen-stats .yr-tk-crown svg { fill: var(--yr-crown); }
 .mscreen-stats .yr-take.is-takes .yr-tk-crown { color: var(--yr-flood-ink); }
@@ -477,8 +477,8 @@
 .mscreen-stats .yr-take.is-takes .yr-tk-line { color: var(--yr-flood-ink); }
 
 /* Unclaimed: the crown beside the run code, empty until the holder scans, filled once they have */
-.mscreen-stats .yr-cm { display: grid; grid-template-columns: minmax(0, 1fr) 340px; column-gap: 44px; align-items: center; height: 100%; }
-.mscreen-stats .yr-cm-text { container-type: inline-size; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+.mscreen-stats .yr-cm { display: grid; grid-template-columns: minmax(0, 1fr) 340px; column-gap: 48px; align-items: center; height: 100%; }
+.mscreen-stats .yr-cm-text { container-type: inline-size; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .mscreen-stats .yr-cm-crown { position: relative; display: inline-flex; font-size: 150px; line-height: 0; color: var(--yr-crown); margin-bottom: 8px; }
 .mscreen-stats .yr-cm-crown svg { display: block; width: 1em; height: 1em; stroke-width: 1.4; }
 .mscreen-stats .yr-claim:not(.is-claimed) .yr-cm-crown svg { stroke-dasharray: 3 2.2; }
@@ -486,7 +486,7 @@
 .mscreen-stats .yr-cm-ava { position: absolute; right: -34px; bottom: -6px; width: 84px; height: 84px; box-shadow: 0 0 0 5px var(--ground); }
 .mscreen-stats .yr-cm-h { --fit-cap: calc(104px / var(--cap)); font-family: var(--f-display); font-weight: var(--w-display); line-height: .9; text-transform: var(--display-case); letter-spacing: var(--display-track); }
 .mscreen-stats .yr-cm-line { font: 500 42px/1.15 var(--f-text); color: var(--ink-2); }
-.mscreen-stats .yr-cm-scan { display: flex; align-items: center; gap: 14px; white-space: nowrap; font: var(--w-label) 36px/1.1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
+.mscreen-stats .yr-cm-scan { display: flex; align-items: center; gap: 16px; white-space: nowrap; font: var(--w-label) 36px/1.1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
 .mscreen-stats .yr-cm-scan .yr-ico { font-size: 46px; }
 
 /* Reign ribbon: today from opening to now; each holder's ribbon, the live one red with the crown at its head */
@@ -511,7 +511,7 @@
 }
 .mscreen-stats .yr-rb-seg.is-snap { clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 18%, calc(100% - 14px) 36%, 100% 54%, calc(100% - 14px) 72%, 100% 90%, calc(100% - 8px) 100%, 0 100%, 22px 50%); }
 .mscreen-stats .yr-rb-seg.is-live { background: var(--yr-flood); color: var(--yr-flood-ink); }
-.mscreen-stats .yr-rb-seg.is-new { padding-left: 30px; }
+.mscreen-stats .yr-rb-seg.is-new { padding-left: 32px; }
 .mscreen-stats .yr-rb-head-crown { position: absolute; left: calc(var(--x) * 100%); top: -10px; transform: translateX(-50%); font-size: 64px; color: var(--yr-crown); line-height: 0; }
 .mscreen-stats .yr-rb-head-crown svg { display: block; width: 1em; height: 1em; fill: var(--yr-crown); }
 .mscreen-stats .yr-rb-marks { position: absolute; left: 0; right: 0; top: 196px; height: 40px; }

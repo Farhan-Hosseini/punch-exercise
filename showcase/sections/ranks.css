@@ -26,13 +26,13 @@
 .s-ranks .v-b .ranks-b-block {
   position: relative; overflow: hidden;
   width: 100%; display: grid; justify-items: center; align-content: start;
-  padding-top: 26px; border-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+  padding-top: 28px; border-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0;
 }
 .s-ranks .v-b .ranks-b-block::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 12px; background: var(--line); }
 .s-ranks .v-b .ranks-b-left .ranks-b-block { height: 114px; }
 .s-ranks .v-b .ranks-b-mid { position: relative; z-index: 1; }
 .s-ranks .v-b .ranks-b-mid .ranks-b-block { height: 144px; }
-.s-ranks .v-b .ranks-b-right .ranks-b-block { height: 88px; padding-top: 18px; }
+.s-ranks .v-b .ranks-b-right .ranks-b-block { height: 88px; padding-top: 20px; }
 .s-ranks .v-b .ranks-b-badge { width: 76px; height: 76px; }
 .s-ranks .v-b .ranks-b-badge svg g { stroke-width: 1.6; }
 
@@ -52,7 +52,7 @@
   column-gap: calc(24px * var(--space));
 }
 .s-ranks .v-c .ranks-c-rung {
-  position: absolute; left: 36px; width: calc(var(--zone) - 72px); top: 50%; height: 18px; margin-top: -9px;
+  position: absolute; left: 36px; width: calc(var(--zone) - 72px); top: 50%; height: 18px; margin-top: -10px;
   z-index: 1; border-radius: 9px;
 }
 .s-ranks .v-c .ranks-c-node { position: relative; z-index: 2; grid-column: 1; justify-self: center; width: 68px; height: 68px; }
@@ -62,7 +62,7 @@
 }
 .s-ranks .v-c .ranks-c-label { flex: none; min-width: 200px; font-size: 32px; }
 .s-ranks .v-c .ranks-c-value { margin-left: auto; font-size: min(calc(44px / var(--cap)), calc(44cqi / (5 * var(--num-w)))); }
-.s-ranks .v-c .ranks-c-top .ranks-c-rung { left: 8px; width: calc(var(--zone) - 16px); height: 28px; margin-top: -14px; border-radius: 14px; }
+.s-ranks .v-c .ranks-c-top .ranks-c-rung { left: 8px; width: calc(var(--zone) - 16px); height: 28px; margin-top: -16px; border-radius: 14px; }
 .s-ranks .v-c .ranks-c-top .ranks-c-node { width: 108px; height: 108px; }
 /* one glass line through the ladder, 3 px: 1.76 on the 68 px nodes, 1.11 on the 108 px top node */
 .s-ranks .v-c .ranks-c-node svg g { stroke-width: 1.76; }
@@ -108,7 +108,7 @@
 
 /* E  Split slabs: four slanted slabs of one width, stacked on the column, the key rank on the taller raised one.
       The stack is inset by the slant's overhang (tan 12deg x half the key slab's height), so every corner lands on the margins. */
-.s-ranks .v-e .ranks-e-stack { --tilt: -12deg; display: grid; gap: calc(12px * var(--space)); padding-inline: 13px; }
+.s-ranks .v-e .ranks-e-stack { --tilt: -12deg; display: grid; gap: calc(12px * var(--space)); padding-inline: 12px; }
 .s-ranks .v-e .ranks-e-slab { position: relative; height: 80px; transform: skewX(var(--tilt)); }
 .s-ranks .v-e .ranks-e-in {
   height: 100%; transform: skewX(calc(-1 * var(--tilt)));

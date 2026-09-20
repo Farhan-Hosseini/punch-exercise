@@ -49,7 +49,7 @@
 /* a chip: 36 px to see, 44 px to tap, measured like the credits chip (mobile.css .m-credits) so the two sit as a pair */
 .mh-chip {
   position: relative; appearance: none; flex: none;
-  display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px 0 12px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 16px 0 12px; border-radius: 999px;
   background: var(--m-glass); border: 1px solid var(--m-line); color: var(--m-ink); box-shadow: var(--m-lift);
   -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
   font: var(--m-w-strong) 13px/1 var(--m-f-text); white-space: nowrap;
@@ -73,12 +73,12 @@ button.mh-chip:hover { background: var(--m-hover); }
   background: var(--m-cta); color: var(--m-on-red);
   box-shadow: 0 12px 30px -8px color-mix(in srgb, var(--m-glow) 80%, transparent), 0 0 0 6px rgba(255, 255, 255, .14);
 }
-.mh-play [data-lucide] { font-size: 24px; margin-left: 3px; }
+.mh-play [data-lucide] { font-size: 24px; margin-left: 4px; }
 .mh-play svg { fill: currentColor; }
 .mh-play-sm { width: 40px; height: 40px; box-shadow: 0 0 0 4px rgba(255, 255, 255, .16); }
 .mh-play-sm [data-lucide] { font-size: 17px; margin-left: 2px; }
 .mh-tag {
-  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 11px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: 999px;
   background: rgba(0, 0, 0, .5); border: 1px solid rgba(255, 255, 255, .22); color: var(--m-on-photo);
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   font: var(--m-w-strong) 12px/1 var(--m-f-text);
@@ -102,17 +102,17 @@ button.mh-chip:hover { background: var(--m-hover); }
 .mh-g-hello .mh-ava-btn .m-ava { width: 52px; height: 52px; }
 /* the row centres on the same line as every other page's 44 px header buttons, so the wallet and the bell do not
    jump 4 px when the tab changes: the 52 px avatar rises by half the difference */
-.mh-g-hello { margin-top: calc((44px - 52px) / 2); }
+.mh-g-hello { margin-top: calc((48px - 56px) / 2); }
 .mh-g-who { min-width: 0; display: grid; align-content: center; gap: var(--mh-greet-gap); }
 
 /* Wallet: a big hello, and the wallet as its own bar */
 .mh-g-row { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--m-item-gap); }
 .mh-g-row > div:first-child { min-width: 0; display: grid; gap: var(--mh-greet-gap); }
 .mh-g-wallet .mh-g-row { margin-bottom: var(--m-group-gap); }
-.mh-wallet { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--m-item-gap); padding: 12px 12px 12px 14px; border-radius: 22px; }
+.mh-wallet { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--m-item-gap); padding: 12px 12px 12px 16px; border-radius: 22px; }
 .mh-disc { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: color-mix(in srgb, var(--m-red) 16%, transparent); color: var(--m-red-soft); }
 .mh-disc [data-lucide] { font-size: 21px; }
-.mh-wallet-txt { display: grid; gap: 5px; min-width: 0; }
+.mh-wallet-txt { display: grid; gap: 6px; min-width: 0; }
 .mh-wallet-txt b { font: var(--m-w-bold) 20px/1.05 var(--m-f-title); }
 
 /* Portrait: a big ringed avatar with the player's board place, chips underneath */
@@ -175,7 +175,7 @@ button.mh-chip:hover { background: var(--m-hover); }
 .mh-btn-photo:hover { background: rgba(255, 255, 255, .22); }
 
 /* Big button: one round button that breathes, the copy beside it */
-.mh-p-big { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 20px 14px 20px 20px; border-radius: 26px; }
+.mh-p-big { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 20px 16px 20px 20px; border-radius: 26px; }
 .mh-p-big .mh-p-copy { display: grid; gap: 8px; justify-items: start; }
 .mh-p-big .mh-p-title { font-size: 25px; }
 .mh-p-big .mh-p-sub { font-size: 14px; }
@@ -204,13 +204,13 @@ button.mh-chip:hover { background: var(--m-hover); }
   filter: drop-shadow(0 14px 22px color-mix(in srgb, var(--m-shadow) 45%, transparent));
 }
 .mh-t-stub {
-  display: grid; place-items: center; align-content: center; gap: 4px; padding: 18px 8px;
+  display: grid; place-items: center; align-content: center; gap: 4px; padding: 20px 8px;
   background: radial-gradient(90% 70% at 30% 0%, rgba(255, 255, 255, .22), transparent 60%), var(--m-cta); color: var(--m-on-red);
 }
 .mh-t-stub [data-lucide] { font-size: 22px; opacity: .9; }
 .mh-t-count { font: var(--m-w-num-hi) 64px/.86 var(--m-num); font-variant-numeric: tabular-nums; }
 .mh-t-unit { font: var(--m-w-label-hi) 13px/1 var(--m-f-label); letter-spacing: .16em; text-transform: uppercase; padding-left: .16em; }
-.mh-t-body { display: grid; align-content: center; justify-items: start; gap: 10px; padding: 18px 20px 18px 24px; background: var(--m-card); }
+.mh-t-body { display: grid; align-content: center; justify-items: start; gap: 10px; padding: 20px 20px 20px 24px; background: var(--m-card); }
 .mh-t-body .mh-p-title { font-size: 25px; }
 .mh-t-body .mh-p-sub { font-size: 14px; }
 .mh-t-body .m-btn { margin-top: 4px; }
@@ -219,7 +219,7 @@ button.mh-chip:hover { background: var(--m-hover); }
 .mh-p-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m-item-gap); }
 .mh-tile {
   appearance: none; cursor: pointer; border: 0; text-align: left; color: var(--m-ink);
-  display: grid; grid-template-rows: 1fr auto auto; gap: 6px; min-height: 164px; padding: 18px; border-radius: 24px;
+  display: grid; grid-template-rows: 1fr auto auto; gap: 6px; min-height: 164px; padding: 20px; border-radius: 24px;
   transition: transform .15s ease, filter .2s ease;
 }
 .mh-tile.m-glass { border: 1px solid var(--m-line); }
@@ -249,12 +249,12 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-l-replay { position: relative; isolation: isolate; padding: 0; aspect-ratio: 16 / 10.4; border-radius: 24px; overflow: hidden; background: var(--m-well); color: var(--m-on-photo) !important; }
 .mh-l-replay:hover .mh-l-photo, .mh-l-player:hover .mh-l-photo { transform: scale(1.03); }
 .mh-l-replay::after { background: linear-gradient(0deg, rgba(0, 0, 0, .74), rgba(0, 0, 0, 0) 50%); }
-.mh-replay { position: absolute; z-index: 1; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 14px; }
+.mh-replay { position: absolute; z-index: 1; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 16px; }
 .mh-replay .mh-replay-t { font-size: 24px; color: var(--m-on-photo); }
 
 /* Side by side: the word set large beside its play button, the portrait still on the right */
-.mh-l-side { display: grid !important; grid-template-columns: minmax(0, 1fr) 96px; align-items: center; gap: 16px; padding: 14px 14px 14px 20px; border-radius: 24px; }
-.mh-l-side-go { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.mh-l-side { display: grid !important; grid-template-columns: minmax(0, 1fr) 96px; align-items: center; gap: 16px; padding: 16px 16px 16px 20px; border-radius: 24px; }
+.mh-l-side-go { display: flex; align-items: center; gap: 16px; min-width: 0; }
 .mh-l-thumb { position: relative; display: block; width: 96px; height: 124px; border-radius: 18px; overflow: hidden; background: var(--m-well); }
 .mh-l-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
 .mh-l-side:hover .mh-l-thumb img { transform: scale(1.05); }
@@ -265,7 +265,7 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-l-chrome {
   position: absolute; z-index: 1; left: 10px; right: 10px; bottom: 10px;
   display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 12px;
-  padding: 8px 18px 8px 8px; border-radius: 18px;
+  padding: 8px 20px 8px 8px; border-radius: 18px;
   background: rgba(0, 0, 0, .52); border: 1px solid rgba(255, 255, 255, .2);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
 }
@@ -292,16 +292,16 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-chev { font-size: 20px; color: var(--m-ink-3); }
 
 /* ---------------------------------------------------------------- Machines near you (default.js) */
-.mh-v-dist, .mh-v-near { display: inline-flex; align-items: center; gap: 5px; font: var(--m-w-strong) 13px/1 var(--m-f-text); white-space: nowrap; }
+.mh-v-dist, .mh-v-near { display: inline-flex; align-items: center; gap: 6px; font: var(--m-w-strong) 13px/1 var(--m-f-text); white-space: nowrap; }
 .mh-v-dist [data-lucide], .mh-v-near [data-lucide] { font-size: 15px; }
 .mh-v-dist [data-lucide], .mh-v-near [data-lucide] { color: var(--m-red-soft); }
 .mh-v-near { color: var(--m-red-ink); }
 .mh-v-name { font: var(--m-w-bold) 18px/1.15 var(--m-f-title); }
 .mh-v-spot { font: var(--m-w-mid) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
-.mh-v-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.mh-v-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; }
 .mh-v-img { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--m-well); }
 .mh-badge {
-  display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 999px;
   background: var(--m-red); color: var(--m-on-red); font: var(--m-w-label-hi) 12px/1 var(--m-f-label); letter-spacing: .12em; text-transform: uppercase;
 }
 .mh-badge [data-lucide] { font-size: 13px; }
@@ -340,14 +340,14 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-vc { flex: none; width: 252px; display: grid; grid-template-rows: 164px auto; border-radius: 24px; overflow: hidden; background: var(--m-card); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
 .mh-vc-media { position: relative; overflow: hidden; }
 .mh-vc-media .mh-badge { position: absolute; top: 12px; left: 12px; }
-.mh-vc-body { display: grid; gap: 6px; padding: 14px 16px 16px; }
+.mh-vc-body { display: grid; gap: 6px; padding: 16px 16px 16px; }
 .mh-vc-body .mh-v-meta { margin-top: 6px; }
 .mh-vc:hover .mh-v-img { transform: scale(1.03); }
 .mh-vc .mh-v-img { transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
 
 /* List: one tile per venue */
 .mh-vlist { display: grid; gap: var(--m-item-gap); }
-.mh-vl { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 10px 14px 10px 10px; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px); min-height: 92px; }
+.mh-vl { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 10px 16px 10px 10px; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px); min-height: 92px; }
 .mh-vl .mh-v-img { width: 72px; height: 72px; border-radius: 16px; }
 .mh-vl-txt { display: grid; gap: 4px; min-width: 0; }
 .mh-vl-txt .mh-v-spot { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -365,7 +365,7 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-map-label.is-area { color: var(--m-ink-2); letter-spacing: .14em; }
 .mh-map-label { position: absolute; font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: .2em; text-transform: uppercase; color: var(--m-ink-3); pointer-events: none; }
 .mh-pin {
-  position: absolute; z-index: 2; left: var(--x); top: var(--y); width: 44px; height: 44px; margin: -40px 0 0 -22px;
+  position: absolute; z-index: 2; left: var(--x); top: var(--y); width: 44px; height: 44px; margin: -40px 0 0 -24px;
   appearance: none; cursor: pointer; border: 0; background: none; padding: 0; display: grid; place-items: end center;
 }
 .mh-pin-dot { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--m-card); color: var(--m-ink); border: 2px solid var(--m-red); box-shadow: 0 6px 14px -6px var(--m-shadow); transition: transform .2s ease, background-color .2s ease; }
@@ -374,7 +374,7 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-me { position: absolute; z-index: 1; left: var(--x); top: var(--y); width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #3B82F6; box-shadow: 0 0 0 3px #FFFFFF, 0 2px 8px rgba(0, 0, 0, .4); }
 .mh-me::before { content: ""; position: absolute; inset: -12px; border-radius: 50%; background: rgba(59, 130, 246, .22); }
 .mh-map-track { margin-top: calc(var(--m-item-gap) - 6px); }
-.mh-map-card { flex: none; width: calc(100% - 28px); display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px 14px 10px 10px; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.mh-map-card { flex: none; width: calc(100% - 28px); display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 16px; align-items: center; padding: 10px 16px 10px 10px; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
 .mh-map-card .mh-v-img { width: 84px; height: 84px; border-radius: 16px; }
 .mh-map-card-txt { display: grid; gap: 4px; min-width: 0; }
 .mh-map-card-txt .mh-v-spot { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -404,7 +404,7 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-vg:hover .mh-v-img { transform: scale(1.04); }
 .mh-vg::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, 0) 58%); pointer-events: none; }
 .mh-vg-top { position: absolute; z-index: 1; top: 10px; left: 10px; right: 10px; display: flex; }
-.mh-vg-txt { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 5px; }
+.mh-vg-txt { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 6px; }
 .mh-vg-txt .mh-v-name { font-size: 17px; }
 .mh-vg-txt .mh-v-dist { color: var(--m-on-photo-2); }
 .mh-vg-txt .mh-v-dist [data-lucide] { color: var(--m-on-photo); }
@@ -419,7 +419,7 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-fc .mh-v-img { position: absolute; inset: 0; z-index: -1; object-position: 50% 30%; }
 .mh-fc::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .86), rgba(0, 0, 0, .05) 60%); pointer-events: none; }
 .mh-fc .m-ava { position: absolute; z-index: 1; top: 12px; left: 12px; width: 36px; height: 36px; box-shadow: 0 0 0 2px var(--m-red), 0 0 0 4px rgba(0, 0, 0, .35); }
-.mh-fc-txt { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 5px; container-type: inline-size; }
+.mh-fc-txt { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 6px; container-type: inline-size; }
 .mh-fc-txt .mh-pts { font-size: min(30px, calc(100cqi / (var(--mh-w, 9) * var(--m-num-w, .5)) * .94)); }
 .mh-fc-txt .mh-f-when { color: var(--m-on-photo-2); }
 .mh-fc-txt .mh-f-name { color: var(--m-on-photo); }
@@ -428,20 +428,20 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-stories { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; margin: -6px calc(var(--m-gut) * -1) -4px; padding: 6px var(--m-gut) 8px; }
 .mh-stories::-webkit-scrollbar { display: none; }
 .mh-story { flex: none; width: 72px; display: grid; justify-items: center; gap: 8px; }
-.mh-story-ring { position: relative; width: 72px; height: 72px; border-radius: 50%; padding: 3px; background: conic-gradient(from 200deg, var(--m-red-soft), var(--m-red-deep), var(--m-red-soft)); }
+.mh-story-ring { position: relative; width: 72px; height: 72px; border-radius: 50%; padding: 4px; background: conic-gradient(from 200deg, var(--m-red-soft), var(--m-red-deep), var(--m-red-soft)); }
 .mh-story.is-seen .mh-story-ring { background: var(--m-line-2); }
 .mh-story-ring .m-ava { width: 100%; height: 100%; box-shadow: 0 0 0 3px var(--m-cut); }
 .mh-story-grade { position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%); display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--m-red); color: var(--m-on-red); box-shadow: 0 0 0 2px var(--m-cut); }
 .mh-story-grade [data-lucide] { font-size: 13px; }
 .mh-story .mh-f-name { font-size: 14px; font-weight: var(--m-w-strong); }
-.mh-story .mh-f-when { margin-top: -5px; font-size: 12px; }
+.mh-story .mh-f-when { margin-top: -6px; font-size: 12px; }
 
 /* Activity: one glass card, a row per hit, spaced not ruled */
 .mh-act { display: grid; gap: 4px; padding: 8px; border-radius: 24px; }
 .mh-ar { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 64px; padding: 8px 10px 8px 8px; border-radius: 18px; }
 .mh-ar:hover { background: var(--m-glass-hi); }
 .mh-ar .m-ava { width: 48px; height: 48px; }
-.mh-ar-txt { display: grid; gap: 3px; min-width: 0; }
+.mh-ar-txt { display: grid; gap: 4px; min-width: 0; }
 .mh-ar-txt .mh-f-when { text-wrap: pretty; }
 .mh-ar .mh-pts { font-size: 24px; text-align: right; }
 
@@ -452,7 +452,7 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 .mh-mt .mh-v-img { position: absolute; inset: 0; z-index: -1; object-position: 50% 30%; }
 .mh-mt::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .82), rgba(0, 0, 0, 0) 62%); pointer-events: none; }
 .mh-mt-txt { position: absolute; z-index: 1; left: 10px; right: 10px; bottom: 10px; display: grid; gap: 6px; container-type: inline-size; }
-.mh-mt-who { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.mh-mt-who { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .mh-mt-who .m-ava { width: 26px; height: 26px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .7); }
 .mh-mt-who .mh-f-name { color: var(--m-on-photo); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mh-mt-txt .mh-pts { font-size: min(24px, calc(100cqi / (var(--mh-w, 9) * var(--m-num-w, .5)) * .94)); }
@@ -483,23 +483,23 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
   --mon-ink: #FFFFFF; --mon-mark: var(--mon-green);
   position: relative; isolation: isolate; overflow: hidden; border-radius: 22px; color: #FFFFFF;
   display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px;
-  min-height: 108px; padding: 16px 14px 16px 16px;
+  min-height: 108px; padding: 16px 16px 16px 16px;
   background: radial-gradient(90% 140% at 100% 0%, rgba(149, 214, 0, .2), transparent 60%), var(--mon-black);
   box-shadow: inset 0 0 0 1px rgba(149, 214, 0, .28), 0 18px 34px -24px rgba(0, 0, 0, .8);
 }
 .mh-m svg { fill: var(--mon-green); }
 /* the tag sits on its own dark chip, so it reads over a claw or the green glow as well as over black */
 .mh-m-tag {
-  position: absolute; z-index: 2; top: 8px; right: 10px; padding: 4px 6px 4px 7px; border-radius: 6px;
+  position: absolute; z-index: 2; top: 8px; right: 10px; padding: 4px 6px 4px 8px; border-radius: 6px;
   background: rgba(8, 9, 8, .8); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .26);
   font: 700 11px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .86);
 }
-.mh-m-copy { display: grid; gap: 5px; justify-items: start; min-width: 0; padding-top: 8px; }
+.mh-m-copy { display: grid; gap: 6px; justify-items: start; min-width: 0; padding-top: 8px; }
 .mh-m-copy .mon-word.is-line { font-size: 15px; }
 .mh-m-title { font: 400 21px/1.02 "Anton", "Archivo Black", sans-serif; letter-spacing: .01em; text-transform: uppercase; color: #FFFFFF; text-wrap: balance; }
 .mh-m-cta {
   appearance: none; cursor: pointer; border: 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  height: 44px; padding: 0 14px; border-radius: 13px; background: var(--mon-green); color: #0B0B0B;
+  height: 44px; padding: 0 16px; border-radius: 13px; background: var(--mon-green); color: #0B0B0B;
   font: 700 15px/1 "Barlow", system-ui, sans-serif; letter-spacing: .01em; white-space: nowrap;
   box-shadow: 0 12px 26px -12px rgba(149, 214, 0, .7); transition: transform .15s ease, filter .2s ease;
 }
@@ -529,7 +529,7 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 
 /* Challenge: this week's three bolts under the line, the first one landed */
 .mh-m-challenge { grid-template-columns: minmax(0, 1fr) auto; }
-.mh-m-pips { display: flex; align-items: center; gap: 6px; margin-top: 3px; }
+.mh-m-pips { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
 .mh-m-pips i { display: grid; place-items: center; width: 34px; height: 24px; border-radius: 8px; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .5); }
 .mh-m-pips i [data-lucide] { font-size: 14px; }
 .mh-m-pips i.is-on { background: var(--mon-green); box-shadow: 0 0 16px -4px rgba(149, 214, 0, .7); color: #0B0B0B; }
@@ -546,11 +546,11 @@ button.mh-l { appearance: none; cursor: pointer; border: 0; text-align: left; co
 }
 .mh-m-coupon .mh-m-copy { padding: 16px 12px 16px 16px; gap: 6px; }
 .mh-m-coupon .mh-m-title { font-size: 19px; }
-.mh-m-code { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px; border-radius: 9px; background: rgba(149, 214, 0, .12); box-shadow: inset 0 0 0 1px rgba(149, 214, 0, .4); font: 700 14px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .16em; color: var(--mon-green); }
+.mh-m-code { display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 10px; border-radius: 9px; background: rgba(149, 214, 0, .12); box-shadow: inset 0 0 0 1px rgba(149, 214, 0, .4); font: 700 14px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .16em; color: var(--mon-green); }
 .mh-m-code [data-lucide] { font-size: 15px; }
-.mh-m-coupon-r { position: relative; align-self: stretch; display: grid; place-items: center; padding: 22px 8px 12px; background: radial-gradient(80% 70% at 50% 30%, rgba(149, 214, 0, .3), transparent 72%), #11140B; border-left: 2px dashed rgba(149, 214, 0, .35); }
+.mh-m-coupon-r { position: relative; align-self: stretch; display: grid; place-items: center; padding: 24px 8px 12px; background: radial-gradient(80% 70% at 50% 30%, rgba(149, 214, 0, .3), transparent 72%), #11140B; border-left: 2px dashed rgba(149, 214, 0, .35); }
 .mh-m-coupon-r .mh-m-tag { right: 50%; translate: 50% 0; white-space: nowrap; }
-.mh-m-coupon-claw { position: absolute; z-index: -1; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; overflow: visible; opacity: .5; filter: drop-shadow(0 0 12px rgba(149, 214, 0, .55)); }
+.mh-m-coupon-claw { position: absolute; z-index: -1; left: 50%; top: 50%; width: 76px; height: 76px; margin: -40px 0 0 -40px; overflow: visible; opacity: .5; filter: drop-shadow(0 0 12px rgba(149, 214, 0, .55)); }
 .mh-m-coupon-r { isolation: isolate; }
 .mh-m-coupon .mh-m-cta { padding: 0 12px; }
 

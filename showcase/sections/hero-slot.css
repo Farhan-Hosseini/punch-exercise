@@ -35,7 +35,7 @@
 /* the reel bank: a chrome-edged cabinet with payline markers pointing at the centre row */
 .s-hero .v-f .hero-f-cabinet {
   position: relative; width: 100%;
-  padding: calc(22px * var(--space)) 44px;
+  padding: calc(24px * var(--space)) 48px;
   display: flex; justify-content: center;
   border-radius: calc(var(--r) * 1.2);
   background: var(--cab-bg);

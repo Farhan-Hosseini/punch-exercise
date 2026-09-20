@@ -88,7 +88,7 @@
 .s-header .v-d .header-d-avatar { width: 104px; height: 104px; border-radius: 50%; }
 .s-header .v-d .header-d-who { display: grid; gap: 12px; min-width: 0; }
 .s-header .v-d .header-d-name { font-size: calc(60px / var(--cap)); }
-.s-header .v-d .header-d-brand { display: flex; align-items: center; gap: 14px; }
+.s-header .v-d .header-d-brand { display: flex; align-items: center; gap: 16px; }
 .s-header .v-d .header-d-mark { width: 68px; height: 68px; background: var(--ink-1); color: var(--ground); }
 .s-header .v-d .header-d-word { font-size: calc(36px / var(--cap)); }
 .s-header .v-d .header-d-word span { color: var(--ink-3); }
@@ -100,7 +100,7 @@
   position: relative; overflow: clip;
   height: 162px;
   display: flex; align-items: flex-end;
-  padding-bottom: calc(22px * var(--space));
+  padding-bottom: calc(24px * var(--space));
   border-bottom: 6px solid var(--ink-1);
 }
 .s-header .v-e .header-e-echo {

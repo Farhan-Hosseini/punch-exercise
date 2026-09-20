@@ -381,6 +381,38 @@
         <p class="ds-sec-lede">Two spacing scales, one per surface, each with the same five steps: the side margin, the gap between sections, the gap between groups inside a section, the gap between items and the padding inside a card. Every flow screen and every phone page spaces itself with them, so a gap means the same thing on every page. The result keeps its own scale, which tightens with the breathing room control.</p>
       </div>
 
+
+      <div class="ds-panel ds-ladder-panel">
+        <div class="ds-roleset-head">
+          <h3 class="ds-h3">The scale</h3>
+          <p class="ds-note">Twos to 12, fours to 24, then eights. Set on <code>:root</code> in <code>styles.css</code></p>
+        </div>
+        <p class="ds-p">Every margin, padding and gap on both surfaces is one of these steps. The five named roles below draw from this ladder, so a gap is never an invented number: it is a step with a name. Anything off the ladder is a bug rather than a decision.</p>
+        <ul class="ds-ladder">
+            <li><b>2</b><span class="ds-ladder-bar" style="--w: 2px"></span><code>--s-2</code></li>
+            <li><b>4</b><span class="ds-ladder-bar" style="--w: 4px"></span><code>--s-4</code></li>
+            <li><b>6</b><span class="ds-ladder-bar" style="--w: 6px"></span><code>--s-6</code></li>
+            <li><b>8</b><span class="ds-ladder-bar" style="--w: 8px"></span><code>--s-8</code></li>
+            <li><b>10</b><span class="ds-ladder-bar" style="--w: 10px"></span><code>--s-10</code></li>
+            <li><b>12</b><span class="ds-ladder-bar" style="--w: 12px"></span><code>--s-12</code></li>
+            <li><b>16</b><span class="ds-ladder-bar" style="--w: 16px"></span><code>--s-16</code></li>
+            <li><b>20</b><span class="ds-ladder-bar" style="--w: 20px"></span><code>--s-20</code></li>
+            <li><b>24</b><span class="ds-ladder-bar" style="--w: 24px"></span><code>--s-24</code></li>
+            <li><b>28</b><span class="ds-ladder-bar" style="--w: 28px"></span><code>--s-28</code></li>
+            <li><b>32</b><span class="ds-ladder-bar" style="--w: 32px"></span><code>--s-32</code></li>
+            <li><b>36</b><span class="ds-ladder-bar" style="--w: 36px"></span><code>--s-36</code></li>
+            <li><b>40</b><span class="ds-ladder-bar" style="--w: 40px"></span><code>--s-40</code></li>
+            <li><b>48</b><span class="ds-ladder-bar" style="--w: 48px"></span><code>--s-48</code></li>
+            <li><b>56</b><span class="ds-ladder-bar" style="--w: 56px"></span><code>--s-56</code></li>
+            <li><b>64</b><span class="ds-ladder-bar" style="--w: 64px"></span><code>--s-64</code></li>
+            <li><b>72</b><span class="ds-ladder-bar" style="--w: 72px"></span><code>--s-72</code></li>
+            <li><b>80</b><span class="ds-ladder-bar" style="--w: 80px"></span><code>--s-80</code></li>
+            <li><b>96</b><span class="ds-ladder-bar" style="--w: 96px"></span><code>--s-96</code></li>
+            <li><b>112</b><span class="ds-ladder-bar" style="--w: 112px"></span><code>--s-112</code></li>
+            <li><b>128</b><span class="ds-ladder-bar" style="--w: 128px"></span><code>--s-128</code></li>
+        </ul>
+      </div>
+
       <div class="ds-panel ds-flowspace">
         <div class="ds-roleset-head">
           <h3 class="ds-h3">Machine flow screens</h3>

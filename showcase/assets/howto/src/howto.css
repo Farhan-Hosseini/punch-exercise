@@ -89,7 +89,7 @@ body { color: var(--ink-1); }
 .gl-code .brk.bl { left: -30px; bottom: -30px; border-left-width: 12px; border-bottom-width: 12px; border-bottom-left-radius: 22px; }
 .gl-code .brk.br { right: -30px; bottom: -30px; border-right-width: 12px; border-bottom-width: 12px; border-bottom-right-radius: 22px; }
 .gl-status {
-  position: absolute; left: 0; right: 0; top: 1700px; display: flex; justify-content: center; align-items: center; gap: 18px;
+  position: absolute; left: 0; right: 0; top: 1700px; display: flex; justify-content: center; align-items: center; gap: 20px;
   font: var(--w-text) 44px/1 var(--f-text); color: var(--ink-2);
 }
 .gl-status i { width: 18px; height: 18px; border-radius: 50%; background: var(--red); }

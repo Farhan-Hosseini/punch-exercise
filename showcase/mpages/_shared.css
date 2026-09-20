@@ -31,4 +31,4 @@
 /* a title with a kicker line over it (Your hit): the button centres on the title's own line, not on the pair, and hangs
    the difference below it so the header keeps its measured height */
 .m-app .m-page :is(header, div):has(> .m-iconbtn):has(> div > .m-title:last-child):not(:has(> .m-title)) { align-items: flex-end; }
-.m-app .m-page :is(header, div):has(> div > .m-title:last-child):not(:has(> .m-title)) > .m-iconbtn { margin-bottom: calc((var(--m-title-lh) - 44px) / 2); }
+.m-app .m-page :is(header, div):has(> div > .m-title:last-child):not(:has(> .m-title)) > .m-iconbtn { margin-bottom: calc((var(--m-title-lh) - 48px) / 2); }

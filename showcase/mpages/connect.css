@@ -64,7 +64,7 @@
 .pc-radar i:nth-child(3) { animation-delay: 1.6s; }
 @keyframes pc-pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.3); opacity: 0; } }
 .pc-sweep {
-  position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%;
+  position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -160px 0 0 -160px; border-radius: 50%;
   background: conic-gradient(from 0deg, transparent, color-mix(in srgb, var(--m-glow) 26%, transparent) 60deg, transparent 62deg, transparent);
   -webkit-mask-image: radial-gradient(closest-side, transparent 50%, #000 52%, #000 99%, transparent);
   mask-image: radial-gradient(closest-side, transparent 50%, #000 52%, #000 99%, transparent);
@@ -83,7 +83,7 @@
   background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
   -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
 }
-.pc-end-machine img { padding: 18px; object-fit: contain; }
+.pc-end-machine img { padding: 20px; object-fit: contain; }
 .pc-end-phone > :first-child { color: var(--m-ink); }
 .pc-end small { font: var(--m-w-label) 12px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-2); }
 .pc-wire {
@@ -99,7 +99,7 @@
 .pc-wire i:nth-child(3) { animation-delay: 1.06s; }
 @keyframes pc-run { 0% { left: 0; opacity: 0; } 15%, 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
 .pc-link-ok {
-  position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+  position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -24px 0 0 -24px; border-radius: 50%;
   display: grid; place-items: center; font-size: 22px; background: var(--m-red); color: var(--m-on-red);
   box-shadow: 0 0 0 6px color-mix(in srgb, var(--m-red) 20%, transparent), 0 10px 30px -8px color-mix(in srgb, var(--m-glow) 90%, transparent);
   opacity: 0; transform: scale(.5); transition: opacity .3s ease, transform .45s cubic-bezier(.2, 1.5, .4, 1);
@@ -119,7 +119,7 @@
 .pc .m-connect[data-style="checklist"] .m-connect-title { font-size: min(34px, 8cqi); line-height: 1.15; }
 .m-connect[data-style="checklist"] .pc-checks { display: grid; gap: var(--m-item-gap); list-style: none; margin: 0; padding: 0; }
 .pc-chk {
-  display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; padding: 14px var(--m-pad); border-radius: 18px;
+  display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: center; padding: 16px var(--m-pad); border-radius: 18px;
   background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift);
   -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
 }
@@ -142,13 +142,13 @@
 
 /* ---------------------------------------------------------------- Machine */
 .pcm-name { font: var(--m-w-strong) 17px/1.25 var(--m-f-text); }
-.pcm-spot { display: flex; align-items: center; gap: 5px; font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
+.pcm-spot { display: flex; align-items: center; gap: 6px; font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
 .pcm-spot [data-lucide] { font-size: 15px; display: inline-grid; color: var(--m-red-soft); }
 .pcm-kick { font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); }
 .pcm img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* the state chip: a dot that pulses while linking and holds still once linked */
 .pc-state {
-  display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px; border-radius: 99px;
+  display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; border-radius: 99px;
   background: var(--m-glass-hi); border: 1px solid var(--m-line);
   font: var(--m-w-strong) 13px/1 var(--m-f-text); white-space: nowrap;
 }
@@ -169,11 +169,11 @@
 /* Photo card */
 .pcm-card { display: grid; grid-template-columns: 112px 1fr; overflow: hidden; border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
 .pcm-photo { display: block; min-height: 112px; background: var(--m-well); }
-.pcm-body { display: grid; gap: 4px; align-content: center; justify-items: start; padding: 14px var(--m-pad); }
+.pcm-body { display: grid; gap: 4px; align-content: center; justify-items: start; padding: 16px var(--m-pad); }
 .pcm-body .pc-state { margin-top: 6px; }
 
 /* Row */
-.pcm-row { display: grid; grid-template-columns: 52px 1fr auto; gap: 14px; align-items: center; padding: 10px 12px 10px 10px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.pcm-row { display: grid; grid-template-columns: 52px 1fr auto; gap: 16px; align-items: center; padding: 10px 12px 10px 10px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
 .pcm-thumb { width: 52px; height: 52px; border-radius: 14px; overflow: hidden; background: var(--m-well); }
 .pcm-row-txt { min-width: 0; }
 .pcm-row-txt > span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -193,7 +193,7 @@
 .pcm-ticket {
   /* the notches sit in the gap between the code and the venue: padding, the code's column, half the gap */
   --notch: 11px; --nx: calc(18px + 96px + 11px);
-  display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; padding: var(--m-pad) 18px;
+  display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; padding: var(--m-pad) 20px;
   border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
   -webkit-mask: radial-gradient(circle var(--notch) at var(--nx) 0, transparent 98%, #000) top / 100% 51% no-repeat,
     radial-gradient(circle var(--notch) at var(--nx) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
@@ -209,9 +209,9 @@
 .pcm-ticket-venue p > span { display: block; }
 
 /* Split */
-.pcm-split { display: grid; grid-template-columns: 128px 1fr; gap: 18px; align-items: center; }
+.pcm-split { display: grid; grid-template-columns: 128px 1fr; gap: 20px; align-items: center; }
 .pcm-square { width: 128px; height: 128px; border-radius: 24px; overflow: hidden; background: var(--m-well); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
-.pcm-facts { display: grid; gap: 7px; min-width: 0; }
+.pcm-facts { display: grid; gap: 8px; min-width: 0; }
 .pcm-facts .pcm-name { font: var(--m-w-title) 22px/1.1 var(--m-f-title); margin-bottom: 2px; }
 .pcm-fact { display: flex; align-items: center; gap: 8px; font: var(--m-w-text) 14px/1.3 var(--m-f-text); color: var(--m-ink-2); }
 .pcm-fact [data-lucide] { font-size: 16px; display: inline-grid; color: var(--m-ink-3); }
@@ -223,7 +223,7 @@
 .pcc b { font-weight: var(--m-w-strong); }
 
 /* Coin */
-.pcc-coin { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: center; }
+.pcc-coin { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: center; }
 /* the look's gold, pulled toward the ink so it holds its contrast on a daylight ground too */
 .pcc-coin-ico { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 23px; color: color-mix(in srgb, var(--m-gold) 62%, var(--m-ink)); background: color-mix(in srgb, var(--m-gold) 16%, transparent); border: 1px solid color-mix(in srgb, var(--m-gold) 40%, transparent); }
 .m-page[data-state="done"][data-held="no"] .pcc-coin-ico { color: var(--m-ink-3); background: var(--m-glass-hi); border-color: var(--m-line); }
@@ -232,7 +232,7 @@
 .pcc-txt > span { margin-top: 2px; font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
 
 /* Wallet bar */
-.pcc-bar { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 12px 12px 12px 14px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
+.pcc-bar { display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; padding: 12px 12px 12px 16px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); }
 .pcc-bar-ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-size: 21px; background: var(--m-glass-hi); color: var(--m-ink); }
 .pcc-bar-txt small { display: block; font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); margin-bottom: 4px; }
 .pcc-bar-txt b { font: var(--m-w-title) 20px/1.1 var(--m-f-title); }
@@ -256,9 +256,9 @@
 .pcc-tok-txt > * > span { justify-content: center; }
 
 /* Receipt */
-.pcc-receipt { padding: var(--m-pad) 18px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); display: grid; gap: 10px; }
+.pcc-receipt { padding: var(--m-pad) 20px; border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift); display: grid; gap: 10px; }
 .pcc-rline { display: flex; align-items: center; justify-content: space-between; gap: 12px; font: var(--m-w-text) 15px/1.3 var(--m-f-text); color: var(--m-ink-2); }
-.pcc-rline > span { display: inline-flex; align-items: center; gap: 9px; }
+.pcc-rline > span { display: inline-flex; align-items: center; gap: 10px; }
 .pcc-rline [data-lucide] { font-size: 17px; display: inline-grid; color: var(--m-red-soft); }
 .pcc-rline b { color: var(--m-ink); }
 .pcc-fine { display: flex; align-items: center; gap: 8px; margin-top: 2px; font: var(--m-w-text) 13px/1.3 var(--m-f-text); color: var(--m-ink-3); }

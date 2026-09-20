@@ -12,7 +12,7 @@
 .s-photo .v-b .photo-b-panel {
   position: absolute; z-index: 2; left: var(--pad); bottom: calc(36px * var(--space)); max-width: calc(100% - 2 * var(--pad));
   display: grid; justify-items: start; row-gap: calc(24px * var(--space));
-  padding: calc(34px * var(--space)) calc(56px * var(--space)) calc(34px * var(--space)) calc(44px * var(--space));
+  padding: calc(36px * var(--space)) calc(56px * var(--space)) calc(36px * var(--space)) calc(48px * var(--space));
 }
 .s-photo .v-b .photo-b-where { color: rgba(255, 255, 255, .82); text-box: trim-both cap alphabetic; }
 .s-photo .v-b .photo-b-title {
@@ -33,7 +33,7 @@
   padding: var(--card-pad) calc(var(--card-pad) + 32px) var(--card-pad) var(--card-pad);
   transform-origin: 0 100%; transform: skewX(-12deg);
 }
-.s-photo .v-c .photo-c-lines { display: grid; justify-items: start; row-gap: calc(22px * var(--space)); }
+.s-photo .v-c .photo-c-lines { display: grid; justify-items: start; row-gap: calc(24px * var(--space)); }
 /* each line stands upright from its own baseline, so the left edges step along the slant */
 .s-photo .v-c .photo-c-title,
 .s-photo .v-c .photo-c-where { transform-origin: 0 100%; transform: skewX(12deg); text-box: trim-both cap alphabetic; }
@@ -55,18 +55,18 @@
   position: absolute; z-index: 2; left: calc(var(--notch) + 44px); top: 0; bottom: 0; width: 44cqi;
   display: grid; align-content: center; justify-items: start; row-gap: calc(40px * var(--space));
 }
-.s-photo .v-d .photo-d-head { display: grid; justify-items: start; row-gap: calc(18px * var(--space)); white-space: normal; }
+.s-photo .v-d .photo-d-head { display: grid; justify-items: start; row-gap: calc(20px * var(--space)); white-space: normal; }
 .s-photo .v-d .photo-d-lead { font-size: calc(34px / var(--cap)); color: var(--ink-2); white-space: nowrap; text-box: trim-both cap alphabetic; }
 .s-photo .v-d .photo-d-big { font-size: min(calc(72px / var(--cap)), calc(44cqi / (10 * .5))); white-space: nowrap; text-box: trim-both cap alphabetic; }
 .s-photo .v-d .photo-d-brand { text-box: trim-both cap alphabetic; }
 
 /* E  Poster print: the fight as a print across the column, level, held up by one strip of tape at the top */
-.s-photo .v-e .photo-e-wall { padding-top: 22px; }
+.s-photo .v-e .photo-e-wall { padding-top: 24px; }
 .s-photo .v-e .photo-e-stack { position: relative; }
 .s-photo .v-e .photo-e-print { position: relative; margin: 0; padding: var(--card-pad) var(--card-pad) 0; }
 .s-photo .v-e .photo-e-frame { height: 256px; border-radius: calc(var(--r) * .5); }
 .s-photo .v-e .photo-e-frame > img { object-position: 45% 62%; }
-.s-photo .v-e .photo-e-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 30px 0 34px; }
+.s-photo .v-e .photo-e-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 32px 0 36px; }
 .s-photo .v-e .photo-e-title { font-weight: var(--w-strong); color: var(--ink-1); white-space: nowrap; text-box: trim-both cap alphabetic; }
 .s-photo .v-e .photo-e-where { font-size: 32px; color: var(--ink-3); white-space: nowrap; text-box: trim-both cap alphabetic; }
 .s-photo .v-e .photo-e-tape {

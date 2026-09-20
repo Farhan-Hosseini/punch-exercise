@@ -29,7 +29,7 @@
 .mscreen-default .mdf {
   position: absolute; inset: 0; overflow: hidden; isolation: isolate;
   display: flex; flex-direction: column; gap: var(--ms-sec-gap);
-  padding: var(--mdf-top) 0 calc(var(--ms-ad-h) + 88px);
+  padding: var(--mdf-top) 0 calc(var(--ms-ad-h) + 96px);
   color: var(--ink-1); font-family: var(--f-text);
 }
 .mscreen-default .mdf > :not(.ms-lights, .ms-head, .ms-head > *, .ms-brand, .ms-ad) { position: relative; z-index: 1; flex: none; }
@@ -48,7 +48,7 @@
 
 /* shared type */
 .mscreen-default .mdf-kicker {
-  display: inline-flex; align-items: center; gap: 14px;
+  display: inline-flex; align-items: center; gap: 16px;
   font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike);
 }
 .mscreen-default .mdf-wl-title {
@@ -62,7 +62,7 @@
   height: var(--mdf-head); margin-bottom: var(--ms-group-gap);
 }
 .mscreen-default .mdf-h-title {
-  display: flex; align-items: center; gap: 22px;
+  display: flex; align-items: center; gap: 24px;
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
   font-size: calc(80px * var(--mdf-k)); line-height: 1; white-space: nowrap;
 }
@@ -102,7 +102,7 @@
   padding: 8px 16px; border-radius: 10px; background: rgba(8, 9, 8, .82); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .42);
   font: 700 32px/1 "Barlow Condensed", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .86);
 }
-.mscreen-default .mdf-ad-copy { left: 88px; top: 50%; translate: 0 -50%; display: grid; justify-items: start; gap: 22px; z-index: 2; }
+.mscreen-default .mdf-ad-copy { left: 88px; top: 50%; translate: 0 -50%; display: grid; justify-items: start; gap: 24px; z-index: 2; }
 .mscreen-default .mdf-ad-copy .mon-word { font-size: 44px; }
 .mscreen-default .mdf-ad-big { display: block; font: 400 112px/.88 "Anton", "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: .01em; color: #FFFFFF; margin-bottom: 8px; }
 .mscreen-default .mdf-ad-mid { display: block; font: 400 52px/.95 "Anton", "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: .01em; color: #FFFFFF; }
@@ -182,7 +182,7 @@
 @keyframes mdf-bolt-fork { 0%, 4% { stroke-dashoffset: 1; } 7%, 100% { stroke-dashoffset: 0; } }
 .mscreen-default .mdf-bolt-flash { inset: 0; background: radial-gradient(50% 80% at 66% 40%, rgba(214, 255, 120, .5), rgba(149, 214, 0, .12) 60%, transparent); opacity: 0; animation: mdf-flash var(--loop) steps(1, end) infinite both; }
 @keyframes mdf-flash { 0%, 3% { opacity: 0; } 4% { opacity: 1; } 6% { opacity: 0; } 8% { opacity: .6; } 10%, 100% { opacity: 0; } }
-.mscreen-default .mdf-bolt-copy { gap: 22px; }
+.mscreen-default .mdf-bolt-copy { gap: 24px; }
 .mscreen-default .mdf-bolt-copy .mdf-bolt-word { font-size: 124px; justify-items: start; animation: mdf-shake var(--loop) steps(1, end) infinite both; }
 .mscreen-default .mdf-bolt-copy .mdf-bolt-word > span { padding-left: 0; }
 @keyframes mdf-shake { 0%, 3% { translate: 0 0; } 4% { translate: -10px 4px; } 6% { translate: 8px -3px; } 8% { translate: -4px 0; } 10%, 100% { translate: 0 0; } }
@@ -209,7 +209,7 @@
    the right rising in turn over a green dawn, each named */
 .mscreen-default .mdf-ad-taste { --loop: 8s; background: radial-gradient(50% 90% at 76% 100%, rgba(149, 214, 0, .3), transparent 70%), repeating-linear-gradient(118deg, rgba(149, 214, 0, .045) 0 3px, transparent 3px 26px), var(--mon-black); }
 .mscreen-default .mdf-taste-row { right: 64px; bottom: 44px; display: flex; gap: 8px; align-items: end; }
-.mscreen-default .mdf-taste { position: relative; display: grid; justify-items: center; gap: 22px; width: 112px; }
+.mscreen-default .mdf-taste { position: relative; display: grid; justify-items: center; gap: 24px; width: 112px; }
 .mscreen-default .mdf-taste .mdf-can { --can-w: 92px; position: relative; animation: mdf-rise var(--loop) cubic-bezier(.2, .9, .3, 1.2) infinite both; animation-delay: calc(var(--i) * .18s); }
 @keyframes mdf-rise { 0% { transform: translateY(80px); opacity: 0; } 8%, 100% { transform: translateY(0); opacity: 1; } }
 .mscreen-default .mdf-taste:nth-child(2) .mdf-can { rotate: -4deg; }
@@ -223,7 +223,7 @@
 @keyframes mdf-ring { 0%, 100% { scale: 1; } 50% { scale: 1.06; } }
 .mscreen-default .mdf-offer-can { --can-w: 130px; left: 155px; top: 96px; transform: rotate(-9deg); }
 .mscreen-default .mdf-offer-copy { left: 432px; gap: 16px; }
-.mscreen-default .mdf-offer-hit { display: flex; align-items: baseline; gap: 22px; }
+.mscreen-default .mdf-offer-hit { display: flex; align-items: baseline; gap: 24px; }
 .mscreen-default .mdf-offer-k { font: 400 64px/1 "Anton", "Archivo Black", sans-serif; text-transform: uppercase; color: var(--mon-green); }
 .mscreen-default .mdf-offer-score { font: 400 92px/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .01em; color: #FFFFFF; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .mscreen-default .mdf-offer-score .dec { color: var(--mon-steel); opacity: .8; }
@@ -266,9 +266,9 @@
 .mscreen-default .mdf-wl-huge span:first-child { font-size: calc(440px * var(--mdf-k)); line-height: .82; }
 .mscreen-default .mdf-wl-huge span:last-child { font-size: calc(228px * var(--mdf-k)); line-height: .95; color: var(--strike); }
 .mscreen-default .mdf-wl-row { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 56px; }
-.mscreen-default .mdf-chips { display: grid; justify-items: start; gap: 18px; }
+.mscreen-default .mdf-chips { display: grid; justify-items: start; gap: 20px; }
 .mscreen-default .mdf-chips li {
-  display: inline-flex; align-items: center; gap: 14px; padding: 18px 26px; border-radius: 99px;
+  display: inline-flex; align-items: center; gap: 16px; padding: 20px 28px; border-radius: 99px;
   background: var(--mdf-card); border: var(--mdf-card-line);
   font: var(--w-strong) 34px/1 var(--f-text); color: var(--ink-1); white-space: nowrap;
 }
@@ -300,12 +300,12 @@
   -webkit-mask: radial-gradient(circle var(--notch) at 400px 0, transparent 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at 400px 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
   mask: radial-gradient(circle var(--notch) at 400px 0, transparent 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at 400px 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
 }
-.mscreen-default .mdf-tk-stub { display: grid; justify-items: center; align-content: center; gap: 56px; padding: 40px 30px; border-right: 6px dashed color-mix(in oklab, var(--ink-1) 22%, transparent); background: var(--mdf-soft); border-radius: 40px 0 0 40px; }
-.mscreen-default .mdf-tk-scan { display: inline-flex; align-items: center; gap: 14px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(72px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-tk-stub { display: grid; justify-items: center; align-content: center; gap: 56px; padding: 40px 32px; border-right: 6px dashed color-mix(in oklab, var(--ink-1) 22%, transparent); background: var(--mdf-soft); border-radius: 40px 0 0 40px; }
+.mscreen-default .mdf-tk-scan { display: inline-flex; align-items: center; gap: 16px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(72px * var(--mdf-k)); line-height: 1; }
 .mscreen-default .mdf-tk-scan > [data-lucide] { color: var(--strike); display: inline-flex; font-size: 56px; }
 .mscreen-default .mdf-tk-body { display: grid; align-content: center; justify-items: start; gap: 36px; padding: 56px 48px; }
 .mscreen-default .mdf-tk-goes { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(124px * var(--mdf-k)); line-height: .95; }
-.mscreen-default .mdf-tk-price { display: flex; align-items: flex-start; gap: 14px; font-family: var(--f-display); font-weight: var(--w-display); font-size: var(--mdf-tk-price); line-height: .8; color: var(--strike); font-variant-numeric: tabular-nums; }
+.mscreen-default .mdf-tk-price { display: flex; align-items: flex-start; gap: 16px; font-family: var(--f-display); font-weight: var(--w-display); font-size: var(--mdf-tk-price); line-height: .8; color: var(--strike); font-variant-numeric: tabular-nums; }
 .mscreen-default .mdf-tk-price span { font-size: 60px; line-height: 1; padding-top: 20px; color: var(--ink-1); }
 .mscreen-default .mdf-tk-was { font: var(--w-label) 36px/1.2 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
 /* where to stand, drawn as the red floor mark itself */
@@ -346,10 +346,10 @@
 /* Leader and list: the day's best as a big photo card, the next four beside */
 .mscreen-default .mdf-bst-lead .mdf-bst-list { display: grid; grid-template-columns: 420px 1fr; gap: 36px; }
 .mscreen-default .mdf-bst-lead .mdf-photo { height: 100%; }
-.mscreen-default .mdf-bst-lead .mdf-on-photo { left: 32px; right: 28px; bottom: 32px; display: grid; gap: 14px; }
+.mscreen-default .mdf-bst-lead .mdf-on-photo { left: 32px; right: 28px; bottom: 32px; display: grid; gap: 16px; }
 .mscreen-default .mdf-bst-lead .mdf-on-photo .mdf-name { font-size: 48px; }
 .mscreen-default .mdf-bst-lead .mdf-on-photo .mdf-score { font-size: calc(37px / var(--num-w)); }
-.mscreen-default .mdf-bst-lead .mdf-flag { position: absolute; z-index: 1; left: 28px; top: 28px; display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 99px; background: var(--strike); color: var(--cta-ink); font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; }
+.mscreen-default .mdf-bst-lead .mdf-flag { position: absolute; z-index: 1; left: 28px; top: 28px; display: inline-flex; align-items: center; gap: 12px; padding: 16px 24px; border-radius: 99px; background: var(--strike); color: var(--cta-ink); font: var(--w-label) 32px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; }
 :root[data-variant="reference"] .mscreen-default .mdf-bst-lead .mdf-flag { background: #EB1110; color: #FFFFFF; }
 .mscreen-default .mdf-bst-lead .mdf-flag > [data-lucide] { display: inline-flex; font-size: 34px; }
 .mscreen-default .mdf-bst-lead ol { display: grid; grid-template-rows: repeat(4, 1fr); gap: var(--ms-item-gap); }
@@ -363,7 +363,7 @@
 
 /* Film strip: five frames from today; a highlight walks along them and the caption below reads the one it rests on */
 .mscreen-default .mdf-bst-strip .mdf-bst-list { display: grid; grid-template-rows: 1fr auto; gap: var(--ms-item-gap); }
-.mscreen-default .mdf-strip-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; min-height: 0; padding-top: 14px; }
+.mscreen-default .mdf-strip-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; min-height: 0; padding-top: 16px; }
 .mscreen-default .mdf-strip-row .mdf-photo { height: 100%; border-radius: calc(var(--ms-photo-r) * .8); transition: transform .5s cubic-bezier(.2, .9, .3, 1), box-shadow .5s ease; }
 .mscreen-default .mdf-strip-row .mdf-photo::after { background: linear-gradient(180deg, rgba(8, 8, 9, .45), transparent 34%); }
 .mscreen-default .mdf-strip-row .mdf-rank { position: absolute; z-index: 2; left: 14px; top: 14px; width: 60px; height: 60px; font-size: 38px; }
@@ -394,7 +394,7 @@
 
 /* Spotlight: one player at a time, big; five bars show who is next */
 .mscreen-default .mdf-bst-spot .mdf-bst-list { display: grid; grid-template-columns: 1fr 400px; gap: 0; overflow: hidden; border-radius: var(--r); }
-.mscreen-default .mdf-bst-spot .mdf-spot-info { position: relative; display: grid; grid-template-rows: auto 1fr; gap: 24px; padding: 44px 48px; }
+.mscreen-default .mdf-bst-spot .mdf-spot-info { position: relative; display: grid; grid-template-rows: auto 1fr; gap: 24px; padding: 48px 48px; }
 .mscreen-default .mdf-bst-spot .mdf-bars { display: flex; gap: 10px; }
 .mscreen-default .mdf-bst-spot .mdf-bars i { position: relative; flex: 1; height: 8px; border-radius: 99px; background: var(--track); overflow: hidden; }
 .mscreen-default .mdf-bst-spot .mdf-bars i::after { content: ""; position: absolute; inset: 0; background: var(--strike); transform-origin: 0 50%; transform: scaleX(0); }
@@ -404,7 +404,7 @@
 .mscreen-default .mdf-bst-spot .mdf-slides { position: relative; }
 .mscreen-default .mdf-bst-spot .mdf-slide { position: absolute; inset: 0; display: grid; align-content: center; gap: 20px; opacity: 0; transition: opacity .5s ease; }
 .mscreen-default .mdf-bst-spot .mdf-slide.is-on { opacity: 1; }
-.mscreen-default .mdf-bst-spot .mdf-spot-rank { display: inline-flex; align-items: center; gap: 14px; font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
+.mscreen-default .mdf-bst-spot .mdf-spot-rank { display: inline-flex; align-items: center; gap: 16px; font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--strike); }
 .mscreen-default .mdf-bst-spot .mdf-name { font-size: 54px; line-height: 1.05; white-space: normal; }
 .mscreen-default .mdf-bst-spot .mdf-score { font-size: calc(42px / var(--num-w)); }
 .mscreen-default .mdf-bst-spot .mdf-shots { position: relative; background: #0B0B0C; }
@@ -416,7 +416,7 @@
 
 /* Three cards */
 .mscreen-default .mdf-hw-cards ol { height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ms-item-gap); }
-.mscreen-default .mdf-hw-cards li { display: grid; align-content: start; justify-items: start; gap: 14px; padding: 30px 30px 26px; }
+.mscreen-default .mdf-hw-cards li { display: grid; align-content: start; justify-items: start; gap: 16px; padding: 32px 32px 28px; }
 .mscreen-default .mdf-hw-cards .mdf-hw-ic { width: 88px; height: 88px; font-size: 48px; margin-bottom: 8px; }
 .mscreen-default .mdf-hw-cards b { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(58px * var(--mdf-k)); line-height: 1; }
 .mscreen-default .mdf-hw-cards li > span:last-child { font: var(--w-label) 32px/1.2 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2); }
@@ -425,16 +425,16 @@
 .mscreen-default .mdf-hw-cards li:nth-child(3) { animation-delay: .24s; }
 
 /* Illustrated: the how-to art with the three words beside it */
-.mscreen-default .mdf-hw-art { display: grid; grid-template-columns: auto 1fr; gap: 44px; align-items: center; }
+.mscreen-default .mdf-hw-art { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
 .mscreen-default .mdf-hw-wide { display: block; height: 100%; aspect-ratio: 1568 / 760; border-radius: var(--r); overflow: hidden; background: var(--mdf-soft); }
 .mscreen-default .mdf-hw-wide img { width: 100%; height: 100%; object-fit: cover; }
-.mscreen-default .mdf-hw-caps { display: grid; gap: 30px; }
-.mscreen-default .mdf-hw-caps li { display: flex; align-items: center; gap: 18px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(62px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-hw-caps { display: grid; gap: 32px; }
+.mscreen-default .mdf-hw-caps li { display: flex; align-items: center; gap: 20px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); font-size: calc(62px * var(--mdf-k)); line-height: 1; }
 .mscreen-default .mdf-hw-caps li > [data-lucide] { font-size: 50px; color: var(--strike); display: inline-flex; }
 
 /* Step tiles: the three step illustrations, a word under each */
 .mscreen-default .mdf-hw-tiles ol { height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ms-item-gap); }
-.mscreen-default .mdf-hw-tiles li { display: grid; grid-template-rows: 1fr auto; justify-items: center; gap: 18px; min-height: 0; }
+.mscreen-default .mdf-hw-tiles li { display: grid; grid-template-rows: 1fr auto; justify-items: center; gap: 20px; min-height: 0; }
 .mscreen-default .mdf-hw-tile { position: relative; height: 100%; aspect-ratio: 1; border-radius: var(--r); overflow: hidden; background: var(--mdf-soft); display: grid; place-items: center; }
 .mscreen-default .mdf-hw-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .mscreen-default .mdf-hw-tile > [data-lucide] { font-size: 100px; color: var(--strike); display: inline-flex; }
@@ -443,7 +443,7 @@
 /* Timeline: three stops on a rail, a pulse running from the code to the pad */
 .mscreen-default .mdf-hw-line { display: grid; align-content: center; }
 .mscreen-default .mdf-hw-line ol { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); }
-.mscreen-default .mdf-hw-line li { display: grid; justify-items: center; gap: 14px; text-align: center; }
+.mscreen-default .mdf-hw-line li { display: grid; justify-items: center; gap: 16px; text-align: center; }
 .mscreen-default .mdf-hw-line .mdf-hw-ic { position: relative; z-index: 1; width: 124px; height: 124px; font-size: 60px; background: var(--ms-ground); box-shadow: inset 0 0 0 6px var(--strike), inset 0 0 0 124px var(--mdf-soft), 0 0 0 14px color-mix(in oklab, var(--ground) 80%, transparent); margin-bottom: 8px; }
 :root[data-variant="reference"] .mscreen-default .mdf-hw-line .mdf-hw-ic { background: #141218; }
 :root[data-variant="reference"][data-appearance="light"] .mscreen-default .mdf-hw-line .mdf-hw-ic { background: #F7F5FA; }
@@ -455,11 +455,11 @@
 @keyframes mdf-pulse { from { translate: -60px 0; opacity: 0; } 10%, 90% { opacity: 1; } to { translate: 543px 0; opacity: 0; } }
 
 /* One line: the whole flow in three words; the last one lands */
-.mscreen-default .mdf-hw-one { display: grid; align-content: center; gap: 26px; padding: 0 48px; border-radius: var(--ms-photo-r); overflow: hidden; isolation: isolate; background: #0B0B0C; color: #FFFFFF; }
+.mscreen-default .mdf-hw-one { display: grid; align-content: center; gap: 28px; padding: 0 48px; border-radius: var(--ms-photo-r); overflow: hidden; isolation: isolate; background: #0B0B0C; color: #FFFFFF; }
 .mscreen-default .mdf-hw-bg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: 55% 26%; }
 .mscreen-default .mdf-hw-one::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8, 8, 9, .9) 0%, rgba(8, 8, 9, .72) 55%, rgba(8, 8, 9, .2) 100%); }
 .mscreen-default .mdf-hw-one .mdf-hw-w > [data-lucide], .mscreen-default .mdf-hw-one .mdf-hw-w.is-hit { color: #FF4E4D; }
-.mscreen-default .mdf-hw-say { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 44px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track); font-size: calc(100px * var(--mdf-k)); line-height: 1; }
+.mscreen-default .mdf-hw-say { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 48px; font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track); font-size: calc(100px * var(--mdf-k)); line-height: 1; }
 .mscreen-default .mdf-hw-w { display: inline-flex; align-items: center; gap: 20px; animation: mdf-word 4.8s ease-in-out infinite both; }
 .mscreen-default .mdf-hw-w > [data-lucide] { font-size: .7em; color: var(--strike); display: inline-flex; }
 .mscreen-default .mdf-hw-w:nth-child(2) { animation-delay: .6s; }

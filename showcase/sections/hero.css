@@ -13,7 +13,7 @@
 /* B  Power gauge: a segmented arc across the glass, the needle crosses the band, the score sits on the diameter */
 /* the dial ends on the arc's feet (viewBox 1080 x 504), and the gap under it leaves room for the comma's tail, which
    hangs below the diameter the score stands on */
-.s-hero .v-b { display: grid; row-gap: calc(18px * var(--space) + 24px); text-align: center; }
+.s-hero .v-b { display: grid; row-gap: calc(20px * var(--space) + 24px); text-align: center; }
 .s-hero .v-b .hero-b-dial { position: relative; margin-inline: calc(-1 * var(--pad)); }
 .s-hero .v-b .hero-b-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .s-hero .v-b .hero-b-mask { mask-type: alpha; }
@@ -49,7 +49,7 @@
 .s-hero .v-c .hero-c-copy {
   grid-area: 1 / 1; align-self: end; container-type: inline-size;
   display: grid; justify-items: start; row-gap: calc(32px * var(--space));
-  padding-bottom: 44px;
+  padding-bottom: 48px;
 }
 .s-hero .v-c .hero-c-label { text-box: trim-both cap alphabetic; }
 .s-hero .v-c .hero-c-score {
@@ -58,7 +58,7 @@
 }
 .s-hero .v-c .hero-c-grade {
   font-size: min(calc(56px / var(--cap)), calc(100cqi / (13 * var(--num-w))));
-  margin-top: calc(14px * var(--space)); color: var(--ink-2); text-box: trim-both cap alphabetic;
+  margin-top: calc(16px * var(--space)); color: var(--ink-2); text-box: trim-both cap alphabetic;
 }
 .s-hero .v-c .hero-c-tower { grid-area: 1 / 2; height: 580px; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; justify-items: center; }
 .s-hero .v-c .hero-c-bell { display: block; width: 160px; height: auto; fill: var(--ink-1); }
@@ -120,8 +120,8 @@
 }
 .s-hero .v-d .hero-d-stamp {
   right: var(--pad); bottom: 6px;
-  display: grid; justify-items: start; row-gap: 14px;
-  padding: 26px 34px; transform: rotate(-6deg); transform-origin: 0 100%;
+  display: grid; justify-items: start; row-gap: 16px;
+  padding: 28px 36px; transform: rotate(-6deg); transform-origin: 0 100%;
   outline: 3px solid var(--line); outline-offset: -12px;
 }
 .s-hero .v-d .hero-d-stamp-label { font-size: 32px; text-box: trim-both cap alphabetic; }
@@ -152,7 +152,7 @@
 .s-hero .v-e .hero-e-panel {
   position: absolute; left: var(--pad); right: var(--pad); bottom: calc(40px * var(--space));
   display: grid; row-gap: calc(36px * var(--space)); overflow: hidden;
-  padding: calc(38px * var(--space)) calc(48px * var(--space)) calc(66px * var(--space));
+  padding: calc(40px * var(--space)) calc(48px * var(--space)) calc(64px * var(--space));
 }
 .s-hero .v-e .hero-e-top { display: flex; justify-content: space-between; align-items: end; gap: 32px; }
 .s-hero .v-e .hero-e-label { color: inherit; text-box: trim-both cap alphabetic; }

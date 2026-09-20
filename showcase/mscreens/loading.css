@@ -39,7 +39,7 @@
   --p: 0; --pe: 0;
   position: absolute; inset: 0; overflow: hidden; isolation: isolate;
   display: flex; flex-direction: column; gap: var(--ms-sec-gap);
-  padding: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px) 0 calc(var(--ms-ad-h) + 88px);
+  padding: calc(var(--ms-brand-top) + var(--ms-brand-h) + 72px) 0 calc(var(--ms-ad-h) + 96px);
   color: var(--ink-1); font-family: var(--f-text);
 }
 .mscreen-loading .mld > :not(.ms-lights, .ms-head, .ms-head > *, .ms-brand, .ms-ad) { position: relative; z-index: 1; flex: none; }
@@ -123,7 +123,7 @@
 /* Quiet: one calm line in a glass pill */
 .mscreen-loading .mcap-quiet { display: flex; }
 .mscreen-loading .mcap-pill {
-  grid-template-columns: auto 1fr; align-items: center; column-gap: 28px; min-height: 140px; padding: 0 56px 0 44px; border-radius: 99px;
+  grid-template-columns: auto 1fr; align-items: center; column-gap: 28px; min-height: 140px; padding: 0 56px 0 48px; border-radius: 99px;
   background: var(--surface-bg); border: var(--surface-border); box-shadow: var(--surface-shadow);
   font: var(--w-strong) 60px/1.1 var(--f-text);
 }
@@ -161,7 +161,7 @@
 /* the peak: a ring lands on it the moment the head passes, and holds */
 .mscreen-loading .mst-peak {
   --on: clamp(0, calc((var(--d) - var(--pk)) * 24), 1);
-  position: absolute; left: calc(var(--px) * 1px); top: calc(var(--py) * 1px); width: 132px; height: 132px; margin: -66px 0 0 -66px; border-radius: 50%;
+  position: absolute; left: calc(var(--px) * 1px); top: calc(var(--py) * 1px); width: 132px; height: 132px; margin: -64px 0 0 -64px; border-radius: 50%;
   border: 10px solid var(--ink-1); box-shadow: 0 0 36px color-mix(in oklab, var(--strike) 55%, transparent), inset 0 0 24px color-mix(in oklab, var(--strike) 40%, transparent);
   opacity: var(--on); transform: scale(calc(1.6 - var(--on) * .6));
 }
@@ -171,7 +171,7 @@
 }
 .mscreen-loading .mst-fill { position: absolute; inset: 0; z-index: -1; background: var(--mld-red); transform-origin: 0 50%; transform: scaleX(var(--p)); }
 .mscreen-loading .mst-say {
-  display: grid; align-items: center; min-height: 176px; padding: 30px 64px;
+  display: grid; align-items: center; min-height: 176px; padding: 32px 64px;
   font: var(--w-strong) 64px/1.1 var(--f-text); color: var(--ink-1);
 }
 .mscreen-loading .mst-say-on { position: absolute; inset: 0; color: var(--mld-on-red); clip-path: inset(0 calc((1 - var(--p)) * 100%) 0 0); }
@@ -187,7 +187,7 @@
 .mscreen-loading .mld-frame::after { bottom: 0; height: 460px; background: linear-gradient(0deg, rgba(8, 8, 9, .85), transparent); }
 .mscreen-loading .mld-flash { position: absolute; inset: 0; z-index: 2; background: #FFFFFF; opacity: clamp(0, calc(.7 - var(--p) * 7), .7); pointer-events: none; }
 .mscreen-loading .mld-frame-top {
-  position: absolute; z-index: 3; left: var(--ms-gut); top: 56px; display: flex; align-items: center; gap: 18px; color: #FFFFFF;
+  position: absolute; z-index: 3; left: var(--ms-gut); top: 56px; display: flex; align-items: center; gap: 20px; color: #FFFFFF;
   font: var(--w-label) 38px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase;
 }
 .mscreen-loading .mld-frame-bar { position: absolute; z-index: 3; left: var(--ms-gut); right: var(--ms-gut); bottom: 80px; height: 16px; border-radius: 8px; background: rgba(255, 255, 255, .22); overflow: hidden; }
@@ -229,7 +229,7 @@
 .mscreen-loading .mld-charge i { display: block; height: 100%; border-radius: inherit; background: var(--mld-bar); transform-origin: 0 50%; transform: scaleX(var(--pe)); box-shadow: 0 0 30px color-mix(in oklab, var(--strike) 60%, transparent); }
 .mscreen-loading .mld-best {
   flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
-  padding: 44px 52px; border-radius: 44px; background: var(--surface-bg); border: var(--surface-border); box-shadow: var(--surface-shadow);
+  padding: 48px 56px; border-radius: 44px; background: var(--surface-bg); border: var(--surface-border); box-shadow: var(--surface-shadow);
 }
 .mscreen-loading .mld-best-label { display: flex; align-items: center; gap: 16px; font: var(--w-strong) 44px/1.2 var(--f-text); color: var(--ink-2); white-space: nowrap; }
 .mscreen-loading .mld-best-label > [data-lucide] { color: var(--mld-red); font-size: 46px; }
@@ -254,7 +254,7 @@
 .mscreen-loading .mpf-lock i:nth-child(4) { right: calc((1 - var(--lk)) * -40%); bottom: calc((1 - var(--lk)) * -40%); border-right-width: 10px; border-bottom-width: 10px; }
 .mscreen-loading [data-phase="ready"] .mpf-lock i { border-color: #FF4B3E; }
 .mscreen-loading .mpf-tag {
-  position: absolute; z-index: 3; left: 36%; top: calc(43% - 120px); display: flex; align-items: center; gap: 12px; height: 80px; padding: 0 30px 0 24px; border-radius: 40px;
+  position: absolute; z-index: 3; left: 36%; top: calc(43% - 120px); display: flex; align-items: center; gap: 12px; height: 80px; padding: 0 32px 0 24px; border-radius: 40px;
   background: var(--mld-red); color: var(--mld-on-red); font: var(--w-label) 36px/1 var(--f-label); letter-spacing: .08em; text-transform: uppercase;
   opacity: clamp(0, calc((var(--pe) - .55) * 5), 1);
 }
@@ -266,7 +266,7 @@
 .mscreen-loading .mck-row {
   --on: clamp(0, calc((var(--p) - var(--a)) * 8), 1);
   --done: clamp(0, calc((var(--p) - var(--a) - .2) * 14), 1);
-  display: grid; grid-template-columns: 180px 1fr 120px; gap: 44px; align-items: center; flex: 1 1 0; min-height: 360px; max-height: 500px; padding: 0 48px 0 44px;
+  display: grid; grid-template-columns: 180px 1fr 120px; gap: 48px; align-items: center; flex: 1 1 0; min-height: 360px; max-height: 500px; padding: 0 48px 0 48px;
   border-radius: calc(var(--r) * 1.4); background: var(--surface-bg); border: var(--surface-border); box-shadow: var(--surface-shadow);
   opacity: calc(.45 + var(--on) * .55);
 }

@@ -23,7 +23,7 @@
 :root[data-decimals="off"] .s-clips .rp-score { --chars: 7; }
 /* the when, on a dark chip over a photo, so its type reads on any frame */
 .s-clips .rp-chip {
-  position: absolute; z-index: 2; top: 16px; left: 16px; padding: 9px 14px 8px; border-radius: calc(var(--r) * .5);
+  position: absolute; z-index: 2; top: 16px; left: 16px; padding: 10px 16px 8px; border-radius: calc(var(--r) * .5);
   color: #FFFFFF; background: rgba(10, 10, 12, .7);
 }
 
@@ -35,7 +35,7 @@
 .s-clips .v-a .rp-a-shot::after { background: linear-gradient(180deg, rgba(8, 8, 9, 0) 34%, rgba(8, 8, 9, .86)); }
 /* the name stands clear of the photo's foot, and the score keeps a margin of its own under it */
 .s-clips .v-a .rp-a-shot .rp-name { position: absolute; z-index: 2; left: 18px; right: 18px; bottom: 18px; color: #FFFFFF; font-size: 26px; }
-.s-clips .v-a .rp-score { --top: 40px; padding: 18px 18px 20px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 36px) / (var(--chars) * var(--num-w)))); }
+.s-clips .v-a .rp-score { --top: 40px; padding: 20px 20px 20px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 36px) / (var(--chars) * var(--num-w)))); }
 
 /* B  List: the three latest as rows, the face, the name over when, the score standing on the right */
 .s-clips .v-b .rp-b { display: grid; gap: 12px; }
@@ -53,14 +53,14 @@
 .s-clips .v-c .rp-c-lead::after { background: linear-gradient(180deg, rgba(8, 8, 9, .35), rgba(8, 8, 9, 0) 36%, rgba(8, 8, 9, .1) 50%, rgba(8, 8, 9, .86)); }
 .s-clips .v-c .rp-c-cap {
   position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; container-type: inline-size;
-  display: grid; gap: 10px; padding: 0 24px 22px;
+  display: grid; gap: 10px; padding: 0 24px 24px;
 }
 .s-clips .v-c .rp-c-cap .rp-name { color: #FFFFFF; }
 .s-clips .v-c .rp-c-cap .rp-score { --top: 64px; color: #FFFFFF; text-shadow: 0 4px 24px rgba(0, 0, 0, .5); }
 .s-clips .v-c .rp-c-list { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; min-width: 0; }
 .s-clips .v-c .rp-c-row {
   min-width: 0; display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; column-gap: 16px;
-  padding: 0 22px 0 12px;
+  padding: 0 24px 0 12px;
 }
 .s-clips .v-c .rp-c-row .rp-ava { width: 56px; height: 56px; }
 .s-clips .v-c .rp-c-row .rp-who { gap: 4px; }
@@ -82,7 +82,7 @@
 /* the bar: the face's width, from the face alone at .6 of the top score to 64 px more at the top score */
 .s-clips .v-e .rp-e-bar {
   --w: 84px;
-  display: grid; justify-items: center; align-content: start; width: var(--w); padding-top: 7px;
+  display: grid; justify-items: center; align-content: start; width: var(--w); padding-top: 8px;
   height: calc(var(--w) + (var(--h, .7) - .6) / .4 * 64px); border-radius: calc(var(--w) / 2) calc(var(--w) / 2) 16px 16px;
   background: var(--track);
 }
@@ -95,5 +95,5 @@
 :root[data-variant="reference"] .s-clips .rp-a-shot { height: 140px; border-radius: 12px; }
 :root[data-variant="reference"] .s-clips .rp-name { font: 700 32px/1.26 "Sora", sans-serif; }
 :root[data-variant="reference"] .s-clips .rp-score { font-family: "Archivo Black", sans-serif; font-weight: 400; letter-spacing: 0; text-shadow: none; }
-:root[data-variant="reference"] .s-clips .v-a .rp-score { --top: 40px; padding: 18px 8px 4px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 16px) / (var(--chars) * var(--num-w)))); }
+:root[data-variant="reference"] .s-clips .v-a .rp-score { --top: 40px; padding: 20px 8px 4px; font-size: min(calc(var(--top) / var(--cap)), calc((100cqi - 16px) / (var(--chars) * var(--num-w)))); }
 :root[data-variant="reference"] .s-clips .rp-chip { font: 700 32px/1 "Sora", sans-serif; text-transform: none; letter-spacing: 0; border-radius: 12px; }

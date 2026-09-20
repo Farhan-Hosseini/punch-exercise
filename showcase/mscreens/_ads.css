@@ -179,7 +179,7 @@
 /* the CTA: a slanted green plate; it turns black on the flashes and knocks twice on the end card */
 .mscreen .ms-ad-cta {
   position: absolute; right: 40px; top: 27px; height: 86px; z-index: 4;
-  display: flex; align-items: center; gap: 18px; padding: 0 34px 0 40px;
+  display: flex; align-items: center; gap: 20px; padding: 0 36px 0 40px;
   background: var(--mon-green); color: var(--mon-black);
   clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
   font: 400 38px/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap;
@@ -196,7 +196,7 @@
   97% { transform: scale(1.08); }
   98%, 100% { transform: none; }
 }
-.mscreen .ms-ad-chev { display: flex; gap: 3px; }
+.mscreen .ms-ad-chev { display: flex; gap: 4px; }
 .mscreen .ms-ad-chev i {
   width: 15px; height: 26px; background: currentColor; opacity: .28;
   clip-path: polygon(0 0, 48% 0, 100% 50%, 48% 100%, 0 100%, 52% 50%);
@@ -243,7 +243,7 @@
 .mscreen .ms-ad .msa-f > span:not(.mon-word) { font: 700 34px/1 "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .08em; color: var(--mon-ink); }
 .mscreen .ms-ad .msa-cta {
   position: absolute; right: 40px; top: 27px; height: 86px; z-index: 4;
-  display: flex; align-items: center; padding: 0 36px 0 42px;
+  display: flex; align-items: center; padding: 0 36px 0 40px;
   background: var(--mon-green); color: var(--mon-black);
   clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
   font: 400 38px/1 "Anton", "Archivo Black", sans-serif; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap;
@@ -337,7 +337,7 @@
 @keyframes msa-split-ground { 0% { background: transparent; } 50%, 100% { background: var(--mon-green); } }
 .mscreen .ms-ad .msa-panel {
   position: absolute; left: 0; top: 0; bottom: 0; width: 470px; z-index: 1;
-  display: grid; align-items: center; padding-left: 74px; font-size: 64px;
+  display: grid; align-items: center; padding-left: 72px; font-size: 64px;
   clip-path: polygon(0 0, 100% 0, calc(100% - 56px) 100%, 0 100%);
   background: var(--mon-green);
   animation-name: msa-panel;

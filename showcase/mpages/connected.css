@@ -65,7 +65,7 @@
 .cxl-head-word { margin-top: var(--m-group-gap); font: var(--m-w-heavy) min(80px, 16.4cqi)/.86 var(--m-f-title); text-transform: uppercase; letter-spacing: -.01em; }
 /* Reference sets its titles in a far wider face */
 :root[data-variant="reference"] .cxl-head-word { font-size: min(64px, 13.4cqi); letter-spacing: 0; }
-.cxl-head-word::after { content: ""; display: block; width: 56px; height: 4px; margin-top: 18px; border-radius: 2px; background: var(--m-red); }
+.cxl-head-word::after { content: ""; display: block; width: 56px; height: 4px; margin-top: 20px; border-radius: 2px; background: var(--m-red); }
 .cxl-head .cxl-line { margin-top: var(--m-group-gap); max-width: 32ch; }
 
 /* ---------------------------------------------------------------- Linked, Photo: a real strike at the bag */
@@ -75,7 +75,7 @@
 .cxl-photo-logo { position: absolute; left: 18px; top: 18px; width: 60px; height: 60px; object-fit: contain; }
 .cxl-photo-txt { position: absolute; left: 22px; right: 22px; bottom: 22px; display: grid; justify-items: start; }
 .cxl-chip {
-  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 99px; margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 99px; margin-bottom: 16px;
   background: rgba(0, 0, 0, .5); border: 1px solid rgba(255, 255, 255, .2); font: var(--m-w-strong) 13px/1 var(--m-f-text);
 }
 .cxl-photo .cxl-dot { background: var(--m-up-hi); box-shadow: 0 0 0 3px color-mix(in srgb, var(--m-up-hi) 30%, transparent); }
@@ -85,7 +85,7 @@
 /* ---------------------------------------------------------------- Linked, Banner: one red panel */
 .cxl-banner {
   position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
-  padding: 22px; border-radius: 28px; background: var(--m-cta); color: var(--m-on-red);
+  padding: 24px; border-radius: 28px; background: var(--m-cta); color: var(--m-on-red);
   box-shadow: 0 30px 60px -34px color-mix(in srgb, var(--m-glow) 90%, transparent), inset 0 1px 0 color-mix(in srgb, var(--m-on-red) 22%, transparent);
 }
 /* a soft light across the top corner, so the flat red of Reference still reads as a panel */
@@ -97,13 +97,13 @@
 .cxl-banner .cxl-line { color: rgba(255, 255, 255, .88); }
 
 /* ---------------------------------------------------------------- Machine: shared parts */
-.cxm-id { display: grid; gap: 3px; min-width: 0; }
+.cxm-id { display: grid; gap: 4px; min-width: 0; }
 .cxm-id b { font: var(--m-w-strong) 17px/1.25 var(--m-f-text); color: var(--m-ink); }
 .cxm-id > span { font: var(--m-w-text) 14px/1.35 var(--m-f-text); color: var(--m-ink-2); }
 .cxm-kick { font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); }
 .cxm img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .cxm-chip {
-  display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px; border-radius: 99px; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 99px; white-space: nowrap;
   background: var(--m-glass-hi); border: 1px solid var(--m-line); font: var(--m-w-strong) 13px/1 var(--m-f-text); color: var(--m-ink);
 }
 .cxm-chip [data-lucide] { display: inline-grid; font-size: 15px; color: var(--m-ink-2); }
@@ -116,9 +116,9 @@
   background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift);
   -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
 }
-.cxm-card-top { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: center; }
+.cxm-card-top { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: center; }
 .cxm-thumb { display: block; width: 56px; height: 56px; border-radius: 14px; overflow: hidden; background: var(--m-well); }
-.cxm-credit { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px 14px 10px 10px; border-radius: 14px; background: var(--m-glass-hi); }
+.cxm-credit { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px 16px 10px 10px; border-radius: 14px; background: var(--m-glass-hi); }
 .cxm-coin { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 17px; background: color-mix(in srgb, var(--m-red) 18%, transparent); color: var(--m-red-soft); }
 .cxm-coin [data-lucide] { display: inline-grid; }
 .cxm-credit > span:not(.cxm-coin) { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-width: 0; }
@@ -128,7 +128,7 @@
 /* Facts: four labelled facts, two by two */
 .cxm-facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .cxm-facts > div {
-  display: grid; align-content: start; gap: 6px; min-height: 72px; padding: 12px 14px; border-radius: 16px;
+  display: grid; align-content: start; gap: 6px; min-height: 72px; padding: 12px 16px; border-radius: 16px;
   background: var(--m-glass); border: 1px solid var(--m-line); box-shadow: var(--m-lift);
 }
 .cxm-facts dt { font: var(--m-w-label) 11px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-ink-3); }
@@ -138,7 +138,7 @@
 /* Ticket: the number on the stub, the venue and the hold on the ticket, notches between them */
 .cxm-ticket {
   --notch: 11px; --nx: calc(18px + 84px + 11px);
-  display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 22px; align-items: center; padding: var(--m-pad) 18px;
+  display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 24px; align-items: center; padding: var(--m-pad) 20px;
   border-radius: 20px; background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
   -webkit-mask: radial-gradient(circle var(--notch) at var(--nx) 0, transparent 98%, #000) top / 100% 51% no-repeat,
     radial-gradient(circle var(--notch) at var(--nx) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
@@ -151,7 +151,7 @@
 .cxm-ticket-venue { display: grid; justify-items: start; gap: 10px; min-width: 0; }
 
 /* Floor plan: Ground Level drawn small, the rink in the middle, the machine's pin beside it */
-.cxm-map { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: 18px; align-items: center; }
+.cxm-map { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: 20px; align-items: center; }
 .cxm-plan { display: block; width: 136px; height: auto; overflow: visible; }
 .cxm-plan-floor { fill: var(--m-glass); stroke: var(--m-line-2); stroke-width: 1.5; }
 .cxm-plan-walk { fill: none; stroke: var(--m-line-2); stroke-width: 1.5; stroke-dasharray: 3 4; stroke-linecap: round; }
@@ -159,7 +159,7 @@
 .cxm-plan-halo { fill: color-mix(in srgb, var(--m-red) 22%, transparent); transform-box: fill-box; transform-origin: center; }
 .cxm-plan-pin { fill: var(--m-red); stroke: var(--m-on-red); stroke-width: 2; }
 .cxm-map-txt { display: grid; gap: 8px; min-width: 0; }
-.cxm-line { display: flex; align-items: center; gap: 7px; font: var(--m-w-strong) 14px/1.3 var(--m-f-text); color: var(--m-ink); }
+.cxm-line { display: flex; align-items: center; gap: 8px; font: var(--m-w-strong) 14px/1.3 var(--m-f-text); color: var(--m-ink); }
 .cxm-line [data-lucide] { display: inline-grid; font-size: 15px; color: var(--m-red-soft); }
 
 /* Headline: no card, the place set large and two chips under it */
@@ -182,7 +182,7 @@
 
 /* Button: the line, then the one red button, filling */
 .cxn-button { display: grid; gap: var(--m-group-gap); }
-.cxn-say { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; }
+.cxn-say { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: center; }
 .cxn-go { position: relative; isolation: isolate; overflow: hidden; width: 100%; font-weight: var(--m-w-strong); }
 .cxn-go [data-lucide] { display: inline-grid; font-size: 20px; }
 .m-btn-red .cxn-fill { background: rgba(255, 255, 255, .22); }
@@ -192,12 +192,12 @@
 /* Two moves: each move with its icon, then the way on */
 .cxn-steps { display: grid; gap: var(--m-group-gap); }
 .cxn-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--m-item-gap); }
-.cxn-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; }
+.cxn-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: center; }
 
 /* Bar: the words large, a bar that fills, and Go now at its end */
 .cxn-big { font: var(--m-w-title) 28px/1.1 var(--m-f-title); letter-spacing: -.005em; }
 .cxn-big span { display: block; margin-top: var(--m-title-gap); font: var(--m-w-text) 17px/1.35 var(--m-f-text); color: var(--m-ink-2); letter-spacing: 0; }
-.cxn-bar-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center; margin-top: var(--m-group-gap); }
+.cxn-bar-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; margin-top: var(--m-group-gap); }
 .cxn-track { position: relative; isolation: isolate; overflow: hidden; height: 6px; border-radius: 3px; background: var(--m-track); }
 .cxn-track .cxn-fill { background: var(--m-red); border-radius: 3px; }
 .cxn-now {
@@ -229,7 +229,7 @@
 .cxn-card {
   appearance: none; cursor: pointer; font: inherit; color: inherit; text-align: left; width: 100%;
   position: relative; isolation: isolate; overflow: hidden;
-  display: grid; grid-template-columns: 76px minmax(0, 1fr) 24px; gap: 16px; align-items: center; padding: var(--m-pad) var(--m-pad) calc(var(--m-pad) + 3px);
+  display: grid; grid-template-columns: 76px minmax(0, 1fr) 24px; gap: 16px; align-items: center; padding: var(--m-pad) var(--m-pad) calc(var(--m-pad) + 4px);
   border-radius: 22px; background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
   -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
 }
