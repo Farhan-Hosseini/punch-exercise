@@ -160,7 +160,7 @@
 .cs-localnav-links { margin-left: auto; }
 .cs-localnav-links ul { display: flex; gap: 4px; }
 .cs-localnav-links a {
-  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 10px;
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 40px; padding: 0 8px;
   font: 400 13.5px/1 var(--f-doc); letter-spacing: -.005em;
   opacity: .78;
   transition: opacity .2s ease;
@@ -231,38 +231,30 @@
   font: 400 clamp(64px, 11.6vw, 206px)/.86 var(--f-num);
   letter-spacing: -.012em; text-transform: uppercase; color: var(--fg);
 }
-.cs-hero-tag {
-  margin-top: clamp(16px, 1.6vw, 28px); max-width: 24ch;
-  font: 400 clamp(17px, 1.6vw, 30px)/1.34 var(--f-doc); color: var(--muted); letter-spacing: -.014em;
+.cs-hero-t {
+  margin-top: clamp(16px, 1.6vw, 28px); max-width: 20ch;
+  font: 700 clamp(19px, 1.8vw, 34px)/1.22 var(--f-doc); color: var(--fg); letter-spacing: -.024em;
 }
-.cs-hero-tag b { font-weight: 700; color: var(--fg); }
-
-.cs-hero-contents { margin-top: clamp(24px, 3.2vw, 56px); }
-.cs-hero-contents-l {
-  font: 700 clamp(11px, .78vw, 14px)/1 var(--f-doc); letter-spacing: .1em; text-transform: uppercase; color: var(--red);
-}
-.cs-hero-pages {
-  margin-top: 20px; display: grid; grid-template-columns: repeat(3, auto);
-  grid-auto-flow: column; grid-template-rows: repeat(2, auto);
-  column-gap: clamp(24px, 2.6vw, 48px); row-gap: 8px;
-  font: 400 clamp(14px, 1.05vw, 19px)/1.4 var(--f-doc); color: var(--fg);
+.cs-hero-lead {
+  margin-top: clamp(14px, 1.3vw, 22px); max-width: 44ch;
+  font: 400 clamp(15px, 1.15vw, 20px)/1.55 var(--f-doc); color: var(--muted); letter-spacing: -.008em;
 }
 .cs-hero .cs-actions { margin-top: clamp(28px, 3vw, 48px); justify-content: flex-start; }
 
-/* the pair, as the cover shows them: flat screens, layered, no device around either */
+/* the pair, as the cover shows them: flat screens, layered, no device around either. Both stand whole in the frame,
+   sized off its height, so neither is cut by an edge: the panel full height, the phone a little under it. */
 .cs-hero-stage { position: relative; height: min(76vh, 760px); }
 .cs-hero-glass, .cs-hero-phone {
-  position: absolute; overflow: hidden; border-radius: 12px;
-  box-shadow: 0 40px 90px -24px rgba(0, 0, 0, .75), 0 0 0 1px rgba(255, 255, 255, .06);
+  position: absolute; overflow: hidden;
+  box-shadow: 0 40px 90px -24px rgba(0, 0, 0, .75), 0 0 0 1px rgba(255, 255, 255, .08);
 }
-.cs-hero-glass { right: 0; top: -8%; width: 46%; aspect-ratio: 1080 / 3840; background: #0B0B0C; }
-.cs-hero-phone { left: 2%; top: 14%; width: 52%; aspect-ratio: 880 / 1912; }
+.cs-hero-glass { right: 0; top: 0; height: 100%; width: auto; aspect-ratio: 1080 / 3840; border-radius: 8px; background: #0B0B0C; }
+.cs-hero-phone { left: 0; top: 13%; height: 74%; width: auto; aspect-ratio: 880 / 1912; border-radius: 20px; }
 .cs-hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
 @media (max-width: 900px) {
   .cs-hero-grid { grid-template-columns: minmax(0, 1fr); row-gap: clamp(32px, 6vw, 56px); }
   .cs-hero-stage { height: min(56vh, 460px); }
-  .cs-hero-pages { grid-template-columns: repeat(2, auto); grid-template-rows: repeat(3, auto); }
 }
 
 .cs-family { --gh: min(calc(var(--vh) * .78), 820px); margin-top: clamp(64px, 8vw, 112px); display: grid; justify-items: center; gap: 32px; transform-origin: 50% 0; will-change: transform; }
@@ -334,50 +326,26 @@
   font: 700 clamp(40px, 6vw, 88px)/1.03 var(--f-doc); letter-spacing: -.038em;
   max-width: 13ch; text-wrap: balance; color: #FFFFFF;
 }
+.cs-env-copy .cs-env-slogan {
+  margin-top: clamp(28px, 3vw, 48px); max-width: 22ch;
+  font: 700 clamp(22px, 2.4vw, 40px)/1.18 var(--f-doc); color: var(--fg); letter-spacing: -.028em;
+}
+.cs-chapters {
+  margin: clamp(24px, 2.6vw, 40px) 0 0; padding: 0; list-style: none;
+  display: grid; max-width: 34em;
+  border-top: 1px solid rgba(245, 245, 247, .16);
+}
+.cs-chapters li { border-bottom: 1px solid rgba(245, 245, 247, .16); }
+.cs-chapters a {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 20px;
+  padding-block: 12px; color: inherit; text-decoration: none;
+}
+.cs-chapters a:hover .cs-ch-n { color: var(--red); }
+.cs-ch-n { font: 500 clamp(16px, 1.25vw, 20px)/1.35 var(--f-doc); color: var(--fg); letter-spacing: -.014em; transition: color .2s ease; }
+.cs-chapters-all { margin-top: 16px; font: 600 clamp(12px, .9vw, 14px)/1.35 var(--f-cond); letter-spacing: .1em; text-transform: uppercase; color: rgba(245, 245, 247, .56); }
+.cs-ch-t { font: 600 clamp(12px, .9vw, 14px)/1.35 var(--f-cond); letter-spacing: .1em; text-transform: uppercase; color: rgba(245, 245, 247, .56); }
+
 .cs-env-copy p { margin-top: 20px; max-width: 30em; font: 500 clamp(17px, 1.5vw, 21px)/1.5 var(--f-doc); color: rgba(245, 245, 247, .88); }
-
-/* ------------------------------------------------------------ the problem */
-.cs-highlight {
-  margin-top: clamp(96px, 12vw, 192px);
-  font: 700 clamp(34px, 4.9vw, 72px)/1.12 var(--f-doc);
-  letter-spacing: -.034em;
-  max-width: 19ch;
-}
-.cs-highlight span { transition: opacity .6s ease; }
-/* at rest the words dim to half, which still reads at these sizes (3.2:1 at worst) */
-.cs-motion .cs-highlight span:not(.is-lit) { opacity: .5; }
-
-/* ------------------------------------------------------------ the reach: the copy, and the bands of the column beside it,
-   top of the glass first, each height measured from the floor. The rule down the left of the labels is the column itself. */
-.cs-reach {
-  margin-top: clamp(80px, 11vw, 160px);
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  column-gap: clamp(32px, 5vw, 96px); row-gap: clamp(32px, 4vw, 56px);
-  align-items: start;
-}
-.cs-reach-copy p { margin-top: 1em; color: var(--muted); max-width: 34em; font-size: clamp(17px, 1.3vw, 19px); }
-.cs-bands { --band-col: 8.4em; display: grid; }
-.cs-bands li {
-  position: relative;
-  display: grid; grid-template-columns: var(--band-col) minmax(0, 1fr);
-  column-gap: clamp(20px, 2.2vw, 32px);
-  padding-block: clamp(16px, 1.9vw, 24px);
-  border-top: 1px solid color-mix(in srgb, var(--fg) 16%, transparent);
-}
-.cs-bands li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); }
-/* the rule runs the whole height of the list, so the four bands read as one column */
-.cs-bands li::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: var(--band-col); width: 2px;
-  background: color-mix(in srgb, var(--fg) 24%, transparent);
-}
-.cs-band-h {
-  grid-row: span 2;
-  text-align: right; padding-right: clamp(20px, 2.2vw, 32px);
-  font: 600 clamp(15px, 1.2vw, 17px)/1.35 var(--f-cond); letter-spacing: .06em;
-  font-variant-numeric: tabular-nums; color: var(--fg);
-}
-.cs-band-t { font: 600 clamp(18px, 1.5vw, 21px)/1.25 var(--f-doc); letter-spacing: -.018em; }
-.cs-band-d { margin-top: 8px; color: var(--muted); font-size: clamp(16px, 1.25vw, 18px); }
 
 /* ------------------------------------------------------------ diagrams from the Figma file, built by case-diagrams.* */
 .cs-diagram { margin-top: clamp(96px, 12vw, 192px); }
@@ -600,9 +568,6 @@
 [data-parallax] > img { position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; will-change: transform; }
 
 /* ------------------------------------------------------------ notes */
-.cs-decisions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 4vw, 64px); }
-.cs-decision { display: grid; align-content: start; gap: 16px; }
-.cs-decision p { color: var(--muted); }
 .cs-validate { margin-top: clamp(80px, 11vw, 160px); }
 .cs-highlight-q { margin-top: clamp(28px, 3.5vw, 48px); max-width: 22ch; }
 .cs-highlight-q span { display: block; }
@@ -610,6 +575,8 @@
 
 /* ------------------------------------------------------------ where I pushed back: four statements, each under a short strike of red */
 .cs-push { margin-top: clamp(80px, 11vw, 160px); }
+/* the pushback is the chapter now, so it sits under its own heading rather than a chapter of cards */
+.cs-head-solo + .cs-push { margin-top: clamp(32px, 4vw, 64px); }
 .cs-push-list {
   margin-top: clamp(32px, 4vw, 56px);
   columns: 2; column-gap: clamp(40px, 6vw, 96px);
@@ -665,8 +632,6 @@
 /* ------------------------------------------------------------ medium widths */
 @media (max-width: 1100px) {
   .cs-localnav-links a { padding: 0 8px; }
-  .cs-decisions { grid-template-columns: 1fr 1fr; }
-  .cs-reach { grid-template-columns: 1fr; }
   .cs-head { grid-template-columns: 1fr; }
   .cs-head .cs-lead { margin-top: 0; }
 }
@@ -707,7 +672,6 @@
   .cs-glyphs span { width: 30px; height: 30px; }
 
   .cs-bignum { grid-template-columns: 1fr; }
-  .cs-decisions { grid-template-columns: 1fr; }
   .cs-push-list { columns: 1; }
   .cs-bands { --band-col: 7em; }
   .cs-file-list > div { grid-template-columns: 1fr; }
@@ -741,6 +705,8 @@
 
 /* the Figma mark is drawn as filled shapes, unlike the Lucide line family everything else uses */
 .case .cs-btn-figma .cs-ico { fill: currentColor; stroke: none; }
+/* the product's own mark on the call that opens the document */
+.case .cs-btn-mark { width: 22px; height: 22px; flex: none; border-radius: 50%; }
 
 /* ------------------------------------------------------------ the height chart: the two averages that set the bands.
    Population figures are published adult averages for the Emirates; the bands are what they imply, drawn to the same scale. */
@@ -776,3 +742,42 @@
   .cs-heights.is-in .hx-eyeline { stroke-dashoffset: 0; }
 }
 @media (max-width: 720px) { .cs-heights-svg .hx-band-t, .cs-heights-svg .hx-serve-t { font-size: 16px; } }
+
+/* ------------------------------------------------------------ motion: the two clips, each in the shape it was cut for */
+.cs-motion-pair {
+  margin-top: clamp(40px, 5vw, 72px);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px); align-items: start;
+}
+.cs-motion-fig { display: grid; gap: 20px; }
+.cs-motion-tall, .cs-motion-phone {
+  position: relative; overflow: hidden; border-radius: 12px; background: #0B0B0C;
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .06);
+}
+.cs-motion-tall { aspect-ratio: 1080 / 3840; max-height: min(64vh, 620px); margin-inline: auto; width: auto; }
+.cs-motion-phone { aspect-ratio: 928 / 1960; max-height: min(64vh, 620px); margin-inline: auto; width: auto; }
+.cs-motion-tall video, .cs-motion-phone video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cs-motion-fig figcaption { display: grid; gap: 6px; }
+.cs-motion-fig figcaption b { font: 600 clamp(17px, 1.4vw, 21px)/1.2 var(--f-doc); }
+.cs-motion-fig figcaption span { font: 400 clamp(14px, 1.1vw, 16px)/1.5 var(--f-doc); color: var(--muted); }
+.cs-motion .cs-actions { margin-top: clamp(32px, 4vw, 56px); }
+
+/* ------------------------------------------------------------ the system, in three cards */
+.cs-ds-grid {
+  margin-top: clamp(40px, 5vw, 72px);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 32px);
+}
+.cs-ds-card {
+  padding: clamp(24px, 2.4vw, 32px); border-radius: 16px;
+  background: var(--soft); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 8%, transparent);
+  display: grid; gap: 10px; align-content: start;
+}
+.cs-ds-k { font: 700 12px/1 var(--f-doc); letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+.cs-ds-v { font: 600 clamp(18px, 1.5vw, 23px)/1.25 var(--f-doc); letter-spacing: -.018em; }
+.cs-ds-p { font: 400 clamp(14px, 1.05vw, 16px)/1.55 var(--f-doc); color: var(--muted); }
+.cs-ds .cs-actions { margin-top: clamp(32px, 4vw, 56px); }
+
+@media (max-width: 860px) {
+  .cs-motion-pair { grid-template-columns: minmax(0, 1fr); }
+  .cs-ds-grid { grid-template-columns: minmax(0, 1fr); }
+}
