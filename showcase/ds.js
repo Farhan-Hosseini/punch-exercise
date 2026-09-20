@@ -637,8 +637,6 @@
       const h = target.querySelector('.ds-h2')
       if (h) h.focus({ preventScroll: true })
     }))
-    const custom = q('[data-ds-custom]')
-    if (custom) custom.addEventListener('click', () => { const b = document.getElementById('openCustom'); if (b && b.getAttribute('aria-expanded') !== 'true') b.click() })
     // sample tabs and tab bar respond, so the states can be tried
     qa('[data-ds-tabs]').forEach((list) => {
       const tabs = qa('[role="tab"]', list)

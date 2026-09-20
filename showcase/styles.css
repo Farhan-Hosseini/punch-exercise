@@ -622,13 +622,11 @@ input[type="range"]:focus-visible { outline: 2px solid var(--panel-ink); outline
 .ctl-label { font: 700 15px/1.2 "Barlow", sans-serif; }
 .seg-inline { margin: 0; flex: none; min-width: 230px; }
 
-.replay {
   appearance: none; cursor: pointer; width: 100%; min-height: 44px; margin: -4px 0 24px; padding: 12px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center; gap: 8px;
   border: 1px solid var(--panel-line); background: #FFFFFF;
   font: 700 14px/1 "Barlow", sans-serif; color: var(--panel-ink);
 }
-.replay:hover { border-color: color-mix(in oklab, var(--panel-ink) 35%, transparent); }
 .sec-rows + .replay { margin: 10px 0 0; }
 
 /* fine tuning, folded away */

@@ -61,9 +61,6 @@
 
 /* ---------------------------------------------------------------- index */
 .ds-index { position: sticky; top: 120px; align-self: start; padding-top: 48px; display: grid; gap: 28px; }
-.ds-look-k {
-  font: 600 12px/1 var(--ds-f-label); letter-spacing: .16em; text-transform: uppercase; color: var(--ds-mute);
-}
 /* no title over the list: the links are the whole of it, so nothing pulls them up under a heading */
 .ds-index-list { display: grid; gap: 2px; }
 .ds-index-list a {
@@ -78,8 +75,6 @@
 .ds-index-list a:hover { color: var(--ds-ink); }
 .ds-index-list a[aria-current] { color: var(--ds-ink); }
 .ds-index-list a[aria-current]::before { transform: none; }
-.ds-look { display: grid; gap: 8px; padding-top: 20px; border-top: 1px solid var(--ds-line); }
-.ds-look-v { font: 800 22px/1 var(--ds-f-display); letter-spacing: .02em; text-transform: uppercase; }
 .ds-look-btn {
   appearance: none; cursor: pointer; justify-self: start; margin-top: 4px;
   height: 36px; padding: 0 16px; border-radius: 10px;
@@ -474,8 +469,7 @@
 @media (max-width: 1180px) {
   .ds { grid-template-columns: minmax(0, 1fr); }
   .ds-index { position: static; padding-top: 12px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .ds-look { display: none; }
-  .ds-index-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+    .ds-index-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
   .ds-index-list a { padding: 8px 12px; border-radius: 10px; border: 1px solid var(--ds-line); background: var(--ds-panel); font-size: 14px; }
   .ds-index-list a::before { display: none; }
   .ds-index-list a[aria-current] { border-color: var(--ds-line-2); }

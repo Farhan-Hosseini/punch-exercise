@@ -24,16 +24,16 @@
 .m-app .mfn-line { display: flex; align-items: flex-start; gap: 10px; margin-top: 6px; font: var(--m-w-mid) 14.5px/1.4 var(--m-f-text); color: var(--m-ink-2); }
 .mfn-line [data-lucide] { width: 18px; height: 18px; margin-top: 1px; color: var(--m-up); }
 
-/* Cross: the Paid tick's twin, centred on the screen the same way, in the down colour */
+/* Cross: the Paid tick's twin, centred on the screen the same way, in the same red */
 .mfn-cross { justify-items: center; text-align: center; padding: 8px 0 var(--m-sec-gap); }
 .mfn-cross .pay-lead { max-width: 30ch; margin-top: 0; }
 .mfn-disc {
   width: 104px; height: 104px; margin: 0 0 28px; border-radius: 50%; display: grid; place-items: center;
-  color: var(--m-on-red); background: var(--m-down);
+  color: var(--m-on-red); background: var(--m-cta);
   box-shadow:
-    0 0 0 12px color-mix(in srgb, var(--m-down) 13%, transparent),
-    0 0 0 26px color-mix(in srgb, var(--m-down) 6%, transparent),
-    0 24px 60px -12px color-mix(in srgb, var(--m-down) 55%, transparent);
+    0 0 0 12px color-mix(in srgb, var(--m-glow) 13%, transparent),
+    0 0 0 26px color-mix(in srgb, var(--m-glow) 6%, transparent),
+    0 24px 60px -12px color-mix(in srgb, var(--m-glow) 75%, transparent);
 }
 .mfn-disc svg { width: 52px; height: 52px; fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
 .mfn-cross .mfn-facts { justify-content: center; }

@@ -1896,7 +1896,6 @@
   })
   $('phoneFit')?.addEventListener('click', () => { st.fit = true; save(); fit() })
   $('phoneActual')?.addEventListener('click', () => { st.fit = false; save(); fit() })
-  $('replayFlow')?.addEventListener('click', () => { history.length = 0; go('scan'); later(startScan, 700) })
   window.addEventListener('resize', () => requestAnimationFrame(fit))
   window.addEventListener('load', () => requestAnimationFrame(fit))
   if (document.fonts) document.fonts.ready.then(() => requestAnimationFrame(fit))

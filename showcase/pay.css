@@ -129,6 +129,9 @@
 }
 .pay-pack-n b { font: var(--m-w-num-hi) calc(30px * var(--m-num-scale))/.9 var(--m-num); font-variant-numeric: tabular-nums; }
 .pay-pack-n i { font: var(--m-w-label) 11px/1 var(--m-f-label); font-style: normal; letter-spacing: calc(var(--m-track-label) * .6); text-transform: uppercase; color: var(--m-ink-2); }
+/* Orbitron runs wide: the count a size down and the word untracked, so neither touches the tile's corner */
+:root[data-typeface="orbitron"] .pay-pack-n b { font-size: calc(24px * var(--m-num-scale)); }
+:root[data-typeface="orbitron"] .pay-pack-n i { font-size: 9px; letter-spacing: 0; }
 .pay-pack[aria-checked="true"] .pay-pack-n,
 .pys-card .pay-pack-n {
   background: var(--m-cta); border-color: transparent; color: var(--m-on-red);

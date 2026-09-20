@@ -24,6 +24,11 @@
 :root[data-typeface="orbitron"] .mscreen-default { --mdf-k: .56; }
 /* the section heading's meta label, "Resets at midnight", sits beside the title in one row: a size down in Orbitron */
 :root[data-typeface="orbitron"] .mscreen-default .mdf-h-meta { font-size: 24px; letter-spacing: 0; }
+/* the How it works cards: Orbitron wraps their line to three or four rows and the cards grew past their room into
+   the sponsor strip, so the line goes a size down and untracked and the card keeps to its room */
+:root[data-typeface="orbitron"] .mscreen-default .mdf-hw-cards li > span:last-child { font-size: 28px; letter-spacing: 0; line-height: 1.15; }
+:root[data-typeface="orbitron"] .mscreen-default .mdf-hw-cards li { padding: 28px 24px 24px; }
+.mscreen-default .mdf-hw-cards li { max-height: 100%; }
 :root[data-appearance="light"] .mscreen-default { --mdf-soft: color-mix(in oklab, var(--strike) 11%, transparent); }
 
 .mscreen-default [data-sv][hidden] { display: none !important; }
