@@ -6,9 +6,10 @@
    and steps it frame by frame, so every frame is the instant it claims to be however long the capture takes. The phone
    is captured at its own size, two device pixels to one CSS pixel.
 
-   Most of the run is the app's own: the scan finds the machine, the link holds a credit, Connected sends the player to
-   the pad, the strike lands, the glass reads it and Your hit opens by itself. The recorder only starts the scan, taps
-   the link, and brings the strike forward, because a real turn waits five to twelve seconds for it.
+   Most of the run is the app's own: the scan finds the machine, the link finds an empty wallet and opens the shop,
+   Paid sends the player back to the link, Connected sends them to the pad, the strike lands, the glass reads it and
+   Your hit opens by itself. The recorder starts the scan, taps the link, picks a pack and pays with the phone's own
+   wallet, taps Punch now, and brings the strike forward, because a real turn waits five to twelve seconds for it.
 
      node tools/record-run.mjs --stills 0,2,5,9,13,16 --dir C:/gtmp/punch/run     PNG stills at clip times
      node tools/record-run.mjs --lossless C:/gtmp/punch/run/phone.mkv              every frame, lossless
@@ -36,17 +37,25 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 /* ------------------------------------------------------------ the beats, in clip seconds */
 const STRIKE_IN = 1.8       // how long the countdown runs before the strike is brought forward
+const PUNCH = 20.50         // the pad, once the credit is bought and the link taken up again
 export const BEATS = {
   home: 0,
   scan: 1.00,               // the scan page opens; the code is read 0.7 s later
   read: 1.70,
   link: 3.40,               // the machine is found and the phone links to it
-  tap: 4.30,                // the link finishes and a credit is held; Connected follows 0.8 s later
-  punch: 6.60,              // the pad: the phone says what to do while the glass keeps the count
-  strike: 6.60 + STRIKE_IN,
-  hit: 6.60 + STRIKE_IN + 1.2 + 2.56,   // landed (1.2 s), then the glass reads it (2.56 s), then Your hit counts up
-  reel: 15.40,              // the replay, the score burnt in, ready to share; it plays through to its end
-  end: 22.40,
+  tap: 4.30,                // the link finishes; the wallet is empty, so the shop opens 2.2 s later
+  topup: 6.50,              // Buy credits: the packs, one picked 1.1 s later
+  pick: 7.60,
+  checkout: 8.60,           // Continue: Pay with, the phone's own wallet chosen, then Pay
+  method: 9.40,
+  pay: 10.20,               // the wallet sheet: side button, Face ID, processing, done, 5.6 s in all
+  paid: 15.80,              // Paid: the receipt, and Punch now takes the link up again
+  again: 18.20,
+  punch: PUNCH,             // the pad: the phone says what to do while the glass keeps the count
+  strike: PUNCH + STRIKE_IN,
+  hit: PUNCH + STRIKE_IN + 1.2 + 2.56,   // landed (1.2 s), then the glass reads it (2.56 s), then Your hit counts up
+  reel: PUNCH + 8.80,       // the replay, the score burnt in, ready to share; it plays through to its end
+  end: PUNCH + 15.80,
 }
 if (flag('beats')) { console.log(JSON.stringify(BEATS)); process.exit(0) }
 const FROM = Number(opt('from', 0)), TO = Number(opt('to', BEATS.end))
@@ -66,6 +75,12 @@ const CUES = [
   { at: BEATS.read, label: 'read the code', js: `document.querySelector('.m-scan [data-scan-go]').click()` },
   { at: BEATS.link, label: 'link', js: `window.punchApp.go('connect', { flow: true })` },
   { at: BEATS.tap, label: 'linked', js: `document.getElementById('mConnect').click()` },
+  { at: BEATS.pick, label: 'pick a pack', js: `(() => { const b = document.querySelector('#payPacks [role="radio"][data-pack="1"]'); b.click(); return document.getElementById('mApp').dataset.page })()` },
+  { at: BEATS.checkout, label: 'continue', js: `document.getElementById('payContinue').click(); document.getElementById('mApp').dataset.page` },
+  { at: BEATS.method, label: 'wallet', js: `(() => { const b = document.querySelector('#payMethods [data-method="wallet"]'); if (b) b.click(); return document.getElementById('mApp').dataset.page })()` },
+  { at: BEATS.pay, label: 'pay', js: `(() => { const b = document.getElementById('payNow'); b.click(); return b.disabled + ' ' + document.getElementById('mApp').dataset.page })()` },
+  { at: BEATS.again, label: 'punch now', js: `document.getElementById('payPunchNow').click(); document.getElementById('mApp').dataset.page` },
+  { at: BEATS.again + 1.0, label: 'link again', js: `(() => { const c = document.getElementById('mConnect'); const was = c.dataset.state; c.click(); return was + ' -> ' + c.dataset.state + ' credits ' + document.getElementById('mApp').dataset.credits })()` },
   { at: BEATS.punch, label: 'punch', js: `window.punchApp.go('punch', { flow: true })` },
   { at: BEATS.punch + 0.05, label: 'strike soon', js: SOON },
   { at: BEATS.reel, label: 'reel', js: `window.punchApp.go('reel', { player: 'me', index: 0 })` },
@@ -122,8 +137,8 @@ try {
     localStorage.clear()
     document.getElementById('loader')?.classList.add('is-done')
     window.showcase.mode('mobile')
-    // the clip is one turn, not the shop: the player already holds credits, as a second visit does
-    window.punchApp.credits = 2
+    // a first visit: the wallet is empty, so the link opens the shop and the turn buys its credit on camera
+    window.punchApp.credits = 0
     return 1
   })()`)
   await sleep(1600)
@@ -137,7 +152,7 @@ try {
   })()`)
   console.log('phone', JSON.stringify(box))
   if (!box.shim) throw new Error('the virtual clock did not load')
-  if (!Number(box.credits)) throw new Error('the wallet is empty: the run would go to Buy credit instead of the pad')
+  if (Number(box.credits)) throw new Error('the wallet is not empty: the run would skip the shop')
   // the handset moves during the run (the page bar above it changes height with the page), so the box is measured
   // again before every frame rather than once, in viewport coordinates and without captureBeyondViewport: that mode
   // resizes the view to the document for the shot and moved the phone under a box measured before the resize

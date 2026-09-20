@@ -25,18 +25,21 @@ const OUT = resolve(ROOT, opt('out', 'showcase/assets/motion'))
 const WORK = opt('work', 'C:/gtmp/punch/run/cut')
 const ONLY = opt('only', '')
 const FPS = 60
-const POSTER_T = Number(opt('poster', 14.05))  // Your hit once the number has finished counting, just before the reel
+const POSTER_AT = opt('poster')  // Your hit once the number has finished counting (B.hit + 1.9 unless given)
 const CHROME = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const does = (k) => !ONLY || ONLY.split(',').includes(k)
 
 const B = JSON.parse(execFileSync('node', [join(ROOT, 'tools/record-run.mjs'), '--beats'], { encoding: 'utf8' }))
 const DUR = (Math.round(B.end * FPS) + 1) / FPS
+const POSTER_T = Number(POSTER_AT ?? (B.hit + 1.9))
 
 const BEATS = [
   { at: 0, name: 'Home', line: 'The app opens on the machine in front of you, the credits in your wallet and the last hit you landed.' },
   { at: B.scan, name: 'Scan the code', line: 'One code on the cabinet. The phone reads it and names the machine, so nothing has to be typed.' },
-  { at: B.link, name: 'Linked', line: 'The link holds one credit for this turn. Walk away before the strike and it goes back to the wallet.' },
+  { at: B.link, name: 'Linked', line: 'The machine is linked and holds the turn. The wallet is empty, so the app opens the shop before the pad.' },
+  { at: B.topup, name: 'Buy a credit', line: 'One credit is one punch. Pick a pack, and pay with what the phone already holds: no card to type.' },
+  { at: B.paid, name: 'Paid', line: 'The receipt, and the machine still waiting. Punch now takes the link up again and spends the credit.' },
   { at: B.punch, name: 'Punch now', line: 'The phone hands the moment over: look up. The count belongs to the glass, so nobody punches at a small screen.' },
   { at: B.strike, name: 'The strike', line: 'The pad moves. The phone says the glass is reading it and waits with you, with nothing to tap.' },
   { at: B.hit, name: 'Your hit', line: 'The number lands in your hand, counts up to itself, and says where it stands at this machine.' },
@@ -83,7 +86,7 @@ li.on::before { content: ""; position: absolute; left: -28px; top: 50%; width: 1
 <div class="lead">
   <p class="k">The motion deliverable</p>
   <h1>The run</h1>
-  <p class="sub">One turn on the phone, recorded frame by frame from the showcase with the designs chosen by default. The app plays it: the recorder only starts the scan, taps the link and brings the strike forward.</p>
+  <p class="sub">One turn on the phone, recorded frame by frame from the showcase with the designs chosen by default. The app plays it: the recorder starts the scan, taps the link, picks the pack, pays and brings the strike forward.</p>
 </div>
 <div class="now">
   <p class="now-k">${quiet ? '&nbsp;' : secs(BEATS[k].at)}</p>
