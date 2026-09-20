@@ -376,8 +376,8 @@
         <div class="cus-sub" data-when="machine">
           <span class="acc-sub" id="g-size-glass">Size on screen</span>
           <div class="seg" role="group" aria-labelledby="g-size-glass">
-            <button type="button" id="actualMachine" aria-pressed="true">Actual size</button>
-            <button type="button" id="readSize" aria-pressed="false">Reading size</button>
+            <button type="button" id="actualMachine" aria-pressed="false">Actual size</button>
+            <button type="button" id="readSize" aria-pressed="true">Reading size</button>
           </div>
         </div>
         <div class="cus-sub">
@@ -419,13 +419,13 @@
           <span class="acc-sub" id="g-logo">Logo</span>
 
         <div class="logos" role="radiogroup" aria-labelledby="g-logo">
-          <button class="logo-tile" type="button" role="radio" data-logo="punchapp" aria-checked="false"><span class="logo-prev"><img src="assets/logos/punchapp-mark.svg" alt=""></span><span>PunchApp</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="fist" aria-checked="true"><span class="logo-prev"><img src="assets/logos/fist-circle.svg" alt=""></span><span>Fist</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="boxer" aria-checked="false"><span class="logo-prev"><img src="assets/logos/boxer-circle.svg" alt=""></span><span>Boxer</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="glove" aria-checked="false"><span class="logo-prev"><img src="assets/logos/glove-tilt.svg" alt=""></span><span>Glove</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="upright" aria-checked="false"><span class="logo-prev"><img src="assets/logos/glove-upright.svg" alt=""></span><span>Guard</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="pair" aria-checked="false"><span class="logo-prev"><img src="assets/logos/gloves-pair.svg" alt=""></span><span>Pair</span></button>
           <button class="logo-tile" type="button" role="radio" data-logo="bag" aria-checked="false"><span class="logo-prev"><img src="assets/logos/speedbag.svg" alt=""></span><span>Speed bag</span></button>
+          <button class="logo-tile" type="button" role="radio" data-logo="punchapp" aria-checked="false"><span class="logo-prev"><img src="assets/logos/punchapp-mark.svg" alt=""></span><span>PunchApp</span></button>
         </div>        </div>
         <div class="cus-sub" data-when="mobile animation">
           <span class="acc-sub" id="g-device">The phone</span>
@@ -453,37 +453,7 @@
           <svg class="ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false" fill="currentColor" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
           Play the flow from the scan
         </button>        </div>
-        <div class="cus-sub" data-when="machine">
-          <span class="acc-sub" id="g-display">The glass</span>
-
-        <button class="replay" id="replayReveal" type="button" data-when="machine">
-          <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/> <path d="M3 3v5h5"/></svg>
-          Replay the reveal
-        </button>
-        <div class="ctl" data-when="machine">
-          <label for="c-space">Breathing room</label><output id="o-space" for="c-space"></output>
-          <input type="range" id="c-space" min="70" max="125" step="1">
         </div>
-        <div class="ctl" data-when="machine">
-          <label for="c-accent">Red accent</label><output id="o-accent" for="c-accent"></output>
-          <input type="range" id="c-accent" min="0" max="100" step="1">
-        </div>
-        <div class="ctl">
-          <label for="c-zoom">Size on screen</label><output id="o-zoom" for="c-zoom"></output>
-          <input type="range" id="c-zoom" min="12" max="80" step="1">
-        </div>
-        <div class="ctl">
-          <label for="c-glow">Light glow</label><output id="o-glow" for="c-glow"></output>
-          <input type="range" id="c-glow" min="0" max="100" step="1">
-        </div>
-        <div class="ctl">
-          <label for="c-photo">Photo colour</label><output id="o-photo" for="c-photo"></output>
-          <input type="range" id="c-photo" min="0" max="100" step="1">
-        </div>
-        <div class="ctl">
-          <label for="c-radius">Corner radius</label><output id="o-radius" for="c-radius"></output>
-          <input type="range" id="c-radius" min="0" max="48" step="1">
-        </div>        </div>
       </div>
     </details>
 
