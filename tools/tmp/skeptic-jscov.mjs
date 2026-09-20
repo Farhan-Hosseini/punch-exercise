@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const KEYARG = process.argv[2] || 'ds'
@@ -27,4 +28,4 @@ let uncalled = 0, called = 0, names = []
 for (const s of ds) for (const f of s.functions) { const hit = f.ranges.some(g => g.count > 0); if (hit) called++; else { uncalled++; if (f.functionName) names.push(f.functionName) } }
 console.log(`key='${KEYARG}' body.dataset.mode='${await js('document.body.dataset.mode')}' ds.js functions: called=${called} uncalled=${uncalled}`)
 console.log('  uncalled sample:', names.slice(0, 14).join(', '))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'jc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,5 +1,6 @@
 // Skeptic check: does the runtime depend on the on-disk showcase/*.css concat copies at all?
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -30,4 +31,4 @@ for (const mode of ['mobile', 'machine', 'animation', 'ds']) {
   modes[mode] = JSON.parse(await js(`JSON.stringify((()=>{const de=document.documentElement; return { overflow: Math.max(0, de.scrollWidth-de.clientWidth), visible: document.querySelectorAll('[data-mode] , .mode-pane').length } })())`))
 }
 console.log(JSON.stringify({ sheets, modes, cssResponses: net, errors: errs.slice(0, 10) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

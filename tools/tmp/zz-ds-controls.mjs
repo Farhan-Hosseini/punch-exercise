@@ -1,5 +1,6 @@
 // Click every control in the design-system tab, one at a time, and record which one produced an error.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -80,4 +81,4 @@ const text = JSON.stringify(report, null, 1)
 if (OUT) { try { writeFileSync(OUT, text) } catch (e) { log('write ' + e.message) } }
 process.stdout.write(text.slice(0, 120000) + '\n')
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

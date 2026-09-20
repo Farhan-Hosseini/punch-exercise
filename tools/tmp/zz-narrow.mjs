@@ -1,5 +1,6 @@
 // What does the page actually look like at narrow widths? Geometry + a screenshot per width.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync, mkdirSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -55,4 +56,4 @@ for (const [W, H] of [[390, 844], [600, 900], [768, 1024], [900, 900], [1024, 76
   console.log(JSON.stringify(rows, null, 1))
 }
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzn' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

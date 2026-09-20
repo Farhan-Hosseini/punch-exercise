@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -59,4 +60,4 @@ const inner = await js(`(() => {
 // how long the embedded document's scripts block the main thread, measured inside the frame
 const heap = await js(`(async () => { const m = await (performance.measureUserAgentSpecificMemory ? performance.measureUserAgentSpecificMemory() : Promise.resolve(null)); return m ? Math.round(m.bytes/1048576) : (performance.memory ? Math.round(performance.memory.usedJSHeapSize/1048576) : null) })()`)
 console.log(JSON.stringify({ timing, inner, heapMB: heap, errors: errs.slice(0, 8) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,6 +1,7 @@
 // one-off: on the machine screen, which Customise groups are actually visible, and how does the Reset button
 // sit against the panel's rounded bottom?
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -50,4 +51,4 @@ console.log(await js(`JSON.stringify((() => {
     insetLeft: Math.round(rr.left - pr.left), insetRight: Math.round(pr.right - rr.right)
   }
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'pp' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

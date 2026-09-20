@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = 1440, H = 1000
@@ -47,4 +48,4 @@ await sleep(10000)
 out.push(await sample('after closeCase +13s'))
 console.log(JSON.stringify(out, null, 1))
 console.log('ERRORS', JSON.stringify(errs.slice(0,6)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

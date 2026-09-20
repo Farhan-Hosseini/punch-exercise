@@ -190,8 +190,9 @@
 .mp-hrow-go { display: inline-flex; align-items: center; gap: 8px; color: var(--m-red-soft); }
 .mp-hrow-go [data-lucide] { font-size: 24px; }
 
-/* Carousel */
-.mp-carousel { gap: var(--m-item-gap); }
+/* Carousel: the rail is a slider track (default.js, [data-sl-track] in default.css): it bleeds to the screen edge and
+   snaps a card to the gutter the way Machines near you does, with the same air above and below for the lift */
+.mp-carousel { gap: var(--m-item-gap); margin: -6px calc(var(--m-gut) * -1) -4px; padding: 6px var(--m-gut) 8px; scroll-snap-type: x mandatory; scroll-padding: 0 var(--m-gut); }
 .mp-cc { position: relative; width: 236px; aspect-ratio: 3 / 4; padding: 0; border: 0; border-radius: 22px; overflow: hidden; background: var(--m-well); box-shadow: var(--m-lift); }
 .mp-cc-t { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 16px; display: grid; justify-items: start; gap: 6px; }
 .mp-cc-pts { font-size: calc(38px * var(--m-num-scale)); line-height: .9; margin-top: 2px; }

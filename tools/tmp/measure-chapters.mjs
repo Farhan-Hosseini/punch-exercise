@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9100 + Math.floor(Math.random() * 90)
@@ -30,4 +31,4 @@ console.log(await js(`JSON.stringify((() => {
   out._total = { h: sc.scrollHeight, vh: +(sc.scrollHeight / innerHeight).toFixed(1) }
   return out
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'mc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

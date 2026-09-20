@@ -1,6 +1,7 @@
 // SKEPTIC probe 3: prove the checkVisibility hook actually installs (negative control),
 // then read the exact guard chain of drive() on each screen, and collect page exceptions.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9700 + Math.floor(Math.random() * 90)
@@ -73,4 +74,4 @@ await js(`window.showcase.mscreen('result'); 1`); await sleep(3000)
 await guard('B_onResult')
 out.errors = errs.slice(0, 8)
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'skg' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

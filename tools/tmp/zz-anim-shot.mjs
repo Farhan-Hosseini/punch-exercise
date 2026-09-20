@@ -1,5 +1,6 @@
 // Screenshot the overflowing part of the Animation tab at 768, and list the spill precisely.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync, mkdirSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -44,4 +45,4 @@ console.log('spill:', JSON.stringify(await jj(`
     if (b.width > 0 && b.right > vw + 1) bad.push([(el.id?'#'+el.id:el.tagName.toLowerCase()+'.'+String(el.className||'').split(' ').filter(Boolean).slice(0,2).join('.')), Math.round(b.left), Math.round(b.right)]) }
   return { vw, n: bad.length, first: bad.slice(0,10) }`), null, 1))
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzsh' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

@@ -2,6 +2,7 @@
    manifest-fed attributes actually contain. Also try the only visitor-typed input that
    reaches the reel (the comment box) with an attribute-breakout payload. */
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9700 + Math.floor(Math.random() * 90)
@@ -53,4 +54,4 @@ out.pwnAfterComment = await js('JSON.stringify(window.__pwn)')
 out.commentImgTags = await js(`document.querySelectorAll('#mReelComList img[src="q"]').length`)
 out.errors = errs.slice(0, 8)
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill(); process.exit(0)
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

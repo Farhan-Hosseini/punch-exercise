@@ -2,6 +2,7 @@
 // contact sheet of the number-heavy screens so the shapes can be judged by eye.
 // node tools/tmp/typeface-sweep.mjs
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile, mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -83,4 +84,4 @@ for (const face of FACES) {
   const p = Object.entries(results[face].phone).map(([k, v]) => `${k}:${v.count || 0}${v.spill ? '/s' + v.spill : ''}`).join(' ')
   console.log(`${face}\n  machine ${m}\n  phone   ${p}`)
 }
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'tf' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

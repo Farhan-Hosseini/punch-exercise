@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -28,4 +29,4 @@ const srcHits = urls.filter((u) => u.includes('/assets/howto/src/'))
 const figHits = urls.filter((u) => u.includes('/assets/figma/'))
 const howto = urls.filter((u) => u.includes('/assets/howto/'))
 console.log(JSON.stringify({ totalRequests: urls.length, srcHits, figHits, howtoRequested: [...new Set(howto.map(u => u.split('/').pop()))], glyphsPresent: await js('typeof window.GLYPHS === "object" && Object.keys(window.GLYPHS||{}).length'), errors: errs.slice(0, 5) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

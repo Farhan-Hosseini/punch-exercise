@@ -88,22 +88,27 @@
 
 /* ---------------------------------------------------------------- Code: On the machine */
 .psc-machine { display: grid; grid-template-columns: 172px 1fr; gap: 24px; align-items: center; }
+/* the glass is a fragment of the machine's screen: the same air above the mark as under the wait line, one step from the
+   label to the heading, a larger one from the heading to the code, and only the bottom air dissolves, so nothing on it
+   is ever caught in the fade (round ten: "make spacing better") */
 .psc-glass {
   container-type: inline-size;
-  position: relative; overflow: hidden; height: 318px; padding: 16px 16px 0; border-radius: 22px 22px 0 0;
+  position: relative; overflow: hidden; padding: 24px 16px; border-radius: 22px 22px 0 0;
   display: flex; flex-direction: column; align-items: center; text-align: center;
   background:
     radial-gradient(120% 60% at 50% 105%, color-mix(in srgb, var(--m-glow) 26%, transparent), transparent 70%),
     linear-gradient(180deg, color-mix(in srgb, var(--m-ground) 90%, var(--m-ink) 10%), var(--m-ground));
   border: 1px solid var(--m-line-2); border-bottom: 0;
   box-shadow: var(--m-lift);
-  -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent);
+  -webkit-mask-image: linear-gradient(#000 calc(100% - 24px), transparent); mask-image: linear-gradient(#000 calc(100% - 24px), transparent);
 }
 .psc-glass-logo { width: 30px; height: 30px; object-fit: contain; }
-.psc-glass-kick { margin-top: 12px; font: var(--m-w-label) 10px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-red-soft); }
-.psc-glass-title { margin: 4px 0 16px; font: var(--m-w-num-hi) min(30px, 16cqi)/.92 var(--m-num); white-space: nowrap; text-transform: uppercase; letter-spacing: .01em; }
-.psc-glass-wait { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font: var(--m-w-mid) 11px/1.2 var(--m-f-text); color: var(--m-ink-2); }
-.psc-glass-wait i { width: 6px; height: 6px; border-radius: 50%; background: var(--m-red); animation: psc-breathe 1.6s ease-in-out infinite; }
+/* the steps are set from the glass: .m-app p (mobile.css) zeroes a paragraph's margin and outweighs a class alone */
+.psc-glass .psc-glass-kick { margin-top: 14px; font: var(--m-w-label) 10px/1 var(--m-f-label); letter-spacing: var(--m-track-label); text-transform: uppercase; color: var(--m-red-soft); }
+.psc-glass .psc-glass-title { margin: 10px 0 20px; font: var(--m-w-num-hi) min(30px, 16cqi)/.92 var(--m-num); white-space: nowrap; text-transform: uppercase; letter-spacing: .01em; }
+/* the wait line is always two lines, "Waiting for your" over "phone" (the markup carries the break); the dot sits on the first */
+.psc-glass .psc-glass-wait { display: inline-flex; align-items: flex-start; gap: 6px; margin-top: 16px; font: var(--m-w-mid) 11px/1.2 var(--m-f-text); color: var(--m-ink-2); text-align: left; }
+.psc-glass-wait i { flex: none; width: 6px; height: 6px; margin-top: 4px; border-radius: 50%; background: var(--m-red); animation: psc-breathe 1.6s ease-in-out infinite; }
 .psc-note { display: grid; gap: 6px; align-content: center; }
 .psc-note-title { font: var(--m-w-title) 22px/1.15 var(--m-f-title); }
 .psc-note-text { font: var(--m-w-text) 15px/1.45 var(--m-f-text); color: var(--m-ink-2); text-wrap: pretty; }

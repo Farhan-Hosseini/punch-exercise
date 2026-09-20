@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = 1440
@@ -45,4 +46,4 @@ console.log([...u].filter(x => /^\/(sections|mscreens|mpages)\.css/.test(x)).joi
 console.log('--- per-design JS requested (count) ---')
 console.log([...u].filter(x => /^\/(mpages|mscreens)\/.*\.js/.test(x)).length)
 console.log('--- errors ---'); console.log(errs.slice(0,5).join('\n') || '(none)')
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'nd' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

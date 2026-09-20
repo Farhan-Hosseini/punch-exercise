@@ -79,13 +79,16 @@
   font: var(--w-label) 36px/1 var(--f-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--ink-2);
 }
 .mscreen-scan .sst-kick [data-lucide], .mscreen-scan .sho-kick [data-lucide] { font-size: 40px; color: var(--scn-red); }
+/* the marker sits on the first line: the waiting line is two ("Waiting for your", then "phone") */
 .mscreen-scan .sst-line {
-  display: flex; align-items: center; gap: 20px; min-width: 0; white-space: nowrap;
+  display: flex; align-items: flex-start; gap: 20px; min-width: 0; white-space: nowrap;
   font: var(--w-strong) 40px/1.25 var(--f-text); color: var(--ink-2);
 }
 .mscreen-scan .scn:not([data-state="wait"]) .sst-line { color: var(--ink-1); }
 .mscreen-scan .sst-line .scn-ics { font-size: 52px; color: var(--scn-red); }
-.mscreen-scan .sst-dot { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--scn-red); box-shadow: 0 0 0 8px var(--scn-soft); }
+/* the status line is written with textContent, so the waiting line's break travels in the string (scan.js) */
+.mscreen-scan [data-scn="line"] { white-space: pre-line; }
+.mscreen-scan .sst-dot { flex: none; width: 22px; height: 22px; margin-top: calc(.625em - 11px); border-radius: 50%; background: var(--scn-red); box-shadow: 0 0 0 8px var(--scn-soft); }
 .mscreen-scan .scn[data-state="linked"] .sst-dot { background: #2BC46B; box-shadow: 0 0 0 8px rgba(43, 196, 107, .2); }
 .mscreen-scan .display {
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
@@ -93,20 +96,21 @@
 
 /* ================================================================ Status: where the player is */
 
-/* Headline: the call, left on the gutter, as big as the glass allows */
-.mscreen-scan .sst-headline { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); }
+/* Headline: the call, left on the gutter, as big as the glass allows (the gaps give the two-line waiting line its room) */
+.mscreen-scan .sst-headline { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--ms-group-gap) - 16px); }
 .mscreen-scan .sst-live { position: relative; width: 22px; height: 22px; border-radius: 50%; background: var(--scn-red); }
 .mscreen-scan .sst-live::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; border: 4px solid var(--scn-red); opacity: 0; }
 .mscreen-scan .sst-title {
   margin: 0; display: grid;
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
-  font-size: min(calc(150px / var(--cap)), 26cqi); line-height: .9; white-space: nowrap;
+  font-size: min(calc(150px / var(--cap)), 21cqi); line-height: .9; white-space: nowrap;
 }
 .mscreen-scan .sst-title > [data-scn="t2"] { color: var(--scn-red); }
 
-/* Player card: who is up, their photo once the phone has linked */
-.mscreen-scan .sst-card {
-  display: flex; align-items: center; gap: var(--ms-group-gap); height: auto; margin-top: 64px;
+/* Player card: who is up, their photo once the phone has linked; it steps down 64 px from the header and fills the rest
+   of the room (the section's own height rule is beaten by the child combinator) */
+.mscreen-scan .scn-sec > .sst-card {
+  display: flex; align-items: center; gap: var(--ms-group-gap); height: calc(100% - 64px); margin-top: 64px;
   padding: var(--ms-pad); border-radius: 56px;
   background: var(--scn-card); border: var(--scn-card-line); box-shadow: var(--scn-card-shadow);
 }
@@ -125,10 +129,11 @@
 .mscreen-scan .sst-who { display: grid; gap: var(--ms-item-gap); min-width: 0; }
 .mscreen-scan .sst-name {
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
-  font-size: min(calc(92px / var(--cap)), 12cqi); line-height: .95; overflow-wrap: anywhere;
+  font-size: calc(min(calc(92px / var(--cap)), 12cqi) * var(--ssn-k, 1)); line-height: .95; overflow-wrap: anywhere;
 }
-.mscreen-scan .sst-card .sst-line { font-size: 42px; align-items: flex-start; }
-.mscreen-scan .sst-card .sst-dot { margin-top: 16px; }
+/* the wide face wrapped Scan to play to three lines and pushed the card past its room */
+:root[data-typeface="orbitron"] .mscreen-scan { --ssn-k: .8; }
+.mscreen-scan .sst-card .sst-line { font-size: 42px; }
 
 /* Beacon: a pulse ringing out from the state's icon, the phrase under it */
 .mscreen-scan .sst-beacon { display: flex; align-items: center; gap: var(--ms-group-gap); }
@@ -179,8 +184,9 @@
 .mscreen-scan .scn-step.is-done :is(.sst-mark, .sho-mark) .ic { opacity: 0; }
 .mscreen-scan .scn-step.is-done :is(.sst-mark, .sho-mark) .tick { opacity: 1; }
 
-/* Crowd: the faces who played here tonight, the next one's place kept open at the front */
-.mscreen-scan .sst-crowd { display: flex; flex-direction: column; justify-content: center; gap: var(--ms-group-gap); }
+/* Crowd: the faces who played here tonight, the next one's place kept open at the front. Four groups and the two-line
+   waiting line share the room, so the gaps are tighter and the phrase is sized to one line (1119 px at the old size) */
+.mscreen-scan .sst-crowd { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--ms-group-gap) - 16px); }
 .mscreen-scan .sst-faces { display: flex; align-items: center; }
 .mscreen-scan .sst-face {
   position: relative; flex: none; width: 164px; height: 164px; border-radius: 50%; margin-left: -36px;
@@ -195,7 +201,7 @@
 .mscreen-scan .scn[data-state="wait"] .sst-you img, .mscreen-scan .scn:not([data-state="wait"]) .sst-you .sst-ava-empty { display: none; }
 .mscreen-scan .sst-crowd-t {
   font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track);
-  font-size: min(calc(76px / var(--cap)), 10.4cqi); line-height: .98; text-wrap: balance;
+  font-size: min(calc(58px / var(--cap)), 8cqi); line-height: .98; text-wrap: balance;
 }
 
 /* ================================================================ Code: the machine's code, in the phone's style */
@@ -217,66 +223,6 @@
 .mscreen-scan .scd-c-br { right: 0; bottom: 0; transform: rotate(180deg); }
 .mscreen-scan .scd-c-bl { left: 0; bottom: 0; transform: rotate(270deg); }
 .mscreen-scan .scn:not([data-state="wait"]) .scd-corner { stroke: var(--ink-1); }
-
-/* Stage: the code on a lit stage under a spotlight; it turns round to greet the player once their phone has linked */
-.mscreen-scan .scd-stage { overflow: hidden; border-radius: 64px; isolation: isolate; }
-.mscreen-scan .scd-stage-bg { position: absolute; inset: 0; margin: 0; z-index: -2; overflow: hidden; }
-.mscreen-scan .scd-stage-bg img {
-  position: absolute; left: -233px; top: -393px; display: block; width: 1266px; height: 1899px; max-width: none; object-fit: cover; transform-origin: 80% 27%;
-}
-.mscreen-scan .scd-stage-bg {
-  -webkit-mask-image: radial-gradient(118% 88% at 50% 40%, #000 42%, transparent 96%);
-  mask-image: radial-gradient(118% 88% at 50% 40%, #000 42%, transparent 96%);
-}
-:root[data-appearance="light"] .mscreen-scan .scd-stage { background: #0E0D0D; box-shadow: 0 40px 80px -40px rgba(70, 45, 30, .45); }
-:root[data-appearance="light"] .mscreen-scan .scd-stage-bg { -webkit-mask-image: none; mask-image: none; }
-/* the stage is always dark, so the tile keeps the dark look's tokens in every look */
-.mscreen-scan .scd-stage .pqr {
-  --pqr-ink: #FAF9F9; --pqr-bg: rgba(38, 38, 38, .35); --pqr-rim: rgba(255, 255, 255, .9); --pqr-red: #FA5453; --pqr-veil: rgba(11, 11, 12, .78);
-  --pqr-ly: 0; --pqr-lb: 0; --pqr-ls: 0;
-}
-.mscreen-scan .scd-flip { position: relative; width: 660px; height: 648px; margin-top: -40px; perspective: 3000px; }
-.mscreen-scan .scd-flip > * { position: absolute; inset: 0; display: grid; place-items: center; -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: transform .9s cubic-bezier(.3, .9, .25, 1.05); }
-.mscreen-scan .scd-back {
-  align-content: center; gap: 28px; border-radius: 48px; transform: rotateY(-180deg);
-  background: rgba(20, 18, 18, .82); border: 3px solid var(--scn-red); color: #F5F3EF;
-  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
-}
-.mscreen-scan .scd-back-ava { width: 280px; height: 280px; border-radius: 50%; box-shadow: 0 0 0 10px var(--scn-red), 0 0 70px color-mix(in oklab, var(--strike) 55%, transparent); overflow: hidden; }
-.mscreen-scan .scd-back-ava img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.mscreen-scan .scd-back-name { font-family: var(--f-display); font-weight: var(--w-display); text-transform: var(--display-case); letter-spacing: var(--display-track); font-size: calc(96px / var(--cap)); line-height: .95; }
-.mscreen-scan .scd-back-line { display: flex; align-items: center; gap: 16px; font: var(--w-strong) 44px/1.2 var(--f-text); }
-.mscreen-scan .scd-back-line .scn-ics { font-size: 50px; color: var(--scn-red); }
-.mscreen-scan .scn:not([data-state="wait"]) .scd-front { transform: rotateY(180deg); }
-.mscreen-scan .scn:not([data-state="wait"]) .scd-back { transform: none; }
-.mscreen-scan .scd-floor {
-  position: absolute; left: 50%; bottom: 150px; width: 900px; height: 150px; margin-left: -450px; z-index: -1; border-radius: 50%;
-  background: radial-gradient(closest-side, color-mix(in oklab, var(--strike) 50%, transparent), color-mix(in oklab, var(--strike) 12%, transparent) 60%, transparent);
-}
-
-/* Beside a phone: the machine's code and the phone that reads it, the phone's own scan page in the hand; code, beam
-   and phone 884 px together so the phone stands inside the gutter (it hung 52 px past it, tilted) */
-.mscreen-scan .scd-pair { display: flex; align-items: center; gap: 0; }
-.mscreen-scan .scd-beam { flex: none; width: 54px; height: 520px; overflow: visible; fill: none; stroke: var(--scn-red); stroke-width: 3; stroke-dasharray: 10 12; opacity: .7; }
-.mscreen-scan .scd-mock {
-  position: relative; flex: none; width: 290px; height: 608px; padding: 12px; border-radius: 56px;
-  background: var(--scn-phone-body); box-shadow: 0 0 0 3px rgba(255, 255, 255, .08), 0 50px 90px -40px rgba(0, 0, 0, .8);
-}
-.mscreen-scan .scd-mock-island { position: absolute; z-index: 2; left: 50%; top: 30px; width: 90px; height: 26px; margin-left: -48px; border-radius: 13px; background: #000; }
-.mscreen-scan .scd-mock-screen {
-  position: relative; height: 100%; overflow: hidden; border-radius: 48px; background: var(--scn-phone); color: var(--scn-phone-ink);
-  display: grid; grid-template-rows: auto 1fr auto auto; justify-items: center; padding: 72px 20px 20px;
-}
-.mscreen-scan .scd-mock-pill { display: grid; place-items: center; width: 64px; height: 36px; border-radius: 18px; font-size: 22px; border: 2px solid color-mix(in oklab, var(--scn-phone-ink) 25%, transparent); }
-.mscreen-scan .scd-mock-qr { align-self: center; }
-.mscreen-scan .scd-mock-ruled { display: flex; align-items: center; gap: 12px; margin-bottom: 72px; font-size: 26px; }
-.mscreen-scan .scd-mock-ruled i { width: 44px; height: 3px; border-radius: 2px; background: var(--scn-red); }
-.mscreen-scan .scd-mock-tabs {
-  display: flex; align-items: center; justify-content: space-between; width: 100%; height: 64px; padding: 0 16px;
-  border-radius: 32px; font-size: 24px; background: color-mix(in oklab, var(--scn-phone-ink) 8%, transparent);
-  border: 2px solid color-mix(in oklab, var(--scn-phone-ink) 14%, transparent);
-}
-.mscreen-scan .scd-mock-fist { width: 50px; height: 52px; object-fit: contain; }
 
 /* Machine number: the code on a plate that says which machine it is, and the typed code for a phone without a camera */
 .mscreen-scan .scd-plate-card {
@@ -343,7 +289,7 @@
   padding: calc(var(--ms-pad) + 8px) var(--ms-pad) var(--ms-pad); border-radius: 48px;
   background: var(--scn-card); border: var(--scn-card-line); box-shadow: var(--scn-card-shadow);
 }
-.mscreen-scan .sho-cell .sho-mark { width: 150px; height: 150px; font-size: 66px; margin-bottom: 24px; }
+.mscreen-scan .sho-cell .sho-mark { width: 150px; height: 150px; font-size: 60px; margin-bottom: 24px; }
 .mscreen-scan .sho-cell.is-on { box-shadow: var(--scn-card-shadow), inset 0 0 0 4px var(--scn-red); }
 
 /* Short line: a real hand at a real phone, and the whole way in as one sentence */
@@ -373,6 +319,8 @@
 .mscreen-scan .sho-item::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px; border-radius: 5px; background: var(--scn-track); }
 .mscreen-scan .sho-item .sho-t { display: grid; justify-items: start; gap: 16px; font-size: 44px; }
 .mscreen-scan .sho-item .sho-t [data-lucide] { font-size: 56px; color: var(--scn-red); }
+/* the punch step carries the app's own mark, at the size of the icons beside it */
+.mscreen-scan .sho-fist { display: block; width: 56px; height: 56px; }
 .mscreen-scan .sho-fill { position: absolute; left: 0; right: 0; top: 0; height: 10px; border-radius: 5px; background: var(--scn-red); transform-origin: 0 50%; transform: scaleX(0); }
 .mscreen-scan .sho-i2 .sho-fill { transform: none; }
 .mscreen-scan .sho-item:not(.sho-i2) { opacity: .6; }
@@ -386,8 +334,6 @@
 .mscreen-scan.is-live .scn-step.is-on :is(.sst-mark, .sho-mark)::after { animation: scn-ping 1.8s cubic-bezier(.2, .7, .3, 1) infinite; }
 .mscreen-scan.is-live .scn[data-state="wait"] .scd-corner { animation: scn-close 2.4s cubic-bezier(.45, 0, .55, 1) infinite; }
 .mscreen-scan .scd-c-tr { --r: 90deg; } .mscreen-scan .scd-c-br { --r: 180deg; } .mscreen-scan .scd-c-bl { --r: 270deg; } .mscreen-scan .scd-c-tl { --r: 0deg; }
-.mscreen-scan.is-live .scd-stage-bg img { animation: scn-drift 16s ease-in-out infinite alternate; }
-.mscreen-scan.is-live .scn[data-state="wait"] .scd-beam { animation: scn-march 1.2s linear infinite; }
 .mscreen-scan.is-live .sho-seq .sho-frame { animation: scn-frame 9s linear infinite; }
 .mscreen-scan.is-live .sho-seq .sho-f2 { animation-delay: 3s; opacity: 0; }
 .mscreen-scan.is-live .sho-seq .sho-f3 { animation-delay: 6s; }
@@ -400,8 +346,6 @@
 @keyframes scn-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.84); } }
 @keyframes scn-ring { from { transform: scale(.86); opacity: .45; } to { transform: scale(1.16); opacity: 0; } }
 @keyframes scn-close { 0%, 100% { transform: rotate(var(--r)) translate(0, 0); } 50% { transform: rotate(var(--r)) translate(18px, 18px); } }
-@keyframes scn-drift { from { transform: scale(1.02); } to { transform: scale(1.1) translate(-1.5%, 1%); } }
-@keyframes scn-march { to { stroke-dashoffset: -44; } }
 /* each drawing holds a third of the loop, crossfading into the next */
 @keyframes scn-frame { 0% { opacity: 0; } 4%, 31% { opacity: 1; } 36%, 100% { opacity: 0; } }
 @keyframes scn-item { 0% { opacity: .6; } 3%, 32% { opacity: 1; } 35%, 100% { opacity: .6; } }
@@ -417,9 +361,3 @@
   .mscreen-scan .sho-seq .sho-item { opacity: 1 !important; }
   .mscreen-scan .sho-seq .sho-fill { transform: scaleX(0) !important; }
 }
-
-/* the punch step carries the app's own mark, at the size of the line beside it */
-.mscreen-scan .sho-mark { width: 52px; height: 52px; flex: none; display: block; }
-
-/* the status line is written with textContent, so its break travels in the string (mscreens/scan.js) */
-.scn [data-scn="line"] { white-space: pre-line; }

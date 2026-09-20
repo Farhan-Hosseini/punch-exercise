@@ -1,6 +1,7 @@
 // SKEPTIC probe: does sections/video.html's rAF loop + 300ms interval really run on every tab,
 // and does it cost anything? A/B: measure 10s idle, then kill both, measure 10s idle again.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -140,4 +141,4 @@ out.C_resultLeftOpen_thenMobile = await snap()
 
 out.errors = errs.slice(0, 6)
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

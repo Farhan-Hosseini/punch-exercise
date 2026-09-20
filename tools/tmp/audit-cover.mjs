@@ -1,5 +1,6 @@
 // CSS + JS coverage across every surface, page, screen, design, theme and typeface.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -115,4 +116,4 @@ let T = 0, U = 0
 for (const r of rows) { T += r.total; U += r.unusedBytes; console.log(r.url.padEnd(22), String(r.total).padStart(8), String(r.unusedBytes).padStart(9), ((100 * r.unusedBytes / Math.max(1, r.ruleBytes)).toFixed(1) + '%').padStart(8), r.unusedCount + '/' + r.ruleCount) }
 console.log('TOTAL'.padEnd(22), String(T).padStart(8), String(U).padStart(9))
 console.log('errors seen:', errs.length, JSON.stringify(errs.slice(0, 6)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'cv' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

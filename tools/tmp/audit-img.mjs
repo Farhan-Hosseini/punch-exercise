@@ -1,5 +1,6 @@
 // Per-tab: every rendered <img>/background, natural vs displayed size, missing width/height, oversized rasters.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -67,4 +68,4 @@ for (const r of over.slice(0, 30)) console.log(`${r.mode.padEnd(10)} ${String(r.
 const noDim = rows.filter(r => (!r.attrW || !r.attrH) && r.aspectCss === 'auto' && !r.hidden && r.dw > 20)
 console.log('\n== visible <img> with no width/height and no CSS aspect-ratio ==', noDim.length)
 for (const r of noDim.slice(0, 25)) console.log(`${r.mode.padEnd(10)} ${String(r.dw + 'x' + r.dh).padEnd(11)} lazy=${r.lazy} ${r.src}`)
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'im' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -2,6 +2,7 @@
 // (b) every section design measured for "renders nothing"
 // (c) a reload after customising, to prove restored state does not throw
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -130,4 +131,4 @@ const text = JSON.stringify(report, null, 1)
 if (OUT) { try { writeFileSync(OUT, text) } catch (e) { log('write failed ' + e.message) } }
 process.stdout.write(text.slice(0, 200000) + '\n')
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzb' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

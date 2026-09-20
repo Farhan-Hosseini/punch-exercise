@@ -139,12 +139,16 @@ const H264 = (crf) => ['-c:v', 'libx264', '-preset', 'slow', '-crf', String(crf)
 const EXACT = `settb=1/${FPS},setpts=N`
 const TOYUV = 'scale=out_color_matrix=bt709:out_range=tv:flags=lanczos+accurate_rnd+full_chroma_int,format=yuv420p'
 
-const MASTER = join(OUT, 'run-live-928x1960.mp4')
+const MW = 928, MH = 1960   // the phone at its own size, two device pixels to one point
+const MASTER = join(OUT, `run-live-${MW}x${MH}.mp4`)
 const PRES = join(OUT, 'run-live-1920x1080.mp4')
 const GIF = join(OUT, 'run-live-960.gif')
 
+// the capture carries alpha around the handset; the master lays it on the colour of the box the animation tab
+// shows it in (.anim-phone), so the box and the frame's rounded corners never show as a rectangle
+const BOX = '0x060606'
 async function master() {
-  await ff(['-i', IN, '-vf', `${EXACT},${TOYUV}`, ...H264(18), MASTER])
+  await ff(['-i', IN, '-filter_complex', `color=c=${BOX}:s=${MW}x${MH}:r=${FPS}[bg];[0:v]${EXACT}[a];[bg][a]overlay=0:0:shortest=1:format=auto,${TOYUV}[out]`, '-map', '[out]', ...H264(18), MASTER])
   console.log('wrote', MASTER)
 }
 
@@ -164,7 +168,7 @@ async function pres() {
   }
   const last = `p${BEATS.length - 1}`
   f.push(`[0:v]${EXACT},scale=${P_.w}:${P_.h}:flags=lanczos[phone]`)
-  f.push(`[${last}][phone]overlay=${P_.x}:${P_.y},${TOYUV}[out]`)
+  f.push(`[${last}][phone]overlay=${P_.x}:${P_.y}:format=auto,${TOYUV}[out]`)   // the phone's alpha lets the slab through its corners
   const script = join(WORK, 'pres.filter')
   await writeFile(script, f.join(';\n'))
   await ff([...inputs, '-/filter_complex', script, '-map', '[out]', ...H264(18), '-t', DUR.toFixed(4), PRES])

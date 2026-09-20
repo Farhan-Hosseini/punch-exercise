@@ -1,5 +1,6 @@
 // Boot robustness: does the page still come up when its saved state is corrupt, stale or out of range?
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -58,4 +59,4 @@ const text = JSON.stringify(report, null, 1)
 if (process.argv[2]) { try { writeFileSync(process.argv[2], text) } catch (e) { log('write ' + e.message) } }
 process.stdout.write(text + '\n')
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzst' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const OPEN = process.argv[2] === 'open'
@@ -34,4 +35,4 @@ console.log(JSON.stringify({ mode: OPEN ? 'case opened then closed' : 'CONTROL: 
   taskSec8s: r3(b - a), scriptSec8s: r3(sb - sa), layoutSec8s: r3(lb - la),
   topRaf8s: await js('window.__topRaf'),
   nodes: (await send('Memory.getDOMCounters')).result.nodes }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

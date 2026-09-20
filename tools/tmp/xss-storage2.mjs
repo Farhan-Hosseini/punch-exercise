@@ -1,5 +1,6 @@
 /* Second localStorage pass: does a poisoned "punch-showcase.v5" break the Result screen or smuggle CSS? */
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9600 + Math.floor(Math.random() * 90)
@@ -53,4 +54,4 @@ out.reset = await js(`(() => { const b = document.getElementById('resetCustom');
 await sleep(2500)
 out.afterReset = JSON.parse(await js(count) || 'null')
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill(); process.exit(0)
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'xs' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

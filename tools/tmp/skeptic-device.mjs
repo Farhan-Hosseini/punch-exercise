@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -45,4 +46,4 @@ R.paySheetDevice = await js(`(()=>{try{return window.PunchPay? 'pay module prese
 R.resetBtnExists = await js(`!!document.querySelector('[data-reset-all], #resetAll')`)
 R.resetSearch = await js(`JSON.stringify([...document.querySelectorAll('button')].map(b=>b.id+'|'+(b.textContent||'').trim().slice(0,30)).filter(s=>/reset|back to how/i.test(s)))`)
 console.log(JSON.stringify({ ...R, errors: errs.slice(0, 10) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

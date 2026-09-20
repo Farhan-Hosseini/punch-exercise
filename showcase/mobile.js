@@ -2006,12 +2006,15 @@
     // other files add behaviour when a screen opens: punchApp.onEnter('topup', (opts) => ...)
     onEnter(page, fn) { (EXTRA_ENTER[page] = EXTRA_ENTER[page] || []).push(fn); if (current === page) fn({}) },
     setScore(value) {
+      const same = value === score
       score = value
       P.me.score = value
       if (current === 'hit') paintHit(value)
       if (current === 'ranks') renderBoard(false)
       if (current === 'feed') renderPosts()
-      if (current === 'profile') renderProfile()
+      // every resize runs the shell's apply and lands here; the same score must not rebuild the profile, or its
+      // Hits carousel jumps back to the first card
+      if (current === 'profile' && !same) renderProfile()
     },
     get page() { return current },
     get state() { return { ...st } },

@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const BLOCK = process.argv[2] === 'block'
@@ -56,4 +57,4 @@ out.connected = {
 out.danglingNow = await js(`JSON.stringify([...document.querySelectorAll('[aria-labelledby],[aria-describedby],[aria-controls],[aria-owns],[aria-activedescendant]')].flatMap(el => ['aria-labelledby','aria-describedby','aria-controls','aria-owns','aria-activedescendant'].flatMap(a => (el.getAttribute(a)||'').trim().split(/\s+/).filter(Boolean).filter(t => !document.getElementById(t)).map(t => el.tagName+'#'+(el.id||'?')+' '+a+'='+t))))`)
 out.errors = errs.slice(0, 6)
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9600 + Math.floor(Math.random() * 90)
@@ -42,4 +43,4 @@ R.afterReset_state = await js(`window.punchApp.state.device`)
 R.afterReset_clock = await js(`document.querySelector('[data-clock]').textContent`)
 R.afterReset_typeofDevice = await js(`typeof window.punchApp.device`)
 console.log(JSON.stringify({ ...R, errors: errs.slice(0, 10) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,5 +1,6 @@
 // the machine at its real size, so one CSS pixel is one glass pixel: exact section heights for the Figma diff
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9210 + Math.floor(Math.random() * 40)
@@ -45,4 +46,4 @@ for (const [p, key] of TARGETS) {
   }
 }
 for (const o of out) console.log(`${o.page}/${o.sec} ${o.name}: ${o.h} x ${o.w}  (screen ${o.screenH}px)`)
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'ph' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

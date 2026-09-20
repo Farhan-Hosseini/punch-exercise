@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = Number(process.argv[2] || 390), H = 900
@@ -25,4 +26,4 @@ await js(`document.getElementById('openCase').click(); 1`); await sleep(9000)
 const after = await gc()
 const srcs = await js(`JSON.stringify([...document.querySelectorAll('#case iframe[data-embed]')].map(f=>f.getAttribute('src')))`)
 console.log(JSON.stringify({ width: W, gate: JSON.parse(gate), nodesBefore: before, nodesAfterOpen: after, embedSrcs: JSON.parse(srcs) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sw' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

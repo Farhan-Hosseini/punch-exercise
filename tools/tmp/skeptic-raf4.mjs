@@ -1,5 +1,6 @@
 // SKEPTIC probe 4: does the page already keep the frame pipeline awake without the video loop?
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9800 + Math.floor(Math.random() * 90)
@@ -43,4 +44,4 @@ out.animationTab = JSON.parse(await js(`JSON.stringify((() => {
   return { iframes: document.querySelectorAll('iframe').length, inner }
 })())`))
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'ska' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

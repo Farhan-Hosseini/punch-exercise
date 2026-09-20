@@ -2,6 +2,7 @@
 // Walks the live CSSOM (so @media/nesting are handled by Chrome), then narrows a "never matched" set
 // at every checkpoint as the page is driven through every state.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -129,4 +130,4 @@ for (const r of rows) console.log(r.file.padEnd(26), String(r.total).padStart(8)
 console.log('--- largest functions that never ran ---')
 for (const r of rows.slice(0, 8)) for (const f of r.top.slice(0, 6)) console.log(String(f.len).padStart(6), r.file.padEnd(24), f.name.padEnd(22), f.head.slice(0, 80))
 console.log('page errors:', errs.length, JSON.stringify(errs.slice(0, 8)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sl' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

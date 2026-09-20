@@ -1,5 +1,6 @@
 // one-off: shoot the Animation tab's clip block. node tools/tmp/shot-anim.mjs [out.png] [width]
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -29,4 +30,4 @@ const shot = await send('Page.captureScreenshot', { format: 'png', clip: { ...bo
 await writeFile(out, Buffer.from(shot.result.data, 'base64'))
 console.log('wrote', out)
 if (errs.length) console.log('errors:', errs.slice(0, 5))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'anim' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

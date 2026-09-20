@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = 1600
@@ -42,4 +43,4 @@ for (const [m, list] of Object.entries(res)) {
 }
 console.log('\n== videos with preload != none ==')
 console.log(await js(`JSON.stringify([...document.querySelectorAll('video')].filter(v=>v.preload!=='none').map(v=>({src:(v.getAttribute('src')||'').split('/').pop(),preload:v.preload,poster:!!v.getAttribute('poster'),w:v.getAttribute('width'),h:v.getAttribute('height')})))`))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'cl' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

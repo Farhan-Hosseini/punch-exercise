@@ -1,5 +1,6 @@
 // a pass down the whole case study: console errors, horizontal overflow, and any text that spills its box
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = Number(process.argv[2] || 1440)
@@ -45,4 +46,4 @@ console.log(await js(`JSON.stringify((() => {
   }
 })())`, null, 1))
 console.log('errors:', JSON.stringify(errs.slice(0, 6)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'cc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

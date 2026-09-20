@@ -167,8 +167,8 @@
           <span class="mp-hrow-t">${pts(h.s, ' mp-hrow-pts')}<span class="mp-hrow-w">${L('clock')}${esc(h.when)}</span><span class="mp-hrow-w">${L('map-pin')}${esc(h.venue)}</span></span>
           <span class="mp-hrow-go">${h.top ? L('crown') : ''}${L('circle-play')}</span>
         </button>`).join('')}</div>`,
-    // Carousel: big cards to swipe through
-    (m) => `<div class="mf-rail mp-carousel">${m.hits.map((h) => `
+    // Carousel: big cards to swipe through, on the Home slider (rails() below)
+    (m) => `<div class="mf-rail mp-carousel" data-sl-track role="group" aria-roledescription="carousel" aria-label="Hits">${m.hits.map((h) => `
         <button class="mp-cc mf-onphoto${h.top ? ' is-best' : ''}" type="button" data-reel="${h.i}" aria-label="${esc(hitLabel(h))}">${img(h)}${bestTag(h)}<span class="mp-hit-play">${L('play')}</span>
           <span class="mp-cc-t"><span class="mp-grade">${esc(h.grade)}</span>${pts(h.s, ' mp-cc-pts')}<span class="mp-cc-w">${esc(h.when)}</span><span class="mp-cc-w">${esc(h.venue)}</span></span></button>`).join('')}</div>`,
     // Timeline: by day, newest first, each hit at its time
@@ -223,7 +223,18 @@
   function draw(only) {
     const m = social() && social().profile()
     if (!m) return
-    for (const key of only ? [only] : Object.keys(DRAW)) el[key].innerHTML = DRAW[key](m)
+    const keys = only ? [only] : Object.keys(DRAW)
+    // the Hits rail is drawn anew, so the slider on the old one is let go first, the way Home does it
+    if (keys.includes('hits') && hitsSl) { hitsSl.destroy(); hitsSl = null }
+    for (const key of keys) el[key].innerHTML = DRAW[key](m)
+    if (keys.includes('hits')) rails()
+  }
+  // the Carousel takes Home's slider (window.punchSlider, default.js): a mouse drags it and throws to the nearest card,
+  // the arrow keys turn it, a card that only peeks in comes to the front when tapped; nothing when another design shows
+  let hitsSl = null
+  function rails() {
+    const r = el.hits.querySelector('[data-sl-track]')
+    if (r && window.punchSlider) hitsSl = window.punchSlider(r, { page })
   }
 
   /* ------------------------------------------------------------ motion */

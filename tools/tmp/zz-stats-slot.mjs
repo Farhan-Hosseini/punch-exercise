@@ -1,5 +1,6 @@
 // Why is the Result screen's "Kinematic breakdown" section zero height?
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9020 + Math.floor(Math.random() * 8)
@@ -52,4 +53,4 @@ for (let i = 0; i < 4; i++) {
              titleH: Math.round((sec.querySelector('.s-title')||{getBoundingClientRect:()=>({height:0})}).getBoundingClientRect().height) }`)))
 }
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzz' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

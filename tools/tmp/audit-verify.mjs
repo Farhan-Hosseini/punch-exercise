@@ -1,5 +1,6 @@
 // Focused checks: which diagrams exist, which @font-face families ever load, video behaviour, global API callers.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = 1600
@@ -55,4 +56,4 @@ console.log(await js(`JSON.stringify([...document.querySelectorAll('video')].fil
 console.log('\n--- every <video> in the document: how many, how many with a poster, how many preload!=none ---')
 console.log(await js(`JSON.stringify((()=>{const v=[...document.querySelectorAll('video')];return{count:v.length,noPoster:v.filter(x=>!x.getAttribute('poster')).map(x=>(x.currentSrc||x.src||x.getAttribute('src')||'?').split('/').pop()),eager:v.filter(x=>x.preload!=='none').length}})())`))
 console.log('\nerrors:', errs.length, JSON.stringify(errs.slice(0, 10)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'vf' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

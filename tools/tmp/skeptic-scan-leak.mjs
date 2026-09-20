@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -107,4 +108,4 @@ out.controlFeed = { visibilitychange: (ca.listeners.visibilitychange || 0) - (cb
 out.detachedRails = await js(`(() => { let n = 0; document.querySelectorAll('[data-sl-on]').forEach(() => n++); return n })()`)
 out.errors = errs.slice(0, 10)
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

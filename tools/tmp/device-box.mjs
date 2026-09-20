@@ -1,6 +1,7 @@
 // Where the handset's own bezel sits inside #device: the recorder captures #device, and the capture showed a band of
 // page above the phone, so this measures the offset to cut.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9700 + Math.floor(Math.random() * 40)
@@ -24,4 +25,4 @@ console.log(await js(`JSON.stringify((() => {
   const row = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return { tag: el.tagName, id: el.id, cls: String(el.className).slice(0, 40), top: +(r.top - dr.top).toFixed(1), left: +(r.left - dr.left).toFixed(1), w: +r.width.toFixed(1), h: +r.height.toFixed(1), radius: cs.borderRadius, bg: cs.backgroundColor } }
   return { device: { w: dr.width, h: dr.height, zoom: getComputedStyle(d).zoom }, kids: [...d.children].map(row), grand: [...d.children].flatMap((c) => [...c.children].slice(0, 4).map(row)) }
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'db' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

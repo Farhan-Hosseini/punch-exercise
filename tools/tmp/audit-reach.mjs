@@ -2,6 +2,7 @@
 // Walks the live CSSOM (so @media/nesting are handled by Chrome), then narrows a "never matched" set
 // at every checkpoint as the page is driven through every state.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -110,4 +111,4 @@ await wf2('tools/tmp/reached.json', JSON.stringify([...urls].sort(), null, 1))
 console.log('distinct URLs requested across the whole sweep:', urls.size)
 const assetUrls = [...urls].filter(u => u.startsWith('assets/'))
 console.log('of which under assets/:', assetUrls.length)
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sl' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

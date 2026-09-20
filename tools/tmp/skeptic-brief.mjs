@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -47,4 +48,4 @@ const after = JSON.parse(await js(`JSON.stringify((()=>{
 const shot = await send('Page.captureScreenshot', { format: 'png' })
 await writeFile('C:/Claude Database/punch-exercise/tools/tmp/skeptic-brief.png', Buffer.from(shot.result.data,'base64'))
 console.log(JSON.stringify({ before, after, errors: errs.slice(0,6) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

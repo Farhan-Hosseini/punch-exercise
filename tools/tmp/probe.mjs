@@ -1,5 +1,6 @@
 // one-off: measure something in the running showcase. node tools/tmp/probe.mjs "<setup js>" "<expr>"
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const [setup, expr] = process.argv.slice(2)
@@ -21,4 +22,4 @@ await sleep(2600)
 await js(`localStorage.clear(); document.getElementById('loader').classList.add('is-done'); 1`)
 if (setup) { await js(setup); await sleep(1400) }
 console.log(JSON.stringify(await js(expr), null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'probe' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

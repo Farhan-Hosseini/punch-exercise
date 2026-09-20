@@ -1,5 +1,6 @@
 // one-off: open every tab and every page of the showcase and report console errors and failed requests.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -42,4 +43,4 @@ console.log('errors', errs.length)
 for (const e of [...new Set(errs)].slice(0, 20)) console.log('  ' + e)
 console.log('failed requests', failed.length)
 for (const f of [...new Set(failed)].slice(0, 20)) console.log('  ' + f)
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sweep' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

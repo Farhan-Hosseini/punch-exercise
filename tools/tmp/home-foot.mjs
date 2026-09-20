@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9820 + Math.floor(Math.random() * 40)
@@ -27,4 +28,4 @@ console.log(await js(`JSON.stringify((() => {
   const lis = [...scr.querySelectorAll('.mdf-hw-cards li')].map((li) => { const r = li.getBoundingClientRect(); const b = li.querySelector('b'), sm = li.querySelector('span, small, p'); return { bottom: Math.round((r.bottom - top) * k), h: Math.round(r.height * k), scrollH: Math.round(li.scrollHeight * k), bSize: b && getComputedStyle(b).fontSize, smSize: sm && getComputedStyle(sm).fontSize, smTag: sm && sm.tagName } })
   return { lis, cards: g('.mdf-how [data-sv]:not([hidden])'), cardList: g('.mdf-hw-cards'), how: g('.mdf-how'), best: g('.mdf-best'), welcome: g('.mdf-welcome'), topad: g('.mdf-topad'), strip: g('.ms-ad'), header: g('.ms-brand'), padBottom: cs.paddingBottom, gap: cs.gap, adH: getComputedStyle(scr).getPropertyValue('--ms-ad-h') }
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'hf' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,5 +1,6 @@
 // The Result screen's older data-slot engine: every slot, every design, plus the theme/space/zoom/backdrop APIs.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -104,4 +105,4 @@ const text = JSON.stringify(report, null, 1)
 if (OUT) { try { writeFileSync(OUT, text) } catch {} }
 process.stdout.write(text.slice(0, 120000) + '\n')
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzl' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

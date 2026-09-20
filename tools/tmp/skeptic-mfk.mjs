@@ -1,5 +1,6 @@
 // Skeptic pass on the --mf-k @property finding. Read-only against the running dev server on 5770.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { writeFileSync, mkdirSync } from 'node:fs'
@@ -85,4 +86,4 @@ console.log('5. skipped')
 console.log('6. text under the ring:', await js(`JSON.stringify([...document.querySelectorAll('.mf-fr')].slice(0,3).map(b=>({label:b.getAttribute('aria-label'), text:b.textContent.trim().replace(/\\s+/g,' ')})))`))
 
 console.log('7. console errors during the run:', JSON.stringify(errs.slice(0, 8)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

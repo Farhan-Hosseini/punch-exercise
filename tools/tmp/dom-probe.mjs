@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9160 + Math.floor(Math.random() * 40)
@@ -26,4 +27,4 @@ console.log(await js(`JSON.stringify((() => {
   const cands = ['#screen', '.glass', '.mstage', '.machine-screen', '.mscreens', '.mscreen:not([hidden])'].map(s => { const e = document.querySelector(s); return e ? { sel: s, w: Math.round(e.getBoundingClientRect().width), h: Math.round(e.getBoundingClientRect().height) } : { sel: s, missing: true } })
   return { found: !!el, chain, cands, fit: getComputedStyle(document.documentElement).getPropertyValue('--fit') }
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'dp' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,5 +1,6 @@
 // What a first visit actually downloads, broken down, and how much of it is eager.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -54,4 +55,4 @@ const text = JSON.stringify(out, null, 1)
 if (OUT) { try { writeFileSync(OUT, text) } catch {} }
 process.stdout.write(text + '\n')
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzw' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

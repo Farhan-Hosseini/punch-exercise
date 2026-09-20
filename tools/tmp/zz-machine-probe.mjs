@@ -1,6 +1,7 @@
 // Corrected machine-screen probe (#machine / .mscreen, not #screen), every mvar design,
 // the score slider across its whole travel, the animation tab's clips actually playing, overlay keyboard paths.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -157,4 +158,4 @@ const text = JSON.stringify(report, null, 1)
 if (OUT) { try { writeFileSync(OUT, text) } catch (e) { log('write ' + e.message) } }
 process.stdout.write(text.slice(0, 200000) + '\n')
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzm' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

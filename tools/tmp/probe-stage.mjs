@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = Number(process.argv[2] || 1440)
@@ -27,4 +28,4 @@ console.log(await js(`JSON.stringify((() => {
   while (el && el !== document.documentElement) { chain.push(r(el)); el = el.parentElement }
   return { viewport: innerWidth, stage: r(stage), chain, header: r('.topbar') || r('header') }
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'ps' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

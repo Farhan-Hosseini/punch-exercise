@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -35,4 +36,4 @@ const shot = await send('Page.captureScreenshot', { format: 'png', clip: { x: b.
 if (!shot.result) { console.log('capture failed:', JSON.stringify(shot).slice(0, 300)); ws.close(); chrome.kill(); process.exit(1) }
 await writeFile(OUT, Buffer.from(shot.result.data, 'base64'))
 console.log('wrote', OUT, b.width + 'x' + b.height, 'errors', errs.slice(0, 4))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

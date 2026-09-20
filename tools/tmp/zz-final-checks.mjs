@@ -1,5 +1,6 @@
 // Small, exact confirmations for the write-up.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9012 + Math.floor(Math.random() * 6)
@@ -37,4 +38,4 @@ console.log('scripts without defer/async:', await jj(`
   return { n: s.length, sample: s.slice(0,6) }`))
 console.log('head stylesheets:', await jj(`return [...document.querySelectorAll('head link[rel=stylesheet]')].map(l=>l.getAttribute('href'))`))
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzf' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

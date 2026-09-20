@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9070 + Math.floor(Math.random() * 40)
@@ -28,4 +29,4 @@ console.log(await js(`JSON.stringify((() => {
   for (const p of window.PSec.pages('phone')) { const k = typeof p === 'string' ? p : p.key; phoneSecs[k] = window.showcase.sections('phone', k).map(s => s.label) }
   return { screenButtons: btns, groups, machineSections: secs, phoneSections: phoneSecs }
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

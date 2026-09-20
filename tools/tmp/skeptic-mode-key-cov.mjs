@@ -1,5 +1,6 @@
 /* Downstream consequence: CSS rule-usage coverage of ds.css under mode('ds') vs mode('system'). */
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const KEYARG = process.argv[2] || 'ds'
@@ -33,4 +34,4 @@ for (const r of used) { const f = (sheets.get(r.styleSheetId) || '?').split('/')
 const mode = await js(`document.body.dataset.mode`)
 const h = await js(`document.scrollingElement.scrollHeight`)
 console.log(`key='${KEYARG}' -> body.dataset.mode='${mode}' pageScrollHeight=${h}  ds.css usedRules=${byFile['ds.css'] || 0}  styles.css=${byFile['styles.css'] || 0}  mpages.css=${byFile['mpages.css'] || 0}`)
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'cv' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9600 + Math.floor(Math.random() * 90)
@@ -60,4 +61,4 @@ await sleep(3000)
 out.parentLsAfterGlass = await js(`JSON.stringify(Object.keys(localStorage))`)
 out.errors = errs.slice(0, 8)
 console.log(JSON.stringify(out, null, 1))
-clearTimeout(bail); ws.close(); chrome.kill(); process.exit(0)
+clearTimeout(bail); ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

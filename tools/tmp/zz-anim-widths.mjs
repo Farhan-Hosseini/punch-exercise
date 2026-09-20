@@ -1,5 +1,6 @@
 // At which widths does the Animation tab spill past the viewport? (the desktop gate lifts at 768)
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync, mkdirSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -50,4 +51,4 @@ console.log(JSON.stringify(rows.filter((r) => r.page > 0), null, 1))
 console.log('--- all rows ---')
 for (const r of rows) console.log(r.W, r.mode, 'over=' + r.page, 'layout=' + (r.layout || '-'), 'badN=' + r.badN)
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zza' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

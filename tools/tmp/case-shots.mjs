@@ -1,6 +1,7 @@
 // The case study's phone stills and the countdown still, taken again from the live app: the shipped ones predate
 // the Ice Rink's removal and the spacing pass. node tools/tmp/case-shots.mjs
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { execFileSync } from 'node:child_process'
 import { tmpdir } from 'node:os'
@@ -43,4 +44,4 @@ const k = 540 / m.width
 const shot = await send('Page.captureScreenshot', { format: 'jpeg', quality: 90, clip: { ...m, scale: k }, captureBeyondViewport: true })
 await writeFile('showcase/assets/case/glass-countdown.jpg', Buffer.from(shot.result.data, 'base64'))
 console.log('countdown', Math.round(m.width * k), 'x', Math.round(m.height * k))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'cs' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

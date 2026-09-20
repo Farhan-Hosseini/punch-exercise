@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9400 + Math.floor(Math.random() * 90)
@@ -86,4 +87,4 @@ report.embed = JSON.parse(await js(`JSON.stringify((() => {
 
 report.errors = errs.slice(0, 8)
 console.log(JSON.stringify(report, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

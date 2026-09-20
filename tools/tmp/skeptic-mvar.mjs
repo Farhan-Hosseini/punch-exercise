@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9411
@@ -57,4 +58,4 @@ console.log('mvar after reload:', await js(`(() => { try { return JSON.stringify
 console.log('mode after reload:', await js(`document.documentElement.dataset.mode || (window.showcase && 'n/a')`))
 console.log('visible mscreen after reload:', await js(`(document.querySelector('.mscreen:not([hidden])')||{dataset:{}}).dataset.mscreen || 'none'`))
 console.log('console errors:', JSON.stringify(errs.slice(0, 10)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'skmvar' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

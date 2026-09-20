@@ -1,6 +1,7 @@
 /* Clean baseline: four tabs + every phone page + the case overlay, watching for console errors and for any
    event-handler attribute or javascript: URL that the page produced from its own data. */
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9700 + Math.floor(Math.random() * 90)
@@ -59,4 +60,4 @@ await js(`(async () => { const c = document.getElementById('case'); const s = c.
 out.afterCase = await (async()=>{const v=await js(SWEEP); try { return JSON.parse(v) } catch { return v } })()
 out.errors = errs.slice(0, 15)
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill(); process.exit(0)
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'xk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

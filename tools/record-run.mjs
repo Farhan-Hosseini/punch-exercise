@@ -45,8 +45,8 @@ export const BEATS = {
   punch: 6.60,              // the pad: the phone says what to do while the glass keeps the count
   strike: 6.60 + STRIKE_IN,
   hit: 6.60 + STRIKE_IN + 1.2 + 2.56,   // landed (1.2 s), then the glass reads it (2.56 s), then Your hit counts up
-  reel: 14.40,              // the replay, the score burnt in, ready to share
-  end: 17.40,
+  reel: 15.40,              // the replay, the score burnt in, ready to share; it plays through to its end
+  end: 22.40,
 }
 if (flag('beats')) { console.log(JSON.stringify(BEATS)); process.exit(0) }
 const FROM = Number(opt('from', 0)), TO = Number(opt('to', BEATS.end))
@@ -108,6 +108,9 @@ try {
   await send('Runtime.enable')
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1200, deviceScaleFactor: 1, mobile: false })
   await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }, { name: 'prefers-color-scheme', value: 'dark' }] })
+  // nothing behind the handset: the page around it is captured as transparent, so the frame's rounded corners and
+  // anything the box has over the phone carry alpha, and the cut lays the phone on whatever it likes
+  await send('Emulation.setDefaultBackgroundColorOverride', { color: { r: 0, g: 0, b: 0, a: 0 } })
   await send('Page.addScriptToEvaluateOnNewDocument', { source: SHIM })
   const loaded = new Promise((r) => on('Page.loadEventFired', r))
   await send('Page.navigate', { url: URL_ })
@@ -124,24 +127,27 @@ try {
     return 1
   })()`)
   await sleep(1600)
+  await ev(`(() => { const st = document.createElement('style'); st.textContent = 'html, body, .phone-stage { background: transparent !important; } .loader { display: none !important; }'; document.head.append(st); return 1 })()`)
   await ev(`window.punchApp.go('default'); 1`)
   await sleep(900)
   const box = await ev(`(() => {
     const d = document.getElementById('device')
     const r = d.getBoundingClientRect()
-    return { x: r.left + scrollX, y: r.top + scrollY, w: Math.round(r.width), h: Math.round(r.height), page: document.getElementById('mApp').dataset.page, credits: document.getElementById('mApp').dataset.credits, shim: !!window.__vt }
+    return { x: r.left, y: r.top, w: Math.round(r.width), h: Math.round(r.height), page: document.getElementById('mApp').dataset.page, credits: document.getElementById('mApp').dataset.credits, shim: !!window.__vt }
   })()`)
   console.log('phone', JSON.stringify(box))
   if (!box.shim) throw new Error('the virtual clock did not load')
   if (!Number(box.credits)) throw new Error('the wallet is empty: the run would go to Buy credit instead of the pad')
   // the handset moves during the run (the page bar above it changes height with the page), so the box is measured
-  // again before every frame rather than once: a fixed box let the phone slide down and the page show above it
+  // again before every frame rather than once, in viewport coordinates and without captureBeyondViewport: that mode
+  // resizes the view to the document for the shot and moved the phone under a box measured before the resize
   const clip = { x: box.x, y: box.y, width: box.w, height: box.h, scale: SCALE }
   const track = async () => {
-    const r = await ev(`(() => { const r = document.getElementById('device').getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY } })()`)
-    clip.x = r.x; clip.y = r.y
+    const r = await ev(`(() => { const r = document.getElementById('device').getBoundingClientRect(); return { x: r.left, y: r.top, sy: scrollY } })()`)
+    if (r.sy) await ev('window.scrollTo(0, 0); 1')
+    clip.x = r.x; clip.y = r.y + r.sy
   }
-  const shoot = async () => { await track(); return Buffer.from((await send('Page.captureScreenshot', { format: 'png', clip, captureBeyondViewport: true, optimizeForSpeed: true })).data, 'base64') }
+  const shoot = async () => { await track(); return Buffer.from((await send('Page.captureScreenshot', { format: 'png', clip, captureBeyondViewport: false, optimizeForSpeed: true })).data, 'base64') }
 
   await ev('window.__vt.freeze()')
   const DT = 1000 / FPS
@@ -179,7 +185,7 @@ try {
   } else if (LOSSLESS) {
     const n0 = Math.round(FROM * FPS), n1 = Math.round(TO * FPS)
     const ff = spawn('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'png', '-i', 'pipe:0',
-      '-c:v', 'libx264rgb', '-preset', 'ultrafast', '-qp', '0', '-r', String(FPS), LOSSLESS], { stdio: ['pipe', 'inherit', 'inherit'] })
+      '-c:v', 'ffv1', '-level', '3', '-pix_fmt', 'bgra', '-r', String(FPS), LOSSLESS], { stdio: ['pipe', 'inherit', 'inherit'] })  // ffv1 keeps the alpha
     const t0 = Date.now()
     for (let i = n0; i <= n1; i++) {
       const t = i / FPS

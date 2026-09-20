@@ -1,5 +1,6 @@
 // Independent skeptic probe: horizontal overflow per tab at a given width + grid track diagnosis.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync, mkdirSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -85,4 +86,4 @@ if (s.result?.data) writeFileSync(`build/narrow/sk-spill-${W}${HIDE?'':'-sb'}.pn
 console.log('errors', JSON.stringify(errs.slice(0,5)))
 console.log('shot -> build/narrow/sk-spill-' + W + (HIDE?'':'-sb') + '.png at y=' + y)
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

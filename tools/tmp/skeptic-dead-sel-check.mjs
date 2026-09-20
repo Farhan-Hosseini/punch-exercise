@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9700 + Math.floor(Math.random() * 90)
@@ -24,4 +25,4 @@ console.log("after showcase.mode('ds'):    ", await js(probe()))
 await js(`window.showcase.mode('system'); 1`); await sleep(4500)
 await js(`(async()=>{const s=document.scrollingElement;for(let y=0;y<s.scrollHeight;y+=900){s.scrollTo(0,y);await new Promise(r=>setTimeout(r,50))}s.scrollTo(0,0);return 1})()`); await sleep(2000)
 console.log("after showcase.mode('system'):", await js(probe()))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'dz' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

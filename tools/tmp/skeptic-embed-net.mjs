@@ -1,6 +1,7 @@
 // Measure network cost by phase, split by frame, with cache behaviour visible.
 // argv[2] = 'nostore' (as served) | 'cached' (rewrite cache-control to a Netlify-like value)
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -78,4 +79,4 @@ out.topDupes = [...byUrl.entries()].filter(([, v]) => v.length > 1).sort((a, b) 
 out.errors = errs.slice(0, 6); out.fetchErrors = fetchErrs.slice(0, 4); out.fetchErrCount = fetchErrs.length
 await writeFile(`tools/tmp/skeptic-net-${MODE}.json`, JSON.stringify({ ...out}, null, 1))
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -42,8 +42,9 @@
       kicker: { wait: 'Next player', linked: 'Player linked', holding: 'Player linked', missed: 'Still your turn' }[s],
       t1: { wait: 'Scan', linked: 'Welcome,', holding: 'Hold tight,', missed: 'Go again,' }[s],
       t2: { wait: 'to play', linked: f, holding: f, missed: f }[s],
+      // the waiting line always breaks before "phone" (the line elements keep the newline, scan.css)
       line: {
-        wait: 'Waiting for\nyour phone',
+        wait: 'Waiting for your\nphone',
         linked: 'Get ready to punch',
         holding: 'Topping up on your phone',
         missed: 'No punch landed, your turn is held',
@@ -88,10 +89,9 @@
       li.classList.toggle('is-on', i === on)
     })
     frame.style.setProperty('--scn-progress', String(on / (STEPS.length - 1)))
-    // the shared code tiles: a linked phone puts the tick over the code; the phone's own view scans while it waits
+    // the shared code tiles: a linked phone puts the tick over the code
     frame.querySelectorAll('.pqr').forEach((q) => {
       q.classList.toggle('is-found', s !== 'wait')
-      q.classList.toggle('is-scanning', s === 'wait' && q.classList.contains('scd-mock-qr'))
     })
   }
 

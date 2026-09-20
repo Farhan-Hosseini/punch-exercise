@@ -1,6 +1,7 @@
 // Checks every fix made in this pass against the running site, each with the negative control that would catch a
 // false pass. node tools/tmp/verify-fixes.mjs [width]
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -128,5 +129,5 @@ ok('no console errors across the whole pass', errs.length === 0, errs.slice(0, 4
 const fails = out.filter((o) => !o.pass)
 for (const o of out) console.log(`${o.pass ? 'PASS' : 'FAIL'}  ${o.name}\n        ${o.detail}`)
 console.log(`\n${out.length - fails.length}/${out.length} passed at ${W}px`)
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'vf' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)
 process.exit(fails.length ? 1 : 0)

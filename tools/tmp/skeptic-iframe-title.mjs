@@ -1,5 +1,6 @@
 // Does the hero iframe at case.html:64 reach assistive tech at all?
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -50,4 +51,4 @@ console.log(JSON.stringify({ role: self?.role?.value, name: self?.name?.value ??
 // 4. sanity: are the six named iframes exposed (not aria-hidden)?
 console.log('--- all iframes on the page, a11y containment ---')
 console.log(await js(`JSON.stringify([...document.querySelectorAll('iframe')].map(f=>({id:f.id||f.dataset.embed||f.dataset.dsLive||Object.keys(f.dataset)[0], title:f.title, hiddenByAria:!!f.closest('[aria-hidden="true"]'), inert:!!f.closest('[inert]')})),null,1)`))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'cc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

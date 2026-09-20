@@ -1,5 +1,6 @@
 // the live section registry: every surface, page, section and the designs it offers, straight from the running app
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -39,4 +40,4 @@ const sum = (o) => Object.entries(o).map(([p, secs]) => `${p}: ${secs.length} se
 console.log('MACHINE\n ' + sum(r.machine).join('\n ') + '\nPHONE\n ' + sum(r.phone).join('\n '))
 console.log('slots (result screen):', r.slots ? r.slots.length : 0, r.slots ? r.slots.map(s => `${s.key}:${s.designs.length}`).join(' ') : '')
 console.log('errors:', r.errors)
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'rg' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

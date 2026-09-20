@@ -1,5 +1,6 @@
 // the live Reels design on the New record screen, in glass pixels, to repair the Figma variant
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9260 + Math.floor(Math.random() * 40)
@@ -35,4 +36,4 @@ console.log(await js(`JSON.stringify((() => {
   out.activeDesign = sec.querySelector('[data-sv]:not([hidden])') ? sec.querySelector('[data-sv]:not([hidden])').dataset.sv : null
   return out
 })())`, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'rl' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

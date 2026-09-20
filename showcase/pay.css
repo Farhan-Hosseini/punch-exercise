@@ -696,8 +696,8 @@
 .pyc-ready { display: grid; grid-template-columns: 104px minmax(0, 1fr); align-items: center; gap: var(--m-group-gap); padding: 20px var(--m-pad); border-radius: 24px; }
 .pyc-ready-art { position: relative; display: grid; justify-items: center; gap: 10px; }
 .pyc-ready-svg { width: auto; height: 150px; filter: drop-shadow(0 16px 30px color-mix(in srgb, var(--m-glow) 50%, transparent)); }
-/* the small machine is drawn like the punch page's (mpages/punch.css .pp-mc-*): a glass body, a red lit glass, the arm
-   and the bag. It had no rules of its own, so every part filled black */
+/* the small machine drawn in line (once the punch page's Machine design too, dropped from there in round twelve): a
+   glass body, a red lit glass, the arm and the bag. It had no rules of its own, so every part filled black */
 .pp-mini-body { fill: var(--m-glass-hi); stroke: var(--m-line-2); stroke-width: 1.5; }
 .pp-mini-glass { fill: #0B0B0C; stroke: color-mix(in srgb, var(--m-red-soft) 70%, transparent); stroke-width: 1.5; }
 .pp-mini-lit { fill: var(--m-red); }

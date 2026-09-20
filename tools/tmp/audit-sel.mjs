@@ -2,6 +2,7 @@
 // Walks the live CSSOM (so @media/nesting are handled by Chrome), then narrows a "never matched" set
 // at every checkpoint as the page is driven through every state.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -150,4 +151,4 @@ console.log('\ntop never-matched selectors:')
 for (const r of left.slice(0, 50)) console.log(String(r.bytes).padStart(6), r.sheets.join(',').padEnd(18), r.sel)
 console.log('\nselectors querySelector could not parse:', bad.length, bad.slice(0, 5))
 console.log('page errors:', errs.length, JSON.stringify(errs.slice(0, 8)))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sl' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

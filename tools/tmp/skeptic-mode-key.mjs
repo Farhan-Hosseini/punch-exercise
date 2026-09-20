@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -51,4 +52,4 @@ await step(`showcase.mode('SYSTEM') (case)`, `window.showcase.mode('SYSTEM')`)
 console.log('storageKey =', KEY)
 console.log(out.map(o => `${String(o.label).padEnd(38)} body=${String(o.mode).padEnd(10)} dsHidden=${String(o.dsHidden).padEnd(6)} dsBox=${String(o.dsVisible).padEnd(12)} phoneHidden=${String(o.phoneStageHidden).padEnd(6)} saved=${o.saved} | ${o.pressed}`).join('\n'))
 console.log('errors:', errs.slice(0, 5))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

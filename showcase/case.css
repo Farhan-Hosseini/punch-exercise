@@ -418,7 +418,6 @@
 
 /* the machine: the live glass */
 .cs-glass-seq .cs-glass-screen { height: min(calc(var(--pin-h) * .88), 900px); }
-.cs-soft .cs-glass-screen { box-shadow: 0 0 0 5px #1D1D1F, 0 0 0 6px #48484A, 0 60px 100px -40px rgba(0, 0, 0, .45); }
 .cs-glass-seq { transform-origin: 50% 0; transition: transform 1.1s var(--ease); }
 .cs-seq-machine[data-zoom="lift"] .cs-glass-seq { transform: scale(1.13); }
 .cs-seq-machine[data-zoom="bottom"] .cs-glass-zoom { transform: translateY(-45%) scale(1.9); }

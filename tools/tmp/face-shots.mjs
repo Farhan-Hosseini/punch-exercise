@@ -1,5 +1,6 @@
 // The number-heavy machine screens under each typeface, settled, side by side. node tools/tmp/face-shots.mjs
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile, mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -39,4 +40,4 @@ for (const face of ['arena', 'orbitron', 'chakra']) {
 }
 for (const f of Object.keys(overflow)) for (const s of Object.keys(overflow[f])) if (overflow[f][s].length) console.log(f, s, JSON.stringify(overflow[f][s]))
 console.log('done')
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'fs' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

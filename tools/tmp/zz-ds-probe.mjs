@@ -1,6 +1,7 @@
 // The design-system tab scrolled top to bottom, plus every live glass iframe it lazy-loads,
 // and the case study's two embedded machines. Errors, 404s, overflow, blank frames.
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -101,4 +102,4 @@ const text = JSON.stringify(report, null, 1)
 if (OUT) { try { writeFileSync(OUT, text) } catch (e) { log('write ' + e.message) } }
 process.stdout.write(text.slice(0, 120000) + '\n')
 try { ws.close() } catch {}
-chrome.kill(); process.exit(0)
+chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'zzd' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

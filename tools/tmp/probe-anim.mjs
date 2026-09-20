@@ -1,6 +1,7 @@
 // the Animation tab's motion deliverable: how wide the section runs, how big the machine clip ends up, and whether
 // anything spills out of the shell
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -53,4 +54,4 @@ const box = await js(`JSON.stringify((() => { const b = document.getElementById(
 const b = JSON.parse(box)
 shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: b.x, y: b.y, width: b.w, height: Math.min(b.h, 16000), scale: 0.3 } })
 await writeFile((process.argv[3] || 'build/anim-top.png').replace('.png', '-whole.png'), Buffer.from(shot.result.data, 'base64'))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'pa' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

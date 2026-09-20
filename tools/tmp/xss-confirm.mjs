@@ -3,6 +3,7 @@
    2. ds.js credit link: esc(e.url) into href="..."      -> javascript: survives escaping, fires on click
    3. mobile.js reel: it.video.poster / it.video.v / p.ava straight into poster=/src= */
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const port = 9500 + Math.floor(Math.random() * 90)
@@ -70,4 +71,4 @@ await sleep(1200)
 out.afterClick = await js('JSON.stringify(window.__pwn)')
 out.errors = errs.slice(0, 6)
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill(); process.exit(0)
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'xc' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600); process.exit(0)

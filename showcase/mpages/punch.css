@@ -12,7 +12,9 @@
    colour. The spacing is the page scale (mpages/_shared.css): sections --m-sec-gap apart, nothing tighter.
    Round nine: the title "Punch on the machine" never changes (only the line under it does), the Machine section says
    Connected, and the chosen PunchApp logo (<img data-logo-img>, class pp-logo) sits wherever the fist or the machine
-   icon was: in the Arrow disc once the strike lands, on the Pad's core, and in every Machine design. */
+   icon was: in the centre of the Arrow disc, on the Pad's core, and in every Machine design.
+   Round twelve: the Arrow lost its two chevrons (the logo alone, centred, breathing) and the Look up section lost its
+   Machine design (the machine drawn in line), so it pages through four: Arrow, Pad, Photo, Big type. */
 
 .m-punch.pp {
   display: grid;
@@ -45,63 +47,33 @@
 .pp.is-live[data-state="reading"] .pp-spin { animation: pp-turn 1.4s linear infinite; }
 @keyframes pp-turn { from { transform: translate(-50%, -50%) rotate(0); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-/* ---------------------------------------------------------------- Look up, Arrow: one arrow up, in a calm disc */
+/* ---------------------------------------------------------------- Look up, Arrow: the app's mark alone, in a calm disc */
 .pp-beacon { --d: min(176px, 46cqh, 52cqw); --spin: calc(var(--d) * 1.24); display: grid; place-items: center; }
 .pp-bc-disc, .pp-bc-ring { grid-area: 1 / 1; width: var(--d); height: var(--d); border-radius: 50%; }
 .pp-bc-disc {
   position: relative; display: grid; place-items: center;
   background: var(--m-glass); border: 1px solid var(--m-line-2); box-shadow: var(--m-lift);
   -webkit-backdrop-filter: blur(7.45px); backdrop-filter: blur(7.45px);
-  color: var(--m-red-soft); transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+  transition: background-color .3s ease, border-color .3s ease;
 }
-.pp-bc-disc > span { grid-area: 1 / 1; width: calc(var(--d) * .38); height: calc(var(--d) * .38); transition: opacity .25s ease, transform .4s cubic-bezier(.2, 1.4, .4, 1); }
-.pp-bc-disc > span svg { width: 100%; height: 100%; }
-/* waiting: the chevrons point at the glass and the app's mark sits under them, so the disc says look up, then punch */
-.pp-bc-up { transform: translateY(-30%); }
-.pp-bc-fist { opacity: .92; transform: translateY(30%) scale(.52); }
+/* waiting: the chosen logo sits in the centre of the disc, .64 of it (round twelve: the two chevrons went, the logo
+   moved to the middle and grew), and breathes there, big and bigger and small again, around that same centre */
+.pp-bc-disc > .pp-logo { grid-area: 1 / 1; width: calc(var(--d) * .64); height: calc(var(--d) * .64); object-fit: contain; transition: opacity .25s ease, transform .4s cubic-bezier(.2, 1.4, .4, 1); }
+.pp-bc-fist { opacity: .92; }
 .pp-bc-ring { border: 1.5px solid var(--m-red-soft); opacity: 0; }
-.pp.is-live[data-state="wait"] .pp-bc-up { animation: pp-bob 2.8s ease-in-out infinite; }
+.pp.is-live[data-state="wait"] .pp-bc-fist { animation: pp-pulse 2.8s ease-in-out infinite; }
 .pp.is-live[data-state="wait"] .pp-bc-ring { animation: pp-halo 3.6s ease-out infinite; }
 .pp.is-live[data-state="wait"] .pp-bc-ring + .pp-bc-ring { animation-delay: 1.8s; }
+@keyframes pp-pulse { 50% { transform: scale(1.25); } }   /* up to .8 of the disc, where the strike lands it */
 @keyframes pp-bob { 50% { transform: translateY(-10%); } }
 @keyframes pp-halo { 0% { opacity: .5; transform: scale(1); } 100% { opacity: 0; transform: scale(1.8); } }
-/* the strike: the rim lights red and the arrow gives way to the chosen logo (round nine: the logo, where the fist was;
-   the disc stays glass so the red mark reads on it in every look) */
-.pp-bc-disc > .pp-logo { grid-area: 1 / 1; width: calc(var(--d) * .8); height: calc(var(--d) * .8); object-fit: contain; transition: opacity .25s ease, transform .4s cubic-bezier(.2, 1.4, .4, 1); }
+/* the strike: the rim lights red and the logo jumps to its full size, .8 of the disc (round nine: the logo, where the
+   fist was; the disc stays glass so the red mark reads on it in every look) */
 .pp[data-state="landed"] .pp-bc-disc, .pp[data-state="reading"] .pp-bc-disc { border-color: var(--m-red-soft); box-shadow: 0 0 0 4px color-mix(in srgb, var(--m-red-soft) 22%, transparent), 0 18px 44px -18px color-mix(in srgb, var(--m-glow) 90%, transparent); }
-.pp[data-state="landed"] .pp-bc-up, .pp[data-state="reading"] .pp-bc-up { opacity: 0; transform: translateY(-30%) scale(.5); }
-.pp[data-state="landed"] .pp-bc-fist, .pp[data-state="reading"] .pp-bc-fist { opacity: 1; transform: none; }
-.pp.is-live[data-state="wait"] .pp-bc-fist { animation: pp-bob 2.8s ease-in-out infinite; animation-delay: .35s; }
+.pp[data-state="landed"] .pp-bc-fist, .pp[data-state="reading"] .pp-bc-fist { opacity: 1; transform: scale(1.25); }
 .pp.is-struck .pp-bc-ring { animation: pp-burst .9s cubic-bezier(.2, .7, .2, 1) forwards; }
 .pp.is-struck .pp-bc-ring + .pp-bc-ring { animation-delay: .12s; }
 @keyframes pp-burst { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(1.7); } }
-
-/* ---------------------------------------------------------------- Look up, Machine: the machine drawn in line */
-.pp-mc { display: grid; place-items: center; }
-.pp-mc-svg { display: block; height: min(360px, 94cqh); width: auto; overflow: visible; }
-.pp-mc-floor { fill: color-mix(in srgb, var(--m-shadow) 45%, transparent); }
-.pp-mc-body { fill: var(--m-glass-hi); stroke: var(--m-line-2); stroke-width: 1.5; }
-/* the glass is dark in every look, as the real one is */
-.pp-mc-glass { fill: #0B0B0C; stroke: color-mix(in srgb, var(--m-red-soft) 70%, transparent); stroke-width: 1.5; }
-.pp-mc-lit { fill: var(--m-red); opacity: .16; transition: opacity .3s ease; }
-.pp.is-live[data-state="wait"] .pp-mc-lit { animation: pp-breathe 3.2s ease-in-out infinite; }
-@keyframes pp-breathe { 50% { opacity: .34; } }
-.pp-mc-ring { fill: none; stroke: #FFFFFF; stroke-width: 2; stroke-linecap: round; stroke-dasharray: .7 .3; opacity: 0; transform-box: fill-box; transform-origin: center; }
-.pp-mc-arm, .pp-mc-chain { fill: none; stroke: var(--m-ink-3); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.pp-mc-chain { stroke-width: 2; }
-.pp-mc-sack { fill: var(--m-red); }
-.pp-mc-pad { fill: none; stroke: color-mix(in srgb, #FFFFFF 70%, transparent); stroke-width: 2; }
-.pp-mc-bag { transform-box: view-box; transform-origin: 132px 40px; }
-.pp.is-live[data-state="wait"] .pp-mc-bag { animation: pp-sway 4.8s ease-in-out infinite; }
-@keyframes pp-sway { 0%, 100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
-/* the strike lights the glass and swings the bag; the glass then reads it */
-.pp[data-state="landed"] .pp-mc-lit { opacity: .9; }
-.pp[data-state="reading"] .pp-mc-lit { opacity: .4; }
-.pp[data-state="reading"] .pp-mc-ring { opacity: 1; }
-.pp.is-live[data-state="reading"] .pp-mc-ring { animation: pp-turn-self 1.2s linear infinite; }
-@keyframes pp-turn-self { to { transform: rotate(360deg); } }
-.pp.is-struck .pp-mc-bag { animation: pp-swing 1.2s cubic-bezier(.3, .6, .3, 1); }
-@keyframes pp-swing { 20% { transform: rotate(14deg); } 45% { transform: rotate(-7deg); } 70% { transform: rotate(3deg); } }
 
 /* ---------------------------------------------------------------- Look up, Pad: the pad on the machine, the target */
 .pp-pad { --s: min(300px, 94cqh, 90cqw); --spin: var(--s); display: grid; place-items: center; }
@@ -216,5 +188,5 @@
 @media (prefers-reduced-motion: reduce) {
   .pp *, .pp *::before, .pp *::after { animation: none !important; }
   .pp.is-entering > *, .pp .is-swap, .m-punch.pp.is-struck { animation: none !important; }
-  .pp-look > [data-sv], .pp-bc-disc, .pp-bc-disc > span, .pp-bc-disc > img, .pp-spin, .pp-mc-lit, .pp-ph-img { transition: none !important; }
+  .pp-look > [data-sv], .pp-bc-disc, .pp-bc-disc > img, .pp-spin, .pp-ph-img { transition: none !important; }
 }

@@ -2,6 +2,7 @@
 // accordion on opening Customise, the Hit! word against the count, the how-to sheet title, the pill that opens it.
 // node tools/tmp/probe-r11.mjs [width]
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 const W = Number(process.argv[2] || 1440)
@@ -55,4 +56,4 @@ await js("window.punchApp.go('scan'); 1"); await sleep(1500)
 out.sheet = JSON.parse(await js(`JSON.stringify((() => { const pill = [...document.querySelectorAll('[data-howto]')].find((b) => b.offsetParent); const r = pill ? pill.getBoundingClientRect() : null; return { titles: [...document.querySelectorAll('#mSheet h3')].map((h) => h.textContent.trim()).filter((v, i, a) => a.indexOf(v) === i), pill: pill ? { text: pill.textContent.trim(), width: Math.round(r.width), scroll: pill.scrollWidth, client: pill.clientWidth, cls: pill.className } : null } })())`))
 out.errors = errs
 console.log(JSON.stringify(out, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'pr' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

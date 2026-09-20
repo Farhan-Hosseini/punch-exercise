@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -85,4 +86,4 @@ await sleep(1500)
 const menu2 = await js(probe)
 const styleDump = await js(`JSON.stringify([...document.querySelectorAll('#mReelTrack img, #mReelGrid img, #mReelComList img')].slice(0,80).map(i=>i.getAttribute('style')).filter(Boolean))`)
 console.log(JSON.stringify({ poisoned: POISON, players: JSON.parse(players||'[]'), menu: JSON.parse(menu||'[]'), menu2: JSON.parse(menu2||'[]'), inlineStyles: JSON.parse(styleDump||'[]'), evilRequests: netHits, errors: errs.slice(0, 6) }, null, 1))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sk' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind

@@ -1,5 +1,6 @@
 // every machine section, every design, measured in glass pixels on the live screen, to compare with the Figma variants
 import { spawn } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -45,4 +46,4 @@ for (const p of PAGES) {
 }
 await writeFile('build/sec-heights.json', JSON.stringify(out, null, 1))
 for (const [p, rows] of Object.entries(out)) for (const r of rows) console.log(`${p}/${r.key}: ` + r.designs.map(d => `${d.name}=${d.h}`).join(' '))
-ws.close(); chrome.kill()
+ws.close(); chrome.kill(); setTimeout(() => { try { rmSync(join(tmpdir(), 'sh' + port), { recursive: true, force: true }) } catch { /* still held */ } }, 600)   // the profile is 57 MB; leave nothing behind
