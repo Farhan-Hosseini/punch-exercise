@@ -18,6 +18,7 @@
     }
   } catch (e) { /* storage unavailable: the defaults stand */ }
   if (/[?&]embed=machine\b/.test(location.search)) document.documentElement.dataset.embed = 'machine'
+  else if (/[?&]embed=phone\b/.test(location.search)) document.documentElement.dataset.embed = 'phone'
 </script>
 <link rel="preload" href="fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/barlow-condensed-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -313,7 +314,7 @@
       <div class="anim-extra-head">
         <p class="anim-k">The Punch Machine</p>
         <h3 class="anim-piece-title" id="animOneTitle">The score reveal</h3>
-        <p class="anim-p">The panel alone, at its own size, with nothing else in frame. Every part of it is the live component, not a mock-up.</p>
+        <p class="anim-p">The panel alone, at its own size, with nothing else in frame: eight seconds of the count, the strike, the reading, the record, the score. Seventeen seconds at 60 fps, and every part of it is the live component, not a mock-up.</p>
       </div>
       <div class="anim-clips">
         <figure class="anim-fig anim-fig-tall">

@@ -26,12 +26,13 @@ const OUT = resolve(ROOT, opt('out', 'showcase/assets/motion'))
 const WORK = opt('work', 'C:/gtmp/punch/rr/cut')
 const ONLY = opt('only', '')
 const FPS = 60
-const POSTER_T = Number(opt('poster', 9.6))  // the Big score whole: name, number, crown and the still
+const LEAD = opt('lead', '0')  // the recorder's --lead, so the beats and the poster follow the longer clip
+const POSTER_T = Number(opt('poster', 9.6 + Number(LEAD)))  // the Big score whole: name, number, crown and the still
 const CHROME = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const does = (k) => !ONLY || ONLY.split(',').includes(k)
 
-const B = JSON.parse(execFileSync('node', [join(ROOT, 'tools/record-reveal.mjs'), '--beats'], { encoding: 'utf8' }))
+const B = JSON.parse(execFileSync('node', [join(ROOT, 'tools/record-reveal.mjs'), '--beats', '--lead', LEAD], { encoding: 'utf8' }))
 const DUR = (Math.round(B.end * FPS) + 1) / FPS
 
 /* ------------------------------------------------------------ the beats, and where the close-up looks on the glass */

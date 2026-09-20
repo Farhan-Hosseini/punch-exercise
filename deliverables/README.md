@@ -11,7 +11,7 @@ There are two clips, one for each surface: the score reveal on the Punch Machine
 
 | File | What it is |
 |---|---|
-| `reveal-live-1080x3840.mp4` | **The clip to watch first.** The score reveal on the live Punch Machine as designed now, about 10 s at 60 fps: the last seconds of Punch now and the strike, Reading the strike, New record as the name at the top flaps over, then the Big score. Nothing but the panel is in frame, at its real size and aspect, so every component reads as it does on the cabinet. |
+| `reveal-live-1080x3840.mp4` | **The clip to watch first.** The score reveal on the live Punch Machine as designed now, 17 s at 60 fps: eight seconds of the Punch now count, the strike, Reading the strike, New record as the name at the top flaps over, then the Big score. Nothing but the panel is in frame, at its real size and aspect, so every component reads as it does on the cabinet. |
 | `reveal-live-1080x3840-poster.jpg` | A still of the reveal, the moment the big score lands. |
 | `run-live-1920x1080.mp4` | **The second clip.** One turn on the phone, about 17 s at 60 fps: home, the code on the cabinet, the link that holds a credit, the pad, the strike, the number landing in your hand and the replay ready to share. The phone stands at its own size beside the beat names. |
 | `run-live-928x1960.mp4` | The same run with nothing around it, the phone at its own size, two device pixels to one point. |

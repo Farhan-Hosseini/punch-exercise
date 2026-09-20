@@ -35,17 +35,20 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 /* ------------------------------------------------------------ the beats, in clip seconds */
 const SECONDS = 20          // the machine's count
-const LEFT_AT_0 = 3.62      // time left on the count at the first frame
+// --lead N opens the clip N seconds earlier, so more of the count plays before the strike: the run on the phone is
+// seventeen seconds, and --lead 7.07 makes this one the same length
+const LEAD = Number(opt('lead', 0))
+const LEFT_AT_0 = 3.62 + LEAD  // time left on the count at the first frame
 const PRE = SECONDS - LEFT_AT_0 + 0  // the count starts this long before the first frame (fast-forwarded, not captured)
 export const BEATS = {
-  strike: 0.80,             // the punch lands (2.82 s left on the count; the count has ticked from 4 to 3 at 0.62 s)
-  reading: 1.60,            // the glass moves on to Reading the strike
+  strike: 0.80 + LEAD,      // the punch lands (2.82 s left on the count; the count has ticked from 4 to 3 at 0.62 s)
+  reading: 1.60 + LEAD,     // the glass moves on to Reading the strike
   readingMs: 1600,          // how long the reading takes (the screen's default is 2200)
-  record: 1.60 + 1.6 + 0.16, // Reading hands over to New record by itself (duration + its one-beat wait)
-  score: 5.60,              // the Big score, once the old best and the margin have joined the record (1.74 s in)
-  why: 5.60 + 2.54,         // its reason lands once the number has (score.js beats(): 80 + 320 + 1800 + 60 + 280 ms)
-  photo: 5.60 + 3.24,       // then the still of the strike (land + 980 ms), in by about 0.6 s later
-  end: 9.93,                // the last frame (597 frames at 60 fps, 9.95 s: the brief asks for 5 to 10 seconds)
+  record: 1.60 + 1.6 + 0.16 + LEAD, // Reading hands over to New record by itself (duration + its one-beat wait)
+  score: 5.60 + LEAD,       // the Big score, once the old best and the margin have joined the record (1.74 s in)
+  why: 5.60 + 2.54 + LEAD,  // its reason lands once the number has (score.js beats(): 80 + 320 + 1800 + 60 + 280 ms)
+  photo: 5.60 + 3.24 + LEAD, // then the still of the strike (land + 980 ms), in by about 0.6 s later
+  end: 9.93 + LEAD,         // the last frame (597 frames at 60 fps without a lead: the brief asks for 5 to 10 seconds)
 }
 if (flag('beats')) { console.log(JSON.stringify(BEATS)); process.exit(0) }
 const FROM = Number(opt('from', 0)), TO = Number(opt('to', BEATS.end))
